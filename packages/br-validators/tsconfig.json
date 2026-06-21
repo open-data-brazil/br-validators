@@ -15,7 +15,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
   },
   "include": ["src/**/*.ts", "tests/**/*.ts", "vitest.config.ts", "tsup.config.ts"],
   "exclude": ["node_modules", "dist"]

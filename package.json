@@ -9,7 +9,7 @@
     "test:coverage": "pnpm --filter br-validators test:coverage && pnpm --filter @br-validators/cli test:coverage",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "pnpm -r typecheck",
-    "verify": "pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build"
+    "verify": "pnpm --filter br-validators build && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build"
   },
   "engines": {
     "node": ">=18"

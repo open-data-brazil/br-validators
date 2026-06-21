@@ -1,5 +1,12 @@
 import { Command } from 'commander';
-import { handleCnpjCli, handleListCli, writeCliIo, type CnpjCliOptions } from './handlers.js';
+import {
+  handleCnpjCli,
+  handleCpfCli,
+  handleListCli,
+  writeCliIo,
+  type CnpjCliOptions,
+  type CpfCliOptions,
+} from './handlers.js';
 
 export function createProgram(): Command {
   const program = new Command();
@@ -7,7 +14,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.1.0-alpha.1');
+    .version('0.1.0-beta.0');
 
   program
     .command('list')
@@ -32,6 +39,24 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: CnpjCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleCnpjCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const cpf = program.command('cpf').description('CPF — numeric modulo 11 (RFB)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    cpf
+      .command(action)
+      .description(`${action} a CPF`)
+      .argument('[value]', 'CPF value (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: CpfCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleCpfCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

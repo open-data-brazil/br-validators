@@ -17,6 +17,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.1.0-beta.0] - 2026-06-21
+
+CPF validator across library, CLI, and playground.
+
+### Added
+
+- `packages/br-validators` — CPF numeric modulo 11 (golden vectors `12345678909`, `11144477735`)
+- Subpath export `br-validators/cpf`
+- `apps/cli` — `br-validators cpf validate|format|strip` with `--json`, `--quiet`, `--source`
+- `apps/playground` — client-side tester at `/cpf`
+- CI: Node 24, pnpm version from `packageManager` field only
+
+### Security
+
+- Validation aligned to [RFB CPF portal](https://www.gov.br/receitafederal/pt-br/assuntos/cpf) and UC-001 golden vector
+
+---
+
 ## [0.1.0-alpha.1] - 2026-06-21
 
 First implementation release — CNPJ validator across library, CLI, and playground.
@@ -62,11 +80,13 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
+| [0.1.0-beta.0](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.0) | 2026-06-21 | CPF library + CLI + playground |
 | [0.1.0-alpha.1](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.1) | 2026-06-21 | CNPJ library + CLI + playground |
 | [0.1.0-alpha.0](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.0) | 2026-06-21 | Docs + harness bootstrap |
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/doc-raiz/compare/v0.1.0-alpha.1...HEAD
+[Unreleased]: https://github.com/AlexandreZanata/doc-raiz/compare/v0.1.0-beta.0...HEAD
+[0.1.0-beta.0]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.0
 [0.1.0-alpha.1]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.1
 [0.1.0-alpha.0]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.0

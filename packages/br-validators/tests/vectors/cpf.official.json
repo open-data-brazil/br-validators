@@ -1,0 +1,15 @@
+{
+  "source": "UC-001 worked example + modulo 11 cross-check",
+  "url": "https://www.gov.br/receitafederal/pt-br/assuntos/cpf",
+  "primary": {
+    "canonical": "12345678909",
+    "formatted": "123.456.789-09",
+    "base": "123456789",
+    "dv1": "0",
+    "dv2": "9"
+  },
+  "secondary": {
+    "canonical": "11144477735",
+    "formatted": "111.444.777-35"
+  }
+}

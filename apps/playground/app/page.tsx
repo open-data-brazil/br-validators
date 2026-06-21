@@ -1,6 +1,9 @@
 import Link from 'next/link';
 
-const types = [{ slug: 'cnpj', label: 'CNPJ' }];
+const types = [
+  { slug: 'cnpj', label: 'CNPJ' },
+  { slug: 'cpf', label: 'CPF' },
+];
 
 export default function HomePage() {
   return (

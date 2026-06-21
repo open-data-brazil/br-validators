@@ -17,7 +17,12 @@ export type FormatResult =
   | { ok: false; code: ValidationErrorCode; message: string };
 
 export type Cnpj = string & { readonly __brand: 'Cnpj' };
+export type Cpf = string & { readonly __brand: 'Cpf' };
 
 export function brandCnpj(value: string): Cnpj {
   return value as Cnpj;
+}
+
+export function brandCpf(value: string): Cpf {
+  return value as Cpf;
 }
