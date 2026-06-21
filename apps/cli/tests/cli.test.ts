@@ -37,7 +37,7 @@ describe('runCnpjCommand', () => {
   it('validates with json and source', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     runCnpjCommand('validate', CNPJ_GOLDEN_ALPHANUMERIC, { json: true, quiet: false, source: true }, io);
-    const parsed = JSON.parse(io.stdout[0]!) as { ok: boolean; source?: string };
+    const parsed = JSON.parse(io.stdout[0]) as { ok: boolean; source?: string };
     expect(parsed.ok).toBe(true);
     expect(parsed.source).toBe(CNPJ_OFFICIAL_SOURCE_URL);
   });
@@ -55,7 +55,7 @@ describe('runCnpjCommand', () => {
   it('formats with json error', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(runCnpjCommand('format', 'bad', { json: true, quiet: false, source: false }, io)).toBe(EXIT.INVALID);
-    expect(JSON.parse(io.stdout[0]!).ok).toBe(false);
+    expect(JSON.parse(io.stdout[0]).ok).toBe(false);
   });
 
   it('formats quiet', () => {
@@ -63,15 +63,15 @@ describe('runCnpjCommand', () => {
   });
 
   it('strips input', () => {
-    const io = { stdout: [] as string[] };
+    const io = { stdout: [] as string[], stderr: [] as string[] };
     runCnpjCommand('strip', '12.ABC.345/01DE-35', { json: false, quiet: false, source: false }, io);
     expect(io.stdout[0]).toBe(CNPJ_GOLDEN_ALPHANUMERIC);
   });
 
   it('strips with json', () => {
-    const io = { stdout: [] as string[] };
+    const io = { stdout: [] as string[], stderr: [] as string[] };
     runCnpjCommand('strip', CNPJ_GOLDEN_ALPHANUMERIC, { json: true, quiet: false, source: false }, io);
-    expect(JSON.parse(io.stdout[0]!).stripped).toBe(CNPJ_GOLDEN_ALPHANUMERIC);
+    expect(JSON.parse(io.stdout[0]).stripped).toBe(CNPJ_GOLDEN_ALPHANUMERIC);
   });
 });
 
@@ -94,7 +94,7 @@ describe('printValidation', () => {
   it('prints human success with source', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     printValidation(
-      { ok: true, value: '12ABC34501DE35' as never, format: 'alphanumeric' },
+      { ok: true, value: '12ABC34501DE35', format: 'alphanumeric' },
       { json: false, quiet: false, source: 'https://example.com/doc.pdf' },
       io,
     );
@@ -110,17 +110,17 @@ describe('printValidation', () => {
   it('prints json success without source field', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     printValidation(
-      { ok: true, value: '12ABC34501DE35' as never, format: 'alphanumeric' },
+      { ok: true, value: '12ABC34501DE35', format: 'alphanumeric' },
       { json: true, quiet: false },
       io,
     );
-    expect(JSON.parse(io.stdout[0]!)).not.toHaveProperty('source');
+    expect(JSON.parse(io.stdout[0])).not.toHaveProperty('source');
   });
 
   it('returns quietly when valid', () => {
     expect(
       printValidation(
-        { ok: true, value: '12ABC34501DE35' as never, format: 'alphanumeric' },
+        { ok: true, value: '12ABC34501DE35', format: 'alphanumeric' },
         { json: false, quiet: true },
       ),
     ).toBe(EXIT.OK);
@@ -129,7 +129,7 @@ describe('printValidation', () => {
   it('prints json failure', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     printValidation({ ok: false, code: 'EMPTY_INPUT', message: 'empty' }, { json: true, quiet: false }, io);
-    expect(JSON.parse(io.stdout[0]!).ok).toBe(false);
+    expect(JSON.parse(io.stdout[0]).ok).toBe(false);
   });
 });
 
@@ -139,7 +139,7 @@ describe('printFormat branches', () => {
     expect(
       printFormat({ ok: true, formatted: '12.ABC.345/01DE-35' }, { json: true, quiet: false }, io),
     ).toBe(EXIT.OK);
-    expect(JSON.parse(io.stdout[0]!).ok).toBe(true);
+    expect(JSON.parse(io.stdout[0]).ok).toBe(true);
   });
 
   it('prints json error result', () => {
@@ -147,7 +147,7 @@ describe('printFormat branches', () => {
     expect(
       printFormat({ ok: false, code: 'INVALID_LENGTH', message: 'x' }, { json: true, quiet: false }, io),
     ).toBe(EXIT.INVALID);
-    expect(JSON.parse(io.stdout[0]!).ok).toBe(false);
+    expect(JSON.parse(io.stdout[0]).ok).toBe(false);
   });
 
   it('returns valid quietly', () => {

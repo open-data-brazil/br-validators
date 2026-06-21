@@ -19,8 +19,7 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter br-validators test:coverage
-      - run: pnpm --filter @br-validators/cli test:coverage
-      - run: pnpm --filter br-validators build
-      - run: pnpm --filter @br-validators/cli build
-      - run: pnpm --filter @br-validators/playground build
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - run: pnpm build

@@ -1,5 +1,5 @@
 import { stripCnpj } from '../../strip/cnpj.js';
-import type { ValidationResult } from '../../types/validation-result.js';
+import type { DocumentFormat, ValidationResult } from '../../types/validation-result.js';
 import { brandCnpj } from '../../types/validation-result.js';
 import { isValidCnpjAlphanumeric } from './alphanumeric.js';
 import { CNPJ_LENGTH } from './constants.js';
@@ -15,13 +15,16 @@ export {
   CNPJ_OFFICIAL_SOURCE_URL,
 } from './constants.js';
 
+type FailedResult = Extract<ValidationResult, { ok: false }>;
+
 function failure(code: FailedResult['code'], message: string): FailedResult {
   return { ok: false, code, message };
 }
 
-type FailedResult = Extract<ValidationResult, { ok: false }>;
-
-function validateStructure(input: string, stripped: string): FailedResult | null {
+function validateStructure(
+  input: string,
+  stripped: string,
+): FailedResult | { format: DocumentFormat } {
   if (stripped.length === 0) {
     return failure('EMPTY_INPUT', 'CNPJ input is empty');
   }
@@ -34,10 +37,13 @@ function validateStructure(input: string, stripped: string): FailedResult | null
   if (stripped.length !== CNPJ_LENGTH) {
     return failure('INVALID_LENGTH', `CNPJ must have ${CNPJ_LENGTH} characters after normalization`);
   }
-  if (detectCnpjFormat(stripped) === 'unknown') {
+
+  const format = detectCnpjFormat(stripped);
+  if (format === 'unknown') {
     return failure('UNSUPPORTED_FORMAT', 'CNPJ format is not numeric or alphanumeric');
   }
-  return null;
+
+  return { format };
 }
 
 export function isValidCnpj(input: string): boolean {
@@ -47,11 +53,11 @@ export function isValidCnpj(input: string): boolean {
 export function validateCnpj(input: string): ValidationResult {
   const stripped = stripCnpj(input);
   const structural = validateStructure(input, stripped);
-  if (structural) {
+  if ('ok' in structural) {
     return structural;
   }
 
-  const format = detectCnpjFormat(stripped)!;
+  const { format } = structural;
 
   if (format === 'numeric' || !containsLetter(stripped)) {
     if (isValidCnpjNumeric(stripped)) {

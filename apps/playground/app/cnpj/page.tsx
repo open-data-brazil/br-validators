@@ -31,7 +31,9 @@ export default function CnpjPlaygroundPage() {
       <label style={{ display: 'block', marginBottom: '0.5rem', color: '#9aa5bd' }}>Input</label>
       <input
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
         style={{
           width: '100%',
           boxSizing: 'border-box',

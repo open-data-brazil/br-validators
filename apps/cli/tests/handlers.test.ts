@@ -56,17 +56,17 @@ describe('program', () => {
   });
 
   it('run parses list without throwing', () => {
-    expect(() => run(['node', 'br-validators', 'list'])).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'list']); }).not.toThrow();
   });
 
   it('run parses cnpj validate', () => {
     expect(() =>
-      run(['node', 'br-validators', 'cnpj', 'validate', CNPJ_GOLDEN_ALPHANUMERIC, '--quiet']),
+      { run(['node', 'br-validators', 'cnpj', 'validate', CNPJ_GOLDEN_ALPHANUMERIC, '--quiet']); },
     ).not.toThrow();
   });
 
   it('run parses cnpj format and strip', () => {
-    expect(() => run(['node', 'br-validators', 'cnpj', 'format', CNPJ_GOLDEN_ALPHANUMERIC])).not.toThrow();
-    expect(() => run(['node', 'br-validators', 'cnpj', 'strip', CNPJ_GOLDEN_ALPHANUMERIC])).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'cnpj', 'format', CNPJ_GOLDEN_ALPHANUMERIC]); }).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'cnpj', 'strip', CNPJ_GOLDEN_ALPHANUMERIC]); }).not.toThrow();
   });
 });

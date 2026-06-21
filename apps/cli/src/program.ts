@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import { handleCnpjCli, handleListCli, writeCliIo, type CnpjCliOptions } from './handlers.js';
-import type { CnpjAction } from './commands/cnpj.js';
 
 export function createProgram(): Command {
   const program = new Command();
@@ -32,7 +31,7 @@ export function createProgram(): Command {
       .option('-f, --file <path>', 'Read value from file')
       .action((value: string | undefined, opts: CnpjCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
-        process.exitCode = handleCnpjCli(action as CnpjAction, value, opts, io);
+        process.exitCode = handleCnpjCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

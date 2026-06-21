@@ -10,7 +10,8 @@
     "build": "tsup",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests --max-warnings 0"
   },
   "dependencies": {
     "br-validators": "workspace:*",

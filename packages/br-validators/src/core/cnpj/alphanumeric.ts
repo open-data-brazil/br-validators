@@ -3,7 +3,13 @@ import { cnpjCharValue } from './ascii-value.js';
 import { computeCheckDigit } from './modulo11.js';
 
 function hasRepeatedChars(value: string): boolean {
-  return [...value].every((c) => c === value[0]);
+  const first = value[0];
+  for (let i = 1; i < value.length; i++) {
+    if (value[i] !== first) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function isValidStructure(canonical: string): boolean {

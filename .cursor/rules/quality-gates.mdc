@@ -1,0 +1,60 @@
+---
+description: Zero lint warnings and 100% library test coverage — mandatory before merge
+alwaysApply: true
+---
+
+# Quality gates — doc-raiz / BR Validators
+
+> **Non-negotiable:** 0 ESLint errors, 0 ESLint warnings, 100% coverage on `packages/br-validators/src/**`.
+
+## Before every PR or commit with code changes
+
+Run from repo root:
+
+```bash
+pnpm lint              # ESLint — must exit 0, --max-warnings 0
+pnpm typecheck         # TypeScript — all packages
+pnpm test:coverage     # br-validators + CLI — library must be 100%
+pnpm build             # all packages compile
+```
+
+**Do not merge** if any command fails.
+
+## Lint policy
+
+| Rule | Requirement |
+|------|-------------|
+| ESLint errors | **0** |
+| ESLint warnings | **0** (`--max-warnings 0`) |
+| Config | Root `eslint.config.js` (`@eslint/js` recommended + `typescript-eslint` strictTypeChecked) |
+| Scope | `packages/**`, `apps/**` — not `agent-rules/` harness copy |
+
+Fix lint in the same change — never disable rules to silence without user approval.
+
+## Library coverage policy (`packages/br-validators`)
+
+| Rule | Requirement |
+|------|-------------|
+| Lines / branches / functions / statements | **100%** |
+| Scope | **All** `src/**/*.ts` — including barrels (`index.ts`, `cnpj.ts`) |
+| Test type | **Real tests** — official golden vectors from RFB/Bacen/CONTRAN |
+| Forbidden | Mocking `validate*` / `format*` / check-digit logic; `@vitest/coverage` excludes to hide gaps |
+
+Golden vectors live in `tests/vectors/*.official.json` — cite official source URL.
+
+Example mandatory vector: CNPJ `12ABC34501DE35` (RFB FAQ Q14).
+
+## CLI coverage
+
+`apps/cli`: 100% on `src/**` (excluding `src/index.ts` bin shim only).
+
+## Agent behavior
+
+1. After editing `packages/br-validators/src/**`, run `pnpm --filter br-validators test:coverage`.
+2. After any TS/TSX edit, run `pnpm lint`.
+3. If coverage drops below 100%, add **real** tests — not snapshot-only or empty asserts.
+4. Never claim "tests pass" without running commands.
+
+## CI
+
+GitHub Actions enforces the same gates — see `.github/workflows/ci.yml`.
