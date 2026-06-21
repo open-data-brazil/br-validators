@@ -168,6 +168,28 @@
 
 ---
 
+## CartaoCredito (Credit card PAN)
+
+**Definition:** Primary Account Number validated by Luhn checksum per ISO/IEC 7812-1 Annex B.
+**Not the same as:** Payment authorization, CVV check, or BIN registry lookup.
+**Code name:** `CartaoCredito`, `validateCartaoCredito`
+
+---
+
+## PAN (Primary Account Number)
+
+**Definition:** The digit sequence embossed or encoded on a payment card; 8–19 digits per ISO 7812.
+**Code name:** stripped value from `stripCartaoCredito`
+
+---
+
+## Luhn algorithm
+
+**Definition:** Modulus-10 “double-add-double” checksum applied from the rightmost digit (ISO 7812-1 Annex B).
+**Code name:** `passesLuhn`, `isValidLuhn`
+
+---
+
 ## Golden test vector
 
 **Definition:** Input/output pair taken from an official document or worked example used as a non-negotiable unit test.

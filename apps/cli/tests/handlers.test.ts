@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED } from 'br-validators';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA } from 'br-validators';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -18,6 +18,30 @@ describe('handlers', () => {
     expect(io.stdout).toContain('pis-pasep');
     expect(io.stdout).toContain('pix');
     expect(io.stdout).toContain('boleto');
+    expect(io.stdout).toContain('cartao');
+  });
+
+  it('handleCartaoCli validates value', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleCartaoCli('validate', CARTAO_GOLDEN_VISA, { quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleCartaoCli detects brand', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleCartaoCli('detect', CARTAO_GOLDEN_VISA, { quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleCartaoCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'cartao.txt');
+    writeFileSync(file, CARTAO_GOLDEN_VISA, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleCartaoCli('validate', undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleCartaoCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleCartaoCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
   });
 
   it('handleBoletoCli validates value', () => {
@@ -183,7 +207,7 @@ describe('handlers', () => {
 describe('program', () => {
   it('createProgram exposes list and cnpj commands', () => {
     const program = createProgram();
-    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'placa', 'pis-pasep', 'pix', 'boleto']));
+    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao']));
   });
 
   it('run parses list without throwing', () => {
@@ -265,6 +289,21 @@ describe('program', () => {
     }).not.toThrow();
     expect(() => {
       run(['node', 'br-validators', 'boleto', 'strip', BOLETO_GOLDEN_LINHA_STRIPPED]);
+    }).not.toThrow();
+  });
+
+  it('run parses cartao validate detect format strip', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'cartao', 'validate', CARTAO_GOLDEN_VISA, '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cartao', 'detect', CARTAO_GOLDEN_VISA]);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cartao', 'format', CARTAO_GOLDEN_VISA]);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cartao', 'strip', CARTAO_GOLDEN_VISA]);
     }).not.toThrow();
   });
 });

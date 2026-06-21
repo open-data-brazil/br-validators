@@ -1,6 +1,6 @@
 /**
  * PIS/PASEP validation — modulo 11 (CNIS unified registry).
- * @see https://www.gov.br/caixa/pt-br/atendimento/beneficios/pis
+ * @see https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf — RV_03
  * @see docs/use-cases/UC-006-validate-pis-pasep.md — golden vector 10027230888
  */
 import { stripPisPasep } from '../../strip/pis-pasep.js';

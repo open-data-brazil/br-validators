@@ -49,7 +49,7 @@ Shared: strip/format pipeline, branded types `Cpf`, `Cep`.
 |--------|---------|-----|------------|--------|
 | **Placa** | ✓ | ✓ | `/placa` | CONTRAN 729/2018 |
 | **PIX key** | ✓ | ✓ | `/pix` | 0.2.0-rc.0 |
-| **Cartão (Luhn)** | ✓ | ✓ | `/cartao` | ISO 7812 |
+| **Cartão (Luhn)** | ✓ | ✓ | `/cartao` | 0.3.0-alpha.0 · ISO 7812 |
 
 ---
 

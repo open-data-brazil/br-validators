@@ -62,3 +62,24 @@ export type {
   DetectedBoletoInputKind,
   ValidateBoletoOptions,
 } from './boleto.js';
+export {
+  computeLuhnSum,
+  detectCardBrand,
+  formatCartaoCredito,
+  isValidCartaoCredito,
+  isValidLuhn,
+  passesLuhn,
+  stripCartaoCredito,
+  validateCartaoCredito,
+  CARTAO_GOLDEN_AMEX,
+  CARTAO_GOLDEN_LUHN_WALKTHROUGH,
+  CARTAO_GOLDEN_MASTERCARD,
+  CARTAO_GOLDEN_MIN_LENGTH,
+  CARTAO_GOLDEN_VISA,
+  CARTAO_GOLDEN_VISA_MASKED,
+  CARTAO_IEC_SOURCE_URL,
+  CARTAO_OFFICIAL_SOURCE_URL,
+  CARTAO_PAN_MAX_LENGTH,
+  CARTAO_PAN_MIN_LENGTH,
+} from './cartao-credito.js';
+export type { CardBrand, CartaoCredito, CartaoCreditoValidationResult } from './cartao-credito.js';

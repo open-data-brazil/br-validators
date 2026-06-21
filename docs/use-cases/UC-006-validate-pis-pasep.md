@@ -66,9 +66,14 @@ N/A — client-side/server-side library call.
 
 | Canonical | Masked | Source |
 |-----------|--------|--------|
-| `10027230888` | `100.27230.88-8` | [Caixa PIS portal](https://www.gov.br/caixa/pt-br/atendimento/beneficios/pis) |
+| `10027230888` | `100.27230.88-8` | UC-006 worked example; DV verified per RV_03 NIT standard |
 | `12056456402` | `120.56456.40-2` | Algorithm cross-check |
 
-## Official source
+## Official sources
 
-https://www.gov.br/caixa/pt-br/atendimento/beneficios/pis
+| Purpose | URL |
+|---------|-----|
+| **Validation rules (RV_03)** — format, reject all-same-digit, NIT check digit | [SIPREV Regras de Validação v1.14 (PDF)](https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf) |
+| **Administrative context** — PIS updates via Caixa (private sector), PASEP via Banco do Brasil (public sector) | [eSocial FAQ — histórico](https://www.gov.br/esocial/pt-br/empresas/perguntas-frequentes/historico-de-perguntas-frequentes) |
+
+> **Deprecated:** `https://www.gov.br/caixa/pt-br/atendimento/beneficios/pis` returns 404 (June 2026). It never published the modulo-11 algorithm; RV_03 is the correct checksum reference.

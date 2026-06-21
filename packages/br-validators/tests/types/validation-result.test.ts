@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { brandCnpj, brandCep, brandCpf, brandCodigoBarras, brandLinhaDigitavel, brandPisPasep, brandPixKey, brandPlaca } from '../../src/types/validation-result.js';
+import {
+  brandCartaoCredito,
+  brandCnpj,
+  brandCep,
+  brandCpf,
+  brandCodigoBarras,
+  brandLinhaDigitavel,
+  brandPisPasep,
+  brandPixKey,
+  brandPlaca,
+} from '../../src/types/validation-result.js';
 
 describe('brandCnpj', () => {
   it('casts string to Cnpj brand', () => {
@@ -54,5 +64,12 @@ describe('brandCodigoBarras', () => {
   it('casts string to CodigoBarras brand', () => {
     const value = brandCodigoBarras('03396145000000996689025708991834007174230101');
     expect(value).toBe('03396145000000996689025708991834007174230101');
+  });
+});
+
+describe('brandCartaoCredito', () => {
+  it('casts string to CartaoCredito brand', () => {
+    const value = brandCartaoCredito('4111111111111111');
+    expect(value).toBe('4111111111111111');
   });
 });

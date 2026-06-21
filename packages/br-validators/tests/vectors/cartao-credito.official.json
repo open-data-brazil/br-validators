@@ -1,0 +1,26 @@
+{
+  "source": "UC-008 + ISO/IEC 7812-1 Annex B",
+  "url": "https://www.iso.org/standard/70484.html",
+  "iecUrl": "https://webstore.iec.ch/en/publication/59763",
+  "visa": {
+    "canonical": "4111111111111111",
+    "masked": "4111 1111 1111 1111",
+    "brand": "visa"
+  },
+  "mastercard": {
+    "canonical": "5555555555554444",
+    "brand": "mastercard"
+  },
+  "amex": {
+    "canonical": "378282246310005",
+    "brand": "amex"
+  },
+  "luhnWalkthrough": {
+    "valid": "79927398713",
+    "invalid": "79927398710",
+    "brand": "unknown"
+  },
+  "minLength": {
+    "canonical": "12345674"
+  }
+}

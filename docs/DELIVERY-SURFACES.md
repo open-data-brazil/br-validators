@@ -42,6 +42,7 @@ As each module ships, **all three** must be updated:
 | PIS/PASEP | `br-validators/pis-pasep` | `br-validators pis-pasep …` | PIS/PASEP | Caixa |
 | PIX key | `br-validators/pix` | `br-validators pix …` | PIX | Bacen |
 | Boleto | `br-validators/boleto` | `br-validators boleto …` | Boleto | FEBRABAN |
+| Credit card | `br-validators/cartao-credito` | `br-validators cartao …` | Credit Card | ISO/IEC 7812-1 |
 | IE | `br-validators/ie` | `br-validators ie …` | IE (per UF) | SEFAZ |
 
 **Definition of done per module:** library tests green + CLI command + playground section + source link.

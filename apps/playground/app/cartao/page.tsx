@@ -3,29 +3,32 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  PIS_PASEP_OFFICIAL_SOURCE_URL,
-  formatPisPasep,
-  stripPisPasep,
-  validatePisPasep,
+  CARTAO_GOLDEN_VISA_MASKED,
+  CARTAO_OFFICIAL_SOURCE_URL,
+  detectCardBrand,
+  formatCartaoCredito,
+  stripCartaoCredito,
+  validateCartaoCredito,
 } from 'br-validators';
 
-export default function PisPlaygroundPage() {
-  const [input, setInput] = useState('100.27230.88-8');
+export default function CartaoPlaygroundPage() {
+  const [input, setInput] = useState(CARTAO_GOLDEN_VISA_MASKED);
 
-  const stripped = useMemo(() => (input ? stripPisPasep(input) : ''), [input]);
-  const validation = useMemo(() => (input ? validatePisPasep(input) : null), [input]);
-  const formatted = useMemo(() => (input ? formatPisPasep(input) : null), [input]);
+  const stripped = useMemo(() => (input ? stripCartaoCredito(input) : ''), [input]);
+  const validation = useMemo(() => (input ? validateCartaoCredito(input) : null), [input]);
+  const brand = useMemo(() => (stripped ? detectCardBrand(stripped) : null), [stripped]);
+  const formatted = useMemo(() => (input ? formatCartaoCredito(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators pis-pasep validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators cartao validate ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>
       <Link href="/" style={{ color: '#7aa2ff', textDecoration: 'none' }}>
         ← All types
       </Link>
-      <h1 style={{ fontSize: '1.75rem', margin: '1rem 0 0.5rem' }}>PIS/PASEP Validator</h1>
+      <h1 style={{ fontSize: '1.75rem', margin: '1rem 0 0.5rem' }}>Credit Card Validator</h1>
       <p style={{ color: '#9aa5bd', marginBottom: '1.5rem' }}>
-        Numeric only · modulo 11 (UC-006) · does not verify CNIS registration
+        Luhn checksum only (ISO/IEC 7812-1) · brand detection is best-effort · do not use real card numbers
       </p>
 
       <label style={{ display: 'block', marginBottom: '0.5rem', color: '#9aa5bd' }}>Input</label>
@@ -68,13 +71,14 @@ export default function PisPlaygroundPage() {
               : '—'
           }
         />
+        <Row label="Brand" value={brand ?? '—'} />
         <Row label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
       </section>
 
       <p style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
         Official source:{' '}
-        <a href={PIS_PASEP_OFFICIAL_SOURCE_URL} target="_blank" rel="noreferrer" style={{ color: '#7aa2ff' }}>
-          SIPREV RV_03 (gov.br)
+        <a href={CARTAO_OFFICIAL_SOURCE_URL} target="_blank" rel="noreferrer" style={{ color: '#7aa2ff' }}>
+          ISO/IEC 7812-1:2017
         </a>
       </p>
 

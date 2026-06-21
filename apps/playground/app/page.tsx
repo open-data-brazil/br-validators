@@ -8,6 +8,7 @@ const types = [
   { slug: 'pis', label: 'PIS/PASEP' },
   { slug: 'pix', label: 'PIX Key' },
   { slug: 'boleto', label: 'Boleto' },
+  { slug: 'cartao', label: 'Credit Card' },
 ];
 
 export default function HomePage() {

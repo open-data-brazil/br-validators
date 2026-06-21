@@ -1,4 +1,4 @@
-export const SUPPORTED_TYPES = ['cnpj', 'cpf', 'cep', 'placa', 'pis-pasep', 'pix', 'boleto'] as const;
+export const SUPPORTED_TYPES = ['cnpj', 'cpf', 'cep', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao'] as const;
 
 export type SupportedType = (typeof SUPPORTED_TYPES)[number];
 

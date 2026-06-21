@@ -6,6 +6,7 @@ import { runPlaca, type PlacaAction } from './commands/placa.js';
 import { runPisPasep, type PisPasepAction } from './commands/pis-pasep.js';
 import { runPix, type PixAction } from './commands/pix.js';
 import { runBoleto, type BoletoAction, type BoletoConvertDirection } from './commands/boleto.js';
+import { runCartao, type CartaoAction } from './commands/cartao.js';
 import { listSupportedTypes } from './commands/list.js';
 import { EXIT } from './constants.js';
 
@@ -31,6 +32,8 @@ export type PixCliOptions = CnpjCliOptions & {
 export type BoletoCliOptions = CnpjCliOptions & {
   kind?: 'linha-digitavel' | 'codigo-barras';
 };
+
+export type CartaoCliOptions = CnpjCliOptions;
 
 export type CliIo = { stdout: string[]; stderr: string[] };
 
@@ -243,6 +246,34 @@ export function handleBoletoCli(
       file: fileContent,
     },
     direction,
+    io,
+  );
+}
+
+export function handleCartaoCli(
+  action: CartaoAction,
+  value: string | undefined,
+  opts: CartaoCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runCartao(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      file: fileContent,
+    },
     io,
   );
 }

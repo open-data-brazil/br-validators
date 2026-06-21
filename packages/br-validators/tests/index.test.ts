@@ -7,6 +7,7 @@ import * as placaEntry from '../src/placa.js';
 import * as pisPasepEntry from '../src/pis-pasep.js';
 import * as pixEntry from '../src/pix.js';
 import * as boletoEntry from '../src/boleto.js';
+import * as cartaoCreditoEntry from '../src/cartao-credito.js';
 
 describe('package exports', () => {
   it('re-exports CNPJ API from index', () => {
@@ -55,6 +56,14 @@ describe('package exports', () => {
     expect(root.formatLinhaDigitavel).toBeTypeOf('function');
   });
 
+  it('re-exports Credit card API from index', () => {
+    expect(root.validateCartaoCredito).toBeTypeOf('function');
+    expect(root.isValidLuhn).toBeTypeOf('function');
+    expect(root.detectCardBrand).toBeTypeOf('function');
+    expect(root.stripCartaoCredito).toBeTypeOf('function');
+    expect(root.formatCartaoCredito).toBeTypeOf('function');
+  });
+
   it('re-exports CNPJ API from cnpj entry', () => {
     expect(cnpjEntry.validateCnpj).toBe(root.validateCnpj);
   });
@@ -85,5 +94,11 @@ describe('package exports', () => {
     expect(boletoEntry.validateBoleto).toBe(root.validateBoleto);
     expect(boletoEntry.detectBoletoInputKind).toBe(root.detectBoletoInputKind);
     expect(boletoEntry.isValidBoleto).toBe(root.isValidBoleto);
+  });
+
+  it('re-exports Credit card API from cartao-credito entry', () => {
+    expect(cartaoCreditoEntry.validateCartaoCredito).toBe(root.validateCartaoCredito);
+    expect(cartaoCreditoEntry.detectCardBrand).toBe(root.detectCardBrand);
+    expect(cartaoCreditoEntry.isValidLuhn).toBe(root.isValidLuhn);
   });
 });

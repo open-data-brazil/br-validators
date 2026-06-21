@@ -22,6 +22,7 @@
 | `br-validators/pis-pasep` | PIS / PASEP / NIS / NIT |
 | `br-validators/pix` | PIX keys |
 | `br-validators/boleto` | Boleto (linha digitável + código de barras) |
+| `br-validators/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
 | `br-validators/ie` | State registration (future, per-state) |
 
 ---
@@ -197,8 +198,26 @@ Golden vectors: Santander linha `03399025790899183400671742301014614500000099668
 
 | Function | Signature | Behavior |
 |----------|-----------|----------|
-| `isValidLuhn` | `(input: string) => boolean` | ISO/IEC 7812 |
-| `detectCardBrand` | `(input: string) => string \| null` | Best-effort, non-authoritative |
+| `stripCartaoCredito` | `(input: string) => string` | Remove non-digits |
+| `passesLuhn` | `(pan: string) => boolean` | Raw Luhn on digit string |
+| `computeLuhnSum` | `(pan: string) => number` | Annex B sum (internal/testing) |
+| `isValidLuhn` | `(input: string) => boolean` | Strip → length → chars → Luhn |
+| `isValidCartaoCredito` | `(input: string) => boolean` | Full validation boolean |
+| `validateCartaoCredito` | `(input: string) => CartaoCreditoValidationResult` | Luhn + length + brand on success |
+| `detectCardBrand` | `(strippedPan: string) => CardBrand` | Best-effort IIN heuristics |
+| `formatCartaoCredito` | `(input: string) => FormatResult` | Grouped display after validation |
+
+```typescript
+type CardBrand = 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard' | 'unknown';
+
+type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
+
+type CartaoCreditoValidationResult =
+  | { ok: true; value: CartaoCredito; format: 'cartao-credito'; brand: CardBrand }
+  | { ok: false; code: ValidationErrorCode; message: string; brand?: CardBrand };
+```
+
+Golden vectors: Visa `4111111111111111`, Mastercard `5555555555554444`, Amex `378282246310005`, Luhn walkthrough `79927398713`.
 
 ---
 

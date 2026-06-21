@@ -17,7 +17,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - 2026-06-21
+## [0.3.0-alpha.0] - 2026-06-21
+
+Credit card PAN validator across library, CLI, and playground.
+
+### Added
+
+- `packages/br-validators` — credit card PAN validation: Luhn / ISO/IEC 7812-1 Annex B
+- `validateCartaoCredito`, `isValidLuhn`, `detectCardBrand`, strip/format
+- PAN length 8–19; best-effort brand (Visa, Mastercard, Amex, Elo, Hipercard)
+- Subpath export `br-validators/cartao-credito`
+- `apps/cli` — `br-validators cartao validate|detect|format|strip`
+- `apps/playground` — `/cartao` route with validate + brand row
+- UC-008, BR-LUHN-001…008, golden vectors (Visa/MC/Amex + Luhn walkthrough)
+
+---
 
 Boleto validator across library, CLI, and playground.
 

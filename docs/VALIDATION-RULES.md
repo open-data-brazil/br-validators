@@ -299,6 +299,62 @@
 
 ---
 
+## Credit card (Luhn / ISO/IEC 7812-1)
+
+### BR-LUHN-001 — Strip to digits
+
+- **GIVEN** masked PAN with spaces or hyphens
+- **WHEN** stripping
+- **THEN** remove all non-digit characters
+
+### BR-LUHN-002 — PAN length
+
+- **GIVEN** stripped PAN
+- **WHEN** validating
+- **THEN** accept length 8–19 inclusive; reject otherwise with `INVALID_LENGTH`
+
+### BR-LUHN-003 — Luhn checksum
+
+- **GIVEN** stripped PAN within length bounds
+- **WHEN** validating
+- **THEN** apply ISO/IEC 7812-1 Annex B modulus-10 from rightmost digit; valid iff sum mod 10 = 0
+- **Golden:** `79927398713` pass; `79927398710` fail
+
+### BR-LUHN-004 — Reject all-same-digit
+
+- **GIVEN** PAN where every digit is identical
+- **WHEN** validating
+- **THEN** reject with `KNOWN_INVALID_PATTERN` even if Luhn passes
+
+### BR-LUHN-005 — Brand detection (best-effort)
+
+- **GIVEN** stripped PAN
+- **WHEN** detecting brand
+- **THEN** return `visa` | `mastercard` | `amex` | `elo` | `hipercard` | `unknown` from IIN prefix heuristics (non-authoritative)
+
+### BR-LUHN-006 — Invalid characters
+
+- **GIVEN** input with letters after removing spaces/hyphens
+- **WHEN** validating
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-LUHN-007 — Display mask
+
+- **GIVEN** valid 16-digit PAN
+- **WHEN** formatting
+- **THEN** group as `XXXX XXXX XXXX XXXX`
+- **GIVEN** valid 15-digit Amex PAN
+- **WHEN** formatting
+- **THEN** group as `XXXX XXXXXX XXXXX`
+
+### BR-LUHN-008 — Boolean Luhn wrapper
+
+- **GIVEN** any input
+- **WHEN** calling `isValidLuhn`
+- **THEN** strip → length check → character check → Luhn; return boolean without branded type
+
+---
+
 ## Global pipeline rules
 
 ### BR-GLOBAL-001 — Strip before validate

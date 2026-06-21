@@ -1,5 +1,5 @@
 /**
- * Linha digitável ↔ código de barras conversion (Anexo VI).
+ * Linha digitável ↔ código de barras conversion (Anexo V §2.3.4).
  * @see BR-BOLETO-006
  */
 import { computeModulo10FieldDv } from './modulo10.js';

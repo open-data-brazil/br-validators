@@ -7,9 +7,11 @@ import {
   handlePisPasepCli,
   handlePixCli,
   handleBoletoCli,
+  handleCartaoCli,
   handlePlacaCli,
   writeCliIo,
   type BoletoCliOptions,
+  type CartaoCliOptions,
   type CepCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
@@ -24,7 +26,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.2.0');
+    .version('0.3.0-alpha.0');
 
   program
     .command('list')
@@ -213,6 +215,37 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: BoletoCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleBoletoCli(action, value, opts, undefined, io);
+        writeCliIo(io);
+      });
+  }
+
+  const cartao = program.command('cartao').description('Credit card PAN — Luhn / ISO/IEC 7812-1');
+
+  cartao
+    .command('detect')
+    .description('detect card brand (best-effort)')
+    .argument('[value]', 'Credit card PAN (raw or masked)')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((value: string | undefined, opts: CartaoCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCartaoCli('detect', value, opts, io);
+      writeCliIo(io);
+    });
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    cartao
+      .command(action)
+      .description(`${action} a credit card PAN`)
+      .argument('[value]', 'Credit card PAN (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: CartaoCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleCartaoCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

@@ -1,11 +1,12 @@
 {
-  "source": "UC-006 worked example + modulo 11 cross-check",
-  "url": "https://www.gov.br/caixa/pt-br/atendimento/beneficios/pis",
+  "source": "SIPREV Dataprev RV_03 (PIS/PASEP/NIT) + modulo-11 cross-check",
+  "url": "https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf",
   "primary": {
     "canonical": "10027230888",
     "formatted": "100.27230.88-8",
     "base": "1002723088",
-    "dv": "8"
+    "dv": "8",
+    "note": "UC-006 worked example; DV verified per NIT modulo-11 standard"
   },
   "secondary": {
     "canonical": "12056456402",

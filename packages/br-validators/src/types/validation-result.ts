@@ -7,7 +7,8 @@ export type DocumentFormat =
   | 'phone'
   | 'evp'
   | 'linha-digitavel'
-  | 'codigo-barras';
+  | 'codigo-barras'
+  | 'cartao-credito';
 
 export type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
 
@@ -37,6 +38,13 @@ export type PisPasep = string & { readonly __brand: 'PisPasep' };
 export type PixKey = string & { readonly __brand: 'PixKey' };
 export type LinhaDigitavel = string & { readonly __brand: 'LinhaDigitavel' };
 export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
+export type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
+
+export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard' | 'unknown';
+
+export type CartaoCreditoValidationResult =
+  | { ok: true; value: CartaoCredito; format: 'cartao-credito'; brand: CardBrand }
+  | { ok: false; code: ValidationErrorCode; message: string; brand?: CardBrand };
 
 export type PixValidationResult =
   | { ok: true; value: PixKey; keyType: PixKeyType; format: DocumentFormat }
@@ -76,4 +84,8 @@ export function brandLinhaDigitavel(value: string): LinhaDigitavel {
 
 export function brandCodigoBarras(value: string): CodigoBarras {
   return value as CodigoBarras;
+}
+
+export function brandCartaoCredito(value: string): CartaoCredito {
+  return value as CartaoCredito;
 }
