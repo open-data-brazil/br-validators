@@ -1,0 +1,22 @@
+{
+  "source": "UC-003 + per-type BR-*-005/006",
+  "url": "docs/use-cases/UC-003-format-document.md",
+  "cases": [
+    { "type": "cpf", "raw": "12345678909", "formatted": "123.456.789-09" },
+    { "type": "cpf", "raw": "123.456.789-09", "formatted": "123.456.789-09", "note": "idempotent" },
+    { "type": "cnpj", "raw": "12ABC34501DE35", "formatted": "12.ABC.345/01DE-35" },
+    { "type": "cnpj", "raw": "11222333000181", "formatted": "11.222.333/0001-81" },
+    { "type": "cep", "raw": "01310100", "formatted": "01310-100" },
+    { "type": "cep", "raw": "01310-100", "formatted": "01310-100", "note": "idempotent" },
+    { "type": "placa", "raw": "abc1d23", "formatted": "ABC1D23" },
+    { "type": "pis-pasep", "raw": "10027230888", "formatted": "100.27230.88-8" },
+    { "type": "boleto", "raw": "03399025790899183400671742301014614500000099668", "formatted": "03399.02579 08991.834006 71742.301014 6 14500000099668" },
+    { "type": "cartao-credito", "raw": "4111111111111111", "formatted": "4111 1111 1111 1111" },
+    { "type": "pix", "raw": "12345678909", "formatted": "123.456.789-09", "note": "cpf key" },
+    { "type": "pix", "raw": "12ABC34501DE35", "formatted": "12.ABC.345/01DE-35", "note": "cnpj key" },
+    { "type": "pix", "raw": "+5510998765432", "formatted": "+55 (10) 99876-5432", "note": "phone key" },
+    { "type": "pix", "raw": "+5511999887766", "formatted": "+55 (11) 99988-7766", "note": "phone key UC-003" },
+    { "type": "pix", "raw": "pix@bcb.gov.br", "formatted": "pix@bcb.gov.br", "note": "email key" },
+    { "type": "pix", "raw": "123e4567-e89b-12d3-a456-426655440000", "formatted": "123e4567-e89b-12d3-a456-426655440000", "note": "evp key" }
+  ]
+}

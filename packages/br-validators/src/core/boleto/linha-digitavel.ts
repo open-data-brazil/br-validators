@@ -12,6 +12,8 @@ import { convertLinhaToCodigoBarrasDigits } from './convert.js';
 import { computeModulo10FieldDv } from './modulo10.js';
 import { computeModulo11BarcodeDv } from './modulo11.js';
 
+export { applyLinhaDigitavelMask, formatLinhaDigitavel } from './mask.js';
+
 type FailedResult = Extract<BoletoValidationResult, { ok: false }>;
 
 const LINHA_MASK_PATTERN = /^[0-9.\s]+$/;
@@ -22,15 +24,6 @@ function failure(code: FailedResult['code'], message: string): FailedResult {
 
 export function stripLinhaDigitavel(input: string): string {
   return input.replace(/\D/g, '');
-}
-
-export function formatLinhaDigitavel(stripped: string): string {
-  return (
-    `${stripped.slice(0, 5)}.${stripped.slice(5, 10)} ` +
-    `${stripped.slice(10, 15)}.${stripped.slice(15, 21)} ` +
-    `${stripped.slice(21, 26)}.${stripped.slice(26, 32)} ` +
-    `${stripped[32]} ${stripped.slice(33)}`
-  );
 }
 
 function validateFieldDv(

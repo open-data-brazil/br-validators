@@ -16,7 +16,7 @@ export default function CepPlaygroundPage() {
   const validation = useMemo(() => (input ? validateCep(input) : null), [input]);
   const formatted = useMemo(() => (input ? formatCep(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators cep validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators cep format ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>

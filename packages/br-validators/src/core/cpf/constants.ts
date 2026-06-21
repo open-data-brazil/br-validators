@@ -12,5 +12,6 @@ export const CPF_MASK_PATTERN = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
 
 export const CPF_GOLDEN_PRIMARY = '12345678909';
 export const CPF_GOLDEN_SECONDARY = '11144477735';
+export const CPF_GOLDEN_PRIMARY_MASKED = '123.456.789-09';
 export const CPF_OFFICIAL_SOURCE_URL =
   'https://www.gov.br/receitafederal/pt-br/assuntos/cpf';

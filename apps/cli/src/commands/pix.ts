@@ -1,13 +1,15 @@
 import {
   PIX_OFFICIAL_SOURCE_URL,
   detectPixKeyType,
+  formatPixKey,
   validatePixKey,
   type PixKeyType,
   type PixValidationResult,
 } from 'br-validators';
 import { EXIT } from '../constants.js';
+import { printFormat } from '../output.js';
 
-export type PixAction = 'validate' | 'detect';
+export type PixAction = 'validate' | 'detect' | 'format';
 
 export type PixOptions = {
   json: boolean;
@@ -102,6 +104,8 @@ export function runPixCommand(
   switch (action) {
     case 'validate':
       return printPixValidation(validatePixKey(input, validateOptions), { json: options.json, quiet: options.quiet, source }, io);
+    case 'format':
+      return printFormat(formatPixKey(input, validateOptions), { json: options.json, quiet: options.quiet }, io);
     case 'detect':
       return printPixDetect(detectPixKeyType(input), { json: options.json, quiet: options.quiet }, io);
     default: {

@@ -11,7 +11,9 @@ export { isValidCnpjAlphanumeric } from './alphanumeric.js';
 export { isValidCnpjNumeric } from './numeric.js';
 export {
   CNPJ_GOLDEN_ALPHANUMERIC,
+  CNPJ_GOLDEN_ALPHANUMERIC_MASKED,
   CNPJ_GOLDEN_NUMERIC,
+  CNPJ_GOLDEN_NUMERIC_MASKED,
   CNPJ_OFFICIAL_SOURCE_URL,
 } from './constants.js';
 

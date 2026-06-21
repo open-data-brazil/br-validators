@@ -6,6 +6,7 @@ import {
   PIX_DICT_API_SOURCE_URL,
   PIX_OFFICIAL_SOURCE_URL,
   detectPixKeyType,
+  formatPixKey,
   validatePixKey,
 } from 'br-validators';
 
@@ -14,8 +15,11 @@ export default function PixPlaygroundPage() {
 
   const detectedType = useMemo(() => (input ? detectPixKeyType(input) : null), [input]);
   const validation = useMemo(() => (input ? validatePixKey(input) : null), [input]);
+  const formatted = useMemo(() => (input ? formatPixKey(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators pix validate ${input.includes(' ') ? `"${input}"` : input}` : '';
+  const cliCommand = input
+    ? `br-validators pix format ${input.includes(' ') ? `"${input}"` : input}`
+    : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>
@@ -68,6 +72,7 @@ export default function PixPlaygroundPage() {
           }
         />
         <Row label="Value" value={validation?.ok ? validation.value : '—'} />
+        <Row label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
       </section>
 
       <p style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>

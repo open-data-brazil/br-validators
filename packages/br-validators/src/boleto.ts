@@ -6,6 +6,7 @@ export {
   convertLinhaToCodigoBarras,
   convertLinhaToCodigoBarrasDigits,
   detectBoletoInputKind,
+  applyLinhaDigitavelMask,
   formatLinhaDigitavel,
   isValidBoleto,
   stripCodigoBarras,
@@ -24,6 +25,7 @@ export {
   BOLETO_LINHA_LENGTH,
   BOLETO_OFFICIAL_SOURCE_URL,
 } from './core/boleto/index.js';
+export { formatBoleto } from './format/boleto.js';
 export type { DetectedBoletoInputKind, ValidateBoletoOptions } from './core/boleto/index.js';
 export type {
   BoletoInputKind,

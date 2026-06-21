@@ -19,5 +19,7 @@ export const CNPJ_GOLDEN_ALPHANUMERIC = '12ABC34501DE35';
 
 /** Valid numeric CNPJ for regression tests (modulo 11) */
 export const CNPJ_GOLDEN_NUMERIC = '11222333000181';
+export const CNPJ_GOLDEN_NUMERIC_MASKED = '11.222.333/0001-81';
+export const CNPJ_GOLDEN_ALPHANUMERIC_MASKED = '12.ABC.345/01DE-35';
 
 export const CNPJ_MASK_PATTERN = /^(.{2})(.{3})(.{3})(.{4})(.{2})$/;

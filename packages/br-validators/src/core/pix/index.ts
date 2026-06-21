@@ -28,6 +28,13 @@ export { validatePixCnpjKey } from './cnpj.js';
 export { validatePixEmailKey } from './email.js';
 export { validatePixPhoneKey } from './phone.js';
 export { validatePixEvpKey } from './evp.js';
+export {
+  applyPixCnpjKeyMask,
+  applyPixCpfKeyMask,
+  applyPixEmailKeyMask,
+  applyPixEvpKeyMask,
+  applyPixPhoneKeyMask,
+} from './mask.js';
 
 export type ValidatePixKeyOptions = {
   type?: PixKeyType;

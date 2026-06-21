@@ -226,11 +226,15 @@ Golden vectors: Visa `4111111111111111`, Mastercard `5555555555554444`, Amex `37
 High-level helper used by UI formatters:
 
 ```typescript
-function formatDocument(
-  type: 'cpf' | 'cnpj' | 'cep' | 'placa',
-  input: string
-): FormatResult;
+type FormattableDocumentType =
+  | 'cpf' | 'cnpj' | 'cep' | 'placa' | 'pis-pasep' | 'pix' | 'boleto' | 'cartao-credito';
+
+function formatDocument(type: FormattableDocumentType, input: string): FormatResult;
+function formatDocumentRuntime(type: string, input: string): FormatResult;
+function isFormattableDocumentType(type: string): type is FormattableDocumentType;
 ```
+
+Per-type formatters: `formatCpf`, `formatCnpj`, `formatCep`, `formatPlaca`, `formatPisPasep`, `formatPixKey`, `formatBoleto`, `formatCartaoCredito`.
 
 Implementation: `strip → validate → apply mask`. See [use-cases/UC-003-format-document.md](use-cases/UC-003-format-document.md).
 

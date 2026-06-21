@@ -36,6 +36,7 @@ export {
   stripLinhaDigitavel,
   validateLinhaDigitavel,
 } from './linha-digitavel.js';
+export { applyLinhaDigitavelMask } from './mask.js';
 export { stripCodigoBarras, validateCodigoBarras } from './codigo-barras.js';
 
 export type ValidateBoletoOptions = {

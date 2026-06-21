@@ -23,7 +23,7 @@ export default function PlacaPlaygroundPage() {
     [input, detectedFormat],
   );
 
-  const cliCommand = input ? `br-validators placa validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators placa format ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>

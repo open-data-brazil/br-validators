@@ -105,6 +105,24 @@ describe('runPix', () => {
   });
 });
 
+describe('runPixCommand format', () => {
+  it('formats CPF-shaped PIX key', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    runPixCommand('format', PIX_GOLDEN_CPF, { json: false, quiet: false, source: false }, io);
+    expect(io.stdout[0]).toBe('123.456.789-09');
+  });
+
+  it('formats phone key with json', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    runPixCommand('format', '+5511999887766', { json: true, quiet: false, source: false }, io);
+    expect(JSON.parse(io.stdout[0]).formatted).toBe('+55 (11) 99988-7766');
+  });
+
+  it('format quiet invalid', () => {
+    expect(runPixCommand('format', 'bad', { json: false, quiet: true, source: false })).toBe(EXIT.INVALID);
+  });
+});
+
 describe('runPixCommand default branch', () => {
   it('handles unknown action via cast', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };

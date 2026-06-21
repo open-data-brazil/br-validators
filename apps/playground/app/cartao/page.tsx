@@ -19,7 +19,7 @@ export default function CartaoPlaygroundPage() {
   const brand = useMemo(() => (stripped ? detectCardBrand(stripped) : null), [stripped]);
   const formatted = useMemo(() => (input ? formatCartaoCredito(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators cartao validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators cartao-credito format ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>

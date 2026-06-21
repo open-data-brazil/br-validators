@@ -4,31 +4,6 @@ export * from './cep.js';
 export * from './placa.js';
 export * from './pis-pasep.js';
 export {
-  detectPixKeyType,
-  isValidPixKey,
-  validatePixKey,
-  validatePixCpfKey,
-  validatePixCnpjKey,
-  validatePixEmailKey,
-  validatePixPhoneKey,
-  validatePixEvpKey,
-  PIX_GOLDEN_CPF,
-  PIX_GOLDEN_CNPJ_NUMERIC,
-  PIX_GOLDEN_CNPJ_ALPHANUMERIC,
-  PIX_GOLDEN_EMAIL,
-  PIX_GOLDEN_PHONE,
-  PIX_GOLDEN_EVP,
-  PIX_OFFICIAL_SOURCE_URL,
-  PIX_DICT_API_SOURCE_URL,
-} from './pix.js';
-export type {
-  DetectedPixKeyType,
-  ValidatePixKeyOptions,
-  PixKey,
-  PixKeyType,
-  PixValidationResult,
-} from './pix.js';
-export {
   computeModulo10FieldDv,
   computeModulo11BarcodeDv,
   convertCodigoBarrasToLinhaDigitavel,
@@ -36,7 +11,9 @@ export {
   convertLinhaToCodigoBarras,
   convertLinhaToCodigoBarrasDigits,
   detectBoletoInputKind,
+  applyLinhaDigitavelMask,
   formatLinhaDigitavel,
+  formatBoleto,
   isValidBoleto,
   stripCodigoBarras,
   stripLinhaDigitavel,
@@ -62,6 +39,39 @@ export type {
   DetectedBoletoInputKind,
   ValidateBoletoOptions,
 } from './boleto.js';
+export {
+  detectPixKeyType,
+  formatPixKey,
+  isValidPixKey,
+  validatePixKey,
+  validatePixCpfKey,
+  validatePixCnpjKey,
+  validatePixEmailKey,
+  validatePixPhoneKey,
+  validatePixEvpKey,
+  PIX_GOLDEN_CPF,
+  PIX_GOLDEN_CNPJ_NUMERIC,
+  PIX_GOLDEN_CNPJ_ALPHANUMERIC,
+  PIX_GOLDEN_EMAIL,
+  PIX_GOLDEN_PHONE,
+  PIX_GOLDEN_EVP,
+  PIX_OFFICIAL_SOURCE_URL,
+  PIX_DICT_API_SOURCE_URL,
+} from './pix.js';
+export type {
+  DetectedPixKeyType,
+  ValidatePixKeyOptions,
+  PixKey,
+  PixKeyType,
+  PixValidationResult,
+} from './pix.js';
+export {
+  formatDocument,
+  formatDocumentRuntime,
+  isFormattableDocumentType,
+  FORMATTABLE_DOCUMENT_TYPES,
+} from './format/document.js';
+export type { FormattableDocumentType } from './format/document.js';
 export {
   computeLuhnSum,
   detectCardBrand,

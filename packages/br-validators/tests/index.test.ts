@@ -64,6 +64,13 @@ describe('package exports', () => {
     expect(root.formatCartaoCredito).toBeTypeOf('function');
   });
 
+  it('re-exports format pipeline from index', () => {
+    expect(root.formatDocument).toBeTypeOf('function');
+    expect(root.formatPixKey).toBeTypeOf('function');
+    expect(root.formatBoleto).toBeTypeOf('function');
+    expect(root.isFormattableDocumentType('cpf')).toBe(true);
+  });
+
   it('re-exports CNPJ API from cnpj entry', () => {
     expect(cnpjEntry.validateCnpj).toBe(root.validateCnpj);
   });

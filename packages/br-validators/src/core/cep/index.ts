@@ -10,6 +10,7 @@ import { CEP_LENGTH } from './constants.js';
 
 export {
   CEP_GOLDEN_PRIMARY,
+  CEP_GOLDEN_PRIMARY_MASKED,
   CEP_GOLDEN_SECONDARY,
   CEP_OFFICIAL_SOURCE_URL,
 } from './constants.js';

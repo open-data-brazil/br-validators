@@ -3,7 +3,7 @@ import {
   convertCodigoBarrasToLinhaDigitavel,
   convertLinhaToCodigoBarras,
   detectBoletoInputKind,
-  formatLinhaDigitavel,
+  formatBoleto,
   stripCodigoBarras,
   stripLinhaDigitavel,
   validateBoleto,
@@ -11,6 +11,7 @@ import {
   type BoletoValidationResult,
 } from 'br-validators';
 import { EXIT } from '../constants.js';
+import { printFormat } from '../output.js';
 
 export type BoletoAction = 'validate' | 'detect' | 'convert' | 'format' | 'strip';
 
@@ -134,23 +135,7 @@ export function printBoletoFormat(
   options: { json: boolean; quiet: boolean },
   io: { stdout: string[]; stderr: string[] } = { stdout: [], stderr: [] },
 ): number {
-  const stripped = stripLinhaDigitavel(input);
-  if (stripped.length !== 47) {
-    if (options.json) {
-      io.stdout.push(JSON.stringify({ ok: false, code: 'INVALID_LENGTH', message: 'Linha digitável must have 47 digits' }, null, 2));
-    } else if (!options.quiet) {
-      io.stderr.push('Linha digitável must have 47 digits after normalization');
-    }
-    return EXIT.INVALID;
-  }
-
-  const formatted = formatLinhaDigitavel(stripped);
-  if (options.json) {
-    io.stdout.push(JSON.stringify({ ok: true, formatted }, null, 2));
-  } else if (!options.quiet) {
-    io.stdout.push(formatted);
-  }
-  return EXIT.OK;
+  return printFormat(formatBoleto(input), { json: options.json, quiet: options.quiet }, io);
 }
 
 export function printBoletoStrip(

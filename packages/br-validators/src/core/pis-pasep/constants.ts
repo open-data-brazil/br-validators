@@ -12,5 +12,6 @@ export const PIS_PASEP_MASK_PATTERN = /^(\d{3})(\d{5})(\d{2})(\d{1})$/;
 
 export const PIS_PASEP_GOLDEN_PRIMARY = '10027230888';
 export const PIS_PASEP_GOLDEN_SECONDARY = '12056456402';
+export const PIS_PASEP_GOLDEN_PRIMARY_MASKED = '100.27230.88-8';
 export const PIS_PASEP_OFFICIAL_SOURCE_URL =
   'https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf';

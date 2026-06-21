@@ -8,10 +8,12 @@ import {
   handlePixCli,
   handleBoletoCli,
   handleCartaoCli,
+  handleCartaoCreditoCli,
   handlePlacaCli,
   writeCliIo,
   type BoletoCliOptions,
   type CartaoCliOptions,
+  type CartaoCreditoCliOptions,
   type CepCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
@@ -26,7 +28,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.3.0-alpha.0');
+    .version('0.7.0-alpha.0');
 
   program
     .command('list')
@@ -157,6 +159,20 @@ export function createProgram(): Command {
       writeCliIo(io);
     });
 
+  pix
+    .command('format')
+    .description('format a PIX key')
+    .argument('[value]', 'PIX key value')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('--type <type>', 'Force key type: cpf, cnpj, email, phone, evp')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((value: string | undefined, opts: PixCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handlePixCli('format', value, opts, io);
+      writeCliIo(io);
+    });
+
   const boleto = program.command('boleto').description('Boleto — linha digitável + código de barras (FEBRABAN)');
 
   boleto
@@ -246,6 +262,26 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: CartaoCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleCartaoCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const cartaoCredito = program
+    .command('cartao-credito')
+    .description('Credit card PAN — Luhn / ISO/IEC 7812-1 (library subpath alias)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    cartaoCredito
+      .command(action)
+      .description(`${action} a credit card PAN`)
+      .argument('[value]', 'Credit card PAN (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: CartaoCreditoCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleCartaoCreditoCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

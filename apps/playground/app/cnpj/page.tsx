@@ -16,7 +16,7 @@ export default function CnpjPlaygroundPage() {
   const validation = useMemo(() => (input ? validateCnpj(input) : null), [input]);
   const formatted = useMemo(() => (input ? formatCnpj(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators cnpj validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators cnpj format ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>

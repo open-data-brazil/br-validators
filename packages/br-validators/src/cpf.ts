@@ -2,6 +2,7 @@ export {
   isValidCpf,
   validateCpf,
   CPF_GOLDEN_PRIMARY,
+  CPF_GOLDEN_PRIMARY_MASKED,
   CPF_GOLDEN_SECONDARY,
   CPF_OFFICIAL_SOURCE_URL,
 } from './core/cpf/index.js';

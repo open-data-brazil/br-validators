@@ -8,6 +8,7 @@ import {
   convertCodigoBarrasToLinhaDigitavel,
   convertLinhaToCodigoBarras,
   detectBoletoInputKind,
+  formatBoleto,
   validateBoleto,
 } from 'br-validators';
 
@@ -25,8 +26,10 @@ export default function BoletoPlaygroundPage() {
     return convertCodigoBarrasToLinhaDigitavel(input);
   }, [input, validation]);
 
+  const formatted = useMemo(() => (input ? formatBoleto(input) : null), [input]);
+
   const cliCommand = input
-    ? `br-validators boleto validate ${input.includes(' ') ? `"${input}"` : input}`
+    ? `br-validators boleto format ${input.includes(' ') ? `"${input}"` : input}`
     : '';
 
   return (
@@ -84,6 +87,7 @@ export default function BoletoPlaygroundPage() {
           label="Converted"
           value={converted?.ok ? `${converted.inputKind}: ${converted.value}` : '—'}
         />
+        <Row label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
       </section>
 
       <p style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>

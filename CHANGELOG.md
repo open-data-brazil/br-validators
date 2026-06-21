@@ -17,7 +17,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.3.0-alpha.0] - 2026-06-21
+## [0.7.0-alpha.0] - 2026-06-21
+
+Unified format layer across all shipped document types (UC-003).
+
+### Added
+
+- `formatDocument` union entrypoint + `formatPixKey`, `formatBoleto`
+- `core/pix/mask.ts` and `core/boleto/mask.ts` — single `apply*Mask` sources
+- Golden `*_MASKED` constants for CPF, CNPJ, CEP, PIS/PASEP
+- `tests/vectors/format.official.json` + `tests/format/format.test.ts`
+- CLI `pix format`, `cartao-credito` command alias, library-backed `boleto format`
+- Playground format output on PIX, boleto, and all routes; `/cartao-credito`
+
+---
 
 Credit card PAN validator across library, CLI, and playground.
 

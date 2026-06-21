@@ -16,7 +16,7 @@ export default function CpfPlaygroundPage() {
   const validation = useMemo(() => (input ? validateCpf(input) : null), [input]);
   const formatted = useMemo(() => (input ? formatCpf(input) : null), [input]);
 
-  const cliCommand = input ? `br-validators cpf validate ${stripped || '<value>'}` : '';
+  const cliCommand = input ? `br-validators cpf format ${stripped || '<value>'}` : '';
 
   return (
     <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>

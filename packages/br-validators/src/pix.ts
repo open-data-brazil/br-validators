@@ -7,6 +7,11 @@ export {
   validatePixEmailKey,
   validatePixPhoneKey,
   validatePixEvpKey,
+  applyPixCnpjKeyMask,
+  applyPixCpfKeyMask,
+  applyPixEmailKeyMask,
+  applyPixEvpKeyMask,
+  applyPixPhoneKeyMask,
   PIX_GOLDEN_CPF,
   PIX_GOLDEN_CNPJ_NUMERIC,
   PIX_GOLDEN_CNPJ_ALPHANUMERIC,
@@ -16,6 +21,7 @@ export {
   PIX_OFFICIAL_SOURCE_URL,
   PIX_DICT_API_SOURCE_URL,
 } from './core/pix/index.js';
+export { formatPixKey } from './format/pix.js';
 export type { DetectedPixKeyType, ValidatePixKeyOptions } from './core/pix/index.js';
 export type {
   PixKey,

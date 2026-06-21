@@ -185,7 +185,7 @@ describe('runBoletoCommand format and strip', () => {
   it('format human invalid length', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     runBoletoCommand('format', '123', { json: false, quiet: false, source: false }, undefined, io);
-    expect(io.stderr[0]).toContain('47 digits');
+    expect(io.stderr[0]).toBe('code: INVALID_LENGTH');
   });
 
   it('strips linha', () => {
