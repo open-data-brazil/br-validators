@@ -17,6 +17,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0-alpha.0] - 2026-06-21
+
+Placa validator across library, CLI, and playground.
+
+### Added
+
+- `packages/br-validators` — license plate validation (legacy `LLLNNNN` + Mercosul `LLLNLNN`)
+- `convertPlacaToMercosul` — CONTRAN legacy→Mercosul mapping (golden `ABC1234` → `ABC1C34`)
+- Subpath export `br-validators/placa`
+- `apps/cli` — `br-validators placa validate|format|strip|convert` with `--json`, `--quiet`, `--source`
+- `apps/playground` — client-side tester at `/placa`
+
+### Security
+
+- Core validates format only — no Detran lookup in core
+
+---
+
 ## [0.1.0-beta.1] - 2026-06-21
 
 CEP validator across library, CLI, and playground.

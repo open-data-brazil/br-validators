@@ -4,6 +4,7 @@ const types = [
   { slug: 'cnpj', label: 'CNPJ' },
   { slug: 'cpf', label: 'CPF' },
   { slug: 'cep', label: 'CEP' },
+  { slug: 'placa', label: 'Placa' },
 ];
 
 export default function HomePage() {

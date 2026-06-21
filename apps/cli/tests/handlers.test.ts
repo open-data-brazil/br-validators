@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY } from 'br-validators';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL } from 'br-validators';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -14,6 +14,25 @@ describe('handlers', () => {
     expect(io.stdout).toContain('cnpj');
     expect(io.stdout).toContain('cpf');
     expect(io.stdout).toContain('cep');
+    expect(io.stdout).toContain('placa');
+  });
+
+  it('handlePlacaCli validates value', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handlePlacaCli('validate', PLACA_GOLDEN_MERCOSUL, { quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handlePlacaCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'placa.txt');
+    writeFileSync(file, PLACA_GOLDEN_MERCOSUL, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handlePlacaCli('validate', undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handlePlacaCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handlePlacaCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
   });
 
   it('handleCepCli validates value', () => {
@@ -90,7 +109,7 @@ describe('handlers', () => {
 describe('program', () => {
   it('createProgram exposes list and cnpj commands', () => {
     const program = createProgram();
-    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep']));
+    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'placa']));
   });
 
   it('run parses list without throwing', () => {
@@ -123,5 +142,17 @@ describe('program', () => {
   it('run parses cep format and strip', () => {
     expect(() => { run(['node', 'br-validators', 'cep', 'format', CEP_GOLDEN_PRIMARY]); }).not.toThrow();
     expect(() => { run(['node', 'br-validators', 'cep', 'strip', CEP_GOLDEN_PRIMARY]); }).not.toThrow();
+  });
+
+  it('run parses placa validate', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'placa', 'validate', PLACA_GOLDEN_MERCOSUL, '--quiet']);
+    }).not.toThrow();
+  });
+
+  it('run parses placa format strip and convert', () => {
+    expect(() => { run(['node', 'br-validators', 'placa', 'format', PLACA_GOLDEN_MERCOSUL]); }).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'placa', 'strip', PLACA_GOLDEN_MERCOSUL]); }).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'placa', 'convert', 'ABC1234', '--quiet']); }).not.toThrow();
   });
 });

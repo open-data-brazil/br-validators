@@ -4,10 +4,12 @@ import {
   handleCnpjCli,
   handleCpfCli,
   handleListCli,
+  handlePlacaCli,
   writeCliIo,
   type CepCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
+  type PlacaCliOptions,
 } from './handlers.js';
 
 export function createProgram(): Command {
@@ -16,7 +18,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.1.0-beta.1');
+    .version('0.2.0-alpha.0');
 
   program
     .command('list')
@@ -77,6 +79,24 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: CepCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleCepCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const placa = program.command('placa').description('Placa — legacy + Mercosul (CONTRAN)');
+
+  for (const action of ['validate', 'format', 'strip', 'convert'] as const) {
+    placa
+      .command(action)
+      .description(`${action} a license plate`)
+      .argument('[value]', 'Placa value (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: PlacaCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handlePlacaCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

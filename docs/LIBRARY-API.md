@@ -119,8 +119,10 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 | `isValidPlacaLegacy` | `(input: string) => boolean` | `LLLNNNN` |
 | `isValidPlacaMercosul` | `(input: string) => boolean` | `LLLNLNN` |
 | `isValidPlaca` | `(input: string) => boolean` | Either format |
+| `validatePlaca` | `(input: string) => ValidationResult<Placa>` | `{ format: 'legacy' \| 'mercosul' }` on success |
 | `convertPlacaToMercosul` | `(input: string) => FormatResult` | Legacy → Mercosul where mappable |
 | `formatPlaca` | `(input: string) => FormatResult` | Uppercase, no hyphen |
+| `stripPlaca` | `(input: string) => string` | Uppercase, remove hyphen/spaces |
 
 ---
 

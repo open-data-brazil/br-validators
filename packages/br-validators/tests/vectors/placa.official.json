@@ -1,0 +1,15 @@
+{
+  "source": "UC-004 + CONTRAN 729/2018 conversion table",
+  "url": "https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao7292018consolidada.pdf",
+  "mercosul": {
+    "canonical": "ABC1D23"
+  },
+  "legacy": {
+    "canonical": "ABC1234",
+    "formatted": "ABC-1234"
+  },
+  "conversion": {
+    "from": "ABC1234",
+    "to": "ABC1C34"
+  }
+}
