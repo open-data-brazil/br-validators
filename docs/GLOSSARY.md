@@ -142,15 +142,17 @@
 **Definition:** State tax registration number — **27 different validation algorithms** (one per state + DF).  
 **Not the same as:** CNPJ (federal) or IM (municipal).  
 **Code name:** `InscricaoEstadual`, `IE`  
-**Algorithm index:** [IE-STATE-ALGORITHMS.md](IE-STATE-ALGORITHMS.md) — **v1 implements SP, MT, DF.**
+**Algorithm index:** [IE-STATE-ALGORITHMS.md](IE-STATE-ALGORITHMS.md) — **v1 implements SP, MT, DF.**  
+**Official sources (v1):** SP [SEFAZ rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) · MT [Port. Art. 6º](https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=) · DF [Receita DF](https://www.receita.fazenda.df.gov.br/) — see [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
 
 ---
 
 ## PIS / PASEP / NIS
 
-**Definition:** Social contribution / employment identifiers; modulo-11 family with specific weights.
-**Status:** Pending primary source confirmation before implementation.
-**Code name:** `PisPasep`
+**Definition:** Social contribution / employment identifiers; modulo-11 family with specific weights.  
+**Status:** **Shipped** — SIPREV RV_03 / CNIS NIT algorithm.  
+**Code name:** `PisPasep`  
+**Official source:** [SIPREV RV_03 (PDF)](https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf) — see [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
 
 ---
 

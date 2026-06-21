@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA } from 'br-validators';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN } from 'br-validators';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -19,6 +19,7 @@ describe('handlers', () => {
     expect(io.stdout).toContain('pix');
     expect(io.stdout).toContain('boleto');
     expect(io.stdout).toContain('cartao');
+    expect(io.stdout).toContain('ie');
   });
 
   it('handleCartaoCli validates value', () => {
@@ -192,6 +193,29 @@ describe('handlers', () => {
     expect(handleCpfCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
   });
 
+  it('handleIeCli validates value with uf', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleIeCli('validate', IE_SP_GOLDEN, { uf: 'SP', quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleIeCli returns usage when uf missing', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleIeCli('validate', IE_SP_GOLDEN, {}, io)).toBe(EXIT.USAGE);
+  });
+
+  it('handleIeCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'ie.txt');
+    writeFileSync(file, IE_SP_GOLDEN, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleIeCli('validate', undefined, { file, uf: 'SP', quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleIeCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleIeCli('validate', undefined, { file: '/no/such/file.txt', uf: 'SP' }, io)).toBe(EXIT.USAGE);
+  });
+
   it('handleCnpjCli validates value', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(handleCnpjCli('validate', CNPJ_GOLDEN_ALPHANUMERIC, { quiet: true }, io)).toBe(EXIT.OK);
@@ -336,6 +360,18 @@ describe('program', () => {
   it('run parses cartao-credito format', () => {
     expect(() => {
       run(['node', 'br-validators', 'cartao-credito', 'format', CARTAO_GOLDEN_VISA, '--quiet']);
+    }).not.toThrow();
+  });
+
+  it('run parses ie validate format strip', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'ie', 'validate', IE_SP_GOLDEN, '--uf', 'SP', '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ie', 'format', IE_SP_GOLDEN, '--uf', 'SP', '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ie', 'strip', IE_SP_GOLDEN, '--uf', 'SP', '--quiet']);
     }).not.toThrow();
   });
 });

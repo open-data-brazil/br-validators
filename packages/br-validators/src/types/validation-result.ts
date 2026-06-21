@@ -8,7 +8,8 @@ export type DocumentFormat =
   | 'evp'
   | 'linha-digitavel'
   | 'codigo-barras'
-  | 'cartao-credito';
+  | 'cartao-credito'
+  | 'inscricao-estadual';
 
 export type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
 
@@ -39,6 +40,9 @@ export type PixKey = string & { readonly __brand: 'PixKey' };
 export type LinhaDigitavel = string & { readonly __brand: 'LinhaDigitavel' };
 export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
 export type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
+export type InscricaoEstadual = string & { readonly __brand: 'InscricaoEstadual' };
+
+export type UfCode = 'SP' | 'MT' | 'DF';
 
 export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard' | 'unknown';
 
@@ -61,6 +65,10 @@ export type BoletoValidationResult =
       situacao: BoletoSituacao;
     }
   | { ok: false; code: ValidationErrorCode; message: string; inputKind?: BoletoInputKind };
+
+export type InscricaoEstadualValidationResult =
+  | { ok: true; value: InscricaoEstadual; uf: UfCode; format: 'inscricao-estadual' }
+  | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
 
 export function brandCnpj(value: string): Cnpj {
   return value as Cnpj;
@@ -96,4 +104,8 @@ export function brandCodigoBarras(value: string): CodigoBarras {
 
 export function brandCartaoCredito(value: string): CartaoCredito {
   return value as CartaoCredito;
+}
+
+export function brandInscricaoEstadual(value: string): InscricaoEstadual {
+  return value as InscricaoEstadual;
 }

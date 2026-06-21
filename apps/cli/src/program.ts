@@ -9,6 +9,7 @@ import {
   handleBoletoCli,
   handleCartaoCli,
   handleCartaoCreditoCli,
+  handleIeCli,
   handlePlacaCli,
   writeCliIo,
   type BoletoCliOptions,
@@ -17,6 +18,7 @@ import {
   type CepCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
+  type IeCliOptions,
   type PisPasepCliOptions,
   type PixCliOptions,
   type PlacaCliOptions,
@@ -28,7 +30,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.7.0-alpha.0');
+    .version('0.9.0-alpha.0');
 
   program
     .command('list')
@@ -282,6 +284,27 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: CartaoCreditoCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleCartaoCreditoCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const ie = program
+    .command('ie')
+    .description('Inscrição Estadual — SP, MT, DF (SEFAZ/SINTEGRA check digits)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    ie
+      .command(action)
+      .description(`${action} an Inscrição Estadual`)
+      .argument('[value]', 'IE value (raw or masked)')
+      .requiredOption('--uf <uf>', 'State code: SP, MT, or DF')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: IeCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleIeCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

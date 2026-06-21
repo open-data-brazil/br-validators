@@ -1,0 +1,9 @@
+{
+  "source": "SEFAZ-SP — Sintegra Rotina de Consistência da IE Paulista (2012-01-05)",
+  "url": "https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx",
+  "mirrorUrl": "http://www.sintegra.gov.br/Cad_Estados/cad_SP.html",
+  "golden": {
+    "stripped": "110042490114",
+    "masked": "110.042.490.114"
+  }
+}

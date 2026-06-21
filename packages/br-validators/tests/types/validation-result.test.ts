@@ -5,6 +5,7 @@ import {
   brandCep,
   brandCpf,
   brandCodigoBarras,
+  brandInscricaoEstadual,
   brandLinhaDigitavel,
   brandPisPasep,
   brandPixKey,
@@ -71,5 +72,12 @@ describe('brandCartaoCredito', () => {
   it('casts string to CartaoCredito brand', () => {
     const value = brandCartaoCredito('4111111111111111');
     expect(value).toBe('4111111111111111');
+  });
+});
+
+describe('brandInscricaoEstadual', () => {
+  it('casts string to InscricaoEstadual brand', () => {
+    const value = brandInscricaoEstadual('110042490114');
+    expect(value).toBe('110042490114');
   });
 });

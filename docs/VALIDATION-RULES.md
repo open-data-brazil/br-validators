@@ -343,27 +343,31 @@
 - **GIVEN** stripped IE for UF `SP`
 - **WHEN** length ≠ 12 or DVs fail SEFAZ modulo-11 weights
 - **THEN** reject with `INVALID_LENGTH` or `INVALID_CHECK_DIGIT`
-- **Source:** SEFAZ-SP Sintegra rotina (2012-01-05)
+- **Source:** [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) (2012-01-05); mirror [SINTEGRA cad_SP](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html)
+- **Golden:** `110042490114` — `tests/vectors/ie.sp.official.json`
 
 ### BR-IE-MT-001 — Mato Grosso (9 or 11 digits)
 
 - **GIVEN** IE for UF `MT`
 - **WHEN** validating canonical 9-digit `13XXXXXXD` or legacy 11-digit zero-padded SINTEGRA form
 - **THEN** apply weights `3,2,9,8,7,6,5,4,3,2` on first 10 active digits; modulo-11 DV per SINTEGRA cad_MT
-- **Source:** SEFAZ-MT Portaria Art. 6º + SINTEGRA cad_MT
+- **Source:** [SEFAZ-MT Portaria Art. 6º](https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=); mirror [SINTEGRA cad_MT](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html)
+- **Golden:** `130000019` (canonical), `00130000019` (legacy) — `tests/vectors/ie.mt.official.json`
 
 ### BR-IE-DF-001 — Distrito Federal (13 digits)
 
 - **GIVEN** IE for UF `DF` starting with `07`
 - **WHEN** length ≠ 13 or dual DVs fail
 - **THEN** reject; apply weights per SINTEGRA cad_DF
-- **Source:** CF/DF Decreto 18.955/1997 + SINTEGRA cad_DF
+- **Source:** [Receita Fazenda DF](https://www.receita.fazenda.df.gov.br/) + CF/DF Decreto 18.955/1997; mirror [SINTEGRA cad_DF](http://www.sintegra.gov.br/Cad_Estados/cad_DF.html)
+- **Golden:** `0730000100109` — `tests/vectors/ie.df.official.json`
 
 ### BR-IE-DF-002 — Legacy 12-digit rejection
 
 - **GIVEN** 12-digit DF input from legacy SINTEGRA validators
 - **WHEN** validating against CF/DF 13-digit rules
 - **THEN** reject with `INVALID_LENGTH` unless Phase 8b legacy mode enabled
+- **Source:** [SINTEGRA cad_DF](http://www.sintegra.gov.br/Cad_Estados/cad_DF.html) (legacy 12-digit note vs current 13-digit CF/DF)
 
 ---
 

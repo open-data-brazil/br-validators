@@ -71,3 +71,13 @@ N/A.
 
 - [CNPJ-ALPHANUMERIC.md](../CNPJ-ALPHANUMERIC.md)
 - [OFFICIAL-SOURCES.md](../OFFICIAL-SOURCES.md)
+
+## Official sources
+
+| Purpose | URL |
+|---------|-----|
+| **Primary — RFB FAQ (Q14)** | [CNPJ alfanumérico PDF](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf) |
+| **DV calculation** | [SERPRO DV PDF](https://www.serpro.gov.br/menu/noticias/videos/calculodvcnpjalfanaumerico.pdf) |
+| **Homologation** | [Simulador Nacional CNPJ](https://servicos.receitafederal.gov.br/servico/cnpj-alfa/simular) |
+| **Golden vector** | `12ABC34501DE35` — `tests/vectors/cnpj.official.json` |
+| **Library constant** | `CNPJ_OFFICIAL_SOURCE_URL` |

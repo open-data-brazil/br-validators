@@ -35,15 +35,17 @@ As each module ships, **all three** must be updated:
 
 | Type | Library export | CLI command | Playground tab | Official source |
 |------|----------------|-------------|----------------|-----------------|
-| CNPJ | `br-validators/cnpj` | `br-validators cnpj …` | CNPJ | [RFB PDF](OFFICIAL-SOURCES.md) |
-| CPF | `br-validators/cpf` | `br-validators cpf …` | CPF | RFB |
-| CEP | `br-validators/cep` | `br-validators cep …` | CEP | Correios |
-| Placa | `br-validators/placa` | `br-validators placa …` | Placa | CONTRAN |
-| PIS/PASEP | `br-validators/pis-pasep` | `br-validators pis-pasep …` | PIS/PASEP | Caixa |
-| PIX key | `br-validators/pix` | `br-validators pix …` | PIX | Bacen |
-| Boleto | `br-validators/boleto` | `br-validators boleto …` | Boleto | FEBRABAN |
-| Credit card | `br-validators/cartao-credito` | `br-validators cartao …` / `cartao-credito …` | Credit Card | ISO/IEC 7812-1 |
-| IE | `br-validators/ie` | `br-validators ie …` | IE (per UF) | SEFAZ |
+| CNPJ | `br-validators/cnpj` | `br-validators cnpj …` | CNPJ | [RFB CNPJ FAQ](OFFICIAL-SOURCES.md) |
+| CPF | `br-validators/cpf` | `br-validators cpf …` | CPF | [RFB CPF](OFFICIAL-SOURCES.md) |
+| CEP | `br-validators/cep` | `br-validators cep …` | CEP | [Correios](OFFICIAL-SOURCES.md) |
+| Placa | `br-validators/placa` | `br-validators placa …` | Placa | [CONTRAN 729/2018](OFFICIAL-SOURCES.md) |
+| PIS/PASEP | `br-validators/pis-pasep` | `br-validators pis-pasep …` | PIS/PASEP | [SIPREV RV_03](OFFICIAL-SOURCES.md) |
+| PIX key | `br-validators/pix` | `br-validators pix …` | PIX | [Bacen PIX / DICT](OFFICIAL-SOURCES.md) |
+| Boleto | `br-validators/boleto` | `br-validators boleto …` | Boleto | [FEBRABAN](OFFICIAL-SOURCES.md) |
+| Credit card | `br-validators/cartao-credito` | `br-validators cartao …` / `cartao-credito …` | Credit Card | [ISO/IEC 7812-1](OFFICIAL-SOURCES.md) |
+| IE (SP) | `br-validators/inscricao-estadual` | `br-validators ie … --uf SP` | `/ie` | [SEFAZ-SP](OFFICIAL-SOURCES.md) |
+| IE (MT) | `br-validators/inscricao-estadual` | `br-validators ie … --uf MT` | `/ie` | [SEFAZ-MT](OFFICIAL-SOURCES.md) |
+| IE (DF) | `br-validators/inscricao-estadual` | `br-validators ie … --uf DF` | `/ie` | [Receita DF](OFFICIAL-SOURCES.md) |
 
 **Definition of done per module:** library tests green + CLI command + playground section + source link.
 

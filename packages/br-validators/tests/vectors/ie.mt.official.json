@@ -1,0 +1,9 @@
+{
+  "source": "SEFAZ-MT Portaria Art. 6º + SINTEGRA cad_MT",
+  "url": "https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=",
+  "mirrorUrl": "http://www.sintegra.gov.br/Cad_Estados/cad_MT.html",
+  "golden": {
+    "legacy11": "00130000019",
+    "canonical9": "130000019"
+  }
+}

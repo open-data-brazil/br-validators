@@ -1,0 +1,14 @@
+{
+  "source": "IE negative cases — structural rejections (derived from BR-IE-SP/MT/DF-001)",
+  "url": "docs/IE-STATE-ALGORITHMS.md",
+  "cases": {
+    "spBadDv": "110042490115",
+    "spShort": "123",
+    "spRural": "P0123456789012",
+    "mtBadDv": "130000018",
+    "mtBadPrefix": "120000019",
+    "dfBadDv": "0730000100108",
+    "dfLegacy12": "073000010010",
+    "dfBadPrefix": "0830000100109"
+  }
+}

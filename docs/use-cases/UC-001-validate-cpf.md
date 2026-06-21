@@ -60,3 +60,11 @@ N/A — client-side/server-side library call.
 
 - Consulta online na Receita Federal
 - Alphanumeric CPF (2026+ TBD)
+
+## Official sources
+
+| Purpose | URL |
+|---------|-----|
+| **Primary — RFB CPF** | [RFB CPF portal](https://www.gov.br/receitafederal/pt-br/assuntos/cpf) |
+| **Golden vectors** | `tests/vectors/cpf.official.json` — `12345678909`, `11144477735` |
+| **Library constant** | `CPF_OFFICIAL_SOURCE_URL` |

@@ -12,9 +12,9 @@ Last reviewed: June 2026.
 
 | UF | Digits | DVs | Modulo | Status | Primary source |
 |----|--------|-----|--------|--------|----------------|
-| **SP** | 12 | 2 (pos 9, 12) | 11 (custom remainder) | **Phase 8 v1** | [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) |
-| **MT** | 9 (canonical) / 11 (legacy pad) | 1 | 11 | **Phase 8 v1** | [SEFAZ-MT Port. Art. 6º](https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=) · [SINTEGRA MT](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html) |
-| **DF** | 13 | 2 (pos 12, 13) | 11 | **Phase 8 v1** | [Receita DF / CF/DF](https://www.receita.fazenda.df.gov.br/) · [SINTEGRA DF](http://www.sintegra.gov.br/Cad_Estados/cad_DF.html) |
+| **SP** | 12 | 2 (pos 9, 12) | 11 (custom remainder) | **✅ Shipped v1** | [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) |
+| **MT** | 9 (canonical) / 11 (legacy pad) | 1 | 11 | **✅ Shipped v1** | [SEFAZ-MT Port. Art. 6º](https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=) · [SINTEGRA MT](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html) |
+| **DF** | 13 | 2 (pos 12, 13) | 11 | **✅ Shipped v1** | [Receita DF / CF/DF](https://www.receita.fazenda.df.gov.br/) · [SINTEGRA DF](http://www.sintegra.gov.br/Cad_Estados/cad_DF.html) |
 | AC | 13 | 1 | 11 | Planned | SINTEGRA `cad_AC.html` |
 | AL | 9 | 1 | 11 | Planned | SINTEGRA `cad_AL.html` |
 | AM | 9 | 1 | 11 | Planned | SINTEGRA `cad_AM.html` |
@@ -52,6 +52,9 @@ Last reviewed: June 2026.
 |-------|-------|
 | Golden | `110042490114` |
 | Mask | `XXX.XXX.XXX.XXX` |
+| Primary source | [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) |
+| SINTEGRA mirror | [cad_SP.html](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) |
+| Vector | `tests/vectors/ie.sp.official.json` |
 | DV1 weights (pos 1–8) | `1, 3, 4, 5, 6, 7, 8, 10` |
 | DV2 weights (pos 1–11) | `3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2` |
 | Remainder rule | `R = sum % 11`; DV = rightmost digit of `R`; if `R = 10` → DV = `0` |
@@ -61,8 +64,12 @@ Last reviewed: June 2026.
 | Field | Value |
 |-------|-------|
 | Golden (legacy) | `00130000019` |
+| Golden (canonical) | `130000019` |
 | Canonical | `13` + 6 sequential + DV (9 digits) |
 | Legacy pad | 11 digits, zero-fill left |
+| Primary source | [SEFAZ-MT Portaria Art. 6º](https://app1.sefaz.mt.gov.br/Sistema/legislacao/legislacaotribut.nsf/709f9c981a9d9f468425671300482be0/2217ddcf7a9b7cea03258c6c007324ba?OpenDocument=) |
+| SINTEGRA mirror | [cad_MT.html](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html) |
+| Vector | `tests/vectors/ie.mt.official.json` |
 | Weights (pos 1–10) | `3, 2, 9, 8, 7, 6, 5, 4, 3, 2` |
 | Remainder rule | `R = sum % 11`; if `R ≤ 1` → DV = `0`; else DV = `11 − R` |
 
@@ -73,6 +80,9 @@ Last reviewed: June 2026.
 | Golden | `0730000100109` |
 | Mask | `073.XXXXX.XXX-XX` |
 | Prefix | `07` (fixed) |
+| Primary source | [Receita Fazenda DF](https://www.receita.fazenda.df.gov.br/) |
+| SINTEGRA mirror | [cad_DF.html](http://www.sintegra.gov.br/Cad_Estados/cad_DF.html) |
+| Vector | `tests/vectors/ie.df.official.json` |
 | DV1 weights (pos 1–11) | `4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2` |
 | DV2 weights | `5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2` (+ DV1×2) |
 | Remainder rule | if `R ≤ 1` → DV = `0`; else DV = `11 − R` |

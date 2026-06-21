@@ -17,6 +17,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.0-alpha.0] - 2026-06-21
+
+Inscrição Estadual validator — SP, MT, DF (Phase 8 v1).
+
+### Added
+
+- `validateInscricaoEstadual`, `formatInscricaoEstadual`, `stripInscricaoEstadual` — UF required (`SP` | `MT` | `DF`)
+- Per-UF modules: `validateIeSp`, `validateIeMt`, `validateIeDf` with SEFAZ/SINTEGRA mod11 algorithms
+- Golden vectors: `ie.sp.official.json`, `ie.mt.official.json`, `ie.df.official.json`, `ie.negative.official.json`
+- Subpath export `br-validators/inscricao-estadual`
+- `apps/cli` — `br-validators ie validate|format|strip --uf SP|MT|DF`
+- `apps/playground` — `/ie` route with UF selector
+- UC-009, BR-IE-001…BR-IE-DF-002
+
+### Notes
+
+- Check digits only — no SEFAZ registration lookup
+- SP rural `P…` format and remaining 24 UFs deferred to Phase 8b
+
+---
+
 ## [0.8.0-alpha.0] - 2026-06-21
 
 Boleto Phase 5b — full cobrança: Situação 2, modulo edge vectors, optional semantics.

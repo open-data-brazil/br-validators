@@ -1,0 +1,9 @@
+{
+  "source": "Receita DF / CF/DF + SINTEGRA cad_DF",
+  "url": "https://www.receita.fazenda.df.gov.br/",
+  "mirrorUrl": "http://www.sintegra.gov.br/Cad_Estados/cad_DF.html",
+  "golden": {
+    "stripped": "0730000100109",
+    "masked": "073.00001.001-09"
+  }
+}

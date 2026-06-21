@@ -105,3 +105,29 @@ export {
   CARTAO_PAN_MIN_LENGTH,
 } from './cartao-credito.js';
 export type { CardBrand, CartaoCredito, CartaoCreditoValidationResult } from './cartao-credito.js';
+export {
+  formatInscricaoEstadual,
+  getIeOfficialSourceUrl,
+  isValidInscricaoEstadual,
+  stripInscricaoEstadual,
+  validateInscricaoEstadual,
+  validateIeDf,
+  validateIeMt,
+  validateIeSp,
+  IE_DF_GOLDEN,
+  IE_DF_GOLDEN_MASKED,
+  IE_DF_OFFICIAL_SOURCE_URL,
+  IE_MT_GOLDEN_CANONICAL,
+  IE_MT_GOLDEN_LEGACY,
+  IE_MT_OFFICIAL_SOURCE_URL,
+  IE_SP_GOLDEN,
+  IE_SP_GOLDEN_MASKED,
+  IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SUPPORTED_UFS,
+} from './inscricao-estadual.js';
+export type {
+  InscricaoEstadual,
+  InscricaoEstadualValidationResult,
+  UfCode,
+  ValidateInscricaoEstadualOptions,
+} from './inscricao-estadual.js';

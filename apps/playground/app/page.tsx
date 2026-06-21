@@ -9,6 +9,7 @@ const types = [
   { slug: 'pix', label: 'PIX Key' },
   { slug: 'boleto', label: 'Boleto' },
   { slug: 'cartao', label: 'Credit Card' },
+  { slug: 'ie', label: 'Inscrição Estadual (SP, MT, DF)' },
 ];
 
 export default function HomePage() {

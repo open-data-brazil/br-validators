@@ -1,6 +1,6 @@
 {
   "name": "br-validators",
-  "version": "0.7.0-alpha.0",
+  "version": "0.9.0-alpha.0",
   "description": "100% open-source Brazilian document validators — CPF, CNPJ, CEP, and more",
   "license": "MIT",
   "type": "module",
@@ -42,6 +42,10 @@
     "./cartao-credito": {
       "types": "./dist/cartao-credito.d.ts",
       "import": "./dist/cartao-credito.js"
+    },
+    "./inscricao-estadual": {
+      "types": "./dist/inscricao-estadual.d.ts",
+      "import": "./dist/inscricao-estadual.js"
     }
   },
   "files": [
