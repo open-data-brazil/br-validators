@@ -5,12 +5,14 @@ import {
   handleCpfCli,
   handleListCli,
   handlePisPasepCli,
+  handlePixCli,
   handlePlacaCli,
   writeCliIo,
   type CepCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type PisPasepCliOptions,
+  type PixCliOptions,
   type PlacaCliOptions,
 } from './handlers.js';
 
@@ -20,7 +22,7 @@ export function createProgram(): Command {
   program
     .name('br-validators')
     .description('100% open-source Brazilian document validators')
-    .version('0.2.0-beta.0');
+    .version('0.2.0-rc.0');
 
   program
     .command('list')
@@ -120,6 +122,36 @@ export function createProgram(): Command {
         writeCliIo(io);
       });
   }
+
+  const pix = program.command('pix').description('PIX key — CPF, CNPJ, email, phone, EVP (Bacen)');
+
+  pix
+    .command('detect')
+    .description('detect PIX key type')
+    .argument('[value]', 'PIX key value')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((value: string | undefined, opts: PixCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handlePixCli('detect', value, opts, io);
+      writeCliIo(io);
+    });
+
+  pix
+    .command('validate')
+    .description('validate a PIX key')
+    .argument('[value]', 'PIX key value')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('--source', 'Include official source URL')
+    .option('--type <type>', 'Force key type: cpf, cnpj, email, phone, evp')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((value: string | undefined, opts: PixCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handlePixCli('validate', value, opts, io);
+      writeCliIo(io);
+    });
 
   return program;
 }

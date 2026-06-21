@@ -1,0 +1,24 @@
+{
+  "source": "UC-005 + DICT API v2.9 key type table",
+  "url": "https://aprendervalor.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT_v2-9-0.html",
+  "manualUrl": "https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf",
+  "cpf": {
+    "canonical": "12345678909",
+    "masked": "123.456.789-09"
+  },
+  "cnpj": {
+    "numeric": "11222333000181",
+    "alphanumeric": "12ABC34501DE35"
+  },
+  "email": {
+    "primary": "pix@bcb.gov.br",
+    "secondary": "fulano_da_silva.recebedor@example.com"
+  },
+  "phone": {
+    "primary": "+5510998765432",
+    "secondary": "+5561912345678"
+  },
+  "evp": {
+    "primary": "123e4567-e89b-12d3-a456-426655440000"
+  }
+}

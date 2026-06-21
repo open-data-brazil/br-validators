@@ -209,6 +209,30 @@
 - **WHEN** validating
 - **THEN** require UUID format per Bacen
 
+### BR-PIX-005 — Email format
+
+- **GIVEN** email PIX key
+- **WHEN** validating
+- **THEN** require DICT regex, max 77 chars, lowercase only
+
+### BR-PIX-006 — Detection precedence
+
+- **GIVEN** arbitrary input
+- **WHEN** detecting type
+- **THEN** apply order: `@` → email; `+` → phone; UUID → evp; 11 digits → cpf; CNPJ pattern → cnpj
+
+### BR-PIX-007 — Strict type option
+
+- **GIVEN** forced `type` option
+- **WHEN** detected type differs from forced type
+- **THEN** reject with `UNSUPPORTED_FORMAT`
+
+### BR-PIX-008 — CNPJ alphanumeric keys
+
+- **GIVEN** CNPJ-shaped PIX key with letters
+- **WHEN** validating
+- **THEN** delegate to alphanumeric CNPJ validator (RFB Q14)
+
 ---
 
 ## Global pipeline rules

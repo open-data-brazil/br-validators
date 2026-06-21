@@ -5,6 +5,7 @@ import * as cpfEntry from '../src/cpf.js';
 import * as cepEntry from '../src/cep.js';
 import * as placaEntry from '../src/placa.js';
 import * as pisPasepEntry from '../src/pis-pasep.js';
+import * as pixEntry from '../src/pix.js';
 
 describe('package exports', () => {
   it('re-exports CNPJ API from index', () => {
@@ -39,6 +40,12 @@ describe('package exports', () => {
     expect(root.formatPisPasep).toBeTypeOf('function');
   });
 
+  it('re-exports PIX API from index', () => {
+    expect(root.validatePixKey).toBeTypeOf('function');
+    expect(root.detectPixKeyType).toBeTypeOf('function');
+    expect(root.isValidPixKey).toBeTypeOf('function');
+  });
+
   it('re-exports CNPJ API from cnpj entry', () => {
     expect(cnpjEntry.validateCnpj).toBe(root.validateCnpj);
   });
@@ -57,5 +64,11 @@ describe('package exports', () => {
 
   it('re-exports PIS/PASEP API from pis-pasep entry', () => {
     expect(pisPasepEntry.validatePisPasep).toBe(root.validatePisPasep);
+  });
+
+  it('re-exports PIX API from pix entry', () => {
+    expect(pixEntry.validatePixKey).toBe(root.validatePixKey);
+    expect(pixEntry.detectPixKeyType).toBe(root.detectPixKeyType);
+    expect(pixEntry.isValidPixKey).toBe(root.isValidPixKey);
   });
 });

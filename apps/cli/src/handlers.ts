@@ -4,6 +4,7 @@ import { runCnpj, type CnpjAction } from './commands/cnpj.js';
 import { runCpf, type CpfAction } from './commands/cpf.js';
 import { runPlaca, type PlacaAction } from './commands/placa.js';
 import { runPisPasep, type PisPasepAction } from './commands/pis-pasep.js';
+import { runPix, type PixAction } from './commands/pix.js';
 import { listSupportedTypes } from './commands/list.js';
 import { EXIT } from './constants.js';
 
@@ -21,6 +22,10 @@ export type CepCliOptions = CnpjCliOptions;
 export type PlacaCliOptions = CnpjCliOptions;
 
 export type PisPasepCliOptions = CnpjCliOptions;
+
+export type PixCliOptions = CnpjCliOptions & {
+  type?: 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
+};
 
 export type CliIo = { stdout: string[]; stderr: string[] };
 
@@ -171,6 +176,35 @@ export function handlePisPasepCli(
       json: Boolean(opts.json),
       quiet: Boolean(opts.quiet),
       source: Boolean(opts.source),
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handlePixCli(
+  action: PixAction,
+  value: string | undefined,
+  opts: PixCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runPix(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      type: opts.type,
       file: fileContent,
     },
     io,

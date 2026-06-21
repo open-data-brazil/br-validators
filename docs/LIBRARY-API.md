@@ -56,6 +56,8 @@ type Cnpj = string & { readonly __brand: 'Cnpj' };
 type Cep = string & { readonly __brand: 'Cep' };
 type Placa = string & { readonly __brand: 'Placa' };
 type PisPasep = string & { readonly __brand: 'PisPasep' };
+type PixKey = string & { readonly __brand: 'PixKey' };
+type PisPasep = string & { readonly __brand: 'PisPasep' };
 ```
 
 All public validators return `ValidationResult<T>` with branded `T` where applicable — **never** throw for invalid input (unless documented `assert*` helpers).
@@ -145,15 +147,21 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 
 | Function | Signature | Behavior |
 |----------|-----------|----------|
-| `detectPixKeyType` | `(input: string) => PixKeyType \| 'unknown'` | |
-| `isValidPixKey` | `(input: string) => boolean` | Delegates by type |
-| `validatePixKey` | `(input: string) => ValidationResult` | |
+| `detectPixKeyType` | `(input: string) => PixKeyType \| 'unknown'` | Bacen precedence rules |
+| `isValidPixKey` | `(input: string, options?) => boolean` | Delegates by detected or forced type |
+| `validatePixKey` | `(input: string, options?) => PixValidationResult` | Success includes `keyType` + `format` |
 
 ```typescript
 type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
+
+type PixValidationResult =
+  | { ok: true; value: PixKey; keyType: PixKeyType; format: DocumentFormat }
+  | { ok: false; code: ValidationErrorCode; message: string; keyType?: PixKeyType };
+
+type ValidatePixKeyOptions = { type?: PixKeyType };
 ```
 
-Phone keys: E.164 with `+55` per Bacen rules. EVP: UUID v4 format.
+Phone keys: E.164 with `+55` Brazilian mobile per DICT. EVP: lowercase UUID with hyphens. Email: DICT regex, max 77, lowercase.
 
 ---
 

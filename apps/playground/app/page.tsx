@@ -6,6 +6,7 @@ const types = [
   { slug: 'cep', label: 'CEP' },
   { slug: 'placa', label: 'Placa' },
   { slug: 'pis', label: 'PIS/PASEP' },
+  { slug: 'pix', label: 'PIX Key' },
 ];
 
 export default function HomePage() {

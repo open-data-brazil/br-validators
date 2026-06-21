@@ -1,6 +1,6 @@
 {
   "name": "br-validators",
-  "version": "0.2.0-beta.0",
+  "version": "0.2.0-rc.0",
   "description": "100% open-source Brazilian document validators — CPF, CNPJ, CEP, and more",
   "license": "MIT",
   "type": "module",
@@ -30,6 +30,10 @@
     "./pis-pasep": {
       "types": "./dist/pis-pasep.d.ts",
       "import": "./dist/pis-pasep.js"
+    },
+    "./pix": {
+      "types": "./dist/pix.d.ts",
+      "import": "./dist/pix.js"
     }
   },
   "files": [

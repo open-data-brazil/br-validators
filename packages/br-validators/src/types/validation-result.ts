@@ -1,4 +1,13 @@
-export type DocumentFormat = 'numeric' | 'alphanumeric' | 'legacy' | 'mercosul';
+export type DocumentFormat =
+  | 'numeric'
+  | 'alphanumeric'
+  | 'legacy'
+  | 'mercosul'
+  | 'email'
+  | 'phone'
+  | 'evp';
+
+export type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
 
 export type ValidationErrorCode =
   | 'INVALID_LENGTH'
@@ -21,6 +30,11 @@ export type Cpf = string & { readonly __brand: 'Cpf' };
 export type Cep = string & { readonly __brand: 'Cep' };
 export type Placa = string & { readonly __brand: 'Placa' };
 export type PisPasep = string & { readonly __brand: 'PisPasep' };
+export type PixKey = string & { readonly __brand: 'PixKey' };
+
+export type PixValidationResult =
+  | { ok: true; value: PixKey; keyType: PixKeyType; format: DocumentFormat }
+  | { ok: false; code: ValidationErrorCode; message: string; keyType?: PixKeyType };
 
 export function brandCnpj(value: string): Cnpj {
   return value as Cnpj;
@@ -40,4 +54,8 @@ export function brandPlaca(value: string): Placa {
 
 export function brandPisPasep(value: string): PisPasep {
   return value as PisPasep;
+}
+
+export function brandPixKey(value: string): PixKey {
+  return value as PixKey;
 }

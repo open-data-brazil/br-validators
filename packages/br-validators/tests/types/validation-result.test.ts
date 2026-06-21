@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { brandCnpj, brandCep, brandCpf, brandPisPasep, brandPlaca } from '../../src/types/validation-result.js';
+import { brandCnpj, brandCep, brandCpf, brandPisPasep, brandPixKey, brandPlaca } from '../../src/types/validation-result.js';
 
 describe('brandCnpj', () => {
   it('casts string to Cnpj brand', () => {
@@ -33,5 +33,12 @@ describe('brandPisPasep', () => {
   it('casts string to PisPasep brand', () => {
     const value = brandPisPasep('10027230888');
     expect(value).toBe('10027230888');
+  });
+});
+
+describe('brandPixKey', () => {
+  it('casts string to PixKey brand', () => {
+    const value = brandPixKey('pix@bcb.gov.br');
+    expect(value).toBe('pix@bcb.gov.br');
   });
 });

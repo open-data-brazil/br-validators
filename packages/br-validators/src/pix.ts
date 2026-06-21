@@ -1,8 +1,3 @@
-export * from './cnpj.js';
-export * from './cpf.js';
-export * from './cep.js';
-export * from './placa.js';
-export * from './pis-pasep.js';
 export {
   detectPixKeyType,
   isValidPixKey,
@@ -20,11 +15,12 @@ export {
   PIX_GOLDEN_EVP,
   PIX_OFFICIAL_SOURCE_URL,
   PIX_DICT_API_SOURCE_URL,
-} from './pix.js';
+} from './core/pix/index.js';
+export type { DetectedPixKeyType, ValidatePixKeyOptions } from './core/pix/index.js';
 export type {
-  DetectedPixKeyType,
-  ValidatePixKeyOptions,
   PixKey,
   PixKeyType,
   PixValidationResult,
-} from './pix.js';
+  DocumentFormat,
+  ValidationErrorCode,
+} from './types/validation-result.js';

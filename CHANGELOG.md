@@ -17,6 +17,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0-rc.0] - 2026-06-21
+
+PIX key validator across library, CLI, and playground.
+
+### Added
+
+- `packages/br-validators` — PIX key validation for 5 Bacen types (CPF, CNPJ, email, phone, EVP)
+- `detectPixKeyType` + `validatePixKey` with optional strict `--type`
+- CPF/CNPJ keys delegate to existing validators
+- Subpath export `br-validators/pix`
+- `apps/cli` — `br-validators pix validate|detect` with `--json`, `--quiet`, `--source`, `--type`
+- `apps/playground` — client-side tester at `/pix`
+
+### Security
+
+- Core validates format only — no DICT lookup in core
+
+---
+
 ## [0.2.0-beta.0] - 2026-06-21
 
 PIS/PASEP validator across library, CLI, and playground.
