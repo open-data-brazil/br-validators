@@ -1,0 +1,32 @@
+---
+description: Token economy — modular loading, terse rules, reference over repetition
+alwaysApply: true
+---
+
+# TOKEN ECONOMY
+
+Resolve `{rules_dir}` first: `./harness/rules-path.sh`
+
+Full rules: `{rules_dir}/09-ai-agent-specific/token-economy.md`
+
+## MUST
+
+- Load rules by trigger/manifest — not all 50+ files.
+- Use imperatives and one-line limits (`Max function length: 30 lines`).
+- Reference glossary once — never re-define domain terms.
+- Cite file paths — do not paste full file contents.
+
+## NEVER
+
+- Load entire `{rules_dir}/` for trivial edits.
+- Write paragraph explanations where a bullet or table suffices.
+- Repeat `AGENT-CORE-PRINCIPLES.md` in responses — cite section.
+
+## Resolve rules
+
+```bash
+./harness/rules-path.sh
+./harness/resolve-rules.sh <keywords>
+```
+
+Manifest: `{rules_dir}/manifest.yaml` | Config: `harness/harness.config.yaml`

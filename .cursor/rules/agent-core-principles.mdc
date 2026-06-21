@@ -1,0 +1,45 @@
+---
+description: Domain architecture contract — layered DDD for any project
+alwaysApply: true
+---
+
+# AGENT CORE PRINCIPLES
+
+> When code conflicts with rules, **rules prevail**.
+
+## Rules path
+
+Read `harness/harness.config.yaml` → `rules_dir`, or run `./harness/rules-path.sh`.
+
+| Context | `rules_dir` |
+|---------|-------------|
+| This harness repo | `rules/` |
+| After `install.sh` in another project | `agent-rules/` |
+
+Full doc: `{rules_dir}/AGENT-CORE-PRINCIPLES.md`
+
+## Absolute rules (summary)
+
+1. Layers: Interfaces → Application → Domain ← Infrastructure. Inner NEVER depends on outer.
+2. Domain core: rich entities, aggregates, immutable VOs. NO frameworks in Domain.
+3. Named BRs: GIVEN/WHEN/THEN, tested first, never duplicated.
+4. State machines in Domain; invalid transitions throw.
+5. Immutable past-tense domain events from aggregates.
+6. Immutable history; corrections via new records.
+7. Domain-generated IDs; mask sensitive data in logs/responses.
+8. RBAC + ABAC in Application; tenant isolation every request.
+9. Document use cases before code.
+10. Versioned APIs (`/v1/`), structured errors, domain resource names.
+11. Security: OWASP Top 10:2025-aligned + Agentic 2026 (ASI01–ASI10); MFA, rate limits, TLS, LGPD/GDPR.
+12. TDD pyramid: 75% unit / 20% integration / 5% E2E. Domain ≥ 90% coverage.
+13. AI in Application only: read-only, human confirm to persist, log all LLM calls.
+14. Ubiquitous language: match glossary exactly.
+
+## Extended rules
+
+```bash
+./harness/rules-path.sh
+./harness/resolve-rules.sh owasp agentic authz   # or ./agent-harness/ after install
+```
+
+Security index: `{rules_dir}/03-security/README.md`

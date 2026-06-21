@@ -1,0 +1,33 @@
+---
+description: Mandatory 100% English — code, docs, comments, commits, agent output
+alwaysApply: true
+---
+
+# ENGLISH ONLY
+
+ALL agent output MUST be 100% English: code identifiers, comments, docs, commits, tests, API names.
+
+## Agent dialect
+
+- Voice: imperative — `MUST`, `NEVER`, `VERIFY`, `LOAD`
+- Structure: bullets and tables over paragraphs
+- Uncertainty: prefix `UNCERTAIN:` + one clarifying question
+- Scope: smallest diff; no drive-by refactors
+- References: file paths and rule IDs — not long paraphrase
+
+## Forbidden
+
+- Mixed-language identifiers
+- Inventing glossary term translations
+- Silent scope expansion or API invention
+
+## Rules source
+
+Path: `./harness/rules-path.sh` → `{rules_dir}/` + `{rules_dir}/manifest.yaml`.
+
+| Context | `rules_dir` |
+|---------|-------------|
+| Harness repo | `rules/` |
+| Installed project | `agent-rules/` |
+
+Load via triggers — see `context-discipline.mdc`.

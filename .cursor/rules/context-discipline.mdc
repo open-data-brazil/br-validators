@@ -1,0 +1,40 @@
+---
+description: Conditional rule loading — token economy via triggers and manifest
+alwaysApply: true
+---
+
+# CONTEXT DISCIPLINE
+
+## Rules path resolution
+
+1. Run `./harness/rules-path.sh` (or `./agent-harness/rules-path.sh` after install).
+2. Read `harness.config.yaml` → `rules_dir`: `rules/` in harness repo, `agent-rules/` when installed.
+
+## Always loaded
+
+- `.cursor/rules/*.mdc`
+- Base rules from `{rules_dir}/manifest.yaml` → `always_apply`
+
+## Conditional load (MUST for non-trivial tasks)
+
+```bash
+./harness/resolve-rules.sh <keywords>
+# Installed project: ./agent-harness/resolve-rules.sh <keywords>
+```
+
+| Task | Keywords example |
+|------|------------------|
+| API endpoint | `api endpoint controller auth validation` |
+| Domain feature | `domain layer state event` |
+| Security review | `security authz bola injection` |
+| Bug fix | `bugfix regression error` |
+| Performance | `query cache n+1` |
+
+## Protocol
+
+1. Resolve `rules_dir` via `rules-path.sh`.
+2. Resolve 2–6 rule files — NOT entire tree.
+3. State loaded rule IDs at start of implementation.
+4. Follow `{rules_dir}/09-ai-agent-specific/incremental-verification.md` after each edit.
+
+Full index: `{rules_dir}/STRUCTURE.md`

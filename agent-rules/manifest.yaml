@@ -1,0 +1,311 @@
+# Agent Harness — conditional rule loading index
+# Usage: harness/resolve-rules.sh <keywords...>
+# Each entry: path relative to rules/, triggers for matching, alwaysApply for base load
+
+version: 1
+
+always_apply:
+  - AGENT-CORE-PRINCIPLES.md
+  - 09-ai-agent-specific/token-economy.md
+  - 09-ai-agent-specific/anti-hallucination.md
+
+rules:
+  - id: core.agent-behavior
+    path: 00-core/agent-behavior.md
+    triggers: [agent, behavior, scope, hallucination, conventions]
+
+  - id: core.decision-making
+    path: 00-core/decision-making.md
+    triggers: [decision, tradeoff, architecture-choice, adr]
+
+  - id: core.change-discipline
+    path: 00-core/change-discipline.md
+    triggers: [commit, pr, refactor, diff, change]
+
+  - id: clean.naming
+    path: 01-clean-code/naming.md
+    triggers: [naming, rename, identifier, glossary]
+
+  - id: clean.functions
+    path: 01-clean-code/functions.md
+    triggers: [function, method, parameter, refactor]
+
+  - id: clean.complexity
+    path: 01-clean-code/complexity.md
+    triggers: [complexity, cyclomatic, nesting, refactor]
+
+  - id: clean.classes
+    path: 01-clean-code/classes-and-modules.md
+    triggers: [class, module, solid, srp, dip]
+
+  - id: clean.dry
+    path: 01-clean-code/dry-vs-duplication.md
+    triggers: [dry, duplication, abstract, extract]
+
+  - id: clean.comments
+    path: 01-clean-code/comments-and-docs.md
+    triggers: [comment, docstring, documentation]
+
+  - id: clean.errors
+    path: 01-clean-code/error-handling.md
+    triggers: [error, exception, try, catch, edge-case]
+
+  - id: arch.layering
+    path: 02-architecture/layering.md
+    triggers: [layer, domain, application, infrastructure, controller]
+
+  - id: arch.state-machines
+    path: 02-architecture/state-machines.md
+    triggers: [state, status, transition, workflow, fsm]
+
+  - id: arch.events
+    path: 02-architecture/domain-events.md
+    triggers: [event, domain-event, outbox, publish]
+
+  - id: arch.contexts
+    path: 02-architecture/bounded-contexts.md
+    triggers: [bounded-context, module-boundary, ddd]
+
+  - id: arch.di
+    path: 02-architecture/dependency-injection.md
+    triggers: [di, injection, port, adapter, interface]
+
+  - id: arch.scale
+    path: 02-architecture/scalability-patterns.md
+    triggers: [scale, idempotency, horizontal, stateless]
+
+  - id: arch.coupling
+    path: 02-architecture/coupling-and-cohesion.md
+    triggers: [coupling, cohesion, decouple]
+
+  - id: sec.input
+    path: 03-security/input-validation.md
+    triggers: [validation, input, sanitize, allow-list]
+
+  - id: sec.injection
+    path: 03-security/injection-prevention.md
+    triggers: [injection, sql, xss, eval]
+
+  - id: sec.secrets
+    path: 03-security/secrets-and-credentials.md
+    triggers: [secret, credential, env, api-key, password]
+
+  - id: sec.authn
+    path: 03-security/authentication.md
+    triggers: [auth, authentication, login, mfa, oauth, oidc, jwt]
+
+  - id: sec.authz
+    path: 03-security/authorization.md
+    triggers: [authorization, authz, permission, rbac, abac, bola, bfla, access-control]
+
+  - id: sec.misconfig
+    path: 03-security/security-misconfiguration.md
+    triggers: [misconfiguration, headers, cors, debug, production]
+
+  - id: sec.supply-chain
+    path: 03-security/supply-chain-security.md
+    triggers: [dependency, supply-chain, npm, package, cve, typosquat]
+
+  - id: sec.rate-limit
+    path: 03-security/rate-limiting-and-resource-control.md
+    triggers: [rate-limit, throttle, timeout, pagination]
+
+  - id: sec.ssrf
+    path: 03-security/ssrf-and-access-control.md
+    triggers: [ssrf, webhook, outbound, url-fetch]
+
+  - id: sec.mass-assignment
+    path: 03-security/mass-assignment-and-data-exposure.md
+    triggers: [mass-assignment, dto, exposure, serialize]
+
+  - id: sec.encryption
+    path: 03-security/encryption.md
+    triggers: [encryption, tls, crypto, at-rest]
+
+  - id: sec.least-privilege
+    path: 03-security/least-privilege.md
+    triggers: [least-privilege, iam, scope, role]
+
+  - id: sec.audit
+    path: 03-security/audit-logging.md
+    triggers: [audit, security-log, compliance, alerting, owasp]
+
+  - id: sec.insecure-design
+    path: 03-security/insecure-design.md
+    triggers: [insecure-design, threat-model, abuse-case, owasp, a06]
+
+  - id: sec.integrity
+    path: 03-security/software-data-integrity.md
+    triggers: [integrity, signature, deserialization, webhook, owasp, a08]
+
+  - id: sec.owasp-index
+    path: 03-security/OWASP-TOP10-2025.md
+    triggers: [owasp, owasp2025, top10, security-review]
+
+  - id: sec.agentic-index
+    path: 03-security/OWASP-AGENTIC-2026.md
+    triggers: [agentic, owasp-agentic, asi, ai-agent, mcp]
+
+  - id: sec.agentic.asi01
+    path: 03-security/agentic/agent-goal-hijack.md
+    triggers: [agentic, goal-hijack, prompt-injection, asi01]
+
+  - id: sec.agentic.asi02
+    path: 03-security/agentic/tool-misuse.md
+    triggers: [agentic, tool-misuse, mcp, asi02]
+
+  - id: sec.agentic.asi03
+    path: 03-security/agentic/identity-privilege-abuse.md
+    triggers: [agentic, agent-identity, asi03]
+
+  - id: sec.agentic.asi04
+    path: 03-security/agentic/agentic-supply-chain.md
+    triggers: [agentic, skill, rule-pack, asi04]
+
+  - id: sec.agentic.asi05
+    path: 03-security/agentic/unexpected-code-execution.md
+    triggers: [agentic, code-execution, sandbox, asi05]
+
+  - id: sec.agentic.asi06
+    path: 03-security/agentic/memory-context-poisoning.md
+    triggers: [agentic, memory, rag, context-poison, asi06]
+
+  - id: sec.agentic.asi07
+    path: 03-security/agentic/insecure-inter-agent-communication.md
+    triggers: [agentic, multi-agent, inter-agent, asi07]
+
+  - id: sec.agentic.asi08
+    path: 03-security/agentic/cascading-failures.md
+    triggers: [agentic, cascade, circuit-breaker, asi08]
+
+  - id: sec.agentic.asi09
+    path: 03-security/agentic/human-agent-trust-exploitation.md
+    triggers: [agentic, social-engineering, human-confirm, asi09]
+
+  - id: sec.agentic.asi10
+    path: 03-security/agentic/rogue-agents.md
+    triggers: [agentic, rogue, monitoring, kill-switch, asi10]
+
+  - id: test.tdd
+    path: 04-testing/tdd.md
+    triggers: [tdd, test-first, given-when-then]
+
+  - id: test.pyramid
+    path: 04-testing/test-pyramid.md
+    triggers: [test-pyramid, e2e, integration, unit-test]
+
+  - id: test.coverage
+    path: 04-testing/coverage-gates.md
+    triggers: [coverage, threshold, gate]
+
+  - id: test.mocking
+    path: 04-testing/mocking-boundaries.md
+    triggers: [mock, fake, stub, spy]
+
+  - id: test.regression
+    path: 04-testing/regression-safety.md
+    triggers: [bugfix, regression, fix]
+
+  - id: perf.query
+    path: 05-performance-and-scalability/query-efficiency.md
+    triggers: [query, n+1, database, sql, index]
+
+  - id: perf.cache
+    path: 05-performance-and-scalability/caching-strategy.md
+    triggers: [cache, invalidation, redis]
+
+  - id: perf.async
+    path: 05-performance-and-scalability/async-and-concurrency.md
+    triggers: [async, concurrency, race, thread]
+
+  - id: perf.limits
+    path: 05-performance-and-scalability/resource-limits.md
+    triggers: [pool, queue, memory, limit]
+
+  - id: rel.log
+    path: 06-reliability-and-observability/logging-standards.md
+    triggers: [logging, structured-log, correlation]
+
+  - id: rel.monitor
+    path: 06-reliability-and-observability/monitoring-and-alerting.md
+    triggers: [monitoring, alert, slo, health-check]
+
+  - id: rel.degrade
+    path: 06-reliability-and-observability/graceful-degradation.md
+    triggers: [circuit-breaker, retry, fallback, timeout]
+
+  - id: rel.exception
+    path: 06-reliability-and-observability/exception-handling-discipline.md
+    triggers: [exceptional, partial-failure, fail-open, null]
+
+  - id: data.migrations
+    path: 07-data-management/migrations.md
+    triggers: [migration, schema, flyway, liquibase]
+
+  - id: data.boundary
+    path: 07-data-management/data-validation-at-boundary.md
+    triggers: [boundary, mapping, dto]
+
+  - id: data.pii
+    path: 07-data-management/pii-and-data-retention.md
+    triggers: [pii, gdpr, lgpd, retention, privacy]
+
+  - id: data.compat
+    path: 07-data-management/backward-compatibility.md
+    triggers: [backward-compatible, versioning, deprecate]
+
+  - id: devops.ci
+    path: 08-devops-and-delivery/ci-cd-gates.md
+    triggers: [ci, cd, pipeline, merge]
+
+  - id: devops.env
+    path: 08-devops-and-delivery/environment-parity.md
+    triggers: [environment, config, twelve-factor]
+
+  - id: devops.flags
+    path: 08-devops-and-delivery/feature-flags.md
+    triggers: [feature-flag, toggle, rollout]
+
+  - id: devops.rollback
+    path: 08-devops-and-delivery/rollback-readiness.md
+    triggers: [rollback, deploy, release]
+
+  - id: ai.token
+    path: 09-ai-agent-specific/token-economy.md
+    triggers: [token, context, load, modular]
+
+  - id: ai.hallucination
+    path: 09-ai-agent-specific/anti-hallucination.md
+    triggers: [verify, hallucination, uncertain]
+
+  - id: ai.context
+    path: 09-ai-agent-specific/context-discipline.md
+    triggers: [context, discipline, load-rules]
+
+  - id: ai.verify
+    path: 09-ai-agent-specific/incremental-verification.md
+    triggers: [incremental, lint, verify]
+
+  - id: api.rest
+    path: 10-api-design/rest-conventions.md
+    triggers: [api, rest, endpoint, http, controller, route]
+
+  - id: api.contract
+    path: 10-api-design/contract-first.md
+    triggers: [openapi, swagger, contract, schema]
+
+  - id: api.idempotency
+    path: 10-api-design/idempotency.md
+    triggers: [idempotency, idempotency-key, retry]
+
+  - id: docs.glossary
+    path: 11-documentation-and-glossary/ubiquitous-language.md
+    triggers: [glossary, ubiquitous-language, domain-term]
+
+  - id: docs.adr
+    path: 11-documentation-and-glossary/adr-template.md
+    triggers: [adr, architecture-decision]
+
+  - id: docs.readme
+    path: 11-documentation-and-glossary/readme-standard.md
+    triggers: [readme, documentation]
