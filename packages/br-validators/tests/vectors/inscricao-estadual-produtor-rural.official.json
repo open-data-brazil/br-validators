@@ -1,0 +1,36 @@
+{
+  "source": "SP produtor rural Inscrição Estadual — SINTEGRA cad_SP.html Bloco II (Regra II)",
+  "url": "http://www.sintegra.gov.br/Cad_Estados/cad_SP.html",
+  "cadastroUrl": "https://portal.fazenda.sp.gov.br/servicos/cadesp/Paginas/Produtor-Rural-abertura,-baixa-e-outras-alteracoes.aspx",
+  "normativeNote": "Format P0MMMSSSSD000 — 13 chars; DV at position 10; weights 1,3,4,5,6,7,8,10 on 0MMMSSSS; trailing 3 digits excluded from DV",
+  "golden": {
+    "canonical": "P011004243002",
+    "masked": "P-01100424.3/002",
+    "dvInput": "01100424",
+    "dv": "3"
+  },
+  "mtAgroRegression": {
+    "note": "MT produtor rural uses same algorithm as industrial — validateInscricaoEstadual('MT', …)",
+    "url": "http://www.sintegra.gov.br/Cad_Estados/cad_MT.html",
+    "legacy11": "00130000019"
+  },
+  "invalidPrefix": {
+    "input": "A0110042430002"
+  },
+  "invalidLengthShort": {
+    "input": "P01100424"
+  },
+  "invalidLengthLong": {
+    "input": "P01100424300021"
+  },
+  "invalidCheckDigit": {
+    "input": "P011004244002",
+    "note": "Golden with DV 3→4"
+  },
+  "invalidCharacter": {
+    "input": "P-01100424.3/X02"
+  },
+  "emptyInput": {
+    "input": ""
+  }
+}

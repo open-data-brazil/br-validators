@@ -186,7 +186,7 @@ See [CHANGELOG.md](CHANGELOG.md) for release notes.
 | BR Code payload parsing | Backlog — PIX **keys** shipped; BR Code QR parsing deferred |
 | Boleto arrecadação (48-digit) | Detected only; validation deferred |
 | Alphanumeric CPF | Blocked — RFB spec not published |
-| IE SP rural `P…` | Out of scope |
+| IE SP rural `P…` | Shipped — `validateIeProdutorRural('SP', …)` |
 
 ---
 

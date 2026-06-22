@@ -50,6 +50,7 @@ As each module ships, **all three** must be updated:
 | Boleto | `@br-validators/core/boleto` | `br-validators boleto …` | Boleto | [FEBRABAN](OFFICIAL-SOURCES.md) |
 | Credit card | `@br-validators/core/cartao-credito` | `br-validators cartao …` / `cartao-credito …` | Credit Card | [ISO/IEC 7812-1](OFFICIAL-SOURCES.md) |
 | IE (27 UFs) | `@br-validators/core/inscricao-estadual` | `br-validators ie … --uf <UF>` | `/ie` | [OFFICIAL-SOURCES § IE](OFFICIAL-SOURCES.md#inscrição-estadual-ie--all-27-ufs) |
+| IE produtor rural (SP) | `@br-validators/core/inscricao-estadual-produtor-rural` | `br-validators ie … --uf SP` (auto `P` prefix) | `/ie` badge | [SINTEGRA cad_SP Bloco II](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) |
 
 **Definition of done per module:** library tests green + CLI command + playground section + source link.
 

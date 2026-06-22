@@ -39,6 +39,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Subpath `@br-validators/core/nfe-chave`
 - CLI `br-validators nfe-chave validate|parse|format|strip`
 - Playground `/nfe-chave`
+- **IE produtor rural (Phase 16):** `validateIeProdutorRural`, `validateIeSpRural`, `formatIeProdutorRural`, `stripIeSpRural` — SP Regra II `P…` format (SINTEGRA cad_SP.html); MT/GO/MS/PR/RS agro uses existing `validateInscricaoEstadual`
+- Subpath `@br-validators/core/inscricao-estadual-produtor-rural`
+- CLI `br-validators ie validate|format|strip` auto-detects SP `P` prefix → produtor rural path
+- Playground `/ie` — produtor rural badge when `P` prefix detected
 
 ### Changed
 

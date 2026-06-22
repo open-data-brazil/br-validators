@@ -12,6 +12,10 @@ import {
   IE_MT_GOLDEN_LEGACY,
   IE_SP_GOLDEN,
   IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SP_RURAL_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
+  validateIeProdutorRural,
 } from '@br-validators/core';
 
 describe('resolveInput (ie)', () => {
@@ -34,7 +38,20 @@ describe('resolveUf', () => {
 });
 
 describe('printIeValidation', () => {
-  it('prints human success with uf', () => {
+  it('prints human success with produtor rural badge', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    const result = validateIeProdutorRural('SP', IE_SP_RURAL_GOLDEN_MASKED);
+    expect(result.ok).toBe(true);
+    if (!result.ok) {
+      return;
+    }
+    expect(
+      printIeValidation(result, { json: false, quiet: false, rural: true }, io),
+    ).toBe(EXIT.OK);
+    expect(io.stdout).toContain('kind: produtor-rural');
+  });
+
+  it('prints human success with uf via runIeCommand', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(
       runIeCommand('validate', IE_SP_GOLDEN, {
@@ -108,6 +125,35 @@ describe('runIeCommand', () => {
     expect(
       runIeCommand('validate', '06540481', { json: false, quiet: true, source: false, uf: 'RJ' }, io),
     ).toBe(EXIT.OK);
+  });
+
+  it('validates SP produtor rural golden with auto-detect', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(
+      runIeCommand('validate', IE_SP_RURAL_GOLDEN_MASKED, { json: false, quiet: false, source: true, uf: 'SP' }, io),
+    ).toBe(EXIT.OK);
+    expect(io.stdout).toContain('kind: produtor-rural');
+    expect(io.stdout.some((line) => line.startsWith('source:'))).toBe(true);
+    expect(io.stdout.some((line) => line.includes(IE_SP_RURAL_OFFICIAL_SOURCE_URL))).toBe(true);
+  });
+
+  it('formats and strips SP produtor rural', () => {
+    const formatIo = { stdout: [] as string[], stderr: [] as string[] };
+    runIeCommand('format', IE_SP_RURAL_GOLDEN, { json: false, quiet: false, source: false, uf: 'SP' }, formatIo);
+    expect(formatIo.stdout[0]).toBe(IE_SP_RURAL_GOLDEN_MASKED);
+
+    const stripIo = { stdout: [] as string[], stderr: [] as string[] };
+    runIeCommand('strip', IE_SP_RURAL_GOLDEN_MASKED, { json: false, quiet: false, source: false, uf: 'SP' }, stripIo);
+    expect(stripIo.stdout[0]).toBe(IE_SP_RURAL_GOLDEN);
+  });
+
+  it('validates SP produtor rural json output', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    runIeCommand('validate', IE_SP_RURAL_GOLDEN_MASKED, { json: true, quiet: false, source: false, uf: 'SP' }, io);
+    const parsed = JSON.parse(io.stdout[0]) as { ok: boolean; produtorRural?: boolean; format: string };
+    expect(parsed.ok).toBe(true);
+    expect(parsed.produtorRural).toBe(true);
+    expect(parsed.format).toBe('inscricao-estadual-produtor-rural');
   });
 
   it('rejects wrong UF for value', () => {

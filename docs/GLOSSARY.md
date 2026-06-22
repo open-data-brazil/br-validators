@@ -183,6 +183,13 @@
 **Algorithm index:** [IE-STATE-ALGORITHMS.md](IE-STATE-ALGORITHMS.md) — **all 27 UFs shipped** (`0.10.0-alpha.0`).  
 **Official sources:** [OFFICIAL-SOURCES.md § IE](OFFICIAL-SOURCES.md#inscrição-estadual-ie--all-27-ufs) · per-UF URLs via `getIeOfficialSourceUrl(uf)`.
 
+### IE produtor rural (SP)
+
+**Definition:** São Paulo-only rural producer IE format (`P0MMMSSSSD000`, 13 characters) — separate from industrial 12-digit IE.  
+**Code name:** `InscricaoEstadualProdutorRural`, `validateIeProdutorRural`  
+**Official source:** [SINTEGRA cad_SP.html Bloco II](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) · golden `P-01100424.3/002`  
+**Note:** Other UFs (MT agro, etc.) use the standard IE algorithm — no separate produtor format.
+
 ---
 
 ## PIS / PASEP / NIS

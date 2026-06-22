@@ -1,12 +1,18 @@
 export {
   formatInscricaoEstadual,
   getIeOfficialSourceUrl,
+  getIeProdutorRuralOfficialSourceUrl,
+  isSpRuralIeInput,
+  isValidIeProdutorRural,
   isValidInscricaoEstadual,
+  stripIeSpRural,
   stripInscricaoEstadual,
+  validateIeProdutorRural,
   validateInscricaoEstadual,
   validateIeDf,
   validateIeMt,
   validateIeSp,
+  validateIeSpRural,
   IE_DF_GOLDEN,
   IE_DF_GOLDEN_MASKED,
   IE_DF_LENGTH,
@@ -18,11 +24,17 @@ export {
   IE_SP_GOLDEN,
   IE_SP_GOLDEN_MASKED,
   IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SP_RURAL_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
   IE_SUPPORTED_UFS,
 } from './core/inscricao-estadual/index.js';
+export { formatIeProdutorRural } from './format/inscricao-estadual-produtor-rural.js';
 export type { ValidateInscricaoEstadualOptions } from './core/inscricao-estadual/index.js';
 export type {
+  IeProdutorRuralValidationResult,
   InscricaoEstadual,
+  InscricaoEstadualProdutorRural,
   InscricaoEstadualValidationResult,
   UfCode,
 } from './types/validation-result.js';

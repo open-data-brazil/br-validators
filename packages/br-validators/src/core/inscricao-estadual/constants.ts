@@ -64,6 +64,11 @@ export const IE_SP_GOLDEN = '110042490114';
 export const IE_SP_GOLDEN_MASKED = '110.042.490.114';
 export const IE_SP_OFFICIAL_SOURCE_URL = IE_OFFICIAL_SOURCE_URLS.SP;
 
+export const IE_SP_RURAL_LENGTH = 13;
+export const IE_SP_RURAL_GOLDEN = 'P011004243002';
+export const IE_SP_RURAL_GOLDEN_MASKED = 'P-01100424.3/002';
+export const IE_SP_RURAL_OFFICIAL_SOURCE_URL = 'http://www.sintegra.gov.br/Cad_Estados/cad_SP.html';
+
 export const IE_MT_CANONICAL_LENGTH = 9;
 export const IE_MT_LEGACY_LENGTH = 11;
 export const IE_MT_DV_WEIGHTS = [3, 2, 9, 8, 7, 6, 5, 4, 3, 2] as const;

@@ -30,6 +30,7 @@
 | `@br-validators/core/boleto` | Boleto (linha digitável + código de barras) |
 | `@br-validators/core/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
 | `@br-validators/core/inscricao-estadual` | Inscrição Estadual — all 27 UFs |
+| `@br-validators/core/inscricao-estadual-produtor-rural` | SP produtor rural IE (Regra II) |
 
 ---
 
@@ -354,6 +355,30 @@ Golden vectors: Visa `4111111111111111`, Mastercard `5555555555554444`, Amex `37
 | `validateIeSp` / `validateIeMt` / `validateIeDf` / … | `(input: string) => …` | Direct per-UF validators (`validateIeAc` … `validateIeTo`) |
 | `formatInscricaoEstadual` | `(input, { uf }) => FormatResult` | SP/DF mask; other UFs return canonical digits |
 | `getIeOfficialSourceUrl` | `(uf: UfCode) => string` | Primary SEFAZ URL per UF |
+
+### IE produtor rural (SP only)
+
+| Function | Signature | Behavior |
+|----------|-----------|----------|
+| `stripIeSpRural` | `(input: string) => string` | Preserve `P`, strip punctuation |
+| `isValidIeProdutorRural` | `(uf, input) => boolean` | Boolean wrapper |
+| `validateIeProdutorRural` | `(uf, input) => IeProdutorRuralValidationResult` | SP Regra II only; non-SP → `UNSUPPORTED_FORMAT` |
+| `validateIeSpRural` | `(input: string) => IeProdutorRuralValidationResult` | Direct SP rural validator |
+| `formatIeProdutorRural` | `(input: string) => FormatResult` | Mask `P-0MMMSSSS.D/000` |
+| `getIeProdutorRuralOfficialSourceUrl` | `() => string` | [SINTEGRA cad_SP.html](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) |
+| `isSpRuralIeInput` | `(input: string) => boolean` | Detect `P` prefix for CLI/playground routing |
+
+```typescript
+type InscricaoEstadualProdutorRural = string & { readonly __brand: 'InscricaoEstadualProdutorRural' };
+
+type IeProdutorRuralValidationResult =
+  | { ok: true; value: InscricaoEstadualProdutorRural; uf: 'SP'; format: 'inscricao-estadual-produtor-rural' }
+  | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
+```
+
+**Golden:** `P011004243002` (masked `P-01100424.3/002`) — `tests/vectors/inscricao-estadual-produtor-rural.official.json`
+
+**CLI:** `br-validators ie validate P-01100424.3/002 --uf SP` auto-routes to produtor rural when input starts with `P`.
 
 ```typescript
 type UfCode =

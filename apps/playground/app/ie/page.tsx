@@ -5,9 +5,15 @@ import { useMemo, useState } from 'react';
 import {
   IE_OFFICIAL_SOURCE_URLS,
   IE_SP_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
   IE_SUPPORTED_UFS,
+  formatIeProdutorRural,
   formatInscricaoEstadual,
+  isSpRuralIeInput,
+  stripIeSpRural,
   stripInscricaoEstadual,
+  validateIeProdutorRural,
   validateInscricaoEstadual,
   type UfCode,
 } from '@br-validators/core';
@@ -55,16 +61,20 @@ export default function IePlaygroundPage() {
   const [uf, setUf] = useState<UfCode>('SP');
   const [input, setInput] = useState(IE_SP_GOLDEN);
 
-  const source = IE_OFFICIAL_SOURCE_URLS[uf];
+  const isRural = uf === 'SP' && isSpRuralIeInput(input);
+  const source = isRural ? IE_SP_RURAL_OFFICIAL_SOURCE_URL : IE_OFFICIAL_SOURCE_URLS[uf];
 
-  const stripped = useMemo(() => (input ? stripInscricaoEstadual(input) : ''), [input]);
+  const stripped = useMemo(
+    () => (input ? (isRural ? stripIeSpRural(input) : stripInscricaoEstadual(input)) : ''),
+    [input, isRural],
+  );
   const validation = useMemo(
-    () => (input ? validateInscricaoEstadual(input, { uf }) : null),
-    [input, uf],
+    () => (input ? (isRural ? validateIeProdutorRural('SP', input) : validateInscricaoEstadual(input, { uf })) : null),
+    [input, uf, isRural],
   );
   const formatted = useMemo(
-    () => (input ? formatInscricaoEstadual(input, { uf }) : null),
-    [input, uf],
+    () => (input ? (isRural ? formatIeProdutorRural(input) : formatInscricaoEstadual(input, { uf })) : null),
+    [input, uf, isRural],
   );
 
   const cliCommand = input
@@ -76,9 +86,27 @@ export default function IePlaygroundPage() {
       <Link href="/" style={{ color: '#7aa2ff', textDecoration: 'none' }}>
         ← All types
       </Link>
-      <h1 style={{ fontSize: '1.75rem', margin: '1rem 0 0.5rem' }}>Inscrição Estadual</h1>
+      <h1 style={{ fontSize: '1.75rem', margin: '1rem 0 0.5rem' }}>
+        Inscrição Estadual
+        {isRural ? (
+          <span
+            style={{
+              marginLeft: '0.75rem',
+              fontSize: '0.75rem',
+              fontWeight: 600,
+              color: '#a8d5a2',
+              background: '#1a2e1a',
+              padding: '0.2rem 0.5rem',
+              borderRadius: 6,
+              verticalAlign: 'middle',
+            }}
+          >
+            produtor rural
+          </span>
+        ) : null}
+      </h1>
       <p style={{ color: '#9aa5bd', marginBottom: '1.5rem' }}>
-        Check digits only · all 27 UFs (UC-009) — no SEFAZ registration lookup
+        Check digits only · all 27 UFs (UC-009) — SP produtor rural auto-detected via P prefix
       </p>
 
       <label style={{ display: 'block', marginBottom: '0.5rem', color: '#9aa5bd' }}>UF</label>
@@ -87,7 +115,7 @@ export default function IePlaygroundPage() {
         onChange={(e) => {
           const next = e.target.value as UfCode;
           setUf(next);
-          setInput(UF_SAMPLES[next]);
+          setInput(next === 'SP' && isSpRuralIeInput(input) ? IE_SP_RURAL_GOLDEN_MASKED : UF_SAMPLES[next]);
         }}
         style={{
           width: '100%',
@@ -107,6 +135,31 @@ export default function IePlaygroundPage() {
           </option>
         ))}
       </select>
+
+      <p style={{ fontSize: '0.85rem', color: '#6b7a99', marginBottom: '0.5rem' }}>
+        SP sample:{' '}
+        <button
+          type="button"
+          onClick={() => {
+            setUf('SP');
+            setInput(IE_SP_GOLDEN);
+          }}
+          style={{ color: '#7aa2ff', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
+          industrial
+        </button>
+        {' · '}
+        <button
+          type="button"
+          onClick={() => {
+            setUf('SP');
+            setInput(IE_SP_RURAL_GOLDEN_MASKED);
+          }}
+          style={{ color: '#7aa2ff', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
+          produtor rural
+        </button>
+      </p>
 
       <label style={{ display: 'block', marginBottom: '0.5rem', color: '#9aa5bd' }}>Input</label>
       <input
@@ -142,7 +195,12 @@ export default function IePlaygroundPage() {
           {validation
             ? JSON.stringify(
                 validation.ok
-                  ? { ok: true, value: validation.value, uf: validation.uf }
+                  ? {
+                      ok: true,
+                      value: validation.value,
+                      uf: validation.uf,
+                      ...(isRural ? { produtorRural: true } : {}),
+                    }
                   : { ok: false, code: validation.code, message: validation.message },
                 null,
                 2,
@@ -172,7 +230,8 @@ export default function IePlaygroundPage() {
       </section>
 
       <p style={{ fontSize: '0.85rem', color: '#6b7a99' }}>
-        Official source ({uf}):{' '}
+        Official source ({uf}
+        {isRural ? ', produtor rural' : ''}):{' '}
         <a href={source} target="_blank" rel="noopener noreferrer" style={{ color: '#7aa2ff' }}>
           {source}
         </a>

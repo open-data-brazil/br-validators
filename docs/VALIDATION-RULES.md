@@ -589,6 +589,22 @@
 - **Source:** [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) (2012-01-05); mirror [SINTEGRA cad_SP](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html)
 - **Golden:** `110042490114` — `tests/vectors/ie.sp.official.json`
 
+### BR-IE-SP-RURAL-001 — São Paulo produtor rural (13 characters, prefix P)
+
+- **GIVEN** IE for UF `SP` starting with `P` (Regra II)
+- **WHEN** length ≠ 13 after normalization or DV at position 10 fails modulo-11 on `0MMMSSSS`
+- **THEN** reject with `INVALID_LENGTH`, `INVALID_CHARACTER`, or `INVALID_CHECK_DIGIT`; route via `validateIeProdutorRural`, not `validateIeSp`
+- **Source:** [SINTEGRA cad_SP Bloco II](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html); cadastro [CADESP produtor rural](https://portal.fazenda.sp.gov.br/servicos/cadesp/Paginas/Produtor-Rural-abertura,-baixa-e-outras-alteracoes.aspx)
+- **Golden:** `P011004243002` (masked `P-01100424.3/002`) — `tests/vectors/inscricao-estadual-produtor-rural.official.json`
+- **Weights:** `1,3,4,5,6,7,8,10` on 8 digits `0MMMSSSS`; trailing 3 digits excluded from DV
+
+### BR-IE-SP-RURAL-002 — Non-SP produtor rural
+
+- **GIVEN** `validateIeProdutorRural` with UF ≠ `SP`
+- **WHEN** validating MT/GO/MS/PR/RS agro IE
+- **THEN** reject with `UNSUPPORTED_FORMAT`; use `validateInscricaoEstadual(uf, input)` instead
+- **Source:** [SINTEGRA cad_MT](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html) — agro uses same algorithm as industrial
+
 ### BR-IE-MT-001 — Mato Grosso (9 or 11 digits)
 
 - **GIVEN** IE for UF `MT`

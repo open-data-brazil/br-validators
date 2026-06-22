@@ -84,7 +84,7 @@
 
 - Boleto arrecadação validation
 - Alphanumeric CPF (when RFB publishes spec)
-- IE SP rural `P…` format
+- IE SP rural `P…` format — shipped in `validateIeProdutorRural`
 - `@br-validators/adapters-correios` — CEP HTTP lookup (F-06)
 - `@br-validators/react` — masked input hooks (F-07)
 - Playwright E2E for playground

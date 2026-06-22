@@ -6,6 +6,7 @@ export * from './cnh.js';
 export * from './renavam.js';
 export * from './titulo-eleitor.js';
 export * from './nfe-chave.js';
+export * from './inscricao-estadual-produtor-rural.js';
 export * from './brcode.js';
 export * from './placa.js';
 export * from './pis-pasep.js';
@@ -130,10 +131,22 @@ export {
   IE_SP_GOLDEN,
   IE_SP_GOLDEN_MASKED,
   IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SP_RURAL_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
   IE_SUPPORTED_UFS,
+  formatIeProdutorRural,
+  getIeProdutorRuralOfficialSourceUrl,
+  isSpRuralIeInput,
+  isValidIeProdutorRural,
+  stripIeSpRural,
+  validateIeProdutorRural,
+  validateIeSpRural,
 } from './inscricao-estadual.js';
 export type {
+  IeProdutorRuralValidationResult,
   InscricaoEstadual,
+  InscricaoEstadualProdutorRural,
   InscricaoEstadualValidationResult,
   UfCode,
   ValidateInscricaoEstadualOptions,

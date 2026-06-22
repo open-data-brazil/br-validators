@@ -10,6 +10,7 @@ export type DocumentFormat =
   | 'codigo-barras'
   | 'cartao-credito'
   | 'inscricao-estadual'
+  | 'inscricao-estadual-produtor-rural'
   | 'telefone'
   | 'brcode';
 
@@ -49,6 +50,7 @@ export type LinhaDigitavel = string & { readonly __brand: 'LinhaDigitavel' };
 export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
 export type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
 export type InscricaoEstadual = string & { readonly __brand: 'InscricaoEstadual' };
+export type InscricaoEstadualProdutorRural = string & { readonly __brand: 'InscricaoEstadualProdutorRural' };
 export type Telefone = string & { readonly __brand: 'Telefone' };
 export type BrCodePayload = string & { readonly __brand: 'BrCodePayload' };
 
@@ -80,6 +82,10 @@ export type BoletoValidationResult =
 
 export type InscricaoEstadualValidationResult =
   | { ok: true; value: InscricaoEstadual; uf: UfCode; format: 'inscricao-estadual' }
+  | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
+
+export type IeProdutorRuralValidationResult =
+  | { ok: true; value: InscricaoEstadualProdutorRural; uf: 'SP'; format: 'inscricao-estadual-produtor-rural' }
   | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
 
 export type TituloEleitorValidationResult =
@@ -182,6 +188,10 @@ export function brandCartaoCredito(value: string): CartaoCredito {
 
 export function brandInscricaoEstadual(value: string): InscricaoEstadual {
   return value as InscricaoEstadual;
+}
+
+export function brandInscricaoEstadualProdutorRural(value: string): InscricaoEstadualProdutorRural {
+  return value as InscricaoEstadualProdutorRural;
 }
 
 export function brandTelefone(value: string): Telefone {

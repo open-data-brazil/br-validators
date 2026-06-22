@@ -94,6 +94,10 @@
     "./inscricao-estadual": {
       "types": "./dist/inscricao-estadual.d.ts",
       "import": "./dist/inscricao-estadual.js"
+    },
+    "./inscricao-estadual-produtor-rural": {
+      "types": "./dist/inscricao-estadual-produtor-rural.d.ts",
+      "import": "./dist/inscricao-estadual-produtor-rural.js"
     }
   },
   "files": [
