@@ -1,5 +1,4 @@
-import { PixWorkspace } from '@/components/organisms/PixWorkspace';
-
-export default function PixPage() {
-  return <PixWorkspace />;
+/** Route segment placeholder — UI rendered by PlaygroundContent keep-alive shell. */
+export default function Page() {
+  return null;
 }

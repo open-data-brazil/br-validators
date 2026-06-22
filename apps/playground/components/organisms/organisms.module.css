@@ -1,75 +1,58 @@
 .sidebar {
   border-right: 1px solid var(--border);
   background: var(--bg-surface);
-  padding: var(--space-5);
+  padding: var(--space-3);
   height: 100dvh;
   position: sticky;
   top: 0;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: var(--space-5);
+  grid-template-rows: 1fr auto;
+  gap: var(--space-3);
   overflow: auto;
-}
-
-.brandTitle {
-  margin: 0;
-  font-size: var(--text-lg);
-}
-
-.brandSubtitle {
-  margin: var(--space-1) 0 0;
-  color: var(--text-primary);
-  font-size: var(--text-md);
-  font-weight: 600;
-}
-
-.brandTagline {
-  margin: var(--space-2) 0 var(--space-3);
-  color: var(--text-muted);
-  font-size: var(--text-xs);
-  line-height: 1.4;
 }
 
 .navGroups {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-3);
   overflow: auto;
+  align-content: start;
 }
 
 .navSectionTitle {
-  margin: 0 0 var(--space-2);
-  font-size: var(--text-xs);
+  margin: 0 0 4px;
+  padding: 0 4px;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
 }
 
 .navSection {
   display: grid;
-  gap: var(--space-2);
+  gap: 2px;
 }
 
 .nav {
   display: grid;
-  gap: var(--space-2);
+  gap: 2px;
   align-content: start;
 }
 
 .navLink {
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   color: var(--text-primary);
   background: transparent;
   display: block;
-  transition: background 0.12s ease, border-color 0.12s ease;
+  transition: background 0.1s ease, border-color 0.1s ease;
 }
 
 .navLink:hover {
   background: var(--bg-subtle);
-  border-color: var(--accent-muted);
+  border-color: var(--border);
 }
 
 .active {
@@ -79,15 +62,12 @@
 
 .navLabel {
   display: block;
-  font-size: var(--text-sm);
-  font-weight: 600;
-}
-
-.navDescription {
-  display: block;
-  margin-top: var(--space-1);
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .panel {

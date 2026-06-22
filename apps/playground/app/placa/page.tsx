@@ -1,5 +1,4 @@
-import { DocumentWorkspace } from '@/components/organisms/DocumentWorkspace';
-
-export default function PlacaPage() {
-  return <DocumentWorkspace slug="placa" />;
+/** Route segment placeholder — UI rendered by PlaygroundContent keep-alive shell. */
+export default function Page() {
+  return null;
 }

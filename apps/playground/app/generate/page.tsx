@@ -1,5 +1,4 @@
-import { PlatformGenerate } from '@/components/organisms/PlatformGenerate';
-
-export default function GeneratePage() {
-  return <PlatformGenerate />;
+/** Route segment placeholder — UI rendered by PlaygroundContent keep-alive shell. */
+export default function Page() {
+  return null;
 }

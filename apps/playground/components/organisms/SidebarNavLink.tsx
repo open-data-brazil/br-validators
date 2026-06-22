@@ -1,39 +1,40 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSetPlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import styles from './organisms.module.css';
 
 type Props = {
   href: string;
   isActive: boolean;
+  title?: string;
   onNavigate?: () => void;
   children: React.ReactNode;
 };
 
-export function SidebarNavLink({ href, isActive, onNavigate, children }: Props) {
+export function SidebarNavLink({ href, isActive, title, onNavigate, children }: Props) {
   const router = useRouter();
-  const pathname = usePathname();
-  const [pending, setPending] = useState(false);
+  const setOptimisticPath = useSetPlaygroundPath();
 
   useEffect(() => {
     router.prefetch(href);
   }, [href, router]);
-
-  useEffect(() => {
-    setPending(false);
-  }, [pathname]);
 
   return (
     <Link
       href={href}
       prefetch
       scroll={false}
-      className={`${styles.navLink} ${isActive || pending ? styles.active : ''}`.trim()}
+      title={title}
+      className={`${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
       aria-current={isActive ? 'page' : undefined}
+      onMouseEnter={() => {
+        router.prefetch(href);
+      }}
       onClick={() => {
-        setPending(true);
+        setOptimisticPath(href);
         onNavigate?.();
       }}
     >

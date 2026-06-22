@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
-import { Badge } from '@/components/atoms/Badge';
+import { useRouter } from 'next/navigation';
 import { ToolbarActions } from '@/components/atoms/ToolbarActions';
+import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { SidebarNavLink } from '@/components/organisms/SidebarNavLink';
 import { DOCUMENT_ROUTES, PLATFORM_ROUTES } from '@/lib/nav';
@@ -32,9 +32,14 @@ function NavSection({
           const isActive = pathname === href;
           const routeCopy = messages.routes[route.slug as DocumentSlug | 'detect' | 'sanitize' | 'generate'];
           return (
-            <SidebarNavLink key={route.slug} href={href} isActive={isActive} onNavigate={onNavigate}>
+            <SidebarNavLink
+              key={route.slug}
+              href={href}
+              isActive={isActive}
+              title={routeCopy.description}
+              onNavigate={onNavigate}
+            >
               <span className={styles.navLabel}>{routeCopy.label}</span>
-              <span className={styles.navDescription}>{routeCopy.description}</span>
             </SidebarNavLink>
           );
         })}
@@ -44,7 +49,7 @@ function NavSection({
 }
 
 export function Sidebar({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
-  const pathname = usePathname();
+  const pathname = usePlaygroundPath();
   const router = useRouter();
   const { messages } = useI18n();
 
@@ -53,6 +58,7 @@ export function Sidebar({ className, onNavigate }: { className?: string; onNavig
       '/',
       ...DOCUMENT_ROUTES.map((route) => `/${route.slug}`),
       ...PLATFORM_ROUTES.map((route) => `/${route.slug}`),
+      '/cartao-credito',
     ];
     for (const href of hrefs) {
       router.prefetch(href);
@@ -61,13 +67,6 @@ export function Sidebar({ className, onNavigate }: { className?: string; onNavig
 
   return (
     <aside className={`${styles.sidebar} ${className ?? ''}`.trim()}>
-      <header>
-        <h1 className={styles.brandTitle}>{messages.brand.title}</h1>
-        <p className={styles.brandSubtitle}>{messages.brand.subtitle}</p>
-        <p className={styles.brandTagline}>{messages.brand.tagline}</p>
-        <Badge variant="success">{messages.brand.openSource}</Badge>
-      </header>
-
       <div className={styles.navGroups}>
         <NavSection
           title={messages.nav.documents}
