@@ -18,6 +18,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @br-validators/core build
+      - run: pnpm --filter @br-validators/cli build
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test:coverage

@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --port 3000",
+    "predev": "pnpm --filter @br-validators/cli build",
     "build": "next build",
     "prebuild": "pnpm --filter @br-validators/core build && pnpm --filter @br-validators/cli build",
     "start": "next start",
@@ -13,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "pretest:coverage": "pnpm --filter @br-validators/cli build",
     "typecheck": "tsc --noEmit",
-    "pretypecheck": "pnpm --filter @br-validators/core build",
+    "pretypecheck": "pnpm --filter @br-validators/core build && pnpm --filter @br-validators/cli build",
     "lint": "eslint app --max-warnings 0"
   },
   "dependencies": {

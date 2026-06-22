@@ -1,2 +1,2 @@
-export type { CliRunResult } from '../../../cli/src/run-captured.js';
-export { runCaptured } from '../../../cli/src/run-captured.js';
+export type { CliRunResult } from '@playground/cli-run-captured';
+export { runCaptured } from '@playground/cli-run-captured';

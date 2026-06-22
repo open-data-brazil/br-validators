@@ -36,6 +36,13 @@
   "bin": {
     "br-validators": "dist/index.js"
   },
+  "exports": {
+    ".": "./dist/index.js",
+    "./run-captured": {
+      "types": "./dist/run-captured.d.ts",
+      "default": "./dist/run-captured.js"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "pnpm run build",

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const playgroundRoot = fileURLToPath(new URL('.', import.meta.url));
 const coreDist = path.join(playgroundRoot, '../../packages/br-validators/dist');
+const cliRunCaptured = path.join(playgroundRoot, '../../apps/cli/dist/run-captured.js');
 
 const subpaths = [
   'brcode',
@@ -30,6 +31,7 @@ const subpaths = [
 const nextConfig = {
   webpack: (config) => {
     config.resolve.alias['@br-validators/core'] = path.join(coreDist, 'index.js');
+    config.resolve.alias['@playground/cli-run-captured'] = cliRunCaptured;
     config.resolve.alias['node:fs'] = path.join(playgroundRoot, 'lib/cli/stubs/fs.ts');
     for (const subpath of subpaths) {
       config.resolve.alias[`@br-validators/core/${subpath}`] = path.join(coreDist, `${subpath}.js`);
