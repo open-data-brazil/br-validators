@@ -29,6 +29,36 @@ const UF_LABELS: Record<UfCode, string> = {
   TO: 'Tocantins',
 };
 
+const UF_ALGORITHM_LABELS: Record<UfCode, string> = {
+  AC: 'SEFAZ AC modulo 11',
+  AL: 'SEFAZ AL weighted check digit',
+  AM: 'SEFAZ AM modulo 11',
+  AP: 'SEFAZ AP weighted check digit',
+  BA: 'SEFAZ BA modulo 10/11 by range',
+  CE: 'SEFAZ CE modulo 11',
+  DF: 'SEFAZ DF dual modulo 11',
+  ES: 'SEFAZ ES modulo 11',
+  GO: 'SEFAZ GO weighted check digit',
+  MA: 'SEFAZ MA modulo 11',
+  MG: 'SEFAZ MG custom split + modulo 11',
+  MS: 'SEFAZ MS modulo 11',
+  MT: 'SEFAZ MT modulo 11',
+  PA: 'SEFAZ PA modulo 11',
+  PB: 'SEFAZ PB modulo 11',
+  PE: 'SEFAZ PE weighted check digit',
+  PI: 'SEFAZ PI modulo 11',
+  PR: 'SEFAZ PR dual modulo 11',
+  RJ: 'SEFAZ RJ modulo 11',
+  RN: 'SEFAZ RN weighted check digit',
+  RO: 'SEFAZ RO modulo 11',
+  RR: 'SEFAZ RR modulo 9',
+  RS: 'SEFAZ RS modulo 11',
+  SC: 'SEFAZ SC modulo 11',
+  SE: 'SEFAZ SE modulo 11',
+  SP: 'SEFAZ SP dual check digits',
+  TO: 'SEFAZ TO weighted check digit',
+};
+
 export default function IePlaygroundPage() {
   const [uf, setUf] = useState<UfCode>('SP');
   const [input, setInput] = useState(IE_SP_GOLDEN);
@@ -96,6 +126,7 @@ export default function IePlaygroundPage() {
         />
         <ResultRow label="Value" value={validation?.ok ? validation.value : '—'} />
         <ResultRow label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
+        <ResultRow label="Algorithm" value={UF_ALGORITHM_LABELS[uf]} />
       </ResultSection>
 
       <OfficialSourceLink href={source} label={`Official source (${uf})`} />

@@ -92,13 +92,3 @@
   font-size: var(--text-md);
   color: var(--text-muted);
 }
-
-@media (max-width: 900px) {
-  .sidebar {
-    position: static;
-    height: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-    gap: var(--space-4);
-  }
-}
