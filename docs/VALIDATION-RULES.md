@@ -163,6 +163,44 @@
 
 ---
 
+## CNH (Registro Nacional)
+
+> **Source:** [CONTRAN Resolução 511/2014 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [CONTRAN Resolução 886/2021 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao8862021.pdf) · [SENATRAN — Validar CNH](https://www.gov.br/pt-br/servicos/validar-cnh)
+
+### BR-CNH-001 — Length
+
+- **GIVEN** stripped input
+- **WHEN** length ≠ 11
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-CNH-002 — Numeric only
+
+- **GIVEN** input after removing mask punctuation (`.`, `-`, spaces)
+- **WHEN** non-digit characters remain
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-CNH-003 — Known invalid sequence
+
+- **GIVEN** 11 identical digits (e.g. `11111111111`)
+- **WHEN** validating
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-CNH-004 — Check digits (modulo 11 + desconto)
+
+- **GIVEN** base 9 digits
+- **WHEN** computing DV1: multiply by weights `9,8,7,6,5,4,3,2,1`, `remainder = sum % 11`; if `remainder ≥ 10` then DV1 = 0 and `desconto = 2`, else DV1 = remainder and `desconto = 0`
+- **WHEN** computing DV2: multiply base by weights `1…9`, `remainder = sum % 11`; if `remainder ≥ 10` then DV2 = 0, else DV2 = remainder − desconto (add 11 if negative; clamp to 0 if still ≥ 10)
+- **THEN** compare with positions 10–11; mismatch → `INVALID_CHECK_DIGIT`
+
+### BR-CNH-005 — Official system format (no decorative mask)
+
+- **GIVEN** valid canonical number
+- **WHEN** formatting for official systems (SENATRAN portal, Detran forms)
+- **THEN** emit **11 contiguous digits** — no dots or dashes (unlike CPF `XXX.XXX.XXX-DD`)
+- **NOTE** CPF-style decoration may be accepted on **input** via strip but is **not** official CNH format
+
+---
+
 ## BR Code
 
 > **Source:** [Bacen Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões para Iniciação do Pix (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf)

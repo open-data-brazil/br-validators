@@ -5,6 +5,7 @@ import {
   handleCnpjCli,
   handleCpfCli,
   handleTelefoneCli,
+  handleCnhCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -20,6 +21,7 @@ import {
   type BrCodeCliOptions,
   type CepCliOptions,
   type TelefoneCliOptions,
+  type CnhCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -113,6 +115,24 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: TelefoneCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleTelefoneCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const cnh = program.command('cnh').description('CNH — Registro Nacional, 11 contiguous digits (CONTRAN / SENATRAN)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    cnh
+      .command(action)
+      .description(`${action} a CNH`)
+      .argument('[value]', 'CNH value (11 digits or decorated input)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: CnhCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleCnhCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

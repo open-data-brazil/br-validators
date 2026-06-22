@@ -19,6 +19,7 @@
 | `@br-validators/core/cnpj` | CNPJ numeric + alphanumeric |
 | `@br-validators/core/cep` | CEP |
 | `@br-validators/core/telefone` | Brazilian telephone (fixo + celular) |
+| `@br-validators/core/cnh` | CNH — Registro Nacional |
 | `@br-validators/core/brcode` | BR Code PIX QR payload (EMV TLV + CRC16) |
 | `@br-validators/core/placa` | License plates |
 | `@br-validators/core/pis-pasep` | PIS / PASEP / NIS / NIT |
@@ -136,6 +137,21 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 **Success result:** `{ ok: true, value: Telefone, tipo: 'celular' | 'fixo', format: 'telefone' }`
 
 **Official source:** [Anatel — Plano de Numeração Brasileiro](https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro) · `TELEFONE_OFFICIAL_SOURCE_URL` · `tests/vectors/telefone.official.json` · Golden celular: `11999999999`, fixo: `1133333333`
+
+---
+
+## Core API — CNH
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateCnh` | `(input: string) => ValidationResult<Cnh>` | Registro Nacional modulo 11 with inter-DV desconto |
+| `formatCnh` | `(input: string) => FormatResult` | Official system format: 11 contiguous digits |
+| `stripCnh` | `(input: string) => string` | Digits only |
+| `isValidCnh` | `(input: string) => boolean` | Convenience wrapper |
+
+**Success result:** `{ ok: true, value: Cnh, format: 'numeric' }`
+
+**Official source:** [CONTRAN Resolução 511/2014 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [Validar CNH — gov.br](https://www.gov.br/pt-br/servicos/validar-cnh) · `CNH_OFFICIAL_SOURCE_URL` · `CNH_SENATRAN_VALIDAR_URL` · `tests/vectors/cnh.official.json` · Golden: `62472927637` (format = same 11 digits)
 
 ---
 

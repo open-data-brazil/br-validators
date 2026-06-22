@@ -9,7 +9,7 @@ describe('listSupportedTypes', () => {
   it('lists cnpj', () => {
     const io = { stdout: [] as string[] };
     expect(listSupportedTypes(io)).toBe(EXIT.OK);
-    expect(io.stdout).toEqual(['cnpj', 'cpf', 'cep', 'telefone', 'brcode', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'ie']);
+    expect(io.stdout).toEqual(['cnpj', 'cpf', 'cep', 'telefone', 'cnh', 'brcode', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'ie']);
   });
 });
 

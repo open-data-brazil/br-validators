@@ -2,6 +2,7 @@ export * from './cnpj.js';
 export * from './cpf.js';
 export * from './cep.js';
 export * from './telefone.js';
+export * from './cnh.js';
 export * from './brcode.js';
 export * from './placa.js';
 export * from './pis-pasep.js';

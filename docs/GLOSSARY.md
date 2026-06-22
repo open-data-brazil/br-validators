@@ -85,6 +85,16 @@
 
 ---
 
+## CNH (Registro Nacional)
+
+**Definition:** Carteira Nacional de Habilitação — **Número de Registro** (BINCO). Permanent driver identifier: 9 base digits + 2 check digits (modulo 11 with inter-DV **desconto**).
+**Official system format:** **11 contiguous digits** — no dots or dashes (unlike CPF).
+**Not the same as:** Espelho CNH (9+1 DV per card issue) or formulário RENACH (UF-prefixed state form).
+**Legal reference:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) — CONTRAN 511/2014, CONTRAN 886/2021, [Validar CNH](https://www.gov.br/pt-br/servicos/validar-cnh)
+**Code name:** `Cnh`, format `'numeric'`
+
+---
+
 ## CEP
 
 **Definition:** Código de Endereçamento Postal — 8-digit postal code (Correios).

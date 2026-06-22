@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Subpath `@br-validators/core/telefone`
 - CLI `br-validators telefone validate|format|strip`
 - Playground `/telefone`
+- **CNH (Phase 12):** `validateCnh`, `formatCnh`, `stripCnh` — Registro Nacional modulo 11 with inter-DV desconto; official format is 11 contiguous digits (not CPF mask)
+- Subpath `@br-validators/core/cnh`
+- CLI `br-validators cnh validate|format|strip`
+- Playground `/cnh`
 
 ### Changed
 

@@ -51,6 +51,10 @@
       "types": "./dist/telefone.d.ts",
       "import": "./dist/telefone.js"
     },
+    "./cnh": {
+      "types": "./dist/cnh.d.ts",
+      "import": "./dist/cnh.js"
+    },
     "./brcode": {
       "types": "./dist/brcode.d.ts",
       "import": "./dist/brcode.js"
