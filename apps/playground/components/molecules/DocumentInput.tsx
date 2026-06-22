@@ -14,7 +14,8 @@ type Props = {
   value: string;
   placeholder?: string;
   onChange: (value: string) => void;
-  onGenerate?: () => void;
+  onGenerateValid?: () => void;
+  onGenerateValidFormatted?: () => void;
   multiline?: boolean;
   showGenerate?: boolean;
 };
@@ -25,11 +26,13 @@ export function DocumentInput({
   value,
   placeholder,
   onChange,
-  onGenerate,
+  onGenerateValid,
+  onGenerateValidFormatted,
   multiline = false,
   showGenerate = true,
 }: Props) {
   const { messages } = useI18n();
+  const canGenerate = showGenerate && onGenerateValid && onGenerateValidFormatted;
 
   return (
     <div className={styles.fieldCard}>
@@ -54,10 +57,13 @@ export function DocumentInput({
           />
         )}
       </div>
-      {showGenerate && onGenerate ? (
+      {canGenerate ? (
         <div className={styles.inputActions}>
-          <Button type="button" variant="secondary" icon={<SparklesIcon />} onClick={onGenerate}>
-            {messages.actions.generate}
+          <Button type="button" variant="secondary" icon={<SparklesIcon />} onClick={onGenerateValid}>
+            {messages.actions.generateValid}
+          </Button>
+          <Button type="button" variant="secondary" onClick={onGenerateValidFormatted}>
+            {messages.actions.generateValidFormatted}
           </Button>
         </div>
       ) : null}

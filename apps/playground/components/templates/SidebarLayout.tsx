@@ -7,6 +7,7 @@ import { ToolbarActions } from '@/components/atoms/ToolbarActions';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { Sidebar } from '@/components/organisms/Sidebar';
 import { PlaygroundContent } from '@/components/templates/PlaygroundContent';
+import { CliTerminalHost } from '@/components/templates/CliTerminalHost';
 import styles from './templates.module.css';
 
 export function SidebarLayout({ children }: { children: React.ReactNode }) {
@@ -60,6 +61,8 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </div>
+
+      <CliTerminalHost />
     </div>
   );
 }

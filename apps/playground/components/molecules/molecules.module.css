@@ -159,19 +159,44 @@
 .generateOptions {
   display: grid;
   gap: var(--space-4);
-  max-width: 28rem;
+  width: 100%;
+  max-width: 42rem;
   padding: var(--space-5);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--bg-surface);
 }
 
-.checkboxRow {
-  display: flex;
-  align-items: center;
+.generateOptionsSeed {
+  display: grid;
   gap: var(--space-2);
-  font-size: var(--text-sm);
-  color: var(--text-primary);
+  min-width: 0;
+}
+
+.generateOptionsSeed input,
+.generateOptionsFormat select {
+  width: 100%;
+}
+
+.generateOptionsFormat {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .generateOptions {
+    grid-template-columns: minmax(14rem, 2fr) minmax(10rem, 1fr);
+    align-items: end;
+  }
+
+  .generateOptionsSeed {
+    grid-column: 1;
+  }
+
+  .generateOptionsFormat {
+    grid-column: 2;
+  }
 }
 
 @media (min-width: 700px) {

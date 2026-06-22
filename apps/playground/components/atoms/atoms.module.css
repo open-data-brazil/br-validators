@@ -253,6 +253,15 @@
   color: #6366f1;
 }
 
+.terminalButton {
+  color: var(--text-primary);
+}
+
+.terminalButton:hover:not(:disabled) {
+  border-color: #3fb950;
+  color: #3fb950;
+}
+
 html[data-theme='dark'] .themeIconSun {
   color: #fbbf24;
 }

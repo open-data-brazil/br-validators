@@ -1,4 +1,17 @@
-import { readFileSync } from 'node:fs';
+export type CliIo = { stdout: string[]; stderr: string[] };
+
+export function readInputFile(path: string, io: CliIo): string | null {
+  try {
+    // Lazy Node fs — avoids bundling fs in browser builds that alias node:fs to a stub.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports -- runtime-only in Node CLI
+    const fsModule = require('node:fs') as typeof import('node:fs');
+    return fsModule.readFileSync(path, 'utf8');
+  } catch {
+    io.stderr.push(`Cannot read file: ${path}`);
+    return null;
+  }
+}
+
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
@@ -79,17 +92,6 @@ export type GenerateCliOptions = {
   format?: string;
   seed?: number;
 };
-
-export type CliIo = { stdout: string[]; stderr: string[] };
-
-export function readInputFile(path: string, io: CliIo): string | null {
-  try {
-    return readFileSync(path, 'utf8');
-  } catch {
-    io.stderr.push(`Cannot read file: ${path}`);
-    return null;
-  }
-}
 
 export function handleListCli(io: CliIo = { stdout: [], stderr: [] }): number {
   return listSupportedTypes(io);

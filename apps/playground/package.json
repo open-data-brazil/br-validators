@@ -6,15 +6,18 @@
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "prebuild": "pnpm --filter @br-validators/core build",
+    "prebuild": "pnpm --filter @br-validators/core build && pnpm --filter @br-validators/cli build",
     "start": "next start",
     "test": "vitest run",
+    "pretest": "pnpm --filter @br-validators/cli build",
     "test:coverage": "vitest run --coverage",
+    "pretest:coverage": "pnpm --filter @br-validators/cli build",
     "typecheck": "tsc --noEmit",
     "pretypecheck": "pnpm --filter @br-validators/core build",
     "lint": "eslint app --max-warnings 0"
   },
   "dependencies": {
+    "@br-validators/cli": "workspace:*",
     "@br-validators/core": "workspace:*",
     "next": "^15.3.3",
     "qrcode.react": "^4.2.0",

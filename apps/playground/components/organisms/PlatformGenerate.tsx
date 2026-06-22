@@ -66,7 +66,7 @@ export function PlatformGenerate() {
   const copy = messages.platform.generate;
   const [type, setType] = useState<GeneratableDocumentType>('cpf');
   const [output, setOutput] = useState('');
-  const [options, setOptions] = useState<GenerateOptionsState>({ masked: false });
+  const [options, setOptions] = useState<GenerateOptionsState>({});
 
   const selected = GENERATABLE.find((item) => item.value === type);
   const formats = selected?.formats;
@@ -76,10 +76,10 @@ export function PlatformGenerate() {
     [type, output],
   );
 
-  const handleGenerate = () => {
+  const handleGenerate = (masked: boolean) => {
     const value = generate(type, {
       seed: options.seed,
-      masked: options.masked,
+      masked,
       format: options.format as 'numeric' | 'alphanumeric' | 'legacy' | 'mercosul' | 'celular' | 'fixo' | undefined,
     });
     setOutput(value);
@@ -103,7 +103,7 @@ export function PlatformGenerate() {
             const next = e.target.value as GeneratableDocumentType;
             setType(next);
             const nextFormats = GENERATABLE.find((item) => item.value === next)?.formats;
-            setOptions({ masked: false, format: nextFormats?.[0] });
+            setOptions({ format: nextFormats?.[0] });
             setOutput('');
           }}
         >
@@ -117,9 +117,14 @@ export function PlatformGenerate() {
 
       <GenerateOptions formats={formats} options={options} onChange={setOptions} />
 
-      <Button type="button" variant="primary" onClick={handleGenerate}>
-        {messages.actions.generateRun}
-      </Button>
+      <div className={styles.generateActions}>
+        <Button type="button" variant="secondary" onClick={() => { handleGenerate(false); }}>
+          {messages.actions.generateValid}
+        </Button>
+        <Button type="button" variant="primary" onClick={() => { handleGenerate(true); }}>
+          {messages.actions.generateValidFormatted}
+        </Button>
+      </div>
 
       {output ? (
         <ResultSection title={messages.sections.output}>

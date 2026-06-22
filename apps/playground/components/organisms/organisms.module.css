@@ -83,6 +83,12 @@
   gap: var(--space-5);
 }
 
+.generateActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 .title {
   margin: 0;
   font-size: var(--text-2xl);

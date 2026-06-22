@@ -8,7 +8,6 @@ import styles from './molecules.module.css';
 
 export type GenerateOptionsState = {
   seed?: number;
-  masked: boolean;
   format?: string;
 };
 
@@ -23,7 +22,7 @@ export function GenerateOptions({ formats, options, onChange }: Props) {
 
   return (
     <div className={styles.generateOptions}>
-      <div>
+      <div className={styles.generateOptionsSeed}>
         <Label htmlFor="gen-seed">{messages.generate.seed}</Label>
         <Input
           id="gen-seed"
@@ -39,18 +38,8 @@ export function GenerateOptions({ formats, options, onChange }: Props) {
           }}
         />
       </div>
-      <label className={styles.checkboxRow}>
-        <input
-          type="checkbox"
-          checked={options.masked}
-          onChange={(e) => {
-            onChange({ ...options, masked: e.target.checked });
-          }}
-        />
-        {messages.generate.masked}
-      </label>
       {formats && formats.length > 0 ? (
-        <div>
+        <div className={styles.generateOptionsFormat}>
           <Label htmlFor="gen-format">{messages.generate.format}</Label>
           <Select
             id="gen-format"

@@ -56,3 +56,12 @@ export function MenuIcon({ className }: Props) {
     </svg>
   );
 }
+
+export function TerminalIcon({ className }: Props) {
+  return (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M7 9l3 3-3 3M12 15h5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

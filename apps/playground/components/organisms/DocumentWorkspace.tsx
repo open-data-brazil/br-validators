@@ -22,8 +22,7 @@ import { CAPABILITIES, enabledTabs, type ActionTab } from '@/lib/capabilities';
 import { buildCliCommand, computeDocumentResults } from '@/lib/document-results';
 import { DOCUMENT_META, ieOfficialLink } from '@/lib/document-meta';
 import type { DocumentSlug } from '@/lib/nav';
-import { goldenSample, playgroundGenerate } from '@/lib/playground-generate';
-import { IE_SAMPLES } from '@/lib/generators/ie';
+import { goldenSample, generateValidDocument, initialWorkspaceInput, supportsValidGeneration } from '@/lib/playground-generate';
 import styles from './organisms.module.css';
 
 const UF_LABELS: Record<UfCode, string> = {
@@ -48,11 +47,12 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
   const capabilities = CAPABILITIES[slug];
   const tabs = enabledTabs(capabilities);
 
-  const [input, setInput] = useState(meta.defaultInput);
+  const [input, setInput] = useState(() =>
+    initialWorkspaceInput(slug, 'SP', capabilities.generateFormats?.[0]),
+  );
   const [activeTab, setActiveTab] = useState<ActionTab>(tabs[0] ?? 'validate');
   const [uf, setUf] = useState<UfCode>('SP');
   const [generateOptions, setGenerateOptions] = useState<GenerateOptionsState>({
-    masked: false,
     format: capabilities.generateFormats?.[0],
   });
 
@@ -68,17 +68,19 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
 
   const pixValidation = slug === 'pix' && input ? validatePixKey(input) : null;
 
-  const handleGenerate = () => {
+  const fillInput = (masked: boolean) => {
     try {
-      const sample = goldenSample(slug);
-      if (sample) {
-        setInput(sample);
+      if (!supportsValidGeneration(slug)) {
+        const sample = goldenSample(slug);
+        if (sample) {
+          setInput(sample);
+        }
         return;
       }
       setInput(
-        playgroundGenerate(slug, {
+        generateValidDocument(slug, {
           seed: generateOptions.seed,
-          masked: generateOptions.masked,
+          masked,
           format: generateOptions.format,
           uf,
         }),
@@ -93,7 +95,7 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
       ? [ieOfficialLink(uf)]
       : meta.officialLinks;
 
-  const canGenerate = capabilities.generate || goldenSample(slug) !== null;
+  const canGenerate = supportsValidGeneration(slug);
 
   return (
     <main className={styles.panel}>
@@ -112,7 +114,13 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
               const next = e.target.value as UfCode;
               setUf(next);
               if (slug === 'ie') {
-                setInput(IE_SAMPLES[next]);
+                setInput(
+                  generateValidDocument('ie', {
+                    masked: true,
+                    format: generateOptions.format,
+                    uf: next,
+                  }),
+                );
               }
             }}
           >
@@ -133,7 +141,8 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
         multiline={capabilities.multiline}
         onChange={setInput}
         showGenerate={canGenerate}
-        onGenerate={canGenerate ? handleGenerate : undefined}
+        onGenerateValid={canGenerate ? () => { fillInput(false); } : undefined}
+        onGenerateValidFormatted={canGenerate ? () => { fillInput(true); } : undefined}
       />
 
       <ActionTabs

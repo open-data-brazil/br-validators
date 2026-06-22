@@ -55,7 +55,8 @@ export const en = {
     generate: 'Generate',
   },
   actions: {
-    generate: 'Generate sample',
+    generateValid: 'Generate valid data',
+    generateValidFormatted: 'Generate valid formatted data',
     copy: 'Copy',
     copied: 'Copied',
     generateRun: 'Generate',
@@ -64,6 +65,14 @@ export const en = {
     toggleThemeLight: 'Switch to light mode',
     toggleThemeDark: 'Switch to dark mode',
     selectLanguage: 'Select language',
+  },
+  cli: {
+    openTerminal: 'Open CLI terminal',
+    title: 'br-validators — terminal',
+    close: 'Close',
+    prompt: '$ ',
+    inputLabel: 'CLI command',
+    helpHint: 'Run br-validators commands (e.g. list, cpf validate …). Try: cpf validate 123.456.789-09 · generate cpf --masked',
   },
   sections: {
     validation: 'Validation',
@@ -78,9 +87,8 @@ export const en = {
   generate: {
     seed: 'Seed (optional)',
     seedPlaceholder: 'Random',
-    masked: 'Masked output',
     format: 'Format',
-    hint: 'Click Generate sample on the input row or adjust options above.',
+    hint: 'Use the buttons above the input to generate valid raw or formatted data, or adjust seed/format here.',
   },
   sanitize: {
     noFixes: 'No fixes applied — input already clean.',

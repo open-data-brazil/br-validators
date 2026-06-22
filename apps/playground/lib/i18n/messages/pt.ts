@@ -55,7 +55,8 @@ export const pt = {
     generate: 'Gerar',
   },
   actions: {
-    generate: 'Gerar amostra',
+    generateValid: 'Gerar dado válido',
+    generateValidFormatted: 'Gerar dado válido com formatação',
     copy: 'Copiar',
     copied: 'Copiado',
     generateRun: 'Gerar',
@@ -64,6 +65,14 @@ export const pt = {
     toggleThemeLight: 'Modo claro',
     toggleThemeDark: 'Modo escuro',
     selectLanguage: 'Selecionar idioma',
+  },
+  cli: {
+    openTerminal: 'Abrir terminal CLI',
+    title: 'br-validators — terminal',
+    close: 'Fechar',
+    prompt: '$ ',
+    inputLabel: 'Comando CLI',
+    helpHint: 'Use comandos br-validators (ex.: list, cpf validate …). Tente: cpf validate 123.456.789-09 · generate cpf --masked',
   },
   sections: {
     validation: 'Validação',
@@ -78,9 +87,8 @@ export const pt = {
   generate: {
     seed: 'Seed (opcional)',
     seedPlaceholder: 'Aleatório',
-    masked: 'Saída mascarada',
     format: 'Formato',
-    hint: 'Clique em Gerar amostra na entrada ou ajuste as opções acima.',
+    hint: 'Use os botões acima da entrada para gerar dado válido ou formatado, ou ajuste seed/formato aqui.',
   },
   sanitize: {
     noFixes: 'Nenhuma correção — entrada já está limpa.',
