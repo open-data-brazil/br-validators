@@ -99,6 +99,13 @@ describe('package exports', () => {
     expect(root.isFormattableDocumentType('cpf')).toBe(true);
   });
 
+  it('re-exports mask pipeline from index', () => {
+    expect(root.mask).toBeTypeOf('function');
+    expect(root.maskRuntime).toBeTypeOf('function');
+    expect(root.isMaskableDocumentType('telefone')).toBe(true);
+    expect(root.MASKABLE_DOCUMENT_TYPES).toContain('cpf');
+  });
+
   it('re-exports CNPJ API from cnpj entry', () => {
     expect(cnpjEntry.validateCnpj).toBe(root.validateCnpj);
   });

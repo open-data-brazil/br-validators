@@ -34,6 +34,7 @@
     "detect",
     "sanitize",
     "generate",
+    "mask",
     "typescript"
   ],
   "publishConfig": {
@@ -122,6 +123,10 @@
     "./generate": {
       "types": "./dist/generate.d.ts",
       "import": "./dist/generate.js"
+    },
+    "./mask": {
+      "types": "./dist/mask.d.ts",
+      "import": "./dist/mask.js"
     }
   },
   "files": [

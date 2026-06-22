@@ -518,6 +518,58 @@ sanitize(' 123.456.789-09 ', 'cpf');
 // → { ok: true, value: '12345678909', fixes: ['trimmed', 'removed_non_digits'] }
 ```
 
+### `mask(raw, type, options?)`
+
+Import: `@br-validators/core/mask` or barrel.
+
+Unified display mask — delegates to per-type `format*` functions. **Never throws** — same `FormatResult` as `formatCpf`, `formatTelefone`, etc. Official mask rules per type: [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+```typescript
+type MaskableDocumentType =
+  | 'cpf' | 'cnpj' | 'cep' | 'placa' | 'pis-pasep' | 'telefone'
+  | 'cnh' | 'renavam' | 'titulo-eleitor' | 'nfe-chave' | 'boleto'
+  | 'cartao-credito' | 'inscricao-estadual' | 'inscricao-estadual-produtor-rural'
+  | 'pix';
+
+type MaskOptions = { uf?: UfCode };
+
+function mask(raw: string, type: MaskableDocumentType, options?: MaskOptions): FormatResult;
+function maskRuntime(type: string, raw: string, options?: MaskOptions): FormatResult;
+function isMaskableDocumentType(type: string): type is MaskableDocumentType;
+```
+
+`inscricao-estadual` requires `options.uf`. Use type `'telefone'` (not `'phone'`). Invalid input returns `{ ok: false, code, message }` — **no partial mask** (BR-GLOBAL-002).
+
+| Type | Official source | Mask example |
+|------|-----------------|--------------|
+| `cpf` | [RFB CPF](https://www.gov.br/receitafederal/pt-br/assuntos/cpf) | `123.456.789-09` |
+| `cnpj` | [RFB CNPJ alfanumérico FAQ](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/cnpj/cnpj-alfanumerico.pdf) | `12.ABC.345/01DE-35` |
+| `cep` | [Correios API Busca CEP](https://www.correios.com.br/atendimento/developers/manuais/manual-api-busca-cep) | `01310-100` |
+| `telefone` | [Anatel Plano de Numeração](https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro) | `(11) 99999-9999` |
+| `cnh` | [CONTRAN 511/2014](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) | 11 contiguous digits |
+| `renavam` | [Portaria DENATRAN 27/2013](https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf) | 11 contiguous digits |
+| `titulo-eleitor` | [TSE Res. 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) | `0043 5687 0906` |
+| `nfe-chave` | [Portal NF-e MOC](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) | 11 groups of 4 digits |
+| `boleto` | [FEBRABAN FB-0061/2021](https://cmsarquivos.febraban.org.br/Arquivos/documentos/PDF/Conven%C3%A7%C3%A3o%20da%20Cobran%C3%A7a%20-%2005_02_2021_f.pdf) | FEBRABAN linha digitável |
+| `cartao-credito` | [ISO/IEC 7812-1:2017](https://www.iso.org/standard/70484.html) | Grouped PAN |
+| `pis-pasep` | [SIPREV RV_03](https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf) | `100.27230.88-8` |
+| `pix` | [Bacen DICT API v2.9](https://aprendervalor.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT_v2-9-0.html) | Per key type (CPF/CNPJ mask, `+55…` phone) |
+| `inscricao-estadual` | Per-UF SEFAZ — `getIeOfficialSourceUrl(uf)` | SP/DF display masks |
+| `inscricao-estadual-produtor-rural` | [SEFAZ-SP cad_SP](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) | `P-01100424.3/002` |
+| `placa` | [CONTRAN 729/2018](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao7292018consolidada.pdf) | Canonical uppercase (no decorative mask) |
+
+```typescript
+import { mask } from '@br-validators/core/mask';
+
+mask('12345678909', 'cpf');
+// → { ok: true, formatted: '123.456.789-09' }
+
+mask('11999999999', 'telefone');
+// → { ok: true, formatted: '(11) 99999-9999' }
+```
+
+Implementation: `strip → validate → apply mask` via existing `format*`. See [use-cases/UC-003-format-document.md](use-cases/UC-003-format-document.md).
+
 ### `generate(type, options?)`
 
 Import: `@br-validators/core/generate` or barrel.

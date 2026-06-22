@@ -147,6 +147,8 @@ export { detect } from './detect.js';
 export type { DetectOptions, DetectResult, DetectableDocumentType } from './detect.js';
 export { sanitize } from './sanitize.js';
 export type { SanitizeOptions, SanitizeResult, SanitizableDocumentType } from './sanitize.js';
+export { mask, maskRuntime, isMaskableDocumentType, MASKABLE_DOCUMENT_TYPES } from './mask.js';
+export type { MaskableDocumentType, MaskOptions } from './mask.js';
 export { generate } from './generate.js';
 export type { GenerateOptions, GeneratableDocumentType, GeneratableCardBrand } from './generate.js';
 export { isGeneratableCardBrand, GENERATABLE_CARD_BRANDS } from './generate.js';

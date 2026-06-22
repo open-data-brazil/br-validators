@@ -51,8 +51,10 @@ jobs:
           VERSION="${{ steps.version.outputs.version }}"
           CORE="$(jq -r .version packages/br-validators/package.json)"
           CLI="$(jq -r .version apps/cli/package.json)"
-          if [ "$VERSION" != "$CORE" ] || [ "$VERSION" != "$CLI" ]; then
-            echo "Tag version $VERSION does not match package.json (core=$CORE, cli=$CLI)"
+          ZOD="$(jq -r .version packages/br-validators-zod/package.json)"
+          RHF="$(jq -r .version packages/br-validators-rhf/package.json)"
+          if [ "$VERSION" != "$CORE" ] || [ "$VERSION" != "$CLI" ] || [ "$VERSION" != "$ZOD" ] || [ "$VERSION" != "$RHF" ]; then
+            echo "Tag version $VERSION does not match package.json (core=$CORE, cli=$CLI, zod=$ZOD, rhf=$RHF)"
             exit 1
           fi
 
@@ -79,11 +81,23 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Publish @br-validators/zod
+        run: pnpm --filter @br-validators/zod publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @br-validators/react-hook-form
+        run: pnpm --filter @br-validators/react-hook-form publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Point npm latest at release
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           npm dist-tag add "@br-validators/core@${VERSION}" latest
           npm dist-tag add "@br-validators/cli@${VERSION}" latest
+          npm dist-tag add "@br-validators/zod@${VERSION}" latest
+          npm dist-tag add "@br-validators/react-hook-form@${VERSION}" latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
