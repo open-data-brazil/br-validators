@@ -16,21 +16,34 @@
 
 ## Release flow (automated npm publish)
 
+**Order matters:** bump `package.json` **before** creating the git tag. The Release workflow fails if the tag does not match both `packages/br-validators/package.json` and `apps/cli/package.json`.
+
 After merge to `main`:
 
 ```bash
-# 1. Bump versions (packages/br-validators + apps/cli) and update CHANGELOG on main
-# 2. Commit version bump PR (or include in release PR)
-git tag -a v0.11.0-alpha.0 -m "Release v0.11.0-alpha.0"
-git push origin v0.11.0-alpha.0
+# 1. Bump version in BOTH package.json files (same semver)
+#    packages/br-validators/package.json  →  "version": "0.11.0-alpha.1"
+#    apps/cli/package.json                →  "version": "0.11.0-alpha.1"
+# 2. Move CHANGELOG [Unreleased] → [0.11.0-alpha.1] - YYYY-MM-DD
+# 3. Commit and push to main (via PR from developing)
+
+# 4. Only then — tag must match package.json (with v prefix)
+git tag -a v0.11.0-alpha.1 -m "Release v0.11.0-alpha.1"
+git push origin v0.11.0-alpha.1
 ```
+
+| Tag pushed | `package.json` version | Result |
+|------------|------------------------|--------|
+| `v0.11.0-alpha.1` | `0.11.0-alpha.0` | **Fails** — version mismatch |
+| `v0.11.0-alpha.1` | `0.11.0-alpha.1` | **Publishes** |
 
 Pushing tag `v*` triggers [`.github/workflows/release.yml`](../.github/workflows/release.yml):
 
 1. Verifies tag matches `package.json` versions (core + cli)
 2. Runs `pnpm verify`
 3. Publishes `@br-validators/core` then `@br-validators/cli` to npm (`alpha` tag)
-4. Creates GitHub Release (if missing)
+4. Sets npm **`latest`** dist-tag to the new version (npmjs.com default view)
+5. Creates GitHub Release (if missing)
 
 ### One-time setup: `NPM_TOKEN`
 

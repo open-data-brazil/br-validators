@@ -5,6 +5,26 @@ alwaysApply: false
 
 # npm publish + CI — known failures
 
+> **Release checklist (version + tag + publish):** see `release-version-publish.mdc`.
+
+## Release CI: tag vs package.json mismatch
+
+**Symptom:**
+
+```
+Tag version 0.11.0-alpha.1 does not match package.json (core=0.11.0-alpha.0, cli=0.11.0-alpha.0)
+```
+
+**Cause:** Git tag pushed **before** bumping `packages/br-validators/package.json` and `apps/cli/package.json`.
+
+**Fix:**
+
+1. Bump both `package.json` to the target version; update `CHANGELOG`; merge to `main`.
+2. Delete erroneous tag: `git push origin :refs/tags/vX.Y.Z`
+3. Tag `main` HEAD: `git tag -a vX.Y.Z -m "Release vX.Y.Z" && git push origin vX.Y.Z`
+
+**Prevent:** run pre-tag check in `release-version-publish.mdc`.
+
 ## npm `401 Unauthorized` / `whoami` fails
 
 **Cause:** Not logged in or expired token.

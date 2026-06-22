@@ -79,6 +79,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Point npm latest at release
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          npm dist-tag add "@br-validators/core@${VERSION}" latest
+          npm dist-tag add "@br-validators/cli@${VERSION}" latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Create GitHub Release
         run: |
           TAG="${{ steps.version.outputs.tag }}"

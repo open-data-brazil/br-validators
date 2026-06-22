@@ -1,0 +1,76 @@
+---
+description: Release checklist — version bump, tag, npm publish, avoid CI mismatch
+globs: packages/br-validators/package.json,apps/cli/package.json,CHANGELOG.md,.github/workflows/release.yml,docs/BRANCHING.md,docs/VERSIONING.md
+alwaysApply: false
+---
+
+# Release + publish — agent checklist
+
+> **Trigger:** version bump, `git tag`, npm publish, GitHub Release, `release.yml`, CHANGELOG.
+
+## Non-negotiable order
+
+1. `pnpm verify` green on `developing`
+2. PR `developing` → `main` (CI `test` + approval)
+3. **Bump version** in **both** publishable packages (same semver)
+4. **CHANGELOG** — move `[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`
+5. Commit + merge to `main`
+6. **Only then** create and push git tag `vX.Y.Z`
+7. Release workflow publishes npm + GitHub Release
+8. Sync `developing` from `main`
+
+**NEVER** push a tag before step 3–5. Release CI fails with:
+
+```
+Tag version X.Y.Z does not match package.json (core=…, cli=…)
+```
+
+## Files that MUST match
+
+| File | Field |
+|------|--------|
+| `packages/br-validators/package.json` | `"version"` |
+| `apps/cli/package.json` | `"version"` |
+| Git tag | `v` + same semver (e.g. `v0.11.0-alpha.1`) |
+
+Adapter packages (`@br-validators/zod`, `@br-validators/react-hook-form`) are **not** npm-published yet — do not require tag sync unless added to `release.yml`.
+
+## Pre-tag verification (run before `git tag`)
+
+```bash
+VERSION="0.11.0-alpha.1"   # planned release — no v prefix
+CORE=$(jq -r .version packages/br-validators/package.json)
+CLI=$(jq -r .version apps/cli/package.json)
+test "$VERSION" = "$CORE" && test "$CORE" = "$CLI" && echo "OK" || echo "MISMATCH — fix package.json first"
+git tag -l "v$VERSION"     # must be empty before new tag
+```
+
+## Tag + publish (automated)
+
+```bash
+git checkout main && git pull
+git tag -a v0.11.0-alpha.1 -m "Release v0.11.0-alpha.1"
+git push origin v0.11.0-alpha.1
+```
+
+Workflow: `.github/workflows/release.yml` — requires secret **`NPM_TOKEN`**. Publishes with dist-tag `alpha` (or `beta`/`rc`/`latest` by version) and updates npm **`latest`** so [npmjs.com](https://www.npmjs.com/package/@br-validators/core) shows the current release.
+
+## Common mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Tag `v0.11.0-alpha.1` but `package.json` still `0.11.0-alpha.0` | Bump both `package.json`, merge `main`, delete bad tag, retag |
+| Tag on wrong commit (old code) | Delete remote tag + release; tag `main` HEAD after merge |
+| `ERR_PNPM_GIT_UNCLEAN` on local publish | Commit first; CI uses `--no-git-checks` |
+| Re-tag same version already on npm | Bump to next patch/prerelease — npm rejects duplicate |
+| `core` and `cli` different versions | Set both to identical semver before tag |
+
+## Agent duties on release tasks
+
+1. Bump **both** `package.json` files in the same commit.
+2. Update `CHANGELOG.md` for the release scope only.
+3. Run pre-tag verification commands; report mismatch before tagging.
+4. Do **not** paste or commit `NPM_TOKEN` — GitHub secret only.
+5. After release, confirm: `npm view @br-validators/core@alpha version` and GitHub Release URL.
+
+**Docs:** `docs/BRANCHING.md`, `docs/VERSIONING.md` — **Troubleshooting:** `npm-publish-ci.mdc`

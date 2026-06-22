@@ -1,0 +1,33 @@
+name: npm dist-tag latest
+
+# One-off or manual: point npm "latest" at an already-published version.
+# npmjs.com shows the "latest" dist-tag by default (not "alpha").
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Published version to set as latest (e.g. 0.11.0-alpha.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  dist-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Set latest dist-tag
+        run: |
+          VERSION="${{ inputs.version }}"
+          npm dist-tag add "@br-validators/core@${VERSION}" latest
+          npm dist-tag add "@br-validators/cli@${VERSION}" latest
+          npm view @br-validators/core dist-tags
+          npm view @br-validators/cli dist-tags
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
