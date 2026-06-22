@@ -20,7 +20,7 @@ Could not find a declaration file for module '@br-validators/core'
 | App | `tsconfig` paths | Points to |
 |-----|------------------|-----------|
 | `apps/cli` | `@br-validators/core` → `../../packages/br-validators/src/index.ts` | **Source** (IDE works without build) |
-| `apps/playground` | same | **Source** |
+| `apps/playground` | none — uses workspace `dist/` via `prebuild` + `transpilePackages` | **dist** (Next.js cannot bundle core `src/` `.js` imports) |
 
 `pretypecheck` on CLI/playground still runs `pnpm --filter @br-validators/core build` before `tsc` in CI scripts.
 

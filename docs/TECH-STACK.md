@@ -23,9 +23,11 @@
 
 | Package / app | Role | Deploy |
 |---------------|------|--------|
-| `packages/br-validators` | Core library — strip, validate, format | npm |
+| `packages/br-validators` | Core library — strip, validate, format | npm `@br-validators/core` |
+| `packages/br-validators-zod` | Zod schemas — delegates to core | npm `@br-validators/zod` |
+| `packages/br-validators-rhf` | React Hook Form rules + resolvers | npm `@br-validators/react-hook-form` |
 | `apps/playground` | Clean web UI to test **all** document types | Vercel |
-| `apps/cli` | Terminal tool to test **all** document types | npm bin `br-validators` |
+| `apps/cli` | Terminal tool to test **all** document types | npm `@br-validators/cli` |
 
 Every validator (CPF, CNPJ, CEP, placa, PIX, boleto, …) is available in:
 
@@ -59,20 +61,17 @@ Consumers get compile-time safety: a `string` from user input cannot be passed w
 ```
 br-validators/
 ├── packages/
-│   └── br-validators/          # @scope/br-validators — MIT, zero runtime deps
-│       ├── src/core/           # algorithms (official sources only)
-│       ├── src/strip/
-│       ├── src/format/
-│       ├── src/types/
-│       └── tests/vectors/
+│   ├── br-validators/          # @br-validators/core — MIT, zero runtime deps
+│   │   ├── src/core/
+│   │   ├── src/strip/
+│   │   ├── src/format/
+│   │   └── tests/vectors/
+│   ├── br-validators-zod/      # @br-validators/zod — peer: zod
+│   └── br-validators-rhf/      # @br-validators/react-hook-form — peer: RHF + react
 ├── apps/
-│   ├── playground/             # Next.js (or similar) — Vercel
-│   │   ├── app/
-│   │   └── components/         # clean, minimal UI per doc type
-│   └── cli/                    # Commander or citty — wraps br-validators
-│       └── src/commands/       # one command group per doc type
+│   ├── playground/             # Next.js — Vercel
+│   └── cli/                    # Commander — npm @br-validators/cli
 ├── pnpm-workspace.yaml
-└── turbo.json                  # optional — build orchestration
 ```
 
 ---

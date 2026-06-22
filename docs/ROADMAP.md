@@ -86,9 +86,21 @@
 - Boleto arrecadação validation
 - Alphanumeric CPF (when RFB publishes spec)
 - IE SP rural `P…` format
-- `@br-validators/adapters-correios` — CEP HTTP lookup
-- `@br-validators/react` — masked input hooks
+- `@br-validators/adapters-correios` — CEP HTTP lookup (F-06)
+- `@br-validators/react` — masked input hooks (F-07)
 - Playwright E2E for playground
+
+---
+
+## Phase 10 — Integrations (v0.11.0-alpha) — partial ✅
+
+| Module | Package | Status |
+|--------|---------|--------|
+| **Zod schemas (F-04)** | `@br-validators/zod` | Shipped — delegates to core `validate*` |
+| **React Hook Form (F-05)** | `@br-validators/react-hook-form` | Shipped — `*Rule()` + `*Resolver()` |
+| CEP HTTP lookup (F-06) | — | Backlog |
+| React masked inputs (F-07) | — | Backlog |
+| PHP port (F-08) | — | Backlog |
 
 ---
 

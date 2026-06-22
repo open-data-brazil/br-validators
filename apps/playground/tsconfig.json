@@ -23,9 +23,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@br-validators/core": ["../../packages/br-validators/src/index.ts"],
-      "@br-validators/core/*": ["../../packages/br-validators/src/*.ts"]
+      "@/*": ["./*"]
     }
   },
   "include": [
