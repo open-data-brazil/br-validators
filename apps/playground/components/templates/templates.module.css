@@ -7,10 +7,21 @@
 .content {
   min-width: 0;
   position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.mobileHeader {
-  display: none;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .desktopSidebar {
@@ -21,10 +32,15 @@
   display: none;
 }
 
-.mobileHeaderLeft {
+.headerLeft,
+.headerRight {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+}
+
+.menuButton {
+  display: none;
 }
 
 .backdrop {
@@ -36,17 +52,8 @@
     grid-template-columns: 1fr;
   }
 
-  .mobileHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
+  .header {
     padding: var(--space-4);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-surface);
-    position: sticky;
-    top: 0;
-    z-index: 10;
   }
 
   .desktopSidebar {
@@ -61,6 +68,7 @@
     transform: translateX(-100%);
     transition: transform 0.2s ease;
     z-index: 30;
+    box-shadow: var(--shadow-md);
   }
 
   .mobileSidebarOpen {
@@ -73,5 +81,9 @@
     inset: 0;
     background: rgb(0 0 0 / 45%);
     z-index: 20;
+  }
+
+  .menuButton {
+    display: inline-flex;
   }
 }

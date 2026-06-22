@@ -8,6 +8,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: var(--space-5);
+  overflow: auto;
 }
 
 .brandTitle {
@@ -60,9 +61,8 @@
 }
 
 .panel {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-6);
+  width: 100%;
+  padding: var(--space-6);
   display: grid;
   gap: var(--space-5);
 }
@@ -91,4 +91,10 @@
   margin: 0;
   font-size: var(--text-md);
   color: var(--text-muted);
+}
+
+@media (min-width: 1200px) {
+  .panel {
+    padding: var(--space-8);
+  }
 }

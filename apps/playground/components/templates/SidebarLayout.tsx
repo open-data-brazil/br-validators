@@ -13,9 +13,10 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
     <div className={styles.shell}>
       <Sidebar className={styles.desktopSidebar} />
       <div className={styles.content}>
-        <header className={styles.mobileHeader}>
-          <div className={styles.mobileHeaderLeft}>
+        <header className={styles.header}>
+          <div className={styles.headerLeft}>
             <Button
+              className={styles.menuButton}
               variant="icon"
               size="sm"
               aria-label="Open menu"
@@ -28,7 +29,7 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
             </Button>
             <span>BR Validators Playground</span>
           </div>
-          <div className={styles.mobileHeaderLeft}>
+          <div className={styles.headerRight}>
             <ThemeToggle />
           </div>
         </header>
