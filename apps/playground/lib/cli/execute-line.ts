@@ -1,4 +1,4 @@
-import { runCaptured } from '@/lib/cli/run-captured';
+import { runCaptured, type CliRunResult } from '@/lib/cli/run-captured';
 import { tokenize } from '@/lib/cli/tokenize';
 
 export type TerminalLineResult =
@@ -32,7 +32,7 @@ export function executeTerminalLine(line: string): TerminalLineResult {
     return { type: 'output', text: '', isError: false };
   }
 
-  const result = runCaptured(buildArgv(tokens));
+  const result: CliRunResult = runCaptured(buildArgv(tokens));
   const text = [result.stdout, result.stderr].filter(Boolean).join('\n');
 
   return {
