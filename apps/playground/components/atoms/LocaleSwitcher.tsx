@@ -1,25 +1,14 @@
 'use client';
 
-import Image from 'next/image';
+import { FlagBr, FlagUs } from '@/components/atoms/flags';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { LOCALES, type Locale } from '@/lib/i18n/types';
 import styles from './atoms.module.css';
 
-export function FlagIcon({ locale }: { locale: Locale }) {
-  const meta = LOCALES.find((item) => item.code === locale);
-  if (!meta) return null;
-
-  return (
-    <Image
-      src={meta.flag}
-      alt=""
-      width={20}
-      height={14}
-      className={styles.flagImg}
-      priority
-    />
-  );
-}
+const FLAG_BY_LOCALE: Record<Locale, typeof FlagBr> = {
+  pt: FlagBr,
+  en: FlagUs,
+};
 
 export function LocaleSwitcher() {
   const { locale, setLocale, messages } = useI18n();
@@ -28,6 +17,7 @@ export function LocaleSwitcher() {
     <div className={styles.localeSwitcher} role="group" aria-label={messages.actions.selectLanguage}>
       {LOCALES.map((item) => {
         const active = item.code === locale;
+        const Flag = FLAG_BY_LOCALE[item.code];
         return (
           <button
             key={item.code}
@@ -40,7 +30,7 @@ export function LocaleSwitcher() {
               setLocale(item.code);
             }}
           >
-            <FlagIcon locale={item.code} />
+            <Flag className={styles.flagSvg} />
           </button>
         );
       })}

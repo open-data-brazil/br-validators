@@ -205,10 +205,10 @@
   box-shadow: var(--shadow-sm);
 }
 
-.flagImg {
+.flagSvg {
   display: block;
   width: 20px;
-  height: auto;
+  height: 14px;
   border-radius: 2px;
-  object-fit: cover;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 8%);
 }

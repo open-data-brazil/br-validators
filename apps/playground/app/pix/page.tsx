@@ -1,5 +1,5 @@
-import { DocumentWorkspace } from '@/components/organisms/DocumentWorkspace';
+import { PixWorkspace } from '@/components/organisms/PixWorkspace';
 
 export default function PixPage() {
-  return <DocumentWorkspace slug="pix" />;
+  return <PixWorkspace />;
 }

@@ -45,16 +45,16 @@
 }
 
 html[data-theme='light'] {
-  --bg-base: #f5f5f5;
+  --bg-base: #f4f6fb;
   --bg-surface: #fff;
-  --bg-subtle: #ebebeb;
-  --border: #d4d4d4;
-  --text-primary: #171717;
-  --text-muted: #525252;
-  --accent: #262626;
-  --accent-hover: #404040;
-  --accent-fg: #fafafa;
-  --accent-muted: #737373;
-  --focus-ring: #525252;
-  --focus-ring-alpha: rgb(82 82 82 / 18%);
+  --bg-subtle: #eef2ff;
+  --border: #d0d8ec;
+  --text-primary: #0b1020;
+  --text-muted: #4b5a72;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-fg: #fff;
+  --accent-muted: #2563eb;
+  --focus-ring: #2563eb;
+  --focus-ring-alpha: rgb(37 99 235 / 18%);
 }

@@ -130,6 +130,24 @@ export const en = {
     officialSource: 'Official source',
     loading: 'Loading…',
   },
+  pixQr: {
+    title: 'PIX QR Code',
+    hint: 'Static BR Code (EMV) — scan with any PIX app.',
+    keyRequired: 'Enter a valid PIX key above to build the QR code.',
+    formTitle: 'QR code details',
+    formHint: 'Merchant name and city are required per Bacen BR Code spec.',
+    merchantName: 'Merchant name',
+    merchantCity: 'City',
+    amount: 'Amount (optional)',
+    amountPlaceholder: 'e.g. 10.50',
+    txid: 'Transaction ID (txid)',
+    downloadPng: 'PNG',
+    downloadJpeg: 'JPEG',
+    downloadWebp: 'WebP',
+    downloadSvg: 'SVG',
+    copyPayload: 'Copy BR Code',
+    copyImage: 'Copy image',
+  },
 } as const;
 
 export type Messages = typeof en;

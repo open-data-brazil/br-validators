@@ -119,7 +119,7 @@
 .tabActive {
   color: var(--text-primary);
   background: var(--bg-subtle);
-  border-color: var(--border);
+  border-color: var(--accent-muted);
 }
 
 .fixes {

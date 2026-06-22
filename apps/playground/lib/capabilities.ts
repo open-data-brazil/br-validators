@@ -50,7 +50,7 @@ export const CAPABILITIES: Record<DocumentSlug, DocumentCapabilities> = {
   'titulo-eleitor': { validate: true, format: true, strip: true, sanitize: true, generate: false },
   'nfe-chave': { validate: true, format: true, strip: true, sanitize: true, generate: false, parse: true },
   ie: { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },
-  pix: { validate: true, format: true, strip: false, sanitize: false, generate: true, qrCode: true },
+  pix: { validate: true, format: true, strip: false, sanitize: false, generate: true },
   brcode: { validate: true, format: false, strip: false, sanitize: false, generate: false, parse: true, multiline: true },
   boleto: { validate: true, format: true, strip: true, sanitize: true, generate: false, convert: true, multiline: true },
   cartao: { validate: true, format: true, strip: true, sanitize: true, generate: true },

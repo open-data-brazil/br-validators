@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useMemo, useState } from 'react';
+import { useId, useMemo, useState, type ReactNode } from 'react';
 import {
   IE_SUPPORTED_UFS,
   validatePixKey,
@@ -37,9 +37,10 @@ const UF_LABELS: Record<UfCode, string> = {
 
 type Props = {
   slug: DocumentSlug;
+  renderAfter?: (ctx: { input: string }) => ReactNode;
 };
 
-export function DocumentWorkspace({ slug }: Props) {
+export function DocumentWorkspace({ slug, renderAfter }: Props) {
   const panelId = useId();
   const { messages } = useI18n();
   const meta = DOCUMENT_META[slug];
@@ -187,7 +188,9 @@ export function DocumentWorkspace({ slug }: Props) {
         </ResultSection>
       ) : null}
 
-      {capabilities.qrCode && pixValidation?.ok ? (
+      {renderAfter?.({ input })}
+
+      {capabilities.qrCode && !renderAfter && pixValidation?.ok ? (
         <QrCodePanel value={pixValidation.value} />
       ) : null}
 
