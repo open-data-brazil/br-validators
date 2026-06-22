@@ -1,0 +1,32 @@
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.content {
+  min-width: 0;
+}
+
+.mobileHeader {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
