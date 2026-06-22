@@ -1,0 +1,76 @@
+.stack {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.inputRow {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 700px) {
+  .inputRow {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+.section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--text-md);
+  color: var(--text-muted);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.rowLabel {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.rowValue {
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+}
+
+.link {
+  color: var(--accent);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.copyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.copyLabel {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}

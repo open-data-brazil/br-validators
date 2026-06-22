@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
   PIX_DICT_API_SOURCE_URL,
@@ -9,6 +8,14 @@ import {
   formatPixKey,
   validatePixKey,
 } from '@br-validators/core';
+import { CliCommandHint } from '@/components/molecules/CliCommandHint';
+import { DocumentInput } from '@/components/molecules/DocumentInput';
+import { OfficialSourceLink } from '@/components/molecules/OfficialSourceLink';
+import { ResultRow } from '@/components/molecules/ResultRow';
+import { ResultSection } from '@/components/molecules/ResultSection';
+import { QrCodePanel } from '@/components/organisms/QrCodePanel';
+import { ValidatorPanel } from '@/components/organisms/ValidatorPanel';
+import { generatePixEvp } from '@/lib/generators';
 
 export default function PixPlaygroundPage() {
   const [input, setInput] = useState('pix@bcb.gov.br');
@@ -22,46 +29,22 @@ export default function PixPlaygroundPage() {
     : '';
 
   return (
-    <main style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1.5rem' }}>
-      <Link href="/" style={{ color: '#7aa2ff', textDecoration: 'none' }}>
-        ← All types
-      </Link>
-      <h1 style={{ fontSize: '1.75rem', margin: '1rem 0 0.5rem' }}>PIX Key Validator</h1>
-      <p style={{ color: '#9aa5bd', marginBottom: '1.5rem' }}>
-        CPF · CNPJ · email · phone (+55) · EVP — format only · no DICT lookup
-      </p>
-
-      <label style={{ display: 'block', marginBottom: '0.5rem', color: '#9aa5bd' }}>Input</label>
-      <input
+    <ValidatorPanel title="PIX Key Validator" description="CPF · CNPJ · email · phone (+55) · EVP">
+      <DocumentInput
+        id="pix-input"
+        label="Input"
         value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
+        onChange={(value) => {
+          setInput(value);
         }}
-        style={{
-          width: '100%',
-          boxSizing: 'border-box',
-          padding: '0.85rem 1rem',
-          borderRadius: 10,
-          border: '1px solid #24304d',
-          background: '#141b2f',
-          color: '#e8ecf4',
-          fontSize: '1rem',
+        onGenerate={() => {
+          setInput(generatePixEvp());
         }}
       />
 
-      <section
-        style={{
-          marginTop: '1.5rem',
-          padding: '1.25rem',
-          borderRadius: 12,
-          background: '#141b2f',
-          border: '1px solid #24304d',
-          display: 'grid',
-          gap: '0.75rem',
-        }}
-      >
-        <Row label="Detect" value={detectedType ?? '—'} />
-        <Row
+      <ResultSection>
+        <ResultRow label="Detect" value={detectedType ?? '—'} />
+        <ResultRow
           label="Valid"
           value={
             validation
@@ -71,45 +54,14 @@ export default function PixPlaygroundPage() {
               : '—'
           }
         />
-        <Row label="Value" value={validation?.ok ? validation.value : '—'} />
-        <Row label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
-      </section>
+        <ResultRow label="Value" value={validation?.ok ? validation.value : '—'} />
+        <ResultRow label="Format" value={formatted?.ok ? formatted.formatted : formatted?.ok === false ? formatted.message : '—'} />
+      </ResultSection>
 
-      <p style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
-        Official sources:{' '}
-        <a href={PIX_OFFICIAL_SOURCE_URL} target="_blank" rel="noreferrer" style={{ color: '#7aa2ff' }}>
-          Manual Iniciação Pix
-        </a>
-        {' · '}
-        <a href={PIX_DICT_API_SOURCE_URL} target="_blank" rel="noreferrer" style={{ color: '#7aa2ff' }}>
-          DICT API
-        </a>
-      </p>
-
-      {cliCommand && (
-        <pre
-          style={{
-            marginTop: '1rem',
-            padding: '1rem',
-            borderRadius: 10,
-            background: '#0f1528',
-            border: '1px solid #24304d',
-            overflow: 'auto',
-            fontSize: '0.85rem',
-          }}
-        >
-          {cliCommand}
-        </pre>
-      )}
-    </main>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: '6rem 1fr', gap: '1rem', alignItems: 'start' }}>
-      <span style={{ color: '#9aa5bd' }}>{label}</span>
-      <code style={{ wordBreak: 'break-all' }}>{value}</code>
-    </div>
+      {validation?.ok ? <QrCodePanel value={validation.value} /> : null}
+      <OfficialSourceLink href={PIX_OFFICIAL_SOURCE_URL} label="Official source: Manual Iniciação Pix" />
+      <OfficialSourceLink href={PIX_DICT_API_SOURCE_URL} label="Official source: DICT API" />
+      <CliCommandHint code={cliCommand} />
+    </ValidatorPanel>
   );
 }
