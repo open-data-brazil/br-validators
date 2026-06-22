@@ -5,6 +5,7 @@ export * from './telefone.js';
 export * from './cnh.js';
 export * from './renavam.js';
 export * from './titulo-eleitor.js';
+export * from './nfe-chave.js';
 export * from './brcode.js';
 export * from './placa.js';
 export * from './pis-pasep.js';

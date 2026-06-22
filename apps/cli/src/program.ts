@@ -8,6 +8,7 @@ import {
   handleCnhCli,
   handleRenavamCli,
   handleTituloEleitorCli,
+  handleNfeChaveCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -26,6 +27,7 @@ import {
   type CnhCliOptions,
   type RenavamCliOptions,
   type TituloEleitorCliOptions,
+  type NfeChaveCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -175,6 +177,26 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: TituloEleitorCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleTituloEleitorCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const nfeChave = program
+    .command('nfe-chave')
+    .description('NF-e / NFC-e chave de acesso — 44 digits (SEFAZ MOC §2.2.6)');
+
+  for (const action of ['validate', 'parse', 'format', 'strip'] as const) {
+    nfeChave
+      .command(action)
+      .description(`${action} an NF-e chave de acesso`)
+      .argument('[value]', 'Chave de acesso (44 digits, spaces allowed)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate/parse only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: NfeChaveCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleNfeChaveCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

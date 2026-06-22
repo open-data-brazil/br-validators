@@ -42,6 +42,7 @@ As each module ships, **all three** must be updated:
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` | [OFFICIAL-SOURCES § CNH](OFFICIAL-SOURCES.md#cnh--reference-index) |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` | [OFFICIAL-SOURCES § RENAVAM](OFFICIAL-SOURCES.md#renavam--reference-index) |
 | Título de Eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo-eleitor …` | `/titulo-eleitor` | [OFFICIAL-SOURCES § Título de Eleitor](OFFICIAL-SOURCES.md#título-de-eleitor--reference-index) |
+| NF-e chave de acesso | `@br-validators/core/nfe-chave` | `br-validators nfe-chave …` | `/nfe-chave` | [OFFICIAL-SOURCES § NF-e chave](OFFICIAL-SOURCES.md#nf-e--nfc-e-chave-de-acesso--reference-index) |
 | BR Code | `@br-validators/core/brcode` | `br-validators brcode …` | `/brcode` | [Bacen Manual BR Code](OFFICIAL-SOURCES.md) |
 | Placa | `@br-validators/core/placa` | `br-validators placa …` | Placa | [CONTRAN 729/2018](OFFICIAL-SOURCES.md) |
 | PIS/PASEP | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | PIS/PASEP | [SIPREV RV_03](OFFICIAL-SOURCES.md) |

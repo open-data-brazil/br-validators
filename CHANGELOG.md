@@ -35,6 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Subpath `@br-validators/core/titulo-eleitor`
 - CLI `br-validators titulo-eleitor validate|format|strip`
 - Playground `/titulo-eleitor`
+- **NF-e chave de acesso (Phase 15):** `validateNfeChave`, `parseNfeChave`, `formatNfeChave`, `stripNfeChave` — 44-digit access key, modulo 11 DV (MOC §2.2.6.2), IBGE cUF + modelo 55/65
+- Subpath `@br-validators/core/nfe-chave`
+- CLI `br-validators nfe-chave validate|parse|format|strip`
+- Playground `/nfe-chave`
 
 ### Changed
 

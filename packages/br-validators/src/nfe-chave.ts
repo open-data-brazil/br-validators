@@ -1,0 +1,42 @@
+export {
+  isValidNfeChave,
+  parseNfeChave,
+  validateNfeChave,
+  computeNfeChaveCheckDigit,
+  computeNfeChaveWeightedSum,
+  isValidNfeChaveCheckDigit,
+  parseNfeChaveParts,
+  resolveNfeChaveCheckDigit,
+  NFE_CHAVE_BASE_LENGTH,
+  NFE_CHAVE_DFE_PORTAL_URL,
+  NFE_CHAVE_GOLDEN_PRIMARY,
+  NFE_CHAVE_GOLDEN_SECONDARY,
+  NFE_CHAVE_LENGTH,
+  NFE_CHAVE_MOD,
+  NFE_CHAVE_MOC_DV_SECTION_URL,
+  NFE_CHAVE_MOC_ONLINE_URL,
+  NFE_CHAVE_MOC_PDF_URL,
+  NFE_CHAVE_NFCE_QR_ILLUSTRATIVE,
+  NFE_CHAVE_NFCE_QR_ILLUSTRATIVE_URL,
+  NFE_CHAVE_NUMERIC_PATTERN,
+  NFE_CHAVE_OFFICIAL_SOURCE_URL,
+  NFE_CHAVE_WEIGHT_CYCLE,
+  NFE_IBGE_UF_BY_CODE,
+  NFE_IBGE_UF_CODES,
+  NFE_MODELO_NFCE,
+  NFE_MODELO_NFE,
+  NFE_MODELOS,
+} from './core/nfe-chave/index.js';
+export type { NfeChaveParts } from './core/nfe-chave/parse.js';
+export { stripNfeChave } from './strip/nfe-chave.js';
+export { formatNfeChave } from './format/nfe-chave.js';
+export type {
+  DocumentFormat,
+  FormatResult,
+  NfeChave,
+  NfeChaveParsed,
+  NfeChaveValidationResult,
+  UfCode,
+  ValidationErrorCode,
+  ValidationResult,
+} from './types/validation-result.js';

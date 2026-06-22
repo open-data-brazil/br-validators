@@ -63,6 +63,10 @@
       "types": "./dist/titulo-eleitor.d.ts",
       "import": "./dist/titulo-eleitor.js"
     },
+    "./nfe-chave": {
+      "types": "./dist/nfe-chave.d.ts",
+      "import": "./dist/nfe-chave.js"
+    },
     "./brcode": {
       "types": "./dist/brcode.d.ts",
       "import": "./dist/brcode.js"

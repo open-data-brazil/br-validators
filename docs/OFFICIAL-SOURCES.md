@@ -18,6 +18,7 @@
 | **CNH (Registro Nacional)** | CONTRAN / SENATRAN | [Resolução CONTRAN 511/2014 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [Validar CNH — gov.br](https://www.gov.br/pt-br/servicos/validar-cnh) · Full index: [§ CNH](#cnh--reference-index) | 9 base + 2 DVs = **11 contiguous digits**. Modulo 11 + **desconto**. Golden: **`62472927637`**. |
 | **RENAVAM** | DENATRAN / SENATRAN | [Portaria DENATRAN 27/2013 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf) · [Consultar veículo RENAVAM — gov.br](https://www.gov.br/pt-br/servicos/consultar-dados-de-veiculo-na-base-renavam) · Full index: [§ RENAVAM](#renavam--reference-index) | 10 base + 1 DV = **11 digits**. Modulo 11 **peso 9**. Golden: **`63977791104`**, **`72176426415`**. |
 | **Título de Eleitor** | TSE | [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) · [Res. 23.659/2021](https://www.tse.jus.br/legislacao/compilada/res/2021/resolucao-no-23-659-de-26-de-outubro-de-2021) · Full index: [§ Título de Eleitor](#título-de-eleitor--reference-index) | 8 seq + 2 UF + 2 DV = **12 digits** (13 for SP/MG). Modulo 11 per Art. 10. Golden: **`004356870906`**. **Weights/SP-MG rule:** [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) + [Ghiorzi](http://ghiorzi.org/DVnew.htm#e). |
+| **NF-e chave de acesso** | ENCAT / SEFAZ | [Portal NF-e — MOC index](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · Full index: [§ NF-e chave](#nf-e--nfc-e-chave-de-acesso--reference-index) | **44 digits** — structure + modulo-11 DV on first 43. Models **55** (NF-e) / **65** (NFC-e). Golden: **`52060433009911002506550120000007800267301615`** (MOC §2.2.6.2 worked example, sum=644, DV=5). |
 | **PIX key** | Banco Central | [Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf), [Anexo I — Padrões Iniciação PIX (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf), [DICT API v2.9](https://aprendervalor.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT_v2-9-0.html) | **Key validation (Phase 4):** five types — CPF, CNPJ, email (max 77 lowercase), phone (`+55` mobile), EVP (UUID). Golden: `pix@bcb.gov.br`, `+5510998765432`, `123e4567-e89b-12d3-a456-426655440000`. |
 | **BR Code payload** | Banco Central | [Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões PIX (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf) | EMV TLV + CRC16-CCITT (tag 63). `parseBrCode` / `validateBrCode`. Golden vectors: `tests/vectors/brcode.official.json` (≥5 manual examples). Static EVP CRC `1D3D`. |
 | **Boleto** | FEBRABAN | [Convenção da Cobrança FB-0061/2021 (PDF)](https://cmsarquivos.febraban.org.br/Arquivos/documentos/PDF/Conven%C3%A7%C3%A3o%20da%20Cobran%C3%A7a%20-%2005_02_2021_f.pdf) | Bank boleto: 47-digit linha digitável (modulo 10 field DVs) + 44-digit código de barras (modulo 11 general DV). **Situação 1** (v1): currency `9`, fator+valor campo 5. **Situação 2** (5b): code `988`, currency `0`, ISPB campo 5. Golden: Santander linha ↔ barcode; synthetic Situação 2 pair in `boleto.situacao2.official.json`. 48-digit arrecadação detected but not validated — Phase 5c. |
@@ -126,6 +127,29 @@ Negative cross-UF cases: `ie.negative.official.json`.
 | Weights `[2…9]` / `[7,8,9]` | ❌ Not in text | Wikipedia PT + Ghiorzi |
 | SP/MG remainder 0 → DV=1 | ❌ Not in text | Wikipedia PT + Ghiorzi |
 | UF code table 01–28 | ❌ Referenced, not reproduced | Wikipedia PT + Ghiorzi |
+
+---
+
+## NF-e / NFC-e chave de acesso — reference index
+
+> **Vectors:** `packages/br-validators/tests/vectors/nfe-chave.official.json`  
+> **Caveat:** MOC DANFE NFC-e QR page chave `281708…0824` is illustrative only — DV fails §2.2.6.2 (computed DV=8, stored=4). Use MOC §2.2.6.2 worked example as primary golden.
+
+| Role | Source | URL |
+|------|--------|-----|
+| **Normative index** | Portal Nacional NF-e — MOC 7.0 | https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D |
+| **Normative** | MOC 7.0 Visão Geral (CONFAZ PDF) — §2.2.6.1–2.2.6.2 | https://www.confaz.fazenda.gov.br/legislacao/arquivo-manuais/moc7-visao-geral.pdf |
+| **Normative (online)** | MOC espelho SEFAZ-PR — §2.2.6 | http://moc.sped.fazenda.pr.gov.br/ |
+| **Algorithm** | MOC §2.2.6.2 — Cálculo do DV | http://moc.sped.fazenda.pr.gov.br/#2.2.6.2. Cálculo do Dígito Verificador da Chave de Acesso da NF-e |
+| **Supplementary** | DFe Portal SVRS — NTs / Anexos | https://dfe-portal.svrs.rs.gov.br/NFe/Documentos |
+| **Illustrative only** | MOC DANFE NFC-e QR Code page | http://moc.sped.fazenda.pr.gov.br/DanfeQrCodeNFCe.html |
+
+### Golden vectors
+
+| Vector | Chave (44 digits) | Source |
+|--------|-------------------|--------|
+| **Primary** | `52060433009911002506550120000007800267301615` | MOC §2.2.6.2 — sum=644, remainder=6, DV=5 |
+| **Secondary** | `41180678393592000146558900000006041028190697` | MOC online valid example |
 
 ---
 

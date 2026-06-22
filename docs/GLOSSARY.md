@@ -111,6 +111,14 @@
 **Display mask:** `XXXX XXXX XXXX` (12-digit) or `XXXXX XXXX XXXX` (13-digit).
 **Not the same as:** CPF or RG.
 **Legal reference:** [OFFICIAL-SOURCES.md § Título de Eleitor](OFFICIAL-SOURCES.md#título-de-eleitor--reference-index) — [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) (Art. 10) · Weights: [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) · [Ghiorzi](http://ghiorzi.org/DVnew.htm#e)
+
+---
+
+## NF-e / NFC-e chave de acesso
+
+44-digit numeric access key for electronic fiscal documents (NF-e model 55, NFC-e model 65). Concatenates cUF, AAMM, CNPJ, mod, série, nNF, tpEmis, cNF, and modulo-11 check digit (position 44).
+
+**Legal reference:** [OFFICIAL-SOURCES.md § NF-e chave](OFFICIAL-SOURCES.md#nf-e--nfc-e-chave-de-acesso--reference-index) — [Portal NF-e MOC](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · [MOC §2.2.6.2](http://moc.sped.fazenda.pr.gov.br/#2.2.6.2. Cálculo do Dígito Verificador da Chave de Acesso da NF-e) · Golden: `52060433009911002506550120000007800267301615`
 **Code name:** `TituloEleitor`, format `'numeric'`
 
 ---

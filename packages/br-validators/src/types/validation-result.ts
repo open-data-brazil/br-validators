@@ -40,6 +40,7 @@ export type Cpf = string & { readonly __brand: 'Cpf' };
 export type Cnh = string & { readonly __brand: 'Cnh' };
 export type Renavam = string & { readonly __brand: 'Renavam' };
 export type TituloEleitor = string & { readonly __brand: 'TituloEleitor' };
+export type NfeChave = string & { readonly __brand: 'NfeChave' };
 export type Cep = string & { readonly __brand: 'Cep' };
 export type Placa = string & { readonly __brand: 'Placa' };
 export type PisPasep = string & { readonly __brand: 'PisPasep' };
@@ -92,6 +93,22 @@ export type TituloEleitorValidationResult =
     }
   | { ok: false; code: ValidationErrorCode; message: string; ufCode?: number };
 
+export type NfeChaveParsed = {
+  cUF: string;
+  aamm: string;
+  cnpj: string;
+  mod: string;
+  serie: string;
+  nNF: string;
+  tpEmis: string;
+  cNF: string;
+  cDV: string;
+};
+
+export type NfeChaveValidationResult =
+  | { ok: true; value: NfeChave; format: 'numeric'; parsed: NfeChaveParsed; uf?: UfCode }
+  | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
+
 export type TelefoneValidationResult =
   | { ok: true; value: Telefone; tipo: TelefoneTipo; format: 'telefone' }
   | { ok: false; code: ValidationErrorCode; message: string };
@@ -129,6 +146,10 @@ export function brandRenavam(value: string): Renavam {
 
 export function brandTituloEleitor(value: string): TituloEleitor {
   return value as TituloEleitor;
+}
+
+export function brandNfeChave(value: string): NfeChave {
+  return value as NfeChave;
 }
 
 export function brandCep(value: string): Cep {

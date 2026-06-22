@@ -290,6 +290,49 @@
 
 ---
 
+## NF-e / NFC-e chave de acesso
+
+> **Sources:** [OFFICIAL-SOURCES.md § NF-e chave](OFFICIAL-SOURCES.md#nf-e--nfc-e-chave-de-acesso--reference-index) — [Portal NF-e MOC](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · [MOC online §2.2.6](http://moc.sped.fazenda.pr.gov.br/) · [MOC 7.0 PDF §2.2.6.2](https://www.confaz.fazenda.gov.br/legislacao/arquivo-manuais/moc7-visao-geral.pdf)
+
+### BR-NFE-CHAVE-001 — Length
+
+- **GIVEN** input after strip
+- **WHEN** length ≠ 44
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-NFE-CHAVE-002 — Numeric only
+
+- **GIVEN** input with non-digit characters (after allowing spaces)
+- **WHEN** normalizing
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-NFE-CHAVE-003 — cUF (IBGE)
+
+- **GIVEN** positions 1–2 (cUF)
+- **WHEN** code ∉ IBGE UF table (11–17, 21–29, 31–35, 41–43, 50–53)
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-NFE-CHAVE-004 — Modelo (mod)
+
+- **GIVEN** positions 21–22
+- **WHEN** value ∉ {`55`, `65`}
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-NFE-CHAVE-005 — Check digit (modulo 11)
+
+- **GIVEN** first 43 digits
+- **WHEN** applying weights `2..9` cyclically right-to-left (MOC §2.2.6.2)
+- **THEN** `remainder = sum % 11`; if remainder **0 or 1** → DV = **0**, else DV = **11 − remainder**; mismatch at position 44 → `INVALID_CHECK_DIGIT`
+- **Golden walkthrough:** base `5206043300991100250655012000000780026730161` → sum **644** → remainder **6** → DV **5**
+
+### BR-NFE-CHAVE-006 — Display format
+
+- **GIVEN** valid canonical chave
+- **WHEN** formatting for display
+- **THEN** emit 11 groups of 4 digits separated by spaces
+
+---
+
 ## BR Code
 
 > **Source:** [Bacen Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões para Iniciação do Pix (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf)
