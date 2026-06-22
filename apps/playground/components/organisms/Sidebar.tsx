@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { ToolbarActions } from '@/components/atoms/ToolbarActions';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { SidebarNavLink } from '@/components/organisms/SidebarNavLink';
@@ -81,8 +80,6 @@ export function Sidebar({ className, onNavigate }: { className?: string; onNavig
           onNavigate={onNavigate}
         />
       </div>
-
-      <ToolbarActions />
     </aside>
   );
 }

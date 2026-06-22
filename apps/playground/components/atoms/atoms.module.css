@@ -183,15 +183,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
+  width: 2.35rem;
   height: 2rem;
   padding: 0;
   border: none;
   border-radius: calc(var(--radius-md) - 2px);
   background: transparent;
   cursor: pointer;
-  opacity: 0.65;
-  transition: opacity 0.15s ease, background 0.15s ease;
+  opacity: 0.72;
+  transition: opacity 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .localeButton:hover {
@@ -207,8 +207,50 @@
 
 .flagSvg {
   display: block;
-  width: 20px;
-  height: 14px;
+  width: 22px;
+  height: auto;
+  aspect-ratio: 4 / 3;
   border-radius: 2px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 8%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 10%);
+  object-fit: cover;
+}
+
+.themeToggle {
+  border-width: 1px;
+}
+
+.themeToggleSunBtn {
+  background: rgb(251 191 36 / 12%);
+  border-color: rgb(251 191 36 / 35%);
+}
+
+.themeToggleSunBtn:hover:not(:disabled) {
+  background: rgb(251 191 36 / 20%);
+  border-color: rgb(251 191 36 / 55%);
+}
+
+.themeToggleMoonBtn {
+  background: rgb(99 102 241 / 10%);
+  border-color: rgb(99 102 241 / 28%);
+}
+
+.themeToggleMoonBtn:hover:not(:disabled) {
+  background: rgb(99 102 241 / 18%);
+  border-color: rgb(99 102 241 / 45%);
+}
+
+.themeIconSun {
+  color: #f59e0b;
+}
+
+.themeIconMoon {
+  color: #6366f1;
+}
+
+html[data-theme='dark'] .themeIconSun {
+  color: #fbbf24;
+}
+
+html[data-theme='dark'] .themeIconMoon {
+  color: #a5b4fc;
 }

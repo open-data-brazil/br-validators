@@ -2,12 +2,13 @@ type Props = { className?: string };
 
 export function SunIcon({ className }: Props) {
   return (
-    <svg className={className} width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.75" />
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="5" fill="currentColor" opacity="0.22" />
+      <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.35" />
       <path
-        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+        d="M12 2.5v2.2M12 19.3v2.2M4.5 4.5l1.55 1.55M17.95 17.95l1.55 1.55M2.5 12h2.2M19.3 12h2.2M4.5 19.5l1.55-1.55M17.95 6.05l1.55-1.55"
         stroke="currentColor"
-        strokeWidth="1.75"
+        strokeWidth="2"
         strokeLinecap="round"
       />
     </svg>
@@ -16,11 +17,13 @@ export function SunIcon({ className }: Props) {
 
 export function MoonIcon({ className }: Props) {
   return (
-    <svg className={className} width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
-        d="M20 14.5A8.5 8.5 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"
+        d="M20.5 14.2A8.5 8.5 0 0 1 8.8 3.2 7.2 7.2 0 1 0 20.5 14.2Z"
+        fill="currentColor"
+        fillOpacity="0.28"
         stroke="currentColor"
-        strokeWidth="1.75"
+        strokeWidth="2"
         strokeLinejoin="round"
       />
     </svg>
