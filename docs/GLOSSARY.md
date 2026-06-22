@@ -250,3 +250,28 @@
 
 **Definition:** Primary document from issuing agency (RFB, Bacen, CONTRAN, Correios) — required before shipping a validator.
 **Index:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md)
+
+---
+
+## detect()
+
+**Definition:** Platform API that classifies raw input by trying structural pre-checks and existing `validate*` functions in priority order.
+**Not the same as:** Per-type `detect*` helpers (e.g. `detectPixKeyType`) or online registry lookup.
+**Code name:** `detect`, `DetectResult`
+
+---
+
+## sanitize()
+
+**Definition:** Platform API that applies ETL normalization fixes, records them in `fixes[]`, then validates — never returns a value without passing check digits.
+**Not the same as:** `strip*` (normalization only) or silent auto-correction.
+**Code name:** `sanitize`, `SanitizeResult`
+
+---
+
+## generate()
+
+**Definition:** Platform API that produces **synthetic** valid documents for tests and demos using official DV algorithms and a PRNG (`seed` for reproducibility).
+**Not the same as:** Government ID issuance, golden vectors, or production data.
+**Policy:** BR-GENERATE-001 — synthetic-only; rejects all-same-digit bases where applicable.
+**Code name:** `generate`, `GeneratableDocumentType`

@@ -722,6 +722,44 @@ Each row maps to `validateIe{Uf}` and `BR-IE-{UF}-001`. Algorithm detail: [IE-ST
 
 ---
 
+## Platform APIs
+
+### BR-DETECT-001 — Priority router
+
+- **GIVEN** non-empty raw input
+- **WHEN** calling `detect(raw, options?)`
+- **THEN** run structural pre-checks in fixed priority order; for each candidate call the existing `validate*` (never duplicate DV logic); return first `{ ok: true }` match with `type`, `value`, optional `format` and `meta`
+- **AND** skip 48-digit boleto arrecadação (not validated as standard boleto)
+- **AND** for 11-digit numeric input try CPF → CNH → PIS (RENAVAM equivalent DV may classify as `pis-pasep`)
+- **AND** IE detection runs only when `options.uf` is set; SP `P` prefix → `validateIeProdutorRural`
+- **AND** if no match, return `{ type: 'unknown', ok: false, code: 'UNSUPPORTED_FORMAT', ... }`
+
+Official sources: per detected type — [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+### BR-SANITIZE-001 — Fixes then validate
+
+- **GIVEN** raw input and explicit `SanitizableDocumentType`
+- **WHEN** calling `sanitize(raw, type, options?)`
+- **THEN** apply type-specific fixes (trim, strip separators, uppercase, telefone national normalization, preserve SP rural `P` prefix)
+- **AND** record each fix in `fixes[]`
+- **AND** run matching `validate*` — return `{ ok: true, value, fixes }` or validation failure
+- **AND** require `options.uf` for `inscricao-estadual`
+- **AND** never bypass check-digit validation (unlike bare `strip*`)
+
+### BR-GENERATE-001 — Synthetic-only generation
+
+- **GIVEN** `GeneratableDocumentType` and optional `{ format, masked, seed }`
+- **WHEN** calling `generate(type, options?)`
+- **THEN** build random base via PRNG (Mulberry32 when `seed` set); compute check digits using existing official helpers (RFB modulo 11, CONTRAN placa, Anatel DDD, ISO 7812 Luhn)
+- **AND** reject all-same-digit bases for CPF/CNPJ where applicable
+- **AND** assert output passes `validate*` before return
+- **AND** document as **test fixtures only** — not for production or impersonation
+- **NOT** generatable: boleto, NF-e chave, IE, BR Code, PIX
+
+DV sources per type: [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+---
+
 ## Global pipeline rules
 
 ### BR-GLOBAL-001 — Strip before validate

@@ -98,6 +98,18 @@
     "./inscricao-estadual-produtor-rural": {
       "types": "./dist/inscricao-estadual-produtor-rural.d.ts",
       "import": "./dist/inscricao-estadual-produtor-rural.js"
+    },
+    "./detect": {
+      "types": "./dist/detect.d.ts",
+      "import": "./dist/detect.js"
+    },
+    "./sanitize": {
+      "types": "./dist/sanitize.d.ts",
+      "import": "./dist/sanitize.js"
+    },
+    "./generate": {
+      "types": "./dist/generate.d.ts",
+      "import": "./dist/generate.js"
     }
   },
   "files": [

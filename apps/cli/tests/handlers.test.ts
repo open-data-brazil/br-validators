@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleTelefoneCli, handleCnhCli, handleRenavamCli, handleTituloEleitorCli, handleNfeChaveCli, handleBrCodeCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleTelefoneCli, handleCnhCli, handleRenavamCli, handleTituloEleitorCli, handleNfeChaveCli, handleBrCodeCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, handleDetectCli, handleSanitizeCli, handleGenerateCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, CNH_GOLDEN_PRIMARY, RENAVAM_GOLDEN_PRIMARY, TITULO_ELEITOR_GOLDEN_PRIMARY, NFE_CHAVE_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN, TELEFONE_GOLDEN_CELULAR, BRCODE_GOLDEN_STATIC_EVP } from '@br-validators/core';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, CPF_GOLDEN_PRIMARY_MASKED, CNH_GOLDEN_PRIMARY, RENAVAM_GOLDEN_PRIMARY, TITULO_ELEITOR_GOLDEN_PRIMARY, NFE_CHAVE_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN, TELEFONE_GOLDEN_CELULAR, BRCODE_GOLDEN_STATIC_EVP } from '@br-validators/core';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -551,6 +551,49 @@ describe('program', () => {
     }).not.toThrow();
     expect(() => {
       run(['node', 'br-validators', 'ie', 'strip', IE_SP_GOLDEN, '--uf', 'SP', '--quiet']);
+    }).not.toThrow();
+  });
+
+  it('handleDetectCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'detect.txt');
+    writeFileSync(file, CPF_GOLDEN_PRIMARY, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleDetectCli(undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleDetectCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleDetectCli(undefined, { file: '/no/such/detect.txt' }, io)).toBe(EXIT.USAGE);
+  });
+
+  it('handleSanitizeCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'sanitize.txt');
+    writeFileSync(file, CPF_GOLDEN_PRIMARY_MASKED, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleSanitizeCli('cpf', undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleSanitizeCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleSanitizeCli('cpf', undefined, { file: '/no/such/sanitize.txt' }, io)).toBe(EXIT.USAGE);
+  });
+
+  it('handleGenerateCli generates document', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleGenerateCli('cpf', { quiet: true, seed: 42 }, io)).toBe(EXIT.OK);
+  });
+
+  it('run parses platform detect sanitize generate', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'detect', CPF_GOLDEN_PRIMARY, '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'sanitize', 'cpf', CPF_GOLDEN_PRIMARY_MASKED, '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'generate', 'cpf', '--quiet', '--seed', '42']);
     }).not.toThrow();
   });
 });

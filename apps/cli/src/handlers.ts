@@ -15,6 +15,9 @@ import { runBoleto, type BoletoAction, type BoletoConvertDirection } from './com
 import { runCartao, type CartaoAction } from './commands/cartao.js';
 import { runCartaoCredito, type CartaoCreditoAction } from './commands/cartao-credito.js';
 import { runIe, type IeAction } from './commands/ie.js';
+import { runDetect } from './commands/detect.js';
+import { runSanitize } from './commands/sanitize.js';
+import { runGenerate } from './commands/generate.js';
 import { listSupportedTypes } from './commands/list.js';
 import { EXIT } from './constants.js';
 
@@ -59,6 +62,22 @@ export type CartaoCreditoCliOptions = CnpjCliOptions;
 
 export type IeCliOptions = CnpjCliOptions & {
   uf?: string;
+};
+
+export type DetectCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
+
+export type SanitizeCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
+
+export type GenerateCliOptions = {
+  json?: boolean;
+  quiet?: boolean;
+  masked?: boolean;
+  format?: string;
+  seed?: number;
 };
 
 export type CliIo = { stdout: string[]; stderr: string[] };
@@ -524,6 +543,78 @@ export function handleIeCli(
       source: Boolean(opts.source),
       uf: opts.uf,
       file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleDetectCli(
+  value: string | undefined,
+  opts: DetectCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runDetect(
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      uf: opts.uf,
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleSanitizeCli(
+  type: string,
+  value: string | undefined,
+  opts: SanitizeCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runSanitize(
+    type,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      uf: opts.uf,
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleGenerateCli(
+  type: string,
+  opts: GenerateCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runGenerate(
+    type,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      masked: Boolean(opts.masked),
+      format: opts.format,
+      seed: opts.seed,
     },
     io,
   );

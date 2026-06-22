@@ -16,6 +16,9 @@ import {
   handleCartaoCli,
   handleCartaoCreditoCli,
   handleIeCli,
+  handleDetectCli,
+  handleSanitizeCli,
+  handleGenerateCli,
   handlePlacaCli,
   writeCliIo,
   type BoletoCliOptions,
@@ -31,6 +34,9 @@ import {
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
+  type DetectCliOptions,
+  type SanitizeCliOptions,
+  type GenerateCliOptions,
   type PisPasepCliOptions,
   type PixCliOptions,
   type PlacaCliOptions,
@@ -432,6 +438,47 @@ export function createProgram(): Command {
         writeCliIo(io);
       });
   }
+
+  program
+    .command('detect')
+    .description('Detect document type from raw input')
+    .argument('[value]', 'Raw value to classify')
+    .option('--uf <uf>', 'State code for Inscrição Estadual detection')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((value: string | undefined, opts: DetectCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleDetectCli(value, opts, io);
+      writeCliIo(io);
+    });
+
+  program
+    .command('sanitize <type> [value]')
+    .description('Sanitize messy input then validate')
+    .option('--uf <uf>', 'State code (required for inscricao-estadual)')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('-f, --file <path>', 'Read value from file')
+    .action((type: string, value: string | undefined, opts: SanitizeCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleSanitizeCli(type, value, opts, io);
+      writeCliIo(io);
+    });
+
+  program
+    .command('generate <type>')
+    .description('Generate synthetic valid test document')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('--masked', 'Return masked/formatted output')
+    .option('--format <format>', 'Format variant (numeric, alphanumeric, legacy, mercosul, celular, fixo)')
+    .option('--seed <number>', 'Deterministic PRNG seed', (v: string) => Number(v))
+    .action((type: string, opts: GenerateCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleGenerateCli(type, opts, io);
+      writeCliIo(io);
+    });
 
   return program;
 }

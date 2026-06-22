@@ -31,6 +31,9 @@
 | `@br-validators/core/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
 | `@br-validators/core/inscricao-estadual` | Inscrição Estadual — all 27 UFs |
 | `@br-validators/core/inscricao-estadual-produtor-rural` | SP produtor rural IE (Regra II) |
+| `@br-validators/core/detect` | Unified type detection router |
+| `@br-validators/core/sanitize` | ETL fixes + validate pipeline |
+| `@br-validators/core/generate` | Synthetic test document generation |
 
 ---
 
@@ -444,6 +447,114 @@ function isFormattableDocumentType(type: string): type is FormattableDocumentTyp
 Per-type formatters: `formatCpf`, `formatCnpj`, `formatCep`, `formatPlaca`, `formatPisPasep`, `formatPixKey`, `formatBoleto`, `formatCartaoCredito`.
 
 Implementation: `strip → validate → apply mask`. See [use-cases/UC-003-format-document.md](use-cases/UC-003-format-document.md).
+
+---
+
+---
+
+## Platform APIs (Phases 17–19)
+
+Cross-cutting helpers that compose existing per-type validators — **never duplicate check-digit logic**.
+
+### `detect(raw, options?)`
+
+Import: `@br-validators/core/detect` or barrel.
+
+```typescript
+type DetectableDocumentType =
+  | 'cpf' | 'cnpj' | 'cep' | 'placa' | 'pis-pasep' | 'pix'
+  | 'telefone' | 'boleto' | 'cartao-credito' | 'cnh' | 'renavam'
+  | 'nfe-chave' | 'titulo-eleitor' | 'inscricao-estadual'
+  | 'inscricao-estadual-produtor-rural' | 'brcode' | 'unknown';
+
+type DetectOptions = { uf?: UfCode };
+
+type DetectResult =
+  | { type: DetectableDocumentType; ok: true; value: string; format?: DocumentFormat; meta?: Record<string, unknown> }
+  | { type: DetectableDocumentType; ok: false; code: ValidationErrorCode; message: string };
+
+function detect(raw: string, options?: DetectOptions): DetectResult;
+```
+
+**Priority router (first structural match + `validate*` success wins):** boleto (skip 48-digit arrecadação) → NF-e chave → BR Code → CNPJ alphanumeric → CNPJ numeric → 11-digit bucket (CPF → CNH → PIS) → título eleitor (12 digits) → CEP → placa → PIX → telefone → cartão → IE (only when `options.uf` set).
+
+**11-digit note:** PIS and RENAVAM share equivalent modulo-11 math; valid RENAVAM values that also pass PIS validation are classified as `pis-pasep`.
+
+```typescript
+import { detect } from '@br-validators/core/detect';
+
+detect('123.456.789-09');
+// → { type: 'cpf', ok: true, value: '12345678909', format: 'numeric' }
+
+detect('P123456789012', { uf: 'SP' });
+// → { type: 'inscricao-estadual-produtor-rural', ok: true, ... }
+```
+
+### `sanitize(raw, type, options?)`
+
+Import: `@br-validators/core/sanitize` or barrel.
+
+```typescript
+type SanitizableDocumentType =
+  | 'cpf' | 'cnpj' | 'cep' | 'placa' | 'pis-pasep' | 'telefone'
+  | 'cnh' | 'renavam' | 'titulo-eleitor' | 'nfe-chave' | 'boleto'
+  | 'cartao-credito' | 'inscricao-estadual' | 'inscricao-estadual-produtor-rural';
+
+type SanitizeOptions = { uf?: UfCode };
+
+type SanitizeResult =
+  | { ok: true; value: string; fixes: string[] }
+  | { ok: false; code: ValidationErrorCode; message: string };
+
+function sanitize(raw: string, type: SanitizableDocumentType, options?: SanitizeOptions): SanitizeResult;
+```
+
+Applies ETL fixes (`trimmed`, `removed_non_digits`, `uppercased`, telefone national normalization, etc.) then runs the matching `validate*`. **Unlike `strip*`**, always validates — never bypasses check digits. `inscricao-estadual` requires `options.uf`.
+
+```typescript
+import { sanitize } from '@br-validators/core/sanitize';
+
+sanitize(' 123.456.789-09 ', 'cpf');
+// → { ok: true, value: '12345678909', fixes: ['trimmed', 'removed_non_digits'] }
+```
+
+### `generate(type, options?)`
+
+Import: `@br-validators/core/generate` or barrel.
+
+**Synthetic test fixtures only** — not for production IDs or impersonation.
+
+```typescript
+type GeneratableDocumentType =
+  | 'cpf' | 'cnpj' | 'cep' | 'placa' | 'pis-pasep'
+  | 'renavam' | 'cnh' | 'telefone' | 'cartao-credito';
+
+type GenerateOptions = {
+  format?: 'numeric' | 'alphanumeric' | 'legacy' | 'mercosul' | 'celular' | 'fixo';
+  masked?: boolean;
+  seed?: number;
+};
+
+function generate(type: GeneratableDocumentType, options?: GenerateOptions): string;
+```
+
+Uses Mulberry32 when `seed` is set; reuses official DV helpers (RFB modulo 11, CONTRAN placa patterns, Anatel DDDs, ISO 7812 Luhn). Excludes boleto, NF-e chave, IE, BR Code, PIX.
+
+```typescript
+import { generate } from '@br-validators/core/generate';
+import { validateCpf } from '@br-validators/core/cpf';
+
+const cpf = generate('cpf', { seed: 42 });
+validateCpf(cpf).ok; // true
+```
+
+### CLI mirror (platform)
+
+```bash
+br-validators detect [value] [--uf SP] [--json] [--quiet] [--file]
+br-validators sanitize <type> [value] [--uf SP] [--json] [--quiet] [--file]
+br-validators generate <type> [--masked] [--format mercosul] [--seed 42] [--json] [--quiet]
+```
 
 ---
 

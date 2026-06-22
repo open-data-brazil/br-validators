@@ -16,6 +16,9 @@ const types = [
   { slug: 'boleto', label: 'Boleto' },
   { slug: 'cartao', label: 'Credit Card' },
   { slug: 'ie', label: 'Inscrição Estadual (27 UFs)' },
+  { slug: 'detect', label: 'detect() — type router' },
+  { slug: 'sanitize', label: 'sanitize() — ETL fixes' },
+  { slug: 'generate', label: 'generate() — synthetic docs' },
 ];
 
 export default function HomePage() {

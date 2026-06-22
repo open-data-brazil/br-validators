@@ -43,11 +43,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Subpath `@br-validators/core/inscricao-estadual-produtor-rural`
 - CLI `br-validators ie validate|format|strip` auto-detects SP `P` prefix → produtor rural path
 - Playground `/ie` — produtor rural badge when `P` prefix detected
+- **Platform APIs (Phases 17–19):** `detect()`, `sanitize()`, `generate()` — unified router, ETL sanitize pipeline, synthetic PRNG generation
+- Subpaths `@br-validators/core/detect`, `@br-validators/core/sanitize`, `@br-validators/core/generate`
+- CLI `br-validators detect|sanitize|generate`
+- Playground `/detect`, `/sanitize`, `/generate`
 
 ### Changed
 
 - GitHub repo renamed to [AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
 - npm scope: **`@br-validators/core`** + **`@br-validators/cli`** (org `br-validators` on npm; unscoped `br-validators` is a different project)
+
+---
+
+## [1.2.0] - 2026-06-22
+
+### Added
+
+- **`detect()`** — priority router delegating to existing validators; 11-digit disambiguation; IE requires `uf`
+- **`sanitize()`** — ETL fixes pipeline + mandatory validation (15 types; PIX excluded until `stripPixKey`)
+- **`generate()`** — synthetic test documents with optional `seed` and `masked`; 9 generatable types
+- CLI commands: `detect`, `sanitize`, `generate`
+- Playground pages: `/detect`, `/sanitize`, `/generate`
+- Business rules: BR-DETECT-001, BR-SANITIZE-001, BR-GENERATE-001
 
 ---
 

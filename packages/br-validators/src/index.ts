@@ -143,6 +143,12 @@ export {
   validateIeProdutorRural,
   validateIeSpRural,
 } from './inscricao-estadual.js';
+export { detect } from './detect.js';
+export type { DetectOptions, DetectResult, DetectableDocumentType } from './detect.js';
+export { sanitize } from './sanitize.js';
+export type { SanitizeOptions, SanitizeResult, SanitizableDocumentType } from './sanitize.js';
+export { generate } from './generate.js';
+export type { GenerateOptions, GeneratableDocumentType } from './generate.js';
 export type {
   IeProdutorRuralValidationResult,
   InscricaoEstadual,
