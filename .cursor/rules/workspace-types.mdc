@@ -7,39 +7,39 @@ alwaysApply: true
 
 ## Problem
 
-Apps (`apps/cli`, `apps/playground`) import `@br-validators/core`. Types are emitted by **tsup** into `packages/br-validators/dist/*.d.ts`, not from `src/` at runtime.
+Apps import `@br-validators/core`. Types and runtime live in **`packages/br-validators/dist/`** after `tsup`, not in `src/`.
 
-If `dist/` is missing or stale after a core change, TypeScript reports:
+If `dist/` is missing or stale:
 
 ```
 Could not find a declaration file for module '@br-validators/core'
 ```
 
-## Resolution (IDE + typecheck)
+## Resolution by app
 
-| App | `tsconfig` paths | Points to |
-|-----|------------------|-----------|
-| `apps/cli` | `@br-validators/core` → `../../packages/br-validators/src/index.ts` | **Source** (IDE works without build) |
-| `apps/playground` | none — uses workspace `dist/` via `prebuild` + `transpilePackages` | **dist** (Next.js cannot bundle core `src/` `.js` imports) |
+| App | Types (IDE / `tsc`) | Runtime bundle |
+|-----|---------------------|----------------|
+| `apps/cli` | `tsconfig` `paths` → `../../packages/br-validators/src/index.ts` | Vitest/tsc only — OK |
+| `apps/playground` | `paths` → `dist/*.d.ts` | `next.config.mjs` webpack `alias` → `dist/*.js` |
 
-`pretypecheck` on CLI/playground still runs `pnpm --filter @br-validators/core build` before `tsc` in CI scripts.
+Playground details: see `.cursor/rules/playground-next-core.mdc`.
+
+## Parallel typecheck race (CI)
+
+Root `typecheck` MUST be:
+
+`pnpm --filter @br-validators/core build && pnpm -r --sequential typecheck`
+
+Never run bare `pnpm -r typecheck` at root — parallel `pretypecheck` hooks race on `tsup`.
 
 ## Agent MUST after editing `packages/br-validators/src/**`
 
-1. Run `pnpm --filter @br-validators/core build` (regenerates `dist/*.d.ts` for npm consumers).
-2. Run `pnpm --filter @br-validators/core test:coverage` (100% required).
-3. Run `pnpm verify` before claiming green.
+1. `pnpm --filter @br-validators/core build`
+2. `pnpm --filter @br-validators/core test:coverage` (100% required)
+3. `pnpm verify`
 
 ## Agent MUST NOT
 
-- Add `declare module '@br-validators/core'` shims — masks stale builds.
-- Point `paths` at `dist/index.js` only — breaks ESLint strict type-aware rules.
-- Skip core build after adding exports (e.g. `TelefoneValidationResult`, new subpaths).
-
-## New validator checklist
-
-- [ ] `packages/br-validators/src/core/<modulo>/` + barrel + `package.json` exports + tsup entry
-- [ ] `tests/vectors/<modulo>.official.json` with `url` field
-- [ ] `docs/OFFICIAL-SOURCES.md` + `docs/LIBRARY-API.md` rows
-- [ ] CLI command + playground route
-- [ ] `pnpm verify`
+- Add `declare module '@br-validators/core'` shims.
+- Point playground `paths` at `src/`.
+- Skip core build after new exports/subpaths.

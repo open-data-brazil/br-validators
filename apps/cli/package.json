@@ -1,6 +1,6 @@
 {
   "name": "@br-validators/cli",
-  "version": "0.10.0-alpha.1",
+  "version": "0.11.0-alpha.0",
   "description": "Terminal CLI for Brazilian document validation — CPF, CNPJ, CEP, IE, PIX, boleto, and more",
   "license": "MIT",
   "type": "module",

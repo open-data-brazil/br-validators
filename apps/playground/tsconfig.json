@@ -24,8 +24,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@br-validators/core": ["../../packages/br-validators/src/index.ts"],
-      "@br-validators/core/*": ["../../packages/br-validators/src/*.ts"]
+      "@br-validators/core": ["../../packages/br-validators/dist/index.d.ts"],
+      "@br-validators/core/*": ["../../packages/br-validators/dist/*.d.ts"]
     }
   },
   "include": [

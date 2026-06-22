@@ -114,17 +114,33 @@ Tag format: **`v` + SemVer** (e.g. `v0.1.0-alpha.1`)
 
 ### 4. Publish (npm)
 
+**Automated (recommended):** push version tag on `main` — see [BRANCHING.md](BRANCHING.md) and `.github/workflows/release.yml`.
+
 ```bash
-npm publish --access public
+git tag -a v0.11.0-alpha.0 -m "Release v0.11.0-alpha.0"
+git push origin v0.11.0-alpha.0
+```
+
+Requires GitHub secret `NPM_TOKEN` (granular publish token for `@br-validators/*`).
+
+**Manual (fallback):**
+
+```bash
+npm login
+pnpm verify
+pnpm --filter @br-validators/core publish --access public --tag alpha
+pnpm --filter @br-validators/cli publish --access public --tag alpha
 ```
 
 Published packages: `@br-validators/core` (library) and `@br-validators/cli` (terminal). See [README](../README.md#install).
 
 ### 5. GitHub Release
 
-- Create release from tag
-- Attach changelog section
-- Link security advisories if applicable
+Created automatically by the Release workflow when the tag is pushed. Or manually:
+
+```bash
+gh release create v0.11.0-alpha.0 --generate-notes
+```
 
 ---
 

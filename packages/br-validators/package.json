@@ -1,6 +1,6 @@
 {
   "name": "@br-validators/core",
-  "version": "0.10.0-alpha.0",
+  "version": "0.11.0-alpha.0",
   "description": "100% open-source Brazilian document validators — CPF, CNPJ, CEP, IE (27 UFs), PIX, boleto, and more",
   "license": "MIT",
   "type": "module",
@@ -25,7 +25,8 @@
     "typescript"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "alpha"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

@@ -1,0 +1,42 @@
+---
+description: Playground + Next.js — consume @br-validators/core from dist, never src
+globs: apps/playground/**/*
+alwaysApply: false
+---
+
+# Playground — `@br-validators/core` integration
+
+## Symptom
+
+Next.js build fails:
+
+```
+Module not found: Can't resolve './cnpj.js'
+Import trace: ../../packages/br-validators/src/index.ts
+```
+
+## Root cause
+
+`tsconfig` `paths` pointed at `packages/br-validators/src/`. Next bundles **source**; core uses Node ESM specifiers (`./cnpj.js`) that exist only in **`dist/`** after `tsup`.
+
+## Fix (required pattern)
+
+| Layer | Config | Target |
+|-------|--------|--------|
+| IDE / `tsc` | `apps/playground/tsconfig.json` `paths` | `../../packages/br-validators/dist/index.d.ts` and `dist/*.d.ts` |
+| Webpack / runtime | `apps/playground/next.config.mjs` `resolve.alias` | `../../packages/br-validators/dist/*.js` |
+| Pre-build | `apps/playground/package.json` `prebuild` | `pnpm --filter @br-validators/core build` |
+
+## Agent MUST NOT
+
+- Set `paths` to `packages/br-validators/src/**` in playground.
+- Enable `transpilePackages: ['@br-validators/core']` (re-triggers src bundle).
+- Add `declare module '@br-validators/core'` shims.
+
+## Verify
+
+```bash
+pnpm --filter @br-validators/core build
+pnpm --filter @br-validators/playground build
+pnpm --filter @br-validators/playground typecheck
+```

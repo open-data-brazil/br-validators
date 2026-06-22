@@ -1,0 +1,74 @@
+---
+description: npm publish, git-checks, CI parallel core build — troubleshooting
+alwaysApply: false
+---
+
+# npm publish + CI — known failures
+
+## npm `401 Unauthorized` / `whoami` fails
+
+**Cause:** Not logged in or expired token.
+
+**Fix:**
+
+```bash
+npm login
+npm whoami
+npm org ls br-validators   # must list your username
+```
+
+Publish requires membership in npm org **`@br-validators`** with publish rights + 2FA if enabled.
+
+## npm publish `E404` on `@br-validators/core`
+
+**Cause:** Usually **401 masked as 404** (wrong account) or not in org.
+
+**Fix:** `npm login` with the account that owns `@br-validators`, then:
+
+```bash
+pnpm verify
+pnpm --filter @br-validators/core publish --access public --tag alpha
+pnpm --filter @br-validators/cli publish --access public --tag alpha
+```
+
+## `ERR_PNPM_GIT_UNCLEAN` on publish
+
+**Cause:** pnpm blocks publish with uncommitted changes.
+
+**Fix (preferred):** commit + tag release first, then publish.
+
+**Escape hatch (local only):** `pnpm publish --no-git-checks` — avoid for releases.
+
+## CI: parallel `pretypecheck` kills `@br-validators/core` build
+
+**Symptom:**
+
+```
+packages/br-validators-zod pretypecheck: ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL @br-validators/core build: tsup Exit status 1
+```
+
+**Cause:** `pnpm -r typecheck` runs **in parallel**; multiple packages' `pretypecheck` each run `tsup`, which **cleans `dist/`** concurrently → race.
+
+**Fix:** Root `package.json` MUST use sequential recursive typecheck:
+
+```json
+"typecheck": "pnpm --filter @br-validators/core build && pnpm -r --sequential typecheck"
+```
+
+CI (`.github/workflows/ci.yml`) MUST build core **once** before `pnpm typecheck`.
+
+## Release order (this repo)
+
+1. `pnpm verify` green on `developing`
+2. PR `developing` → `main` (CI + maintainer approval)
+3. Version bump + `CHANGELOG` on `main`
+4. `git tag vX.Y.Z && git push origin vX.Y.Z` → **Release workflow** publishes npm + GitHub Release
+5. Sync `developing` from `main`
+
+GitHub secret required: **`NPM_TOKEN`** — see `docs/BRANCHING.md`.
+
+## CI Release workflow: `NPM_TOKEN` missing
+
+**Symptom:** Release job fails at publish with `401` / `ENEEDAUTH`.
+
+**Fix:** Add `NPM_TOKEN` repository secret (npm granular token with publish on `@br-validators/*`). Re-run the workflow.

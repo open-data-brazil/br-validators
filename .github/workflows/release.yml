@@ -1,0 +1,91 @@
+name: Release
+
+# Publish to npm when a version tag is pushed on main (after merge + version bump).
+# Requires repository secret: NPM_TOKEN (Automation token with publish on @br-validators).
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing git tag to release (e.g. v0.11.0-alpha.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve release tag
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          VERSION="${TAG#v}"
+          if [[ "$VERSION" == *-alpha* ]]; then NPM_TAG=alpha
+          elif [[ "$VERSION" == *-beta* ]]; then NPM_TAG=beta
+          elif [[ "$VERSION" == *-rc* ]]; then NPM_TAG=rc
+          else NPM_TAG=latest
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "npm_tag=$NPM_TAG" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.tag) || github.ref }}
+
+      - name: Verify tag matches package versions
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          CORE="$(jq -r .version packages/br-validators/package.json)"
+          CLI="$(jq -r .version apps/cli/package.json)"
+          if [ "$VERSION" != "$CORE" ] || [ "$VERSION" != "$CLI" ]; then
+            echo "Tag version $VERSION does not match package.json (core=$CORE, cli=$CLI)"
+            exit 1
+          fi
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Quality gate
+        run: pnpm verify
+
+      - name: Publish @br-validators/core
+        run: pnpm --filter @br-validators/core publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @br-validators/cli
+        run: pnpm --filter @br-validators/cli publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists — skipping"
+          else
+            gh release create "$TAG" --generate-notes --title "$TAG"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
