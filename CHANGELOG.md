@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **BR Validators** (doc-raiz) are documented in this file.
+All notable changes to **BR Validators** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- GitHub repo renamed to [AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
 - npm scope: **`@br-validators/core`** + **`@br-validators/cli`** (org `br-validators` on npm; unscoped `br-validators` is a different project)
 
 ---
@@ -253,15 +254,15 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
-| [0.1.0-beta.1](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.1) | 2026-06-21 | CEP library + CLI + playground |
-| [0.1.0-beta.0](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.0) | 2026-06-21 | CPF library + CLI + playground |
-| [0.1.0-alpha.1](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.1) | 2026-06-21 | CNPJ library + CLI + playground |
-| [0.1.0-alpha.0](https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.0) | 2026-06-21 | Docs + harness bootstrap |
+| [0.1.0-beta.1](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1) | 2026-06-21 | CEP library + CLI + playground |
+| [0.1.0-beta.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.0) | 2026-06-21 | CPF library + CLI + playground |
+| [0.1.0-alpha.1](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.1) | 2026-06-21 | CNPJ library + CLI + playground |
+| [0.1.0-alpha.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.0) | 2026-06-21 | Docs + harness bootstrap |
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/doc-raiz/compare/v0.1.0-beta.1...HEAD
-[0.1.0-beta.1]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.1
-[0.1.0-beta.0]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-beta.0
-[0.1.0-alpha.1]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.1
-[0.1.0-alpha.0]: https://github.com/AlexandreZanata/doc-raiz/releases/tag/v0.1.0-alpha.0
+[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v0.1.0-beta.1...HEAD
+[0.1.0-beta.1]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1
+[0.1.0-beta.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.0
+[0.1.0-alpha.1]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.1
+[0.1.0-alpha.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.0

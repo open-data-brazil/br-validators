@@ -141,4 +141,4 @@ Be respectful and constructive. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## Questions
 
-Open a [GitHub Discussion](https://github.com/AlexandreZanata/doc-raiz/discussions) for questions (when enabled) or an issue labeled `question`.
+Open a [GitHub Discussion](https://github.com/AlexandreZanata/br-validators/discussions) for questions (when enabled) or an issue labeled `question`.

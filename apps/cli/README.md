@@ -2,6 +2,8 @@
 
 Terminal CLI for all Brazilian document validators in [@br-validators/core](https://www.npmjs.com/package/@br-validators/core).
 
+**Repo:** [github.com/AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
+
 ---
 
 ## Install

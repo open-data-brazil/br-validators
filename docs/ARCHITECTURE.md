@@ -8,7 +8,7 @@
 ## Monorepo layout
 
 ```
-doc-raiz/
+br-validators/
 ├── packages/
 │   └── br-validators/              # npm — MIT, zero runtime deps
 │       ├── src/

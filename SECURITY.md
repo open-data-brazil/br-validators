@@ -24,13 +24,13 @@ See [docs/VERSIONING.md](docs/VERSIONING.md) for release and support policy.
 
 ### Preferred: GitHub Private Security Advisory
 
-1. Go to [github.com/AlexandreZanata/doc-raiz/security/advisories](https://github.com/AlexandreZanata/doc-raiz/security/advisories)
+1. Go to [github.com/AlexandreZanata/br-validators/security/advisories](https://github.com/AlexandreZanata/br-validators/security/advisories)
 2. Click **Report a vulnerability**
 3. Describe the issue with reproduction steps and impact
 
 ### Alternative: email
 
-If GitHub advisories are unavailable, email the maintainers with subject `[SECURITY] doc-raiz`:
+If GitHub advisories are unavailable, email the maintainers with subject `[SECURITY] br-validators`:
 
 - Include steps to reproduce
 - Affected version(s)

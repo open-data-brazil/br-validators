@@ -77,7 +77,7 @@ By submitting a PR, you grant the project permission to include your work under 
 
 ## Trademarks
 
-- Project name **"BR Validators"** and repo **doc-raiz** — use freely for attribution
+- Project name **"BR Validators"** and repo **br-validators** — use freely for attribution
 - Do not imply official endorsement by Receita Federal, Bacen, or government agencies
 - npm packages: **`@br-validators/core`** (library) and **`@br-validators/cli`** (terminal) — see [README](../README.md#install-end-users)
 

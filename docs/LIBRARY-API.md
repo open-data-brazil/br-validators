@@ -1,7 +1,7 @@
 # Library public API contract
 
 > Version all public exports from day one. Breaking changes require major version bump.
-> Package name (working): `br-validators` — finalize at first npm publish.
+> Package: **`@br-validators/core`** on npm — see [README](../README.md#install).
 > **Also exposed via:** CLI (`br-validators <type> …`) and Vercel playground — see [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 
 ---
@@ -14,16 +14,16 @@
 
 | Import path | Exports |
 |-------------|---------|
-| `br-validators` | Full barrel (tree-shakeable) |
-| `br-validators/cpf` | CPF only |
-| `br-validators/cnpj` | CNPJ numeric + alphanumeric |
-| `br-validators/cep` | CEP |
-| `br-validators/placa` | License plates |
-| `br-validators/pis-pasep` | PIS / PASEP / NIS / NIT |
-| `br-validators/pix` | PIX keys |
-| `br-validators/boleto` | Boleto (linha digitável + código de barras) |
-| `br-validators/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
-| `br-validators/inscricao-estadual` | Inscrição Estadual — all 27 UFs |
+| `@br-validators/core` | Full barrel (tree-shakeable) |
+| `@br-validators/core/cpf` | CPF only |
+| `@br-validators/core/cnpj` | CNPJ numeric + alphanumeric |
+| `@br-validators/core/cep` | CEP |
+| `@br-validators/core/placa` | License plates |
+| `@br-validators/core/pis-pasep` | PIS / PASEP / NIS / NIT |
+| `@br-validators/core/pix` | PIX keys |
+| `@br-validators/core/boleto` | Boleto (linha digitável + código de barras) |
+| `@br-validators/core/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
+| `@br-validators/core/inscricao-estadual` | Inscrição Estadual — all 27 UFs |
 
 ---
 

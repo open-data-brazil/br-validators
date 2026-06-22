@@ -2,7 +2,7 @@
 
 > **Read this first** in any new agent session (Cursor, Claude Code, Codex, Windsurf, etc.).
 
-**Project:** doc-raiz  
+**Project:** br-validators  
 **Language:** 100% English — code, comments, docs, commits, and all agent output.
 
 When rules conflict with existing code, **rules prevail** — unless the user explicitly overrides for a task.

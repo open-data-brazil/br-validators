@@ -3,7 +3,7 @@ description: Zero lint warnings and 100% library test coverage — mandatory bef
 alwaysApply: true
 ---
 
-# Quality gates — doc-raiz / BR Validators
+# Quality gates — BR Validators
 
 > **Non-negotiable:** 0 ESLint errors, 0 ESLint warnings, 100% coverage on `packages/br-validators/src/**`.
 

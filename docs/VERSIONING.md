@@ -118,7 +118,7 @@ Tag format: **`v` + SemVer** (e.g. `v0.1.0-alpha.1`)
 npm publish --access public
 ```
 
-First publish: confirm package name availability. Scope option: `@doc-raiz/br-validators`.
+Published packages: `@br-validators/core` (library) and `@br-validators/cli` (terminal). See [README](../README.md#install).
 
 ### 5. GitHub Release
 

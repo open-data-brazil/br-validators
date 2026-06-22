@@ -6,12 +6,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexandreZanata/doc-raiz.git",
+    "url": "git+https://github.com/AlexandreZanata/br-validators.git",
     "directory": "apps/cli"
   },
-  "homepage": "https://github.com/AlexandreZanata/doc-raiz#readme",
+  "homepage": "https://github.com/AlexandreZanata/br-validators/tree/main/apps/cli#readme",
   "bugs": {
-    "url": "https://github.com/AlexandreZanata/doc-raiz/issues"
+    "url": "https://github.com/AlexandreZanata/br-validators/issues"
   },
   "keywords": [
     "brazil",

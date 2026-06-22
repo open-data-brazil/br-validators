@@ -1,6 +1,6 @@
 # Project governance
 
-> How **BR Validators** (doc-raiz) is organized — license, security, versioning, and contributions.
+> How **BR Validators** is organized — license, security, versioning, and contributions.
 
 ---
 

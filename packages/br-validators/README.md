@@ -3,7 +3,7 @@
 100% open-source Brazilian document validators (MIT).
 
 **npm:** [`@br-validators/core`](https://www.npmjs.com/package/@br-validators/core)  
-**Repo:** [github.com/AlexandreZanata/doc-raiz](https://github.com/AlexandreZanata/doc-raiz)
+**Repo:** [github.com/AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
 
 > The unscoped name `br-validators` on npm is a different package. Use **`@br-validators/core`**.
 
@@ -65,7 +65,7 @@ validateInscricaoEstadual('0730000100109', { uf: 'DF' });
 
 ## Official sources
 
-Every algorithm cites a primary government source. Full table: [OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/doc-raiz/blob/main/docs/OFFICIAL-SOURCES.md)
+Every algorithm cites a primary government source. Full table: [OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/OFFICIAL-SOURCES.md)
 
 Per-type URLs also available via constants (`CNPJ_OFFICIAL_SOURCE_URL`, `IE_OFFICIAL_SOURCE_URLS`, etc.).
 
@@ -73,7 +73,7 @@ Per-type URLs also available via constants (`CNPJ_OFFICIAL_SOURCE_URL`, `IE_OFFI
 
 ## API reference
 
-[docs/LIBRARY-API.md](https://github.com/AlexandreZanata/doc-raiz/blob/main/docs/LIBRARY-API.md)
+[docs/LIBRARY-API.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/LIBRARY-API.md)
 
 ---
 

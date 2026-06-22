@@ -57,7 +57,7 @@ Consumers get compile-time safety: a `string` from user input cannot be passed w
 ## Monorepo layout
 
 ```
-doc-raiz/
+br-validators/
 ├── packages/
 │   └── br-validators/          # @scope/br-validators — MIT, zero runtime deps
 │       ├── src/core/           # algorithms (official sources only)
