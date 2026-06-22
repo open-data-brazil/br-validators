@@ -10,6 +10,7 @@ import {
   brandPisPasep,
   brandPixKey,
   brandPlaca,
+  brandTelefone,
 } from '../../src/types/validation-result.js';
 
 describe('brandCnpj', () => {
@@ -79,5 +80,12 @@ describe('brandInscricaoEstadual', () => {
   it('casts string to InscricaoEstadual brand', () => {
     const value = brandInscricaoEstadual('110042490114');
     expect(value).toBe('110042490114');
+  });
+});
+
+describe('brandTelefone', () => {
+  it('casts string to Telefone brand', () => {
+    const value = brandTelefone('11999999999');
+    expect(value).toBe('11999999999');
   });
 });

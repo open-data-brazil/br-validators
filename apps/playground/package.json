@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "pretypecheck": "pnpm --filter @br-validators/core build",
     "lint": "eslint app --max-warnings 0"
   },
   "dependencies": {

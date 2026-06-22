@@ -121,6 +121,48 @@
 
 ---
 
+## Telefone
+
+> **Source:** [Anatel — Plano de Numeração Brasileiro](https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro) · [Painel Códigos Nacionais](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) · [Nono dígito](https://www.gov.br/anatel/pt-br/regulado/numeracao/nono-digito)
+
+### BR-TEL-001 — National canonical length
+
+- **GIVEN** input after strip/normalize (`+55`, leading `0` removed)
+- **WHEN** length ≠ 10 (fixo) and ≠ 11 (celular)
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-TEL-002 — Anatel DDD
+
+- **GIVEN** first two digits (DDD)
+- **WHEN** not in official list of 67 area codes
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-TEL-003 — Celular pattern
+
+- **GIVEN** 11-digit national number
+- **WHEN** local part (9 digits) does not start with `9`
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-TEL-004 — Fixo / celular sem nono dígito
+
+- **GIVEN** 10-digit national number
+- **WHEN** local part does not start with `2`, `3`, `4`, or `5` (includes celular sem `9`)
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-TEL-005 — Format mask
+
+- **GIVEN** valid canonical number
+- **WHEN** formatting
+- **THEN** celular → `(DD) 9XXXX-XXXX`; fixo → `(DD) XXXX-XXXX`
+
+### BR-TEL-006 — Emergency short codes
+
+- **GIVEN** input `190`, `192`, `193`, `197`, `198`, or `199`
+- **WHEN** validating as subscriber telephone
+- **THEN** reject with `UNSUPPORTED_FORMAT`
+
+---
+
 ## Placa
 
 ### BR-PLACA-001 — Legacy format

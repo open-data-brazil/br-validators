@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { runCep, type CepAction } from './commands/cep.js';
+import { runTelefone, type TelefoneAction } from './commands/telefone.js';
 import { runCnpj, type CnpjAction } from './commands/cnpj.js';
 import { runCpf, type CpfAction } from './commands/cpf.js';
 import { runPlaca, type PlacaAction } from './commands/placa.js';
@@ -22,6 +23,8 @@ export type CnpjCliOptions = {
 export type CpfCliOptions = CnpjCliOptions;
 
 export type CepCliOptions = CnpjCliOptions;
+
+export type TelefoneCliOptions = CnpjCliOptions;
 
 export type PlacaCliOptions = CnpjCliOptions;
 
@@ -130,6 +133,34 @@ export function handleCepCli(
   }
 
   return runCep(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleTelefoneCli(
+  action: TelefoneAction,
+  value: string | undefined,
+  opts: TelefoneCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runTelefone(
     action,
     value,
     {

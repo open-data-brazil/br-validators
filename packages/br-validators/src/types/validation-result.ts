@@ -9,9 +9,12 @@ export type DocumentFormat =
   | 'linha-digitavel'
   | 'codigo-barras'
   | 'cartao-credito'
-  | 'inscricao-estadual';
+  | 'inscricao-estadual'
+  | 'telefone';
 
 export type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
+
+export type TelefoneTipo = 'celular' | 'fixo';
 
 export type BoletoInputKind = 'linha-digitavel' | 'codigo-barras';
 
@@ -41,6 +44,7 @@ export type LinhaDigitavel = string & { readonly __brand: 'LinhaDigitavel' };
 export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
 export type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
 export type InscricaoEstadual = string & { readonly __brand: 'InscricaoEstadual' };
+export type Telefone = string & { readonly __brand: 'Telefone' };
 
 export type UfCode =
   | 'AC' | 'AL' | 'AM' | 'AP' | 'BA' | 'CE' | 'DF' | 'ES' | 'GO' | 'MA' | 'MG' | 'MS' | 'MT'
@@ -71,6 +75,10 @@ export type BoletoValidationResult =
 export type InscricaoEstadualValidationResult =
   | { ok: true; value: InscricaoEstadual; uf: UfCode; format: 'inscricao-estadual' }
   | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
+
+export type TelefoneValidationResult =
+  | { ok: true; value: Telefone; tipo: TelefoneTipo; format: 'telefone' }
+  | { ok: false; code: ValidationErrorCode; message: string };
 
 export function brandCnpj(value: string): Cnpj {
   return value as Cnpj;
@@ -110,4 +118,8 @@ export function brandCartaoCredito(value: string): CartaoCredito {
 
 export function brandInscricaoEstadual(value: string): InscricaoEstadual {
   return value as InscricaoEstadual;
+}
+
+export function brandTelefone(value: string): Telefone {
+  return value as Telefone;
 }

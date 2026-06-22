@@ -3,6 +3,7 @@ import {
   handleCepCli,
   handleCnpjCli,
   handleCpfCli,
+  handleTelefoneCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -16,6 +17,7 @@ import {
   type CartaoCliOptions,
   type CartaoCreditoCliOptions,
   type CepCliOptions,
+  type TelefoneCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -91,6 +93,24 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: CepCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleCepCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const telefone = program.command('telefone').description('Telefone — Brazilian fixo/celular (Anatel DDD)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    telefone
+      .command(action)
+      .description(`${action} a Brazilian telephone number`)
+      .argument('[value]', 'Telephone value (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: TelefoneCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleTelefoneCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

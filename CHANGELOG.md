@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Telefone (F-01):** `validateTelefone`, `formatTelefone`, `stripTelefone` — 67 Anatel DDDs, `tipo: celular | fixo`, accepts `+55` and masks
+- Subpath `@br-validators/core/telefone`
+- CLI `br-validators telefone validate|format|strip`
+- Playground `/telefone`
+
 ### Changed
 
 - GitHub repo renamed to [AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)

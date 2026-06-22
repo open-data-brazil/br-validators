@@ -1,0 +1,63 @@
+{
+  "source": "Anatel Plano de Numeração Brasileiro + Painel Códigos Nacionais",
+  "url": "https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro",
+  "dddPanelUrl": "https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais",
+  "celular": {
+    "canonical": "11999999999",
+    "formatted": "(11) 99999-9999",
+    "tipo": "celular"
+  },
+  "fixo": {
+    "canonical": "1133333333",
+    "formatted": "(11) 3333-3333",
+    "tipo": "fixo"
+  },
+  "withCountryCode": {
+    "input": "+55 11 99999-9999",
+    "canonical": "11999999999"
+  },
+  "withTrunkPrefix": {
+    "input": "011999999999",
+    "canonical": "11999999999"
+  },
+  "negative": {
+    "invalidDdd01": {
+      "input": "0199999999",
+      "code": "KNOWN_INVALID_PATTERN"
+    },
+    "invalidDdd20": {
+      "input": "20999999999",
+      "code": "KNOWN_INVALID_PATTERN"
+    },
+    "invalidDdd23": {
+      "input": "23999999999",
+      "code": "KNOWN_INVALID_PATTERN"
+    },
+    "celularWithout9": {
+      "input": "(11) 8888-8888",
+      "canonical": "1188888888",
+      "code": "KNOWN_INVALID_PATTERN"
+    },
+    "fixoStartsWith1": {
+      "input": "(11) 19999-9999",
+      "canonical": "11199999999",
+      "code": "KNOWN_INVALID_PATTERN"
+    },
+    "shortLocal": {
+      "input": "119999999",
+      "code": "INVALID_LENGTH"
+    },
+    "emergency190": {
+      "input": "190",
+      "code": "UNSUPPORTED_FORMAT"
+    },
+    "emergency192": {
+      "input": "192",
+      "code": "UNSUPPORTED_FORMAT"
+    },
+    "emergency193": {
+      "input": "193",
+      "code": "UNSUPPORTED_FORMAT"
+    }
+  }
+}

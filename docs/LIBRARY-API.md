@@ -18,6 +18,7 @@
 | `@br-validators/core/cpf` | CPF only |
 | `@br-validators/core/cnpj` | CNPJ numeric + alphanumeric |
 | `@br-validators/core/cep` | CEP |
+| `@br-validators/core/telefone` | Brazilian telephone (fixo + celular) |
 | `@br-validators/core/placa` | License plates |
 | `@br-validators/core/pis-pasep` | PIS / PASEP / NIS / NIT |
 | `@br-validators/core/pix` | PIX keys |
@@ -119,6 +120,21 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 | `formatCep` | `(input: string) => FormatResult` | `XXXXX-XXX` |
 
 **Official source:** [Correios CEP API manual](https://www.correios.com.br/atendimento/developers/manuais/manual-api-busca-cep) · `CEP_OFFICIAL_SOURCE_URL` · `tests/vectors/cep.official.json` · Golden: `01310100`, `20040020`
+
+---
+
+## Core API — Telefone
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateTelefone` | `(input: string) => TelefoneValidationResult` | Anatel DDD + fixo (8-digit) or celular (9-digit starting with 9) |
+| `formatTelefone` | `(input: string) => FormatResult` | Mask `(DD) 9XXXX-XXXX` or `(DD) XXXX-XXXX` |
+| `stripTelefone` | `(input: string) => string` | National canonical digits (strips `+55` / leading `0` when applicable) |
+| `isValidTelefone` | `(input: string) => boolean` | Convenience wrapper |
+
+**Success result:** `{ ok: true, value: Telefone, tipo: 'celular' | 'fixo', format: 'telefone' }`
+
+**Official source:** [Anatel — Plano de Numeração Brasileiro](https://www.gov.br/anatel/pt-br/regulado/numeracao/plano-de-numeracao-brasileiro) · `TELEFONE_OFFICIAL_SOURCE_URL` · `tests/vectors/telefone.official.json` · Golden celular: `11999999999`, fixo: `1133333333`
 
 ---
 

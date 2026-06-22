@@ -46,6 +46,10 @@
       "types": "./dist/cep.d.ts",
       "import": "./dist/cep.js"
     },
+    "./telefone": {
+      "types": "./dist/telefone.d.ts",
+      "import": "./dist/telefone.js"
+    },
     "./placa": {
       "types": "./dist/placa.d.ts",
       "import": "./dist/placa.js"

@@ -4,6 +4,7 @@ const types = [
   { slug: 'cnpj', label: 'CNPJ' },
   { slug: 'cpf', label: 'CPF' },
   { slug: 'cep', label: 'CEP' },
+  { slug: 'telefone', label: 'Telefone' },
   { slug: 'placa', label: 'Placa' },
   { slug: 'pis', label: 'PIS/PASEP' },
   { slug: 'pix', label: 'PIX Key' },

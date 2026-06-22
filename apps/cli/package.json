@@ -32,6 +32,7 @@
     "prepublishOnly": "pnpm run build",
     "pretest": "pnpm run build",
     "pretest:coverage": "pnpm run build",
+    "pretypecheck": "pnpm --filter @br-validators/core build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",

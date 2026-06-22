@@ -3,6 +3,7 @@ import * as root from '../src/index.js';
 import * as cnpjEntry from '../src/cnpj.js';
 import * as cpfEntry from '../src/cpf.js';
 import * as cepEntry from '../src/cep.js';
+import * as telefoneEntry from '../src/telefone.js';
 import * as placaEntry from '../src/placa.js';
 import * as pisPasepEntry from '../src/pis-pasep.js';
 import * as pixEntry from '../src/pix.js';
@@ -26,6 +27,12 @@ describe('package exports', () => {
     expect(root.validateCep).toBeTypeOf('function');
     expect(root.stripCep).toBeTypeOf('function');
     expect(root.formatCep).toBeTypeOf('function');
+  });
+
+  it('re-exports Telefone API from index', () => {
+    expect(root.validateTelefone).toBeTypeOf('function');
+    expect(root.stripTelefone).toBeTypeOf('function');
+    expect(root.formatTelefone).toBeTypeOf('function');
   });
 
   it('re-exports Placa API from index', () => {
@@ -81,6 +88,10 @@ describe('package exports', () => {
 
   it('re-exports CEP API from cep entry', () => {
     expect(cepEntry.validateCep).toBe(root.validateCep);
+  });
+
+  it('re-exports Telefone API from telefone entry', () => {
+    expect(telefoneEntry.validateTelefone).toBe(root.validateTelefone);
   });
 
   it('re-exports Placa API from placa entry', () => {

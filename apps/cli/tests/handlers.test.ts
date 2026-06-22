@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleTelefoneCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN } from '@br-validators/core';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN, TELEFONE_GOLDEN_CELULAR } from '@br-validators/core';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -14,6 +14,7 @@ describe('handlers', () => {
     expect(io.stdout).toContain('cnpj');
     expect(io.stdout).toContain('cpf');
     expect(io.stdout).toContain('cep');
+    expect(io.stdout).toContain('telefone');
     expect(io.stdout).toContain('placa');
     expect(io.stdout).toContain('pis-pasep');
     expect(io.stdout).toContain('pix');
@@ -175,6 +176,24 @@ describe('handlers', () => {
     expect(handleCepCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
   });
 
+  it('handleTelefoneCli validates value', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleTelefoneCli('validate', TELEFONE_GOLDEN_CELULAR, { quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleTelefoneCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'telefone.txt');
+    writeFileSync(file, TELEFONE_GOLDEN_CELULAR, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleTelefoneCli('validate', undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleTelefoneCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleTelefoneCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
+  });
+
   it('handleCpfCli validates value', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(handleCpfCli('validate', CPF_GOLDEN_PRIMARY, { quiet: true }, io)).toBe(EXIT.OK);
@@ -254,7 +273,7 @@ describe('handlers', () => {
 describe('program', () => {
   it('createProgram exposes list and cnpj commands', () => {
     const program = createProgram();
-    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'cartao-credito']));
+    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'telefone', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'cartao-credito']));
   });
 
   it('run parses list without throwing', () => {
@@ -287,6 +306,17 @@ describe('program', () => {
   it('run parses cep format and strip', () => {
     expect(() => { run(['node', 'br-validators', 'cep', 'format', CEP_GOLDEN_PRIMARY]); }).not.toThrow();
     expect(() => { run(['node', 'br-validators', 'cep', 'strip', CEP_GOLDEN_PRIMARY]); }).not.toThrow();
+  });
+
+  it('run parses telefone validate', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'telefone', 'validate', TELEFONE_GOLDEN_CELULAR, '--quiet']);
+    }).not.toThrow();
+  });
+
+  it('run parses telefone format and strip', () => {
+    expect(() => { run(['node', 'br-validators', 'telefone', 'format', TELEFONE_GOLDEN_CELULAR]); }).not.toThrow();
+    expect(() => { run(['node', 'br-validators', 'telefone', 'strip', TELEFONE_GOLDEN_CELULAR]); }).not.toThrow();
   });
 
   it('run parses placa validate', () => {

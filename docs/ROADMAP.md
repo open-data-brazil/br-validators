@@ -72,14 +72,13 @@
 
 ## v1.0.0 target (next milestone)
 
-| Requirement | Status |
-|-------------|--------|
-| All Phase 1–4 validators stable | Partial — pre-1.0 alpha |
-| npm publish `@br-validators/core` + `@br-validators/cli` | v0.10.0-alpha.0 |
-| GitHub Releases with changelog | v0.10.0-alpha.0 |
-| Playground on Vercel | Deployed |
-| Security audit | Pending |
-| API freeze (SemVer guarantees) | Pending |
+| Module / requirement | Library | CLI | Playground | Status |
+|----------------------|---------|-----|------------|--------|
+| **Telefone (F-01)** | ✓ `@br-validators/core/telefone` | ✓ `telefone …` | ✓ `/telefone` | Shipped — [Anatel](OFFICIAL-SOURCES.md) |
+| **Boleto arrecadação (F-02)** | partial | — | — | detect only — validation backlog |
+| **BR Code (F-03)** | — | — | — | Backlog |
+| npm publish `@br-validators/core` + `@br-validators/cli` | — | — | — | v0.10.0-alpha.0 |
+| API freeze (SemVer guarantees) | — | — | — | Pending |
 
 **Deferred to post-v1.0 or v1.1:**
 
