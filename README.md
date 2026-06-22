@@ -1,7 +1,7 @@
 # doc-raiz / BR Validators
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![npm @br-validators/core](https://img.shields.io/npm/v/@br-validators/core?label=%40br-validators%2Fcore)](https://www.npmjs.com/package/@br-validators/core)
+[![npm @br-validators/core](https://img.shields.io/npm/v/@br-validators/core)](https://www.npmjs.com/package/@br-validators/core)
 [![GitHub release](https://img.shields.io/github/v/release/AlexandreZanata/doc-raiz)](https://github.com/AlexandreZanata/doc-raiz/releases)
 
 **100% open-source** (MIT) library, CLI, and web playground for formatting and validating Brazilian document identifiers — built on official primary sources (Receita Federal, Bacen, CONTRAN, Correios, SEFAZ).

@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- npm package renamed to `@br-validators/core` (unscoped `br-validators` on npm is a different project)
+- npm scope: **`@br-validators/core`** + **`@br-validators/cli`** (org `br-validators` on npm; unscoped `br-validators` is a different project)
 
 ---
 
