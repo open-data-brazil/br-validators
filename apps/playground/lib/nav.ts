@@ -47,6 +47,9 @@ export const PLATFORM_ROUTES = [
 export const REFERENCE_DATA_ROUTES = [
   { slug: 'data/ibge', label: 'IBGE', description: 'States + municipalities', group: 'reference-data' },
   { slug: 'data/bancos', label: 'Bancos', description: 'Bacen STR participants', group: 'reference-data' },
+  { slug: 'data/fiscal', label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST', group: 'reference-data' },
+  { slug: 'data/trade', label: 'Trade', description: 'Moedas, países Bacen, Incoterms', group: 'reference-data' },
+  { slug: 'data/logistics', label: 'Logistics', description: 'Portos ANTAQ, aeroportos ANAC', group: 'reference-data' },
   { slug: 'data/catalog', label: 'Data catalog', description: 'Embedded dataset metadata', group: 'reference-data' },
 ] as const satisfies readonly ReferenceDataRoute[];
 

@@ -14,6 +14,7 @@ export function readInputFile(path: string, io: CliIo): string | null {
 
 import { runBancosList } from './commands/bancos/list.js';
 import { runBancosLookup } from './commands/bancos/lookup.js';
+import { runReferenceLookup } from './commands/reference-lookup/lookup.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
@@ -101,6 +102,8 @@ export type BancosLookupCliOptions = {
   json?: boolean;
   verbose?: boolean;
 };
+
+export type ReferenceLookupCliOptions = BancosLookupCliOptions;
 
 export type BancosListCliOptions = BancosLookupCliOptions & {
   limit?: number;
@@ -661,6 +664,23 @@ export function handleBancosListCli(
       json: Boolean(opts.json),
       verbose: Boolean(opts.verbose),
       limit: opts.limit,
+    },
+    io,
+  );
+}
+
+export function handleReferenceLookupCli(
+  command: string,
+  value: string | undefined,
+  opts: ReferenceLookupCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runReferenceLookup(
+    command,
+    value,
+    {
+      json: Boolean(opts.json),
+      verbose: Boolean(opts.verbose),
     },
     io,
   );

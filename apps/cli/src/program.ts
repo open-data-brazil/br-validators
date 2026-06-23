@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import { registerReferenceLookupCommands } from './commands/reference-lookup/register-program.js';
 import {
   handleBrCodeCli,
   handleCepCli,
@@ -468,6 +469,8 @@ export function createProgram(): Command {
       process.exitCode = handleBancosListCli(opts, io);
       writeCliIo(io);
     });
+
+  registerReferenceLookupCommands(program);
 
   program
     .command('detect')

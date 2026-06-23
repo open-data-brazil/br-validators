@@ -11,6 +11,7 @@ import { OfficialSourcesPage } from '@/components/organisms/OfficialSourcesPage'
 import { DataIbgeExplorer } from '@/components/organisms/DataIbgeExplorer';
 import { DataBancosLookup } from '@/components/organisms/DataBancosLookup';
 import { DataCatalogTable } from '@/components/organisms/DataCatalogTable';
+import { DataGovBrGroupExplorer } from '@/components/organisms/DataGovBrGroupExplorer';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import type { DocumentSlug, PlatformSlug, ReferenceDataSlug } from '@/lib/nav';
 import { playgroundRouteKey, resolvePlaygroundRoute } from '@/lib/playground-routes';
@@ -42,6 +43,12 @@ function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
       return <DataIbgeExplorer />;
     case 'data/bancos':
       return <DataBancosLookup />;
+    case 'data/fiscal':
+      return <DataGovBrGroupExplorer groupId="fiscal" />;
+    case 'data/trade':
+      return <DataGovBrGroupExplorer groupId="trade" />;
+    case 'data/logistics':
+      return <DataGovBrGroupExplorer groupId="logistics" />;
     case 'data/catalog':
       return <DataCatalogTable />;
   }

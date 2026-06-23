@@ -613,5 +613,11 @@ describe('program', () => {
     expect(() => {
       run(['node', 'br-validators', 'bancos', 'list', '--limit', '2']);
     }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'moedas', 'lookup', 'BRL', '--json']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'portos', 'lookup', 'BRSSZ']);
+    }).not.toThrow();
   });
 });

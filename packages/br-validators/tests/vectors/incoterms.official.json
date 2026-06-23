@@ -4,6 +4,14 @@
     "fob": {
       "codigo": "FOB",
       "nome": "Free On Board"
+    },
+    "cif": {
+      "codigo": "CIF",
+      "nome": "Cost, Insurance and Freight"
+    },
+    "dap": {
+      "codigo": "DAP",
+      "nome": "Delivered at Place"
     }
   },
   "count": 11

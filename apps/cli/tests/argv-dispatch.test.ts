@@ -268,4 +268,17 @@ describe('dispatchArgv', () => {
     const missing = io();
     expect(dispatchArgv(['bancos', 'lookup'], missing)).toBe(EXIT.USAGE);
   });
+
+  it('dispatches reference lookup commands', () => {
+    const moedas = io();
+    expect(dispatchArgv(['moedas', 'lookup', 'BRL', '--json'], moedas)).toBe(EXIT.OK);
+    const parsed = JSON.parse(moedas.stdout[0]) as { ok: boolean; moeda: { codigo: string } };
+    expect(parsed.moeda.codigo).toBe('BRL');
+
+    const usage = io();
+    expect(dispatchArgv(['portos', 'unknown'], usage)).toBe(EXIT.USAGE);
+
+    const missing = io();
+    expect(dispatchArgv(['incoterms', 'lookup'], missing)).toBe(EXIT.USAGE);
+  });
 });

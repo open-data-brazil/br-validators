@@ -35,6 +35,9 @@ export const pt = {
   referenceDataRoutes: {
     'data/ibge': { label: 'IBGE', description: 'Estados + municípios' },
     'data/bancos': { label: 'Bancos', description: 'Participantes STR Bacen' },
+    'data/fiscal': { label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST' },
+    'data/trade': { label: 'Comércio', description: 'Moedas, países Bacen, Incoterms' },
+    'data/logistics': { label: 'Logística', description: 'Portos ANTAQ e aeroportos ANAC' },
     'data/catalog': { label: 'Catálogo de dados', description: 'Metadados dos datasets embarcados' },
   },
   referenceData: {
@@ -84,6 +87,91 @@ export const pt = {
       sourceColumn: 'Documentação',
       docsLink: 'Docs',
       freshnessLink: 'DATA-FRESHNESS.md no GitHub',
+    },
+    fiscal: {
+      title: 'Dados fiscais de referência',
+      description: 'Natureza jurídica RFB, NBS NFSe e CEST CONFAZ — consulta offline embarcada.',
+      moduleTabLabel: 'Datasets fiscais',
+      lookupLabel: 'Código de consulta',
+      lookupPlaceholder: 'ex.: 2062',
+      resultTitle: 'Resultado',
+      notFound: 'Código não encontrado.',
+      capturedAt: 'Dataset capturado em',
+      officialSource: 'Fonte oficial',
+      modules: {
+        naturezaJuridica: {
+          label: 'Natureza jurídica',
+          fields: { codigo: 'Código', descricao: 'Descrição' },
+        },
+        nbs: {
+          label: 'NBS',
+          fields: { codigo: 'Código', descricao: 'Descrição' },
+        },
+        cest: {
+          label: 'CEST',
+          fields: { codigo: 'Código', descricao: 'Descrição', segmento: 'Segmento', ncms: 'NCMs' },
+        },
+      },
+    },
+    trade: {
+      title: 'Dados comerciais de referência',
+      description: 'Moedas ISO/Bacen, países NF-e e Incoterms ICC 2020.',
+      moduleTabLabel: 'Datasets comerciais',
+      lookupLabel: 'Código de consulta',
+      lookupPlaceholder: 'ex.: BRL',
+      resultTitle: 'Resultado',
+      notFound: 'Código não encontrado.',
+      capturedAt: 'Dataset capturado em',
+      officialSource: 'Fonte oficial',
+      modules: {
+        moedas: {
+          label: 'Moedas',
+          fields: { codigo: 'Código', nome: 'Nome', simbolo: 'Símbolo', tipoBacen: 'Tipo Bacen' },
+        },
+        paisesBacen: {
+          label: 'Países (Bacen)',
+          fields: { codigo: 'Código', nome: 'Nome' },
+        },
+        incoterms: {
+          label: 'Incoterms',
+          fields: { codigo: 'Código', nome: 'Nome', edicao: 'Edição' },
+        },
+      },
+    },
+    logistics: {
+      title: 'Dados logísticos de referência',
+      description: 'Instalações portuárias ANTAQ e aeródromos públicos ANAC.',
+      moduleTabLabel: 'Datasets logísticos',
+      lookupLabel: 'Código de consulta',
+      lookupPlaceholder: 'ex.: BRSSZ ou GRU',
+      resultTitle: 'Resultado',
+      notFound: 'Código não encontrado.',
+      capturedAt: 'Dataset capturado em',
+      officialSource: 'Fonte oficial',
+      modules: {
+        portos: {
+          label: 'Portos',
+          fields: {
+            codigo: 'Código',
+            nome: 'Nome',
+            uf: 'UF',
+            municipioNome: 'Município',
+            municipioIbge: 'Código IBGE',
+            situacao: 'Situação',
+          },
+        },
+        aeroportos: {
+          label: 'Aeroportos',
+          fields: {
+            iata: 'IATA',
+            icao: 'ICAO',
+            nome: 'Nome',
+            uf: 'UF',
+            municipioIbge: 'Código IBGE',
+            municipioNome: 'Município',
+          },
+        },
+      },
     },
   },
   documents: {

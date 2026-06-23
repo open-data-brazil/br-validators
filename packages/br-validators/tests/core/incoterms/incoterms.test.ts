@@ -18,6 +18,20 @@ describe('Incoterms — official golden vectors', () => {
     expect(incoterm?.edicao).toBe('2020');
   });
 
+  it('resolves CIF (Cost, Insurance and Freight)', () => {
+    const incoterm = getIncotermPorCodigo(vectors.golden.cif.codigo);
+    expect(incoterm?.codigo).toBe('CIF');
+    expect(incoterm?.nome).toBe(vectors.golden.cif.nome);
+    expect(incoterm?.edicao).toBe('2020');
+  });
+
+  it('resolves DAP (Delivered at Place)', () => {
+    const incoterm = getIncotermPorCodigo(vectors.golden.dap.codigo);
+    expect(incoterm?.codigo).toBe('DAP');
+    expect(incoterm?.nome).toBe(vectors.golden.dap.nome);
+    expect(incoterm?.edicao).toBe('2020');
+  });
+
   it('normalizes Incoterm code case-insensitively', () => {
     expect(getIncotermPorCodigo('fob')?.codigo).toBe('FOB');
   });

@@ -29,7 +29,7 @@ Every Brazilian SaaS eventually reinvents CPF validation — usually wrong.
 - ✅ **Zero runtime dependencies** — pure TypeScript logic, no HTTP calls
 - ✅ **Never throws** — every function returns `{ ok: true, value } | { ok: false, message, code }`
 - ✅ **Tree-shakeable** — subpath imports per document type
-- ✅ **Reference data** — IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO — embedded offline with weekly freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md))
+- ✅ **Reference data** — IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO, natureza jurídica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos — embedded offline with weekly freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md))
 - ✅ **ESM only**, Node ≥ 18, works in browser, Bun, Deno
 
 ---
@@ -266,13 +266,20 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 |---------|---------|-----|------------|----------|-----------------|
 | IBGE states + municipalities | `@br-validators/core/ibge` | — | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
 | Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `bancos lookup` · `list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
-| ANAC public aerodromos | `@br-validators/core/aeroportos` | — | — | `getAeroportos`, `getAeroportoPorIata`, `getAeroportoPorIcao`, `getAeroportosPorMunicipio` | [ANAC aeródromos públicos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
+| ANAC public aerodromos | `@br-validators/core/aeroportos` | `aeroportos lookup` | `/data/logistics` | `getAeroportos`, `getAeroportoPorIata`, `getAeroportoPorIcao`, `getAeroportosPorMunicipio` | [ANAC aeródromos públicos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
+| ANTAQ port installations | `@br-validators/core/portos` | `portos lookup` | `/data/logistics` | `getPortoPorCodigo`, `searchPortos`, `getPortosPorMunicipio` | [ANTAQ instalações portuárias zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
 | TSE ↔ IBGE municipality codes | `@br-validators/core/tse-municipios` | — | — | `getMapeamentoTseIbge`, `getMunicipioIbgePorCodigoTse`, `getCodigosTsePorMunicipio` | [TSE municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | DDD geographic lookup | `@br-validators/core/telefone` | — | — | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
 | National holidays | `@br-validators/core/feriados` | — | — | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
 | CNAE 2.3 subclasses | `@br-validators/core/cnaes` | — | — | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
 | CFOP fiscal operations | `@br-validators/core/cfop` | — | — | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | NCM Mercosur nomenclature | `@br-validators/core/ncm` | — | — | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| Natureza jurídica (CNPJ) | `@br-validators/core/natureza-juridica` | `natureza-juridica lookup` | `/data/fiscal` | `getNaturezaJuridicaPorCodigo` | [RFB Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
+| NBS (NFSe Nacional) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
+| CEST (substituição tributária) | `@br-validators/core/cest` | `cest lookup` | `/data/fiscal` | `getCestPorCodigo`, `getCestPorNcm`, `searchCest` | [CONFAZ ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
+| ISO 4217 + Bacen PTAX moedas | `@br-validators/core/moedas` | `moedas lookup` | `/data/trade` | `getMoedaPorCodigo`, `searchMoedas` | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
+| NF-e Bacen country codes | `@br-validators/core/paises-bacen` | `paises-bacen lookup` | `/data/trade` | `getPaisPorCodigoBacen`, `getPaisesBacen` | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) |
+| ICC Incoterms 2020 | `@br-validators/core/incoterms` | `incoterms lookup` | `/data/trade` | `getIncotermPorCodigo`, `getIncoterms` | [ICC Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) |
 | CBO 2002 occupations | `@br-validators/core/cbo` | — | — | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
 | CEP prefix lookup | `@br-validators/core/cep` | — | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Data transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
@@ -286,6 +293,14 @@ import { getCnaePorCodigo } from '@br-validators/core/cnaes';
 import { getCfopPorCodigo } from '@br-validators/core/cfop';
 import { getNcmPorCodigo } from '@br-validators/core/ncm';
 import { getCboPorCodigo } from '@br-validators/core/cbo';
+import { getNaturezaJuridicaPorCodigo } from '@br-validators/core/natureza-juridica';
+import { getNbsPorCodigo } from '@br-validators/core/nbs';
+import { getCestPorCodigo } from '@br-validators/core/cest';
+import { getMoedaPorCodigo } from '@br-validators/core/moedas';
+import { getPaisPorCodigoBacen } from '@br-validators/core/paises-bacen';
+import { getIncotermPorCodigo } from '@br-validators/core/incoterms';
+import { getAeroportoPorIata } from '@br-validators/core/aeroportos';
+import { getPortoPorCodigo } from '@br-validators/core/portos';
 import { getDataCatalog } from '@br-validators/core/data-catalog';
 
 getMunicipioPorCodigo(3550308)?.nome; // São Paulo
@@ -296,7 +311,15 @@ getCnaePorCodigo('6201501');          // custom software development
 getCfopPorCodigo('1.102');            // accepts CONFAZ dotted format
 getNcmPorCodigo('01012100');          // purebred horses (8-digit leaf)
 getCboPorCodigo('212405');            // systems development analyst
-getDataCatalog().length;              // 8 registered datasets
+getNaturezaJuridicaPorCodigo('2062'); // Sociedade Empresária Limitada
+getNbsPorCodigo('1.1502.50.00');      // TI systems integration (NFSe)
+getCestPorCodigo('0302100');          // returnable beer bottle (ST)
+getMoedaPorCodigo('BRL')?.nome;       // Real Brasileiro
+getPaisPorCodigoBacen('1058')?.nome;  // Brasil (NF-e cPais)
+getIncotermPorCodigo('FOB')?.nome;    // Free On Board
+getAeroportoPorIata('GRU')?.nome;     // Guarulhos — SP
+getPortoPorCodigo('BRSSZ')?.nome;     // Santos organized port
+getDataCatalog().length;              // registered datasets
 ```
 
 Freshness table (auto-updated weekly): [docs/DATA-FRESHNESS.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/DATA-FRESHNESS.md) · Per-type official URLs: [docs/OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/OFFICIAL-SOURCES.md)

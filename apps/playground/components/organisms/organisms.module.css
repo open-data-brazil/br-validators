@@ -306,3 +306,26 @@
     padding: 0 var(--space-3);
   }
 }
+
+.referenceDataTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+}
+
+.referenceDataTab {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.referenceDataTabActive {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  font-weight: 600;
+}

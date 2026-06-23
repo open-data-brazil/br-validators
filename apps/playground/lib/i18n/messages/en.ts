@@ -35,6 +35,9 @@ export const en = {
   referenceDataRoutes: {
     'data/ibge': { label: 'IBGE', description: 'States + municipalities' },
     'data/bancos': { label: 'Banks', description: 'Bacen STR participants' },
+    'data/fiscal': { label: 'Fiscal', description: 'Legal nature, NBS, CEST' },
+    'data/trade': { label: 'Trade', description: 'Currencies, countries, Incoterms' },
+    'data/logistics': { label: 'Logistics', description: 'Ports and airports' },
     'data/catalog': { label: 'Data catalog', description: 'Embedded dataset metadata' },
   },
   referenceData: {
@@ -84,6 +87,91 @@ export const en = {
       sourceColumn: 'Documentation',
       docsLink: 'Docs',
       freshnessLink: 'DATA-FRESHNESS.md on GitHub',
+    },
+    fiscal: {
+      title: 'Fiscal reference data',
+      description: 'RFB legal nature, NFSe NBS, and CONFAZ CEST — offline embedded lookup.',
+      moduleTabLabel: 'Fiscal datasets',
+      lookupLabel: 'Lookup code',
+      lookupPlaceholder: 'e.g. 2062',
+      resultTitle: 'Result',
+      notFound: 'Code not found.',
+      capturedAt: 'Dataset captured',
+      officialSource: 'Official source',
+      modules: {
+        naturezaJuridica: {
+          label: 'Legal nature',
+          fields: { codigo: 'Code', descricao: 'Description' },
+        },
+        nbs: {
+          label: 'NBS',
+          fields: { codigo: 'Code', descricao: 'Description' },
+        },
+        cest: {
+          label: 'CEST',
+          fields: { codigo: 'Code', descricao: 'Description', segmento: 'Segment', ncms: 'NCM codes' },
+        },
+      },
+    },
+    trade: {
+      title: 'Trade reference data',
+      description: 'ISO/Bacen currencies, NF-e country codes, and ICC Incoterms 2020.',
+      moduleTabLabel: 'Trade datasets',
+      lookupLabel: 'Lookup code',
+      lookupPlaceholder: 'e.g. BRL',
+      resultTitle: 'Result',
+      notFound: 'Code not found.',
+      capturedAt: 'Dataset captured',
+      officialSource: 'Official source',
+      modules: {
+        moedas: {
+          label: 'Currencies',
+          fields: { codigo: 'Code', nome: 'Name', simbolo: 'Symbol', tipoBacen: 'Bacen type' },
+        },
+        paisesBacen: {
+          label: 'Countries (Bacen)',
+          fields: { codigo: 'Code', nome: 'Name' },
+        },
+        incoterms: {
+          label: 'Incoterms',
+          fields: { codigo: 'Code', nome: 'Name', edicao: 'Edition' },
+        },
+      },
+    },
+    logistics: {
+      title: 'Logistics reference data',
+      description: 'ANTAQ port installations and ANAC public aerodromos.',
+      moduleTabLabel: 'Logistics datasets',
+      lookupLabel: 'Lookup code',
+      lookupPlaceholder: 'e.g. BRSSZ or GRU',
+      resultTitle: 'Result',
+      notFound: 'Code not found.',
+      capturedAt: 'Dataset captured',
+      officialSource: 'Official source',
+      modules: {
+        portos: {
+          label: 'Ports',
+          fields: {
+            codigo: 'Code',
+            nome: 'Name',
+            uf: 'UF',
+            municipioNome: 'Municipality',
+            municipioIbge: 'IBGE code',
+            situacao: 'Status',
+          },
+        },
+        aeroportos: {
+          label: 'Airports',
+          fields: {
+            iata: 'IATA',
+            icao: 'ICAO',
+            nome: 'Name',
+            uf: 'UF',
+            municipioIbge: 'IBGE code',
+            municipioNome: 'Municipality',
+          },
+        },
+      },
     },
   },
   documents: {

@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { getDataCatalog } from '@br-validators/core/data-catalog';
 import { useI18n } from '@/components/providers/I18nProvider';
+import { resolveCatalogDocUrl } from '@/lib/reference-data/catalog-docs';
 import styles from './organisms.module.css';
 
 const DATA_FRESHNESS_URL =
@@ -36,7 +37,12 @@ export function DataCatalogTable() {
             <span>{row.nome}</span>
             <span>{row.capturadoEm}</span>
             <span>
-              <a className={styles.officialSourcesPageLink} href={row.documentacao} target="_blank" rel="noreferrer">
+              <a
+                className={styles.officialSourcesPageLink}
+                href={resolveCatalogDocUrl(row.documentacao)}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {copy.docsLink}
               </a>
             </span>

@@ -90,7 +90,9 @@ br-validators generate placa --format mercosul --seed 3
 
 ## Reference data lookup
 
-Offline Bacen STR participants — delegates to `@br-validators/core/bancos`.
+Offline embedded datasets — delegates to `@br-validators/core/*`.
+
+### Bacen banks
 
 ```bash
 br-validators bancos lookup 001 --json
@@ -98,11 +100,35 @@ br-validators bancos lookup 18236120 --verbose
 br-validators bancos list --limit 20 --json
 ```
 
+### Fiscal (26c)
+
+```bash
+br-validators natureza-juridica lookup 2062 --json
+br-validators nbs lookup 1.1502.50.00 --verbose
+br-validators cest lookup 0302100 --json
+```
+
+### Trade (26d)
+
+```bash
+br-validators moedas lookup BRL --json
+br-validators paises-bacen lookup 1058 --verbose
+br-validators incoterms lookup FOB --json
+```
+
+### Logistics (26e)
+
+```bash
+br-validators portos lookup BRSSZ --json
+br-validators aeroportos lookup GRU --verbose
+br-validators aeroportos lookup SBGR --json
+```
+
 | Exit code | Meaning |
 |-----------|---------|
-| `0` | Bank found |
+| `0` | Record found |
 | `1` | Not found |
-| `2` | Usage error (invalid COMPE/ISPB length) |
+| `2` | Usage error |
 
 ---
 
@@ -115,7 +141,7 @@ br-validators bancos list --limit 20 --json
 | `--file` / `-f` | Read value from file |
 | `--source` | Print official source URL (per-type) |
 | `--uf` | Required for IE / detect / sanitize IE |
-| `--verbose` | Include dataset capture date (`bancos` lookup/list) |
+| `--verbose` | Include dataset capture date (`bancos`, reference `lookup` commands) |
 | `--limit` | Max rows for `bancos list` |
 
 ### CI
