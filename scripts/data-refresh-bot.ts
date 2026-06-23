@@ -33,6 +33,7 @@ const DATASET_METADATA_PATHS = [
   path.join(ROOT, 'packages/br-validators/src/cfop/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/ncm/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cbo/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/core/cep/data/faixa-metadata.json'),
 ] as const;
 
 const FETCH_DATASET_IDS = [
@@ -47,6 +48,7 @@ const FETCH_DATASET_IDS = [
 
 const PROBE_ONLY_METADATA_PATHS = [
   path.join(ROOT, 'packages/br-validators/src/feriados/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/core/cep/data/faixa-metadata.json'),
 ] as const;
 
 const FETCH_SCRIPTS = [

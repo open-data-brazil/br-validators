@@ -19,6 +19,7 @@
     "fetch:data:cfop": "tsx scripts/fetch-cfop.ts",
     "fetch:data:ncm": "tsx scripts/fetch-ncm.ts",
     "fetch:data:cbo": "tsx scripts/fetch-cbo.ts",
+    "fetch:data:cep-faixas": "tsx scripts/fetch-cep-faixas.ts",
     "fetch:data": "pnpm fetch:data:ibge && pnpm fetch:data:bancos && pnpm fetch:data:ddd && pnpm fetch:data:cnaes && pnpm fetch:data:cfop && pnpm fetch:data:ncm && pnpm fetch:data:cbo",
     "data:refresh": "tsx scripts/data-refresh-bot.ts",
     "data:refresh:report": "tsx scripts/data-refresh-bot.ts --report-only"

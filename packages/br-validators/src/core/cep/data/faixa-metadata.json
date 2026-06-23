@@ -1,0 +1,25 @@
+{
+  "id": "cep-faixas",
+  "nome": "CEP prefix lookup (IBGE CNEFE 2022)",
+  "fonte": "IBGE CNEFE Censo 2022 microdata by UF",
+  "endpoints": [
+    "https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF"
+  ],
+  "capturadoEm": "2026-06-23",
+  "atualizadoEm": "2026-06-23T16:50:26.699Z",
+  "contagens": {
+    "faixas": 24649
+  },
+  "alteracoes": {
+    "adicionados": 24649,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": null
+  },
+  "verificacao": {
+    "agendamento": "semanal",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-06-23T16:50:26.699Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#cep-prefix-ranges"
+}

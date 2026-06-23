@@ -139,8 +139,20 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 | `isValidCep` | `(input: string) => boolean` | Length + digits; no check digit |
 | `validateCep` | `(input: string) => ValidationResult<Cep>` | Structural validation only |
 | `formatCep` | `(input: string) => FormatResult` | `XXXXX-XXX` |
+| `getCepFaixaInfo` | `(prefix: string) => CepFaixa \| undefined` | 5-digit prefix (or full CEP) → UF + IBGE municipality |
+| `getCepFaixas` | `() => readonly CepFaixa[]` | All embedded prefix rows |
+| `CEP_FAIXA_DATA_VERSION` | — | `DatasetMetadata` for IBGE CNEFE aggregation |
 
 **Official source:** [Correios CEP API manual](https://www.correios.com.br/atendimento/developers/manuais/manual-api-busca-cep) · `CEP_OFFICIAL_SOURCE_URL` · `tests/vectors/cep.official.json` · Golden: `01310100`, `20040020`
+
+**Prefix lookup source:** [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) · `tests/vectors/cep-faixa.official.json` · Golden prefixes: `01310` (São Paulo/SP), `20040` (Rio/RJ)
+
+```typescript
+import { validateCep, getCepFaixaInfo, CEP_FAIXA_DATA_VERSION } from '@br-validators/core/cep';
+
+getCepFaixaInfo('01310');
+// { prefixo: '01310', uf: 'SP', codigoIbge: 3550308, cidade: 'São Paulo' }
+```
 
 ---
 

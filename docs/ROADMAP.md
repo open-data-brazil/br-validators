@@ -130,10 +130,10 @@ Offline government datasets — tree-shakeable subpaths, `*_DATA_VERSION` metada
 | S-01 | IBGE localities | `@br-validators/core/ibge` | v1.1.0 | ✅ Shipped |
 | S-02 | Bacen STR banks | `@br-validators/core/bancos` | v1.1.0 | ✅ Shipped |
 | S-03 | DDD geographic lookup | `@br-validators/core/telefone` (`getDddInfo`) | v1.1.0 | ✅ Shipped |
-| S-04 | National holidays | `@br-validators/core/feriados` | v1.2.0 | ✅ Implemented — pending release tag |
-| S-05 | CNAE / CFOP / NCM / CBO | `@br-validators/core/{cnaes,cfop,ncm,cbo}` | v1.3.0 | ✅ Implemented — pending release tag |
+| S-04 | National holidays | `@br-validators/core/feriados` | v1.3.0 | ✅ Released |
+| S-05 | CNAE / CFOP / NCM / CBO | `@br-validators/core/{cnaes,cfop,ncm,cbo}` | v1.3.0 | ✅ Released |
 | S-10 | Data transparency | `@br-validators/core/data-catalog` + weekly bot | v1.1.0 | ✅ Shipped |
-| S-06 | CEP prefix ranges | TBD | v1.3.x | Backlog |
+| S-06 | CEP prefix ranges | `@br-validators/core/cep` (`getCepFaixaInfo`) | v1.3.0 | ✅ Released |
 | S-07 / S-08 | Airports / TSE codes | — | post-v1.3 | Deferred |
 
 **Docs:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · [LIBRARY-API.md](LIBRARY-API.md#core-api--data-catalog-transparency)

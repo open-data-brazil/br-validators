@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-06-23T16:21:09.358Z",
+  "executadoEm": "2026-06-23T16:52:19.152Z",
   "agendamento": "semanal",
   "datasets": [
     {
@@ -108,13 +108,26 @@
       "contagens": {
         "cbo": 2694
       }
+    },
+    {
+      "id": "cep-faixas",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 24649,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "faixas": 24649
+      }
     }
   ],
   "sourceAlerts": [],
   "resumo": {
-    "datasetsVerificados": 8,
-    "datasetsAlterados": 4,
-    "totalAdicionados": 15230,
+    "datasetsVerificados": 9,
+    "datasetsAlterados": 5,
+    "totalAdicionados": 39879,
     "totalRemovidos": 0,
     "totalAlterados": 0,
     "sourceAlerts": 0

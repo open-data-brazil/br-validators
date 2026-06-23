@@ -194,6 +194,7 @@ Government classification tables embedded in the library — **zero runtime fetc
 | CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | NCM Mercosur codes | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| CEP prefix lookup | `@br-validators/core/cep` | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
 
 ```typescript
@@ -251,12 +252,12 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 
 | Package | npm | Version |
 |---------|-----|---------|
-| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.1.0` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.1.0` |
-| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.0.0` |
-| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.0.0` |
+| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.3.0` |
+| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.3.0` |
+| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.3.0` |
+| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.3.0` |
 
-**v1.1.0** on npm — API frozen until v2.0.0. Unreleased additions (feriados, CNAE, CFOP, NCM, CBO) are in `[Unreleased]` on [CHANGELOG.md](CHANGELOG.md). See [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
+**v1.3.0** — feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup. API frozen until v2.0.0. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 

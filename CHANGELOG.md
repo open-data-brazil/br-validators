@@ -11,13 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [1.3.0] - 2026-06-23
+
 ### Added
 
+- **`@br-validators/core/feriados`** — `isFeriadoNacional()`, `getFeriadosNacionais(year)`, `getProximoDiaUtil()`, `getPontosFacultativosFederais(year)`; ten federal national holidays (nine Lei 662 fixed + Paixão de Cristo); nine facultative days per Portaria MGI 11.460/2025 (2026); `FERIADOS_DATA_VERSION`
 - **`@br-validators/core/cnaes`** — `getCnaePorCodigo()`, `searchCnaes()`, `CNAES_DATA_VERSION`; IBGE CNAE 2.3 subclasses
 - **`@br-validators/core/cfop`** — `getCfopPorCodigo()`, `searchCfop()`, `CFOP_DATA_VERSION`; CONFAZ CFOP table
 - **`@br-validators/core/ncm`** — `getNcmPorCodigo()`, `searchNcm()`, `NCM_DATA_VERSION`; Siscomex NCM leaf codes
 - **`@br-validators/core/cbo`** — `getCboPorCodigo()`, `searchCbo()`, `CBO_DATA_VERSION`; MTE CBO 2002 occupations
-- **`@br-validators/core/feriados`** — `isFeriadoNacional()`, `getFeriadosNacionais(year)`, `getProximoDiaUtil()`, `getPontosFacultativosFederais(year)`; ten federal national holidays (nine Lei 662 fixed + Paixão de Cristo); nine facultative days per Portaria MGI 11.460/2025 (2026); `FERIADOS_DATA_VERSION`
+- **`@br-validators/core/cep`** — `getCepFaixaInfo(prefix)` offline UF/municipality lookup from IBGE CNEFE 2022; `CEP_FAIXA_DATA_VERSION`
 - **Data refresh bot** — source health policy: 3 HTTP retries (2 s apart), retain embedded JSON on failure, `sourceAlerts` in weekly reports, [docs/DATA-SOURCE-MAINTENANCE.md](docs/DATA-SOURCE-MAINTENANCE.md)
 
 ---
@@ -325,6 +330,7 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
+| [1.3.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0) | 2026-06-23 | Feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup |
 | [1.1.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0) | 2026-06-23 | Offline reference data: IBGE, Bacen banks, DDD lookup, data catalog |
 | [1.0.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0) | 2026-06-23 | First stable release — API freeze |
 | [0.1.0-beta.1](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1) | 2026-06-21 | CEP library + CLI + playground |
@@ -334,7 +340,8 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0
 [1.1.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0
 [1.0.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0
 [0.1.0-beta.1]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1

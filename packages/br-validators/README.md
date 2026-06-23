@@ -234,7 +234,7 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 |---|---|---|---|
 | CPF | `@br-validators/core/cpf` | `br-validators cpf …` | `/cpf` |
 | CNPJ (numeric + alphanumeric) | `@br-validators/core/cnpj` | `br-validators cnpj …` | `/cnpj` |
-| CEP | `@br-validators/core/cep` | `br-validators cep …` | `/cep` |
+| CEP | `@br-validators/core/cep` | `br-validators cep …` | `/cep` (+ `getCepFaixaInfo` prefix lookup) |
 | Telefone | `@br-validators/core/telefone` | `br-validators telefone …` | `/telefone` |
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
@@ -272,6 +272,7 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 | CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | NCM Mercosur nomenclature | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
+| CEP prefix lookup | `@br-validators/core/cep` | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Data transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
 
 ```typescript

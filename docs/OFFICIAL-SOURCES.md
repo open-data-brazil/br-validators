@@ -34,6 +34,7 @@
 | **CFOP** | CONFAZ | [CFOP SINIEF vigente](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Fiscal operation codes. Golden: **`1102`** (purchase for resale), **`5102`** (third-party sale). Vector: `cfop.official.json`. |
 | **NCM** | Receita / Siscomex | [NCM JSON download](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Mercosur nomenclature leaf codes (8 digits). Golden: **`01012100`** (purebred horses). Vector: `ncm.official.json`. |
 | **CBO** | MTE | [CBO 2002 downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Occupation codes (eSocial / HR). Golden: **`212405`** (systems analyst). Vector: `cbo.official.json`. |
+| **CEP prefix lookup** | IBGE CNEFE | [CNEFE Censo 2022 UF CSV](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 5-digit prefix → UF + IBGE municipality. Golden: **`01310`** (São Paulo/SP), **`20040`** (Rio/RJ). Extends `@br-validators/core/cep`. Vector: `cep-faixa.official.json`. |
 
 ---
 
@@ -336,6 +337,23 @@ Tax rates (IPI/ICMS) are out of scope — code + description lookup only.
 | Occupations CSV | MTE CBO 2002 | https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv |
 
 Golden: `212405` (systems development analyst), `010105` (air force general officer).
+
+---
+
+## CEP prefix ranges {#cep-prefix-ranges}
+
+> **Vectors:** `packages/br-validators/tests/vectors/cep-faixa.official.json`  
+> **Scope:** extends `@br-validators/core/cep` — structural validation unchanged; adds offline prefix lookup.
+
+| Role | Source | URL |
+|------|--------|-----|
+| CNEFE microdata (UF CSV) | IBGE | https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF/ |
+| CNEFE product page | IBGE | https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html |
+| Municipality names | IBGE localidades (embedded) | https://servicodados.ibge.gov.br/api/v1/localidades/municipios |
+
+Golden: prefix `01310` → São Paulo/SP (`3550308`), prefix `20040` → Rio de Janeiro/RJ (`3304557`).
+
+Prefix resolution aggregates IBGE CNEFE 2022 address records by 5-digit CEP prefix (dominant IBGE municipality code). Not a Correios DNE commercial dump — no runtime HTTP to Correios.
 
 ---
 

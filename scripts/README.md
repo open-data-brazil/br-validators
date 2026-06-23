@@ -12,7 +12,8 @@ pnpm fetch:data:cnaes     # IBGE CNAE subclasses → packages/br-validators/src/
 pnpm fetch:data:cfop      # CONFAZ CFOP table → packages/br-validators/src/cfop/data/
 pnpm fetch:data:ncm       # Siscomex NCM JSON → packages/br-validators/src/ncm/data/
 pnpm fetch:data:cbo       # MTE CBO occupations → packages/br-validators/src/cbo/data/
-pnpm fetch:data           # All fetchers above
+pnpm fetch:data:cep-faixas # IBGE CNEFE CEP prefixes → packages/br-validators/src/core/cep/data/ (heavy ~4GB download)
+pnpm fetch:data           # All lightweight fetchers above (excludes cep-faixas)
 pnpm data:refresh         # All datasets + diff report + docs/DATA-FRESHNESS.md
 pnpm data:refresh:report  # Regenerate reports from committed JSON (no fetch)
 ```

@@ -131,6 +131,8 @@ describe('package exports', () => {
 
   it('re-exports CEP API from cep entry', () => {
     expect(cepEntry.validateCep).toBe(root.validateCep);
+    expect(cepEntry.getCepFaixaInfo).toBeTypeOf('function');
+    expect(cepEntry.CEP_FAIXA_DATA_VERSION.id).toBe('cep-faixas');
   });
 
   it('re-exports Telefone API from telefone entry', () => {

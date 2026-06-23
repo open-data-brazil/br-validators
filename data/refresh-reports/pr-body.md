@@ -10,8 +10,9 @@
 | cfop | 689 cfop | 689 | 0 | 0 | 2026-06-23 | [official](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | ncm | 10515 ncm | 10515 | 0 | 0 | 2026-06-23 | [official](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | cbo | 2694 cbo | 2694 | 0 | 0 | 2026-06-23 | [official](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| cep-faixas | 24649 faixas | 24649 | 0 | 0 | 2026-06-23 | [official](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF) |
 
-**Totals:** +15230 −0 ~0
+**Totals:** +39879 −0 ~0
 
 ### Source health
 
