@@ -1,6 +1,7 @@
 # Official sources by data type
 
 > **Rule:** No validator ships without a row in this table and at least one test vector from the cited source.
+> **Reference data freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) (auto-generated weekly by `data-refresh-bot.yml`).
 > Last reviewed: June 2026.
 
 ---

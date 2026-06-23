@@ -29,7 +29,7 @@ Every Brazilian SaaS eventually reinvents CPF validation — usually wrong.
 - ✅ **Zero runtime dependencies** — pure TypeScript logic, no HTTP calls
 - ✅ **Never throws** — every function returns `{ ok: true, value } | { ok: false, message, code }`
 - ✅ **Tree-shakeable** — subpath imports per document type
-- ✅ **Reference data** — IBGE, Bacen banks, DDD lookup with weekly freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md))
+- ✅ **Reference data** — IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO — embedded offline with weekly freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md))
 - ✅ **ESM only**, Node ≥ 18, works in browser, Bun, Deno
 
 ---
@@ -258,7 +258,45 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | **generate()** | `@br-validators/core/generate` | `br-validators generate …` | `/generate` |
 | **buildStaticPixBrCode()** | `@br-validators/core/brcode` | — | `/pix` (QR panel) |
 
-Full official sources per type: [docs/OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/OFFICIAL-SOURCES.md)
+### Reference data (offline lookup)
+
+Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each module exports `*_DATA_VERSION` with capture date, row counts, and source URLs. Aggregated via `@br-validators/core/data-catalog`.
+
+| Dataset | Subpath | Key APIs | Official source |
+|---------|---------|----------|-----------------|
+| IBGE states + municipalities | `@br-validators/core/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| DDD geographic lookup | `@br-validators/core/telefone` | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur nomenclature | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
+| Data transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
+
+```typescript
+import { getMunicipioPorCodigo } from '@br-validators/core/ibge';
+import { getBancoPorCodigo } from '@br-validators/core/bancos';
+import { getDddInfo } from '@br-validators/core/telefone';
+import { isFeriadoNacional } from '@br-validators/core/feriados';
+import { getCnaePorCodigo } from '@br-validators/core/cnaes';
+import { getCfopPorCodigo } from '@br-validators/core/cfop';
+import { getNcmPorCodigo } from '@br-validators/core/ncm';
+import { getCboPorCodigo } from '@br-validators/core/cbo';
+import { getDataCatalog } from '@br-validators/core/data-catalog';
+
+getMunicipioPorCodigo(3550308)?.nome; // São Paulo
+getBancoPorCodigo('001')?.nome;       // Banco do Brasil
+getDddInfo('11')?.uf;                 // SP
+isFeriadoNacional('2026-01-01');      // true — Confraternização Universal
+getCnaePorCodigo('6201501');          // custom software development
+getCfopPorCodigo('1.102');            // accepts CONFAZ dotted format
+getNcmPorCodigo('01012100');          // purebred horses (8-digit leaf)
+getCboPorCodigo('212405');            // systems development analyst
+getDataCatalog().length;              // 8 registered datasets
+```
+
+Freshness table (auto-updated weekly): [docs/DATA-FRESHNESS.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/DATA-FRESHNESS.md) · Per-type official URLs: [docs/OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/OFFICIAL-SOURCES.md)
 
 ---
 
