@@ -14,6 +14,7 @@ import * as boletoEntry from '../src/boleto.js';
 import * as cartaoCreditoEntry from '../src/cartao-credito.js';
 import * as ibgeEntry from '../src/ibge.js';
 import * as bancosEntry from '../src/bancos.js';
+import * as feriadosEntry from '../src/feriados.js';
 import * as dataCatalogEntry from '../src/data-catalog.js';
 
 describe('package exports', () => {
@@ -185,6 +186,13 @@ describe('package exports', () => {
     expect(bancosEntry.getBancoPorCodigo).toBeTypeOf('function');
     expect(bancosEntry.getBancoPorIspb).toBeTypeOf('function');
     expect(bancosEntry.BANCOS_DATA_VERSION.id).toBe('bancos');
+  });
+
+  it('re-exports Feriados API from feriados entry', () => {
+    expect(feriadosEntry.isFeriadoNacional).toBeTypeOf('function');
+    expect(feriadosEntry.getFeriadosNacionais).toBeTypeOf('function');
+    expect(feriadosEntry.getProximoDiaUtil).toBeTypeOf('function');
+    expect(feriadosEntry.FERIADOS_DATA_VERSION.id).toBe('feriados');
   });
 
   it('re-exports data catalog API from data-catalog entry', () => {

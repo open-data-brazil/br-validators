@@ -40,6 +40,7 @@
 | `@br-validators/core/generate` | Synthetic test document generation |
 | `@br-validators/core/ibge` | IBGE states + municipalities (offline reference data) |
 | `@br-validators/core/bancos` | Bacen STR participants with COMPE / ISPB lookup |
+| `@br-validators/core/feriados` | Brazilian national public holidays (fixed + movable) |
 | `@br-validators/core/data-catalog` | Aggregated dataset transparency metadata |
 | `@br-validators/core/data-catalog` | Aggregated dataset metadata / transparency API |
 
@@ -538,6 +539,34 @@ Golden vectors: `11` → SP/Sudeste, `66` → MT/Centro-Oeste, `92` → AM/Norte
 
 ```typescript
 import { getDddInfo, validateTelefone, TELEFONE_DDD_DATA_VERSION } from '@br-validators/core/telefone';
+```
+
+---
+
+## Core API — National holidays (feriados)
+
+> **Offline algorithm** from [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) and amendments.  
+> National holidays only — no state or municipal calendars.
+
+| Function | Returns |
+|----------|---------|
+| `isFeriadoNacional(input)` | `true` if `YYYY-MM-DD` string or `Date` (UTC parts) is a national holiday |
+| `getFeriadosNacionais(year)` | Sorted list of `{ data, nome, tipo, baseLegal? }` |
+| `getProximoDiaUtil(input)` | Next weekday that is not a national holiday (`YYYY-MM-DD`) |
+| `FERIADOS_DATA_VERSION` | `DatasetMetadata` with legal source URLs |
+
+Movable holidays: Carnaval (Easter − 47), Sexta-feira Santa (Easter − 2), Corpus Christi (Easter + 60).  
+Easter: Meeus/Jones/Butcher (Gregorian).
+
+Golden vectors: `2025-11-15` (Proclamação), `2025-03-04` (Carnaval), `2025-06-20` → `false`.
+
+```typescript
+import {
+  isFeriadoNacional,
+  getFeriadosNacionais,
+  getProximoDiaUtil,
+  FERIADOS_DATA_VERSION,
+} from '@br-validators/core/feriados';
 ```
 
 ---

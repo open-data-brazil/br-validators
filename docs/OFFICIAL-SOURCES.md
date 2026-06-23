@@ -255,6 +255,20 @@ Golden: COMPE `001` / ISPB `00000000` (Banco do Brasil), `341` / `60701190` (Ita
 
 ---
 
+## National holidays {#feriados-nacionais}
+
+> **Vectors:** `packages/br-validators/tests/vectors/feriados.official.json`
+
+| Role | Source | URL |
+|------|--------|-----|
+| Fixed holidays | Lei 662/1949 | https://www.planalto.gov.br/ccivil_03/leis/l0662.htm |
+| Nossa Senhora Aparecida | Lei 6.802/1980 | https://www.planalto.gov.br/ccivil_03/leis/l6802.htm |
+| Consciência Negra | Lei 14.759/2023 | https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14759.htm |
+
+Movable offsets from Easter Sunday (Computus). Out of scope: state/municipal holidays, BACEN banking calendar.
+
+---
+
 ## References index
 
 - RFB CPF: https://www.gov.br/receitafederal/pt-br/assuntos/cpf

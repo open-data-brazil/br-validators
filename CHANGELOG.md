@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`@br-validators/core/feriados`** — `isFeriadoNacional()`, `getFeriadosNacionais(year)`, `getProximoDiaUtil()`; fixed (Lei 662/1949 + amendments) and movable holidays (Easter-based); `FERIADOS_DATA_VERSION`
+
 ---
 
 ## [1.1.0] - 2026-06-23

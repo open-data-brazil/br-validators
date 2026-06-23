@@ -40,6 +40,7 @@
     "diff",
     "ibge",
     "bancos",
+    "feriados",
     "data-catalog",
     "typescript"
   ],
@@ -153,6 +154,10 @@
     "./bancos": {
       "types": "./dist/bancos.d.ts",
       "import": "./dist/bancos.js"
+    },
+    "./feriados": {
+      "types": "./dist/feriados.d.ts",
+      "import": "./dist/feriados.js"
     },
     "./data-catalog": {
       "types": "./dist/data-catalog.d.ts",

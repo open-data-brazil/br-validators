@@ -1,0 +1,27 @@
+{
+  "id": "feriados",
+  "nome": "Feriados Nacionais",
+  "fonte": "Lei 662/1949 + Lei 6.802/1980 + Lei 14.759/2023",
+  "endpoints": [
+    "https://www.planalto.gov.br/ccivil_03/leis/l0662.htm",
+    "https://www.planalto.gov.br/ccivil_03/leis/l6802.htm",
+    "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14759.htm"
+  ],
+  "capturadoEm": "2026-06-23",
+  "atualizadoEm": "2026-06-23T00:00:00.000Z",
+  "contagens": {
+    "fixos": 9,
+    "moveis": 3
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": null
+  },
+  "verificacao": {
+    "agendamento": "semanal",
+    "workflow": "data-refresh-bot.yml"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#feriados-nacionais"
+}
