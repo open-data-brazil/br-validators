@@ -26,16 +26,33 @@ const subpaths = [
   'sanitize',
   'telefone',
   'titulo-eleitor',
+  'ibge',
+  'bancos',
+  'data-catalog',
 ];
 
 const nextConfig = {
   webpack: (config) => {
-    config.resolve.alias['@br-validators/core'] = path.join(coreDist, 'index.js');
-    config.resolve.alias['@playground/cli-run-captured'] = cliRunCaptured;
-    config.resolve.alias['node:fs'] = path.join(playgroundRoot, 'lib/cli/stubs/fs.ts');
+    const alias =
+      config.resolve.alias instanceof Array
+        ? Object.fromEntries(
+            config.resolve.alias.flatMap((entry) => {
+              if (typeof entry === 'object' && entry !== null && 'name' in entry && 'alias' in entry) {
+                return [[entry.name, entry.alias]];
+              }
+              return [];
+            }),
+          )
+        : { ...(config.resolve.alias ?? {}) };
+
+    alias['@br-validators/core$'] = path.join(coreDist, 'index.js');
+    alias['@playground/cli-run-captured'] = cliRunCaptured;
+    alias['node:fs'] = path.join(playgroundRoot, 'lib/cli/stubs/fs.ts');
     for (const subpath of subpaths) {
-      config.resolve.alias[`@br-validators/core/${subpath}`] = path.join(coreDist, `${subpath}.js`);
+      alias[`@br-validators/core/${subpath}$`] = path.join(coreDist, `${subpath}.js`);
     }
+
+    config.resolve.alias = alias;
     return config;
   },
 };

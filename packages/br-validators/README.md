@@ -262,18 +262,18 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 
 Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each module exports `*_DATA_VERSION` with capture date, row counts, and source URLs. Aggregated via `@br-validators/core/data-catalog`.
 
-| Dataset | Subpath | Key APIs | Official source |
-|---------|---------|----------|-----------------|
-| IBGE states + municipalities | `@br-validators/core/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
-| Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
-| DDD geographic lookup | `@br-validators/core/telefone` | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
-| National holidays | `@br-validators/core/feriados` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
-| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
-| CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
-| NCM Mercosur nomenclature | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
-| CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
-| CEP prefix lookup | `@br-validators/core/cep` | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
-| Data transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
+| Dataset | Subpath | CLI | Playground | Key APIs | Official source |
+|---------|---------|-----|------------|----------|-----------------|
+| IBGE states + municipalities | `@br-validators/core/ibge` | — | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `bancos lookup` · `list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| DDD geographic lookup | `@br-validators/core/telefone` | — | — | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | — | — | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | — | — | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | — | — | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur nomenclature | `@br-validators/core/ncm` | — | — | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | — | — | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
+| CEP prefix lookup | `@br-validators/core/cep` | — | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
+| Data transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
 
 ```typescript
 import { getMunicipioPorCodigo } from '@br-validators/core/ibge';

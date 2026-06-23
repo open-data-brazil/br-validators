@@ -12,6 +12,13 @@ export type PlatformRoute = {
   group: 'platform';
 };
 
+export type ReferenceDataRoute = {
+  slug: string;
+  label: string;
+  description: string;
+  group: 'reference-data';
+};
+
 export const DOCUMENT_ROUTES = [
   { slug: 'cpf', label: 'CPF', description: 'RFB modulo 11', group: 'documents' },
   { slug: 'cnpj', label: 'CNPJ', description: 'RFB modulo 11 (numeric + alpha)', group: 'documents' },
@@ -37,10 +44,17 @@ export const PLATFORM_ROUTES = [
   { slug: 'official-sources', label: 'Official sources', description: 'Normative references by data type', group: 'platform' },
 ] as const satisfies readonly PlatformRoute[];
 
-export const ALL_ROUTES = [...DOCUMENT_ROUTES, ...PLATFORM_ROUTES] as const;
+export const REFERENCE_DATA_ROUTES = [
+  { slug: 'data/ibge', label: 'IBGE', description: 'States + municipalities', group: 'reference-data' },
+  { slug: 'data/bancos', label: 'Bancos', description: 'Bacen STR participants', group: 'reference-data' },
+  { slug: 'data/catalog', label: 'Data catalog', description: 'Embedded dataset metadata', group: 'reference-data' },
+] as const satisfies readonly ReferenceDataRoute[];
+
+export const ALL_ROUTES = [...DOCUMENT_ROUTES, ...PLATFORM_ROUTES, ...REFERENCE_DATA_ROUTES] as const;
 
 export type DocumentSlug = (typeof DOCUMENT_ROUTES)[number]['slug'];
 export type PlatformSlug = (typeof PLATFORM_ROUTES)[number]['slug'];
+export type ReferenceDataSlug = (typeof REFERENCE_DATA_ROUTES)[number]['slug'];
 
 /** @deprecated Use DOCUMENT_ROUTES */
 export const ROUTES = DOCUMENT_ROUTES;

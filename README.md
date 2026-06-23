@@ -184,18 +184,18 @@ Official sources per type: [docs/OFFICIAL-SOURCES.md](docs/OFFICIAL-SOURCES.md)
 
 Government classification tables embedded in the library — **zero runtime fetch**, tree-shakeable subpaths, weekly verified freshness.
 
-| Dataset | Library import | Key APIs | Official source |
-|---------|----------------|----------|-----------------|
-| IBGE states + municipalities | `@br-validators/core/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades](https://servicodados.ibge.gov.br/api/docs/localidades) |
-| Bacen STR banks | `@br-validators/core/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen STR CSV](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
-| DDD geographic lookup | `@br-validators/core/telefone` | `getDddInfo` | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
-| National holidays | `@br-validators/core/feriados` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
-| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
-| CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
-| NCM Mercosur codes | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
-| CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
-| CEP prefix lookup | `@br-validators/core/cep` | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
-| Transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
+| Dataset | Library import | CLI | Playground | Key APIs | Official source |
+|---------|----------------|-----|------------|----------|-----------------|
+| IBGE states + municipalities | `@br-validators/core/ibge` | — | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| Bacen STR banks | `@br-validators/core/bancos` | `bancos lookup` · `bancos list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen STR CSV](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| DDD geographic lookup | `@br-validators/core/telefone` | — | — | `getDddInfo` | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | — | — | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | — | — | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | — | — | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur codes | `@br-validators/core/ncm` | — | — | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | — | — | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| CEP prefix lookup | `@br-validators/core/cep` | — | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
+| Transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
 
 ```typescript
 import { getNcmPorCodigo } from '@br-validators/core/ncm';
@@ -253,7 +253,7 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | Package | npm | Version |
 |---------|-----|---------|
 | `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.3.0` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.3.0` |
+| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.3.1` |
 | `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.3.0` |
 | `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.3.0` |
 

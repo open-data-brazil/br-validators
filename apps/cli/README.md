@@ -88,6 +88,24 @@ br-validators generate placa --format mercosul --seed 3
 
 ---
 
+## Reference data lookup
+
+Offline Bacen STR participants — delegates to `@br-validators/core/bancos`.
+
+```bash
+br-validators bancos lookup 001 --json
+br-validators bancos lookup 18236120 --verbose
+br-validators bancos list --limit 20 --json
+```
+
+| Exit code | Meaning |
+|-----------|---------|
+| `0` | Bank found |
+| `1` | Not found |
+| `2` | Usage error (invalid COMPE/ISPB length) |
+
+---
+
 ## Flags
 
 | Flag | Description |
@@ -97,6 +115,8 @@ br-validators generate placa --format mercosul --seed 3
 | `--file` / `-f` | Read value from file |
 | `--source` | Print official source URL (per-type) |
 | `--uf` | Required for IE / detect / sanitize IE |
+| `--verbose` | Include dataset capture date (`bancos` lookup/list) |
+| `--limit` | Max rows for `bancos list` |
 
 ### CI
 

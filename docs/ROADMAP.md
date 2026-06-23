@@ -134,6 +134,9 @@ Offline government datasets — tree-shakeable subpaths, `*_DATA_VERSION` metada
 | S-05 | CNAE / CFOP / NCM / CBO | `@br-validators/core/{cnaes,cfop,ncm,cbo}` | v1.3.0 | ✅ Released |
 | S-10 | Data transparency | `@br-validators/core/data-catalog` + weekly bot | v1.1.0 | ✅ Shipped |
 | S-06 | CEP prefix ranges | `@br-validators/core/cep` (`getCepFaixaInfo`) | v1.3.0 | ✅ Released |
-| S-07 / S-08 | Airports / TSE codes | — | post-v1.3 | Deferred |
+| S-07 / S-08 | Airports / TSE codes | `@br-validators/core/{aeroportos,tse-municipios}` (planned) | 1.4.0 | ⏸ Backlog — [25-deferred-revival](../.local/phases/25-deferred-revival/) · [24c decision log](../.local/phases/24c-deferred-datasets/) |
+| S-09 | ISS rates by municipality | — | — | 🚫 Rejected — stale-data risk |
+
+**Optional surfaces (CLI + Playground):** `.local/phases/24-reference-data-surfaces/` — `bancos lookup`, `/data/ibge`, `/data/bancos`
 
 **Docs:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · [LIBRARY-API.md](LIBRARY-API.md#core-api--data-catalog-transparency)
