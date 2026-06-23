@@ -1,0 +1,15 @@
+{
+  "source": "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json",
+  "minLeafCodes": 10000,
+  "maxLeafCodes": 11500,
+  "golden": {
+    "cavalosReprodutores": {
+      "codigo": "01012100",
+      "descricaoContains": "Reprodutores"
+    },
+    "sojaSementes": {
+      "codigo": "12011000",
+      "descricaoContains": "semeadura"
+    }
+  }
+}

@@ -17,7 +17,7 @@
 | **React Hook Form** | [`@br-validators/react-hook-form`](https://www.npmjs.com/package/@br-validators/react-hook-form) on npm |
 | **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
 
-Reference datasets (IBGE, Bacen banks, DDD lookup) are embedded offline and refreshed weekly — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md).
+Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO) are embedded offline and refreshed weekly — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md).
 
 > **Note:** The unscoped npm name [`br-validators`](https://www.npmjs.com/package/br-validators) belongs to another project. Install **`@br-validators/core`** or **`@br-validators/cli`**.
 
@@ -180,6 +180,35 @@ Core library ships **`buildStaticPixBrCode`**, **`validateBrCode` / `parseBrCode
 
 Official sources per type: [docs/OFFICIAL-SOURCES.md](docs/OFFICIAL-SOURCES.md)
 
+### Reference data (offline lookup)
+
+Government classification tables embedded in the library — **zero runtime fetch**, tree-shakeable subpaths, weekly verified freshness.
+
+| Dataset | Library import | Key APIs | Official source |
+|---------|----------------|----------|-----------------|
+| IBGE states + municipalities | `@br-validators/core/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| Bacen STR banks | `@br-validators/core/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen STR CSV](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| DDD geographic lookup | `@br-validators/core/telefone` | `getDddInfo` | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur codes | `@br-validators/core/ncm` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| CEP prefix lookup | `@br-validators/core/cep` | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
+| Transparency catalog | `@br-validators/core/data-catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
+
+```typescript
+import { getNcmPorCodigo } from '@br-validators/core/ncm';
+import { getCfopPorCodigo } from '@br-validators/core/cfop';
+import { getCnaePorCodigo } from '@br-validators/core/cnaes';
+import { getDataCatalog } from '@br-validators/core/data-catalog';
+
+getNcmPorCodigo('01012100');   // NCM leaf code lookup
+getCfopPorCodigo('1102');      // fiscal operation code
+getCnaePorCodigo('6201501');   // economic activity (CNPJ complement)
+getDataCatalog();              // all dataset metadata + capture dates
+```
+
 ---
 
 ## Develop from source
@@ -223,12 +252,12 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 
 | Package | npm | Version |
 |---------|-----|---------|
-| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.0.0` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.0.0` |
-| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.0.0` |
-| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.0.0` |
+| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.3.0` |
+| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.3.0` |
+| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.3.0` |
+| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.3.0` |
 
-**v1.0.0** — API frozen until v2.0.0. See [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
+**v1.3.0** — feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup. API frozen until v2.0.0. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 

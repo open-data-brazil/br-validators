@@ -1,0 +1,15 @@
+{
+  "source": "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente",
+  "minCodes": 600,
+  "maxCodes": 750,
+  "golden": {
+    "compraComercializacao": {
+      "codigo": "1102",
+      "descricaoContains": "comercialização"
+    },
+    "vendaTerceiros": {
+      "codigo": "5102",
+      "descricaoContains": "terceiros"
+    }
+  }
+}

@@ -40,8 +40,12 @@
 | `@br-validators/core/generate` | Synthetic test document generation |
 | `@br-validators/core/ibge` | IBGE states + municipalities (offline reference data) |
 | `@br-validators/core/bancos` | Bacen STR participants with COMPE / ISPB lookup |
+| `@br-validators/core/feriados` | Brazilian national federal holidays (fixed dates) + optional facultative days |
+| `@br-validators/core/cnaes` | IBGE CNAE 2.3 economic activity subclass lookup |
+| `@br-validators/core/cfop` | CONFAZ CFOP fiscal operation code lookup |
+| `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
+| `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
 | `@br-validators/core/data-catalog` | Aggregated dataset transparency metadata |
-| `@br-validators/core/data-catalog` | Aggregated dataset metadata / transparency API |
 
 ---
 
@@ -135,8 +139,20 @@ See [DELIVERY-SURFACES.md](DELIVERY-SURFACES.md).
 | `isValidCep` | `(input: string) => boolean` | Length + digits; no check digit |
 | `validateCep` | `(input: string) => ValidationResult<Cep>` | Structural validation only |
 | `formatCep` | `(input: string) => FormatResult` | `XXXXX-XXX` |
+| `getCepFaixaInfo` | `(prefix: string) => CepFaixa \| undefined` | 5-digit prefix (or full CEP) → UF + IBGE municipality |
+| `getCepFaixas` | `() => readonly CepFaixa[]` | All embedded prefix rows |
+| `CEP_FAIXA_DATA_VERSION` | — | `DatasetMetadata` for IBGE CNEFE aggregation |
 
 **Official source:** [Correios CEP API manual](https://www.correios.com.br/atendimento/developers/manuais/manual-api-busca-cep) · `CEP_OFFICIAL_SOURCE_URL` · `tests/vectors/cep.official.json` · Golden: `01310100`, `20040020`
+
+**Prefix lookup source:** [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) · `tests/vectors/cep-faixa.official.json` · Golden prefixes: `01310` (São Paulo/SP), `20040` (Rio/RJ)
+
+```typescript
+import { validateCep, getCepFaixaInfo, CEP_FAIXA_DATA_VERSION } from '@br-validators/core/cep';
+
+getCepFaixaInfo('01310');
+// { prefixo: '01310', uf: 'SP', codigoIbge: 3550308, cidade: 'São Paulo' }
+```
 
 ---
 
@@ -538,6 +554,114 @@ Golden vectors: `11` → SP/Sudeste, `66` → MT/Centro-Oeste, `92` → AM/Norte
 
 ```typescript
 import { getDddInfo, validateTelefone, TELEFONE_DDD_DATA_VERSION } from '@br-validators/core/telefone';
+```
+
+---
+
+## Core API — National holidays (feriados)
+
+> **Federal calendar** per [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) (fixed dates) and annual [Portaria MGI](https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026) (Paixão de Cristo).  
+> **10 national holidays** in 2026: nine fixed + Good Friday. Pontos facultativos are separate.
+
+| Function | Returns |
+|----------|---------|
+| `isFeriadoNacional(input)` | `true` for fixed Lei 662 holidays **or** Paixão de Cristo (Good Friday) |
+| `getFeriadosNacionais(year)` | Sorted list — `tipo: 'fixo'` or `'movel'` (Paixão de Cristo only) |
+| `getProximoDiaUtil(input)` | Next weekday that is not a national holiday (`YYYY-MM-DD`) |
+| `getPontosFacultativosFederais(year)` | Portaria MGI facultative days — Carnaval, Cinzas, Corpus Christi, Servidor Público, vésperas, plus year-specific bridge days when published |
+| `FERIADOS_DATA_VERSION` | Planalto + Gov.br source URLs |
+
+2026 facultatives (Portaria MGI 11.460/2025): 16–18 Feb (Carnaval/Cinzas), 20 Apr, 4–5 Jun, 28 Oct, 24–31 Dec (partial hours on Cinzas and vésperas).  
+Golden vectors: `2026-04-03` (Paixão de Cristo — national), `2026-02-17` (Carnaval — facultativo).
+
+```typescript
+import {
+  isFeriadoNacional,
+  getFeriadosNacionais,
+  getProximoDiaUtil,
+  getPontosFacultativosFederais,
+  FERIADOS_DATA_VERSION,
+} from '@br-validators/core/feriados';
+```
+
+---
+
+## Core API — CNAE (reference data)
+
+> **Offline embedded data** from [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Function | Returns |
+|----------|---------|
+| `getCnaes()` | All CNAE 2.3 subclasses |
+| `getCnaePorCodigo(codigo)` | Single subclass or `undefined` (7-digit code) |
+| `searchCnaes(query, { limit? })` | Description search (default limit 10) |
+| `CNAES_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `6201501` (custom software development), `6201502` (web design).
+
+```typescript
+import { getCnaePorCodigo, searchCnaes, CNAES_DATA_VERSION } from '@br-validators/core/cnaes';
+```
+
+---
+
+## Core API — CFOP (reference data)
+
+> **Offline embedded data** from [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Function | Returns |
+|----------|---------|
+| `getCfops()` | All CFOP codes |
+| `getCfopPorCodigo(codigo)` | Single CFOP or `undefined` (4-digit code) |
+| `searchCfop(query, { limit? })` | Description search (default limit 10) |
+| `CFOP_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `1102` (purchase for resale), `5102` (third-party sale).
+
+```typescript
+import { getCfopPorCodigo, searchCfop, CFOP_DATA_VERSION } from '@br-validators/core/cfop';
+```
+
+---
+
+## Core API — NCM (reference data)
+
+> **Offline embedded data** from [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Function | Returns |
+|----------|---------|
+| `getNcms()` | All 8-digit leaf NCM codes |
+| `getNcmPorCodigo(codigo)` | Single NCM or `undefined` (accepts dotted input) |
+| `searchNcm(query, { limit? })` | Description search (default limit 10) |
+| `NCM_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `01012100` (purebred horses), `12011000` (soybean seeds).
+
+```typescript
+import { getNcmPorCodigo, searchNcm, NCM_DATA_VERSION } from '@br-validators/core/ncm';
+```
+
+---
+
+## Core API — CBO (reference data)
+
+> **Offline embedded data** from [MTE CBO 2002 CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Function | Returns |
+|----------|---------|
+| `getCbos()` | All CBO 2002 occupations |
+| `getCboPorCodigo(codigo)` | Single occupation or `undefined` (6-digit code) |
+| `searchCbo(query, { limit? })` | Description search (default limit 10) |
+| `CBO_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `212405` (systems analyst), `010105` (air force general).
+
+```typescript
+import { getCboPorCodigo, searchCbo, CBO_DATA_VERSION } from '@br-validators/core/cbo';
 ```
 
 ---

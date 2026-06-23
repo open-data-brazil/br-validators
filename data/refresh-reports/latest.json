@@ -1,15 +1,15 @@
 {
-  "executadoEm": "2026-06-23T14:39:41.963Z",
+  "executadoEm": "2026-06-23T16:52:19.152Z",
   "agendamento": "semanal",
   "datasets": [
     {
       "id": "ibge",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 5598,
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": null
+        "comparadoCom": "2026-06-23"
       },
       "contagens": {
         "estados": 27,
@@ -18,12 +18,12 @@
     },
     {
       "id": "bancos",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 468,
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": null
+        "comparadoCom": "2026-06-23"
       },
       "contagens": {
         "bancos": 468
@@ -31,23 +31,105 @@
     },
     {
       "id": "telefone-ddd",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 67,
+        "adicionados": 0,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": "2026-06-23"
+      },
+      "contagens": {
+        "ddds": 67
+      }
+    },
+    {
+      "id": "feriados",
+      "status": "unchanged",
+      "alteracoes": {
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
         "comparadoCom": null
       },
       "contagens": {
-        "ddds": 67
+        "feriadosNacionaisFixos": 9,
+        "feriadosNacionaisMoveis": 1,
+        "pontosFacultativosFederais": 9
+      }
+    },
+    {
+      "id": "cnaes",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 1332,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "cnaes": 1332
+      }
+    },
+    {
+      "id": "cfop",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 689,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "cfop": 689
+      }
+    },
+    {
+      "id": "ncm",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 10515,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "ncm": 10515
+      }
+    },
+    {
+      "id": "cbo",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 2694,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "cbo": 2694
+      }
+    },
+    {
+      "id": "cep-faixas",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 24649,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": null
+      },
+      "contagens": {
+        "faixas": 24649
       }
     }
   ],
+  "sourceAlerts": [],
   "resumo": {
-    "datasetsVerificados": 3,
-    "datasetsAlterados": 3,
-    "totalAdicionados": 6133,
+    "datasetsVerificados": 9,
+    "datasetsAlterados": 5,
+    "totalAdicionados": 39879,
     "totalRemovidos": 0,
-    "totalAlterados": 0
+    "totalAlterados": 0,
+    "sourceAlerts": 0
   }
 }

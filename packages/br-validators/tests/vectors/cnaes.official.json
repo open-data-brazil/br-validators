@@ -1,0 +1,15 @@
+{
+  "source": "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses",
+  "minSubclasses": 1200,
+  "maxSubclasses": 1500,
+  "golden": {
+    "desenvolvimentoProgramas": {
+      "codigo": "6201501",
+      "descricaoContains": "DESENVOLVIMENTO DE PROGRAMAS"
+    },
+    "webDesign": {
+      "codigo": "6201502",
+      "descricaoContains": "WEB DESIGN"
+    }
+  }
+}

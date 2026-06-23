@@ -1,0 +1,15 @@
+{
+  "source": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv",
+  "minOcupacoes": 2400,
+  "maxOcupacoes": 2800,
+  "golden": {
+    "analistaSistemas": {
+      "codigo": "212405",
+      "descricaoContains": "desenvolvimento de sistemas"
+    },
+    "oficialAeronautica": {
+      "codigo": "010105",
+      "descricaoContains": "aeron"
+    }
+  }
+}

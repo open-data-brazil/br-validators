@@ -1,0 +1,11 @@
+{
+  "datasetId": "cfop",
+  "status": "ok",
+  "endpoints": [
+    "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T16:12:06.318Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Official CONFAZ CFOP table fetch succeeded."
+}

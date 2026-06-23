@@ -1,0 +1,11 @@
+{
+  "datasetId": "ncm",
+  "status": "ok",
+  "endpoints": [
+    "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T16:12:07.329Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Official Siscomex NCM JSON fetch succeeded."
+}
