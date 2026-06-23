@@ -32,9 +32,20 @@
 | **IBGE localities** | IBGE | [Serviço de Dados — localidades](https://servicodados.ibge.gov.br/api/docs/localidades) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Estados + municípios embedded offline. Golden: **`3550308`** (São Paulo/SP), **`5107925`** (Sorriso/MT), **`5300108`** (Brasília/DF), **`5101837`** (Boa Esperança do Norte/MT — null `microrregiao` fallback). Vector: `ibge.official.json`. Weekly refresh via `data-refresh-bot.yml`. |
 | **CNAE** | IBGE CONCLA | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Economic activity subclasses (CNAE 2.3). Golden: **`6201501`** (software development). Vector: `cnaes.official.json`. |
 | **CFOP** | CONFAZ | [CFOP SINIEF vigente](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Fiscal operation codes. Golden: **`1102`** (purchase for resale), **`5102`** (third-party sale). Vector: `cfop.official.json`. |
+| **Natureza jurídica** | RFB CNPJ | [Dados Abertos CNPJ — Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | CNPJ legal nature codes. Golden: **`2062`** (Ltda.). Vector: `natureza-juridica.official.json`. Dev fallback mirror documented in `fetch-natureza-juridica.ts`. |
+| **NBS** | NFSe Nacional | [Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Brazilian Services Nomenclature leaf codes. Golden: **`1.1502.50.00`** (TI systems integration). Vector: `nbs.official.json`. Parsed from xlsx without extra deps. |
+| **CEST** | CONFAZ | [Convênio ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | ST specifier codes (7 digits) linked to NCM prefixes. Golden: **`0302100`** (returnable beer bottle); NCM **`22030000`** cross-ref. Vector: `cest.official.json`. |
 | **NCM** | Receita / Siscomex | [NCM JSON download](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Mercosur nomenclature leaf codes (8 digits). Golden: **`01012100`** (purebred horses). Vector: `ncm.official.json`. |
 | **CBO** | MTE | [CBO 2002 downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Occupation codes (eSocial / HR). Golden: **`212405`** (systems analyst). Vector: `cbo.official.json`. |
 | **CEP prefix lookup** | IBGE CNEFE | [CNEFE Censo 2022 UF CSV](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 5-digit prefix → UF + IBGE municipality. Golden: **`01310`** (São Paulo/SP), **`20040`** (Rio/RJ). Extends `@br-validators/core/cep`. Vector: `cep-faixa.official.json`. |
+| **Aeroportos (ANAC)** | ANAC | [Lista aeródromos públicos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Public aerodromos (ICAO/OACI + IATA where assigned). Golden: **`GRU`/`SBGR`**, **`GIG`/`SBGL`**, **`BSB`/`SBBR`**, **`SSA`/`SBSV`**, **`CGB`/`SBCY`**. Vector: `aeroportos.official.json`. IATA enrichment from ICAO standard assignment (supplemental to ANAC). |
+| **TSE ↔ IBGE municipios** | TSE | [municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) · [Portal dados abertos](https://dadosabertos.tse.jus.br/dataset/codigos-oficiais-de-uf-e-municipios-segundo-o-tse-e-o-ibge) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Electoral municipality codes cross-walk to IBGE `codigo`. Golden: TSE **`71072`** → IBGE **`3550308`** (São Paulo/SP). Vector: `tse-municipios.official.json`. Lookup-only — does not change `titulo-eleitor` validation. |
+| **Moedas (ISO 4217 + Bacen)** | ISO / Bacen | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | ISO 4217 embedded baseline merged with Bacen PTAX `tipoMoeda` (A/B). Golden: **`BRL`**, **`USD`**, **`EUR`**. Vector: `moedas.official.json`. |
+| **Países Bacen (NF-e)** | RFB / Bacen | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 4-digit Bacen country codes for NF-e `cPais`. Golden: **`1058`** → Brasil. Vector: `paises-bacen.official.json`. Embedded fallback when portal redirect fails. |
+| **Incoterms 2020** | ICC | [Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Static ICC 2020 list (11 terms, code + name only). Golden: **`FOB`**. Vector: `incoterms.official.json`. |
+| **Portos (ANTAQ)** | ANTAQ | [Instalações portuárias shape/xlsx zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Outorged port installations (`Portos.xlsx`). Golden: **`BRSSZ`** (Santos), **`BRADR`**, **`BRPNG`**. Vector: `portos.official.json`. IBGE municipality cross-ref via `idcidade`. |
+| **PNCP reference** | PNCP / Serpro | [Cadastro API domain tables](https://pncp.gov.br/api/pncp/v1/modalidades) · [OpenAPI](https://pncp.gov.br/api/pncp/v3/api-docs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Static procurement domain tables (modalidades, amparos legais, etc.). Golden: modalidade **`6`** (Pregão Eletrônico). Vector: `pncp-reference.official.json`. Live contract lookup → `@br-validators/adapters-pncp` (RFC). |
+| **Portal da Transparência registry** | CGU | [Swagger UI](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) · [OpenAPI](https://api.portaldatransparencia.gov.br/v3/api-docs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Endpoint classification embed (query-adapter vs out-of-scope). Golden: **`ceis`**, **`peps`**. Vector: `transparencia.official.json`. No live API in core — `@br-validators/adapters-transparencia` (RFC). |
 
 ---
 
@@ -247,6 +258,74 @@ Golden: COMPE `001` / ISPB `00000000` (Banco do Brasil), `341` / `60701190` (Ita
 
 ---
 
+## Aeroportos {#aeroportos}
+
+> **Vectors:** `packages/br-validators/tests/vectors/aeroportos.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Public aerodromos CSV | ANAC | https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv |
+| Municipality cross-ref | IBGE (embedded) | https://servicodados.ibge.gov.br/api/v1/localidades/municipios |
+
+Golden: IATA **`GRU`** (ICAO `SBGR`, Guarulhos/SP), **`GIG`** (`SBGL`), **`BSB`** (`SBBR`), **`SSA`** (`SBSV`), **`CGB`** (`SBCY`). IATA codes are enriched from ICAO location identifiers where ANAC CSV provides OACI only.
+
+---
+
+## TSE municipality codes {#tse-municipios}
+
+> **Vectors:** `packages/br-validators/tests/vectors/tse-municipios.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| TSE ↔ IBGE zip | TSE CDN | https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip |
+| Dataset page | TSE dados abertos | https://dadosabertos.tse.jus.br/dataset/codigos-oficiais-de-uf-e-municipios-segundo-o-tse-e-o-ibge |
+
+Golden: TSE **`71072`** → IBGE **`3550308`** (São Paulo/SP); also verified for RJ, DF, BA, MT capitals in vector file. **Lookup-only** — `@br-validators/core/titulo-eleitor` check-digit validation is unchanged.
+
+---
+
+## Moedas (ISO 4217 + Bacen) {#moedas}
+
+> **Vectors:** `packages/br-validators/tests/vectors/moedas.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| ISO 4217 baseline | Embedded (scripts/lib/iso4217-base.ts) | — |
+| Bacen PTAX Moedas | Banco Central Olinda API | https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas |
+
+Golden: **`BRL`** (Real brasileiro, `R$`), **`USD`** (Dólar dos Estados Unidos, Bacen tipo `A`), **`EUR`** (Euro, Bacen tipo `B`). `searchMoedas` matches ISO code or Portuguese name fragment.
+
+---
+
+## Países Bacen (NF-e) {#paises-bacen}
+
+> **Vectors:** `packages/br-validators/tests/vectors/paises-bacen.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| NF-e country table | Portal Nacional NF-e | http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50= |
+
+Golden: Bacen **`1058`** → **Brasil** (NF-e domestic operations). Non-significant leading zeros accepted (`01058` → `1058`). When the portal redirect loop fails, fetch retains the embedded NF-e/Bacen table.
+
+---
+
+## Incoterms 2020 {#incoterms}
+
+> **Vectors:** `packages/br-validators/tests/vectors/incoterms.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| ICC Incoterms 2020 | International Chamber of Commerce | https://iccwbo.org/resources-for-business/incoterms-rules/ |
+
+Static list of 11 ICC 2020 terms: **EXW**, **FCA**, **CPT**, **CIP**, **DAP**, **DPU**, **DDP**, **FAS**, **FOB**, **CFR**, **CIF**. Code + English name only (no ICC copyrighted descriptions). Golden: **`FOB`** → Free On Board.
+
+---
+
 ## Anatel DDD lookup {#anatel-ddd-lookup}
 
 > **Vectors:** `packages/br-validators/tests/vectors/telefone-ddd.official.json`  
@@ -311,6 +390,52 @@ Lookup only — CFOP business-rule validation is out of scope.
 
 ---
 
+## Natureza jurídica (CNPJ) {#natureza-juridica}
+
+> **Vectors:** `packages/br-validators/tests/vectors/natureza-juridica.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Naturezas.zip | RFB Dados Abertos CNPJ | https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/{YYYY-MM}/Naturezas.zip |
+
+Golden: `2062` (Sociedade Empresária Limitada).
+
+CSV inside zip uses semicolon-delimited quoted fields (`"2062";"Sociedade Empresária Limitada"`). When the official host times out, `scripts/fetch-natureza-juridica.ts` documents a dev-only community mirror fallback and retains embedded data on failure.
+
+---
+
+## NBS services nomenclature {#nbs}
+
+> **Vectors:** `packages/br-validators/tests/vectors/nbs.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Anexo B NBS2 xlsx | NFSe Nacional | https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx |
+| Anexo VIII (correlation, xlsx only) | NFSe Nacional | https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/rtc/anexoviii-correlacaoitemnbsindopcclasstrib_ibscbs_v1-00-00.xlsx |
+
+Golden: `1.1502.50.00` (TI systems integration services).
+
+Leaf codes are parsed from sheet 2 of the official xlsx (no xlsx npm dependency — unzip + XML). IBS/CBS correlation (Anexo VIII) is reference-only and not embedded.
+
+---
+
+## CEST (substituição tributária) {#cest}
+
+> **Vectors:** `packages/br-validators/tests/vectors/cest.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Convênio ICMS 142/2018 | CONFAZ | https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18 |
+
+Golden: `0302100` (returnable beer bottle). Cross-ref: NCM `22030000` maps to multiple CEST rows; NCM `01012100` (purebred horses) has no CEST (not subject to ST).
+
+`getCestPorNcm` matches 8-digit NCM codes against embedded prefix lists from the annex tables.
+
+---
+
 ## NCM Mercosur nomenclature {#ncm-mercosur-nomenclature}
 
 > **Vectors:** `packages/br-validators/tests/vectors/ncm.official.json`  
@@ -354,6 +479,55 @@ Golden: `212405` (systems development analyst), `010105` (air force general offi
 Golden: prefix `01310` → São Paulo/SP (`3550308`), prefix `20040` → Rio de Janeiro/RJ (`3304557`).
 
 Prefix resolution aggregates IBGE CNEFE 2022 address records by 5-digit CEP prefix (dominant IBGE municipality code). Not a Correios DNE commercial dump — no runtime HTTP to Correios.
+
+---
+
+## Portos (ANTAQ) {#portos}
+
+> **Vectors:** `packages/br-validators/tests/vectors/portos.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Geographic open data zip | ANTAQ | https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip |
+| Informações geográficas page | ANTAQ | https://www.gov.br/antaq/pt-br/central-de-conteudos/informacoes-geograficas |
+
+Golden: **`BRSSZ`** (Santos organized port), **`BRADR`** (Angra dos Reis), **`BRPNG`** (Paranaguá). `getPortosPorMunicipio(ibgeCodigo)` uses ANTAQ `idcidade` normalized to 7-digit IBGE municipality codes.
+
+---
+
+## PNCP reference {#pncp-reference} {#pncp}
+
+> **Vectors:** `packages/br-validators/tests/vectors/pncp-reference.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Cadastro domain tables | PNCP API | https://pncp.gov.br/api/pncp/v1/modalidades (and sibling `/v1/*` tables) |
+| Cadastro OpenAPI | Serpro / PNCP | https://pncp.gov.br/api/pncp/v3/api-docs |
+| Consulta API (adapter) | PNCP | https://pncp.gov.br/api/consulta/swagger-ui/index.html |
+| Consulta OpenAPI | Serpro / PNCP | https://pncp.gov.br/api/consulta/v3/api-docs |
+
+Golden: modalidade id **`6`** → Pregão Eletrônico. CNPJ adapter normalization: `normalizePncpCnpj` (RFB FAQ Q14 example). Embedded tables: modalidades, amparos legais, modos de disputa, tipos de instrumento convocatório, tipos de contrato, critérios de julgamento, tipos de instrumento de cobrança, fontes orçamentárias.
+
+Live contract/procurement queries belong in `@br-validators/adapters-pncp` — see [ADAPTERS-PNCP-RFC.md](ADAPTERS-PNCP-RFC.md).
+
+---
+
+## Portal da Transparência {#portal-transparencia}
+
+> **Vectors:** `packages/br-validators/tests/vectors/transparencia.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Swagger UI | CGU | https://api.portaldatransparencia.gov.br/swagger-ui/index.html |
+| OpenAPI | CGU | https://api.portaldatransparencia.gov.br/v3/api-docs |
+| API key registration | Portal da Transparência | https://portaldatransparencia.gov.br/ |
+
+Core embeds endpoint registry only (CEIS, CNEP, CEAF, PEP, social programs classified as query-adapter). No bulk sanctions/PEP snapshots in v1 — no open bulk export suitable for weekly embed.
+
+Live CPF/CNPJ queries belong in `@br-validators/adapters-transparencia` — see [ADAPTERS-TRANSPARENCIA-RFC.md](ADAPTERS-TRANSPARENCIA-RFC.md). API key via env `TRANSPARENCIA_API_KEY` only (never in repo).
 
 ---
 

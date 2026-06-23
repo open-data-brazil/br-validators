@@ -1,0 +1,38 @@
+{
+  "source": "https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv",
+  "golden": {
+    "gru": {
+      "iata": "GRU",
+      "icao": "SBGR",
+      "uf": "SP",
+      "nomeContains": "GUARULHOS"
+    },
+    "gig": {
+      "iata": "GIG",
+      "icao": "SBGL",
+      "uf": "RJ",
+      "nomeContains": "GALEÃO"
+    },
+    "bsb": {
+      "iata": "BSB",
+      "icao": "SBBR",
+      "uf": "DF",
+      "nomeContains": "JUSCELINO"
+    },
+    "ssa": {
+      "iata": "SSA",
+      "icao": "SBSV",
+      "uf": "BA",
+      "nomeContains": "MAGALHÃES"
+    },
+    "cgb": {
+      "iata": "CGB",
+      "icao": "SBCY",
+      "uf": "MT",
+      "nomeContains": "MARECHAL RONDON"
+    }
+  },
+  "minAerodromos": 400,
+  "maxAerodromos": 600,
+  "minWithIata": 50
+}

@@ -1,0 +1,25 @@
+{
+  "source": "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip",
+  "golden": {
+    "santos": {
+      "codigo": "BRSSZ",
+      "uf": "SP",
+      "nomeContains": "SANTOS",
+      "municipioIbge": 3518700
+    },
+    "angra": {
+      "codigo": "BRADR",
+      "uf": "RJ",
+      "nomeContains": "ANGRA",
+      "municipioIbge": 3300100
+    },
+    "paranagua": {
+      "codigo": "BRPNG",
+      "uf": "PR",
+      "nomeContains": "PARANAGU",
+      "municipioIbge": 4118200
+    }
+  },
+  "minPortos": 800,
+  "maxPortos": 1500
+}

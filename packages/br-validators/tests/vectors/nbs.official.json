@@ -1,0 +1,11 @@
+{
+  "source": "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx",
+  "minCodes": 800,
+  "maxCodes": 950,
+  "golden": {
+    "integracaoSistemas": {
+      "codigo": "1.1502.50.00",
+      "descricaoContains": "integração"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "datasetId": "transparencia-snapshots",
+  "status": "ok",
+  "endpoints": [
+    "https://api.portaldatransparencia.gov.br/swagger-ui/index.html",
+    "https://api.portaldatransparencia.gov.br/v3/api-docs",
+    "https://portaldatransparencia.gov.br/"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T19:08:25.008Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Transparência registry refreshed; Swagger/OpenAPI reachable."
+}

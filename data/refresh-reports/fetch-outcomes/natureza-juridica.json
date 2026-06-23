@@ -1,0 +1,11 @@
+{
+  "datasetId": "natureza-juridica",
+  "status": "ok",
+  "endpoints": [
+    "https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T18:39:09.225Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Official RFB Naturezas.zip fetch succeeded."
+}

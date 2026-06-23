@@ -7,9 +7,20 @@
 ```bash
 pnpm fetch:data:ibge      # IBGE estados + municípios → packages/br-validators/src/ibge/data/
 pnpm fetch:data:bancos    # Bacen STR participants → packages/br-validators/src/bancos/data/
+pnpm fetch:data:aeroportos # ANAC public aerodromos → packages/br-validators/src/aeroportos/data/
+pnpm fetch:data:tse-municipios # TSE ↔ IBGE municipality codes → packages/br-validators/src/tse-municipios/data/
+pnpm fetch:data:moedas       # ISO 4217 + Bacen PTAX → packages/br-validators/src/moedas/data/
+pnpm fetch:data:paises-bacen # NF-e Bacen country codes → packages/br-validators/src/paises-bacen/data/
+pnpm fetch:data:incoterms    # ICC Incoterms 2020 static list → packages/br-validators/src/incoterms/data/
 pnpm fetch:data:ddd       # Anatel DDD lookup → packages/br-validators/src/core/telefone/data/
 pnpm fetch:data:cnaes     # IBGE CNAE subclasses → packages/br-validators/src/cnaes/data/
 pnpm fetch:data:cfop      # CONFAZ CFOP table → packages/br-validators/src/cfop/data/
+pnpm fetch:data:natureza-juridica # RFB natureza jurídica → packages/br-validators/src/natureza-juridica/data/
+pnpm fetch:data:nbs       # Comex NBS → packages/br-validators/src/nbs/data/
+pnpm fetch:data:cest      # CONFAZ CEST → packages/br-validators/src/cest/data/
+pnpm fetch:data:portos    # ANTAQ portos → packages/br-validators/src/portos/data/
+pnpm fetch:data:pncp-reference # PNCP Cadastro domain tables → packages/br-validators/src/pncp-reference/data/
+pnpm fetch:data:transparencia  # CGU Swagger audit registry → packages/br-validators/src/transparencia-snapshots/data/
 pnpm fetch:data:ncm       # Siscomex NCM JSON → packages/br-validators/src/ncm/data/
 pnpm fetch:data:cbo       # MTE CBO occupations → packages/br-validators/src/cbo/data/
 pnpm fetch:data:cep-faixas # IBGE CNEFE CEP prefixes → packages/br-validators/src/core/cep/data/ (heavy ~4GB download)

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nome": "Aberto",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Fechado",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Aberto-Fechado",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Dispensa Com Disputa",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Não se aplica",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Fechado-Aberto",
+    "descricao": "",
+    "ativo": true
+  }
+]

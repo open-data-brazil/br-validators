@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "nome": "Leilão - Eletrônico",
+    "descricao": "Modalidade de licitação para alienação de bens imóveis ou de bens móveis inservíveis ou legalmente apreendidos a quem oferecer o maior lance",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Diálogo Competitivo",
+    "descricao": "Modalidade de licitação para contratação de obras, serviços e compras em que a Administração Pública realiza diálogos com licitantes previamente selecionados mediante critérios objetivos, com o intuito de desenvolver uma ou mais alternativas capazes de atender às suas necessidades, devendo os licitantes apresentar proposta final após o encerramento dos diálogos",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Concurso",
+    "descricao": "Modalidade de licitação para escolha de trabalho técnico, científico ou artístico, cujo critério de julgamento será o de melhor técnica ou conteúdo artístico, e para concessão de prêmio ou remuneração ao vencedor",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Concorrência - Eletrônica",
+    "descricao": "Modalidade de licitação para contratação de bens e serviços especiais e de obras e serviços comuns e especiais de engenharia",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Concorrência - Presencial",
+    "descricao": "Modalidade de licitação para contratação de bens e serviços especiais e de obras e serviços comuns e especiais de engenharia",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Pregão - Eletrônico",
+    "descricao": "Modalidade de licitação obrigatória para aquisição de bens e serviços comuns, cujo critério de julgamento poderá ser o de menor preço ou o de maior desconto",
+    "ativo": true
+  },
+  {
+    "id": 7,
+    "nome": "Pregão - Presencial",
+    "descricao": "Modalidade de licitação obrigatória para aquisição de bens e serviços comuns, cujo critério de julgamento poderá ser o de menor preço ou o de maior desconto",
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "nome": "Dispensa",
+    "descricao": "Processo de contratação direta onde a licitação é dispensável ou dispensada",
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "nome": "Inexigibilidade",
+    "descricao": "Processo de contratação direta onde a licitação é inexigível",
+    "ativo": true
+  },
+  {
+    "id": 10,
+    "nome": "Manifestação de Interesse",
+    "descricao": "Procedimento auxiliar em que a Administração poderá solicitar à iniciativa privada, iniciado com a publicação de edital de chamamento público, a propositura e a realização de estudos, investigações, levantamentos e projetos de soluções inovadoras que contribuam com questões de relevância pública",
+    "ativo": true
+  },
+  {
+    "id": 11,
+    "nome": "Pré-qualificação",
+    "descricao": "Procedimento auxiliar seletivo prévio à licitação, convocado por meio de edital, destinado à análise das condições de habilitação, total ou parcial, dos interessados ou do objeto",
+    "ativo": true
+  },
+  {
+    "id": 12,
+    "nome": "Credenciamento",
+    "descricao": "Procedimento auxiliar. Processo administrativo de chamamento público em que a Administração Pública convoca interessados em prestar serviços ou fornecer bens para que, preenchidos os requisitos necessários, se credenciem no órgão ou na entidade para executar o objeto quando convocados",
+    "ativo": true
+  },
+  {
+    "id": 13,
+    "nome": "Leilão - Presencial",
+    "descricao": "Modalidade de licitação realizada sob a forma presencial para alienação de bens imóveis ou de bens móveis inservíveis ou legalmente apreendidos a quem oferecer o maior lance",
+    "ativo": true
+  },
+  {
+    "id": 14,
+    "nome": "Inaplicabilidade da Licitação",
+    "descricao": "Situação em que, por especificidades da legislação ou natureza da atividade, não se exige o processo licitatório. Refere-se aos casos em que a lei determina que a licitação não é aplicável, seja pela natureza única do objeto ou pela impossibilidade de competição.",
+    "ativo": true
+  },
+  {
+    "id": 15,
+    "nome": "Chamada pública",
+    "descricao": "Procedimento administrativo em que o poder público convoca interessados para apresentar propostas, visando selecionar fornecedores ou parceiros de forma aberta e previamente regulamentada.",
+    "ativo": true
+  },
+  {
+    "id": 16,
+    "nome": "Concorrência – Eletrônica Internacional",
+    "descricao": "Modalidade de licitação utilizada pela Administração Pública para a contratação de bens e serviços comuns ou especiais, inclusive obras e serviços de engenharia, com participação de fornecedores nacionais e estrangeiros, realizada por meio eletrônico.",
+    "ativo": true
+  },
+  {
+    "id": 17,
+    "nome": "Concorrência – Presencial Internacional",
+    "descricao": "Modalidade de licitação utilizada pela Administração Pública para a contratação de bens e serviços comuns ou especiais, inclusive obras e serviços de engenharia, com a participação de fornecedores nacionais e estrangeiros, realizada de forma presencial, conforme regras estabelecidas no edital.",
+    "ativo": true
+  },
+  {
+    "id": 18,
+    "nome": "Pregão – Eletrônico Internacional",
+    "descricao": "Modalidade de licitação utilizada pela Administração Pública para a aquisição de bens e serviços comuns, com a participação de fornecedores nacionais e estrangeiros, realizada exclusivamente por meio eletrônico, conforme as regras previstas na legislação vigente.",
+    "ativo": true
+  },
+  {
+    "id": 19,
+    "nome": "Pregão – Presencial Internacional",
+    "descricao": "Modalidade de licitação utilizada pela Administração Pública para a aquisição de bens e serviços comuns, com a participação de fornecedores nacionais e estrangeiros, realizada de forma presencial, conforme as disposições legais e as regras estabelecidas no edital.",
+    "ativo": true
+  }
+]

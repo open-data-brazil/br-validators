@@ -13,6 +13,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/natureza-juridica`** — `getNaturezaJuridicaPorCodigo()`; RFB CNPJ legal nature codes
+- **`@br-validators/core/nbs`** — `getNbsPorCodigo()`, `searchNbs()`; NFSe Nacional Anexo B leaf codes
+- **`@br-validators/core/cest`** — `getCestPorCodigo()`, `getCestPorNcm()`, `searchCest()`; CONFAZ ICMS 142/2018 ST codes
+- **`@br-validators/core/moedas`** — `getMoedaPorCodigo()`, `searchMoedas()`; ISO 4217 + Bacen PTAX enrichment
+- **`@br-validators/core/paises-bacen`** — `getPaisPorCodigoBacen()`; NF-e Bacen country table
+- **`@br-validators/core/incoterms`** — `getIncotermPorCodigo()`; ICC Incoterms 2020 static list
+- **`@br-validators/core/portos`** — `getPortoPorCodigo()`, `getPortosPorMunicipio()`, `searchPortos()`; ANTAQ port installations
+- **`@br-validators/core/pncp-reference`** — PNCP domain tables (modalidades, amparos legais, etc.)
+- **`@br-validators/core/transparencia-snapshots`** — Portal da Transparência endpoint registry (query-adapter classification)
+- **Fetch scripts** — `pnpm fetch:data:{natureza-juridica,nbs,cest,portos,pncp-reference,transparencia}`; registered in weekly `data-refresh-bot`
+- **Adapter RFCs** — [docs/ADAPTERS-PNCP-RFC.md](docs/ADAPTERS-PNCP-RFC.md), [docs/ADAPTERS-TRANSPARENCIA-RFC.md](docs/ADAPTERS-TRANSPARENCIA-RFC.md)
+- **`@br-validators/cli`** — `reference-lookup` commands for natureza-juridica, nbs, cest, moedas, paises-bacen, incoterms, portos, aeroportos (`lookup <codigo>`, `--json`, `--verbose`)
+- **Playground** — `/data/fiscal`, `/data/trade`, `/data/logistics` reference explorers (client-side embedded core datasets)
+
+---
+
+## [1.4.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/aeroportos`** — `getAeroportos()`, `getAeroportoPorIata()`, `getAeroportoPorIcao()`, `getAeroportosPorMunicipio()`; ANAC public aerodromos embedded offline; `AEROPORTOS_DATA_VERSION`
+- **`@br-validators/core/tse-municipios`** — `getMapeamentoTseIbge()`, `getMunicipioIbgePorCodigoTse()`, `getCodigosTsePorMunicipio()`; TSE ↔ IBGE municipality cross-walk; `TSE_MUNICIPIOS_DATA_VERSION` (lookup-only — `titulo-eleitor` validation unchanged)
+- **Fetch scripts** — `pnpm fetch:data:aeroportos`, `pnpm fetch:data:tse-municipios`; registered in weekly `data-refresh-bot`
+
+---
+
+## [1.3.1] - 2026-06-23
+
+### Added
+
+- **`@br-validators/cli`** — `bancos lookup <COMPE|ISPB>` and `bancos list [--limit n]` for offline Bacen STR participant lookup (`--json`, `--verbose`)
+- **Playground** — `/data/ibge`, `/data/bancos`, `/data/catalog` reference data routes (client-side only, embedded core datasets)
+
+---
+
 ## [1.3.0] - 2026-06-23
 
 ### Added
@@ -330,6 +369,7 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
+| [1.5.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.5.0) | 2026-06-23 | Federal open-data embeds + CLI/playground reference surfaces |
 | [1.3.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0) | 2026-06-23 | Feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup |
 | [1.1.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0) | 2026-06-23 | Offline reference data: IBGE, Bacen banks, DDD lookup, data catalog |
 | [1.0.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0) | 2026-06-23 | First stable release — API freeze |
@@ -340,7 +380,10 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.4.0...v1.5.0
+[1.4.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.1...v1.4.0
+[1.3.1]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0
 [1.1.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0
 [1.0.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0

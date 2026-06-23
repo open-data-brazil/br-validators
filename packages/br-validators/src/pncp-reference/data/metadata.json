@@ -1,0 +1,39 @@
+{
+  "id": "pncp-reference",
+  "nome": "PNCP domain reference tables",
+  "fonte": "PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)",
+  "endpoints": [
+    "https://pncp.gov.br/api/pncp/v1/modalidades",
+    "https://pncp.gov.br/api/pncp/v1/amparos-legais",
+    "https://pncp.gov.br/api/pncp/v1/modos-disputas",
+    "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-convocatorios",
+    "https://pncp.gov.br/api/pncp/v1/tipos-contratos",
+    "https://pncp.gov.br/api/pncp/v1/criterios-julgamentos",
+    "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
+    "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
+  ],
+  "capturadoEm": "2026-06-23",
+  "atualizadoEm": "2026-06-23T19:08:24.455Z",
+  "contagens": {
+    "modalidades": 19,
+    "amparos-legais": 183,
+    "modos-disputa": 6,
+    "tipos-instrumentos-convocatorios": 5,
+    "tipos-contrato": 12,
+    "criterios-julgamento": 9,
+    "tipos-instrumentos-cobranca": 1,
+    "fontes-orcamentarias": 6
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-06-23"
+  },
+  "verificacao": {
+    "agendamento": "semanal",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-06-23T19:08:24.455Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#pncp-reference"
+}

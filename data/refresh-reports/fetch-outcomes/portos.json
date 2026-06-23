@@ -1,0 +1,11 @@
+{
+  "datasetId": "portos",
+  "status": "ok",
+  "endpoints": [
+    "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T19:08:23.579Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "ANTAQ portos written."
+}

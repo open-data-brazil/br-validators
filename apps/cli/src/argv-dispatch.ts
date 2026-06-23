@@ -1,4 +1,5 @@
 import { EXIT } from './constants.js';
+import { isReferenceLookupCommand } from './commands/reference-lookup/registry.js';
 import {
   handleBoletoCli,
   handleBrCodeCli,
@@ -11,6 +12,9 @@ import {
   handleDetectCli,
   handleGenerateCli,
   handleIeCli,
+  handleBancosListCli,
+  handleBancosLookupCli,
+  handleReferenceLookupCli,
   handleListCli,
   handleNfeChaveCli,
   handlePisPasepCli,
@@ -33,7 +37,11 @@ type CommonOpts = CnpjCliOptions;
 
 export type ParsedArgv = {
   positionals: string[];
-  opts: CommonOpts & PixCliOptions & BoletoCliOptions & IeCliOptions & GenerateCliOptions;
+  opts: CommonOpts &
+    PixCliOptions &
+    BoletoCliOptions &
+    IeCliOptions &
+    GenerateCliOptions & { verbose?: boolean; limit?: number };
 };
 
 const STANDARD_ACTIONS = ['validate', 'format', 'strip'] as const;
@@ -100,6 +108,15 @@ export function parseArgv(tokens: string[]): ParsedArgv {
       index += 1;
       continue;
     }
+    if (token === '--verbose') {
+      opts.verbose = true;
+      continue;
+    }
+    if (token === '--limit') {
+      opts.limit = Number(tokens[index + 1]);
+      index += 1;
+      continue;
+    }
     if (token.startsWith('-')) {
       continue;
     }
@@ -131,7 +148,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · detect · sanitize · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · bancos · natureza-juridica · nbs · cest · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
     return EXIT.OK;
   }
 
@@ -234,13 +251,33 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       return dispatchStandard(rest, opts, io, (action, value, ieOpts, ioArg) =>
         handleIeCli(action, value, ieOpts, ioArg),
       );
+    case 'bancos': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleBancosLookupCli(value, opts, io);
+      }
+      if (action === 'list') {
+        return handleBancosListCli(opts, io);
+      }
+      return usage(io, 'Expected: bancos lookup <codigo|ispb> | bancos list [--limit n]');
+    }
     case 'detect':
       return handleDetectCli(rest.join(' ') || undefined, opts, io);
     case 'sanitize':
       return handleSanitizeCli(rest[0] ?? '', rest.slice(1).join(' ') || undefined, opts, io);
     case 'generate':
       return handleGenerateCli(rest[0] ?? '', opts, io);
-    default:
+    default: {
+      if (isReferenceLookupCommand(root)) {
+        const action = rest[0];
+        if (action === 'lookup') {
+          const value = rest.slice(1).join(' ') || undefined;
+          return handleReferenceLookupCli(root, value, opts, io);
+        }
+        return usage(io, `Expected: ${root} lookup <codigo>`);
+      }
       return usage(io, `Unknown command: ${root}`);
+    }
   }
 }

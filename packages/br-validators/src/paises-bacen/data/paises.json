@@ -1,0 +1,1010 @@
+[
+  {
+    "codigo": "0132",
+    "nome": "Afeganistão"
+  },
+  {
+    "codigo": "0153",
+    "nome": "Aland, Ilhas"
+  },
+  {
+    "codigo": "0175",
+    "nome": "Albânia, República da"
+  },
+  {
+    "codigo": "0230",
+    "nome": "Alemanha"
+  },
+  {
+    "codigo": "0256",
+    "nome": "Alemanha, República Democrática da"
+  },
+  {
+    "codigo": "0310",
+    "nome": "Burkina Faso"
+  },
+  {
+    "codigo": "0370",
+    "nome": "Andorra"
+  },
+  {
+    "codigo": "0400",
+    "nome": "Angola"
+  },
+  {
+    "codigo": "0418",
+    "nome": "Anguilla"
+  },
+  {
+    "codigo": "0420",
+    "nome": "Antártica"
+  },
+  {
+    "codigo": "0434",
+    "nome": "Antígua e Barbuda"
+  },
+  {
+    "codigo": "0477",
+    "nome": "Antilhas Holandesas"
+  },
+  {
+    "codigo": "0531",
+    "nome": "Arábia Saudita"
+  },
+  {
+    "codigo": "0590",
+    "nome": "Argélia"
+  },
+  {
+    "codigo": "0639",
+    "nome": "Argentina"
+  },
+  {
+    "codigo": "0647",
+    "nome": "Armênia, República da"
+  },
+  {
+    "codigo": "0655",
+    "nome": "Aruba"
+  },
+  {
+    "codigo": "0698",
+    "nome": "Austrália"
+  },
+  {
+    "codigo": "0728",
+    "nome": "Áustria"
+  },
+  {
+    "codigo": "0736",
+    "nome": "Azerbaijão, República do"
+  },
+  {
+    "codigo": "0779",
+    "nome": "Bahamas, Ilhas"
+  },
+  {
+    "codigo": "0809",
+    "nome": "Bahrein, Ilhas"
+  },
+  {
+    "codigo": "0817",
+    "nome": "Bangladesh"
+  },
+  {
+    "codigo": "0833",
+    "nome": "Barbados"
+  },
+  {
+    "codigo": "0850",
+    "nome": "Bielo-Russia (Belarus), República da"
+  },
+  {
+    "codigo": "0876",
+    "nome": "Bélgica"
+  },
+  {
+    "codigo": "0884",
+    "nome": "Belize"
+  },
+  {
+    "codigo": "0906",
+    "nome": "Bermudas"
+  },
+  {
+    "codigo": "0930",
+    "nome": "Myanmar (Birmânia)"
+  },
+  {
+    "codigo": "0973",
+    "nome": "Bolívia"
+  },
+  {
+    "codigo": "0981",
+    "nome": "Bósnia-Herzegovina, República da"
+  },
+  {
+    "codigo": "0990",
+    "nome": "Bonaire, Santo Eustáquio e Saba"
+  },
+  {
+    "codigo": "1015",
+    "nome": "Botsuana"
+  },
+  {
+    "codigo": "1023",
+    "nome": "Bouvet, Ilha"
+  },
+  {
+    "codigo": "1058",
+    "nome": "Brasil"
+  },
+  {
+    "codigo": "1082",
+    "nome": "Brunei"
+  },
+  {
+    "codigo": "1112",
+    "nome": "Bulgária"
+  },
+  {
+    "codigo": "1155",
+    "nome": "Burundi"
+  },
+  {
+    "codigo": "1198",
+    "nome": "Butão"
+  },
+  {
+    "codigo": "1279",
+    "nome": "Cabo Verde, República de"
+  },
+  {
+    "codigo": "1376",
+    "nome": "Cayman, Ilhas"
+  },
+  {
+    "codigo": "1414",
+    "nome": "Camboja"
+  },
+  {
+    "codigo": "1457",
+    "nome": "Camarões"
+  },
+  {
+    "codigo": "1490",
+    "nome": "Canadá"
+  },
+  {
+    "codigo": "1511",
+    "nome": "Canarias, Ilhas"
+  },
+  {
+    "codigo": "1538",
+    "nome": "Cazaquistão, República do"
+  },
+  {
+    "codigo": "1546",
+    "nome": "Catar"
+  },
+  {
+    "codigo": "1589",
+    "nome": "Chile"
+  },
+  {
+    "codigo": "1600",
+    "nome": "China, República Popular da"
+  },
+  {
+    "codigo": "1619",
+    "nome": "Formosa (Taiwan) - Província da China"
+  },
+  {
+    "codigo": "1635",
+    "nome": "Chipre"
+  },
+  {
+    "codigo": "1651",
+    "nome": "Cocos (Keeling), Ilhas"
+  },
+  {
+    "codigo": "1694",
+    "nome": "Colômbia"
+  },
+  {
+    "codigo": "1732",
+    "nome": "Comores, Ilhas"
+  },
+  {
+    "codigo": "1775",
+    "nome": "Congo"
+  },
+  {
+    "codigo": "1830",
+    "nome": "Cook, Ilhas"
+  },
+  {
+    "codigo": "1872",
+    "nome": "Coréia (do Norte), Rep. Popular Democrática da"
+  },
+  {
+    "codigo": "1902",
+    "nome": "Coréia (do Sul), República da"
+  },
+  {
+    "codigo": "1937",
+    "nome": "Costa do Marfim"
+  },
+  {
+    "codigo": "1953",
+    "nome": "Croácia, República da"
+  },
+  {
+    "codigo": "1961",
+    "nome": "Costa Rica"
+  },
+  {
+    "codigo": "1988",
+    "nome": "Coveite (Kuwait)"
+  },
+  {
+    "codigo": "1996",
+    "nome": "Cuba"
+  },
+  {
+    "codigo": "2003",
+    "nome": "Curaçao"
+  },
+  {
+    "codigo": "2291",
+    "nome": "Benim"
+  },
+  {
+    "codigo": "2321",
+    "nome": "Dinamarca"
+  },
+  {
+    "codigo": "2356",
+    "nome": "Dominica"
+  },
+  {
+    "codigo": "2399",
+    "nome": "Equador"
+  },
+  {
+    "codigo": "2402",
+    "nome": "Egito"
+  },
+  {
+    "codigo": "2437",
+    "nome": "Eritreia"
+  },
+  {
+    "codigo": "2445",
+    "nome": "Emirados Árabes Unidos"
+  },
+  {
+    "codigo": "2453",
+    "nome": "Espanha"
+  },
+  {
+    "codigo": "2461",
+    "nome": "Eslovênia, República da"
+  },
+  {
+    "codigo": "2470",
+    "nome": "Eslovaca, República"
+  },
+  {
+    "codigo": "2496",
+    "nome": "Estados Unidos"
+  },
+  {
+    "codigo": "2518",
+    "nome": "Estônia, República da"
+  },
+  {
+    "codigo": "2534",
+    "nome": "Etiópia"
+  },
+  {
+    "codigo": "2550",
+    "nome": "Falkland (Ilhas Malvinas)"
+  },
+  {
+    "codigo": "2593",
+    "nome": "Feroe, Ilhas"
+  },
+  {
+    "codigo": "2674",
+    "nome": "Filipinas"
+  },
+  {
+    "codigo": "2712",
+    "nome": "Finlândia"
+  },
+  {
+    "codigo": "2755",
+    "nome": "França"
+  },
+  {
+    "codigo": "2810",
+    "nome": "Gabão"
+  },
+  {
+    "codigo": "2852",
+    "nome": "Gâmbia"
+  },
+  {
+    "codigo": "2895",
+    "nome": "Gana"
+  },
+  {
+    "codigo": "2917",
+    "nome": "Geórgia, República da"
+  },
+  {
+    "codigo": "2925",
+    "nome": "Ilhas Geórgia do Sul e Sandwich do Sul"
+  },
+  {
+    "codigo": "2933",
+    "nome": "Gibraltar"
+  },
+  {
+    "codigo": "2976",
+    "nome": "Granada"
+  },
+  {
+    "codigo": "3018",
+    "nome": "Grécia"
+  },
+  {
+    "codigo": "3050",
+    "nome": "Groenlândia"
+  },
+  {
+    "codigo": "3093",
+    "nome": "Guadalupe"
+  },
+  {
+    "codigo": "3131",
+    "nome": "Guam"
+  },
+  {
+    "codigo": "3174",
+    "nome": "Guatemala"
+  },
+  {
+    "codigo": "3212",
+    "nome": "Guernsey, Ilha do Canal (Inclui Alderney e Sark)"
+  },
+  {
+    "codigo": "3255",
+    "nome": "Guiana Francesa"
+  },
+  {
+    "codigo": "3298",
+    "nome": "Guiné"
+  },
+  {
+    "codigo": "3310",
+    "nome": "Guiné-Equatorial"
+  },
+  {
+    "codigo": "3344",
+    "nome": "Guiné Bissau"
+  },
+  {
+    "codigo": "3379",
+    "nome": "Guiana"
+  },
+  {
+    "codigo": "3417",
+    "nome": "Haiti"
+  },
+  {
+    "codigo": "3433",
+    "nome": "Ilha Heard e Ilhas McDonald"
+  },
+  {
+    "codigo": "3450",
+    "nome": "Honduras"
+  },
+  {
+    "codigo": "3514",
+    "nome": "Hong-Kong"
+  },
+  {
+    "codigo": "3557",
+    "nome": "Hungria, República da"
+  },
+  {
+    "codigo": "3573",
+    "nome": "Iêmen"
+  },
+  {
+    "codigo": "3595",
+    "nome": "Man, Ilha de"
+  },
+  {
+    "codigo": "3611",
+    "nome": "Índia"
+  },
+  {
+    "codigo": "3654",
+    "nome": "Indonésia"
+  },
+  {
+    "codigo": "3697",
+    "nome": "Iraque"
+  },
+  {
+    "codigo": "3727",
+    "nome": "Irã, República Islâmica do"
+  },
+  {
+    "codigo": "3751",
+    "nome": "Irlanda"
+  },
+  {
+    "codigo": "3794",
+    "nome": "Islândia"
+  },
+  {
+    "codigo": "3832",
+    "nome": "Israel"
+  },
+  {
+    "codigo": "3867",
+    "nome": "Itália"
+  },
+  {
+    "codigo": "3883",
+    "nome": "Sérvia e Montenegro (Iugoslávia, Rep. Fed. da"
+  },
+  {
+    "codigo": "3913",
+    "nome": "Jamaica"
+  },
+  {
+    "codigo": "3930",
+    "nome": "Jersey, Ilha do Canal"
+  },
+  {
+    "codigo": "3999",
+    "nome": "Japão"
+  },
+  {
+    "codigo": "4030",
+    "nome": "Jordânia"
+  },
+  {
+    "codigo": "4111",
+    "nome": "Kiribati"
+  },
+  {
+    "codigo": "4200",
+    "nome": "Laos, República Pop. e Democrática do"
+  },
+  {
+    "codigo": "4260",
+    "nome": "Lesoto"
+  },
+  {
+    "codigo": "4278",
+    "nome": "Letônia, República da"
+  },
+  {
+    "codigo": "4316",
+    "nome": "Líbano"
+  },
+  {
+    "codigo": "4340",
+    "nome": "Libéria"
+  },
+  {
+    "codigo": "4383",
+    "nome": "Líbia"
+  },
+  {
+    "codigo": "4405",
+    "nome": "Liechtenstein"
+  },
+  {
+    "codigo": "4421",
+    "nome": "Lituânia, República da"
+  },
+  {
+    "codigo": "4456",
+    "nome": "Luxemburgo"
+  },
+  {
+    "codigo": "4472",
+    "nome": "Macau"
+  },
+  {
+    "codigo": "4499",
+    "nome": "Macedônia, Ant. Rep. Iugoslava"
+  },
+  {
+    "codigo": "4502",
+    "nome": "Madagascar"
+  },
+  {
+    "codigo": "4553",
+    "nome": "Malásia"
+  },
+  {
+    "codigo": "4588",
+    "nome": "Malavi"
+  },
+  {
+    "codigo": "4618",
+    "nome": "Maldivas"
+  },
+  {
+    "codigo": "4642",
+    "nome": "Máli"
+  },
+  {
+    "codigo": "4677",
+    "nome": "Malta"
+  },
+  {
+    "codigo": "4723",
+    "nome": "Marianas do Norte"
+  },
+  {
+    "codigo": "4740",
+    "nome": "Marrocos"
+  },
+  {
+    "codigo": "4766",
+    "nome": "Marshall, Ilhas"
+  },
+  {
+    "codigo": "4774",
+    "nome": "Martinica"
+  },
+  {
+    "codigo": "4855",
+    "nome": "Maurício"
+  },
+  {
+    "codigo": "4880",
+    "nome": "Mauritânia"
+  },
+  {
+    "codigo": "4898",
+    "nome": "Mayotte (Ilhas Francesas)"
+  },
+  {
+    "codigo": "4936",
+    "nome": "México"
+  },
+  {
+    "codigo": "4944",
+    "nome": "Moldávia (Moldava), República da"
+  },
+  {
+    "codigo": "4952",
+    "nome": "Mônaco"
+  },
+  {
+    "codigo": "4979",
+    "nome": "Mongólia"
+  },
+  {
+    "codigo": "4985",
+    "nome": "Montenegro"
+  },
+  {
+    "codigo": "4995",
+    "nome": "Micronésia, Est. Fed. da"
+  },
+  {
+    "codigo": "5010",
+    "nome": "Monserrat, Ilhas"
+  },
+  {
+    "codigo": "5053",
+    "nome": "Moçambique"
+  },
+  {
+    "codigo": "5070",
+    "nome": "Namíbia"
+  },
+  {
+    "codigo": "5088",
+    "nome": "Nauru"
+  },
+  {
+    "codigo": "5118",
+    "nome": "Christmas, Ilhas (Navidad)"
+  },
+  {
+    "codigo": "5177",
+    "nome": "Nepal"
+  },
+  {
+    "codigo": "5215",
+    "nome": "Nicarágua"
+  },
+  {
+    "codigo": "5258",
+    "nome": "Niger"
+  },
+  {
+    "codigo": "5282",
+    "nome": "Nigéria"
+  },
+  {
+    "codigo": "5312",
+    "nome": "Niue, Ilha"
+  },
+  {
+    "codigo": "5355",
+    "nome": "Norfolk, Ilha"
+  },
+  {
+    "codigo": "5380",
+    "nome": "Noruega"
+  },
+  {
+    "codigo": "5428",
+    "nome": "Nova Caledônia"
+  },
+  {
+    "codigo": "5452",
+    "nome": "Papua Nova Guiné"
+  },
+  {
+    "codigo": "5487",
+    "nome": "Nova Zelândia"
+  },
+  {
+    "codigo": "5517",
+    "nome": "Vanuatu"
+  },
+  {
+    "codigo": "5568",
+    "nome": "Omã"
+  },
+  {
+    "codigo": "5738",
+    "nome": "Países Baixos (Holanda)"
+  },
+  {
+    "codigo": "5754",
+    "nome": "Palau, República do"
+  },
+  {
+    "codigo": "5762",
+    "nome": "Paquistão"
+  },
+  {
+    "codigo": "5780",
+    "nome": "Palestina"
+  },
+  {
+    "codigo": "5800",
+    "nome": "Panamá"
+  },
+  {
+    "codigo": "5860",
+    "nome": "Paraguai"
+  },
+  {
+    "codigo": "5894",
+    "nome": "Peru"
+  },
+  {
+    "codigo": "5932",
+    "nome": "Pitcairn, Ilha de"
+  },
+  {
+    "codigo": "5991",
+    "nome": "Polinésia Francesa"
+  },
+  {
+    "codigo": "6033",
+    "nome": "Polônia"
+  },
+  {
+    "codigo": "6076",
+    "nome": "Portugal"
+  },
+  {
+    "codigo": "6114",
+    "nome": "Porto Rico"
+  },
+  {
+    "codigo": "6238",
+    "nome": "Quênia"
+  },
+  {
+    "codigo": "6254",
+    "nome": "Quirguizia, República da"
+  },
+  {
+    "codigo": "6289",
+    "nome": "Reino Unido"
+  },
+  {
+    "codigo": "6408",
+    "nome": "República Centro-Africana"
+  },
+  {
+    "codigo": "6475",
+    "nome": "República Dominicana"
+  },
+  {
+    "codigo": "6602",
+    "nome": "Reunião, Ilha"
+  },
+  {
+    "codigo": "6653",
+    "nome": "Zimbábue"
+  },
+  {
+    "codigo": "6700",
+    "nome": "Romênia"
+  },
+  {
+    "codigo": "6750",
+    "nome": "Ruanda"
+  },
+  {
+    "codigo": "6769",
+    "nome": "Rússia, Federação da"
+  },
+  {
+    "codigo": "6777",
+    "nome": "Salomão, Ilhas"
+  },
+  {
+    "codigo": "6858",
+    "nome": "Saara Ocidental"
+  },
+  {
+    "codigo": "6874",
+    "nome": "El Salvador"
+  },
+  {
+    "codigo": "6904",
+    "nome": "Samoa"
+  },
+  {
+    "codigo": "6912",
+    "nome": "Samoa Americana"
+  },
+  {
+    "codigo": "6939",
+    "nome": "São Bartolomeu"
+  },
+  {
+    "codigo": "6955",
+    "nome": "São Cristóvão e Neves"
+  },
+  {
+    "codigo": "6971",
+    "nome": "San Marino"
+  },
+  {
+    "codigo": "6980",
+    "nome": "São Martinho (Parte Francesa)"
+  },
+  {
+    "codigo": "6998",
+    "nome": "São Martinho (Parte Holandesa)"
+  },
+  {
+    "codigo": "7005",
+    "nome": "São Pedro e Miquelon"
+  },
+  {
+    "codigo": "7056",
+    "nome": "São Vicente e Granadinas"
+  },
+  {
+    "codigo": "7102",
+    "nome": "Santa Helena"
+  },
+  {
+    "codigo": "7153",
+    "nome": "Santa Lúcia"
+  },
+  {
+    "codigo": "7200",
+    "nome": "São Tomé e Príncipe"
+  },
+  {
+    "codigo": "7285",
+    "nome": "Senegal"
+  },
+  {
+    "codigo": "7315",
+    "nome": "Seychelles"
+  },
+  {
+    "codigo": "7358",
+    "nome": "Serra Leoa"
+  },
+  {
+    "codigo": "7370",
+    "nome": "Servia"
+  },
+  {
+    "codigo": "7412",
+    "nome": "Cingapura"
+  },
+  {
+    "codigo": "7447",
+    "nome": "Síria, República Árabe da"
+  },
+  {
+    "codigo": "7480",
+    "nome": "Somália"
+  },
+  {
+    "codigo": "7501",
+    "nome": "Sri-Lanka"
+  },
+  {
+    "codigo": "7544",
+    "nome": "Suazilândia"
+  },
+  {
+    "codigo": "7552",
+    "nome": "Svalbard e Jan Mayen"
+  },
+  {
+    "codigo": "7560",
+    "nome": "África do Sul"
+  },
+  {
+    "codigo": "7595",
+    "nome": "Sudão"
+  },
+  {
+    "codigo": "7600",
+    "nome": "Sudão do Sul"
+  },
+  {
+    "codigo": "7641",
+    "nome": "Suécia"
+  },
+  {
+    "codigo": "7676",
+    "nome": "Suíça"
+  },
+  {
+    "codigo": "7706",
+    "nome": "Suriname"
+  },
+  {
+    "codigo": "7722",
+    "nome": "Tadjiquistão, República do"
+  },
+  {
+    "codigo": "7765",
+    "nome": "Tailândia"
+  },
+  {
+    "codigo": "7803",
+    "nome": "Tanzânia"
+  },
+  {
+    "codigo": "7811",
+    "nome": "Terras Austrais e Antárticas Francesas"
+  },
+  {
+    "codigo": "7820",
+    "nome": "Território Britânico no Oceano Índico"
+  },
+  {
+    "codigo": "7838",
+    "nome": "Djibuti"
+  },
+  {
+    "codigo": "7889",
+    "nome": "Chade"
+  },
+  {
+    "codigo": "7919",
+    "nome": "Tcheca, República"
+  },
+  {
+    "codigo": "7951",
+    "nome": "Timor Leste"
+  },
+  {
+    "codigo": "8001",
+    "nome": "Togo"
+  },
+  {
+    "codigo": "8052",
+    "nome": "Toquelau, Ilhas"
+  },
+  {
+    "codigo": "8109",
+    "nome": "Tonga"
+  },
+  {
+    "codigo": "8150",
+    "nome": "Trinidad e Tobago"
+  },
+  {
+    "codigo": "8206",
+    "nome": "Tunísia"
+  },
+  {
+    "codigo": "8230",
+    "nome": "Turcas e Caicos, Ilhas"
+  },
+  {
+    "codigo": "8249",
+    "nome": "Turcomenistão, República do"
+  },
+  {
+    "codigo": "8273",
+    "nome": "Turquia"
+  },
+  {
+    "codigo": "8281",
+    "nome": "Tuvalu"
+  },
+  {
+    "codigo": "8311",
+    "nome": "Ucrânia"
+  },
+  {
+    "codigo": "8338",
+    "nome": "Uganda"
+  },
+  {
+    "codigo": "8451",
+    "nome": "Uruguai"
+  },
+  {
+    "codigo": "8478",
+    "nome": "Uzbequistão, República do"
+  },
+  {
+    "codigo": "8486",
+    "nome": "Vaticano, Cidade do (Santa Sé)"
+  },
+  {
+    "codigo": "8508",
+    "nome": "Venezuela"
+  },
+  {
+    "codigo": "8583",
+    "nome": "Vietnã"
+  },
+  {
+    "codigo": "8630",
+    "nome": "Virgens, Ilhas (Britânicas)"
+  },
+  {
+    "codigo": "8664",
+    "nome": "Virgens, Ilhas (EUA)"
+  },
+  {
+    "codigo": "8702",
+    "nome": "Fiji"
+  },
+  {
+    "codigo": "8753",
+    "nome": "Wallis e Futuna, Ilhas"
+  },
+  {
+    "codigo": "8885",
+    "nome": "Congo, República Democrática do"
+  },
+  {
+    "codigo": "8907",
+    "nome": "Zâmbia"
+  }
+]

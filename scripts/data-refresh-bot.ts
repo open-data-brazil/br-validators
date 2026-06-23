@@ -27,23 +27,45 @@ const ROOT = path.resolve(__dirname, '..');
 const DATASET_METADATA_PATHS = [
   path.join(ROOT, 'packages/br-validators/src/ibge/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/bancos/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/aeroportos/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/tse-municipios/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/moedas/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/paises-bacen/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/incoterms/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/core/telefone/data/ddd-metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/feriados/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cnaes/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cfop/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/natureza-juridica/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/nbs/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/cest/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/ncm/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cbo/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/core/cep/data/faixa-metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/portos/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/pncp-reference/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/transparencia-snapshots/data/metadata.json'),
 ] as const;
 
 const FETCH_DATASET_IDS = [
   'ibge',
   'bancos',
+  'aeroportos',
+  'tse-municipios',
+  'moedas',
+  'paises-bacen',
+  'incoterms',
   'telefone-ddd',
   'cnaes',
   'cfop',
+  'natureza-juridica',
+  'nbs',
+  'cest',
   'ncm',
   'cbo',
+  'portos',
+  'pncp-reference',
+  'transparencia-snapshots',
 ] as const;
 
 const PROBE_ONLY_METADATA_PATHS = [
@@ -54,11 +76,22 @@ const PROBE_ONLY_METADATA_PATHS = [
 const FETCH_SCRIPTS = [
   'scripts/fetch-ibge.ts',
   'scripts/fetch-bancos.ts',
+  'scripts/fetch-aeroportos.ts',
+  'scripts/fetch-tse-municipios.ts',
+  'scripts/fetch-moedas.ts',
+  'scripts/fetch-paises-bacen.ts',
+  'scripts/fetch-incoterms.ts',
   'scripts/fetch-ddd.ts',
   'scripts/fetch-cnaes.ts',
   'scripts/fetch-cfop.ts',
+  'scripts/fetch-natureza-juridica.ts',
+  'scripts/fetch-nbs.ts',
+  'scripts/fetch-cest.ts',
   'scripts/fetch-ncm.ts',
   'scripts/fetch-cbo.ts',
+  'scripts/fetch-portos.ts',
+  'scripts/fetch-pncp-reference.ts',
+  'scripts/fetch-transparencia-snapshots.ts',
 ] as const;
 
 const REPORT_DIR = path.join(ROOT, 'data/refresh-reports');

@@ -1,0 +1,27 @@
+{
+  "source": "https://api.portaldatransparencia.gov.br/swagger-ui/index.html",
+  "golden": {
+    "ceis": {
+      "id": "ceis",
+      "path": "/api-de-dados/ceis",
+      "delivery": "query-adapter"
+    },
+    "peps": {
+      "id": "peps",
+      "path": "/api-de-dados/peps",
+      "delivery": "query-adapter"
+    },
+    "cpfQuery": {
+      "formatted": "123.456.789-09",
+      "canonical": "12345678909",
+      "note": "RFB UC-001 worked example — synthetic, no real PII"
+    },
+    "cnpjQuery": {
+      "formatted": "12.ABC.345/01DE-35",
+      "canonical": "12ABC34501DE35",
+      "note": "RFB CNPJ alfanumérico FAQ Q14 — official doc example"
+    }
+  },
+  "minEndpoints": 6,
+  "minQueryAdapter": 5
+}

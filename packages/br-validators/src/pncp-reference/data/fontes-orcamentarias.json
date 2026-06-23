@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nome": "Não se aplica",
+    "descricao": "Opção destinada às modalidades Leilão (Presencial ou Eletrônico), Credenciamento, Manifestação de Interesse e Pré-qualificação.",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Municipal",
+    "descricao": "Recurso orçamentário municipal disponível e devidamente vinculado à despesa que será realizada.",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Estadual",
+    "descricao": "Recurso orçamentário estadual disponível e devidamente vinculado à despesa que será realizada.",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Federal",
+    "descricao": "Recurso orçamentário federal disponível e devidamente vinculado à despesa que será realizada.",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Organismo Internacional",
+    "descricao": "Recurso proveniente de empréstimo ou doação oriundos de agência oficial de cooperação estrangeira ou de organismo financeiro do qual o Brasil seja parte, conforme os incisos I e II do § 3º do artigo 1º da Lei nº 14.133/2021.",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Distrital",
+    "descricao": "Recurso orçamentário distrital disponível e devidamente vinculado à despesa que será realizada.",
+    "ativo": true
+  }
+]

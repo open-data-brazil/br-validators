@@ -1,0 +1,25 @@
+{
+  "id": "tse-municipios",
+  "nome": "TSE ↔ IBGE Municipality Codes",
+  "fonte": "TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE",
+  "endpoints": [
+    "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
+  ],
+  "capturadoEm": "2026-06-23",
+  "atualizadoEm": "2026-06-23T18:20:02.432Z",
+  "contagens": {
+    "municipios": 5571
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-06-23"
+  },
+  "verificacao": {
+    "agendamento": "semanal",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-06-23T18:20:02.432Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#tse-municipios"
+}

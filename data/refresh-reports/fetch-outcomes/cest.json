@@ -1,0 +1,11 @@
+{
+  "datasetId": "cest",
+  "status": "ok",
+  "endpoints": [
+    "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T18:40:24.668Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Official CONFAZ CEST table fetch succeeded."
+}

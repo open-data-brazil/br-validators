@@ -134,6 +134,31 @@ Offline government datasets — tree-shakeable subpaths, `*_DATA_VERSION` metada
 | S-05 | CNAE / CFOP / NCM / CBO | `@br-validators/core/{cnaes,cfop,ncm,cbo}` | v1.3.0 | ✅ Released |
 | S-10 | Data transparency | `@br-validators/core/data-catalog` + weekly bot | v1.1.0 | ✅ Shipped |
 | S-06 | CEP prefix ranges | `@br-validators/core/cep` (`getCepFaixaInfo`) | v1.3.0 | ✅ Released |
-| S-07 / S-08 | Airports / TSE codes | — | post-v1.3 | Deferred |
+| S-07 | Airports (ANAC) | `@br-validators/core/aeroportos` | 1.4.0 | ✅ Shipped — [25a](../.local/phases/25a-aeroportos/) |
+| S-08 | TSE municipality codes | `@br-validators/core/tse-municipios` | 1.4.0 | ✅ Shipped — [25b](../.local/phases/25b-tse-municipios/) |
+| S-09 | ISS rates by municipality | — | — | 🚫 Rejected — stale-data risk |
+
+**Optional surfaces (CLI + Playground):** `.local/phases/24-reference-data-surfaces/` — `bancos lookup`, `/data/ibge`, `/data/bancos`
 
 **Docs:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · [LIBRARY-API.md](LIBRARY-API.md#core-api--data-catalog-transparency)
+
+---
+
+## Phase 26 — Federal open data (v1.5.0) — ✅ Shipped
+
+Weekly bot → embedded JSON in core; live API queries via adapter packages (RFC only). Master plan: `.local/phases/26-federal-open-data/`.
+
+| ID | Module | Subpath / package | Source | Status |
+|----|--------|-------------------|--------|--------|
+| S-11 | Portal da Transparência | `@br-validators/core/transparencia-snapshots` + `adapters-transparencia` (RFC) | [API Swagger](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) | ✅ Shipped — [26a](../.local/phases/26a-portal-transparencia/) |
+| S-12 | PNCP Consulta | `@br-validators/core/pncp-reference` + `adapters-pncp` (RFC) | [PNCP Cadastro API](https://pncp.gov.br/api/pncp/v1/modalidades) | ✅ Shipped — [26b](../.local/phases/26b-pncp-consulta/) |
+| S-13 | Natureza Jurídica | `@br-validators/core/natureza-juridica` | RFB / CNPJ | ✅ Shipped — [26c](../.local/phases/26c-fiscal-reference-embed/) |
+| S-14 | NBS | `@br-validators/core/nbs` | NFSe Nacional | ✅ Shipped — [26c](../.local/phases/26c-fiscal-reference-embed/) |
+| S-15 | CEST | `@br-validators/core/cest` | CONFAZ | ✅ Shipped — [26c](../.local/phases/26c-fiscal-reference-embed/) |
+| S-16 | Moedas (ISO 4217 + Bacen) | `@br-validators/core/moedas` | Bacen + ISO | ✅ Shipped — [26d](../.local/phases/26d-trade-reference-embed/) |
+| S-17 | Países código Bacen | `@br-validators/core/paises-bacen` | NF-e table | ✅ Shipped — [26d](../.local/phases/26d-trade-reference-embed/) |
+| S-18 | Incoterms | `@br-validators/core/incoterms` | ICC 2020 | ✅ Shipped — [26d](../.local/phases/26d-trade-reference-embed/) |
+| S-19 | Portos brasileiros | `@br-validators/core/portos` | ANTAQ | ✅ Shipped — [26e](../.local/phases/26e-logistics-reference-embed/) |
+| S-20 | Gov.br surfaces | CLI + Playground `/data/*` | mirrors Phase 24 | ⏸ Optional — [26f](../.local/phases/26f-govbr-surfaces/) |
+
+**API keys (CI only):** `TRANSPARENCIA_API_KEY` for Portal da Transparência bot health-check / bulk fetch — never in repo or core runtime.

@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+import { registerReferenceLookupCommands } from './commands/reference-lookup/register-program.js';
 import {
   handleBrCodeCli,
   handleCepCli,
@@ -20,6 +21,10 @@ import {
   handleSanitizeCli,
   handleGenerateCli,
   handlePlacaCli,
+  handleBancosLookupCli,
+  handleBancosListCli,
+  type BancosListCliOptions,
+  type BancosLookupCliOptions,
   writeCliIo,
   type BoletoCliOptions,
   type CartaoCliOptions,
@@ -438,6 +443,34 @@ export function createProgram(): Command {
         writeCliIo(io);
       });
   }
+
+  const bancos = program.command('bancos').description('Bacen STR participants — offline lookup');
+
+  bancos
+    .command('lookup')
+    .description('Resolve bank by COMPE (3 digits) or ISPB (8 digits)')
+    .argument('<codigoOuIspb>', 'COMPE or ISPB')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date (BANCOS_DATA_VERSION)')
+    .action((codigoOuIspb: string, opts: BancosLookupCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleBancosLookupCli(codigoOuIspb, opts, io);
+      writeCliIo(io);
+    });
+
+  bancos
+    .command('list')
+    .description('List STR participants (optional --limit)')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date (BANCOS_DATA_VERSION)')
+    .option('--limit <n>', 'Maximum rows to print', (v: string) => Number(v))
+    .action((opts: BancosListCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleBancosListCli(opts, io);
+      writeCliIo(io);
+    });
+
+  registerReferenceLookupCommands(program);
 
   program
     .command('detect')

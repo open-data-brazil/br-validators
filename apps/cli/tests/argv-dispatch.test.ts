@@ -220,6 +220,13 @@ describe('dispatchArgv', () => {
     expect(dispatchArgv(['generate'], generateEmpty)).toBe(EXIT.USAGE);
   });
 
+  it('parses verbose and limit flags', () => {
+    expect(parseArgv(['bancos', 'list', '--verbose', '--limit', '5']).opts).toMatchObject({
+      verbose: true,
+      limit: 5,
+    });
+  });
+
   it('allows optional values for action commands', () => {
     const nfe = io();
     expect(dispatchArgv(['nfe-chave', 'validate'], nfe)).toBe(EXIT.USAGE);
@@ -241,5 +248,37 @@ describe('dispatchArgv', () => {
 
     const boletoDetect = io();
     expect(dispatchArgv(['boleto', 'detect'], boletoDetect)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches bancos lookup and list', () => {
+    const lookup = io();
+    expect(dispatchArgv(['bancos', 'lookup', '001', '--json'], lookup)).toBe(EXIT.OK);
+    const parsed = JSON.parse(lookup.stdout[0]) as { ok: boolean; banco: { codigo: string } };
+    expect(parsed.ok).toBe(true);
+    expect(parsed.banco.codigo).toBe('001');
+
+    const list = io();
+    expect(dispatchArgv(['bancos', 'list', '--limit', '3', '--json'], list)).toBe(EXIT.OK);
+    const listParsed = JSON.parse(list.stdout[0]) as { total: number };
+    expect(listParsed.total).toBe(3);
+
+    const usage = io();
+    expect(dispatchArgv(['bancos', 'unknown'], usage)).toBe(EXIT.USAGE);
+
+    const missing = io();
+    expect(dispatchArgv(['bancos', 'lookup'], missing)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches reference lookup commands', () => {
+    const moedas = io();
+    expect(dispatchArgv(['moedas', 'lookup', 'BRL', '--json'], moedas)).toBe(EXIT.OK);
+    const parsed = JSON.parse(moedas.stdout[0]) as { ok: boolean; moeda: { codigo: string } };
+    expect(parsed.moeda.codigo).toBe('BRL');
+
+    const usage = io();
+    expect(dispatchArgv(['portos', 'unknown'], usage)).toBe(EXIT.USAGE);
+
+    const missing = io();
+    expect(dispatchArgv(['incoterms', 'lookup'], missing)).toBe(EXIT.USAGE);
   });
 });

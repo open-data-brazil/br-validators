@@ -1,0 +1,33 @@
+{
+  "source": "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip",
+  "datasetPage": "https://dadosabertos.tse.jus.br/dataset/codigos-oficiais-de-uf-e-municipios-segundo-o-tse-e-o-ibge",
+  "golden": {
+    "saoPaulo": {
+      "codigoTse": "71072",
+      "ibgeCodigo": 3550308,
+      "uf": "SP"
+    },
+    "rioDeJaneiro": {
+      "codigoTse": "60011",
+      "ibgeCodigo": 3304557,
+      "uf": "RJ"
+    },
+    "brasilia": {
+      "codigoTse": "97012",
+      "ibgeCodigo": 5300108,
+      "uf": "DF"
+    },
+    "salvador": {
+      "codigoTse": "38490",
+      "ibgeCodigo": 2927408,
+      "uf": "BA"
+    },
+    "cuiaba": {
+      "codigoTse": "90670",
+      "ibgeCodigo": 5103403,
+      "uf": "MT"
+    }
+  },
+  "minMappings": 5500,
+  "maxMappings": 5800
+}

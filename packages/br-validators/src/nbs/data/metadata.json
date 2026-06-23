@@ -1,0 +1,25 @@
+{
+  "id": "nbs",
+  "nome": "NFSe NBS",
+  "fonte": "NFSe Nacional — Anexo B NBS2 Lista Serviço Nacional",
+  "endpoints": [
+    "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx"
+  ],
+  "capturadoEm": "2026-06-23",
+  "atualizadoEm": "2026-06-23T18:40:25.263Z",
+  "contagens": {
+    "nbs": 917
+  },
+  "alteracoes": {
+    "adicionados": 917,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": null
+  },
+  "verificacao": {
+    "agendamento": "semanal",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-06-23T18:40:25.263Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#nbs"
+}

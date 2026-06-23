@@ -1,0 +1,4266 @@
+[
+  {
+    "iata": "CDJ",
+    "icao": "SBAA",
+    "nome": "CONCEIÇÃO DO ARAGUAIA",
+    "uf": "PA",
+    "municipioIbge": 1502707,
+    "municipioNome": "Conceição do Araguaia"
+  },
+  {
+    "iata": "AQA",
+    "icao": "SBAC",
+    "nome": "ARACATI (SNAT*)",
+    "uf": "CE",
+    "municipioIbge": 2301109,
+    "municipioNome": "Aracati"
+  },
+  {
+    "iata": null,
+    "icao": "SBAE",
+    "nome": "BAURU/AREALVA",
+    "uf": "SP",
+    "municipioIbge": null,
+    "municipioNome": "BAURU E AREALVA"
+  },
+  {
+    "iata": "AQA",
+    "icao": "SBAQ",
+    "nome": "BARTOLOMEU DE GUSMÃO",
+    "uf": "SP",
+    "municipioIbge": 3503208,
+    "municipioNome": "Araraquara"
+  },
+  {
+    "iata": "AJU",
+    "icao": "SBAR",
+    "nome": "SANTA MARIA",
+    "uf": "SE",
+    "municipioIbge": 2800308,
+    "municipioNome": "Aracaju"
+  },
+  {
+    "iata": "ATM",
+    "icao": "SBAT",
+    "nome": "PILOTO OSVALDO MARQUES DIAS",
+    "uf": "MT",
+    "municipioIbge": 5100250,
+    "municipioNome": "Alta Floresta"
+  },
+  {
+    "iata": null,
+    "icao": "SBAU",
+    "nome": "ESTADUAL DARIO GUARITA",
+    "uf": "SP",
+    "municipioIbge": 3502804,
+    "municipioNome": "Araçatuba"
+  },
+  {
+    "iata": null,
+    "icao": "SBAX",
+    "nome": "ROMEU ZEMA",
+    "uf": "MG",
+    "municipioIbge": 3104007,
+    "municipioNome": "Araxá"
+  },
+  {
+    "iata": "BEL",
+    "icao": "SBBE",
+    "nome": "INTERNACIONAL DE BELÉM/VAL DE CANS/JÚLIO CEZAR RIBEIRO",
+    "uf": "PA",
+    "municipioIbge": 1501402,
+    "municipioNome": "Belém"
+  },
+  {
+    "iata": null,
+    "icao": "SBBG",
+    "nome": "COMANDANTE GUSTAVO KRAEMER",
+    "uf": "RS",
+    "municipioIbge": 4301602,
+    "municipioNome": "Bagé"
+  },
+  {
+    "iata": "BHZ",
+    "icao": "SBBH",
+    "nome": "PAMPULHA - CARLOS DRUMMOND DE ANDRADE",
+    "uf": "MG",
+    "municipioIbge": 3106200,
+    "municipioNome": "Belo Horizonte"
+  },
+  {
+    "iata": null,
+    "icao": "SBBI",
+    "nome": "BACACHERI",
+    "uf": "PR",
+    "municipioIbge": 4106902,
+    "municipioNome": "Curitiba"
+  },
+  {
+    "iata": null,
+    "icao": "SBBP",
+    "nome": "ESTADUAL ARTHUR SIQUEIRA",
+    "uf": "SP",
+    "municipioIbge": 3507605,
+    "municipioNome": "Bragança Paulista"
+  },
+  {
+    "iata": "BSB",
+    "icao": "SBBR",
+    "nome": "PRESIDENTE JUSCELINO KUBITSCHEK",
+    "uf": "DF",
+    "municipioIbge": 5300108,
+    "municipioNome": "Brasília"
+  },
+  {
+    "iata": null,
+    "icao": "SBBU",
+    "nome": "BAURU",
+    "uf": "SP",
+    "municipioIbge": 3506003,
+    "municipioNome": "Bauru"
+  },
+  {
+    "iata": "BVB",
+    "icao": "SBBV",
+    "nome": "ATLAS BRASIL CANTANHEDE",
+    "uf": "RR",
+    "municipioIbge": 1400100,
+    "municipioNome": "Boa Vista"
+  },
+  {
+    "iata": null,
+    "icao": "SBBW",
+    "nome": "BARRA DO GARÇAS",
+    "uf": "MT",
+    "municipioIbge": 5101803,
+    "municipioNome": "Barra do Garças"
+  },
+  {
+    "iata": "CAC",
+    "icao": "SBCA",
+    "nome": "CORONEL ADALBERTO MENDES DA SILVA",
+    "uf": "PR",
+    "municipioIbge": 4104808,
+    "municipioNome": "Cascavel"
+  },
+  {
+    "iata": null,
+    "icao": "SBCB",
+    "nome": "CABO FRIO",
+    "uf": "RJ",
+    "municipioIbge": 3300704,
+    "municipioNome": "Cabo Frio"
+  },
+  {
+    "iata": null,
+    "icao": "SBCD",
+    "nome": "CARLOS ALBERTO DA COSTA NEVES",
+    "uf": "SC",
+    "municipioIbge": 4203006,
+    "municipioNome": "Caçador"
+  },
+  {
+    "iata": "CNF",
+    "icao": "SBCF",
+    "nome": "TANCREDO NEVES",
+    "uf": "MG",
+    "municipioIbge": 3117876,
+    "municipioNome": "Confins"
+  },
+  {
+    "iata": "CGR",
+    "icao": "SBCG",
+    "nome": "CAMPO GRANDE",
+    "uf": "MS",
+    "municipioIbge": 5002704,
+    "municipioNome": "Campo Grande"
+  },
+  {
+    "iata": "XAP",
+    "icao": "SBCH",
+    "nome": "SERAFIN ENOSS BERTASO",
+    "uf": "SC",
+    "municipioIbge": 4204202,
+    "municipioNome": "Chapecó"
+  },
+  {
+    "iata": null,
+    "icao": "SBCI",
+    "nome": "BRIGADEIRO LYSIAS AUGUSTO RODRIGUES",
+    "uf": "MA",
+    "municipioIbge": 2102804,
+    "municipioNome": "Carolina"
+  },
+  {
+    "iata": "CJZ",
+    "icao": "SBCJ",
+    "nome": "CARAJÁS",
+    "uf": "PA",
+    "municipioIbge": 1505536,
+    "municipioNome": "Parauapebas"
+  },
+  {
+    "iata": "CAU",
+    "icao": "SBCN",
+    "nome": "NELSON RODRIGUES GUIMARÃES",
+    "uf": "GO",
+    "municipioIbge": 5204508,
+    "municipioNome": "Caldas Novas"
+  },
+  {
+    "iata": "CFB",
+    "icao": "SBCP",
+    "nome": "BARTOLOMEU LISANDRO",
+    "uf": "RJ",
+    "municipioIbge": 3301009,
+    "municipioNome": "Campos dos Goytacazes"
+  },
+  {
+    "iata": null,
+    "icao": "SBCR",
+    "nome": "CORUMBÁ",
+    "uf": "MS",
+    "municipioIbge": 5003207,
+    "municipioNome": "Corumbá"
+  },
+  {
+    "iata": null,
+    "icao": "SBCT",
+    "nome": "AFONSO PENA",
+    "uf": "PR",
+    "municipioIbge": 4106902,
+    "municipioNome": "Curitiba"
+  },
+  {
+    "iata": "CXJ",
+    "icao": "SBCX",
+    "nome": "HUGO CANTERGIANI",
+    "uf": "RS",
+    "municipioIbge": 4305108,
+    "municipioNome": "Caxias do Sul"
+  },
+  {
+    "iata": "CGB",
+    "icao": "SBCY",
+    "nome": "MARECHAL RONDON",
+    "uf": "MT",
+    "municipioIbge": 5108402,
+    "municipioNome": "Várzea Grande"
+  },
+  {
+    "iata": "CZS",
+    "icao": "SBCZ",
+    "nome": "CRUZEIRO DO SUL",
+    "uf": "AC",
+    "municipioIbge": 1200203,
+    "municipioNome": "Cruzeiro do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SBDB",
+    "nome": "BONITO",
+    "uf": "MS",
+    "municipioIbge": 5002209,
+    "municipioNome": "Bonito"
+  },
+  {
+    "iata": null,
+    "icao": "SBDN",
+    "nome": "PRESIDENTE PRUDENTE",
+    "uf": "SP",
+    "municipioIbge": 3541406,
+    "municipioNome": "Presidente Prudente"
+  },
+  {
+    "iata": null,
+    "icao": "SBDO",
+    "nome": "DOURADOS",
+    "uf": "MS",
+    "municipioIbge": 5003702,
+    "municipioNome": "Dourados"
+  },
+  {
+    "iata": "MAO",
+    "icao": "SBEG",
+    "nome": "EDUARDO GOMES",
+    "uf": "AM",
+    "municipioIbge": 1302603,
+    "municipioNome": "Manaus"
+  },
+  {
+    "iata": null,
+    "icao": "SBEK",
+    "nome": "JACAREACANGA",
+    "uf": "PA",
+    "municipioIbge": 1503754,
+    "municipioNome": "Jacareacanga"
+  },
+  {
+    "iata": "IGU",
+    "icao": "SBFI",
+    "nome": "CATARATAS",
+    "uf": "PR",
+    "municipioIbge": 4108304,
+    "municipioNome": "Foz do Iguaçu"
+  },
+  {
+    "iata": "FLN",
+    "icao": "SBFL",
+    "nome": "HERCÍLIO LUZ",
+    "uf": "SC",
+    "municipioIbge": 4205407,
+    "municipioNome": "Florianópolis"
+  },
+  {
+    "iata": "FEN",
+    "icao": "SBFN",
+    "nome": "FERNANDO DE NORONHA",
+    "uf": "PE",
+    "municipioIbge": 2605459,
+    "municipioNome": "Fernando de Noronha"
+  },
+  {
+    "iata": "FOR",
+    "icao": "SBFZ",
+    "nome": "PINTO MARTINS",
+    "uf": "CE",
+    "municipioIbge": 2304400,
+    "municipioNome": "Fortaleza"
+  },
+  {
+    "iata": "GIG",
+    "icao": "SBGL",
+    "nome": "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO/GALEÃO – ANTONIO CARLOS JOBIM",
+    "uf": "RJ",
+    "municipioIbge": 3304557,
+    "municipioNome": "Rio de Janeiro"
+  },
+  {
+    "iata": null,
+    "icao": "SBGM",
+    "nome": "GUAJARÁ-MIRIM",
+    "uf": "RO",
+    "municipioIbge": 1100106,
+    "municipioNome": "Guajará-Mirim"
+  },
+  {
+    "iata": "GYN",
+    "icao": "SBGO",
+    "nome": "SANTA GENOVEVA/GOIÂNIA",
+    "uf": "GO",
+    "municipioIbge": 5208707,
+    "municipioNome": "Goiânia"
+  },
+  {
+    "iata": "GRU",
+    "icao": "SBGR",
+    "nome": "GUARULHOS - GOVERNADOR ANDRÉ FRANCO MONTORO",
+    "uf": "SP",
+    "municipioIbge": 3518800,
+    "municipioNome": "Guarulhos"
+  },
+  {
+    "iata": null,
+    "icao": "SBGV",
+    "nome": "CORONEL ALTINO MACHADO",
+    "uf": "MG",
+    "municipioIbge": 3127701,
+    "municipioNome": "Governador Valadares"
+  },
+  {
+    "iata": null,
+    "icao": "SBGW",
+    "nome": "GUARATINGUETÁ",
+    "uf": "SP",
+    "municipioIbge": 3518404,
+    "municipioNome": "Guaratinguetá"
+  },
+  {
+    "iata": "ATM",
+    "icao": "SBHT",
+    "nome": "ALTAMIRA",
+    "uf": "PA",
+    "municipioIbge": 1500602,
+    "municipioNome": "Altamira"
+  },
+  {
+    "iata": null,
+    "icao": "SBIC",
+    "nome": "ITACOATIARA",
+    "uf": "AM",
+    "municipioIbge": 1301902,
+    "municipioNome": "Itacoatiara"
+  },
+  {
+    "iata": "ITB",
+    "icao": "SBIH",
+    "nome": "ITAITUBA",
+    "uf": "PA",
+    "municipioIbge": 1503606,
+    "municipioNome": "Itaituba"
+  },
+  {
+    "iata": null,
+    "icao": "SBIL",
+    "nome": "BAHIA - JORGE AMADO",
+    "uf": "BA",
+    "municipioIbge": 2913606,
+    "municipioNome": "Ilhéus"
+  },
+  {
+    "iata": null,
+    "icao": "SBIP",
+    "nome": "USIMINAS",
+    "uf": "MG",
+    "municipioIbge": 3158953,
+    "municipioNome": "Santana do Paraíso"
+  },
+  {
+    "iata": null,
+    "icao": "SBIZ",
+    "nome": "PREFEITO RENATO MOREIRA",
+    "uf": "MA",
+    "municipioIbge": 2105302,
+    "municipioNome": "Imperatriz"
+  },
+  {
+    "iata": null,
+    "icao": "SBJA",
+    "nome": "REGIONAL SUL",
+    "uf": "SC",
+    "municipioIbge": 4208807,
+    "municipioNome": "Jaguaruna"
+  },
+  {
+    "iata": "JTC",
+    "icao": "SBJC",
+    "nome": "BELÉM/BRIGADEIRO PROTÁSIO DE OLIVEIRA",
+    "uf": "PA",
+    "municipioIbge": 1501402,
+    "municipioNome": "Belém"
+  },
+  {
+    "iata": "JDF",
+    "icao": "SBJD",
+    "nome": "COMANDANTE ROLIM ADOLFO AMARO",
+    "uf": "SP",
+    "municipioIbge": 3525904,
+    "municipioNome": "Jundiaí"
+  },
+  {
+    "iata": null,
+    "icao": "SBJE",
+    "nome": "COMANDANTE ARISTON PESSOA",
+    "uf": "CE",
+    "municipioIbge": 2304251,
+    "municipioNome": "Cruz"
+  },
+  {
+    "iata": "JDF",
+    "icao": "SBJF",
+    "nome": "FRANCISCO DE ASSIS",
+    "uf": "MG",
+    "municipioIbge": 3136702,
+    "municipioNome": "Juiz de Fora"
+  },
+  {
+    "iata": null,
+    "icao": "SBJH",
+    "nome": "SÃO PAULO CATARINA AEROPORTO EXECUTIVO",
+    "uf": "SP",
+    "municipioIbge": 3550605,
+    "municipioNome": "São Roque"
+  },
+  {
+    "iata": "JPR",
+    "icao": "SBJI",
+    "nome": "JI-PARANÁ",
+    "uf": "RO",
+    "municipioIbge": 1100122,
+    "municipioNome": "Ji-Paraná"
+  },
+  {
+    "iata": "JPA",
+    "icao": "SBJP",
+    "nome": "PRESIDENTE CASTRO PINTO",
+    "uf": "PB",
+    "municipioIbge": 2507507,
+    "municipioNome": "João Pessoa"
+  },
+  {
+    "iata": "RIO",
+    "icao": "SBJR",
+    "nome": "JACAREPAGUÁ/RJ - Roberto Marinho",
+    "uf": "RJ",
+    "municipioIbge": 3304557,
+    "municipioNome": "Rio de Janeiro"
+  },
+  {
+    "iata": "JDO",
+    "icao": "SBJU",
+    "nome": "ORLANDO BEZERRA DE MENEZES",
+    "uf": "CE",
+    "municipioIbge": 2307304,
+    "municipioNome": "Juazeiro do Norte"
+  },
+  {
+    "iata": "JOI",
+    "icao": "SBJV",
+    "nome": "LAURO CARNEIRO DE LOYOLA",
+    "uf": "SC",
+    "municipioIbge": 4209102,
+    "municipioNome": "Joinville"
+  },
+  {
+    "iata": null,
+    "icao": "SBKG",
+    "nome": "PRESIDENTE JOÃO SUASSUNA",
+    "uf": "PB",
+    "municipioIbge": 2504009,
+    "municipioNome": "Campina Grande"
+  },
+  {
+    "iata": "VCP",
+    "icao": "SBKP",
+    "nome": "VIRACOPOS",
+    "uf": "SP",
+    "municipioIbge": 3509502,
+    "municipioNome": "Campinas"
+  },
+  {
+    "iata": null,
+    "icao": "SBLE",
+    "nome": "HORÁCIO DE MATTOS",
+    "uf": "BA",
+    "municipioIbge": 2919306,
+    "municipioNome": "Lençóis"
+  },
+  {
+    "iata": "LAJ",
+    "icao": "SBLJ",
+    "nome": "LAGES",
+    "uf": "SC",
+    "municipioIbge": 4209300,
+    "municipioNome": "Lages"
+  },
+  {
+    "iata": "LDB",
+    "icao": "SBLO",
+    "nome": "GOVERNADOR JOSÉ RICHA",
+    "uf": "PR",
+    "municipioIbge": 4113700,
+    "municipioNome": "Londrina"
+  },
+  {
+    "iata": null,
+    "icao": "SBLP",
+    "nome": "BOM JESUS DA LAPA",
+    "uf": "BA",
+    "municipioIbge": 2903904,
+    "municipioNome": "Bom Jesus da Lapa"
+  },
+  {
+    "iata": "IMP",
+    "icao": "SBMA",
+    "nome": "JOÃO CORREA DA ROCHA",
+    "uf": "PA",
+    "municipioIbge": 1504208,
+    "municipioNome": "Marabá"
+  },
+  {
+    "iata": null,
+    "icao": "SBMD",
+    "nome": "MONTE DOURADO",
+    "uf": "PA",
+    "municipioIbge": 1500503,
+    "municipioNome": "Almeirim"
+  },
+  {
+    "iata": "MEA",
+    "icao": "SBME",
+    "nome": "MACAÉ",
+    "uf": "RJ",
+    "municipioIbge": 3302403,
+    "municipioNome": "Macaé"
+  },
+  {
+    "iata": "MGF",
+    "icao": "SBMG",
+    "nome": "SÍLVIO NAME JÚNIOR",
+    "uf": "PR",
+    "municipioIbge": 4115200,
+    "municipioNome": "Maringá"
+  },
+  {
+    "iata": null,
+    "icao": "SBMI",
+    "nome": "MARICÁ",
+    "uf": "RJ",
+    "municipioIbge": 3302700,
+    "municipioNome": "Maricá"
+  },
+  {
+    "iata": "MOC",
+    "icao": "SBMK",
+    "nome": "MÁRIO RIBEIRO",
+    "uf": "MG",
+    "municipioIbge": 3143302,
+    "municipioNome": "Montes Claros"
+  },
+  {
+    "iata": "MII",
+    "icao": "SBML",
+    "nome": "FRANK MILOYE MILENKOVICH",
+    "uf": "SP",
+    "municipioIbge": 3529005,
+    "municipioNome": "Marília"
+  },
+  {
+    "iata": "MCZ",
+    "icao": "SBMO",
+    "nome": "ZUMBI DOS PALMARES",
+    "uf": "AL",
+    "municipioIbge": 2704302,
+    "municipioNome": "Maceió"
+  },
+  {
+    "iata": "MCP",
+    "icao": "SBMQ",
+    "nome": "ALBERTO ALCOLUMBRE",
+    "uf": "AP",
+    "municipioIbge": 1600303,
+    "municipioNome": "Macapá"
+  },
+  {
+    "iata": null,
+    "icao": "SBMS",
+    "nome": "DIX-SEPT ROSADO",
+    "uf": "RN",
+    "municipioIbge": 2408003,
+    "municipioNome": "Mossoró"
+  },
+  {
+    "iata": "SPX",
+    "icao": "SBMT",
+    "nome": "CAMPO DE MARTE",
+    "uf": "SP",
+    "municipioIbge": 3550308,
+    "municipioNome": "São Paulo"
+  },
+  {
+    "iata": null,
+    "icao": "SBMY",
+    "nome": "MANICORÉ",
+    "uf": "AM",
+    "municipioIbge": 1302702,
+    "municipioNome": "Manicoré"
+  },
+  {
+    "iata": "NVT",
+    "icao": "SBNF",
+    "nome": "MINISTRO VICTOR KONDER",
+    "uf": "SC",
+    "municipioIbge": 4211306,
+    "municipioNome": "Navegantes"
+  },
+  {
+    "iata": null,
+    "icao": "SBNM",
+    "nome": "SANTO ÂNGELO",
+    "uf": "RS",
+    "municipioIbge": 4317509,
+    "municipioNome": "Santo Ângelo"
+  },
+  {
+    "iata": null,
+    "icao": "SBNV",
+    "nome": "AERÓDROMO NACIONAL DE AVIAÇÃO",
+    "uf": "GO",
+    "municipioIbge": 5208707,
+    "municipioNome": "Goiânia"
+  },
+  {
+    "iata": "OUS",
+    "icao": "SBOI",
+    "nome": "OIAPOQUE",
+    "uf": "AP",
+    "municipioIbge": 1600501,
+    "municipioNome": "Oiapoque"
+  },
+  {
+    "iata": "POA",
+    "icao": "SBPA",
+    "nome": "SALGADO FILHO",
+    "uf": "RS",
+    "municipioIbge": 4314902,
+    "municipioNome": "Porto Alegre"
+  },
+  {
+    "iata": "JTC",
+    "icao": "SBPB",
+    "nome": "AEROPORTO INTERNACIONAL DE PARNAÍBA / PREFEITO DOUTOR JOÃO SILVA FILHO",
+    "uf": "PI",
+    "municipioIbge": 2207702,
+    "municipioNome": "Parnaíba"
+  },
+  {
+    "iata": "PCS",
+    "icao": "SBPC",
+    "nome": "EMBAIXADOR WALTHER MOREIRA SALLES",
+    "uf": "MG",
+    "municipioIbge": 3151800,
+    "municipioNome": "Poços de Caldas"
+  },
+  {
+    "iata": null,
+    "icao": "SBPF",
+    "nome": "LAURO KURTZ",
+    "uf": "RS",
+    "municipioIbge": 4314100,
+    "municipioNome": "Passo Fundo"
+  },
+  {
+    "iata": "PGZ",
+    "icao": "SBPG",
+    "nome": "COMANDANTE ANTÔNIO AMILTON BERALDO",
+    "uf": "PR",
+    "municipioIbge": 4119905,
+    "municipioNome": "Ponta Grossa"
+  },
+  {
+    "iata": "PMW",
+    "icao": "SBPJ",
+    "nome": "BRIGADEIRO LYSIAS RODRIGUES",
+    "uf": "TO",
+    "municipioIbge": 1721000,
+    "municipioNome": "Palmas"
+  },
+  {
+    "iata": null,
+    "icao": "SBPK",
+    "nome": "JOÃO SIMÕES LOPES NETO",
+    "uf": "RS",
+    "municipioIbge": 4314407,
+    "municipioNome": "Pelotas"
+  },
+  {
+    "iata": "PNZ",
+    "icao": "SBPL",
+    "nome": "SENADOR NILO COELHO",
+    "uf": "PE",
+    "municipioIbge": 2611101,
+    "municipioNome": "Petrolina"
+  },
+  {
+    "iata": null,
+    "icao": "SBPO",
+    "nome": "JUVENAL LOUREIRO CARDOSO",
+    "uf": "PR",
+    "municipioIbge": 4118501,
+    "municipioNome": "Pato Branco"
+  },
+  {
+    "iata": "PPB",
+    "icao": "SBPP",
+    "nome": "PONTA PORÃ",
+    "uf": "MS",
+    "municipioIbge": 5006606,
+    "municipioNome": "Ponta Porã"
+  },
+  {
+    "iata": null,
+    "icao": "SBPR",
+    "nome": "CARLOS PRATES",
+    "uf": "MG",
+    "municipioIbge": 3106200,
+    "municipioNome": "Belo Horizonte"
+  },
+  {
+    "iata": "BPS",
+    "icao": "SBPS",
+    "nome": "PORTO SEGURO",
+    "uf": "BA",
+    "municipioIbge": 2925303,
+    "municipioNome": "Porto Seguro"
+  },
+  {
+    "iata": "PVH",
+    "icao": "SBPV",
+    "nome": "GOVERNADOR JORGE TEIXEIRA DE OLIVEIRA",
+    "uf": "RO",
+    "municipioIbge": 1100205,
+    "municipioNome": "Porto Velho"
+  },
+  {
+    "iata": "RBR",
+    "icao": "SBRB",
+    "nome": "PLÁCIDO DE CASTRO",
+    "uf": "AC",
+    "municipioIbge": 1200401,
+    "municipioNome": "Rio Branco"
+  },
+  {
+    "iata": null,
+    "icao": "SBRD",
+    "nome": "RONDONÓPOLIS - MAESTRO MARINHO FRANCO (*SWRD)",
+    "uf": "MT",
+    "municipioIbge": 5107602,
+    "municipioNome": "Rondonópolis"
+  },
+  {
+    "iata": "REC",
+    "icao": "SBRF",
+    "nome": "GUARARAPES - GILBERTO FREYRE",
+    "uf": "PE",
+    "municipioIbge": 2611606,
+    "municipioNome": "Recife"
+  },
+  {
+    "iata": "SDU",
+    "icao": "SBRJ",
+    "nome": "SANTOS DUMONT",
+    "uf": "RJ",
+    "municipioIbge": 3304557,
+    "municipioNome": "Rio de Janeiro"
+  },
+  {
+    "iata": "RAO",
+    "icao": "SBRP",
+    "nome": "LEITE LOPES",
+    "uf": "SP",
+    "municipioIbge": 3543402,
+    "municipioNome": "Ribeirão Preto"
+  },
+  {
+    "iata": null,
+    "icao": "SBSG",
+    "nome": "GOVERNADOR ALUIZIO ALVES",
+    "uf": "RN",
+    "municipioIbge": 2412005,
+    "municipioNome": "São Gonçalo do Amarante"
+  },
+  {
+    "iata": null,
+    "icao": "SBSI",
+    "nome": "PRESIDENTE JOÃO BATISTA FIGUEIREDO",
+    "uf": "MT",
+    "municipioIbge": 5107909,
+    "municipioNome": "Sinop"
+  },
+  {
+    "iata": null,
+    "icao": "SBSJ",
+    "nome": "PROFESSOR URBANO ERNESTO STUMPF",
+    "uf": "SP",
+    "municipioIbge": 3549904,
+    "municipioNome": "São José dos Campos"
+  },
+  {
+    "iata": "SLZ",
+    "icao": "SBSL",
+    "nome": "MARECHAL CUNHA MACHADO",
+    "uf": "MA",
+    "municipioIbge": 2111300,
+    "municipioNome": "São Luís"
+  },
+  {
+    "iata": "RIA",
+    "icao": "SBSM",
+    "nome": "SANTA MARIA",
+    "uf": "RS",
+    "municipioIbge": 4316907,
+    "municipioNome": "Santa Maria"
+  },
+  {
+    "iata": "STM",
+    "icao": "SBSN",
+    "nome": "MAESTRO WILSON FONSECA",
+    "uf": "PA",
+    "municipioIbge": 1506807,
+    "municipioNome": "Santarém"
+  },
+  {
+    "iata": "SOD",
+    "icao": "SBSO",
+    "nome": "REGIONAL DE SORRISO ADOLINO BEDIN (SDSS*)",
+    "uf": "MT",
+    "municipioIbge": 5107925,
+    "municipioNome": "Sorriso"
+  },
+  {
+    "iata": "CGH",
+    "icao": "SBSP",
+    "nome": "CONGONHAS",
+    "uf": "SP",
+    "municipioIbge": 3550308,
+    "municipioNome": "São Paulo"
+  },
+  {
+    "iata": "SJP",
+    "icao": "SBSR",
+    "nome": "PROFESSOR ERIBERTO MANOEL REINO",
+    "uf": "SP",
+    "municipioIbge": 3549805,
+    "municipioNome": "São José do Rio Preto"
+  },
+  {
+    "iata": "SSA",
+    "icao": "SBSV",
+    "nome": "DEPUTADO LUÍS EDUARDO MAGALHÃES",
+    "uf": "BA",
+    "municipioIbge": 2927408,
+    "municipioNome": "Salvador"
+  },
+  {
+    "iata": null,
+    "icao": "SBTB",
+    "nome": "TROMBETAS",
+    "uf": "PA",
+    "municipioIbge": null,
+    "municipioNome": "TROMBETAS"
+  },
+  {
+    "iata": null,
+    "icao": "SBTD",
+    "nome": "LUIZ DALCANALE FILHO",
+    "uf": "PR",
+    "municipioIbge": 4127700,
+    "municipioNome": "Toledo"
+  },
+  {
+    "iata": "THE",
+    "icao": "SBTE",
+    "nome": "SENADOR PETRÔNIO PORTELLA",
+    "uf": "PI",
+    "municipioIbge": 2211001,
+    "municipioNome": "Teresina"
+  },
+  {
+    "iata": "TFF",
+    "icao": "SBTF",
+    "nome": "TEFÉ",
+    "uf": "AM",
+    "municipioIbge": 1304203,
+    "municipioNome": "Tefé"
+  },
+  {
+    "iata": null,
+    "icao": "SBTG",
+    "nome": "TRÊS LAGOAS",
+    "uf": "MS",
+    "municipioIbge": 5008305,
+    "municipioNome": "Três Lagoas"
+  },
+  {
+    "iata": null,
+    "icao": "SBTK",
+    "nome": "TARAUACÁ",
+    "uf": "AC",
+    "municipioIbge": 1200609,
+    "municipioNome": "Tarauacá"
+  },
+  {
+    "iata": null,
+    "icao": "SBTT",
+    "nome": "TABATINGA",
+    "uf": "AM",
+    "municipioIbge": 1304062,
+    "municipioNome": "Tabatinga"
+  },
+  {
+    "iata": null,
+    "icao": "SBTU",
+    "nome": "TUCURUÍ",
+    "uf": "PA",
+    "municipioIbge": 1508100,
+    "municipioNome": "Tucuruí"
+  },
+  {
+    "iata": null,
+    "icao": "SBUA",
+    "nome": "SÃO GABRIEL DA CACHOEIRA",
+    "uf": "AM",
+    "municipioIbge": 1303809,
+    "municipioNome": "São Gabriel da Cachoeira"
+  },
+  {
+    "iata": null,
+    "icao": "SBUF",
+    "nome": "PAULO AFONSO",
+    "uf": "BA",
+    "municipioIbge": 2924009,
+    "municipioNome": "Paulo Afonso"
+  },
+  {
+    "iata": "URG",
+    "icao": "SBUG",
+    "nome": "RUBEM BERTA",
+    "uf": "RS",
+    "municipioIbge": 4322400,
+    "municipioNome": "Uruguaiana"
+  },
+  {
+    "iata": "UBA",
+    "icao": "SBUL",
+    "nome": "TEN CEL AVIADOR CÉSAR BOMBONATO",
+    "uf": "MG",
+    "municipioIbge": 3170206,
+    "municipioNome": "Uberlândia"
+  },
+  {
+    "iata": "UDI",
+    "icao": "SBUR",
+    "nome": "MARIO DE ALMEIDA FRANCO",
+    "uf": "MG",
+    "municipioIbge": 3170107,
+    "municipioNome": "Uberaba"
+  },
+  {
+    "iata": null,
+    "icao": "SBVC",
+    "nome": "GLAUBER DE ANDRADE ROCHA",
+    "uf": "BA",
+    "municipioIbge": 2933307,
+    "municipioNome": "Vitória da Conquista"
+  },
+  {
+    "iata": null,
+    "icao": "SBVG",
+    "nome": "MAJOR BRIGADEIRO TROMPOWSKY",
+    "uf": "MG",
+    "municipioIbge": 3170701,
+    "municipioNome": "Varginha"
+  },
+  {
+    "iata": "BVH",
+    "icao": "SBVH",
+    "nome": "VILHENA",
+    "uf": "RO",
+    "municipioIbge": 1100304,
+    "municipioNome": "Vilhena"
+  },
+  {
+    "iata": "VIX",
+    "icao": "SBVT",
+    "nome": "EURICO DE AGUIAR SALLES",
+    "uf": "ES",
+    "municipioIbge": 3205309,
+    "municipioNome": "Vitória"
+  },
+  {
+    "iata": null,
+    "icao": "SBZM",
+    "nome": "PRESIDENTE ITAMAR FRANCO",
+    "uf": "MG",
+    "municipioIbge": 3127388,
+    "municipioNome": "Goianá"
+  },
+  {
+    "iata": null,
+    "icao": "SDAA",
+    "nome": "ARARAS",
+    "uf": "SP",
+    "municipioIbge": 3503307,
+    "municipioNome": "Araras"
+  },
+  {
+    "iata": null,
+    "icao": "SDAD",
+    "nome": "EVERALDO MORAES BARRETO",
+    "uf": "SP",
+    "municipioIbge": 3500105,
+    "municipioNome": "Adamantina"
+  },
+  {
+    "iata": null,
+    "icao": "SDAE",
+    "nome": "SÃO PEDRO",
+    "uf": "SP",
+    "municipioIbge": 3550407,
+    "municipioNome": "São Pedro"
+  },
+  {
+    "iata": null,
+    "icao": "SDAG",
+    "nome": "ANGRA DOS REIS",
+    "uf": "RJ",
+    "municipioIbge": 3300100,
+    "municipioNome": "Angra dos Reis"
+  },
+  {
+    "iata": null,
+    "icao": "SDAI",
+    "nome": "AMERICANA",
+    "uf": "SP",
+    "municipioIbge": 3501608,
+    "municipioNome": "Americana"
+  },
+  {
+    "iata": null,
+    "icao": "SDAM",
+    "nome": "ESTADUAL DE CAMPOS DOS AMARAIS - PREFEITO FRANCISCO AMARAL",
+    "uf": "SP",
+    "municipioIbge": 3509502,
+    "municipioNome": "Campinas"
+  },
+  {
+    "iata": null,
+    "icao": "SDBA",
+    "nome": "BATATAIS",
+    "uf": "SP",
+    "municipioIbge": 3505906,
+    "municipioNome": "Batatais"
+  },
+  {
+    "iata": null,
+    "icao": "SDBB",
+    "nome": "BEBEDOURO",
+    "uf": "SP",
+    "municipioIbge": 3506102,
+    "municipioNome": "Bebedouro"
+  },
+  {
+    "iata": null,
+    "icao": "SDBK",
+    "nome": "TANCREDO DE ALMEIDA NEVES",
+    "uf": "SP",
+    "municipioIbge": 3507506,
+    "municipioNome": "Botucatu"
+  },
+  {
+    "iata": null,
+    "icao": "SDBY",
+    "nome": "BARIRI",
+    "uf": "SP",
+    "municipioIbge": 3505203,
+    "municipioNome": "Bariri"
+  },
+  {
+    "iata": null,
+    "icao": "SDCA",
+    "nome": "CAPÃO BONITO",
+    "uf": "SP",
+    "municipioIbge": 3510203,
+    "municipioNome": "Capão Bonito"
+  },
+  {
+    "iata": null,
+    "icao": "SDCG",
+    "nome": "SENADORA EUNICE MICHILES",
+    "uf": "AM",
+    "municipioIbge": 1303908,
+    "municipioNome": "São Paulo de Olivença"
+  },
+  {
+    "iata": null,
+    "icao": "SDCO",
+    "nome": "SOROCABA",
+    "uf": "SP",
+    "municipioIbge": 3552205,
+    "municipioNome": "Sorocaba"
+  },
+  {
+    "iata": null,
+    "icao": "SDDN",
+    "nome": "PAULINO RIBEIRO DE ANDRADE",
+    "uf": "SP",
+    "municipioIbge": 3502101,
+    "municipioNome": "Andradina"
+  },
+  {
+    "iata": null,
+    "icao": "SDDR",
+    "nome": "DRACENA",
+    "uf": "SP",
+    "municipioIbge": 3514403,
+    "municipioNome": "Dracena"
+  },
+  {
+    "iata": null,
+    "icao": "SDEP",
+    "nome": "GERALDO MOACIR BORDON",
+    "uf": "SP",
+    "municipioIbge": 3541307,
+    "municipioNome": "Presidente Epitácio"
+  },
+  {
+    "iata": null,
+    "icao": "SDET",
+    "nome": "TIETÊ",
+    "uf": "SP",
+    "municipioIbge": 3554508,
+    "municipioNome": "Tietê"
+  },
+  {
+    "iata": null,
+    "icao": "SDFD",
+    "nome": "CORONEL AVIADOR CARLOS ORLEANS GUIMARÃES",
+    "uf": "SP",
+    "municipioIbge": 3515509,
+    "municipioNome": "Fernandópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SDFX",
+    "nome": "CASA NOVA",
+    "uf": "BA",
+    "municipioIbge": 2907202,
+    "municipioNome": "Casa Nova"
+  },
+  {
+    "iata": null,
+    "icao": "SDGC",
+    "nome": "GARÇA",
+    "uf": "SP",
+    "municipioIbge": 3516705,
+    "municipioNome": "Garça"
+  },
+  {
+    "iata": null,
+    "icao": "SDGR",
+    "nome": "GUARARAPES",
+    "uf": "SP",
+    "municipioIbge": 3518206,
+    "municipioNome": "Guararapes"
+  },
+  {
+    "iata": null,
+    "icao": "SDIG",
+    "nome": "IBITINGA",
+    "uf": "SP",
+    "municipioIbge": 3519600,
+    "municipioNome": "Ibitinga"
+  },
+  {
+    "iata": null,
+    "icao": "SDIM",
+    "nome": "DR. ANTONIO RIBEIRO NOGUEIRA JÚNIOR",
+    "uf": "SP",
+    "municipioIbge": 3522109,
+    "municipioNome": "Itanhaém"
+  },
+  {
+    "iata": null,
+    "icao": "SDIV",
+    "nome": "ITUVERAVA",
+    "uf": "SP",
+    "municipioIbge": 3524105,
+    "municipioNome": "Ituverava"
+  },
+  {
+    "iata": null,
+    "icao": "SDIY",
+    "nome": "JOÃO DURVAL CARNEIRO (SBFE*)",
+    "uf": "BA",
+    "municipioIbge": 2910800,
+    "municipioNome": "Feira de Santana"
+  },
+  {
+    "iata": null,
+    "icao": "SDJC",
+    "nome": "JABOTICABAL",
+    "uf": "SP",
+    "municipioIbge": 3524303,
+    "municipioNome": "Jaboticabal"
+  },
+  {
+    "iata": null,
+    "icao": "SDJO",
+    "nome": "SÃO JOAQUIM DA BARRA",
+    "uf": "SP",
+    "municipioIbge": 3549409,
+    "municipioNome": "São Joaquim da Barra"
+  },
+  {
+    "iata": null,
+    "icao": "SDJV",
+    "nome": "MUNICIPAL DE SÃO JOÃO DA BOA VISTA",
+    "uf": "SP",
+    "municipioIbge": 3549102,
+    "municipioNome": "São João da Boa Vista"
+  },
+  {
+    "iata": null,
+    "icao": "SDKF",
+    "nome": "JUAZEIRO",
+    "uf": "BA",
+    "municipioIbge": 2909901,
+    "municipioNome": "Curaçá"
+  },
+  {
+    "iata": null,
+    "icao": "SDKJ",
+    "nome": "FORMOSA DO RIO PRETO",
+    "uf": "BA",
+    "municipioIbge": 2911105,
+    "municipioNome": "Formosa do Rio Preto"
+  },
+  {
+    "iata": null,
+    "icao": "SDKK",
+    "nome": "MOCOCA",
+    "uf": "SP",
+    "municipioIbge": 3530508,
+    "municipioNome": "Mococa"
+  },
+  {
+    "iata": null,
+    "icao": "SDLC",
+    "nome": "LUCÉLIA",
+    "uf": "SP",
+    "municipioIbge": 3527405,
+    "municipioNome": "Lucélia"
+  },
+  {
+    "iata": null,
+    "icao": "SDLE",
+    "nome": "RIO DE CONTAS",
+    "uf": "BA",
+    "municipioIbge": 2926707,
+    "municipioNome": "Rio de Contas"
+  },
+  {
+    "iata": null,
+    "icao": "SDLK",
+    "nome": "CACULÉ",
+    "uf": "BA",
+    "municipioIbge": 2905008,
+    "municipioNome": "Caculé"
+  },
+  {
+    "iata": null,
+    "icao": "SDLL",
+    "nome": "YOLANDA PENTEADO",
+    "uf": "SP",
+    "municipioIbge": 3526704,
+    "municipioNome": "Leme"
+  },
+  {
+    "iata": null,
+    "icao": "SDLP",
+    "nome": "MUNICIPAL JOSÉ BOSO",
+    "uf": "SP",
+    "municipioIbge": 3526803,
+    "municipioNome": "Lençóis Paulista"
+  },
+  {
+    "iata": null,
+    "icao": "SDLY",
+    "nome": "ARMANDO NATALI",
+    "uf": "SP",
+    "municipioIbge": 3529302,
+    "municipioNome": "Matão"
+  },
+  {
+    "iata": null,
+    "icao": "SDMH",
+    "nome": "MIRASSOL",
+    "uf": "SP",
+    "municipioIbge": 3530300,
+    "municipioNome": "Mirassol"
+  },
+  {
+    "iata": null,
+    "icao": "SDMJ",
+    "nome": "MOGI MIRIM",
+    "uf": "SP",
+    "municipioIbge": 3530805,
+    "municipioNome": "Mogi Mirim"
+  },
+  {
+    "iata": null,
+    "icao": "SDMO",
+    "nome": "MONTE ALTO",
+    "uf": "SP",
+    "municipioIbge": 3531308,
+    "municipioNome": "Monte Alto"
+  },
+  {
+    "iata": null,
+    "icao": "SDNH",
+    "nome": "NOVO HORIZONTE",
+    "uf": "SP",
+    "municipioIbge": 3533502,
+    "municipioNome": "Novo Horizonte"
+  },
+  {
+    "iata": null,
+    "icao": "SDNM",
+    "nome": "BRIGADEIRO EDUARDO GOMES",
+    "uf": "MT",
+    "municipioIbge": 5106224,
+    "municipioNome": "Nova Mutum"
+  },
+  {
+    "iata": null,
+    "icao": "SDNO",
+    "nome": "NELSON GARÓFALO",
+    "uf": "SP",
+    "municipioIbge": 3550100,
+    "municipioNome": "São Manuel"
+  },
+  {
+    "iata": null,
+    "icao": "SDOU",
+    "nome": "AEROPORTO MUNICIPAL DE OURINHOS JORNALISTA BENEDITO PIMENTEL",
+    "uf": "SP",
+    "municipioIbge": 3534708,
+    "municipioNome": "Ourinhos"
+  },
+  {
+    "iata": null,
+    "icao": "SDOV",
+    "nome": "MOZARLÂNDIA",
+    "uf": "GO",
+    "municipioIbge": 5214002,
+    "municipioNome": "Mozarlândia"
+  },
+  {
+    "iata": null,
+    "icao": "SDOW",
+    "nome": "OURILÂNDIA DO NORTE",
+    "uf": "PA",
+    "municipioIbge": 1505437,
+    "municipioNome": "Ourilândia do Norte"
+  },
+  {
+    "iata": null,
+    "icao": "SDPD",
+    "nome": "PINDAMONHANGABA",
+    "uf": "SP",
+    "municipioIbge": 3538006,
+    "municipioNome": "Pindamonhangaba"
+  },
+  {
+    "iata": null,
+    "icao": "SDPE",
+    "nome": "PORTO NACIONAL",
+    "uf": "TO",
+    "municipioIbge": 1718204,
+    "municipioNome": "Porto Nacional"
+  },
+  {
+    "iata": null,
+    "icao": "SDPN",
+    "nome": "PENÁPOLIS",
+    "uf": "SP",
+    "municipioIbge": 3537305,
+    "municipioNome": "Penápolis"
+  },
+  {
+    "iata": null,
+    "icao": "SDPV",
+    "nome": "PRESIDENTE VENCESLAU",
+    "uf": "SP",
+    "municipioIbge": 3541505,
+    "municipioNome": "Presidente Venceslau"
+  },
+  {
+    "iata": null,
+    "icao": "SDPW",
+    "nome": "PEDRO MORGANTI",
+    "uf": "SP",
+    "municipioIbge": 3538709,
+    "municipioNome": "Piracicaba"
+  },
+  {
+    "iata": null,
+    "icao": "SDPY",
+    "nome": "PIRASSUNUNGA",
+    "uf": "SP",
+    "municipioIbge": 3539301,
+    "municipioNome": "Pirassununga"
+  },
+  {
+    "iata": null,
+    "icao": "SDRK",
+    "nome": "RIO CLARO",
+    "uf": "SP",
+    "municipioIbge": 3543907,
+    "municipioNome": "Rio Claro"
+  },
+  {
+    "iata": null,
+    "icao": "SDRR",
+    "nome": "AVARÉ-ARANDU",
+    "uf": "SP",
+    "municipioIbge": 3504503,
+    "municipioNome": "Avaré"
+  },
+  {
+    "iata": null,
+    "icao": "SDRS",
+    "nome": "RESENDE",
+    "uf": "RJ",
+    "municipioIbge": 3304201,
+    "municipioNome": "Resende"
+  },
+  {
+    "iata": null,
+    "icao": "SDSC",
+    "nome": "MÁRIO PEREIRA LOPES",
+    "uf": "SP",
+    "municipioIbge": 3548906,
+    "municipioNome": "São Carlos"
+  },
+  {
+    "iata": null,
+    "icao": "SDTB",
+    "nome": "ATIBAIA",
+    "uf": "SP",
+    "municipioIbge": 3504107,
+    "municipioNome": "Atibaia"
+  },
+  {
+    "iata": null,
+    "icao": "SDTF",
+    "nome": "TATUÍ",
+    "uf": "SP",
+    "municipioIbge": 3554003,
+    "municipioNome": "Tatuí"
+  },
+  {
+    "iata": null,
+    "icao": "SDTI",
+    "nome": "TUPI PAULISTA",
+    "uf": "SP",
+    "municipioIbge": 3555109,
+    "municipioNome": "Tupi Paulista"
+  },
+  {
+    "iata": null,
+    "icao": "SDTK",
+    "nome": "PARATI",
+    "uf": "RJ",
+    "municipioIbge": null,
+    "municipioNome": "PARATI"
+  },
+  {
+    "iata": null,
+    "icao": "SDTP",
+    "nome": "JOSÉ VICENTE FARIA LIMA",
+    "uf": "SP",
+    "municipioIbge": 3555000,
+    "municipioNome": "Tupã"
+  },
+  {
+    "iata": null,
+    "icao": "SDUB",
+    "nome": "ESTADUAL GASTÃO MADEIRA",
+    "uf": "SP",
+    "municipioIbge": 3555406,
+    "municipioNome": "Ubatuba"
+  },
+  {
+    "iata": null,
+    "icao": "SDUN",
+    "nome": "ITAPERUNA",
+    "uf": "RJ",
+    "municipioIbge": 3302205,
+    "municipioNome": "Itaperuna"
+  },
+  {
+    "iata": null,
+    "icao": "SDUQ",
+    "nome": "PARAGUAÇU PAULISTA",
+    "uf": "SP",
+    "municipioIbge": 3535507,
+    "municipioNome": "Paraguaçu Paulista"
+  },
+  {
+    "iata": null,
+    "icao": "SDVE",
+    "nome": "VERA CRUZ",
+    "uf": "SP",
+    "municipioIbge": 3556602,
+    "municipioNome": "Vera Cruz"
+  },
+  {
+    "iata": null,
+    "icao": "SDVG",
+    "nome": "DOMINGOS PIGNATARI",
+    "uf": "SP",
+    "municipioIbge": 3557105,
+    "municipioNome": "Votuporanga"
+  },
+  {
+    "iata": null,
+    "icao": "SDWQ",
+    "nome": "ALENQUER",
+    "uf": "PA",
+    "municipioIbge": 1500404,
+    "municipioNome": "Alenquer"
+  },
+  {
+    "iata": null,
+    "icao": "SDXF",
+    "nome": "ALTO PARAÍSO DE GOIÁS",
+    "uf": "GO",
+    "municipioIbge": 5200605,
+    "municipioNome": "Alto Paraíso de Goiás"
+  },
+  {
+    "iata": null,
+    "icao": "SDXJ",
+    "nome": "COSTA RICA",
+    "uf": "MS",
+    "municipioIbge": 5003256,
+    "municipioNome": "Costa Rica"
+  },
+  {
+    "iata": null,
+    "icao": "SDZG",
+    "nome": "PEDRO TEIXEIRA CASTELO REGIONAL TAUÁ",
+    "uf": "CE",
+    "municipioIbge": 2313302,
+    "municipioNome": "Tauá"
+  },
+  {
+    "iata": null,
+    "icao": "SIBU",
+    "nome": "CATOLÉ DO ROCHA",
+    "uf": "PB",
+    "municipioIbge": 2504306,
+    "municipioNome": "Catolé do Rocha"
+  },
+  {
+    "iata": null,
+    "icao": "SIBW",
+    "nome": "CONCEIÇÃO",
+    "uf": "PB",
+    "municipioIbge": 2504405,
+    "municipioNome": "Conceição"
+  },
+  {
+    "iata": null,
+    "icao": "SIBY",
+    "nome": "MONTEIRO",
+    "uf": "PB",
+    "municipioIbge": 2509701,
+    "municipioNome": "Monteiro"
+  },
+  {
+    "iata": null,
+    "icao": "SIBZ",
+    "nome": "ITAPORANGA",
+    "uf": "PB",
+    "municipioIbge": 2507002,
+    "municipioNome": "Itaporanga"
+  },
+  {
+    "iata": null,
+    "icao": "SICB",
+    "nome": "PEDRO SIMÕES PIMENTA",
+    "uf": "PB",
+    "municipioIbge": 2505105,
+    "municipioNome": "Cuité"
+  },
+  {
+    "iata": null,
+    "icao": "SILC",
+    "nome": "AEROPORTO MUNICIPAL BOM FUTURO",
+    "uf": "MT",
+    "municipioIbge": 5105259,
+    "municipioNome": "Lucas do Rio Verde"
+  },
+  {
+    "iata": null,
+    "icao": "SIMK",
+    "nome": "TENENTE LUND PRESSOTO",
+    "uf": "SP",
+    "municipioIbge": 3516200,
+    "municipioNome": "Franca"
+  },
+  {
+    "iata": null,
+    "icao": "SIZX",
+    "nome": "JUARA SUL",
+    "uf": "MT",
+    "municipioIbge": 5105101,
+    "municipioNome": "Juara"
+  },
+  {
+    "iata": null,
+    "icao": "SJAU",
+    "nome": "ARAGUACEMA",
+    "uf": "TO",
+    "municipioIbge": 1701903,
+    "municipioNome": "Araguacema"
+  },
+  {
+    "iata": null,
+    "icao": "SJBY",
+    "nome": "JOÃO SILVA",
+    "uf": "MA",
+    "municipioIbge": 2109908,
+    "municipioNome": "Santa Inês"
+  },
+  {
+    "iata": null,
+    "icao": "SJGU",
+    "nome": "ARAGUATINS",
+    "uf": "TO",
+    "municipioIbge": 1702208,
+    "municipioNome": "Araguatins"
+  },
+  {
+    "iata": null,
+    "icao": "SJNP",
+    "nome": "NOVO PROGRESSO",
+    "uf": "PA",
+    "municipioIbge": 1505031,
+    "municipioNome": "Novo Progresso"
+  },
+  {
+    "iata": null,
+    "icao": "SJOG",
+    "nome": "ARIQUEMES",
+    "uf": "RO",
+    "municipioIbge": 1100023,
+    "municipioNome": "Ariquemes"
+  },
+  {
+    "iata": null,
+    "icao": "SJQN",
+    "nome": "QUIRINÓPOLIS",
+    "uf": "GO",
+    "municipioIbge": 5218508,
+    "municipioNome": "Quirinópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SJRG",
+    "nome": "REGIONAL DE RIO GRANDE",
+    "uf": "RS",
+    "municipioIbge": 4315602,
+    "municipioNome": "Rio Grande"
+  },
+  {
+    "iata": null,
+    "icao": "SJTS",
+    "nome": "TERRA SANTA",
+    "uf": "PA",
+    "municipioIbge": 1507979,
+    "municipioNome": "Terra Santa"
+  },
+  {
+    "iata": null,
+    "icao": "SJVO",
+    "nome": "ARAGARÇAS",
+    "uf": "GO",
+    "municipioIbge": 5201702,
+    "municipioNome": "Aragarças"
+  },
+  {
+    "iata": null,
+    "icao": "SJXI",
+    "nome": "SANTA RITA DO SAPUCAÍ",
+    "uf": "MG",
+    "municipioIbge": 3159605,
+    "municipioNome": "Santa Rita do Sapucaí"
+  },
+  {
+    "iata": null,
+    "icao": "SJZA",
+    "nome": "PEDRO VIEIRA MOREIRA",
+    "uf": "PB",
+    "municipioIbge": 2503704,
+    "municipioNome": "Cajazeiras"
+  },
+  {
+    "iata": null,
+    "icao": "SNAB",
+    "nome": "ARARIPINA",
+    "uf": "PE",
+    "municipioIbge": 2601102,
+    "municipioNome": "Araripina"
+  },
+  {
+    "iata": null,
+    "icao": "SNAE",
+    "nome": "ARCOVERDE",
+    "uf": "PE",
+    "municipioIbge": 2601201,
+    "municipioNome": "Arcoverde"
+  },
+  {
+    "iata": null,
+    "icao": "SNAG",
+    "nome": "ARAGUARI",
+    "uf": "MG",
+    "municipioIbge": 3103504,
+    "municipioNome": "Araguari"
+  },
+  {
+    "iata": null,
+    "icao": "SNAL",
+    "nome": "ARAPIRACA",
+    "uf": "AL",
+    "municipioIbge": 2700300,
+    "municipioNome": "Arapiraca"
+  },
+  {
+    "iata": null,
+    "icao": "SNAM",
+    "nome": "SANTO ANTÔNIO DO AMPARO",
+    "uf": "MG",
+    "municipioIbge": 3159902,
+    "municipioNome": "Santo Antônio do Amparo"
+  },
+  {
+    "iata": null,
+    "icao": "SNAP",
+    "nome": "JANAÚBA",
+    "uf": "MG",
+    "municipioIbge": 3135100,
+    "municipioNome": "Janaúba"
+  },
+  {
+    "iata": null,
+    "icao": "SNAR",
+    "nome": "CIRILO QUEIRÓZ",
+    "uf": "MG",
+    "municipioIbge": 3101706,
+    "municipioNome": "Almenara"
+  },
+  {
+    "iata": null,
+    "icao": "SNAS",
+    "nome": "TRÊS MARIAS",
+    "uf": "MG",
+    "municipioIbge": 3169356,
+    "municipioNome": "Três Marias"
+  },
+  {
+    "iata": null,
+    "icao": "SNAX",
+    "nome": "MARCELO PIRES HALZHAUSEN",
+    "uf": "SP",
+    "municipioIbge": 3504008,
+    "municipioNome": "Assis"
+  },
+  {
+    "iata": null,
+    "icao": "SNBA",
+    "nome": "CHAFEI AMSEI (SBBT*)",
+    "uf": "SP",
+    "municipioIbge": 3505500,
+    "municipioNome": "Barretos"
+  },
+  {
+    "iata": null,
+    "icao": "SNBC",
+    "nome": "BARRA DO CORDA",
+    "uf": "MA",
+    "municipioIbge": 2101608,
+    "municipioNome": "Barra do Corda"
+  },
+  {
+    "iata": null,
+    "icao": "SNBG",
+    "nome": "BAIXO GUANDU - AIMORÉS",
+    "uf": "ES",
+    "municipioIbge": 3200805,
+    "municipioNome": "Baixo Guandu"
+  },
+  {
+    "iata": null,
+    "icao": "SNBI",
+    "nome": "BACABAL",
+    "uf": "MA",
+    "municipioIbge": 2101202,
+    "municipioNome": "Bacabal"
+  },
+  {
+    "iata": null,
+    "icao": "SNBM",
+    "nome": "CRISTIANO FERREIRA VARELLA",
+    "uf": "MG",
+    "municipioIbge": 3143906,
+    "municipioNome": "Muriaé"
+  },
+  {
+    "iata": null,
+    "icao": "SNBR",
+    "nome": "BARREIRAS",
+    "uf": "BA",
+    "municipioIbge": 2903201,
+    "municipioNome": "Barreiras"
+  },
+  {
+    "iata": null,
+    "icao": "SNBS",
+    "nome": "BALSAS",
+    "uf": "MA",
+    "municipioIbge": 2101400,
+    "municipioNome": "Balsas"
+  },
+  {
+    "iata": null,
+    "icao": "SNBX",
+    "nome": "BARRA",
+    "uf": "BA",
+    "municipioIbge": 2902708,
+    "municipioNome": "Barra"
+  },
+  {
+    "iata": null,
+    "icao": "SNBZ",
+    "nome": "PARAMIRIM",
+    "uf": "BA",
+    "municipioIbge": 2923605,
+    "municipioNome": "Paramirim"
+  },
+  {
+    "iata": null,
+    "icao": "SNCA",
+    "nome": "CAMPO BELO",
+    "uf": "MG",
+    "municipioIbge": 3111200,
+    "municipioNome": "Campo Belo"
+  },
+  {
+    "iata": null,
+    "icao": "SNCP",
+    "nome": "REGIONAL DO PLANALTO SERRANO",
+    "uf": "SC",
+    "municipioIbge": 4204558,
+    "municipioNome": "Correia Pinto"
+  },
+  {
+    "iata": null,
+    "icao": "SNCS",
+    "nome": "CAMPOS SALES",
+    "uf": "CE",
+    "municipioIbge": 2302701,
+    "municipioNome": "Campos Sales"
+  },
+  {
+    "iata": null,
+    "icao": "SNCT",
+    "nome": "CARATINGA",
+    "uf": "MG",
+    "municipioIbge": 3170057,
+    "municipioNome": "Ubaporanga"
+  },
+  {
+    "iata": null,
+    "icao": "SNCX",
+    "nome": "COLATINA",
+    "uf": "ES",
+    "municipioIbge": 3201506,
+    "municipioNome": "Colatina"
+  },
+  {
+    "iata": null,
+    "icao": "SNCZ",
+    "nome": "PONTE NOVA",
+    "uf": "MG",
+    "municipioIbge": 3152105,
+    "municipioNome": "Ponte Nova"
+  },
+  {
+    "iata": null,
+    "icao": "SNDC",
+    "nome": "REDENÇÃO",
+    "uf": "PA",
+    "municipioIbge": 1506138,
+    "municipioNome": "Redenção"
+  },
+  {
+    "iata": null,
+    "icao": "SNDT",
+    "nome": "JUSCELINO KUBITSCHEK",
+    "uf": "MG",
+    "municipioIbge": 3121605,
+    "municipioNome": "Diamantina"
+  },
+  {
+    "iata": null,
+    "icao": "SNDV",
+    "nome": "BRIGADEIRO ANTÔNIO CABRAL",
+    "uf": "MG",
+    "municipioIbge": 3122306,
+    "municipioNome": "Divinópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SNDW",
+    "nome": "DIVISA",
+    "uf": "BA",
+    "municipioIbge": 2910404,
+    "municipioNome": "Encruzilhada"
+  },
+  {
+    "iata": null,
+    "icao": "SNEB",
+    "nome": "NAGIB DEMACHKI",
+    "uf": "PA",
+    "municipioIbge": 1505502,
+    "municipioNome": "Paragominas"
+  },
+  {
+    "iata": null,
+    "icao": "SNED",
+    "nome": "SÓCRATES REZENDE",
+    "uf": "BA",
+    "municipioIbge": 2906303,
+    "municipioNome": "Canavieiras"
+  },
+  {
+    "iata": null,
+    "icao": "SNEE",
+    "nome": "VACARIA NOVO",
+    "uf": "RS",
+    "municipioIbge": 4322509,
+    "municipioNome": "Vacaria"
+  },
+  {
+    "iata": null,
+    "icao": "SNEU",
+    "nome": "EUCLIDES DA CUNHA",
+    "uf": "BA",
+    "municipioIbge": 2910701,
+    "municipioNome": "Euclides da Cunha"
+  },
+  {
+    "iata": null,
+    "icao": "SNFE",
+    "nome": "COMANDANTE PASCHOAL PATROCÍNIO FILHO",
+    "uf": "MG",
+    "municipioIbge": 3101607,
+    "municipioNome": "Alfenas"
+  },
+  {
+    "iata": null,
+    "icao": "SNFO",
+    "nome": "FORMIGA",
+    "uf": "MG",
+    "municipioIbge": 3126109,
+    "municipioNome": "Formiga"
+  },
+  {
+    "iata": null,
+    "icao": "SNFU",
+    "nome": "FRUTAL",
+    "uf": "MG",
+    "municipioIbge": 3127107,
+    "municipioNome": "Frutal"
+  },
+  {
+    "iata": null,
+    "icao": "SNFX",
+    "nome": "SÃO FÉLIX DO XINGU",
+    "uf": "PA",
+    "municipioIbge": 1507300,
+    "municipioNome": "São Félix do Xingu"
+  },
+  {
+    "iata": null,
+    "icao": "SNGA",
+    "nome": "GUARAPARI",
+    "uf": "ES",
+    "municipioIbge": 3202405,
+    "municipioNome": "Guarapari"
+  },
+  {
+    "iata": null,
+    "icao": "SNGB",
+    "nome": "GILBUÉS",
+    "uf": "PI",
+    "municipioIbge": 2204402,
+    "municipioNome": "Gilbués"
+  },
+  {
+    "iata": null,
+    "icao": "SNGD",
+    "nome": "GUADALUPE",
+    "uf": "PI",
+    "municipioIbge": 2204501,
+    "municipioNome": "Guadalupe"
+  },
+  {
+    "iata": null,
+    "icao": "SNGG",
+    "nome": "BOM JESUS DO GURGUÉIA",
+    "uf": "PI",
+    "municipioIbge": 2201903,
+    "municipioNome": "Bom Jesus"
+  },
+  {
+    "iata": null,
+    "icao": "SNGI",
+    "nome": "GUANAMBI",
+    "uf": "BA",
+    "municipioIbge": 2911709,
+    "municipioNome": "Guanambi"
+  },
+  {
+    "iata": null,
+    "icao": "SNGN",
+    "nome": "GARANHUNS",
+    "uf": "PE",
+    "municipioIbge": 2606002,
+    "municipioNome": "Garanhuns"
+  },
+  {
+    "iata": null,
+    "icao": "SNGT",
+    "nome": "GENTIO DO OURO",
+    "uf": "BA",
+    "municipioIbge": 2911303,
+    "municipioNome": "Gentio do Ouro"
+  },
+  {
+    "iata": null,
+    "icao": "SNGX",
+    "nome": "GUAXUPÉ",
+    "uf": "MG",
+    "municipioIbge": 3128709,
+    "municipioNome": "Guaxupé"
+  },
+  {
+    "iata": null,
+    "icao": "SNHS",
+    "nome": "SANTA MAGALHÃES",
+    "uf": "PE",
+    "municipioIbge": 2613909,
+    "municipioNome": "Serra Talhada"
+  },
+  {
+    "iata": null,
+    "icao": "SNIB",
+    "nome": "ITABERABA",
+    "uf": "BA",
+    "municipioIbge": 2914703,
+    "municipioNome": "Itaberaba"
+  },
+  {
+    "iata": null,
+    "icao": "SNIC",
+    "nome": "IRECÊ",
+    "uf": "BA",
+    "municipioIbge": 2914604,
+    "municipioNome": "Irecê"
+  },
+  {
+    "iata": null,
+    "icao": "SNIE",
+    "nome": "CAETITÉ",
+    "uf": "BA",
+    "municipioIbge": 2905206,
+    "municipioNome": "Caetité"
+  },
+  {
+    "iata": null,
+    "icao": "SNIG",
+    "nome": "IGUATU",
+    "uf": "CE",
+    "municipioIbge": 2305506,
+    "municipioNome": "Iguatu"
+  },
+  {
+    "iata": null,
+    "icao": "SNIO",
+    "nome": "CIPÓ",
+    "uf": "BA",
+    "municipioIbge": 2907905,
+    "municipioNome": "Cipó"
+  },
+  {
+    "iata": null,
+    "icao": "SNIP",
+    "nome": "ITAPETINGA",
+    "uf": "BA",
+    "municipioIbge": 2916401,
+    "municipioNome": "Itapetinga"
+  },
+  {
+    "iata": null,
+    "icao": "SNIT",
+    "nome": "IBOTIRAMA",
+    "uf": "BA",
+    "municipioIbge": 2913200,
+    "municipioNome": "Ibotirama"
+  },
+  {
+    "iata": null,
+    "icao": "SNIU",
+    "nome": "IPIAÚ",
+    "uf": "BA",
+    "municipioIbge": 2913903,
+    "municipioNome": "Ipiaú"
+  },
+  {
+    "iata": null,
+    "icao": "SNJB",
+    "nome": "JACOBINA",
+    "uf": "BA",
+    "municipioIbge": 2917508,
+    "municipioNome": "Jacobina"
+  },
+  {
+    "iata": null,
+    "icao": "SNJK",
+    "nome": "JEQUIÉ",
+    "uf": "BA",
+    "municipioIbge": 2918001,
+    "municipioNome": "Jequié"
+  },
+  {
+    "iata": null,
+    "icao": "SNJM",
+    "nome": "ELIAS BREDER",
+    "uf": "MG",
+    "municipioIbge": 3139409,
+    "municipioNome": "Manhuaçu"
+  },
+  {
+    "iata": null,
+    "icao": "SNJN",
+    "nome": "JANUÁRIA",
+    "uf": "MG",
+    "municipioIbge": 3135209,
+    "municipioNome": "Januária"
+  },
+  {
+    "iata": null,
+    "icao": "SNJO",
+    "nome": "AEROCLUBE DE JOÃO PESSOA",
+    "uf": "PB",
+    "municipioIbge": 2507507,
+    "municipioNome": "João Pessoa"
+  },
+  {
+    "iata": null,
+    "icao": "SNJP",
+    "nome": "JOÃO PINHEIRO",
+    "uf": "MG",
+    "municipioIbge": 3136306,
+    "municipioNome": "João Pinheiro"
+  },
+  {
+    "iata": null,
+    "icao": "SNJQ",
+    "nome": "JEQUITINHONHA",
+    "uf": "MG",
+    "municipioIbge": 3135803,
+    "municipioNome": "Jequitinhonha"
+  },
+  {
+    "iata": null,
+    "icao": "SNJR",
+    "nome": "PREFEITO OCTÁVIO DE ALMEIDA NEVES",
+    "uf": "MG",
+    "municipioIbge": 3162500,
+    "municipioNome": "São João del Rei"
+  },
+  {
+    "iata": null,
+    "icao": "SNKC",
+    "nome": "COCOS",
+    "uf": "BA",
+    "municipioIbge": 2908101,
+    "municipioNome": "Cocos"
+  },
+  {
+    "iata": null,
+    "icao": "SNKD",
+    "nome": "CONCEIÇÃO DO MATO DENTRO",
+    "uf": "MG",
+    "municipioIbge": 3117504,
+    "municipioNome": "Conceição do Mato Dentro"
+  },
+  {
+    "iata": null,
+    "icao": "SNKF",
+    "nome": "DAS BANDEIRINHAS",
+    "uf": "MG",
+    "municipioIbge": 3118304,
+    "municipioNome": "Conselheiro Lafaiete"
+  },
+  {
+    "iata": null,
+    "icao": "SNKI",
+    "nome": "CACHOEIRO DE ITAPEMIRIM",
+    "uf": "ES",
+    "municipioIbge": 3201209,
+    "municipioNome": "Cachoeiro de Itapemirim"
+  },
+  {
+    "iata": null,
+    "icao": "SNKK",
+    "nome": "CAICÓ",
+    "uf": "RN",
+    "municipioIbge": 2402006,
+    "municipioNome": "Caicó"
+  },
+  {
+    "iata": null,
+    "icao": "SNKN",
+    "nome": "CURRAIS NOVOS",
+    "uf": "RN",
+    "municipioIbge": 2403103,
+    "municipioNome": "Currais Novos"
+  },
+  {
+    "iata": null,
+    "icao": "SNKR",
+    "nome": "CORRENTE",
+    "uf": "PI",
+    "municipioIbge": 2202901,
+    "municipioNome": "Corrente"
+  },
+  {
+    "iata": null,
+    "icao": "SNKS",
+    "nome": "SANTA RITA DE CÁSSIA",
+    "uf": "BA",
+    "municipioIbge": 2928406,
+    "municipioNome": "Santa Rita de Cássia"
+  },
+  {
+    "iata": null,
+    "icao": "SNKU",
+    "nome": "CANUDOS",
+    "uf": "BA",
+    "municipioIbge": 2906824,
+    "municipioNome": "Canudos"
+  },
+  {
+    "iata": null,
+    "icao": "SNLI",
+    "nome": "DOUTOR JOSÉ MOURÃO",
+    "uf": "MG",
+    "municipioIbge": 3100203,
+    "municipioNome": "Abaeté"
+  },
+  {
+    "iata": null,
+    "icao": "SNLN",
+    "nome": "MUNICIPAL DE LINHARES",
+    "uf": "ES",
+    "municipioIbge": 3203205,
+    "municipioNome": "Linhares"
+  },
+  {
+    "iata": null,
+    "icao": "SNLO",
+    "nome": "SÃO LOURENÇO",
+    "uf": "MG",
+    "municipioIbge": 3163706,
+    "municipioNome": "São Lourenço"
+  },
+  {
+    "iata": null,
+    "icao": "SNLT",
+    "nome": "PAULISTANA",
+    "uf": "PI",
+    "municipioIbge": 2207801,
+    "municipioNome": "Paulistana"
+  },
+  {
+    "iata": null,
+    "icao": "SNMA",
+    "nome": "MONTE ALEGRE",
+    "uf": "PA",
+    "municipioIbge": 1504802,
+    "municipioNome": "Monte Alegre"
+  },
+  {
+    "iata": null,
+    "icao": "SNMC",
+    "nome": "MACAÚBAS",
+    "uf": "BA",
+    "municipioIbge": 2919801,
+    "municipioNome": "Macaúbas"
+  },
+  {
+    "iata": null,
+    "icao": "SNMH",
+    "nome": "PIRENÓPOLIS",
+    "uf": "GO",
+    "municipioIbge": 5217302,
+    "municipioNome": "Pirenópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SNMJ",
+    "nome": "MARACÁS",
+    "uf": "BA",
+    "municipioIbge": 2920502,
+    "municipioNome": "Maracás"
+  },
+  {
+    "iata": null,
+    "icao": "SNMK",
+    "nome": "MOCAMBINHO",
+    "uf": "MG",
+    "municipioIbge": 3135050,
+    "municipioNome": "Jaíba"
+  },
+  {
+    "iata": null,
+    "icao": "SNMN",
+    "nome": "MINAS NOVAS",
+    "uf": "MG",
+    "municipioIbge": 3141801,
+    "municipioNome": "Minas Novas"
+  },
+  {
+    "iata": null,
+    "icao": "SNMR",
+    "nome": "MARAÚ",
+    "uf": "BA",
+    "municipioIbge": 2920700,
+    "municipioNome": "Maraú"
+  },
+  {
+    "iata": null,
+    "icao": "SNMX",
+    "nome": "SÃO MATEUS",
+    "uf": "ES",
+    "municipioIbge": 3204906,
+    "municipioNome": "São Mateus"
+  },
+  {
+    "iata": null,
+    "icao": "SNMZ",
+    "nome": "PORTO DE MOZ",
+    "uf": "PA",
+    "municipioIbge": 1505908,
+    "municipioNome": "Porto de Moz"
+  },
+  {
+    "iata": null,
+    "icao": "SNNE",
+    "nome": "SEBASTIÃO CARLOS LEITE",
+    "uf": "MG",
+    "municipioIbge": 3162906,
+    "municipioNome": "São João Nepomuceno"
+  },
+  {
+    "iata": null,
+    "icao": "SNNU",
+    "nome": "NANUQUE",
+    "uf": "MG",
+    "municipioIbge": 3144300,
+    "municipioNome": "Nanuque"
+  },
+  {
+    "iata": null,
+    "icao": "SNOB",
+    "nome": "AERÓDROMO PÚBLICO DE SOBRAL",
+    "uf": "CE",
+    "municipioIbge": 2312908,
+    "municipioNome": "Sobral"
+  },
+  {
+    "iata": null,
+    "icao": "SNOC",
+    "nome": "MORRO DO CHAPÉU",
+    "uf": "BA",
+    "municipioIbge": 2921708,
+    "municipioNome": "Morro do Chapéu"
+  },
+  {
+    "iata": null,
+    "icao": "SNOE",
+    "nome": "OEIRAS",
+    "uf": "PI",
+    "municipioIbge": 2207009,
+    "municipioNome": "Oeiras"
+  },
+  {
+    "iata": null,
+    "icao": "SNOF",
+    "nome": "OURO FINO",
+    "uf": "MG",
+    "municipioIbge": 3146008,
+    "municipioNome": "Ouro Fino"
+  },
+  {
+    "iata": null,
+    "icao": "SNOS",
+    "nome": "MUNICIPAL JOSÉ FIGUEIREDO",
+    "uf": "MG",
+    "municipioIbge": 3147907,
+    "municipioNome": "Passos"
+  },
+  {
+    "iata": null,
+    "icao": "SNOU",
+    "nome": "NOVO AERÓDROMO DE FEIJÓ",
+    "uf": "AC",
+    "municipioIbge": 1200302,
+    "municipioNome": "Feijó"
+  },
+  {
+    "iata": null,
+    "icao": "SNOX",
+    "nome": "ORIXIMINÁ",
+    "uf": "PA",
+    "municipioIbge": 1505304,
+    "municipioNome": "Oriximiná"
+  },
+  {
+    "iata": null,
+    "icao": "SNPA",
+    "nome": "PARÁ DE MINAS",
+    "uf": "MG",
+    "municipioIbge": 3147105,
+    "municipioNome": "Pará de Minas"
+  },
+  {
+    "iata": null,
+    "icao": "SNPC",
+    "nome": "PICOS",
+    "uf": "PI",
+    "municipioIbge": 2208007,
+    "municipioNome": "Picos"
+  },
+  {
+    "iata": null,
+    "icao": "SNPD",
+    "nome": "PATOS DE MINAS",
+    "uf": "MG",
+    "municipioIbge": 3148004,
+    "municipioNome": "Patos de Minas"
+  },
+  {
+    "iata": null,
+    "icao": "SNPI",
+    "nome": "PIATÃ",
+    "uf": "BA",
+    "municipioIbge": 2924306,
+    "municipioNome": "Piatã"
+  },
+  {
+    "iata": null,
+    "icao": "SNPJ",
+    "nome": "PATROCÍNIO",
+    "uf": "MG",
+    "municipioIbge": 3148103,
+    "municipioNome": "Patrocínio"
+  },
+  {
+    "iata": null,
+    "icao": "SNPO",
+    "nome": "TENENTE XAVIER",
+    "uf": "MG",
+    "municipioIbge": 3152006,
+    "municipioNome": "Pompéu"
+  },
+  {
+    "iata": null,
+    "icao": "SNPQ",
+    "nome": "PESQUEIRA",
+    "uf": "PE",
+    "municipioIbge": 2610905,
+    "municipioNome": "Pesqueira"
+  },
+  {
+    "iata": null,
+    "icao": "SNPU",
+    "nome": "PARAGUAÇU",
+    "uf": "MG",
+    "municipioIbge": 3147204,
+    "municipioNome": "Paraguaçu"
+  },
+  {
+    "iata": null,
+    "icao": "SNPX",
+    "nome": "PIRAPORA",
+    "uf": "MG",
+    "municipioIbge": 3151206,
+    "municipioNome": "Pirapora"
+  },
+  {
+    "iata": null,
+    "icao": "SNPY",
+    "nome": "SÃO SEBASTIÃO DO PARAÍSO",
+    "uf": "MG",
+    "municipioIbge": 3164704,
+    "municipioNome": "São Sebastião do Paraíso"
+  },
+  {
+    "iata": null,
+    "icao": "SNQD",
+    "nome": "SOUSA",
+    "uf": "PB",
+    "municipioIbge": 2516201,
+    "municipioNome": "Sousa"
+  },
+  {
+    "iata": null,
+    "icao": "SNQG",
+    "nome": "CANGAPARA",
+    "uf": "PI",
+    "municipioIbge": 2203909,
+    "municipioNome": "Floriano"
+  },
+  {
+    "iata": null,
+    "icao": "SNQU",
+    "nome": "MUCUGÊ",
+    "uf": "BA",
+    "municipioIbge": 2921906,
+    "municipioNome": "Mucugê"
+  },
+  {
+    "iata": null,
+    "icao": "SNQV",
+    "nome": "CURVELO",
+    "uf": "MG",
+    "municipioIbge": 3120904,
+    "municipioNome": "Curvelo"
+  },
+  {
+    "iata": null,
+    "icao": "SNQX",
+    "nome": "QUIXADÁ",
+    "uf": "CE",
+    "municipioIbge": 2311306,
+    "municipioNome": "Quixadá"
+  },
+  {
+    "iata": null,
+    "icao": "SNRD",
+    "nome": "PRADO",
+    "uf": "BA",
+    "municipioIbge": 2925501,
+    "municipioNome": "Prado"
+  },
+  {
+    "iata": null,
+    "icao": "SNRM",
+    "nome": "REMANSO",
+    "uf": "BA",
+    "municipioIbge": 2926004,
+    "municipioNome": "Remanso"
+  },
+  {
+    "iata": null,
+    "icao": "SNRP",
+    "nome": "RIO PARANAÍBA",
+    "uf": "MG",
+    "municipioIbge": 3155504,
+    "municipioNome": "Rio Paranaíba"
+  },
+  {
+    "iata": null,
+    "icao": "SNRU",
+    "nome": "CARUARU",
+    "uf": "PE",
+    "municipioIbge": 2604106,
+    "municipioNome": "Caruaru"
+  },
+  {
+    "iata": null,
+    "icao": "SNRX",
+    "nome": "RIACHÃO",
+    "uf": "MA",
+    "municipioIbge": 2109502,
+    "municipioNome": "Riachão"
+  },
+  {
+    "iata": null,
+    "icao": "SNRZ",
+    "nome": "OLIVEIRA",
+    "uf": "MG",
+    "municipioIbge": 3145604,
+    "municipioNome": "Oliveira"
+  },
+  {
+    "iata": null,
+    "icao": "SNSE",
+    "nome": "SENTO SÉ",
+    "uf": "BA",
+    "municipioIbge": 2930204,
+    "municipioNome": "Sento Sé"
+  },
+  {
+    "iata": null,
+    "icao": "SNSG",
+    "nome": "SALGUEIRO",
+    "uf": "PE",
+    "municipioIbge": 2612208,
+    "municipioNome": "Salgueiro"
+  },
+  {
+    "iata": null,
+    "icao": "SNSI",
+    "nome": "SANTA MARIA DO SUAÇUÍ",
+    "uf": "MG",
+    "municipioIbge": 3158201,
+    "municipioNome": "Santa Maria do Suaçuí"
+  },
+  {
+    "iata": null,
+    "icao": "SNSM",
+    "nome": "SALINÓPOLIS",
+    "uf": "PA",
+    "municipioIbge": 1506203,
+    "municipioNome": "Salinópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SNSS",
+    "nome": "SALINAS",
+    "uf": "MG",
+    "municipioIbge": 3157005,
+    "municipioNome": "Salinas"
+  },
+  {
+    "iata": null,
+    "icao": "SNST",
+    "nome": "SOUTO SOARES",
+    "uf": "BA",
+    "municipioIbge": 2930808,
+    "municipioNome": "Souto Soares"
+  },
+  {
+    "iata": null,
+    "icao": "SNSW",
+    "nome": "SOURE",
+    "uf": "PA",
+    "municipioIbge": 1507904,
+    "municipioNome": "Soure"
+  },
+  {
+    "iata": null,
+    "icao": "SNTF",
+    "nome": "TEIXEIRA DE FREITAS",
+    "uf": "BA",
+    "municipioIbge": 2931350,
+    "municipioNome": "Teixeira de Freitas"
+  },
+  {
+    "iata": null,
+    "icao": "SNTI",
+    "nome": "ÓBIDOS",
+    "uf": "PA",
+    "municipioIbge": 1505106,
+    "municipioNome": "Óbidos"
+  },
+  {
+    "iata": null,
+    "icao": "SNTM",
+    "nome": "TURMALINA",
+    "uf": "MG",
+    "municipioIbge": 3169703,
+    "municipioNome": "Turmalina"
+  },
+  {
+    "iata": null,
+    "icao": "SNTO",
+    "nome": "JUSCELINO KUBITSCHECK",
+    "uf": "MG",
+    "municipioIbge": 3168606,
+    "municipioNome": "Teófilo Otoni"
+  },
+  {
+    "iata": null,
+    "icao": "SNTQ",
+    "nome": "BURITIRAMA",
+    "uf": "BA",
+    "municipioIbge": 2904753,
+    "municipioNome": "Buritirama"
+  },
+  {
+    "iata": null,
+    "icao": "SNTR",
+    "nome": "PIRITIBA",
+    "uf": "BA",
+    "municipioIbge": 2924801,
+    "municipioNome": "Piritiba"
+  },
+  {
+    "iata": null,
+    "icao": "SNTS",
+    "nome": "PATOS",
+    "uf": "PB",
+    "municipioIbge": 2510808,
+    "municipioNome": "Patos"
+  },
+  {
+    "iata": null,
+    "icao": "SNTY",
+    "nome": "CORRENTINA",
+    "uf": "BA",
+    "municipioIbge": 2909307,
+    "municipioNome": "Correntina"
+  },
+  {
+    "iata": null,
+    "icao": "SNUB",
+    "nome": "UBÁ",
+    "uf": "MG",
+    "municipioIbge": 3169901,
+    "municipioNome": "Ubá"
+  },
+  {
+    "iata": null,
+    "icao": "SNUC",
+    "nome": "AÇU",
+    "uf": "RN",
+    "municipioIbge": null,
+    "municipioNome": "AÇU"
+  },
+  {
+    "iata": null,
+    "icao": "SNUH",
+    "nome": "PIUMHI",
+    "uf": "MG",
+    "municipioIbge": 3151503,
+    "municipioNome": "Piumhi"
+  },
+  {
+    "iata": null,
+    "icao": "SNUI",
+    "nome": "ARAÇUAÍ",
+    "uf": "MG",
+    "municipioIbge": 3103405,
+    "municipioNome": "Araçuaí"
+  },
+  {
+    "iata": null,
+    "icao": "SNUN",
+    "nome": "UNAÍ",
+    "uf": "MG",
+    "municipioIbge": 3170404,
+    "municipioNome": "Unaí"
+  },
+  {
+    "iata": null,
+    "icao": "SNUT",
+    "nome": "UTINGA",
+    "uf": "BA",
+    "municipioIbge": 2932804,
+    "municipioNome": "Utinga"
+  },
+  {
+    "iata": null,
+    "icao": "SNVB",
+    "nome": "VALENÇA",
+    "uf": "BA",
+    "municipioIbge": 2932903,
+    "municipioNome": "Valença"
+  },
+  {
+    "iata": null,
+    "icao": "SNVC",
+    "nome": "VIÇOSA",
+    "uf": "MG",
+    "municipioIbge": 3171303,
+    "municipioNome": "Viçosa"
+  },
+  {
+    "iata": null,
+    "icao": "SNVD",
+    "nome": "SANTA MARIA DA VITÓRIA",
+    "uf": "BA",
+    "municipioIbge": 2928109,
+    "municipioNome": "Santa Maria da Vitória"
+  },
+  {
+    "iata": null,
+    "icao": "SNVI",
+    "nome": "MELLO VIANA",
+    "uf": "MG",
+    "municipioIbge": 3169307,
+    "municipioNome": "Três Corações"
+  },
+  {
+    "iata": null,
+    "icao": "SNVS",
+    "nome": "BREVES",
+    "uf": "PA",
+    "municipioIbge": 1501808,
+    "municipioNome": "Breves"
+  },
+  {
+    "iata": null,
+    "icao": "SNWC",
+    "nome": "CAMOCIM",
+    "uf": "CE",
+    "municipioIbge": 2302602,
+    "municipioNome": "Camocim"
+  },
+  {
+    "iata": null,
+    "icao": "SNWS",
+    "nome": "CRATEÚS",
+    "uf": "CE",
+    "municipioIbge": 2304103,
+    "municipioNome": "Crateús"
+  },
+  {
+    "iata": null,
+    "icao": "SNXB",
+    "nome": "CAXAMBU",
+    "uf": "MG",
+    "municipioIbge": 3115508,
+    "municipioNome": "Caxambu"
+  },
+  {
+    "iata": null,
+    "icao": "SNXQ",
+    "nome": "XIQUE-XIQUE",
+    "uf": "BA",
+    "municipioIbge": 2933604,
+    "municipioNome": "Xique-Xique"
+  },
+  {
+    "iata": null,
+    "icao": "SNYA",
+    "nome": "ALMEIRIM",
+    "uf": "PA",
+    "municipioIbge": 1500503,
+    "municipioNome": "Almeirim"
+  },
+  {
+    "iata": null,
+    "icao": "SNYB",
+    "nome": "TITO TEIXEIRA",
+    "uf": "MG",
+    "municipioIbge": 3134202,
+    "municipioNome": "Ituiutaba"
+  },
+  {
+    "iata": null,
+    "icao": "SNYE",
+    "nome": "PINHEIRO",
+    "uf": "MA",
+    "municipioIbge": 2108603,
+    "municipioNome": "Pinheiro"
+  },
+  {
+    "iata": null,
+    "icao": "SNYT",
+    "nome": "ITUAÇU",
+    "uf": "BA",
+    "municipioIbge": 2917201,
+    "municipioNome": "Ituaçu"
+  },
+  {
+    "iata": null,
+    "icao": "SNYU",
+    "nome": "ITURAMA",
+    "uf": "MG",
+    "municipioIbge": 3134400,
+    "municipioNome": "Iturama"
+  },
+  {
+    "iata": null,
+    "icao": "SNZA",
+    "nome": "POUSO ALEGRE",
+    "uf": "MG",
+    "municipioIbge": 3152501,
+    "municipioNome": "Pouso Alegre"
+  },
+  {
+    "iata": null,
+    "icao": "SNZR",
+    "nome": "PEDRO RABELO DE SOUZA",
+    "uf": "MG",
+    "municipioIbge": 3147006,
+    "municipioNome": "Paracatu"
+  },
+  {
+    "iata": null,
+    "icao": "SNZW",
+    "nome": "ITUBERÁ",
+    "uf": "BA",
+    "municipioIbge": 2917300,
+    "municipioNome": "Ituberá"
+  },
+  {
+    "iata": null,
+    "icao": "SSAB",
+    "nome": "MOISÉS LUPION",
+    "uf": "PR",
+    "municipioIbge": 4109708,
+    "municipioNome": "Ibaiti"
+  },
+  {
+    "iata": null,
+    "icao": "SSAE",
+    "nome": "ARROIO GRANDE",
+    "uf": "RS",
+    "municipioIbge": 4301305,
+    "municipioNome": "Arroio Grande"
+  },
+  {
+    "iata": null,
+    "icao": "SSAK",
+    "nome": "CARLOS RUHL",
+    "uf": "RS",
+    "municipioIbge": 4306106,
+    "municipioNome": "Cruz Alta"
+  },
+  {
+    "iata": null,
+    "icao": "SSAN",
+    "nome": "JOÃO GALDINO",
+    "uf": "PR",
+    "municipioIbge": 4101101,
+    "municipioNome": "Andirá"
+  },
+  {
+    "iata": null,
+    "icao": "SSAP",
+    "nome": "CAPITÃO JOÃO BUSSE",
+    "uf": "PR",
+    "municipioIbge": 4101408,
+    "municipioNome": "Apucarana"
+  },
+  {
+    "iata": null,
+    "icao": "SSAQ",
+    "nome": "AEROCLUBE DE PASSO FUNDO",
+    "uf": "RS",
+    "municipioIbge": 4314100,
+    "municipioNome": "Passo Fundo"
+  },
+  {
+    "iata": null,
+    "icao": "SSBL",
+    "nome": "BLUMENAU",
+    "uf": "SC",
+    "municipioIbge": 4202404,
+    "municipioNome": "Blumenau"
+  },
+  {
+    "iata": null,
+    "icao": "SSBN",
+    "nome": "BELÉM NOVO",
+    "uf": "RS",
+    "municipioIbge": 4314902,
+    "municipioNome": "Porto Alegre"
+  },
+  {
+    "iata": null,
+    "icao": "SSBR",
+    "nome": "YARA",
+    "uf": "PR",
+    "municipioIbge": 4102406,
+    "municipioNome": "Bandeirantes"
+  },
+  {
+    "iata": null,
+    "icao": "SSBV",
+    "nome": "BELA VISTA",
+    "uf": "MS",
+    "municipioIbge": 5002100,
+    "municipioNome": "Bela Vista"
+  },
+  {
+    "iata": null,
+    "icao": "SSCB",
+    "nome": "MUNICIPAL DE CASA BRANCA",
+    "uf": "SP",
+    "municipioIbge": 3510807,
+    "municipioNome": "Casa Branca"
+  },
+  {
+    "iata": null,
+    "icao": "SSCD",
+    "nome": "CHAPADÃO DO SUL",
+    "uf": "MS",
+    "municipioIbge": 5002951,
+    "municipioNome": "Chapadão do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSCI",
+    "nome": "COXIM",
+    "uf": "MS",
+    "municipioIbge": 5003306,
+    "municipioNome": "Coxim"
+  },
+  {
+    "iata": null,
+    "icao": "SSCK",
+    "nome": "OLAVO CECCO RIGON",
+    "uf": "SC",
+    "municipioIbge": 4204301,
+    "municipioNome": "Concórdia"
+  },
+  {
+    "iata": null,
+    "icao": "SSCL",
+    "nome": "CASSILÂNDIA",
+    "uf": "MS",
+    "municipioIbge": 5002902,
+    "municipioNome": "Cassilândia"
+  },
+  {
+    "iata": null,
+    "icao": "SSCN",
+    "nome": "CANELA",
+    "uf": "RS",
+    "municipioIbge": 4304408,
+    "municipioNome": "Canela"
+  },
+  {
+    "iata": null,
+    "icao": "SSCP",
+    "nome": "FRANCISCO LACERDA JÚNIOR",
+    "uf": "PR",
+    "municipioIbge": 4106407,
+    "municipioNome": "Cornélio Procópio"
+  },
+  {
+    "iata": null,
+    "icao": "SSCR",
+    "nome": "RUBEN BERTA",
+    "uf": "PR",
+    "municipioIbge": 4114609,
+    "municipioNome": "Marechal Cândido Rondon"
+  },
+  {
+    "iata": null,
+    "icao": "SSCT",
+    "nome": "ENGENHEIRO GASTÃO DE MESQUITA FILHO",
+    "uf": "PR",
+    "municipioIbge": 4105508,
+    "municipioNome": "Cianorte"
+  },
+  {
+    "iata": null,
+    "icao": "SSCV",
+    "nome": "CARAVELAS",
+    "uf": "BA",
+    "municipioIbge": 2906907,
+    "municipioNome": "Caravelas"
+  },
+  {
+    "iata": null,
+    "icao": "SSEE",
+    "nome": "REGIONAL DO VALE DO TAQUARI",
+    "uf": "RS",
+    "municipioIbge": 4307807,
+    "municipioNome": "Estrela"
+  },
+  {
+    "iata": null,
+    "icao": "SSEP",
+    "nome": "SÃO SEPÉ",
+    "uf": "RS",
+    "municipioIbge": 4319604,
+    "municipioNome": "São Sepé"
+  },
+  {
+    "iata": null,
+    "icao": "SSER",
+    "nome": "ERECHIM",
+    "uf": "RS",
+    "municipioIbge": 4307005,
+    "municipioNome": "Erechim"
+  },
+  {
+    "iata": null,
+    "icao": "SSEZ",
+    "nome": "ESPUMOSO",
+    "uf": "RS",
+    "municipioIbge": 4307500,
+    "municipioNome": "Espumoso"
+  },
+  {
+    "iata": null,
+    "icao": "SSFB",
+    "nome": "PAULO ABDALA",
+    "uf": "PR",
+    "municipioIbge": 4108403,
+    "municipioNome": "Francisco Beltrão"
+  },
+  {
+    "iata": null,
+    "icao": "SSFL",
+    "nome": "JOÃO PEREIRA DOS SANTOS FILHO",
+    "uf": "PI",
+    "municipioIbge": 2204303,
+    "municipioNome": "Fronteiras"
+  },
+  {
+    "iata": null,
+    "icao": "SSGA",
+    "nome": "GARIBALDI",
+    "uf": "RS",
+    "municipioIbge": 4308607,
+    "municipioNome": "Garibaldi"
+  },
+  {
+    "iata": null,
+    "icao": "SSGB",
+    "nome": "MUNICIPAL DE GUARATUBA",
+    "uf": "PR",
+    "municipioIbge": 4109609,
+    "municipioNome": "Guaratuba"
+  },
+  {
+    "iata": null,
+    "icao": "SSGG",
+    "nome": "TANCREDO THOMAS DE FARIA",
+    "uf": "PR",
+    "municipioIbge": 4109401,
+    "municipioNome": "Guarapuava"
+  },
+  {
+    "iata": null,
+    "icao": "SSGW",
+    "nome": "MANOEL RIBAS",
+    "uf": "PR",
+    "municipioIbge": 4108601,
+    "municipioNome": "Goioerê"
+  },
+  {
+    "iata": null,
+    "icao": "SSGY",
+    "nome": "GUAÍRA",
+    "uf": "PR",
+    "municipioIbge": 4108809,
+    "municipioNome": "Guaíra"
+  },
+  {
+    "iata": null,
+    "icao": "SSHZ",
+    "nome": "WALTER BÜNDCHEN",
+    "uf": "RS",
+    "municipioIbge": 4309605,
+    "municipioNome": "Horizontina"
+  },
+  {
+    "iata": null,
+    "icao": "SSIE",
+    "nome": "TERUEL IPANEMA ESTÂNCIA",
+    "uf": "MS",
+    "municipioIbge": 5002704,
+    "municipioNome": "Campo Grande"
+  },
+  {
+    "iata": null,
+    "icao": "SSIJ",
+    "nome": "IJUÍ",
+    "uf": "RS",
+    "municipioIbge": 4310207,
+    "municipioNome": "Ijuí"
+  },
+  {
+    "iata": null,
+    "icao": "SSIM",
+    "nome": "FORQUILHINHA/CRICIÚMA (SBCM*)",
+    "uf": "SC",
+    "municipioIbge": 4205456,
+    "municipioNome": "Forquilhinha"
+  },
+  {
+    "iata": null,
+    "icao": "SSIQ",
+    "nome": "ITAQUI",
+    "uf": "RS",
+    "municipioIbge": 4310603,
+    "municipioNome": "Itaqui"
+  },
+  {
+    "iata": null,
+    "icao": "SSIR",
+    "nome": "IBIRUBÁ",
+    "uf": "RS",
+    "municipioIbge": 4310009,
+    "municipioNome": "Ibirubá"
+  },
+  {
+    "iata": null,
+    "icao": "SSJA",
+    "nome": "SANTA TEREZINHA",
+    "uf": "SC",
+    "municipioIbge": 4209003,
+    "municipioNome": "Joaçaba"
+  },
+  {
+    "iata": null,
+    "icao": "SSJI",
+    "nome": "JARDIM",
+    "uf": "MS",
+    "municipioIbge": 5005004,
+    "municipioNome": "Jardim"
+  },
+  {
+    "iata": null,
+    "icao": "SSJK",
+    "nome": "JÚLIO DE CASTILHOS",
+    "uf": "RS",
+    "municipioIbge": 4311205,
+    "municipioNome": "Júlio de Castilhos"
+  },
+  {
+    "iata": null,
+    "icao": "SSKG",
+    "nome": "ESTÂNCIA SANTA MARIA",
+    "uf": "MS",
+    "municipioIbge": 5002704,
+    "municipioNome": "Campo Grande"
+  },
+  {
+    "iata": null,
+    "icao": "SSKK",
+    "nome": "CAPÃO DA CANOA",
+    "uf": "RS",
+    "municipioIbge": 4304630,
+    "municipioNome": "Capão da Canoa"
+  },
+  {
+    "iata": null,
+    "icao": "SSKM",
+    "nome": "CAMPO MOURÃO",
+    "uf": "PR",
+    "municipioIbge": 4104303,
+    "municipioNome": "Campo Mourão"
+  },
+  {
+    "iata": null,
+    "icao": "SSKS",
+    "nome": "CACHOEIRA DO SUL",
+    "uf": "RS",
+    "municipioIbge": 4303004,
+    "municipioNome": "Cachoeira do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSKU",
+    "nome": "LAURO ANTÔNIO DA COSTA",
+    "uf": "SC",
+    "municipioIbge": 4204806,
+    "municipioNome": "Curitibanos"
+  },
+  {
+    "iata": null,
+    "icao": "SSKW",
+    "nome": "CACOAL",
+    "uf": "RO",
+    "municipioIbge": 1100049,
+    "municipioNome": "Cacoal"
+  },
+  {
+    "iata": null,
+    "icao": "SSKZ",
+    "nome": "CARAZINHO",
+    "uf": "RS",
+    "municipioIbge": 4304705,
+    "municipioNome": "Carazinho"
+  },
+  {
+    "iata": null,
+    "icao": "SSLG",
+    "nome": "SÃO LUIZ GONZAGA",
+    "uf": "RS",
+    "municipioIbge": 4318903,
+    "municipioNome": "São Luiz Gonzaga"
+  },
+  {
+    "iata": null,
+    "icao": "SSLN",
+    "nome": "LONTRAS",
+    "uf": "SC",
+    "municipioIbge": 4209904,
+    "municipioNome": "Lontras"
+  },
+  {
+    "iata": null,
+    "icao": "SSLO",
+    "nome": "ATTILLIO ACCORSI",
+    "uf": "PR",
+    "municipioIbge": 4113502,
+    "municipioNome": "Loanda"
+  },
+  {
+    "iata": null,
+    "icao": "SSLS",
+    "nome": "RUY BARBOSA",
+    "uf": "BA",
+    "municipioIbge": 2927200,
+    "municipioNome": "Ruy Barbosa"
+  },
+  {
+    "iata": null,
+    "icao": "SSLT",
+    "nome": "GAUDÊNCIO MACHADO RAMOS",
+    "uf": "RS",
+    "municipioIbge": 4300406,
+    "municipioNome": "Alegrete"
+  },
+  {
+    "iata": null,
+    "icao": "SSMJ",
+    "nome": "MARACAJU",
+    "uf": "MS",
+    "municipioIbge": 5005400,
+    "municipioNome": "Maracaju"
+  },
+  {
+    "iata": null,
+    "icao": "SSMR",
+    "nome": "MANOEL RIBAS",
+    "uf": "PR",
+    "municipioIbge": 4114500,
+    "municipioNome": "Manoel Ribas"
+  },
+  {
+    "iata": null,
+    "icao": "SSMT",
+    "nome": "MOSTARDAS",
+    "uf": "RS",
+    "municipioIbge": 4312500,
+    "municipioNome": "Mostardas"
+  },
+  {
+    "iata": null,
+    "icao": "SSNB",
+    "nome": "ARIOSTO DA RIVA",
+    "uf": "MS",
+    "municipioIbge": 5005707,
+    "municipioNome": "Naviraí"
+  },
+  {
+    "iata": null,
+    "icao": "SSNG",
+    "nome": "MONTENEGRO",
+    "uf": "RS",
+    "municipioIbge": 4312401,
+    "municipioNome": "Montenegro"
+  },
+  {
+    "iata": null,
+    "icao": "SSNH",
+    "nome": "NOVO HAMBURGO",
+    "uf": "RS",
+    "municipioIbge": 4313409,
+    "municipioNome": "Novo Hamburgo"
+  },
+  {
+    "iata": null,
+    "icao": "SSNP",
+    "nome": "NOVA PRATA",
+    "uf": "RS",
+    "municipioIbge": 4313300,
+    "municipioNome": "Nova Prata"
+  },
+  {
+    "iata": null,
+    "icao": "SSNQ",
+    "nome": "NIOAQUE",
+    "uf": "MS",
+    "municipioIbge": 5005806,
+    "municipioNome": "Nioaque"
+  },
+  {
+    "iata": null,
+    "icao": "SSOE",
+    "nome": "HÉLIO WASUM",
+    "uf": "SC",
+    "municipioIbge": 4217204,
+    "municipioNome": "São Miguel do Oeste"
+  },
+  {
+    "iata": null,
+    "icao": "SSOG",
+    "nome": "ARAPONGAS",
+    "uf": "PR",
+    "municipioIbge": 4101507,
+    "municipioNome": "Arapongas"
+  },
+  {
+    "iata": null,
+    "icao": "SSOI",
+    "nome": "PEDERNEIRAS",
+    "uf": "SP",
+    "municipioIbge": 3536703,
+    "municipioNome": "Pederneiras"
+  },
+  {
+    "iata": null,
+    "icao": "SSOL",
+    "nome": "LAVRAS",
+    "uf": "MG",
+    "municipioIbge": 3138203,
+    "municipioNome": "Lavras"
+  },
+  {
+    "iata": null,
+    "icao": "SSOS",
+    "nome": "OSÓRIO",
+    "uf": "RS",
+    "municipioIbge": 4313508,
+    "municipioNome": "Osório"
+  },
+  {
+    "iata": null,
+    "icao": "SSPG",
+    "nome": "SANTOS DUMONT",
+    "uf": "PR",
+    "municipioIbge": 4118204,
+    "municipioNome": "Paranaguá"
+  },
+  {
+    "iata": null,
+    "icao": "SSPI",
+    "nome": "EDU CHAVES",
+    "uf": "PR",
+    "municipioIbge": 4118402,
+    "municipioNome": "Paranavaí"
+  },
+  {
+    "iata": null,
+    "icao": "SSPL",
+    "nome": "PALMEIRA DAS MISSÕES",
+    "uf": "RS",
+    "municipioIbge": 4313706,
+    "municipioNome": "Palmeira das Missões"
+  },
+  {
+    "iata": null,
+    "icao": "SSPM",
+    "nome": "PORTO MURTINHO",
+    "uf": "MS",
+    "municipioIbge": 5006903,
+    "municipioNome": "Porto Murtinho"
+  },
+  {
+    "iata": null,
+    "icao": "SSPN",
+    "nome": "PARANAÍBA",
+    "uf": "MS",
+    "municipioIbge": 5006309,
+    "municipioNome": "Paranaíba"
+  },
+  {
+    "iata": null,
+    "icao": "SSPS",
+    "nome": "DIMORVAN CARRARO",
+    "uf": "PR",
+    "municipioIbge": 4117602,
+    "municipioNome": "Palmas"
+  },
+  {
+    "iata": null,
+    "icao": "SSPT",
+    "nome": "BRASÍLIO MARQUES",
+    "uf": "PR",
+    "municipioIbge": 4117909,
+    "municipioNome": "Palotina"
+  },
+  {
+    "iata": null,
+    "icao": "SSQC",
+    "nome": "AGUINALDO PEREIRA LIMA",
+    "uf": "PR",
+    "municipioIbge": 4126603,
+    "municipioNome": "Siqueira Campos"
+  },
+  {
+    "iata": null,
+    "icao": "SSQP",
+    "nome": "MONTE SANTO",
+    "uf": "BA",
+    "municipioIbge": 2921500,
+    "municipioNome": "Monte Santo"
+  },
+  {
+    "iata": null,
+    "icao": "SSQT",
+    "nome": "MAJOR NEODO S. PEREIRA",
+    "uf": "PR",
+    "municipioIbge": 4104907,
+    "municipioNome": "Castro"
+  },
+  {
+    "iata": null,
+    "icao": "SSQZ",
+    "nome": "LUÍS EDUARDO MAGALHÃES",
+    "uf": "BA",
+    "municipioIbge": 2919553,
+    "municipioNome": "Luís Eduardo Magalhães"
+  },
+  {
+    "iata": null,
+    "icao": "SSRE",
+    "nome": "REALEZA",
+    "uf": "PR",
+    "municipioIbge": 4121406,
+    "municipioNome": "Realeza"
+  },
+  {
+    "iata": null,
+    "icao": "SSRF",
+    "nome": "CASTRO ALVES",
+    "uf": "BA",
+    "municipioIbge": 2907301,
+    "municipioNome": "Castro Alves"
+  },
+  {
+    "iata": null,
+    "icao": "SSRG",
+    "nome": "AEROPORTO ESTADUAL DE REGISTRO",
+    "uf": "SP",
+    "municipioIbge": 3542602,
+    "municipioNome": "Registro"
+  },
+  {
+    "iata": null,
+    "icao": "SSRK",
+    "nome": "CAMPO ALEGRE DE LOURDES",
+    "uf": "BA",
+    "municipioIbge": 2905909,
+    "municipioNome": "Campo Alegre de Lourdes"
+  },
+  {
+    "iata": null,
+    "icao": "SSRS",
+    "nome": "BARREIRINHAS",
+    "uf": "MA",
+    "municipioIbge": 2101707,
+    "municipioNome": "Barreirinhas"
+  },
+  {
+    "iata": null,
+    "icao": "SSRU",
+    "nome": "SÃO LOURENÇO DO SUL",
+    "uf": "RS",
+    "municipioIbge": 4318804,
+    "municipioNome": "São Lourenço do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSRZ",
+    "nome": "DÁRIO BRASIL CAPOANO DE OLIVEIRA",
+    "uf": "RS",
+    "municipioIbge": 4316402,
+    "municipioNome": "Rosário do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSSB",
+    "nome": "SÃO BORJA",
+    "uf": "RS",
+    "municipioIbge": 4318002,
+    "municipioNome": "São Borja"
+  },
+  {
+    "iata": null,
+    "icao": "SSSC",
+    "nome": "SANTA CRUZ DO SUL",
+    "uf": "RS",
+    "municipioIbge": 4316808,
+    "municipioNome": "Santa Cruz do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSSD",
+    "nome": "SOLEDADE",
+    "uf": "RS",
+    "municipioIbge": 4320800,
+    "municipioNome": "Soledade"
+  },
+  {
+    "iata": null,
+    "icao": "SSSG",
+    "nome": "SÃO GABRIEL",
+    "uf": "RS",
+    "municipioIbge": 4318309,
+    "municipioNome": "São Gabriel"
+  },
+  {
+    "iata": null,
+    "icao": "SSSS",
+    "nome": "SÃO FRANCISCO DO SUL",
+    "uf": "SC",
+    "municipioIbge": 4216206,
+    "municipioNome": "São Francisco do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSST",
+    "nome": "SANTIAGO",
+    "uf": "RS",
+    "municipioIbge": 4317400,
+    "municipioNome": "Santiago"
+  },
+  {
+    "iata": null,
+    "icao": "SSSZ",
+    "nome": "SERTANÓPOLIS",
+    "uf": "PR",
+    "municipioIbge": 4126504,
+    "municipioNome": "Sertanópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SSTB",
+    "nome": "TRÊS BARRAS",
+    "uf": "SC",
+    "municipioIbge": 4218301,
+    "municipioNome": "Três Barras"
+  },
+  {
+    "iata": null,
+    "icao": "SSTE",
+    "nome": "TORRES",
+    "uf": "RS",
+    "municipioIbge": 4321501,
+    "municipioNome": "Torres"
+  },
+  {
+    "iata": null,
+    "icao": "SSUM",
+    "nome": "ORLANDO DE CARVALHO",
+    "uf": "PR",
+    "municipioIbge": 4128104,
+    "municipioNome": "Umuarama"
+  },
+  {
+    "iata": null,
+    "icao": "SSUV",
+    "nome": "JOSÉ CLETO",
+    "uf": "PR",
+    "municipioIbge": 4128203,
+    "municipioNome": "União da Vitória"
+  },
+  {
+    "iata": null,
+    "icao": "SSVI",
+    "nome": "ÂNGELO PONZONI",
+    "uf": "SC",
+    "municipioIbge": 4219309,
+    "municipioNome": "Videira"
+  },
+  {
+    "iata": null,
+    "icao": "SSVL",
+    "nome": "TELÊMACO BORBA (SBTL*)",
+    "uf": "PR",
+    "municipioIbge": 4127106,
+    "municipioNome": "Telêmaco Borba"
+  },
+  {
+    "iata": null,
+    "icao": "SSVN",
+    "nome": "VERANÓPOLIS",
+    "uf": "RS",
+    "municipioIbge": 4322806,
+    "municipioNome": "Veranópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SSWS",
+    "nome": "CAÇAPAVA DO SUL",
+    "uf": "RS",
+    "municipioIbge": 4302808,
+    "municipioNome": "Caçapava do Sul"
+  },
+  {
+    "iata": null,
+    "icao": "SSXD",
+    "nome": "TOBIAS BACCI",
+    "uf": "RS",
+    "municipioIbge": 4320107,
+    "municipioNome": "Sarandi"
+  },
+  {
+    "iata": null,
+    "icao": "SSXX",
+    "nome": "MUNICIPAL JOÃO WINCKLER",
+    "uf": "SC",
+    "municipioIbge": 4219507,
+    "municipioNome": "Xanxerê"
+  },
+  {
+    "iata": null,
+    "icao": "SSZR",
+    "nome": "LUIS ALBERTO LEHR",
+    "uf": "RS",
+    "municipioIbge": 4317202,
+    "municipioNome": "Santa Rosa"
+  },
+  {
+    "iata": "BAZ",
+    "icao": "SWBC",
+    "nome": "BARCELOS",
+    "uf": "AM",
+    "municipioIbge": 1300409,
+    "municipioNome": "Barcelos"
+  },
+  {
+    "iata": null,
+    "icao": "SWBE",
+    "nome": "WALFRIDO SAMITO DE ALMEIDA",
+    "uf": "CE",
+    "municipioIbge": 2312304,
+    "municipioNome": "São Benedito"
+  },
+  {
+    "iata": null,
+    "icao": "SWBG",
+    "nome": "ANDRÉ ANTÔNIO MAGGI",
+    "uf": "MT",
+    "municipioIbge": 5106752,
+    "municipioNome": "Pontes e Lacerda"
+  },
+  {
+    "iata": null,
+    "icao": "SWBR",
+    "nome": "BORBA",
+    "uf": "AM",
+    "municipioIbge": 1300805,
+    "municipioNome": "Borba"
+  },
+  {
+    "iata": "CAF",
+    "icao": "SWCA",
+    "nome": "CARAUARI",
+    "uf": "AM",
+    "municipioIbge": 1301001,
+    "municipioNome": "Carauari"
+  },
+  {
+    "iata": null,
+    "icao": "SWCB",
+    "nome": "CAMPOS BELOS",
+    "uf": "GO",
+    "municipioIbge": 5204904,
+    "municipioNome": "Campos Belos"
+  },
+  {
+    "iata": "CCX",
+    "icao": "SWCQ",
+    "nome": "COSTA MARQUES",
+    "uf": "RO",
+    "municipioIbge": 1100080,
+    "municipioNome": "Costa Marques"
+  },
+  {
+    "iata": null,
+    "icao": "SWCZ",
+    "nome": "CERES",
+    "uf": "GO",
+    "municipioIbge": 5205406,
+    "municipioNome": "Ceres"
+  },
+  {
+    "iata": null,
+    "icao": "SWDM",
+    "nome": "DIAMANTINO",
+    "uf": "MT",
+    "municipioIbge": 5103502,
+    "municipioNome": "Diamantino"
+  },
+  {
+    "iata": null,
+    "icao": "SWDN",
+    "nome": "DIANÓPOLIS",
+    "uf": "TO",
+    "municipioIbge": 1707009,
+    "municipioNome": "Dianópolis"
+  },
+  {
+    "iata": null,
+    "icao": "SWEI",
+    "nome": "EIRUNEPÉ",
+    "uf": "AM",
+    "municipioIbge": 1301407,
+    "municipioNome": "Eirunepé"
+  },
+  {
+    "iata": null,
+    "icao": "SWEK",
+    "nome": "CANARANA",
+    "uf": "MT",
+    "municipioIbge": 5102702,
+    "municipioNome": "Canarana"
+  },
+  {
+    "iata": null,
+    "icao": "SWFN",
+    "nome": "FLORES",
+    "uf": "AM",
+    "municipioIbge": 1302603,
+    "municipioNome": "Manaus"
+  },
+  {
+    "iata": null,
+    "icao": "SWFR",
+    "nome": "FORMOSA",
+    "uf": "GO",
+    "municipioIbge": 5208004,
+    "municipioNome": "Formosa"
+  },
+  {
+    "iata": null,
+    "icao": "SWFX",
+    "nome": "SÃO FÉLIX DO ARAGUAIA",
+    "uf": "MT",
+    "municipioIbge": 5107859,
+    "municipioNome": "São Félix do Araguaia"
+  },
+  {
+    "iata": null,
+    "icao": "SWGI",
+    "nome": "GURUPI",
+    "uf": "TO",
+    "municipioIbge": 1709500,
+    "municipioNome": "Gurupi"
+  },
+  {
+    "iata": "GNM",
+    "icao": "SWGN",
+    "nome": "ARAGUAÍNA",
+    "uf": "TO",
+    "municipioIbge": 1702109,
+    "municipioNome": "Araguaína"
+  },
+  {
+    "iata": null,
+    "icao": "SWHP",
+    "nome": "OLHOS D'ÁGUA",
+    "uf": "MT",
+    "municipioIbge": 5100201,
+    "municipioNome": "Água Boa"
+  },
+  {
+    "iata": null,
+    "icao": "SWHT",
+    "nome": "FRANCISCO CORREA DA CRUZ",
+    "uf": "AM",
+    "municipioIbge": 1301704,
+    "municipioNome": "Humaitá"
+  },
+  {
+    "iata": null,
+    "icao": "SWII",
+    "nome": "IPIRANGA",
+    "uf": "AM",
+    "municipioIbge": 1303700,
+    "municipioNome": "Santo Antônio do Içá"
+  },
+  {
+    "iata": null,
+    "icao": "SWIQ",
+    "nome": "MINAÇU",
+    "uf": "GO",
+    "municipioIbge": 5213087,
+    "municipioNome": "Minaçu"
+  },
+  {
+    "iata": null,
+    "icao": "SWJN",
+    "nome": "JUÍNA",
+    "uf": "MT",
+    "municipioIbge": 5105150,
+    "municipioNome": "Juína"
+  },
+  {
+    "iata": null,
+    "icao": "SWJW",
+    "nome": "JATAÍ",
+    "uf": "GO",
+    "municipioIbge": 5211909,
+    "municipioNome": "Jataí"
+  },
+  {
+    "iata": null,
+    "icao": "SWKC",
+    "nome": "CÁCERES",
+    "uf": "MT",
+    "municipioIbge": 5102504,
+    "municipioNome": "Cáceres"
+  },
+  {
+    "iata": null,
+    "icao": "SWKO",
+    "nome": "COARI",
+    "uf": "AM",
+    "municipioIbge": 1301209,
+    "municipioNome": "Coari"
+  },
+  {
+    "iata": null,
+    "icao": "SWKQ",
+    "nome": "SERRA DA CAPIVARA/SÃO RAIMUNDO NONATO",
+    "uf": "PI",
+    "municipioIbge": 2210607,
+    "municipioNome": "São Raimundo Nonato"
+  },
+  {
+    "iata": null,
+    "icao": "SWKT",
+    "nome": "CATALÃO",
+    "uf": "GO",
+    "municipioIbge": 5205109,
+    "municipioNome": "Catalão"
+  },
+  {
+    "iata": null,
+    "icao": "SWLB",
+    "nome": "LÁBREA",
+    "uf": "AM",
+    "municipioIbge": 1302405,
+    "municipioNome": "Lábrea"
+  },
+  {
+    "iata": "LEC",
+    "icao": "SWLC",
+    "nome": "GENERAL LEITE DE CASTRO",
+    "uf": "GO",
+    "municipioIbge": 5218805,
+    "municipioNome": "Rio Verde"
+  },
+  {
+    "iata": null,
+    "icao": "SWME",
+    "nome": "MINEIROS",
+    "uf": "GO",
+    "municipioIbge": 5213103,
+    "municipioNome": "Mineiros"
+  },
+  {
+    "iata": null,
+    "icao": "SWMW",
+    "nome": "MAUÉS",
+    "uf": "AM",
+    "municipioIbge": 1302900,
+    "municipioNome": "Maués"
+  },
+  {
+    "iata": null,
+    "icao": "SWNH",
+    "nome": "ARUANÃ",
+    "uf": "GO",
+    "municipioIbge": 5202502,
+    "municipioNome": "Aruanã"
+  },
+  {
+    "iata": null,
+    "icao": "SWNK",
+    "nome": "NOVO CAMPO",
+    "uf": "AM",
+    "municipioIbge": 1300706,
+    "municipioNome": "Boca do Acre"
+  },
+  {
+    "iata": null,
+    "icao": "SWNQ",
+    "nome": "NIQUELÂNDIA",
+    "uf": "GO",
+    "municipioIbge": 5214606,
+    "municipioNome": "Niquelândia"
+  },
+  {
+    "iata": null,
+    "icao": "SWNR",
+    "nome": "NORTELÂNDIA",
+    "uf": "MT",
+    "municipioIbge": 5106000,
+    "municipioNome": "Nortelândia"
+  },
+  {
+    "iata": null,
+    "icao": "SWNS",
+    "nome": "ANÁPOLIS",
+    "uf": "GO",
+    "municipioIbge": 5201108,
+    "municipioNome": "Anápolis"
+  },
+  {
+    "iata": null,
+    "icao": "SWOB",
+    "nome": "FONTE BOA",
+    "uf": "AM",
+    "municipioIbge": 1301605,
+    "municipioNome": "Fonte Boa"
+  },
+  {
+    "iata": null,
+    "icao": "SWPG",
+    "nome": "PORTO DOS GAÚCHOS",
+    "uf": "MT",
+    "municipioIbge": 5106802,
+    "municipioNome": "Porto dos Gaúchos"
+  },
+  {
+    "iata": null,
+    "icao": "SWPI",
+    "nome": "PARINTINS",
+    "uf": "AM",
+    "municipioIbge": 1303403,
+    "municipioNome": "Parintins"
+  },
+  {
+    "iata": null,
+    "icao": "SWPK",
+    "nome": "POCONÉ",
+    "uf": "MT",
+    "municipioIbge": 5106505,
+    "municipioNome": "Poconé"
+  },
+  {
+    "iata": null,
+    "icao": "SWPL",
+    "nome": "POSTO LEONARDO VILAS BOAS",
+    "uf": "MT",
+    "municipioIbge": 5103858,
+    "municipioNome": "Gaúcha do Norte"
+  },
+  {
+    "iata": "PIN",
+    "icao": "SWPM",
+    "nome": "PIMENTA BUENO",
+    "uf": "RO",
+    "municipioIbge": 1100189,
+    "municipioNome": "Pimenta Bueno"
+  },
+  {
+    "iata": null,
+    "icao": "SWPR",
+    "nome": "PIRES DO RIO",
+    "uf": "GO",
+    "municipioIbge": 5217401,
+    "municipioNome": "Pires do Rio"
+  },
+  {
+    "iata": null,
+    "icao": "SWPY",
+    "nome": "PRIMAVERA DO LESTE",
+    "uf": "MT",
+    "municipioIbge": 5107040,
+    "municipioNome": "Primavera do Leste"
+  },
+  {
+    "iata": null,
+    "icao": "SWPZ",
+    "nome": "OURIÇANGA DE ABREU",
+    "uf": "GO",
+    "municipioIbge": 5218300,
+    "municipioNome": "Posse"
+  },
+  {
+    "iata": null,
+    "icao": "SWRO",
+    "nome": "AEROCLUBE DE RONDÔNIA",
+    "uf": "RO",
+    "municipioIbge": 1100205,
+    "municipioNome": "Porto Velho"
+  },
+  {
+    "iata": null,
+    "icao": "SWTO",
+    "nome": "PARAÍSO DO TOCANTINS",
+    "uf": "TO",
+    "municipioIbge": 1716109,
+    "municipioNome": "Paraíso do Tocantins"
+  },
+  {
+    "iata": "TMT",
+    "icao": "SWTP",
+    "nome": "SANTA ISABEL DO RIO NEGRO",
+    "uf": "AM",
+    "municipioIbge": 1303601,
+    "municipioNome": "Santa Isabel do Rio Negro"
+  },
+  {
+    "iata": null,
+    "icao": "SWTS",
+    "nome": "TANGARÁ DA SERRA",
+    "uf": "MT",
+    "municipioIbge": 5107958,
+    "municipioNome": "Tangará da Serra"
+  },
+  {
+    "iata": null,
+    "icao": "SWTY",
+    "nome": "TAGUATINGA",
+    "uf": "TO",
+    "municipioIbge": 1720903,
+    "municipioNome": "Taguatinga"
+  },
+  {
+    "iata": "AUX",
+    "icao": "SWUA",
+    "nome": "SÃO MIGUEL DO ARAGUAIA",
+    "uf": "GO",
+    "municipioIbge": 5220207,
+    "municipioNome": "São Miguel do Araguaia"
+  },
+  {
+    "iata": null,
+    "icao": "SWUD",
+    "nome": "DEPUTADO OSWALDO TOLENTINO",
+    "uf": "MG",
+    "municipioIbge": 3116605,
+    "municipioNome": "Cláudio"
+  },
+  {
+    "iata": null,
+    "icao": "SWUZ",
+    "nome": "BRIGADEIRO ARARIPE MACEDO",
+    "uf": "GO",
+    "municipioIbge": 5212501,
+    "municipioNome": "Luziânia"
+  },
+  {
+    "iata": "VDC",
+    "icao": "SWVC",
+    "nome": "VILA RICA",
+    "uf": "MT",
+    "municipioIbge": 5108600,
+    "municipioNome": "Vila Rica"
+  },
+  {
+    "iata": null,
+    "icao": "SWWA",
+    "nome": "PORANGATU",
+    "uf": "GO",
+    "municipioIbge": 5218003,
+    "municipioNome": "Porangatu"
+  },
+  {
+    "iata": null,
+    "icao": "SWWU",
+    "nome": "URUAÇU",
+    "uf": "GO",
+    "municipioIbge": 5221601,
+    "municipioNome": "Uruaçu"
+  },
+  {
+    "iata": "XAP",
+    "icao": "SWXM",
+    "nome": "REGIONAL ORLANDO VILLAS BOAS",
+    "uf": "MT",
+    "municipioIbge": 5105606,
+    "municipioNome": "Matupá"
+  },
+  {
+    "iata": null,
+    "icao": "SWXQ",
+    "nome": "LINS",
+    "uf": "SP",
+    "municipioIbge": 3527108,
+    "municipioNome": "Lins"
+  },
+  {
+    "iata": null,
+    "icao": "SWXV",
+    "nome": "XAVANTINA",
+    "uf": "MT",
+    "municipioIbge": 5106257,
+    "municipioNome": "Nova Xavantina"
+  },
+  {
+    "iata": null,
+    "icao": "SWYN",
+    "nome": "APUÍ",
+    "uf": "AM",
+    "municipioIbge": 1300144,
+    "municipioNome": "Apuí"
+  }
+]

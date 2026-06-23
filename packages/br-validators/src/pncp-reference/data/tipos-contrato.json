@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nome": "Contrato (termo inicial)",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Comodato",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Arrendamento",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Concessão",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Termo de Adesão",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Convênio",
+    "descricao": "Revogado pelo art. 40 da Portaria Conjunta MGI/MF/CGU Nº 33/2023",
+    "ativo": false
+  },
+  {
+    "id": 7,
+    "nome": "Empenho",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "nome": "Outros",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "nome": "Termo de Execução Descentralizada (TED)",
+    "descricao": "Revogado pelo art. 40 da Portaria Conjunta MGI/MF/CGU Nº 33/2023",
+    "ativo": false
+  },
+  {
+    "id": 10,
+    "nome": "Acordo de Cooperação Técnica (ACT)",
+    "descricao": "Revogado pelo art. 40 da Portaria Conjunta MGI/MF/CGU Nº 33/2023",
+    "ativo": false
+  },
+  {
+    "id": 11,
+    "nome": "Termo de Compromisso",
+    "descricao": "Revogado pelo art. 40 da Portaria Conjunta MGI/MF/CGU Nº 33/2023",
+    "ativo": false
+  },
+  {
+    "id": 12,
+    "nome": "Carta Contrato",
+    "descricao": "",
+    "ativo": true
+  }
+]

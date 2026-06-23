@@ -1,0 +1,11 @@
+{
+  "datasetId": "paises-bacen",
+  "status": "ok",
+  "endpoints": [
+    "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50="
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T18:35:34.021Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "NF-e portal unavailable; embedded Bacen country table written."
+}

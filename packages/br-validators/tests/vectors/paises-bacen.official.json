@@ -1,0 +1,11 @@
+{
+  "source": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=",
+  "golden": {
+    "brasil": {
+      "codigo": "1058",
+      "nomeContains": "Brasil"
+    }
+  },
+  "minPaises": 240,
+  "maxPaises": 270
+}

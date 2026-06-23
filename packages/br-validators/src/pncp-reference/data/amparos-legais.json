@@ -1,0 +1,1100 @@
+[
+  {
+    "id": 1,
+    "nome": "Lei 14.133/2021, Art. 28, I",
+    "descricao": "pregão: modalidade de licitação obrigatória para aquisição de bens e serviços comuns",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Lei 14.133/2021, Art. 28, II",
+    "descricao": "concorrência: modalidade de licitação para contratação de bens e serviços especiais e de obras e serviços comuns e especiais de engenharia",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Lei 14.133/2021, Art. 28, III",
+    "descricao": "concurso: modalidade de licitação para escolha de trabalho técnico, científico ou artístico, cujo critério de julgamento será o de melhor técnica ou conteúdo artístico, e para concessão de prêmio ou remuneração ao vencedor",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Lei 14.133/2021, Art. 28, IV",
+    "descricao": "Leilão: modalidade de licitação para alienação de bens imóveis ou de bens móveis inservíveis ou legalmente apreendidos a quem oferecer o maior lance",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Lei 14.133/2021, Art. 28, V",
+    "descricao": "diálogo competitivo: modalidade de licitação para contratação de obras, serviços e compras em que a Administração Pública realiza diálogos com licitantes previamente selecionados mediante critérios objetivos, com o intuito de desenvolver uma ou mais alternativas capazes de atender às suas necessidades, devendo os licitantes apresentar proposta final após o encerramento dos diálogos",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Lei 14.133/2021, Art. 74, I",
+    "descricao": "Inexigibilidade de Licitação: aquisição de materiais, de equipamentos ou de gêneros ou contratação de serviços que só possam ser fornecidos por produtor, empresa ou representante comercial exclusivos",
+    "ativo": true
+  },
+  {
+    "id": 7,
+    "nome": "Lei 14.133/2021, Art. 74, II",
+    "descricao": "Inexigibilidade de Licitação: contratação de profissional do setor artístico, diretamente ou por meio de empresário exclusivo, desde que consagrado pela crítica especializada ou pela opinião pública",
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "nome": "Lei 14.133/2021, Art. 74, III, a",
+    "descricao": "Inexigibilidade de Licitação: a) estudos técnicos, planejamentos, projetos básicos ou projetos executivos.",
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "nome": "Lei 14.133/2021, Art. 74, III, b",
+    "descricao": "Inexigibilidade de Licitação: b) pareceres, perícias e avaliações em geral.",
+    "ativo": true
+  },
+  {
+    "id": 10,
+    "nome": "Lei 14.133/2021, Art. 74, III, c",
+    "descricao": "Inexigibilidade de Licitação: c) assessorias ou consultorias técnicas e auditorias financeiras ou tributárias.",
+    "ativo": true
+  },
+  {
+    "id": 11,
+    "nome": "Lei 14.133/2021, Art. 74, III, d",
+    "descricao": "Inexigibilidade de Licitação: d) fiscalização, supervisão ou gerenciamento de obras ou serviços;",
+    "ativo": true
+  },
+  {
+    "id": 12,
+    "nome": "Lei 14.133/2021, Art. 74, III, e",
+    "descricao": "Inexigibilidade de Licitação: e) patrocínio ou defesa de causas judiciais ou administrativas;",
+    "ativo": true
+  },
+  {
+    "id": 13,
+    "nome": "Lei 14.133/2021, Art. 74, III, f",
+    "descricao": "Inexigibilidade de Licitação: f) treinamento e aperfeiçoamento de pessoal",
+    "ativo": true
+  },
+  {
+    "id": 14,
+    "nome": "Lei 14.133/2021, Art. 74, III, g",
+    "descricao": "Inexigibilidade de Licitação: g) restauração de obras de arte e de bens de valor histórico",
+    "ativo": true
+  },
+  {
+    "id": 15,
+    "nome": "Lei 14.133/2021, Art. 74, III, h",
+    "descricao": "Inexigibilidade de Licitação: h) controles de qualidade e tecnológico, análises, testes e ensaios de campo e laboratoriais, instrumentação e monitoramento de parâmetros específicos de obras e do meio ambiente e demais serviços de engenharia que se enquadrem no disposto neste inciso",
+    "ativo": true
+  },
+  {
+    "id": 16,
+    "nome": "Lei 14.133/2021, Art. 74, IV",
+    "descricao": "Inexigibilidade de Licitação: objetos que devam ou possam ser contratados por meio de credenciamento",
+    "ativo": true
+  },
+  {
+    "id": 17,
+    "nome": "Lei 14.133/2021, Art. 74, V",
+    "descricao": "Inexigibilidade de Licitação: aquisição ou locação de imóvel cujas características de instalações e de localização tornem necessária sua escolha.",
+    "ativo": true
+  },
+  {
+    "id": 18,
+    "nome": "Lei 14.133/2021, Art. 75, I",
+    "descricao": "Dispensa de Licitação: para contratação que envolva valores inferiores a R$ 100.000,00 (cem mil reais), no caso de obras e serviços de engenharia ou de serviços de manutenção de veículos automotores",
+    "ativo": true
+  },
+  {
+    "id": 19,
+    "nome": "Lei 14.133/2021, Art. 75, II",
+    "descricao": "Dispensa de Licitação: para contratação que envolva valores inferiores a R$ 50.000,00 (cinquenta mil reais), no caso de outros serviços e compras",
+    "ativo": true
+  },
+  {
+    "id": 20,
+    "nome": "Lei 14.133/2021, Art. 75, III, a",
+    "descricao": "Dispensa de Licitação: não surgiram licitantes interessados ou não foram apresentadas propostas válidas",
+    "ativo": true
+  },
+  {
+    "id": 21,
+    "nome": "Lei 14.133/2021, Art. 75, III, b",
+    "descricao": "Dispensa de Licitação: as propostas apresentadas consignaram preços manifestamente superiores aos praticados no mercado ou incompatíveis com os fixados pelos órgãos oficiais competentes",
+    "ativo": true
+  },
+  {
+    "id": 22,
+    "nome": "Lei 14.133/2021, Art. 75, IV, a",
+    "descricao": "Dispensa de Licitação: bens, componentes ou peças de origem nacional ou estrangeira necessários à manutenção de equipamentos, a serem adquiridos do fornecedor original desses equipamentos durante o período de garantia técnica, quando essa condição de exclusividade for indispensável para a vigência da garantia",
+    "ativo": true
+  },
+  {
+    "id": 23,
+    "nome": "Lei 14.133/2021, Art. 75, IV, b",
+    "descricao": "Dispensa de Licitação: bens, serviços, alienações ou obras, nos termos de acordo internacional específico aprovado pelo Congresso Nacional, quando as condições ofertadas forem manifestamente vantajosas para a Administração",
+    "ativo": true
+  },
+  {
+    "id": 24,
+    "nome": "Lei 14.133/2021, Art. 75, IV, c",
+    "descricao": "Dispensa de Licitação: produtos para pesquisa e desenvolvimento, limitada a contratação, no caso de obras e serviços de engenharia, ao valor de R$ 300.000,00 (trezentos mil reais)",
+    "ativo": true
+  },
+  {
+    "id": 25,
+    "nome": "Lei 14.133/2021, Art. 75, IV, d",
+    "descricao": "Dispensa de Licitação: transferência de tecnologia ou licenciamento de direito de uso ou de exploração de criação protegida, nas contratações realizadas por instituição científica, tecnológica e de inovação (ICT) pública ou por agência de fomento, desde que demonstrada vantagem para a Administração",
+    "ativo": true
+  },
+  {
+    "id": 26,
+    "nome": "Lei 14.133/2021, Art. 75, IV, e",
+    "descricao": "Dispensa de Licitação: hortifrutigranjeiros, pães e outros gêneros perecíveis, no período necessário para a realização dos processos licitatórios correspondentes, hipótese em que a contratação será realizada diretamente com base no preço do dia.",
+    "ativo": true
+  },
+  {
+    "id": 27,
+    "nome": "Lei 14.133/2021, Art. 75, IV, f",
+    "descricao": "Dispensa de Licitação: bens ou serviços produzidos ou prestados no País que envolvam, cumulativamente, alta complexidade tecnológica e defesa nacional;",
+    "ativo": true
+  },
+  {
+    "id": 28,
+    "nome": "Lei 14.133/2021, Art. 75, IV, g",
+    "descricao": "Dispensa de Licitação: materiais de uso das Forças Armadas, com exceção de materiais de uso pessoal e administrativo, quando houver necessidade de manter a padronização requerida pela estrutura de apoio logístico dos meios navais, aéreos e terrestres, mediante autorização por ato do comandante da força militar;",
+    "ativo": true
+  },
+  {
+    "id": 29,
+    "nome": "Lei 14.133/2021, Art. 75, IV, h",
+    "descricao": "Dispensa de Licitação: bens e serviços para atendimento dos contingentes militares das forças singulares brasileiras empregadas em operações de paz no exterior, hipótese em que a contratação deverá ser justificada quanto ao preço e à escolha do fornecedor ou executante e ratificada pelo comandante da força militar;",
+    "ativo": true
+  },
+  {
+    "id": 30,
+    "nome": "Lei 14.133/2021, Art. 75, IV, i",
+    "descricao": "Dispensa de Licitação: abastecimento ou suprimento de efetivos militares em estada eventual de curta duração em portos, aeroportos ou localidades diferentes de suas sedes, por motivo de movimentação operacional ou de adestramento",
+    "ativo": true
+  },
+  {
+    "id": 31,
+    "nome": "Lei 14.133/2021, Art. 75, IV, j",
+    "descricao": "Dispensa de Licitação: coleta, processamento e comercialização de resíduos sólidos urbanos recicláveis ou reutilizáveis, em áreas com sistema de coleta seletiva de lixo, realizados por associações ou cooperativas formadas exclusivamente de pessoas físicas de baixa renda reconhecidas pelo poder público como catadores de materiais recicláveis, com o uso de equipamentos compatíveis com as normas técnicas, ambientais e de saúde pública",
+    "ativo": true
+  },
+  {
+    "id": 32,
+    "nome": "Lei 14.133/2021, Art. 75, IV, k",
+    "descricao": "Dispensa de Licitação: aquisição ou restauração de obras de arte e objetos históricos, de autenticidade certificada, desde que inerente às finalidades do órgão ou com elas compatível",
+    "ativo": true
+  },
+  {
+    "id": 33,
+    "nome": "Lei 14.133/2021, Art. 75, IV, l",
+    "descricao": "Dispensa de Licitação: serviços especializados ou aquisição ou locação de equipamentos destinados ao rastreamento e à obtenção de provas previstas nos incisos II e V do caput do art. 3º da Lei nº 12.850, de 2 de agosto de 2013, quando houver necessidade justificada de manutenção de sigilo sobre a investigação",
+    "ativo": true
+  },
+  {
+    "id": 34,
+    "nome": "Lei 14.133/2021, Art. 75, IV, m",
+    "descricao": "Dispensa de Licitação: aquisição de medicamentos destinados exclusivamente ao tratamento de doenças raras definidas pelo Ministério da Saúde",
+    "ativo": true
+  },
+  {
+    "id": 35,
+    "nome": "Lei 14.133/2021, Art. 75, V",
+    "descricao": "Dispensa de Licitação: para contratação com vistas ao cumprimento do disposto nos arts. 3º, 3º-A, 4º, 5º e 20 da Lei nº 10.973, de 2 de dezembro de 2004, observados os princípios gerais de contratação constantes da referida Lei",
+    "ativo": true
+  },
+  {
+    "id": 36,
+    "nome": "Lei 14.133/2021, Art. 75, VI",
+    "descricao": "Dispensa de Licitação: para contratação que possa acarretar comprometimento da segurança nacional, nos casos estabelecidos pelo Ministro de Estado da Defesa, mediante demanda dos comandos das Forças Armadas ou dos demais ministérios",
+    "ativo": true
+  },
+  {
+    "id": 37,
+    "nome": "Lei 14.133/2021, Art. 75, VII",
+    "descricao": "Dispensa de Licitação: os casos de guerra, estado de defesa, estado de sítio, intervenção federal ou de grave perturbação da ordem",
+    "ativo": true
+  },
+  {
+    "id": 38,
+    "nome": "Lei 14.133/2021, Art. 75, VIII",
+    "descricao": "Dispensa de Licitação: nos casos de emergência ou de calamidade pública, quando caracterizada urgência de atendimento de situação que possa ocasionar prejuízo ou comprometer a continuidade dos serviços públicos ou a segurança de pessoas, obras, serviços, equipamentos e outros bens, públicos ou particulares, e somente para aquisição dos bens necessários ao atendimento da situação emergencial ou calamitosa e para as parcelas de obras e serviços que possam ser concluídas no prazo máximo de 1 (um) ano, contado da data de ocorrência da emergência ou da calamidade, vedadas a prorrogação dos respectivos contratos e a recontratação de empresa já contratada com base no disposto neste inciso",
+    "ativo": true
+  },
+  {
+    "id": 39,
+    "nome": "Lei 14.133/2021, Art. 75, IX",
+    "descricao": "Dispensa de Licitação: para a aquisição, por pessoa jurídica de direito público interno, de bens produzidos ou serviços prestados por órgão ou entidade que integrem a Administração Pública e que tenham sido criados para esse fim específico, desde que o preço contratado seja compatível com o praticado no mercado",
+    "ativo": true
+  },
+  {
+    "id": 40,
+    "nome": "Lei 14.133/2021, Art. 75, X",
+    "descricao": "Dispensa de Licitação: quando a União tiver que intervir no domínio econômico para regular preços ou normalizar o abastecimento",
+    "ativo": true
+  },
+  {
+    "id": 41,
+    "nome": "Lei 14.133/2021, Art. 75, XI",
+    "descricao": "Dispensa de Licitação: para celebração de contrato de programa com ente federativo ou com entidade de sua Administração Pública indireta que envolva prestação de serviços públicos de forma associada nos termos autorizados em contrato de consórcio público ou em convênio de cooperação",
+    "ativo": true
+  },
+  {
+    "id": 42,
+    "nome": "Lei 14.133/2021, Art. 75, XII",
+    "descricao": "Dispensa de Licitação: para contratação em que houver transferência de tecnologia de produtos estratégicos para o Sistema Único de Saúde (SUS), conforme elencados em ato da direção nacional do SUS, inclusive por ocasião da aquisição desses produtos durante as etapas de absorção tecnológica, e em valores compatíveis com aqueles definidos no instrumento firmado para a transferência de tecnologia",
+    "ativo": true
+  },
+  {
+    "id": 43,
+    "nome": "Lei 14.133/2021, Art. 75, XIII",
+    "descricao": "Dispensa de Licitação: para contratação de profissionais para compor a comissão de avaliação de critérios de técnica, quando se tratar de profissional técnico de notória especialização",
+    "ativo": true
+  },
+  {
+    "id": 44,
+    "nome": "Lei 14.133/2021, Art. 75, XIV",
+    "descricao": "Dispensa de Licitação: para contratação de associação de pessoas com deficiência, sem fins lucrativos e de comprovada idoneidade, por órgão ou entidade da Administração Pública, para a prestação de serviços, desde que o preço contratado seja compatível com o praticado no mercado e os serviços contratados sejam prestados exclusivamente por pessoas com deficiência",
+    "ativo": true
+  },
+  {
+    "id": 45,
+    "nome": "Lei 14.133/2021, Art. 75, XV",
+    "descricao": "Dispensa de Licitação: para contratação de instituição brasileira que tenha por finalidade estatutária apoiar, captar e executar atividades de ensino, pesquisa, extensão, desenvolvimento institucional, científico e tecnológico e estímulo à inovação, inclusive para gerir administrativa e financeiramente essas atividades, ou para contratação de instituição dedicada à recuperação social da pessoa presa, desde que o contratado tenha inquestionável reputação ética e profissional e não tenha fins lucrativos",
+    "ativo": true
+  },
+  {
+    "id": 46,
+    "nome": "Lei 14.133/2021, Art. 75, XVI",
+    "descricao": "Dispensa de Licitação: para aquisição, por pessoa jurídica de direito público interno, de insumos estratégicos para a saúde produzidos por fundação que, regimental ou estatutariamente, tenha por finalidade apoiar órgão da Administração Pública direta, sua autarquia ou fundação em projetos de ensino, pesquisa, extensão, desenvolvimento institucional, científico e tecnológico e de estímulo à inovação, inclusive na gestão administrativa e financeira necessária à execução desses projetos, ou em parcerias que envolvam transferência de tecnologia de produtos estratégicos para o SUS, nos termos do inciso XII docaputdeste artigo, e que tenha sido criada para esse fim específico em data anterior à entrada em vigor desta Lei, desde que o preço contratado seja compatível com o praticado no mercado",
+    "ativo": true
+  },
+  {
+    "id": 47,
+    "nome": "Lei 14.133/2021, Art. 78, I",
+    "descricao": "Credenciamento: processo administrativo de chamamento público em que a Administração Pública convoca interessados em prestar serviços ou fornecer bens para que, preenchidos os requisitos necessários, se credenciem no órgão ou na entidade para executar o objeto quando convocados",
+    "ativo": true
+  },
+  {
+    "id": 48,
+    "nome": "Lei 14.133/2021, Art. 78, II",
+    "descricao": "Pré-qualificação: procedimento seletivo prévio à licitação, convocado por meio de edital, destinado à análise das condições de habilitação, total ou parcial, dos interessados ou do objeto",
+    "ativo": true
+  },
+  {
+    "id": 49,
+    "nome": "Lei 14.133/2021, Art. 78, III",
+    "descricao": "Procedimento de manifestação de interesse: procedimento aberto de a ser iniciado com a publicação de edital de chamamento público, a propositura e a realização de estudos, investigações, levantamentos e projetos de soluções inovadoras que contribuam com questões de relevância pública, na forma de regulamento.",
+    "ativo": true
+  },
+  {
+    "id": 50,
+    "nome": "Lei 14.133/2021, Art. 74, caput",
+    "descricao": "Inexigibilidade de Licitação: Todas as formas de inexigibilidade não previstas no art. 74",
+    "ativo": true
+  },
+  {
+    "id": 51,
+    "nome": "Lei 14.284/2021, Art. 29, caput",
+    "descricao": "Dispensa de Licitação: contratação de instituições financeiras federais para a prestação de serviços relacionados aos atos de que trata o art. 28 desta Lei, a fim de obter a restituição dos valores indevidamente pagos a título de auxílio emergencial com amparo na Lei nº 13.982, de 2 de abril de 2020.",
+    "ativo": true
+  },
+  {
+    "id": 52,
+    "nome": "Lei 14.284/2021, Art. 24 § 1º",
+    "descricao": "Dispensa de Licitação: contratação de instituição financeira federal para a prestação dos serviços do Programa Auxílio Brasil e dos recursos e benefícios financeiros previstos nesta Lei.",
+    "ativo": true
+  },
+  {
+    "id": 53,
+    "nome": "Lei 14.284/2021, Art. 25 § 1º",
+    "descricao": "Dispensa de Licitação: Fica dispensada a licitação para a contratação de instituição financeira federal para a prestação dos serviços de que trata o caput deste artigo.",
+    "ativo": true
+  },
+  {
+    "id": 54,
+    "nome": "Lei 14.284/2021, Art. 34",
+    "descricao": "Dispensa de Licitação: aquisição de alimentos produzidos pelos beneficiários de que trata o art. 32 desta Lei.",
+    "ativo": true
+  },
+  {
+    "id": 55,
+    "nome": "Lei 9.636/1998, Art. 11-C, I",
+    "descricao": "Dispensa de Licitação: As avaliações para fins de alienação onerosa dos domínios pleno, útil ou direto de imóveis da União, permitida a contratação da Caixa Econômica Federal ou de empresas públicas, órgãos ou entidades da administração pública direta ou indireta da União, do Distrito Federal, dos Estados ou dos Municípios cuja atividade-fim seja o desenvolvimento urbano ou imobiliário, com dispensa de licitação, ou de empresa privada, por meio de licitação, serão realizadas pela Secretaria de Coordenação e Governança do Patrimônio da União.",
+    "ativo": true
+  },
+  {
+    "id": 56,
+    "nome": "Lei 9.636/1998, Art. 11-C, II",
+    "descricao": "Dispensa de Licitação: As avaliações para fins de alienação onerosa dos domínios pleno, útil ou direto de imóveis da União, permitida a contratação da Caixa Econômica Federal ou de empresas públicas, órgãos ou entidades da administração pública direta ou indireta da União, do Distrito Federal, dos Estados ou dos Municípios cuja atividade-fim seja o desenvolvimento urbano ou imobiliário, com dispensa de licitação, ou de empresa privada, por meio de licitação, serão realizadas pelo órgão ou entidade pública gestora responsável pelo imóvel.",
+    "ativo": true
+  },
+  {
+    "id": 57,
+    "nome": "Lei 9.636/1998, Art. 24-C, I",
+    "descricao": "Dispensa de Licitação: I - elaboração de propostas de alienação para bens individuais ou lotes de ativos imobiliários da União.",
+    "ativo": true
+  },
+  {
+    "id": 58,
+    "nome": "Lei 9.636/1998, Art. 24-C, II",
+    "descricao": "Dispensa de Licitação: II - execução de ações de cadastramento, de regularização, de avaliação e de alienação dos bens imóveis.",
+    "ativo": true
+  },
+  {
+    "id": 59,
+    "nome": "Lei 9.636/1998, Art. 24-C, III",
+    "descricao": "Dispensa de Licitação: III - execução das atividades de alienação dos ativos indicados, incluídas a realização do procedimento licitatório e a representação da União na assinatura dos instrumentos jurídicos indicados.",
+    "ativo": true
+  },
+  {
+    "id": 60,
+    "nome": "Lei 14.133/2021, Art. 75, XVII",
+    "descricao": "Dispensa de Licitação: para contratação de entidades privadas sem fins lucrativos para a implementação de cisternas ou outras tecnologias sociais de acesso à água para consumo humano e produção de alimentos, para beneficiar famílias rurais de baixa renda atingidas pela seca ou pela falta regular de água.",
+    "ativo": true
+  },
+  {
+    "id": 61,
+    "nome": "Lei 14.133/2021, Art. 76, I, a",
+    "descricao": "Art. 76, I, a: Dispensa de Licitação: dação em pagamento",
+    "ativo": true
+  },
+  {
+    "id": 62,
+    "nome": "Lei 14.133/2021, Art. 76, I, b",
+    "descricao": "Dispensa de Licitação: doação, permitida exclusivamente para outro órgão ou entidade da Administração Pública, de qualquer esfera de governo, ressalvado o disposto nas alíneas “f”, “g” e “h” deste inciso",
+    "ativo": true
+  },
+  {
+    "id": 63,
+    "nome": "Lei 14.133/2021, Art. 76, I, c",
+    "descricao": "Dispensa de Licitação: permuta por outros imóveis que atendam aos requisitos relacionados às finalidades precípuas da Administração, desde que a diferença apurada não ultrapasse a metade do valor do imóvel que será ofertado pela União, segundo avaliação prévia, e ocorra a torna de valores, sempre que for o caso",
+    "ativo": true
+  },
+  {
+    "id": 64,
+    "nome": "Lei 14.133/2021, Art. 76, I, d",
+    "descricao": "Dispensa de Licitação:  investidura",
+    "ativo": true
+  },
+  {
+    "id": 65,
+    "nome": "Lei 14.133/2021, Art. 76, I, e",
+    "descricao": "Dispensa de Licitação: venda a outro órgão ou entidade da Administração Pública de qualquer esfera de governo",
+    "ativo": true
+  },
+  {
+    "id": 66,
+    "nome": "Lei 14.133/2021, Art. 76, I, f",
+    "descricao": "Dispensa de Licitação: alienação gratuita ou onerosa, aforamento, concessão de direito real de uso, locação e permissão de uso de bens imóveis residenciais construídos, destinados ou efetivamente usados em programas de habitação ou de regularização fundiária de interesse social desenvolvidos por órgão ou entidade da Administração Pública",
+    "ativo": true
+  },
+  {
+    "id": 67,
+    "nome": "Lei 14.133/2021, Art. 76, I, g",
+    "descricao": "Dispensa de Licitação: alienação gratuita ou onerosa, aforamento, concessão de direito real de uso, locação e permissão de uso de bens imóveis comerciais de âmbito local, com área de até 250 m² (duzentos e cinquenta metros quadrados) e destinados a programas de regularização fundiária de interesse social desenvolvidos por órgão ou entidade da Administração Pública",
+    "ativo": true
+  },
+  {
+    "id": 68,
+    "nome": "Lei 14.133/2021, Art. 76, I, h",
+    "descricao": "Dispensa de Licitação: alienação e concessão de direito real de uso, gratuita ou onerosa, de terras públicas rurais da União e do Instituto Nacional de Colonização e Reforma Agrária (Incra) onde incidam ocupações até o limite de que trata o § 1º do art. 6º da Lei nº 11.952, de 25 de junho de 2009, para fins de regularização fundiária, atendidos os requisitos legais",
+    "ativo": true
+  },
+  {
+    "id": 69,
+    "nome": "Lei 14.133/2021, Art. 76, I, i",
+    "descricao": "Dispensa de Licitação: legitimação de posse de que trata o art. 29 da Lei nº 6.383, de 7 de dezembro de 1976, mediante iniciativa e deliberação dos órgãos da Administração Pública competentes",
+    "ativo": true
+  },
+  {
+    "id": 70,
+    "nome": "Lei 14.133/2021, Art. 76, I, j",
+    "descricao": "Dispensa de Licitação: legitimação fundiária e legitimação de posse de que trata a Lei nº 13.465, de 11 de julho de 2017",
+    "ativo": true
+  },
+  {
+    "id": 71,
+    "nome": "Lei 14.133/2021, Art. 76, II, a",
+    "descricao": "Dispensa de Licitação: doação, permitida exclusivamente para fins e uso de interesse social, após avaliação de oportunidade e conveniência socioeconômica em relação à escolha de outra forma de alienação",
+    "ativo": true
+  },
+  {
+    "id": 72,
+    "nome": "Lei 14.133/2021, Art. 76, II, b",
+    "descricao": "Dispensa de Licitação: permuta, permitida exclusivamente entre órgãos ou entidades da Administração Pública",
+    "ativo": true
+  },
+  {
+    "id": 73,
+    "nome": "Lei 14.133/2021, Art. 76, II, c",
+    "descricao": "Dispensa de Licitação:  venda de ações, que poderão ser negociadas em bolsa, observada a legislação específica",
+    "ativo": true
+  },
+  {
+    "id": 74,
+    "nome": "Lei 14.133/2021, Art. 76, II, d",
+    "descricao": "Dispensa de Licitação: venda de títulos, observada a legislação pertinente",
+    "ativo": true
+  },
+  {
+    "id": 75,
+    "nome": "Lei 14.133/2021, Art. 76, II, e",
+    "descricao": "Dispensa de Licitação: venda de bens produzidos ou comercializados por entidades da Administração Pública, em virtude de suas finalidades",
+    "ativo": true
+  },
+  {
+    "id": 76,
+    "nome": "Lei 14.133/2021, Art. 76, II, f",
+    "descricao": "Dispensa de Licitação: venda de materiais e equipamentos sem utilização previsível por quem deles dispõe para outros órgãos ou entidades da Administração Pública",
+    "ativo": true
+  },
+  {
+    "id": 77,
+    "nome": "Lei 14.133/2021, Art. 75, XVIII",
+    "descricao": "Dispensa de Licitação: contratação de entidades privadas sem fins lucrativos, para a implementação do Programa Cozinha Solidária, que tem como finalidade fornecer alimentação gratuita preferencialmente à população em situação de vulnerabilidade e risco social, incluída a população em situação de rua, com vistas à promoção de políticas de segurança alimentar e nutricional e de assistência social e à efetivação de direitos sociais, dignidade humana, resgate social e melhoria da qualidade de vida.",
+    "ativo": true
+  },
+  {
+    "id": 78,
+    "nome": "Lei 14.628/2023, Art. 4º",
+    "descricao": "Dispensa de Licitação: O Poder Executivo federal, estadual, distrital e municipal poderá adquirir, dispensada a licitação, os alimentos produzidos pelos beneficiários fornecedores de que trata o art. 5º desta Lei.",
+    "ativo": true
+  },
+  {
+    "id": 79,
+    "nome": "Lei 14.628/2023, Art. 12",
+    "descricao": "Dispensa de Licitação: O pagamento aos beneficiários fornecedores será efetuado diretamente pela União. § 1º O pagamento de que trata o caput deste artigo será efetuado por meio das instituições financeiras oficiais ou de cooperativas de crédito e bancos cooperativos, dispensada a realização de licitação, na forma prevista em regulamento.",
+    "ativo": true
+  },
+  {
+    "id": 80,
+    "nome": "Lei 14.133/2021, Art. 1º, § 2º",
+    "descricao": "As contratações realizadas no âmbito das repartições públicas sediadas no exterior obedecerão às peculiaridades locais e aos princípios básicos estabelecidos nesta Lei, na forma de regulamentação específica a ser editada por ministro de Estado.",
+    "ativo": true
+  },
+  {
+    "id": 81,
+    "nome": "Lei 13.303/2016, Art. 27, § 3º",
+    "descricao": "Patrocínio: convênio ou contrato de patrocínio com pessoa física ou com pessoa jurídica para promoção de atividades culturais, sociais, esportivas, educacionais e de inovação tecnológica, desde que comprovadamente vinculadas ao fortalecimento de sua marca, observando-se, no que couber, as normas de licitação e contratos desta Lei",
+    "ativo": true
+  },
+  {
+    "id": 82,
+    "nome": "Lei 13.303/2016, Art. 28, § 3º, I",
+    "descricao": "Inaplicabilidade de Licitação: comercialização, prestação ou execução, de forma direta, pelas empresas mencionadas no caput , de produtos, serviços ou obras especificamente relacionados com seus respectivos objetos sociais",
+    "ativo": true
+  },
+  {
+    "id": 83,
+    "nome": "Lei 13.303/2016, Art. 28, § 3º, II",
+    "descricao": "Inaplicabilidade de Licitação: escolha do parceiro esteja associada a suas características particulares, vinculada a oportunidades de negócio definidas e específicas, justificada a inviabilidade de procedimento competitivo",
+    "ativo": true
+  },
+  {
+    "id": 84,
+    "nome": "Lei 13.303/2016, Art. 29, I",
+    "descricao": "Dispensa de Licitação: para obras e serviços de engenharia de valor até R$ 100.000,00 (cem mil reais), desde que não se refiram a parcelas de uma mesma obra ou serviço ou ainda a obras e serviços de mesma natureza e no mesmo local que possam ser realizadas conjunta e concomitantemente",
+    "ativo": true
+  },
+  {
+    "id": 85,
+    "nome": "Lei 13.303/2016, Art. 29, II",
+    "descricao": "Dispensa de Licitação: para outros serviços e compras de valor até R$ 50.000,00 (cinquenta mil reais) e para alienações, nos casos previstos nesta Lei, desde que não se refiram a parcelas de um mesmo serviço, compra ou alienação de maior vulto que possa ser realizado de uma só vez",
+    "ativo": true
+  },
+  {
+    "id": 86,
+    "nome": "Lei 13.303/2016, Art. 29, III",
+    "descricao": "Dispensa de Licitação: quando não acudirem interessados à licitação anterior e essa, justificadamente, não puder ser repetida sem prejuízo para a empresa pública ou a sociedade de economia mista, bem como para suas respectivas subsidiárias, desde que mantidas as condições preestabelecidas",
+    "ativo": true
+  },
+  {
+    "id": 87,
+    "nome": "Lei 13.303/2016, Art. 29, IV",
+    "descricao": "Dispensa de Licitação: quando as propostas apresentadas consignarem preços manifestamente superiores aos praticados no mercado nacional ou incompatíveis com os fixados pelos órgãos oficiais competentes;",
+    "ativo": true
+  },
+  {
+    "id": 88,
+    "nome": "Lei 13.303/2016, Art. 29, V",
+    "descricao": "Dispensa de Licitação: para a compra ou locação de imóvel destinado ao atendimento de suas finalidades precípuas, quando as necessidades de instalação e localização condicionarem a escolha do imóvel, desde que o preço seja compatível com o valor de mercado, segundo avaliação prévia;",
+    "ativo": true
+  },
+  {
+    "id": 89,
+    "nome": "Lei 13.303/2016, Art. 29, VI",
+    "descricao": "Dispensa de Licitação: na contratação de remanescente de obra, de serviço ou de fornecimento, em consequência de rescisão contratual, desde que atendida a ordem de classificação da licitação anterior e aceitas as mesmas condições do contrato encerrado por rescisão ou distrato, inclusive quanto ao preço, devidamente corrigido;",
+    "ativo": true
+  },
+  {
+    "id": 90,
+    "nome": "Lei 13.303/2016, Art. 29, VII",
+    "descricao": "Dispensa de Licitação: na contratação de instituição brasileira incumbida regimental ou estatutariamente da pesquisa, do ensino ou do desenvolvimento institucional ou de instituição dedicada à recuperação social do preso, desde que a contratada detenha inquestionável reputação ético-profissional e não tenha fins lucrativos;",
+    "ativo": true
+  },
+  {
+    "id": 91,
+    "nome": "Lei 13.303/2016, Art. 29, VIII",
+    "descricao": "Dispensa de Licitação: para a aquisição de componentes ou peças de origem nacional ou estrangeira necessários à manutenção de equipamentos durante o período de garantia técnica, junto ao fornecedor original desses equipamentos, quando tal condição de exclusividade for indispensável para a vigência da garantia;",
+    "ativo": true
+  },
+  {
+    "id": 92,
+    "nome": "Lei 13.303/2016, Art. 29, IX",
+    "descricao": "Dispensa de Licitação: na contratação de associação de pessoas com deficiência física, sem fins lucrativos e de comprovada idoneidade, para a prestação de serviços ou fornecimento de mão de obra, desde que o preço contratado seja compatível com o praticado no mercado;",
+    "ativo": true
+  },
+  {
+    "id": 93,
+    "nome": "Lei 13.303/2016, Art. 29, X",
+    "descricao": "Dispensa de Licitação: na contratação de concessionário, permissionário ou autorizado para fornecimento ou suprimento de energia elétrica ou gás natural e de outras prestadoras de serviço público, segundo as normas da legislação específica, desde que o objeto do contrato tenha pertinência com o serviço público;",
+    "ativo": true
+  },
+  {
+    "id": 94,
+    "nome": "Lei 13.303/2016, Art. 29, XI",
+    "descricao": "Dispensa de Licitação: nas contratações entre empresas públicas ou sociedades de economia mista e suas respectivas subsidiárias, para aquisição ou alienação de bens e prestação ou obtenção de serviços, desde que os preços sejam compatíveis com os praticados no mercado e que o objeto do contrato tenha relação com a atividade da contratada prevista em seu estatuto social;",
+    "ativo": true
+  },
+  {
+    "id": 95,
+    "nome": "Lei 13.303/2016, Art. 29, XII",
+    "descricao": "Dispensa de Licitação: na contratação de coleta, processamento e comercialização de resíduos sólidos urbanos recicláveis ou reutilizáveis, em áreas com sistema de coleta seletiva de lixo, efetuados por associações ou cooperativas formadas exclusivamente por pessoas físicas de baixa renda que tenham como ocupação econômica a coleta de materiais recicláveis, com o uso de equipamentos compatíveis com as normas técnicas, ambientais e de saúde pública;",
+    "ativo": true
+  },
+  {
+    "id": 96,
+    "nome": "Lei 13.303/2016, Art. 29, XIII",
+    "descricao": "Dispensa de Licitação: para o fornecimento de bens e serviços, produzidos ou prestados no País, que envolvam, cumulativamente, alta complexidade tecnológica e defesa nacional, mediante parecer de comissão especialmente designada pelo dirigente máximo da empresa pública ou da sociedade de economia mista;",
+    "ativo": true
+  },
+  {
+    "id": 97,
+    "nome": "Lei 13.303/2016, Art. 29, XIV",
+    "descricao": "Dispensa de Licitação: nas contratações visando ao cumprimento do disposto nos arts. 3º, 4º, 5º e 20 da Lei nº 10.973, de 2 de dezembro de 2004 , observados os princípios gerais de contratação dela constantes;",
+    "ativo": true
+  },
+  {
+    "id": 98,
+    "nome": "Lei 13.303/2016, Art. 29, XV",
+    "descricao": "Dispensa de Licitação: em situações de emergência, quando caracterizada urgência de atendimento de situação que possa ocasionar prejuízo ou comprometer a segurança de pessoas, obras, serviços, equipamentos e outros bens, públicos ou particulares, e somente para os bens necessários ao atendimento da situação emergencial e para as parcelas de obras e serviços que possam ser concluídas no prazo máximo de 180 (cento e oitenta) dias consecutivos e ininterruptos, contado da ocorrência da emergência, vedada a prorrogação dos respectivos contratos, observado o disposto no § 2º;",
+    "ativo": true
+  },
+  {
+    "id": 99,
+    "nome": "Lei 13.303/2016, Art. 29, XVI",
+    "descricao": "Dispensa de Licitação: na transferência de bens a órgãos e entidades da administração pública, inclusive quando efetivada mediante permuta;",
+    "ativo": true
+  },
+  {
+    "id": 100,
+    "nome": "Lei 13.303/2016, Art. 29, XVII",
+    "descricao": "Dispensa de Licitação: na doação de bens móveis para fins e usos de interesse social, após avaliação de sua oportunidade e conveniência socioeconômica relativamente à escolha de outra forma de alienação;",
+    "ativo": true
+  },
+  {
+    "id": 101,
+    "nome": "Lei 13.303/2016, Art. 29, XVIII",
+    "descricao": "Dispensa de Licitação: na compra e venda de ações, de títulos de crédito e de dívida e de bens que produzam ou comercializem.",
+    "ativo": true
+  },
+  {
+    "id": 102,
+    "nome": "Lei 13.303/2016, Art. 30, caput - inexigibilidade",
+    "descricao": "Inexigibilidade de Licitação: Inviabilidade de competição;",
+    "ativo": true
+  },
+  {
+    "id": 103,
+    "nome": "Lei 13.303/2016, Art. 30, caput - credenciamento",
+    "descricao": "Credenciamento de Empresa/autonomos",
+    "ativo": true
+  },
+  {
+    "id": 104,
+    "nome": "Lei 13.303/2016, Art. 30, I",
+    "descricao": "Inexigibilidade de Licitação: aquisição de materiais, equipamentos ou gêneros que só possam ser fornecidos por produtor, empresa ou representante comercial exclusivo;",
+    "ativo": true
+  },
+  {
+    "id": 105,
+    "nome": "Lei 13.303/2016, Art. 30, II, a",
+    "descricao": "Inexigibilidade de Licitação: a) estudos técnicos, planejamentos e projetos básicos ou executivos;",
+    "ativo": true
+  },
+  {
+    "id": 106,
+    "nome": "Lei 13.303/2016, Art. 30, II, b",
+    "descricao": "Inexigibilidade de Licitação: b) pareceres, perícias e avaliações em geral;",
+    "ativo": true
+  },
+  {
+    "id": 107,
+    "nome": "Lei 13.303/2016, Art. 30, II, c",
+    "descricao": "Inexigibilidade de Licitação: c) assessorias ou consultorias técnicas e auditorias financeiras ou tributárias;",
+    "ativo": true
+  },
+  {
+    "id": 108,
+    "nome": "Lei 13.303/2016, Art. 30, II, d",
+    "descricao": "Inexigibilidade de Licitação: d) fiscalização, supervisão ou gerenciamento de obras ou serviços;",
+    "ativo": true
+  },
+  {
+    "id": 109,
+    "nome": "Lei 13.303/2016, Art. 30, II, e",
+    "descricao": "Inexigibilidade de Licitação: e) patrocínio ou defesa de causas judiciais ou administrativas;",
+    "ativo": true
+  },
+  {
+    "id": 110,
+    "nome": "Lei 13.303/2016, Art. 30, II, f",
+    "descricao": "Inexigibilidade de Licitação: f) treinamento e aperfeiçoamento de pessoal;",
+    "ativo": true
+  },
+  {
+    "id": 111,
+    "nome": "Lei 13.303/2016, Art. 30, II, g",
+    "descricao": "Inexigibilidade de Licitação: g) restauração de obras de arte e bens de valor histórico.",
+    "ativo": true
+  },
+  {
+    "id": 112,
+    "nome": "Lei 13.303/2016, Art. 31, § 4º",
+    "descricao": "Manifestação de Interesse Privado: procedimento adotado para o recebimento de propostas e projetos de empreendimentos com vistas a atender necessidades previamente identificadas, cabendo a regulamento a definição de suas regras específicas.",
+    "ativo": true
+  },
+  {
+    "id": 113,
+    "nome": "Lei 13.303/2016, Art. 32, IV",
+    "descricao": "Pregão: modalidade de licitação preferencial para a aquisição de bens e serviços comuns, assim considerados aqueles cujos padrões de desempenho e qualidade possam ser objetivamente definidos pelo edital, por meio de especificações usuais no mercado;",
+    "ativo": true
+  },
+  {
+    "id": 114,
+    "nome": "Lei 13.303/2016, Art. 54, I",
+    "descricao": "Licitação: menor preço",
+    "ativo": true
+  },
+  {
+    "id": 115,
+    "nome": "Lei 13.303/2016, Art. 54, II",
+    "descricao": "Licitação: maior desconto",
+    "ativo": true
+  },
+  {
+    "id": 116,
+    "nome": "Lei 13.303/2016, Art. 54, III",
+    "descricao": "Licitação: melhor combinação de técnica e preço",
+    "ativo": true
+  },
+  {
+    "id": 117,
+    "nome": "Lei 13.303/2016, Art. 54, IV",
+    "descricao": "Licitação: melhor técnica",
+    "ativo": true
+  },
+  {
+    "id": 118,
+    "nome": "Lei 13.303/2016, Art. 54, V",
+    "descricao": "Licitação: melhor conteúdo artístico",
+    "ativo": true
+  },
+  {
+    "id": 119,
+    "nome": "Lei 13.303/2016, Art. 54, VI",
+    "descricao": "Licitação: maior oferta de preço",
+    "ativo": true
+  },
+  {
+    "id": 120,
+    "nome": "Lei 13.303/2016, Art. 54, VII",
+    "descricao": "Licitação: maior retorno econômico",
+    "ativo": true
+  },
+  {
+    "id": 121,
+    "nome": "Lei 13.303/2016, Art. 54, VIII",
+    "descricao": "Licitação: melhor destinação de bens alienados",
+    "ativo": true
+  },
+  {
+    "id": 122,
+    "nome": "Lei 13.303/2016, Art. 63, I",
+    "descricao": "Pré-qualificação permanente",
+    "ativo": true
+  },
+  {
+    "id": 123,
+    "nome": "Lei 13.303/2016, Art. 63, III",
+    "descricao": "Sistema de registro de preços",
+    "ativo": true
+  },
+  {
+    "id": 124,
+    "nome": "Regulamento Interno de Licitações e Contratos Estatais - diálogo competitivo",
+    "descricao": "Licitação: diálogo competitivo",
+    "ativo": true
+  },
+  {
+    "id": 125,
+    "nome": "Regulamento Interno de Licitações e Contratos Estatais - credenciamento",
+    "descricao": "Inexigibilidade de Licitação: credenciamento",
+    "ativo": true
+  },
+  {
+    "id": 126,
+    "nome": "Lei 12.850/2013, Art. 3º, §1º, II",
+    "descricao": "Dispensa de Licitação: contratação de serviços técnicos especializados, aquisição ou locação de equipamentos destinados à polícia judiciária para o rastreamento e obtenção de provas por meio de captação ambiental de sinais eletromagnéticos, ópticos ou acústicos",
+    "ativo": true
+  },
+  {
+    "id": 127,
+    "nome": "Lei 12.850/2013, Art. 3º, §1º, V",
+    "descricao": "Dispensa de Licitação: contratação de serviços técnicos especializados, aquisição ou locação de equipamentos destinados à polícia judiciária para o rastreamento e obtenção de provas por meio de  interceptação de comunicações telefônicas e telemáticas, nos termos da legislação específica",
+    "ativo": true
+  },
+  {
+    "id": 128,
+    "nome": "Lei 13.529/2017, Art. 5º",
+    "descricao": "Dispensa de Licitação: para desenvolver, com recursos do fundo, as atividades e os serviços técnicos necessários para viabilizar a licitação de projetos de concessão e de parceria público-privada",
+    "ativo": true
+  },
+  {
+    "id": 129,
+    "nome": "Lei 8.629/1993, Art. 17, § 3º, V",
+    "descricao": "Dispensa de Licitação: contratação de instituição financeira para operacionalização da reforma agrária",
+    "ativo": true
+  },
+  {
+    "id": 130,
+    "nome": "Lei 10.847/2004, Art. 6º",
+    "descricao": "Dispensa de Licitação: É dispensada de licitação a contratação da EPE por órgãos ou entidades da administração pública com vistas na realização de atividades integrantes de seu objeto",
+    "ativo": true
+  },
+  {
+    "id": 131,
+    "nome": "Lei 11.516/2007, Art. 14-A",
+    "descricao": "Dispensa de Licitação: selecionar instituição financeira oficial, dispensada a licitação, para criar e administrar fundo privado a ser integralizado com recursos oriundos da compensação ambiental de que trata o art. 36 da Lei nº 9.985, de 18 de julho de 2000, destinados às unidades de conservação instituídas pela União",
+    "ativo": true
+  },
+  {
+    "id": 132,
+    "nome": "Lei 11.652/2008, Art. 8º, § 2º, I",
+    "descricao": "Dispensa de Licitação: I - celebração dos ajustes com vistas na formação da Rede Nacional de Comunicação Pública mencionados no inciso III do caput deste artigo, que poderão ser firmados, em igualdade de condições, com entidades públicas ou privadas que explorem serviços de comunicação ou radiodifusão, por até 10 (dez) anos, renováveis por iguais períodos;",
+    "ativo": true
+  },
+  {
+    "id": 133,
+    "nome": "Lei 11.652/2008, Art. 8º, § 2º, II",
+    "descricao": "Dispensa de Licitação: II - contratação da EBC por órgãos e entidades da administração pública, com vistas na realização de atividades relacionadas ao seu objeto, desde que o preço contratado seja compatível com o de mercado.",
+    "ativo": true
+  },
+  {
+    "id": 134,
+    "nome": "Lei 11.759/2008, Art. 18-A",
+    "descricao": "Dispensa de Licitação: contratação da Ceitec por órgãos e entidades da administração pública para a realização de atividades relacionadas a seu objeto.",
+    "ativo": true
+  },
+  {
+    "id": 135,
+    "nome": "Lei 12.865/2013, Art. 18, § 1º",
+    "descricao": "Dispensa de Licitação: a União, por intermédio da Secretaria de Políticas para as Mulheres da Presidência da República (SPM/PR), autorizada a contratar o Banco do Brasil S.A. ou suas subsidiárias para atuar na gestão de recursos, obras e serviços de engenharia relacionados ao desenvolvimento de projetos, modernização, ampliação, construção ou reforma da rede integrada e especializada para atendimento da mulher em situação de violência.",
+    "ativo": true
+  },
+  {
+    "id": 136,
+    "nome": "Lei 12.873/2013, Art. 42",
+    "descricao": "Dispensa de Licitação: Fica o Ministério da Saúde autorizado a contratar, mediante dispensa de licitação, instituição financeira oficial federal para realizar atividades relacionadas à avaliação dos planos de recuperação econômica e financeira apresentados pelas entidades de saúde para adesão ao Prosus.",
+    "ativo": true
+  },
+  {
+    "id": 137,
+    "nome": "Lei 13.979/2020, Art. 4º, § 1º",
+    "descricao": "Dispensa de Licitação: É dispensável a licitação para aquisição ou contratação de bens, serviços, inclusive de engenharia, e insumos destinados ao enfrentamento da emergência de saúde pública de importância internacional de que trata esta Lei.",
+    "ativo": true
+  },
+  {
+    "id": 138,
+    "nome": "Lei 11.947/2009, Art. 14, § 1º",
+    "descricao": "Dispensa de Licitação: aquisição de gêneros alimentícios diretamente da agricultura familiar e do empreendedor familiar rural ou de suas organizações, priorizando-se os assentamentos da reforma agrária, as comunidades tradicionais indígenas, as comunidades quilombolas e os grupos formais e informais de mulheres.",
+    "ativo": true
+  },
+  {
+    "id": 139,
+    "nome": "Lei 11.947/2009, Art. 21",
+    "descricao": "Dispensa de Licitação: aquisição emergencial dos gêneros alimentícios, mantidas as demais regras estabelecidas para execução do PNAE, inclusive quanto à prestação de contas.",
+    "ativo": true
+  },
+  {
+    "id": 140,
+    "nome": "Lei 14.133/2021, Art. 79, I",
+    "descricao": "Credenciamento: na hipótese de contratação paralela e não excludente: caso em que é viável e vantajosa para a Administração a realização de contratações simultâneas em condições padronizadas.",
+    "ativo": true
+  },
+  {
+    "id": 141,
+    "nome": "Lei 14.133/2021, Art. 79, II",
+    "descricao": "Credenciamento: na hipótese de contratação com seleção a critério de terceiros: caso em que a seleção do contratado está a cargo do beneficiário direto da prestação.",
+    "ativo": true
+  },
+  {
+    "id": 142,
+    "nome": "Lei 14.133/2021, Art. 79, III",
+    "descricao": "Credenciamento: na hipótese de contratação em mercados fluidos: caso em que a flutuação constante do valor da prestação e das condições de contratação inviabiliza a seleção de agente por meio de processo de licitação.",
+    "ativo": true
+  },
+  {
+    "id": 143,
+    "nome": "Lei 14.133/2021, art. 26, §1º, II",
+    "descricao": "Margem de preferência: Estabelece uma margem de preferência para bens manufaturados e serviços nacionais ou bens reciclados, recicláveis ou biodegradáveis, que estejam em conformidade com as normas técnicas brasileiras. Isso incentiva a produção e o desenvolvimento de produtos e serviços dentro do país.",
+    "ativo": true
+  },
+  {
+    "id": 144,
+    "nome": "Lei 14.133/2021, art. 26, §2º",
+    "descricao": "Margem de preferência: Estabelece uma margem de preferência adicional para bens manufaturados e serviços nacionais ou bens reciclados, recicláveis ou biodegradáveis, que estejam em conformidade com as normas técnicas brasileiras. Isso incentiva a produção e o desenvolvimento de produtos e serviços dentro do país.",
+    "ativo": true
+  },
+  {
+    "id": 145,
+    "nome": "Lei 14.133/2021, art. 60, I",
+    "descricao": "Critério de desempate: Estipula que, em caso de empate entre propostas de licitação, os licitantes envolvidos devem participar de uma disputa final onde podem apresentar novas propostas imediatamente após a classificação, proporcionando uma chance adicional para vencer a licitação.",
+    "ativo": true
+  },
+  {
+    "id": 146,
+    "nome": "Lei 14.133/2021, art. 60, §1º, I",
+    "descricao": "Critério de desempate: Prioriza, em situações de empate onde nenhum outro critério resolve, as empresas localizadas no território do Estado ou Distrito Federal do órgão licitante, ou, em licitações municipais, no Estado onde o município está situado.",
+    "ativo": true
+  },
+  {
+    "id": 147,
+    "nome": "Lei 14.133/2021, art. 60, §1º, II",
+    "descricao": "Critério de desempate: Concede preferência secundária, após a localização geográfica da empresa, às empresas brasileiras em caso de empate persistente, reforçando o apoio à indústria nacional.",
+    "ativo": true
+  },
+  {
+    "id": 148,
+    "nome": "Lei 14.133/2021, art. 60, outros incisos",
+    "descricao": "Critério de desempate: Utilizar esse código quando a justificativa de desempate via art. 60, derivar de outros incisos da Lei 14.133/2021 que não estão previstos nos Amparos Legais, códigos 145; 146; e 147, constantes no Manual de Integração do PNCP em seu item 5.15. Amparo Legal.",
+    "ativo": true
+  },
+  {
+    "id": 149,
+    "nome": "MP nº 1.221/2024, art. 2º, I (Calamidade pública)",
+    "descricao": "MEDIDA PROVISÓRIA Nº 1.221, DE 17 DE MAIO DE 2024. Dispensa de Licitação: aquisição de bens, a contratação de obras e de serviços, inclusive de engenharia, observado o disposto no Capítulo III.",
+    "ativo": true
+  },
+  {
+    "id": 150,
+    "nome": "MP nº 1.221/2024, art. 2º, IV (Calamidade pública)",
+    "descricao": "MEDIDA PROVISÓRIA Nº 1.221, DE 17 DE MAIO DE 2024. Contrato: firmar contrato verbal, nos termos do disposto no § 2º do art. 95 da Lei nº 14.133, de 2021, desde que o seu valor não seja superior a R$ 100.000,00 (cem mil reais), nas hipóteses em que a urgência não permitir a formalização do instrumento contratual.",
+    "ativo": true
+  },
+  {
+    "id": 151,
+    "nome": "MP nº 1.221/2024, art. 2º, II (Calamidade pública)",
+    "descricao": "MEDIDA PROVISÓRIA Nº 1.221, DE 17 DE MAIO DE 2024. Reduzir pela metade os prazos mínimos de que tratam o art. 55 e o § 3º do art. 75 da Lei nº 14.133, de 2021, para a apresentação das propostas e dos lances, nas licitações ou nas contratações diretas com disputa eletrônica.",
+    "ativo": true
+  },
+  {
+    "id": 152,
+    "nome": "Lei 6.855/1980, art. 30, §3º",
+    "descricao": "Dispensa de licitação: venda ou permuta de imóveis da União, das Entidades da Administração Indireta, e de Fundações criadas por lei, a serem adquiridos pela Fundação Habitacional do Exército, inclusive com recursos orçamentários.",
+    "ativo": true
+  },
+  {
+    "id": 153,
+    "nome": "Lei 11.652/2008, art. 8º, §2º, I",
+    "descricao": "Dispensa de licitação: celebração dos ajustes com vistas na formação da Rede Nacional de Comunicação Pública mencionados no inciso III do caput deste artigo, que poderão ser firmados, em igualdade de condições, com entidades públicas ou privadas que explorem serviços de comunicação ou radiodifusão, por até 10 (dez) anos, renováveis por iguais períodos.",
+    "ativo": true
+  },
+  {
+    "id": 154,
+    "nome": "Lei 11.652/2008, art. 8º, §2º, II",
+    "descricao": "Dispensa de licitação: contratação da EBC por órgãos e entidades da administração pública, com vistas na realização de atividades relacionadas ao seu objeto, desde que o preço contratado seja compatível com o de mercado.",
+    "ativo": true
+  },
+  {
+    "id": 155,
+    "nome": "Lei 14.744/2023, art 2º, I",
+    "descricao": "Dispensa de licitação: Empresa Brasileira de Correios e Telégrafos, para a prestação e a utilização de serviços postais não exclusivos, definidos expressamente no Decreto-Lei nº 509, de 20 de março de 1969, e na Lei nº 6.538, de 22 de junho de 1978.",
+    "ativo": true
+  },
+  {
+    "id": 156,
+    "nome": "Lei 14.744/2023, art 2º, II",
+    "descricao": "Dispensa de licitação: Telecomunicações Brasileiras S.A., para utilização de serviços de comunicação multimídia regidos pela Lei nº 9.472, de 16 de julho de 1997.",
+    "ativo": true
+  },
+  {
+    "id": 157,
+    "nome": "Instrução normativa de critério de julgamento e/ou edital (Sorteio)",
+    "descricao": "Critério de desempate: Realização de sorteio.",
+    "ativo": true
+  },
+  {
+    "id": 158,
+    "nome": "Lei 14.981/2024,  art. 2º, I (Calamidade pública)",
+    "descricao": "Dispensa de Licitação: aquisição de bens, a contratação de obras e de serviços, inclusive de engenharia, observado o disposto no Capítulo III.",
+    "ativo": true
+  },
+  {
+    "id": 159,
+    "nome": "Lei 14.981/2024,  art. 2º, II (Calamidade pública)",
+    "descricao": "Reduzir pela metade os prazos mínimos de que tratam o art. 55 e o § 3º do art. 75 da Lei nº 14.133, de 2021, para a apresentação das propostas e dos lances, nas licitações ou nas contratações diretas com disputa eletrônica.",
+    "ativo": true
+  },
+  {
+    "id": 160,
+    "nome": "Lei 14.981/2024,  art. 2º, IV (Calamidade pública)",
+    "descricao": "Contrato: firmar contrato verbal, nos termos do disposto no § 2º do art. 95 da Lei nº 14.133, de 2021, desde que o seu valor não seja superior a R$ 100.000,00 (cem mil reais), nas hipóteses em que a urgência não permitir a formalização do instrumento contratual.",
+    "ativo": true
+  },
+  {
+    "id": 161,
+    "nome": "Lei 14.981/2024, art. 21 (Calamidade pública)",
+    "descricao": "Dispensa de licitação: Fica a União, por meio do Ministério da Fazenda, autorizada a contratar, mediante dispensa de licitação, serviços auxiliares para a supervisão do uso dos recursos aplicados em medidas adotadas pelos entes afetados para o enfrentamento e a mitigação dos danos decorrentes de calamidade pública reconhecida pelo Congresso Nacional, nos termos do art. 65 da Lei Complementar nº 101, de 4 de maio de 2000 (Lei de Responsabilidade Fiscal), em parte ou na integralidade do território nacional.",
+    "ativo": true
+  },
+  {
+    "id": 162,
+    "nome": "Lei 14.133/2021, art. 60, III",
+    "descricao": "Critério de desempate: desenvolvimento pelo licitante de ações de equidade entre homens e mulheres no ambiente de trabalho, conforme regulamento.",
+    "ativo": true
+  },
+  {
+    "id": 163,
+    "nome": "Lei 14.133/2021, art. 60, IV",
+    "descricao": "Critério de desempate: Desenvolvimento pelo licitante de programa de integridade, conforme orientações dos órgãos de controle.",
+    "ativo": true
+  },
+  {
+    "id": 164,
+    "nome": "Lei 14.133/2021 art.60, II",
+    "descricao": "Critério de desempate: Prioriza, em situações de empate onde nenhum outro critério resolve, a avaliação do desempenho contratual prévio dos licitantes.",
+    "ativo": true
+  },
+  {
+    "id": 165,
+    "nome": "Lei nº 14.002/2020, Art. 5º, Parágrafo único",
+    "descricao": "Dispensa de licitação: Será dispensável a licitação na contratação da Embratur pelos órgãos e pelas entidades da administração pública para realização das atividades previstas no art. 4º da Lei nº 14.002/2020.",
+    "ativo": true
+  },
+  {
+    "id": 166,
+    "nome": "Medida Provisória nº 1.309/2025, art. 3º",
+    "descricao": "Dispensa de licitação: As instituições administradoras do Fundo Garantidor de Operações - FGO e do Fundo  Garantidor para Investimentos - FGI poderão contratar, de forma direta e sem licitação, empresa pública  federal para operacionalizar o processo de identificação dos mutuários passíveis das ações de apoio às atividades de que trata esta Medida Provisória.",
+    "ativo": true
+  },
+  {
+    "id": 167,
+    "nome": "Medida Provisória nº 1.309/2025, art. 12, I",
+    "descricao": "Dispensa de licitação: Na aquisição excepcional de gêneros alimentícios de que trata este Capítulo, será permitida a contratação direta, por meio de dispensa de licitação.",
+    "ativo": true
+  },
+  {
+    "id": 168,
+    "nome": "Medida Provisória nº 1.309/2025, art. 12, IV",
+    "descricao": "Dispensa de licitação:  permitida a adoção do sistema de registro de preços.",
+    "ativo": true
+  },
+  {
+    "id": 169,
+    "nome": "Medida Provisória nº 1.309/2025, art. 12, IV",
+    "descricao": "Pregão:  permitida a adoção do sistema de registro de preços.",
+    "ativo": true
+  },
+  {
+    "id": 170,
+    "nome": "Medida Provisória nº 1.309/2025, art. 12, IV",
+    "descricao": "Concorrência: permitida a adoção do sistema de registro de preços.",
+    "ativo": true
+  },
+  {
+    "id": 171,
+    "nome": "Medida Provisória nº 1.314/2025, art. 2º, paragráfo 4º",
+    "descricao": "Art. 2º  Fica autorizada a utilização do superávit financeiro apurado em 31 de dezembro de 2024 de fontes supervisionadas por unidades do Ministério da Fazenda, limitada ao montante de até R$ 12.000.000.000,00 (doze bilhões de reais), como fonte de recursos para a disponibilização de linha de crédito rural criada com o objetivo de permitir a liquidação ou a amortização das seguintes operações:   (...)   § 4º  Para fins do disposto neste artigo, a União, por intermédio do Ministério da Fazenda, celebrará contrato, mediante dispensa de licitação, com o BNDES.",
+    "ativo": true
+  },
+  {
+    "id": 172,
+    "nome": "Lei 14.133/2021, Art. 28, I, e Art. 52",
+    "descricao": "concorrência: modalidade de licitação para contratação de bens e serviços especiais e de obras e serviços comuns e especiais de engenharia, em âmbito de abrangência internacional, admitindo a participação de fornecedores estrangeiros.",
+    "ativo": true
+  },
+  {
+    "id": 173,
+    "nome": "Lei 14.133/2021, Art. 28, II, e Art. 52",
+    "descricao": "concorrência: modalidade de licitação para contratação de bens e serviços especiais e de obras e serviços comuns e especiais de engenharia, em âmbito de abrangência internacional, admitindo a participação de fornecedores estrangeiros.",
+    "ativo": true
+  },
+  {
+    "id": 174,
+    "nome": "Lei 13.240/2015, Art. 20, § 3º",
+    "descricao": "A União poderá contratar, por meio de processo licitatório, prestação de serviços de constituição, de estruturação, de administração e de gestão de fundo de investimento, para os fins de que trata o caput deste artigo, dispensada a licitação para a contratação de instituições financeiras oficiais federais.",
+    "ativo": true
+  },
+  {
+    "id": 175,
+    "nome": "Lei 13.240/2015, Art. 22, § 8º-C",
+    "descricao": "Poderá ser contratada, por meio de processo licitatório, prestação de serviços de constituição, de estruturação, de administração e de gestão de fundo de investimento, para os fins de que trata o § 8º-A deste artigo, dispensada a licitação para a contratação de instituições financeiras oficiais federais. (Incluído pela Lei nº 14.441, de 2022)",
+    "ativo": true
+  },
+  {
+    "id": 176,
+    "nome": "Lei 9.636/1998, Art. 24-C, I",
+    "descricao": "Elaboração de propostas de alienação para bens individuais ou lotes de ativos imobiliários da União; (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 177,
+    "nome": "Lei 9.636/1998, Art. 24-C, II",
+    "descricao": "Execução de ações de cadastramento, de regularização, de avaliação e de alienação dos bens imóveis; (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 178,
+    "nome": "Lei 9.636/1998, Art. 24-C, III",
+    "descricao": "Execução das atividades de alienação dos ativos indicados, incluídas a realização do procedimento licitatório e a representação da União na assinatura dos instrumentos jurídicos indicados. (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 179,
+    "nome": "Lei 9.636/1998, Art. 24-D, § 1º, I",
+    "descricao": "A desestatização referida no caput deste artigo poderá ocorrer por meio de: I - remição de foro, alienação mediante venda ou permuta, cessão ou concessão de direito real de uso; (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 180,
+    "nome": "Lei 9.636/1998, Art. 24-D, § 1º, II",
+    "descricao": "A desestatização referida no caput deste artigo poderá ocorrer por meio de: II - constituição de fundos de investimento imobiliário e contratação de seus gestores e administradores, conforme legislação vigente; (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 181,
+    "nome": "Lei 9.636/1998, Art. 24-D, § 1º, III",
+    "descricao": "A desestatização referida no caput deste artigo poderá ocorrer por meio de: III - qualquer outro meio admitido em lei. (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 182,
+    "nome": "Lei 9.636/1998, Art. 24-D, § 2º",
+    "descricao": "Os atos de que trata o inciso I do § 1º deste artigo dependem de ratificação pela Secretaria de Coordenação e Governança do Patrimônio da União. (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  },
+  {
+    "id": 183,
+    "nome": "Lei 9.636/1998, Art. 24-D, § 3º",
+    "descricao": "A execução do plano de desestatização poderá incluir as ações previstas nos incisos I, II e III do caput do art. 24-C desta Lei. (Incluído pela Lei 14.011, de 2020)",
+    "ativo": true
+  }
+]

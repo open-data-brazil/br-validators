@@ -8,8 +8,12 @@ import { PlatformDetect } from '@/components/organisms/PlatformDetect';
 import { PlatformGenerate } from '@/components/organisms/PlatformGenerate';
 import { PlatformSanitize } from '@/components/organisms/PlatformSanitize';
 import { OfficialSourcesPage } from '@/components/organisms/OfficialSourcesPage';
+import { DataIbgeExplorer } from '@/components/organisms/DataIbgeExplorer';
+import { DataBancosLookup } from '@/components/organisms/DataBancosLookup';
+import { DataCatalogTable } from '@/components/organisms/DataCatalogTable';
+import { DataGovBrGroupExplorer } from '@/components/organisms/DataGovBrGroupExplorer';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
-import type { DocumentSlug, PlatformSlug } from '@/lib/nav';
+import type { DocumentSlug, PlatformSlug, ReferenceDataSlug } from '@/lib/nav';
 import { playgroundRouteKey, resolvePlaygroundRoute } from '@/lib/playground-routes';
 import styles from './templates.module.css';
 
@@ -30,6 +34,23 @@ function PlatformPane({ slug }: { slug: PlatformSlug }) {
       return <PlatformGenerate />;
     case 'official-sources':
       return <OfficialSourcesPage />;
+  }
+}
+
+function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
+  switch (slug) {
+    case 'data/ibge':
+      return <DataIbgeExplorer />;
+    case 'data/bancos':
+      return <DataBancosLookup />;
+    case 'data/fiscal':
+      return <DataGovBrGroupExplorer groupId="fiscal" />;
+    case 'data/trade':
+      return <DataGovBrGroupExplorer groupId="trade" />;
+    case 'data/logistics':
+      return <DataGovBrGroupExplorer groupId="logistics" />;
+    case 'data/catalog':
+      return <DataCatalogTable />;
   }
 }
 
@@ -76,6 +97,15 @@ export function PlaygroundContent() {
       return (
         <div key={key} className={styles.viewPane} hidden={!isActive}>
           <PlatformPane slug={slug} />
+        </div>
+      );
+    }
+
+    if (key.startsWith('reference-data:')) {
+      const slug = key.slice('reference-data:'.length) as ReferenceDataSlug;
+      return (
+        <div key={key} className={styles.viewPane} hidden={!isActive}>
+          <ReferenceDataPane slug={slug} />
         </div>
       );
     }

@@ -23,6 +23,14 @@ describe('resolvePlaygroundRoute', () => {
     });
   });
 
+  it('resolves reference data routes', () => {
+    expect(resolvePlaygroundRoute('/data/ibge')).toEqual({ kind: 'reference-data', slug: 'data/ibge' });
+    expect(resolvePlaygroundRoute('/data/bancos')).toEqual({ kind: 'reference-data', slug: 'data/bancos' });
+    expect(resolvePlaygroundRoute('/data/fiscal')).toEqual({ kind: 'reference-data', slug: 'data/fiscal' });
+    expect(resolvePlaygroundRoute('/data/trade')).toEqual({ kind: 'reference-data', slug: 'data/trade' });
+    expect(resolvePlaygroundRoute('/data/logistics')).toEqual({ kind: 'reference-data', slug: 'data/logistics' });
+  });
+
   it('builds stable route keys', () => {
     expect(playgroundRouteKey({ kind: 'home' })).toBe('home');
     expect(playgroundRouteKey({ kind: 'document', slug: 'cpf' })).toBe('document:cpf');

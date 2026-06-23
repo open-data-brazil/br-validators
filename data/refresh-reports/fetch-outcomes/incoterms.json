@@ -1,0 +1,11 @@
+{
+  "datasetId": "incoterms",
+  "status": "ok",
+  "endpoints": [
+    "https://iccwbo.org/resources-for-business/incoterms-rules/"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T18:35:34.344Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Static ICC Incoterms 2020 list generated."
+}

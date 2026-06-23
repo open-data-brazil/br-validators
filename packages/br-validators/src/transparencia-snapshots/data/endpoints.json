@@ -1,0 +1,65 @@
+{
+  "capturadoEm": "2026-06-23T19:08:25.007Z",
+  "swaggerOk": true,
+  "openapiOk": true,
+  "cadastroUrl": "https://portaldatransparencia.gov.br/",
+  "adapterPackage": "@br-validators/adapters-transparencia",
+  "endpoints": [
+    {
+      "id": "ceis",
+      "path": "/api-de-dados/ceis",
+      "domain": "sanctions",
+      "delivery": "query-adapter",
+      "description": "Cadastro de Empresas Inidôneas e Suspensas — paginated query by CNPJ/CPF"
+    },
+    {
+      "id": "cnep",
+      "path": "/api-de-dados/cnep",
+      "domain": "sanctions",
+      "delivery": "query-adapter",
+      "description": "Cadastro Nacional de Empresas Punidas — paginated query by CNPJ/CPF"
+    },
+    {
+      "id": "ceaf",
+      "path": "/api-de-dados/ceaf",
+      "domain": "sanctions",
+      "delivery": "query-adapter",
+      "description": "Cadastro de Expulsões da Administração Federal — paginated query"
+    },
+    {
+      "id": "peps",
+      "path": "/api-de-dados/peps",
+      "domain": "pep",
+      "delivery": "query-adapter",
+      "description": "Pessoas Expostas Politicamente — paginated query; no open bulk export in v1"
+    },
+    {
+      "id": "bolsa-familia",
+      "path": "/api-de-dados/bolsa-familia-beneficios",
+      "domain": "social-programs",
+      "delivery": "query-adapter",
+      "description": "Bolsa Família benefits — query by CPF/NIS; adapter only"
+    },
+    {
+      "id": "bpc",
+      "path": "/api-de-dados/beneficios-por-pessoa",
+      "domain": "social-programs",
+      "delivery": "query-adapter",
+      "description": "BPC and related benefits — query by CPF/NIS; adapter only"
+    },
+    {
+      "id": "auxilio-emergencial",
+      "path": "/api-de-dados/auxilio-emergencial",
+      "domain": "social-programs",
+      "delivery": "query-adapter",
+      "description": "Auxílio Emergencial — historical query by CPF/NIS; adapter only"
+    },
+    {
+      "id": "despesas",
+      "path": "/api-de-dados/despesas",
+      "domain": "budget",
+      "delivery": "out-of-scope",
+      "description": "Federal spending — high volume; out of scope for core embed v1"
+    }
+  ]
+}

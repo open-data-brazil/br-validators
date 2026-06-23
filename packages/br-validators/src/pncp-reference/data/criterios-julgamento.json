@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nome": "Menor preço",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Maior desconto",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Melhor técnica ou conteúdo artístico",
+    "descricao": "",
+    "ativo": false
+  },
+  {
+    "id": 4,
+    "nome": "Técnica e preço",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Maior lance",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Maior retorno econômico",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 7,
+    "nome": "Não se aplica",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "nome": "Melhor técnica",
+    "descricao": "",
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "nome": "Conteúdo artístico",
+    "descricao": "",
+    "ativo": true
+  }
+]

@@ -1,0 +1,22 @@
+import type { Command } from 'commander';
+import { handleReferenceLookupCli, type ReferenceLookupCliOptions, writeCliIo } from '../../handlers.js';
+import { REFERENCE_LOOKUP_MODULES, REFERENCE_LOOKUP_COMMANDS } from './registry.js';
+
+export function registerReferenceLookupCommands(program: Command): void {
+  for (const command of REFERENCE_LOOKUP_COMMANDS) {
+    const module = REFERENCE_LOOKUP_MODULES[command];
+    const root = program.command(command).description(module.description);
+
+    root
+      .command('lookup')
+      .description(`Resolve ${command} by official code`)
+      .argument('<codigo>', 'Lookup code')
+      .option('--json', 'JSON output')
+      .option('--verbose', 'Include dataset capture date')
+      .action((codigo: string, opts: ReferenceLookupCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleReferenceLookupCli(command, codigo, opts, io);
+        writeCliIo(io);
+      });
+  }
+}

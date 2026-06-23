@@ -1,0 +1,11 @@
+{
+  "datasetId": "tse-municipios",
+  "status": "ok",
+  "endpoints": [
+    "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T18:20:02.438Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "Official TSE municipio_tse_ibge zip fetch succeeded."
+}
