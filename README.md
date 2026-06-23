@@ -277,12 +277,12 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 
 | Package | npm | Version |
 |---------|-----|---------|
-| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.3.0` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.3.1` |
-| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.3.0` |
-| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.3.0` |
+| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.5.0` |
+| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.5.0` |
+| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.5.0` |
+| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.5.0` |
 
-**v1.3.0** — feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup. API frozen until v2.0.0. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
+**v1.5.0** — federal open-data embeds (natureza-juridica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos) plus CLI reference-lookup and playground `/data/fiscal|trade|logistics`. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 

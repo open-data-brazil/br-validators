@@ -28,6 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`@br-validators/core/transparencia-snapshots`** — Portal da Transparência endpoint registry (query-adapter classification)
 - **Fetch scripts** — `pnpm fetch:data:{natureza-juridica,nbs,cest,portos,pncp-reference,transparencia}`; registered in weekly `data-refresh-bot`
 - **Adapter RFCs** — [docs/ADAPTERS-PNCP-RFC.md](docs/ADAPTERS-PNCP-RFC.md), [docs/ADAPTERS-TRANSPARENCIA-RFC.md](docs/ADAPTERS-TRANSPARENCIA-RFC.md)
+- **`@br-validators/cli`** — `reference-lookup` commands for natureza-juridica, nbs, cest, moedas, paises-bacen, incoterms, portos, aeroportos (`lookup <codigo>`, `--json`, `--verbose`)
+- **Playground** — `/data/fiscal`, `/data/trade`, `/data/logistics` reference explorers (client-side embedded core datasets)
 
 ---
 
@@ -367,6 +369,7 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
+| [1.5.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.5.0) | 2026-06-23 | Federal open-data embeds + CLI/playground reference surfaces |
 | [1.3.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0) | 2026-06-23 | Feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup |
 | [1.1.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0) | 2026-06-23 | Offline reference data: IBGE, Bacen banks, DDD lookup, data catalog |
 | [1.0.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0) | 2026-06-23 | First stable release — API freeze |
@@ -377,7 +380,8 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0
