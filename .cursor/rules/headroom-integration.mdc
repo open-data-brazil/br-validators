@@ -1,0 +1,39 @@
+---
+description: Optional Headroom context compression for Cursor — Apache 2.0 third-party
+alwaysApply: true
+---
+
+# HEADROOM INTEGRATION (OPTIONAL)
+
+> Third-party: [Headroom](https://github.com/headroomlabs-ai/headroom) — Apache License 2.0  
+> Docs: `integrations/headroom/README.md` or `agent-integrations/headroom/README.md`
+
+## What it does
+
+Compresses tool outputs, logs, files, and RAG chunks **before** they reach the LLM. Complements harness **token economy** (load fewer rules) with **context compression** (smaller payloads).
+
+## One-time setup (human)
+
+```bash
+pip install "headroom-ai[all]"          # Python 3.10+
+./agent-integrations/headroom/setup.sh --wrap
+# Or: headroom wrap cursor — paste config in Cursor settings once
+```
+
+Proxy alternative: `headroom proxy --port 8787`
+
+## Agent MUST NOT
+
+- Assume Headroom is installed — it is optional per machine.
+- Disable Headroom or change proxy settings without user request.
+- Send secrets to Headroom cloud — it runs **locally**.
+
+## With harness workflow
+
+1. `resolve-rules.sh` — load 2–6 rule files
+2. `generate-task-rules.sh` — optional task `.mdc`
+3. Headroom — compresses context at LLM boundary (if user configured wrap/proxy)
+
+## Attribution
+
+Apache 2.0 — see `integrations/headroom/ATTRIBUTION.md` or `agent-integrations/headroom/ATTRIBUTION.md` and `THIRD_PARTY_NOTICES.md` at project root.

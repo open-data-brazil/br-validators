@@ -1,0 +1,4 @@
+# Optional — Headroom context compression for Cursor and other agents
+# https://github.com/headroomlabs-ai/headroom
+# License: Apache 2.0
+headroom-ai[all]>=0.27.0

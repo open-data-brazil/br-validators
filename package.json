@@ -4,13 +4,14 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm --filter @br-validators/core build && pnpm -r --sequential --filter '!@br-validators/core' build",
     "prepare": "pnpm --filter @br-validators/core build",
     "test": "pnpm -r test",
     "test:coverage": "pnpm --filter @br-validators/core test:coverage && pnpm --filter @br-validators/cli test:coverage && pnpm --filter @br-validators/zod test:coverage && pnpm --filter @br-validators/react-hook-form test:coverage",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "pnpm --filter @br-validators/core build && pnpm -r --sequential typecheck",
-    "verify": "pnpm --filter @br-validators/core build && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build"
+    "verify": "pnpm --filter @br-validators/core build && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build",
+    "headroom:start": "./scripts/headroom-start.sh"
   },
   "engines": {
     "node": ">=18"

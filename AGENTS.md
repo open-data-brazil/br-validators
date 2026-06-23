@@ -34,6 +34,29 @@ Read these files at session start or before non-trivial work:
 
 Cursor users: `.cursor/rules/*.mdc` applies automatically (`alwaysApply`).
 
+### Headroom (optional — context compression)
+
+Third-party [Headroom](https://github.com/headroomlabs-ai/headroom) (Apache 2.0) complements token economy by compressing tool outputs before the LLM.
+
+```bash
+# Once per machine (Python 3.10+)
+./agent-integrations/headroom/setup.sh
+
+# Start proxy for this project (keep terminal open)
+pnpm headroom:start
+# or: ./scripts/headroom-start.sh
+```
+
+**Cursor (one-time):** Settings → Models → OpenAI API Key → Advanced → Override OpenAI Base URL:
+
+```
+http://127.0.0.1:8787/p/doc-raiz/v1
+```
+
+Anthropic: base URL `http://127.0.0.1:8787/p/doc-raiz` with your Anthropic key.
+
+Verify savings: `headroom perf` · Docs: [agent-integrations/headroom/README.md](agent-integrations/headroom/README.md) · Attribution: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+
 ---
 
 ## Conditional load (task-specific)
@@ -104,6 +127,8 @@ Creates `.cursor/rules/_task-active.mdc` (`alwaysApply: false`, gitignored). **D
 | [agent-rules/03-security/OWASP-TOP10-2025.md](agent-rules/03-security/OWASP-TOP10-2025.md) | Web/API security (A01–A10) |
 | [agent-rules/03-security/OWASP-AGENTIC-2026.md](agent-rules/03-security/OWASP-AGENTIC-2026.md) | Agentic AI security (ASI01–ASI10) |
 | [agent-harness/README.md](agent-harness/README.md) | Install, resolve, maintenance |
+| [agent-integrations/headroom/README.md](agent-integrations/headroom/README.md) | Headroom compression (Apache 2.0) |
+| [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | Third-party licenses |
 
 ---
 
