@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildFailureOutcome, FETCH_MAX_ATTEMPTS } from './source-fetch-outcome.js';
+import { buildEmbeddedFallbackOutcome, buildFailureOutcome, FETCH_MAX_ATTEMPTS } from './source-fetch-outcome.js';
 import { FetchError } from './fetch-utils.js';
 
 describe('source-fetch-outcome', () => {
@@ -18,5 +18,19 @@ describe('source-fetch-outcome', () => {
     expect(outcome.message).toContain('Possible link deprecation');
     expect(outcome.message).toContain('5 attempts');
     expect(outcome.message).toContain('120000ms');
+  });
+
+  it('builds embedded_retained outcome for fallback datasets', () => {
+    const outcome = buildEmbeddedFallbackOutcome(
+      'paises-bacen',
+      ['http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=x'],
+      '2026-06-20',
+      FETCH_MAX_ATTEMPTS,
+      'NF-e portal did not return a parseable country table (redirect loop).',
+    );
+
+    expect(outcome.status).toBe('embedded_retained');
+    expect(outcome.message).toContain('Embedded data from 2026-06-20 retained');
+    expect(outcome.message).toContain('redirect loop');
   });
 });

@@ -1,7 +1,8 @@
 import { FETCH_MAX_ATTEMPTS, FETCH_RETRY_DELAY_MS } from './fetch-retry-config.js';
 
 const DEFAULT_TIMEOUT_MS = 30_000;
-const USER_AGENT = 'br-validators-data-refresh/1.0 (+https://github.com/AlexandreZanata/br-validators)';
+export const USER_AGENT =
+  'br-validators-data-refresh/1.0 (+https://github.com/AlexandreZanata/br-validators)';
 
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {

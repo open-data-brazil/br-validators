@@ -139,13 +139,16 @@ async function main(): Promise<void> {
       datasetId: 'telefone-ddd',
       status: 'ok',
       endpoints,
-      attempts: FETCH_MAX_ATTEMPTS,
+      attempts: 1,
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message: 'DDD dataset rebuilt from embedded IBGE municipios.',
+      message:
+        'Derived from IBGE municipios + Anatel DDD constants — no HTTP fetch required.',
     });
 
-    console.log(`DDD data written (${todayIsoDate()}): ${String(dddRecords.length)} area codes`);
+    console.log(
+      `DDD data written (${todayIsoDate()}): ${String(dddRecords.length)} area codes (derived from IBGE municipios + Anatel DDD constants)`,
+    );
     console.log(
       `Changes: +${String(metadata.alteracoes.adicionados)} -${String(metadata.alteracoes.removidos)} ~${String(metadata.alteracoes.alterados)}`,
     );

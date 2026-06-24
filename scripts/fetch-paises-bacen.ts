@@ -4,13 +4,15 @@ import { fileURLToPath } from 'node:url';
 
 import { diffRecordsByKey } from './lib/diff-dataset.js';
 import { exitWithError } from './lib/errors.js';
+import { fetchNfePaisesTableText } from './lib/fetch-nfe-portal.js';
 import {
+  buildEmbeddedFallbackOutcome,
   buildFailureOutcome,
   FETCH_MAX_ATTEMPTS,
   SourceDataError,
   writeSourceFetchOutcome,
 } from './lib/source-fetch-outcome.js';
-import { fetchTextWithRetry, todayIsoDate } from './lib/fetch-utils.js';
+import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { loadOfficialPaisesBacen } from './lib/paises-bacen-official.js';
 import { parseNfePaisesTable, type PaisBacenRecord } from './lib/parse-nfe-paises.js';
@@ -51,17 +53,36 @@ function validatePaises(paises: PaisBacenRecord[]): void {
   }
 }
 
-async function resolvePaises(): Promise<{ paises: PaisBacenRecord[]; source: 'nfe-fetch' | 'embedded' }> {
+async function resolvePaises(): Promise<{
+  paises: PaisBacenRecord[];
+  source: 'nfe-fetch' | 'embedded';
+  attemptsUsed: number;
+  fetchDetail: string | null;
+}> {
   try {
-    const text = await fetchTextWithRetry(NFE_PAISES_TABLE_URL, FETCH_MAX_ATTEMPTS);
+    const { text, attemptsUsed } = await fetchNfePaisesTableText(
+      NFE_PAISES_TABLE_URL,
+      MIN_PAISES_BACEN,
+    );
     const parsed = parseNfePaisesTable(text);
     if (parsed.length >= MIN_PAISES_BACEN) {
-      return { paises: parsed, source: 'nfe-fetch' };
+      return { paises: parsed, source: 'nfe-fetch', attemptsUsed, fetchDetail: null };
     }
-  } catch {
-    // Fall back to embedded NF-e/Bacen table when portal redirect fails.
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : 'Unknown NF-e portal fetch error';
+    return {
+      paises: loadOfficialPaisesBacen(),
+      source: 'embedded',
+      attemptsUsed: FETCH_MAX_ATTEMPTS,
+      fetchDetail: detail,
+    };
   }
-  return { paises: loadOfficialPaisesBacen(), source: 'embedded' };
+  return {
+    paises: loadOfficialPaisesBacen(),
+    source: 'embedded',
+    attemptsUsed: FETCH_MAX_ATTEMPTS,
+    fetchDetail: 'Portal payload did not meet minimum country count',
+  };
 }
 
 async function main(): Promise<void> {
@@ -71,7 +92,7 @@ async function main(): Promise<void> {
   const endpoints = [NFE_PAISES_TABLE_URL];
 
   try {
-    const { paises, source } = await resolvePaises();
+    const { paises, source, attemptsUsed, fetchDetail } = await resolvePaises();
     validatePaises(paises);
 
     await mkdir(PAISES_DATA_DIR, { recursive: true });
@@ -101,18 +122,32 @@ async function main(): Promise<void> {
     await writeFile(paisesPath, `${JSON.stringify(paises, null, jsonIndent)}\n`);
     await writeFile(metadataPath, `${JSON.stringify(metadata, null, jsonIndent)}\n`);
 
-    await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, {
-      datasetId: 'paises-bacen',
-      status: 'ok',
-      endpoints,
-      attempts: FETCH_MAX_ATTEMPTS,
-      checkedAt: new Date().toISOString(),
-      retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message:
-        source === 'nfe-fetch'
-          ? 'Official NF-e country table fetch succeeded.'
-          : 'NF-e portal unavailable; embedded Bacen country table written.',
-    });
+    if (source === 'nfe-fetch') {
+      await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, {
+        datasetId: 'paises-bacen',
+        status: 'ok',
+        endpoints,
+        attempts: attemptsUsed,
+        checkedAt: new Date().toISOString(),
+        retainedEmbeddedDataFrom: metadata.capturadoEm,
+        message: 'Official NF-e country table fetch succeeded.',
+      });
+    } else {
+      const detail =
+        fetchDetail === null
+          ? 'NF-e portal did not return a parseable country table.'
+          : `NF-e portal did not return a parseable country table (${fetchDetail}).`;
+      await writeSourceFetchOutcome(
+        FETCH_OUTCOME_DIR,
+        buildEmbeddedFallbackOutcome(
+          'paises-bacen',
+          endpoints,
+          previousMetadata?.capturadoEm ?? metadata.capturadoEm,
+          attemptsUsed,
+          detail,
+        ),
+      );
+    }
 
     console.log(
       `Paises-bacen data written (${todayIsoDate()}): ${String(paises.length)} countries (${source})`,
