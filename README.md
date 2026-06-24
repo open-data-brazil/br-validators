@@ -15,6 +15,7 @@
 | **CLI** | [`@br-validators/cli`](https://www.npmjs.com/package/@br-validators/cli) on npm |
 | **Zod** | [`@br-validators/zod`](https://www.npmjs.com/package/@br-validators/zod) on npm |
 | **React Hook Form** | [`@br-validators/react-hook-form`](https://www.npmjs.com/package/@br-validators/react-hook-form) on npm |
+| **Express / Fastify** | [`@br-validators/express`](https://www.npmjs.com/package/@br-validators/express) on npm |
 | **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
 
 Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO, natureza jurídica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos) are embedded offline and refreshed weekly — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md).
@@ -283,6 +284,7 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.5.0` |
 | `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.5.0` |
 | `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.5.0` |
+| `@br-validators/express` | [npm](https://www.npmjs.com/package/@br-validators/express) | `1.5.0` |
 
 **v1.5.0** — federal open-data embeds (natureza-juridica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos) plus CLI reference-lookup and playground `/data/fiscal|trade|logistics`. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
 
