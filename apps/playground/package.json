@@ -13,6 +13,8 @@
     "pretest": "pnpm --filter @br-validators/cli build",
     "test:coverage": "vitest run --coverage",
     "pretest:coverage": "pnpm --filter @br-validators/cli build",
+    "test:e2e": "playwright test",
+    "pretest:e2e": "pnpm build",
     "typecheck": "tsc --noEmit",
     "pretypecheck": "pnpm --filter @br-validators/core build && pnpm --filter @br-validators/cli build",
     "lint": "eslint app --max-warnings 0"
@@ -26,6 +28,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.2",
     "@types/node": "^22.15.21",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",

@@ -116,6 +116,7 @@ export function DocumentWorkspace({ slug, renderAfter }: Props) {
         onGenerateValid={canGenerate ? () => { runGenerate(false); } : undefined}
         onGenerateValidFormatted={canGenerate ? () => { runGenerate(true); } : undefined}
         showUf={capabilities.ufSelector}
+        supportedUfs={capabilities.supportedUfs}
         ufLabel={slug === 'telefone' ? messages.generate.state : undefined}
         formatLabel={slug === 'cartao' ? messages.generate.brand : undefined}
         uf={uf}

@@ -25,7 +25,7 @@ Every Brazilian SaaS eventually reinvents CPF validation — usually wrong.
 (Receita Federal, Bacen, CONTRAN, TSE, SEFAZ, FEBRABAN, Anatel) so you don't have to.
 
 - ✅ **CNPJ alfanumérico** — new RFB format (effective July 2026), ready now
-- ✅ **18+ document types** — CPF, CNPJ, CEP, NF-e chave, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
+- ✅ **19+ document types** — CPF, CNPJ, CEP, NF-e chave, processo judicial CNJ, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
 - ✅ **Zero runtime dependencies** — pure TypeScript logic, no HTTP calls
 - ✅ **Never throws** — every function returns `{ ok: true, value } | { ok: false, message, code }`
 - ✅ **Tree-shakeable** — subpath imports per document type
@@ -189,6 +189,8 @@ diff('12345678909', '12345678901', 'cpf');
 
 Per-type rules and official sources: [docs/OFFICIAL-SOURCES.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/OFFICIAL-SOURCES.md) · API contract: [docs/LIBRARY-API.md](https://github.com/AlexandreZanata/br-validators/blob/main/docs/LIBRARY-API.md)
 
+> **Backend / form integration:** `format*` and `mask()` validate first — they **never** left-pad partial input (`"0"` will not become `000.000.000-00`). Do not combine `padStart` with display formatting in `onChange`; pad to full width only at submit if your API requires it. Details: [LIBRARY-API.md — display vs backend normalization](https://github.com/AlexandreZanata/br-validators/blob/main/docs/LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization).
+
 ### Form handler (React / Next.js)
 
 ```typescript
@@ -239,6 +241,8 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
 | Título de Eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo-eleitor …` | `/titulo-eleitor` |
+| Processo judicial CNJ | `@br-validators/core/processo-judicial` | `br-validators processo-judicial …` | `/processo-judicial` |
+| RG (per-UF identity card) | `@br-validators/core/rg` | `br-validators rg … --uf SP` | `/rg` |
 | Placa (Mercosul + legada) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |
 | PIX key | `@br-validators/core/pix` | `br-validators pix …` | `/pix` |
@@ -264,24 +268,24 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 
 | Dataset | Subpath | CLI | Playground | Key APIs | Official source |
 |---------|---------|-----|------------|----------|-----------------|
-| IBGE states + municipalities | `@br-validators/core/ibge` | — | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| IBGE states + municipalities | `@br-validators/core/ibge` | `ibge lookup` · `list` | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
 | Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `bancos lookup` · `list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | ANAC public aerodromos | `@br-validators/core/aeroportos` | `aeroportos lookup` | `/data/logistics` | `getAeroportos`, `getAeroportoPorIata`, `getAeroportoPorIcao`, `getAeroportosPorMunicipio` | [ANAC aeródromos públicos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | ANTAQ port installations | `@br-validators/core/portos` | `portos lookup` | `/data/logistics` | `getPortoPorCodigo`, `searchPortos`, `getPortosPorMunicipio` | [ANTAQ instalações portuárias zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
-| TSE ↔ IBGE municipality codes | `@br-validators/core/tse-municipios` | — | — | `getMapeamentoTseIbge`, `getMunicipioIbgePorCodigoTse`, `getCodigosTsePorMunicipio` | [TSE municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
-| DDD geographic lookup | `@br-validators/core/telefone` | — | — | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
-| National holidays | `@br-validators/core/feriados` | — | — | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
-| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | — | — | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
-| CFOP fiscal operations | `@br-validators/core/cfop` | — | — | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
-| NCM Mercosur nomenclature | `@br-validators/core/ncm` | — | — | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| TSE ↔ IBGE municipality codes | `@br-validators/core/tse-municipios` | `tse-municipios lookup` | `/data/ibge` (cross-ref) | `getMapeamentoTseIbge`, `getMunicipioIbgePorCodigoTse`, `getCodigosTsePorMunicipio` | [TSE municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
+| DDD geographic lookup | `@br-validators/core/telefone` | `ddd lookup` | — | `getDddInfo` (extends telefone validator) | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | `feriados list --year` | `/data/calendar` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) + annual Portaria MGI |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `cnae lookup` · `search` | `/data/fiscal` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API v2](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | `cfop lookup` · `search` | `/data/fiscal` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP SINIEF](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur nomenclature | `@br-validators/core/ncm` | `ncm lookup` · `search` | `/data/fiscal` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | Natureza jurídica (CNPJ) | `@br-validators/core/natureza-juridica` | `natureza-juridica lookup` | `/data/fiscal` | `getNaturezaJuridicaPorCodigo` | [RFB Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
 | NBS (NFSe Nacional) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
 | CEST (substituição tributária) | `@br-validators/core/cest` | `cest lookup` | `/data/fiscal` | `getCestPorCodigo`, `getCestPorNcm`, `searchCest` | [CONFAZ ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
 | ISO 4217 + Bacen PTAX moedas | `@br-validators/core/moedas` | `moedas lookup` | `/data/trade` | `getMoedaPorCodigo`, `searchMoedas` | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
 | NF-e Bacen country codes | `@br-validators/core/paises-bacen` | `paises-bacen lookup` | `/data/trade` | `getPaisPorCodigoBacen`, `getPaisesBacen` | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) |
 | ICC Incoterms 2020 | `@br-validators/core/incoterms` | `incoterms lookup` | `/data/trade` | `getIncotermPorCodigo`, `getIncoterms` | [ICC Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) |
-| CBO 2002 occupations | `@br-validators/core/cbo` | — | — | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
-| CEP prefix lookup | `@br-validators/core/cep` | — | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | `cbo lookup` · `search` | `/data/fiscal` | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
+| CEP prefix lookup | `@br-validators/core/cep` | `cep faixa` | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Data transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | Aggregates all `metadata.json` entries |
 
 ```typescript

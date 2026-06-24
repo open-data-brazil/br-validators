@@ -10,6 +10,8 @@ import {
   handleRenavamCli,
   handleTituloEleitorCli,
   handleNfeChaveCli,
+  handleProcessoJudicialCli,
+  handleRgCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -23,8 +25,15 @@ import {
   handlePlacaCli,
   handleBancosLookupCli,
   handleBancosListCli,
+  handleCepFaixaCli,
+  handleDddLookupCli,
+  handleFeriadosListCli,
+  handleIbgeListCli,
+  handleIbgeLookupCli,
+  handleTseMunicipiosLookupCli,
   type BancosListCliOptions,
   type BancosLookupCliOptions,
+  type ReferenceDatasetCliOptions,
   writeCliIo,
   type BoletoCliOptions,
   type CartaoCliOptions,
@@ -36,6 +45,8 @@ import {
   type RenavamCliOptions,
   type TituloEleitorCliOptions,
   type NfeChaveCliOptions,
+  type ProcessoJudicialCliOptions,
+  type RgCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -118,6 +129,18 @@ export function createProgram(): Command {
       });
   }
 
+  cep
+    .command('faixa')
+    .description('Resolve CEP prefix to municipality (IBGE CNEFE)')
+    .argument('<prefixo>', 'CEP prefix (5+ digits)')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((prefixo: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCepFaixaCli(prefixo, opts, io);
+      writeCliIo(io);
+    });
+
   const telefone = program.command('telefone').description('Telefone — Brazilian fixo/celular (Anatel DDD)');
 
   for (const action of ['validate', 'format', 'strip'] as const) {
@@ -188,6 +211,26 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: TituloEleitorCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleTituloEleitorCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const processoJudicial = program
+    .command('processo-judicial')
+    .description('Processo judicial CNJ — número único NNNNNNN-DD.AAAA.J.TR.OOOO (Resolução 65/2008)');
+
+  for (const action of ['validate', 'parse', 'format', 'strip'] as const) {
+    processoJudicial
+      .command(action)
+      .description(`${action} a processo judicial CNJ`)
+      .argument('[value]', 'CNJ process number (masked or 20 digits)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate/parse only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: ProcessoJudicialCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleProcessoJudicialCli(action, value, opts, io);
         writeCliIo(io);
       });
   }
@@ -444,6 +487,27 @@ export function createProgram(): Command {
       });
   }
 
+  const rg = program
+    .command('rg')
+    .description('RG (Registro Geral) — per-UF validation (phase 1: SP, RJ, MG, PR, RS, SC)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    rg
+      .command(action)
+      .description(`${action} an RG`)
+      .argument('[value]', 'RG value (raw or masked)')
+      .requiredOption('--uf <uf>', 'State code (SP, RJ, MG, PR, RS, SC)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: RgCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleRgCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
   const bancos = program.command('bancos').description('Bacen STR participants — offline lookup');
 
   bancos
@@ -467,6 +531,84 @@ export function createProgram(): Command {
     .action((opts: BancosListCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleBancosListCli(opts, io);
+      writeCliIo(io);
+    });
+
+  const ibge = program.command('ibge').description('IBGE states and municipalities — offline lookup');
+
+  ibge
+    .command('lookup')
+    .description('Resolve municipality by 7-digit IBGE code')
+    .argument('<codigo>', 'IBGE municipality code')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((codigo: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIbgeLookupCli(codigo, opts, io);
+      writeCliIo(io);
+    });
+
+  ibge
+    .command('list')
+    .description('List estados or municipios')
+    .argument('<target>', 'estados | municipios')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .option('--uf <uf>', 'Filter municipalities by UF')
+    .option('--limit <n>', 'Maximum rows', (v: string) => Number(v))
+    .action((target: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      if (target !== 'estados' && target !== 'municipios') {
+        io.stderr.push('Expected target: estados | municipios');
+        process.exitCode = 2;
+        writeCliIo(io);
+        return;
+      }
+      process.exitCode = handleIbgeListCli(target, opts, io);
+      writeCliIo(io);
+    });
+
+  const feriados = program.command('feriados').description('Brazilian national holidays — offline calendar');
+
+  feriados
+    .command('list')
+    .description('List national holidays for a year')
+    .option('--year <yyyy>', 'Calendar year', (v: string) => Number(v))
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleFeriadosListCli(opts, io);
+      writeCliIo(io);
+    });
+
+  const tseMunicipios = program
+    .command('tse-municipios')
+    .description('TSE ↔ IBGE municipality cross-walk — offline lookup');
+
+  tseMunicipios
+    .command('lookup')
+    .description('Resolve TSE (5 digits) or IBGE (7 digits) municipality code')
+    .argument('<codigo>', 'TSE or IBGE code')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((codigo: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleTseMunicipiosLookupCli(codigo, opts, io);
+      writeCliIo(io);
+    });
+
+  const ddd = program.command('ddd').description('Anatel DDD geographic lookup — offline');
+
+  ddd
+    .command('lookup')
+    .description('Resolve DDD to UF, region, and municipalities')
+    .argument('<code>', '2-digit DDD')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((code: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleDddLookupCli(code, opts, io);
       writeCliIo(io);
     });
 

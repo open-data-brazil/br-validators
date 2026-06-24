@@ -107,6 +107,16 @@ Required checklist for new/changed validators:
 
 **Wrong check digits are security bugs** — treat with same urgency as [SECURITY.md](SECURITY.md).
 
+### RG per-UF contributions
+
+RG has **no federal algorithm** — each state may use a different format and check digit rule. Phase 1 ships SP, RJ, MG, PR, RS, SC; remaining UFs are community-driven.
+
+1. Open an issue using [`.github/ISSUE_TEMPLATE/rg-uf-contribution.md`](.github/ISSUE_TEMPLATE/rg-uf-contribution.md) (labels: `good first issue`, `rg-uf`)
+2. Cite an official state secretariat document or SINTEGRA/Ghiorzi page — format-only is acceptable when no DV is published
+3. Add `tests/vectors/rg.<uf>.official.json` with golden valid/invalid pairs
+4. Implement `validateRg<Uf>` in `packages/br-validators/src/core/rg/<uf>.ts` and register in `constants.ts`
+5. Update [docs/OFFICIAL-SOURCES.md § RG](docs/OFFICIAL-SOURCES.md#rg--reference-index) coverage table
+
 ---
 
 ## Reference data contributions (IBGE, Bacen, etc.)

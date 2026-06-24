@@ -29,6 +29,8 @@ export const DOCUMENT_ROUTES = [
   { slug: 'cnh', label: 'CNH', description: 'RENACH modulo 11', group: 'documents' },
   { slug: 'renavam', label: 'RENAVAM', description: 'DENATRAN modulo 11', group: 'documents' },
   { slug: 'titulo-eleitor', label: 'Título de Eleitor', description: 'TSE modulo 11', group: 'documents' },
+  { slug: 'processo-judicial', label: 'Processo judicial', description: 'CNJ número único mod 97', group: 'documents' },
+  { slug: 'rg', label: 'RG', description: 'Per-UF identity card (6 states)', group: 'documents' },
   { slug: 'nfe-chave', label: 'NF-e Chave', description: '44-digit access key', group: 'documents' },
   { slug: 'ie', label: 'Inscrição Estadual', description: '27 UFs', group: 'documents' },
   { slug: 'pix', label: 'PIX Key', description: 'Bacen DICT — 5 types', group: 'documents' },
@@ -46,8 +48,9 @@ export const PLATFORM_ROUTES = [
 
 export const REFERENCE_DATA_ROUTES = [
   { slug: 'data/ibge', label: 'IBGE', description: 'States + municipalities', group: 'reference-data' },
+  { slug: 'data/calendar', label: 'Calendar', description: 'National holidays by year', group: 'reference-data' },
   { slug: 'data/bancos', label: 'Bancos', description: 'Bacen STR participants', group: 'reference-data' },
-  { slug: 'data/fiscal', label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST', group: 'reference-data' },
+  { slug: 'data/fiscal', label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST, CNAE, CFOP, NCM, CBO', group: 'reference-data' },
   { slug: 'data/trade', label: 'Trade', description: 'Moedas, países Bacen, Incoterms', group: 'reference-data' },
   { slug: 'data/logistics', label: 'Logistics', description: 'Portos ANTAQ, aeroportos ANAC', group: 'reference-data' },
   { slug: 'data/catalog', label: 'Data catalog', description: 'Embedded dataset metadata', group: 'reference-data' },

@@ -13,6 +13,9 @@ import { validateIeSpRural } from '../core/inscricao-estadual/sp-rural.js';
 import { validateNfeChave } from '../core/nfe-chave/index.js';
 import { validatePisPasep } from '../core/pis-pasep/index.js';
 import { validatePlaca } from '../core/placa/index.js';
+import { validateProcessoJudicial } from '../core/processo-judicial/index.js';
+import { validateRg } from '../core/rg/index.js';
+import type { RgUfCode } from '../types/validation-result.js';
 import { validateRenavam } from '../core/renavam/index.js';
 import { validateTelefone } from '../core/telefone/index.js';
 import { validateTituloEleitor } from '../core/titulo-eleitor/index.js';
@@ -29,6 +32,8 @@ export type SanitizableDocumentType =
   | 'cnh'
   | 'renavam'
   | 'titulo-eleitor'
+  | 'processo-judicial'
+  | 'rg'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -71,6 +76,14 @@ export function sanitize(
       ok: false,
       code: 'UNSUPPORTED_FORMAT',
       message: 'UF is required for inscricao-estadual sanitization',
+    };
+  }
+
+  if (type === 'rg' && !options.uf) {
+    return {
+      ok: false,
+      code: 'UNSUPPORTED_FORMAT',
+      message: 'UF is required for RG sanitization',
     };
   }
 
@@ -118,6 +131,14 @@ function validateFixed(value: string, type: SanitizableDocumentType, uf?: UfCode
     }
     case 'titulo-eleitor': {
       const result = validateTituloEleitor(value);
+      return result.ok ? { ok: true, value: result.value } : result;
+    }
+    case 'processo-judicial': {
+      const result = validateProcessoJudicial(value);
+      return result.ok ? { ok: true, value: result.value } : result;
+    }
+    case 'rg': {
+      const result = validateRg(value, { uf: uf as RgUfCode });
       return result.ok ? { ok: true, value: result.value } : result;
     }
     case 'nfe-chave': {

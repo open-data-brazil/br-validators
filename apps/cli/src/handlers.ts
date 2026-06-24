@@ -15,10 +15,19 @@ export function readInputFile(path: string, io: CliIo): string | null {
 import { runBancosList } from './commands/bancos/list.js';
 import { runBancosLookup } from './commands/bancos/lookup.js';
 import { runReferenceLookup } from './commands/reference-lookup/lookup.js';
+import { runReferenceSearch } from './commands/reference-lookup/search.js';
+import { runIbgeLookup } from './commands/ibge/lookup.js';
+import { runIbgeList } from './commands/ibge/list.js';
+import { runFeriadosList } from './commands/feriados/list.js';
+import { runTseMunicipiosLookup } from './commands/tse-municipios/lookup.js';
+import { runCepFaixa } from './commands/cep/faixa.js';
+import { runDddLookup } from './commands/ddd/lookup.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
 import { runCnh, type CnhAction } from './commands/cnh.js';
+import { runProcessoJudicial, type ProcessoJudicialAction } from './commands/processo-judicial.js';
+import { runRg, type RgAction } from './commands/rg.js';
 import { runRenavam, type RenavamAction } from './commands/renavam.js';
 import { runTituloEleitor, type TituloEleitorAction } from './commands/titulo-eleitor.js';
 import { runNfeChave, type NfeChaveAction } from './commands/nfe-chave.js';
@@ -51,6 +60,12 @@ export type CepCliOptions = CnpjCliOptions;
 export type TelefoneCliOptions = CnpjCliOptions;
 
 export type CnhCliOptions = CnpjCliOptions;
+
+export type ProcessoJudicialCliOptions = CnpjCliOptions;
+
+export type RgCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
 
 export type RenavamCliOptions = CnpjCliOptions;
 
@@ -107,6 +122,12 @@ export type ReferenceLookupCliOptions = BancosLookupCliOptions;
 
 export type BancosListCliOptions = BancosLookupCliOptions & {
   limit?: number;
+};
+
+export type ReferenceDatasetCliOptions = BancosLookupCliOptions & {
+  limit?: number;
+  uf?: string;
+  year?: number;
 };
 
 export function handleListCli(io: CliIo = { stdout: [], stderr: [] }): number {
@@ -481,6 +502,34 @@ export function handleTituloEleitorCli(
   );
 }
 
+export function handleProcessoJudicialCli(
+  action: ProcessoJudicialAction,
+  value: string | undefined,
+  opts: ProcessoJudicialCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runProcessoJudicial(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      file: fileContent,
+    },
+    io,
+  );
+}
+
 export function handleNfeChaveCli(
   action: NfeChaveAction,
   value: string | undefined,
@@ -553,6 +602,35 @@ export function handleIeCli(
   }
 
   return runIe(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      uf: opts.uf,
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleRgCli(
+  action: RgAction,
+  value: string | undefined,
+  opts: RgCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runRg(
     action,
     value,
     {
@@ -684,6 +762,80 @@ export function handleReferenceLookupCli(
     },
     io,
   );
+}
+
+export function handleReferenceSearchCli(
+  command: string,
+  query: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runReferenceSearch(
+    command,
+    query,
+    {
+      json: Boolean(opts.json),
+      verbose: Boolean(opts.verbose),
+      limit: opts.limit,
+    },
+    io,
+  );
+}
+
+export function handleIbgeLookupCli(
+  value: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runIbgeLookup(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handleIbgeListCli(
+  target: 'estados' | 'municipios',
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runIbgeList(target, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    uf: opts.uf,
+    limit: opts.limit,
+  }, io);
+}
+
+export function handleFeriadosListCli(
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runFeriadosList({
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    year: opts.year,
+  }, io);
+}
+
+export function handleTseMunicipiosLookupCli(
+  value: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runTseMunicipiosLookup(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handleCepFaixaCli(
+  value: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runCepFaixa(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handleDddLookupCli(
+  value: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runDddLookup(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
 }
 
 export function writeCliIo(io: CliIo): void {

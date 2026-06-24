@@ -1,0 +1,44 @@
+name: E2E
+
+on:
+  push:
+    branches: [main, developing]
+    paths:
+      - 'apps/playground/**'
+      - 'packages/br-validators/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/e2e.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/playground/**'
+      - 'packages/br-validators/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/e2e.yml'
+  workflow_dispatch:
+
+jobs:
+  playwright:
+    name: playground smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build playground
+        run: pnpm --filter @br-validators/playground build
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @br-validators/playground exec playwright install --with-deps chromium
+
+      - name: Run Playwright smoke tests
+        run: pnpm --filter @br-validators/playground test:e2e

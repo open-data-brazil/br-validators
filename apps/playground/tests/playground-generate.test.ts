@@ -24,6 +24,9 @@ describe('playground-generate', () => {
     expect(supportsValidGeneration('boleto')).toBe(true);
     expect(supportsValidGeneration('titulo-eleitor')).toBe(true);
     expect(supportsValidGeneration('nfe-chave')).toBe(true);
+    expect(supportsValidGeneration('cnh')).toBe(true);
+    expect(supportsValidGeneration('renavam')).toBe(true);
+    expect(supportsValidGeneration('brcode')).toBe(true);
   });
 
   it('generates valid raw and formatted CPF', () => {

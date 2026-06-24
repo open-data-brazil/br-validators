@@ -7,6 +7,7 @@ import { stripInscricaoEstadual } from '../core/inscricao-estadual/index.js';
 import { stripNfeChave } from '../strip/nfe-chave.js';
 import { stripPisPasep } from '../strip/pis-pasep.js';
 import { stripPlaca } from '../strip/placa.js';
+import { stripProcessoJudicial } from '../strip/processo-judicial.js';
 import { stripRenavam } from '../strip/renavam.js';
 import { stripTituloEleitor } from '../strip/titulo-eleitor.js';
 import { extractTelefoneDigits, normalizeTelefoneDigits } from '../strip/telefone.js';
@@ -21,6 +22,8 @@ export type SanitizableDocumentType =
   | 'cnh'
   | 'renavam'
   | 'titulo-eleitor'
+  | 'processo-judicial'
+  | 'rg'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -108,8 +111,11 @@ export function applyFixes(raw: string, type: SanitizableDocumentType): FixResul
     case 'cartao-credito':
     case 'boleto':
     case 'titulo-eleitor':
+    case 'processo-judicial':
     case 'inscricao-estadual':
       return digitsFix(trimmed, fixes);
+    case 'rg':
+      return upperAndStripSeparators(trimmed, fixes);
     case 'cnpj':
       return upperAndStripSeparators(trimmed, fixes);
     case 'placa':
@@ -146,6 +152,10 @@ export function stripForType(value: string, type: SanitizableDocumentType): stri
       return stripRenavam(value);
     case 'titulo-eleitor':
       return stripTituloEleitor(value);
+    case 'processo-judicial':
+      return stripProcessoJudicial(value);
+    case 'rg':
+      return value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     case 'nfe-chave':
       return stripNfeChave(value);
     case 'boleto':

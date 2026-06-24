@@ -11,6 +11,8 @@ import {
   PIX_GOLDEN_EMAIL,
   PLACA_GOLDEN_MERCOSUL,
   TELEFONE_GOLDEN_CELULAR,
+  PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
+  RG_SP_GOLDEN,
   TITULO_ELEITOR_GOLDEN_PRIMARY,
 } from '@br-validators/core';
 import { dispatchArgv, parseArgv } from '../src/argv-dispatch.js';
@@ -112,6 +114,9 @@ describe('dispatchArgv', () => {
       [['cnh', 'validate', '62472927637', '--quiet'], EXIT.OK],
       [['renavam', 'validate', '63977791104', '--quiet'], EXIT.OK],
       [['titulo-eleitor', 'validate', TITULO_ELEITOR_GOLDEN_PRIMARY, '--quiet'], EXIT.OK],
+      [['processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
+      [['processo-judicial', 'parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
+      [['rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
       [['pis-pasep', 'validate', '10027230888', '--quiet'], EXIT.OK],
       [['cartao-credito', 'validate', CARTAO_GOLDEN_VISA, '--quiet'], EXIT.OK],
       [['ie', 'validate', IE_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
@@ -136,6 +141,35 @@ describe('dispatchArgv', () => {
 
     const invalid = io();
     expect(dispatchArgv(['nfe-chave', 'bad'], invalid)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches processo-judicial actions', () => {
+    const validate = io();
+    expect(
+      dispatchArgv(['processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], validate),
+    ).toBe(EXIT.OK);
+
+    const missingValue = io();
+    expect(dispatchArgv(['processo-judicial', 'validate'], missingValue)).toBe(EXIT.USAGE);
+
+    const invalid = io();
+    expect(dispatchArgv(['processo-judicial', 'bad'], invalid)).toBe(EXIT.USAGE);
+    expect(invalid.stderr[0]).toContain('validate | parse | format | strip');
+  });
+
+  it('dispatches rg actions', () => {
+    const validate = io();
+    expect(dispatchArgv(['rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet'], validate)).toBe(EXIT.OK);
+
+    const missingUf = io();
+    expect(dispatchArgv(['rg', 'validate', RG_SP_GOLDEN, '--quiet'], missingUf)).toBe(EXIT.USAGE);
+
+    const missingValue = io();
+    expect(dispatchArgv(['rg', 'validate', '--uf', 'SP'], missingValue)).toBe(EXIT.USAGE);
+
+    const invalid = io();
+    expect(dispatchArgv(['rg', 'bad'], invalid)).toBe(EXIT.USAGE);
+    expect(invalid.stderr[0]).toContain('validate | format | strip');
   });
 
   it('dispatches brcode actions', () => {
@@ -225,6 +259,9 @@ describe('dispatchArgv', () => {
       verbose: true,
       limit: 5,
     });
+    expect(parseArgv(['feriados', 'list', '--year', '2026']).opts).toMatchObject({
+      year: 2026,
+    });
   });
 
   it('allows optional values for action commands', () => {
@@ -280,5 +317,77 @@ describe('dispatchArgv', () => {
 
     const missing = io();
     expect(dispatchArgv(['incoterms', 'lookup'], missing)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches ibge, feriados, tse-municipios, ddd, cep faixa, and search', () => {
+    const ibge = io();
+    expect(dispatchArgv(['ibge', 'lookup', '3550308', '--json'], ibge)).toBe(EXIT.OK);
+
+    const estados = io();
+    expect(dispatchArgv(['ibge', 'list', 'estados', '--limit', '2'], estados)).toBe(EXIT.OK);
+    expect(estados.stdout).toHaveLength(2);
+
+    const feriados = io();
+    expect(dispatchArgv(['feriados', 'list', '--year', '2026', '--json'], feriados)).toBe(EXIT.OK);
+
+    const tse = io();
+    expect(dispatchArgv(['tse-municipios', 'lookup', '71072', '--json'], tse)).toBe(EXIT.OK);
+
+    const ddd = io();
+    expect(dispatchArgv(['ddd', 'lookup', '11', '--json'], ddd)).toBe(EXIT.OK);
+
+    const faixa = io();
+    expect(dispatchArgv(['cep', 'faixa', '01310', '--json'], faixa)).toBe(EXIT.OK);
+
+    const search = io();
+    expect(dispatchArgv(['cnae', 'search', 'software', '--json', '--limit', '3'], search)).toBe(EXIT.OK);
+  });
+
+  it('returns usage for incomplete reference dataset commands', () => {
+    const ibgeUsage = io();
+    expect(dispatchArgv(['ibge', 'unknown'], ibgeUsage)).toBe(EXIT.USAGE);
+
+    const feriadosUsage = io();
+    expect(dispatchArgv(['feriados', 'unknown'], feriadosUsage)).toBe(EXIT.USAGE);
+
+    const tseUsage = io();
+    expect(dispatchArgv(['tse-municipios', 'unknown'], tseUsage)).toBe(EXIT.USAGE);
+
+    const dddUsage = io();
+    expect(dispatchArgv(['ddd', 'unknown'], dddUsage)).toBe(EXIT.USAGE);
+
+    const searchUsage = io();
+    expect(dispatchArgv(['moedas', 'search', 'real'], searchUsage)).toBe(EXIT.USAGE);
+
+    const cepUsage = io();
+    expect(dispatchArgv(['cep', 'unknown'], cepUsage)).toBe(EXIT.USAGE);
+
+    const cepFaixaMissing = io();
+    expect(dispatchArgv(['cep', 'faixa'], cepFaixaMissing)).toBe(EXIT.USAGE);
+
+    const cepValidateMissing = io();
+    expect(dispatchArgv(['cep', 'validate'], cepValidateMissing)).toBe(EXIT.USAGE);
+
+    const ibgeLookupMissing = io();
+    expect(dispatchArgv(['ibge', 'lookup'], ibgeLookupMissing)).toBe(EXIT.USAGE);
+
+    const ibgeMunicipios = io();
+    expect(dispatchArgv(['ibge', 'list', 'municipios', '--limit', '2'], ibgeMunicipios)).toBe(EXIT.OK);
+
+    const ibgeListUsage = io();
+    expect(dispatchArgv(['ibge', 'list', 'unknown'], ibgeListUsage)).toBe(EXIT.USAGE);
+
+    const tseMissing = io();
+    expect(dispatchArgv(['tse-municipios', 'lookup'], tseMissing)).toBe(EXIT.USAGE);
+
+    const dddMissing = io();
+    expect(dispatchArgv(['ddd', 'lookup'], dddMissing)).toBe(EXIT.USAGE);
+
+    const cnaeSearchMissing = io();
+    expect(dispatchArgv(['cnae', 'search'], cnaeSearchMissing)).toBe(EXIT.USAGE);
+
+    const cnaeUsage = io();
+    expect(dispatchArgv(['cnae', 'unknown'], cnaeUsage)).toBe(EXIT.USAGE);
+    expect(cnaeUsage.stderr[0]).toContain('search');
   });
 });

@@ -13,6 +13,8 @@ type Props = {
   onUfChange?: (uf: UfCode) => void;
   showUf?: boolean;
   ufLabel?: string;
+  /** UF codes for the selector; defaults to all IE-supported states. */
+  supportedUfs?: readonly UfCode[];
   formats?: readonly string[];
   format?: string;
   onFormatChange?: (format: string) => void;
@@ -25,6 +27,7 @@ export function GenerateParamFields({
   onUfChange,
   showUf = false,
   ufLabel,
+  supportedUfs = IE_SUPPORTED_UFS,
   formats,
   format,
   onFormatChange,
@@ -49,7 +52,7 @@ export function GenerateParamFields({
               onUfChange(event.target.value as UfCode);
             }}
           >
-            {IE_SUPPORTED_UFS.map((code) => (
+            {supportedUfs.map((code) => (
               <option key={code} value={code}>
                 {code} — {UF_LABELS[code]}
               </option>

@@ -13,6 +13,7 @@ import cnhVectors from '../vectors/cnh.official.json';
 import cnpjVectors from '../vectors/cnpj.official.json';
 import cpfVectors from '../vectors/cpf.official.json';
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
+import rgSpVectors from '../vectors/rg.sp.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import pisVectors from '../vectors/pis-pasep.official.json';
@@ -21,6 +22,7 @@ import placaVectors from '../vectors/placa.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import telefoneVectors from '../vectors/telefone.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 
 describe('mask()', () => {
   it('masks CPF golden vector', () => {
@@ -68,6 +70,11 @@ describe('mask()', () => {
     expect(result).toEqual({ ok: true, formatted: tituloVectors.primary.officialFormatted });
   });
 
+  it('masks processo judicial CNJ golden vector', () => {
+    const result = mask(processoVectors.primary.canonical, 'processo-judicial');
+    expect(result).toEqual({ ok: true, formatted: processoVectors.primary.masked });
+  });
+
   it('masks NF-e chave golden vector', () => {
     const result = mask(nfeVectors.primary.canonical, 'nfe-chave');
     expect(result).toEqual({ ok: true, formatted: nfeVectors.primary.officialFormatted });
@@ -106,6 +113,16 @@ describe('mask()', () => {
     expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
   });
 
+  it('masks RG SP golden vector with uf', () => {
+    const result = mask(rgSpVectors.valid.raw, 'rg', { uf: 'SP' });
+    expect(result).toEqual({ ok: true, formatted: rgSpVectors.valid.masked });
+  });
+
+  it('requires uf for rg', () => {
+    const result = mask(rgSpVectors.valid.raw, 'rg');
+    expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
+  });
+
   it('rejects invalid input without partial mask', () => {
     const result = mask('invalid', 'cpf');
     expect(result.ok).toBe(false);
@@ -122,6 +139,7 @@ describe('mask()', () => {
     expect(mask('bad', 'cnh').ok).toBe(false);
     expect(mask('bad', 'renavam').ok).toBe(false);
     expect(mask('bad', 'titulo-eleitor').ok).toBe(false);
+    expect(mask('bad', 'processo-judicial').ok).toBe(false);
     expect(mask('bad', 'nfe-chave').ok).toBe(false);
     expect(mask('bad', 'boleto').ok).toBe(false);
     expect(mask('bad', 'cartao-credito').ok).toBe(false);
@@ -129,6 +147,7 @@ describe('mask()', () => {
     expect(mask('bad', 'pix').ok).toBe(false);
     expect(mask('bad', 'inscricao-estadual-produtor-rural').ok).toBe(false);
     expect(mask('bad', 'inscricao-estadual', { uf: 'SP' }).ok).toBe(false);
+    expect(mask('bad', 'rg', { uf: 'SP' }).ok).toBe(false);
   });
 
   it('unsupported type hits default branch', () => {

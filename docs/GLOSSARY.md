@@ -23,8 +23,10 @@
 ## Formatter
 
 **Definition:** A function that applies the official display mask to a **already valid** canonical value.
-**Not the same as:** Validator — formatting never runs on unvalidated input in the public pipeline.
-**Code name:** `format*`
+**Not the same as:** Validator (mask only) or online lookup (external API); **not** backend serialization (`padStart`, fixed-width padding).
+**Code name:** `format*`, `mask()`
+
+**Consumer rule:** Never call `format*` / `mask()` from `onChange` together with left-padding (`padStart`) — padding is a submit/API concern. See [LIBRARY-API.md — display vs backend normalization](LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization).
 
 ---
 
@@ -32,7 +34,8 @@
 
 **Definition:** Remove punctuation, whitespace, and apply case rules before validation.
 **CPF/CNPJ numeric:** digits only. **CNPJ alphanumeric / placa:** preserve `A-Z0-9`, uppercase.
-**Code name:** `strip*`
+**Not the same as:** Display mask during typing; optional fixed-width padding for legacy backends belongs in a **separate** serialize step at submit, not inside `format*`.
+**Code name:** `strip*`, `sanitize()`
 
 ---
 
@@ -111,6 +114,15 @@
 **Display mask:** `XXXX XXXX XXXX` (12-digit) or `XXXXX XXXX XXXX` (13-digit).
 **Not the same as:** CPF or RG.
 **Legal reference:** [OFFICIAL-SOURCES.md § Título de Eleitor](OFFICIAL-SOURCES.md#título-de-eleitor--reference-index) — [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) (Art. 10) · Weights: [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) · [Ghiorzi](http://ghiorzi.org/DVnew.htm#e)
+
+---
+
+## Processo judicial (número único CNJ)
+
+**Definition:** Standardized national judicial case number — 20 digits in mask `NNNNNNN-DD.AAAA.J.TR.OOOO`. Check digits use modulo 97-10 per ISO 7064:2003 (CNJ Anexo VIII).
+**Not the same as:** NF-e chave, protocol numbers, or pre-2009 legacy court numbers without CNJ structure.
+**Legal reference:** [OFFICIAL-SOURCES.md § Processo judicial](OFFICIAL-SOURCES.md#processo-judicial--reference-index) — [Resolução CNJ 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · Golden: `0000100-34.2008.9.21.0000`
+**Code name:** `ProcessoJudicial`, format `'numeric'`
 
 ---
 

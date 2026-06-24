@@ -10,6 +10,7 @@ import telefoneVectors from '../vectors/telefone.official.json';
 import cnhVectors from '../vectors/cnh.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import boletoVectors from '../vectors/boleto.official.json';
 import cartaoVectors from '../vectors/cartao-credito.official.json';
@@ -17,6 +18,7 @@ import pisVectors from '../vectors/pis-pasep.official.json';
 
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
+import rgSpVectors from '../vectors/rg.sp.official.json';
 
 describe('sanitize()', () => {
   it('sanitizes masked CPF with fixes', () => {
@@ -67,6 +69,16 @@ describe('sanitize()', () => {
     expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
   });
 
+  it('sanitizes RG with uf', () => {
+    const result = sanitize(rgSpVectors.valid.masked, 'rg', { uf: 'SP' });
+    expect(result).toMatchObject({ ok: true, value: rgSpVectors.valid.raw });
+  });
+
+  it('requires uf for rg', () => {
+    const result = sanitize(rgSpVectors.valid.masked, 'rg');
+    expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
+  });
+
   it('returns validation failure for bad CPF', () => {
     const result = sanitize('bad', 'cpf');
     expect(result.ok).toBe(false);
@@ -83,6 +95,8 @@ describe('sanitize()', () => {
       'cnh',
       'renavam',
       'titulo-eleitor',
+      'processo-judicial',
+      'rg',
       'nfe-chave',
       'boleto',
       'cartao-credito',
@@ -100,6 +114,7 @@ describe('sanitize()', () => {
     expect(sanitize(cnhVectors.primary.officialFormatted, 'cnh').ok).toBe(true);
     expect(sanitize(renavamVectors.primary.canonical, 'renavam').ok).toBe(true);
     expect(sanitize(tituloVectors.primary.officialFormatted, 'titulo-eleitor').ok).toBe(true);
+    expect(sanitize(processoVectors.primary.masked, 'processo-judicial').ok).toBe(true);
     expect(sanitize(nfeVectors.primary.officialFormatted, 'nfe-chave').ok).toBe(true);
     expect(sanitize(boletoVectors.golden.santander.linhaMasked, 'boleto').ok).toBe(true);
     expect(sanitize(cartaoVectors.visa.masked, 'cartao-credito').ok).toBe(true);
@@ -123,12 +138,14 @@ describe('sanitize()', () => {
     expect(sanitize('bad', 'cnh').ok).toBe(false);
     expect(sanitize('bad', 'renavam').ok).toBe(false);
     expect(sanitize('bad', 'titulo-eleitor').ok).toBe(false);
+    expect(sanitize('bad', 'processo-judicial').ok).toBe(false);
     expect(sanitize('bad', 'nfe-chave').ok).toBe(false);
     expect(sanitize('bad', 'boleto').ok).toBe(false);
     expect(sanitize('bad', 'cartao-credito').ok).toBe(false);
     expect(sanitize('bad', 'pis-pasep').ok).toBe(false);
     expect(sanitize('bad', 'inscricao-estadual-produtor-rural').ok).toBe(false);
     expect(sanitize('bad', 'inscricao-estadual', { uf: 'SP' }).ok).toBe(false);
+    expect(sanitize('bad', 'rg', { uf: 'SP' }).ok).toBe(false);
   });
 
   it('unsupported type hits default branch', () => {

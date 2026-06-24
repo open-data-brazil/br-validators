@@ -5,6 +5,10 @@
 [![cli](https://img.shields.io/npm/v/@br-validators/cli?label=cli)](https://www.npmjs.com/package/@br-validators/cli)
 [![zod](https://img.shields.io/npm/v/@br-validators/zod?label=zod)](https://www.npmjs.com/package/@br-validators/zod)
 [![rhf](https://img.shields.io/npm/v/@br-validators/react-hook-form?label=rhf)](https://www.npmjs.com/package/@br-validators/react-hook-form)
+[![express](https://img.shields.io/npm/v/@br-validators/express?label=express)](https://www.npmjs.com/package/@br-validators/express)
+[![vue](https://img.shields.io/npm/v/@br-validators/vue?label=vue)](https://www.npmjs.com/package/@br-validators/vue)
+[![npm downloads](https://img.shields.io/npm/dm/@br-validators/core?label=downloads)](https://www.npmjs.com/package/@br-validators/core)
+[![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF%20Best%20Practices-self--certify-blue)](https://www.bestpractices.dev/en/projects)
 [![GitHub release](https://img.shields.io/github/v/release/AlexandreZanata/br-validators)](https://github.com/AlexandreZanata/br-validators/releases)
 
 **100% open-source** (MIT) monorepo — TypeScript library, terminal CLI, and web playground for formatting and validating Brazilian document identifiers. Algorithms trace to official primary sources (Receita Federal, Bacen, CONTRAN, Correios, SEFAZ).
@@ -15,6 +19,9 @@
 | **CLI** | [`@br-validators/cli`](https://www.npmjs.com/package/@br-validators/cli) on npm |
 | **Zod** | [`@br-validators/zod`](https://www.npmjs.com/package/@br-validators/zod) on npm |
 | **React Hook Form** | [`@br-validators/react-hook-form`](https://www.npmjs.com/package/@br-validators/react-hook-form) on npm |
+| **Express / Fastify** | [`@br-validators/express`](https://www.npmjs.com/package/@br-validators/express) on npm |
+| **Vue 3** | [`@br-validators/vue`](https://www.npmjs.com/package/@br-validators/vue) on npm |
+| **Documentation** | [docs.br-validators.dev](https://docs.br-validators.dev/) — VitePress deep reference (README = quick start) |
 | **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
 
 Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO, natureza jurídica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos) are embedded offline and refreshed weekly — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md).
@@ -132,6 +139,8 @@ Requires Node ≥ 18. ESM only (`"type": "module"`). Zero runtime dependencies.
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
 | Título de eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo …` | `/titulo-eleitor` |
+| Processo judicial CNJ | `@br-validators/core/processo-judicial` | `br-validators processo-judicial …` | `/processo-judicial` |
+| RG (identity card, per-UF) | `@br-validators/core/rg` | `br-validators rg … --uf SP` | `/rg` |
 | NF-e chave de acesso | `@br-validators/core/nfe-chave` | `br-validators nfe …` | `/nfe-chave` |
 | License plate (Mercosul + legacy) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |
@@ -154,7 +163,7 @@ Requires Node ≥ 18. ESM only (`"type": "module"`). Zero runtime dependencies.
 | `compare()` | `/compare` | — | — | Normalized equality |
 | `batch()` | `/batch` | — | — | Bulk validate + summary |
 | `diff()` | `/diff` | — | — | Field-level structural diff |
-| `generate()` | `/generate` | `br-validators generate …` | `/generate` | Synthetic test fixtures |
+| `generate()` | `/generate` | `br-validators generate …` | `/generate` | Synthetic test fixtures — **17/18** document types (alphanumeric CPF blocked until RFB spec) |
 
 ```typescript
 import { compare, batch, diff, mask } from '@br-validators/core';
@@ -186,24 +195,24 @@ Government classification tables embedded in the library — **zero runtime fetc
 
 | Dataset | Library import | CLI | Playground | Key APIs | Official source |
 |---------|----------------|-----|------------|----------|-----------------|
-| IBGE states + municipalities | `@br-validators/core/ibge` | — | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| IBGE states + municipalities | `@br-validators/core/ibge` | `ibge lookup` · `ibge list` | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades](https://servicodados.ibge.gov.br/api/docs/localidades) |
 | Bacen STR banks | `@br-validators/core/bancos` | `bancos lookup` · `bancos list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen STR CSV](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | ANAC public aerodromos | `@br-validators/core/aeroportos` | `aeroportos lookup` | `/data/logistics` | `getAeroportos`, `getAeroportoPorIata`, `getAeroportoPorIcao`, `getAeroportosPorMunicipio` | [ANAC aeródromos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | ANTAQ port installations | `@br-validators/core/portos` | `portos lookup` | `/data/logistics` | `getPortoPorCodigo`, `searchPortos`, `getPortosPorMunicipio` | [ANTAQ instalações portuárias zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
-| TSE ↔ IBGE municipality codes | `@br-validators/core/tse-municipios` | — | — | `getMunicipioIbgePorCodigoTse`, `getCodigosTsePorMunicipio` | [TSE municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
-| DDD geographic lookup | `@br-validators/core/telefone` | — | — | `getDddInfo` | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
-| National holidays | `@br-validators/core/feriados` | — | — | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
-| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | — | — | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
-| CFOP fiscal operations | `@br-validators/core/cfop` | — | — | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
-| NCM Mercosur codes | `@br-validators/core/ncm` | — | — | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| TSE ↔ IBGE municipality codes | `@br-validators/core/tse-municipios` | `tse-municipios lookup` | `/data/ibge` (cross-ref) | `getMunicipioIbgePorCodigoTse`, `getCodigosTsePorMunicipio` | [TSE municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
+| DDD geographic lookup | `@br-validators/core/telefone` | `ddd lookup` | — | `getDddInfo` | [Anatel DDD panel](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| National holidays | `@br-validators/core/feriados` | `feriados list --year` | `/data/calendar` | `isFeriadoNacional`, `getFeriadosNacionais`, `getProximoDiaUtil` | [Lei 662/1949](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
+| CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `cnae lookup` · `cnae search` | `/data/fiscal` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
+| CFOP fiscal operations | `@br-validators/core/cfop` | `cfop lookup` · `cfop search` | `/data/fiscal` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| NCM Mercosur codes | `@br-validators/core/ncm` | `ncm lookup` · `ncm search` | `/data/fiscal` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | Natureza jurídica (CNPJ) | `@br-validators/core/natureza-juridica` | `natureza-juridica lookup` | `/data/fiscal` | `getNaturezaJuridicaPorCodigo` | [RFB Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
 | NBS (NFSe) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
 | CEST (ST) | `@br-validators/core/cest` | `cest lookup` | `/data/fiscal` | `getCestPorCodigo`, `getCestPorNcm`, `searchCest` | [CONFAZ ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
 | ISO 4217 + Bacen PTAX moedas | `@br-validators/core/moedas` | `moedas lookup` | `/data/trade` | `getMoedaPorCodigo`, `searchMoedas` | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
 | NF-e Bacen country codes | `@br-validators/core/paises-bacen` | `paises-bacen lookup` | `/data/trade` | `getPaisPorCodigoBacen`, `getPaisesBacen` | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) |
 | ICC Incoterms 2020 | `@br-validators/core/incoterms` | `incoterms lookup` | `/data/trade` | `getIncotermPorCodigo`, `getIncoterms` | [ICC Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) |
-| CBO 2002 occupations | `@br-validators/core/cbo` | — | — | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
-| CEP prefix lookup | `@br-validators/core/cep` | — | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
+| CBO 2002 occupations | `@br-validators/core/cbo` | `cbo lookup` · `cbo search` | `/data/fiscal` | `getCboPorCodigo`, `searchCbo` | [MTE CBO CSV](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| CEP prefix lookup | `@br-validators/core/cep` | `cep faixa` | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
 
 ```typescript
@@ -268,7 +277,8 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | [apps/cli/README.md](apps/cli/README.md) | CLI commands |
 | [docs/LIBRARY-API.md](docs/LIBRARY-API.md) | Public API contract |
 | [docs/OFFICIAL-SOURCES.md](docs/OFFICIAL-SOURCES.md) | RFB, Bacen, CONTRAN, SEFAZ sources |
-| [docs/ROADMAP.md](docs/ROADMAP.md) | Phases and backlog |
+| [apps/docs/](apps/docs/) | VitePress site — [docs.br-validators.dev](https://docs.br-validators.dev/) (API synced from `LIBRARY-API.md`) |
+| [docs/community/RG-GOOD-FIRST-ISSUES.md](docs/community/RG-GOOD-FIRST-ISSUES.md) | RG remaining 21 UFs — `good first issue` |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 
 ---
@@ -281,6 +291,8 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.5.0` |
 | `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.5.0` |
 | `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.5.0` |
+| `@br-validators/express` | [npm](https://www.npmjs.com/package/@br-validators/express) | `1.5.0` |
+| `@br-validators/vue` | [npm](https://www.npmjs.com/package/@br-validators/vue) | `1.5.0` |
 
 **v1.5.0** — federal open-data embeds (natureza-juridica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos) plus CLI reference-lookup and playground `/data/fiscal|trade|logistics`. See [CHANGELOG.md](CHANGELOG.md) and [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100).
 

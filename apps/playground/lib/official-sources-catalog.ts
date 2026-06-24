@@ -1,4 +1,4 @@
-import { IE_OFFICIAL_SOURCE_URLS, type UfCode } from '@br-validators/core';
+import { IE_OFFICIAL_SOURCE_URLS, RG_OFFICIAL_SOURCE_URLS, type UfCode } from '@br-validators/core';
 import type { DocumentSlug } from './nav';
 
 export type OfficialSourceRef = {
@@ -21,6 +21,8 @@ export const OFFICIAL_SOURCES_ORDER: DocumentSlug[] = [
   'cnh',
   'renavam',
   'titulo-eleitor',
+  'processo-judicial',
+  'rg',
   'nfe-chave',
   'pix',
   'brcode',
@@ -248,6 +250,42 @@ export const OFFICIAL_SOURCES_CATALOG: Record<DocumentSlug, OfficialSourcesEntry
       },
       { label: 'TSE — Portal', href: 'https://www.tse.jus.br/' },
       { label: 'TSE — e-Título', href: 'https://www.tse.jus.br/eleitor/servicos/aplicativo-e-titulo' },
+    ],
+  },
+  'processo-judicial': {
+    title: 'Processo judicial (número único CNJ)',
+    agency: 'CNJ',
+    links: [
+      {
+        label: 'Resolução CNJ 65/2008',
+        href: 'https://atos.cnj.jus.br/atos/detalhar/119',
+      },
+      {
+        label: 'Anexo VIII — Módulo 97 Base 10',
+        href: 'https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf',
+      },
+    ],
+  },
+  rg: {
+    title: 'RG (Registro Geral)',
+    agency: 'State civil identification (per UF)',
+    links: [
+      {
+        label: 'Ghiorzi — SSP-SP / IFP-RJ / MaSP-MG check digits',
+        href: RG_OFFICIAL_SOURCE_URLS.SP,
+      },
+      {
+        label: 'IIPAR — Paraná civil identification',
+        href: RG_OFFICIAL_SOURCE_URLS.PR,
+      },
+      {
+        label: 'IGP-RS — Rio Grande do Sul',
+        href: RG_OFFICIAL_SOURCE_URLS.RS,
+      },
+      {
+        label: 'CIASC — Santa Catarina',
+        href: RG_OFFICIAL_SOURCE_URLS.SC,
+      },
     ],
   },
   'nfe-chave': {

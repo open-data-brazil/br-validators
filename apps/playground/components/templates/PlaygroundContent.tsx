@@ -10,6 +10,7 @@ import { PlatformSanitize } from '@/components/organisms/PlatformSanitize';
 import { OfficialSourcesPage } from '@/components/organisms/OfficialSourcesPage';
 import { DataIbgeExplorer } from '@/components/organisms/DataIbgeExplorer';
 import { DataBancosLookup } from '@/components/organisms/DataBancosLookup';
+import { DataCalendarExplorer } from '@/components/organisms/DataCalendarExplorer';
 import { DataCatalogTable } from '@/components/organisms/DataCatalogTable';
 import { DataGovBrGroupExplorer } from '@/components/organisms/DataGovBrGroupExplorer';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
@@ -41,6 +42,8 @@ function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
   switch (slug) {
     case 'data/ibge':
       return <DataIbgeExplorer />;
+    case 'data/calendar':
+      return <DataCalendarExplorer />;
     case 'data/bancos':
       return <DataBancosLookup />;
     case 'data/fiscal':

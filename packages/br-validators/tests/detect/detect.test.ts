@@ -13,6 +13,7 @@ import {
   looksLikeNfeChave,
   looksLikePix,
   looksLikePlaca,
+  looksLikeProcessoJudicial,
   looksLikeTelefone,
   looksLikeTituloEleitor,
   stripAlnumUpper,
@@ -31,6 +32,7 @@ import cnhVectors from '../vectors/cnh.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 import brcodeVectors from '../vectors/brcode.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
@@ -119,6 +121,15 @@ describe('detect()', () => {
     if (result.ok) {
       expect(result.type).toBe('nfe-chave');
       expect(result.meta?.parsed).toEqual(nfeVectors.primary.parsed);
+    }
+  });
+
+  it('detects processo judicial CNJ with segment meta', () => {
+    const result = detect(processoVectors.primary.masked);
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.type).toBe('processo-judicial');
+      expect(result.meta?.segments).toEqual(processoVectors.primary.segments);
     }
   });
 
@@ -232,8 +243,12 @@ describe('detect()', () => {
   it('helper structural predicates', () => {
     expect(looksLikeBoleto(boletoVectors.golden.santander.linhaMasked)).toBe(true);
     expect(looksLikeNfeChave(nfeVectors.primary.canonical)).toBe(true);
+    expect(looksLikeProcessoJudicial(processoVectors.primary.masked)).toBe(true);
+    expect(looksLikeProcessoJudicial(processoVectors.primary.canonical)).toBe(true);
+    expect(looksLikeProcessoJudicial('1234567890123456789')).toBe(false);
     expect(looksLikeBrCode(brcodeVectors.staticEvp.payload)).toBe(true);
     expect(looksLikeCnpjAlphanumeric(cnpjVectors.alphanumeric.canonical)).toBe(true);
+    expect(looksLikeCnpjAlphanumeric(cnpjVectors.numeric.canonical)).toBe(false);
     expect(looksLikeCnpjNumeric(cnpjVectors.numeric.canonical)).toBe(true);
     expect(looksLikeElevenDigits(cpfVectors.primary.canonical)).toBe(true);
     expect(looksLikeTituloEleitor(tituloVectors.primary.canonical)).toBe(true);
@@ -314,6 +329,11 @@ describe('detect()', () => {
 
   it('continues when titulo fails validation', () => {
     const result = detect('123456789012');
+    expect(result.ok).toBe(false);
+  });
+
+  it('continues when processo judicial shape fails validation', () => {
+    const result = detect(processoVectors.invalidCheckDigit.masked);
     expect(result.ok).toBe(false);
   });
 });

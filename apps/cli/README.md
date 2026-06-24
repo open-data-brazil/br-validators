@@ -106,6 +106,26 @@ br-validators bancos list --limit 20 --json
 br-validators natureza-juridica lookup 2062 --json
 br-validators nbs lookup 1.1502.50.00 --verbose
 br-validators cest lookup 0302100 --json
+br-validators cnae lookup 6201501 --json
+br-validators cnae search "web design" --limit 5
+br-validators cfop lookup 1102 --json
+br-validators cfop search compra --limit 5
+br-validators ncm lookup 12011000 --json
+br-validators ncm search soja --limit 5
+br-validators cbo lookup 212405 --json
+br-validators cbo search analista --limit 5
+```
+
+### Geography & calendar (27d)
+
+```bash
+br-validators ibge lookup 3550308 --json
+br-validators ibge list estados --limit 5
+br-validators ibge list municipios --uf SP --limit 10 --json
+br-validators tse-municipios lookup 71072 --verbose
+br-validators feriados list --year 2026 --json
+br-validators cep faixa 01310 --json
+br-validators ddd lookup 11 --verbose
 ```
 
 ### Trade (26d)
@@ -140,9 +160,7 @@ br-validators aeroportos lookup SBGR --json
 | `--quiet` / `-q` | Exit code only (CI) |
 | `--file` / `-f` | Read value from file |
 | `--source` | Print official source URL (per-type) |
-| `--uf` | Required for IE / detect / sanitize IE |
-| `--verbose` | Include dataset capture date (`bancos`, reference `lookup` commands) |
-| `--limit` | Max rows for `bancos list` |
+| `--uf` | Required for IE / detect / sanitize IE; optional filter for `ibge list municipios` |
 
 ### CI
 

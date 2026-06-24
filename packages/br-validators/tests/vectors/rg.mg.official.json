@@ -1,0 +1,13 @@
+{
+  "source": "Ghiorzi — Matrícula de Servidor MaSP-MG (same DV rule as IFP-RJ)",
+  "url": "http://ghiorzi.org/DVnew.htm",
+  "valid": {
+    "raw": "27998111",
+    "masked": "2.799.811-1",
+    "prefixed": "M27998111"
+  },
+  "invalid": {
+    "raw": "27998112",
+    "code": "INVALID_CHECK_DIGIT"
+  }
+}

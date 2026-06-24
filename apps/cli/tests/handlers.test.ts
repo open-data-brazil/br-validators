@@ -3,9 +3,9 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { EXIT } from '../src/constants.js';
-import { handleCepCli, handleCnpjCli, handleCpfCli, handleTelefoneCli, handleCnhCli, handleRenavamCli, handleTituloEleitorCli, handleNfeChaveCli, handleBrCodeCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, handleDetectCli, handleSanitizeCli, handleGenerateCli, handleBancosLookupCli, handleBancosListCli, readInputFile, writeCliIo } from '../src/handlers.js';
+import { handleCepCli, handleCnpjCli, handleCpfCli, handleTelefoneCli, handleCnhCli, handleRenavamCli, handleTituloEleitorCli, handleProcessoJudicialCli, handleRgCli, handleNfeChaveCli, handleBrCodeCli, handleListCli, handlePisPasepCli, handlePixCli, handleBoletoCli, handleCartaoCli, handleCartaoCreditoCli, handleIeCli, handlePlacaCli, handleDetectCli, handleSanitizeCli, handleGenerateCli, handleBancosLookupCli, handleBancosListCli, readInputFile, writeCliIo } from '../src/handlers.js';
 import { createProgram, run } from '../src/program.js';
-import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, CPF_GOLDEN_PRIMARY_MASKED, CNH_GOLDEN_PRIMARY, RENAVAM_GOLDEN_PRIMARY, TITULO_ELEITOR_GOLDEN_PRIMARY, NFE_CHAVE_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN, TELEFONE_GOLDEN_CELULAR, BRCODE_GOLDEN_STATIC_EVP } from '@br-validators/core';
+import { CEP_GOLDEN_PRIMARY, CNPJ_GOLDEN_ALPHANUMERIC, CPF_GOLDEN_PRIMARY, CPF_GOLDEN_PRIMARY_MASKED, CNH_GOLDEN_PRIMARY, RENAVAM_GOLDEN_PRIMARY, TITULO_ELEITOR_GOLDEN_PRIMARY, PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, NFE_CHAVE_GOLDEN_PRIMARY, PIX_GOLDEN_EMAIL, PIS_PASEP_GOLDEN_PRIMARY, PLACA_GOLDEN_MERCOSUL, BOLETO_GOLDEN_LINHA_STRIPPED, CARTAO_GOLDEN_VISA, IE_SP_GOLDEN, RG_SP_GOLDEN, TELEFONE_GOLDEN_CELULAR, BRCODE_GOLDEN_STATIC_EVP } from '@br-validators/core';
 
 describe('handlers', () => {
   it('handleListCli lists types', () => {
@@ -18,6 +18,8 @@ describe('handlers', () => {
     expect(io.stdout).toContain('cnh');
     expect(io.stdout).toContain('renavam');
     expect(io.stdout).toContain('titulo-eleitor');
+    expect(io.stdout).toContain('processo-judicial');
+    expect(io.stdout).toContain('rg');
     expect(io.stdout).toContain('nfe-chave');
     expect(io.stdout).toContain('brcode');
     expect(io.stdout).toContain('placa');
@@ -253,6 +255,56 @@ describe('handlers', () => {
     expect(handleTituloEleitorCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
   });
 
+  it('handleProcessoJudicialCli validates value', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(
+      handleProcessoJudicialCli('validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, { quiet: true }, io),
+    ).toBe(EXIT.OK);
+  });
+
+  it('handleProcessoJudicialCli parses value', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(
+      handleProcessoJudicialCli('parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, { quiet: true }, io),
+    ).toBe(EXIT.OK);
+  });
+
+  it('handleProcessoJudicialCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'processo-judicial.txt');
+    writeFileSync(file, PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleProcessoJudicialCli('validate', undefined, { file, quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleProcessoJudicialCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleProcessoJudicialCli('validate', undefined, { file: '/no/such/file.txt' }, io)).toBe(EXIT.USAGE);
+  });
+
+  it('handleRgCli validates value with uf', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleRgCli('validate', RG_SP_GOLDEN, { uf: 'SP', quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleRgCli returns usage when uf missing', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleRgCli('validate', RG_SP_GOLDEN, {}, io)).toBe(EXIT.USAGE);
+  });
+
+  it('handleRgCli reads value from file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-'));
+    const file = join(dir, 'rg.txt');
+    writeFileSync(file, RG_SP_GOLDEN, 'utf8');
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleRgCli('validate', undefined, { file, uf: 'SP', quiet: true }, io)).toBe(EXIT.OK);
+  });
+
+  it('handleRgCli returns usage when file unreadable', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(handleRgCli('validate', undefined, { file: '/no/such/file.txt', uf: 'SP' }, io)).toBe(EXIT.USAGE);
+  });
+
   it('handleNfeChaveCli validates value', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(handleNfeChaveCli('validate', NFE_CHAVE_GOLDEN_PRIMARY, { quiet: true }, io)).toBe(EXIT.OK);
@@ -363,7 +415,7 @@ describe('handlers', () => {
 describe('program', () => {
   it('createProgram exposes list and cnpj commands', () => {
     const program = createProgram();
-    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'telefone', 'cnh', 'renavam', 'titulo-eleitor', 'nfe-chave', 'brcode', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'cartao-credito']));
+    expect(program.commands.map((c) => c.name())).toEqual(expect.arrayContaining(['list', 'cnpj', 'cpf', 'cep', 'telefone', 'cnh', 'renavam', 'titulo-eleitor', 'processo-judicial', 'rg', 'nfe-chave', 'brcode', 'placa', 'pis-pasep', 'pix', 'boleto', 'cartao', 'cartao-credito']));
   });
 
   it('run parses list without throwing', () => {
@@ -440,6 +492,36 @@ describe('program', () => {
   it('run parses titulo-eleitor format and strip', () => {
     expect(() => { run(['node', 'br-validators', 'titulo-eleitor', 'format', TITULO_ELEITOR_GOLDEN_PRIMARY]); }).not.toThrow();
     expect(() => { run(['node', 'br-validators', 'titulo-eleitor', 'strip', TITULO_ELEITOR_GOLDEN_PRIMARY]); }).not.toThrow();
+  });
+
+  it('run parses processo-judicial validate and parse', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'processo-judicial', 'parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--json']);
+    }).not.toThrow();
+  });
+
+  it('run parses processo-judicial format and strip', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'processo-judicial', 'format', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED]);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'processo-judicial', 'strip', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED]);
+    }).not.toThrow();
+  });
+
+  it('run parses rg validate format and strip', () => {
+    expect(() => {
+      run(['node', 'br-validators', 'rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'rg', 'format', RG_SP_GOLDEN, '--uf', 'SP']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'rg', 'strip', RG_SP_GOLDEN, '--uf', 'SP']);
+    }).not.toThrow();
   });
 
   it('run parses nfe-chave validate and parse', () => {
@@ -618,6 +700,30 @@ describe('program', () => {
     }).not.toThrow();
     expect(() => {
       run(['node', 'br-validators', 'portos', 'lookup', 'BRSSZ']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'lookup', '3550308', '--json']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'feriados', 'list', '--year', '2026']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cnae', 'search', 'software', '--limit', '2']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'tse-municipios', 'lookup', '71072', '--json']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ddd', 'lookup', '11']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cep', 'faixa', '01310']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'list', 'invalid']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'list', 'estados', '--limit', '1']);
     }).not.toThrow();
   });
 });

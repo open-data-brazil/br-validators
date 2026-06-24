@@ -2,6 +2,7 @@ import { BOLETO_CODIGO_BARRAS_LENGTH, BOLETO_LINHA_LENGTH } from '../core/boleto
 import { CARTAO_PAN_MAX_LENGTH, CARTAO_PAN_MIN_LENGTH } from '../core/cartao-credito/constants.js';
 import { CNPJ_LENGTH } from '../core/cnpj/constants.js';
 import { NFE_CHAVE_LENGTH } from '../core/nfe-chave/constants.js';
+import { PROCESSO_JUDICIAL_LENGTH, PROCESSO_JUDICIAL_MASKED_PATTERN } from '../core/processo-judicial/constants.js';
 import { PLACA_LENGTH } from '../core/placa/constants.js';
 import { detectBoletoInputKind } from '../core/boleto/detect.js';
 import { isSpRuralIeInput } from '../core/inscricao-estadual/sp-rural.js';
@@ -105,6 +106,15 @@ export function looksLikePix(input: string): boolean {
 export function looksLikeTelefone(input: string): boolean {
   const digits = stripDigits(input);
   return digits.length >= 10 && digits.length <= 13;
+}
+
+export function looksLikeProcessoJudicial(input: string): boolean {
+  const trimmed = input.trim();
+  if (PROCESSO_JUDICIAL_MASKED_PATTERN.test(trimmed)) {
+    return true;
+  }
+  const digits = stripDigits(trimmed);
+  return digits.length === PROCESSO_JUDICIAL_LENGTH && /^\d+$/.test(digits);
 }
 
 export {

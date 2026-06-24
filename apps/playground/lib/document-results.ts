@@ -14,9 +14,11 @@ import {
   formatCpf,
   formatInscricaoEstadual,
   formatNfeChave,
+  formatProcessoJudicial,
   formatPisPasep,
   formatPlaca,
   formatRenavam,
+  formatRg,
   formatTelefone,
   formatTituloEleitor,
   formatPixKey,
@@ -30,9 +32,11 @@ import {
   stripCpf,
   stripInscricaoEstadual,
   stripNfeChave,
+  stripProcessoJudicial,
   stripPisPasep,
   stripPlaca,
   stripRenavam,
+  stripRg,
   stripTelefone,
   stripTituloEleitor,
   validateBoleto,
@@ -45,14 +49,18 @@ import {
   validateInscricaoEstadual,
   validateIeProdutorRural,
   validateNfeChave,
+  validateProcessoJudicial,
   validatePisPasep,
   validatePlaca,
   validatePixKey,
   validateRenavam,
+  validateRg,
   validateTelefone,
   validateTituloEleitor,
   type SanitizeResult,
+  type RgUfCode,
   type UfCode,
+  RG_SUPPORTED_UFS,
 } from '@br-validators/core';
 import type { DocumentSlug } from './nav';
 
@@ -65,6 +73,13 @@ export type DocumentResults = {
   sanitizeResult: SanitizeResult | null;
   extraRows: { label: string; value: string; mono?: boolean }[];
 };
+
+function resolveRgUf(uf: UfCode): RgUfCode {
+  if ((RG_SUPPORTED_UFS as readonly string[]).includes(uf)) {
+    return uf as RgUfCode;
+  }
+  return 'SP';
+}
 
 function runSanitize(slug: DocumentSlug, input: string, uf: UfCode): SanitizeResult | null {
   switch (slug) {
@@ -86,6 +101,10 @@ function runSanitize(slug: DocumentSlug, input: string, uf: UfCode): SanitizeRes
       return sanitize(input, 'renavam');
     case 'titulo-eleitor':
       return sanitize(input, 'titulo-eleitor');
+    case 'processo-judicial':
+      return sanitize(input, 'processo-judicial');
+    case 'rg':
+      return sanitize(input, 'rg', { uf: resolveRgUf(uf) });
     case 'nfe-chave':
       return sanitize(input, 'nfe-chave');
     case 'boleto':
@@ -202,6 +221,34 @@ export function computeDocumentResults(
       formattedValue = formatted.ok ? formatted.formatted : formatted.message;
   if (validation.ok && 'ufCode' in validation) {
         extraRows.push({ label: 'UF code', value: String(validation.ufCode) });
+      }
+      break;
+    }
+    case 'processo-judicial': {
+      stripped = stripProcessoJudicial(input);
+      const validation = validateProcessoJudicial(input);
+      const formatted = formatProcessoJudicial(input);
+      validationDetail = validation.ok ? `yes (${validation.format})` : `no — ${validation.code}`;
+      formattedValue = formatted.ok ? formatted.formatted : formatted.message;
+      if (validation.ok) {
+        for (const [key, value] of Object.entries(validation.segments)) {
+          extraRows.push({ label: key, value, mono: true });
+        }
+      }
+      break;
+    }
+    case 'rg': {
+      const rgUf = resolveRgUf(uf);
+      stripped = stripRg(input, { uf: rgUf });
+      const validation = validateRg(input, { uf: rgUf });
+      const formatted = formatRg(input, { uf: rgUf });
+      validationDetail = validation.ok
+        ? `yes (${validation.uf}, checkDigit: ${validation.checkDigitValidated ? 'yes' : 'no'})`
+        : `no — ${validation.code}`;
+      formattedValue = formatted.ok ? formatted.formatted : formatted.message;
+      if (validation.ok) {
+        extraRows.push({ label: 'UF', value: validation.uf });
+        extraRows.push({ label: 'Value', value: validation.value, mono: true });
       }
       break;
     }
@@ -341,6 +388,8 @@ export function buildCliCommand(
     cnh: 'cnh',
     renavam: 'renavam',
     'titulo-eleitor': 'titulo-eleitor',
+    'processo-judicial': 'processo-judicial',
+    rg: 'rg',
     'nfe-chave': 'nfe-chave',
     ie: 'ie',
     pix: 'pix',
@@ -355,17 +404,28 @@ export function buildCliCommand(
 
   switch (tab) {
     case 'sanitize':
-      return slug === 'ie'
-        ? `br-validators sanitize ${quoted} --type inscricao-estadual --uf ${uf}`
-        : `br-validators sanitize ${quoted} --type ${cliSlug}`;
+      if (slug === 'ie') {
+        return `br-validators sanitize ${quoted} --type inscricao-estadual --uf ${uf}`;
+      }
+      if (slug === 'rg') {
+        return `br-validators sanitize ${quoted} --type rg --uf ${uf}`;
+      }
+      return `br-validators sanitize ${quoted} --type ${cliSlug}`;
     case 'format':
-      return slug === 'pix' || slug === 'boleto' || slug === 'brcode'
-        ? `br-validators ${cliSlug} format ${quoted}`
-        : `br-validators ${cliSlug} format ${value}`;
+      if (slug === 'pix' || slug === 'boleto' || slug === 'brcode') {
+        return `br-validators ${cliSlug} format ${quoted}`;
+      }
+      if (slug === 'rg') {
+        return `br-validators rg format ${value} --uf ${uf}`;
+      }
+      return `br-validators ${cliSlug} format ${value}`;
     case 'strip':
-      return `br-validators ${cliSlug} strip ${quoted}`;
+      return slug === 'rg'
+        ? `br-validators rg strip ${quoted} --uf ${uf}`
+        : `br-validators ${cliSlug} strip ${quoted}`;
     default:
       if (slug === 'ie') return `br-validators ie validate ${value} --uf ${uf}`;
+      if (slug === 'rg') return `br-validators rg validate ${value} --uf ${uf} --json`;
       if (slug === 'brcode') return `br-validators brcode parse ${quoted} --json`;
       if (slug === 'telefone') return `br-validators telefone validate ${quoted} --json`;
       if (slug === 'pix' || slug === 'boleto') return `br-validators ${cliSlug} validate ${quoted} --json`;

@@ -20,6 +20,8 @@
     "cep",
     "cnh",
     "renavam",
+    "processo-judicial",
+    "rg",
     "nfe",
     "titulo-eleitor",
     "placa",
@@ -101,6 +103,14 @@
     "./nfe-chave": {
       "types": "./dist/nfe-chave.d.ts",
       "import": "./dist/nfe-chave.js"
+    },
+    "./processo-judicial": {
+      "types": "./dist/processo-judicial.d.ts",
+      "import": "./dist/processo-judicial.js"
+    },
+    "./rg": {
+      "types": "./dist/rg.d.ts",
+      "import": "./dist/rg.js"
     },
     "./brcode": {
       "types": "./dist/brcode.d.ts",

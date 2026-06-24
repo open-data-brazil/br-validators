@@ -17,6 +17,9 @@ import { validatePlaca } from '../core/placa/index.js';
 import { validatePixKey } from '../core/pix/index.js';
 import { validateRenavam } from '../core/renavam/index.js';
 import { validateTelefone } from '../core/telefone/index.js';
+import { validateProcessoJudicial } from '../core/processo-judicial/index.js';
+import { validateRg } from '../core/rg/index.js';
+import type { RgUfCode } from '../types/validation-result.js';
 import { validateTituloEleitor } from '../core/titulo-eleitor/index.js';
 import { stripForType } from '../sanitize/fixes.js';
 import type { SanitizableDocumentType } from '../sanitize/index.js';
@@ -33,6 +36,8 @@ const SANITIZABLE_PLATFORM_TYPES = new Set<PlatformDocumentType>([
   'cnh',
   'renavam',
   'titulo-eleitor',
+  'processo-judicial',
+  'rg',
   'nfe-chave',
   'boleto',
   'cartao-credito',
@@ -105,6 +110,17 @@ function tryValidatedCanonical(
     }
     case 'titulo-eleitor': {
       const result = validateTituloEleitor(value);
+      return result.ok ? result.value : null;
+    }
+    case 'processo-judicial': {
+      const result = validateProcessoJudicial(value);
+      return result.ok ? result.value : null;
+    }
+    case 'rg': {
+      if (!uf) {
+        return null;
+      }
+      const result = validateRg(value, { uf: uf as RgUfCode });
       return result.ok ? result.value : null;
     }
     case 'nfe-chave': {

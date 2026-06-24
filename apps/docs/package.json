@@ -1,0 +1,23 @@
+{
+  "name": "@br-validators/docs",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "sync": "tsx scripts/sync-library-api.ts",
+    "predev": "pnpm sync",
+    "dev": "vitepress dev",
+    "prebuild": "pnpm sync",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.17"
+  }
+}

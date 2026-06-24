@@ -9,6 +9,11 @@ export default tseslint.config(
       '**/.next/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/.vitepress/cache/**',
+      '**/.vitepress/dist/**',
+      'apps/docs/api/**',
+      'apps/playground/playwright-report/**',
+      'apps/playground/test-results/**',
       'agent-harness/**',
       'agent-rules/**',
       'apps/playground/next-env.d.ts',
@@ -60,6 +65,12 @@ export default tseslint.config(
     files: ['apps/playground/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-misused-promises': 'off',
+    },
+  },
+  {
+    files: ['apps/playground/e2e/**/*.ts', 'apps/playground/playwright.config.ts'],
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'off',
     },
   },
   {

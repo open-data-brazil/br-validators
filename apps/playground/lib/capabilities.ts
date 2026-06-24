@@ -1,3 +1,4 @@
+import { RG_SUPPORTED_UFS, type UfCode } from '@br-validators/core';
 import type { DocumentSlug } from './nav';
 
 export type ActionTab = 'validate' | 'format' | 'strip' | 'sanitize';
@@ -12,6 +13,8 @@ export type DocumentCapabilities = {
   convert?: boolean;
   qrCode?: boolean;
   ufSelector?: boolean;
+  /** When set, UF dropdown lists only these codes (defaults to all 27 UFs). */
+  supportedUfs?: readonly UfCode[];
   multiline?: boolean;
   generateFormats?: readonly string[];
 };
@@ -49,6 +52,16 @@ export const CAPABILITIES: Record<DocumentSlug, DocumentCapabilities> = {
   cnh: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   renavam: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   'titulo-eleitor': { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },
+  'processo-judicial': { validate: true, format: true, strip: true, sanitize: true, generate: false, parse: true },
+  rg: {
+    validate: true,
+    format: true,
+    strip: true,
+    sanitize: true,
+    generate: false,
+    ufSelector: true,
+    supportedUfs: RG_SUPPORTED_UFS,
+  },
   'nfe-chave': { validate: true, format: true, strip: true, sanitize: true, generate: true, parse: true },
   ie: { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },
   pix: { validate: true, format: true, strip: false, sanitize: false, generate: true },

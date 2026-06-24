@@ -18,6 +18,7 @@ import { validatePisPasep } from '../core/pis-pasep/index.js';
 import { validatePlaca } from '../core/placa/index.js';
 import { validatePixKey } from '../core/pix/index.js';
 import { validateTelefone } from '../core/telefone/index.js';
+import { validateProcessoJudicial } from '../core/processo-judicial/index.js';
 import { validateTituloEleitor } from '../core/titulo-eleitor/index.js';
 import {
   isBoletoArrecadacao,
@@ -33,6 +34,7 @@ import {
   looksLikePix,
   looksLikePlaca,
   looksLikeTelefone,
+  looksLikeProcessoJudicial,
   looksLikeTituloEleitor,
 } from './helpers.js';
 import type { DocumentFormat, UfCode, ValidationErrorCode } from '../types/validation-result.js';
@@ -51,6 +53,7 @@ export type DetectableDocumentType =
   | 'renavam'
   | 'nfe-chave'
   | 'titulo-eleitor'
+  | 'processo-judicial'
   | 'inscricao-estadual'
   | 'inscricao-estadual-produtor-rural'
   | 'brcode'
@@ -204,6 +207,18 @@ const CANDIDATES: Candidate[] = [
           return result.ok ? success('pis-pasep', result.value, result.format) : null;
         },
       ]),
+  },
+  {
+    canTry: (raw) => looksLikeProcessoJudicial(raw),
+    detect: (raw) => {
+      const result = validateProcessoJudicial(raw);
+      if (!result.ok) {
+        return null;
+      }
+      return success('processo-judicial', result.value, result.format, {
+        segments: result.segments,
+      });
+    },
   },
   {
     canTry: (raw) => looksLikeTituloEleitor(raw),

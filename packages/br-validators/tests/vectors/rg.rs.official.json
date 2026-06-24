@@ -1,0 +1,11 @@
+{
+  "source": "IGP-RS — format-only, 10 digits",
+  "url": "https://www.estado.rs.gov.br/",
+  "valid": {
+    "raw": "1234567890"
+  },
+  "invalid": {
+    "raw": "123456789",
+    "code": "INVALID_LENGTH"
+  }
+}

@@ -27,7 +27,9 @@ import {
   type UfCode,
 } from '@br-validators/core';
 import { Label } from '@/components/atoms/Label';
+import { Input } from '@/components/atoms/Input';
 import { Select } from '@/components/atoms/Select';
+import Link from 'next/link';
 import { CopyableInput } from '@/components/molecules/CopyableInput';
 import { GenerateParamFields } from '@/components/molecules/GenerateParamFields';
 import { formatPlacaDisplay } from '@/lib/format-display';
@@ -39,6 +41,7 @@ import { useI18n } from '@/components/providers/I18nProvider';
 import {
   findPlatformGeneratable,
   PLATFORM_GENERATABLE,
+  platformGeneratableLabel,
 } from '@/lib/platform-generate-types';
 import styles from './organisms.module.css';
 
@@ -88,8 +91,13 @@ function buildGenerateOptions(
   masked: boolean,
   format: string | undefined,
   uf: UfCode,
+  seed: number | undefined,
 ): GenerateOptions {
-  const options: GenerateOptions = { masked, uf: entry?.ufSelector ? uf : undefined };
+  const options: GenerateOptions = {
+    masked,
+    uf: entry?.ufSelector ? uf : undefined,
+    seed,
+  };
 
   if (!format || !entry?.formats) {
     return options;
@@ -116,6 +124,7 @@ function buildCliCommand(
   entry: ReturnType<typeof findPlatformGeneratable>,
   uf: UfCode,
   format: string | undefined,
+  seed: number | undefined,
 ): string {
   const parts = ['br-validators', 'generate', type, '--json'];
   if (entry?.ufSelector) {
@@ -126,7 +135,22 @@ function buildCliCommand(
   } else if (format && entry?.formats && !entry.brandSelector) {
     parts.push('--format', format);
   }
+  if (seed !== undefined) {
+    parts.push('--seed', String(seed));
+  }
   return parts.join(' ');
+}
+
+function parseSeedInput(raw: string): number | undefined {
+  const trimmed = raw.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+  const parsed = Number(trimmed);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    return undefined;
+  }
+  return parsed;
 }
 
 export function PlatformGenerate() {
@@ -136,6 +160,8 @@ export function PlatformGenerate() {
   const [output, setOutput] = useState('');
   const [uf, setUf] = useState<UfCode>('SP');
   const [format, setFormat] = useState<string | undefined>();
+  const [seedInput, setSeedInput] = useState('');
+  const seed = parseSeedInput(seedInput);
 
   const selected = findPlatformGeneratable(type);
   const formats = selected?.formats;
@@ -148,7 +174,7 @@ export function PlatformGenerate() {
 
   const runGenerate = (masked: boolean, nextUf = uf, nextFormat = format) => {
     const entry = findPlatformGeneratable(type);
-    let value = generate(type, buildGenerateOptions(entry, masked, nextFormat, nextUf));
+    let value = generate(type, buildGenerateOptions(entry, masked, nextFormat, nextUf, seed));
     value = formatOutput(type, value, masked);
     setOutput(value);
   };
@@ -174,7 +200,7 @@ export function PlatformGenerate() {
     }
   };
 
-  const cliCommand = buildCliCommand(type, selected, uf, format);
+  const cliCommand = buildCliCommand(type, selected, uf, format, seed);
 
   const brandMatches =
     output && selected?.brandSelector && format
@@ -199,10 +225,33 @@ export function PlatformGenerate() {
         >
           {PLATFORM_GENERATABLE.map((item) => (
             <option key={item.value} value={item.value}>
-              {item.label}
+              {platformGeneratableLabel(messages, item)}
             </option>
           ))}
         </Select>
+      </div>
+
+      {type === 'cpf' ? (
+        <p className={styles.description}>
+          {copy.cpfAlphaPending}{' '}
+          <Link href="/official-sources">{copy.cpfAlphaLink}</Link>.
+        </p>
+      ) : null}
+
+      <div>
+        <Label htmlFor="generate-seed">{copy.seedLabel}</Label>
+        <Input
+          id="generate-seed"
+          type="number"
+          min={0}
+          step={1}
+          value={seedInput}
+          placeholder="42"
+          onChange={(event) => {
+            setSeedInput(event.target.value);
+          }}
+        />
+        <p className={styles.description}>{copy.seedHint}</p>
       </div>
 
       <GenerateParamFields

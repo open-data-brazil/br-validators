@@ -23,4 +23,9 @@ dist/
 coverage/
 .turbo/
 .next/
+.vitepress/cache/
+.vitepress/dist/
+apps/docs/api/
+playwright-report/
+test-results/
 *.tsbuildinfo

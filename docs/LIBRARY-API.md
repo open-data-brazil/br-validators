@@ -216,6 +216,45 @@ getCepFaixaInfo('01310');
 
 ---
 
+## Core API — Processo judicial CNJ
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateProcessoJudicial` | `(input: string) => ProcessoJudicialValidationResult` | Modulo 97-10 + justice segment 1–9 |
+| `parseProcessoJudicial` | `(input: string) => ProcessoJudicialSegments \| undefined` | Segment breakdown; `undefined` when invalid |
+| `formatProcessoJudicial` | `(input: string) => FormatResult` | Official mask `NNNNNNN-DD.AAAA.J.TR.OOOO` |
+| `stripProcessoJudicial` | `(input: string) => string` | Digits only (20) |
+| `isValidProcessoJudicial` | `(input: string) => boolean` | Convenience wrapper |
+| `parseProcessoJudicialParts` | `(stripped: string) => ProcessoJudicialSegments \| null` | Low-level field extraction |
+
+**Success result:** `{ ok: true, value: ProcessoJudicial, format: 'numeric', segments: ProcessoJudicialSegments }`
+
+**Official sources:** [OFFICIAL-SOURCES.md § Processo judicial](OFFICIAL-SOURCES.md#processo-judicial--reference-index) — [Resolução CNJ 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · [Anexo VIII PDF](https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf) · `PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL` · `tests/vectors/processo-judicial.official.json` · Golden: `0000100-34.2008.9.21.0000`
+
+---
+
+## Core API — RG (Registro Geral)
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateRg` | `(input: string, options: { uf: RgUfCode }) => RgValidationResult` | Per-UF validation — **UF required** |
+| `formatRg` | `(input: string, options: { uf: RgUfCode }) => FormatResult` | Display mask when UF supports it |
+| `stripRg` | `(input: string, options: { uf: RgUfCode }) => string` | Canonical value per UF rules |
+| `isValidRg` | `(input: string, options: { uf: RgUfCode }) => boolean` | Convenience wrapper |
+| `getRgUfSupport` | `() => readonly RgUfCode[]` | Implemented states (phase 1: SP, RJ, MG, PR, RS, SC) |
+| `getRgUfRules` | `(uf: RgUfCode) => RgUfRules` | Per-UF format metadata |
+| `getRgOfficialSourceUrl` | `(uf: RgUfCode) => string` | Official or reference URL per UF |
+
+**Success result:** `{ ok: true, value: Rg, uf: RgUfCode, format: 'rg', checkDigitValidated: boolean }`
+
+**Unsupported UF:** `{ ok: false, code: 'UF_NOT_IMPLEMENTED', message: string }` — does not throw.
+
+**Official sources:** [OFFICIAL-SOURCES.md § RG](OFFICIAL-SOURCES.md#rg--reference-index) — [Ghiorzi DV tables](http://ghiorzi.org/DVnew.htm) (SP/RJ/MG) · `RG_OFFICIAL_SOURCE_URLS` · `tests/vectors/rg.{sp,rj,mg,pr,rs,sc}.official.json` · Golden SP: `120300011`
+
+**Not in `detect()`:** RG is too ambiguous without UF — callers must pass `{ uf }`.
+
+---
+
 ## Core API — NF-e chave de acesso
 
 | Function | Signature | Description |
@@ -699,7 +738,38 @@ Per-type formatters: `formatCpf`, `formatCnpj`, `formatCep`, `formatPlaca`, `for
 
 Implementation: `strip → validate → apply mask`. See [use-cases/UC-003-format-document.md](use-cases/UC-003-format-document.md).
 
----
+### Consumer warning — display formatting vs backend normalization
+
+> **Implementation guideline for app/backend integrators — not a library defect.**
+
+`format*`, `mask()`, and `strip*` in `@br-validators/core` follow **validate-then-format** (BR-GLOBAL-002). They **do not** left-pad partial input to full document length. Incomplete CPF input (e.g. `"0"` or `"4673024133"`) returns `{ ok: false, … }` from `formatCpf` / `mask(…, 'cpf')` — never `000.000.000-00`.
+
+A common **consumer-side** bug is mixing display formatting with backend serialization in the same helper, then calling it from `onChange`:
+
+```typescript
+// ❌ Anti-pattern — do NOT use in live input handlers
+function normalizeCpf(value: string): string {
+  const digits = value.replace(/\D/g, '');
+  if (digits.length === 0) return '';
+  return digits.length < 11 ? digits.padStart(11, '0') : digits.slice(0, 11);
+}
+
+function formatCpf(value: string): string {
+  return maskDigitsOnly(normalizeCpf(value)); // padStart makes "0" → "00000000000" → "000.000.000-00"
+}
+```
+
+`padStart(11, '0')` is appropriate **at submit/API boundaries** when the user already entered 9–10 digits without leading zeros (e.g. `4673024133` → `04673024133`). It is **not** appropriate while the user is still typing.
+
+| Concern | When | Use |
+|---------|------|-----|
+| Live masked input | `onChange` / controlled field | Progressive UI mask (digits + punctuation only) **or** debounced `mask()` on sufficiently complete input — **no padding** |
+| Canonical value for API/DB | `onSubmit` / server handler | `stripCpf(input)` or `sanitize(input, 'cpf')` after the field is complete; add explicit `padStart` only if **your** backend contract requires fixed width **and** you know the digit count is final |
+| Validation feedback | blur / submit | `validateCpf(stripCpf(input))` |
+
+**Rule:** mask/format functions must not pad partial input. Padding belongs in a separate `normalize()` / `serialize()` step at the backend boundary, not in display formatters wired to `onChange`.
+
+The library’s `mask()` path strips non-digits and applies official punctuation only after validation succeeds — it never substitutes missing digits with zeros during typing.
 
 ---
 
@@ -789,7 +859,7 @@ function maskRuntime(type: string, raw: string, options?: MaskOptions): FormatRe
 function isMaskableDocumentType(type: string): type is MaskableDocumentType;
 ```
 
-`inscricao-estadual` requires `options.uf`. Use type `'telefone'` (not `'phone'`). Invalid input returns `{ ok: false, code, message }` — **no partial mask** (BR-GLOBAL-002).
+Invalid input returns `{ ok: false, code, message }` — **no partial mask** (BR-GLOBAL-002). See [Consumer warning — display formatting vs backend normalization](#consumer-warning--display-formatting-vs-backend-normalization) — do not pad partial input in app-level `onChange` helpers.
 
 | Type | Official source | Mask example |
 |------|-----------------|--------------|
