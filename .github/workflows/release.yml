@@ -92,13 +92,24 @@ jobs:
       - name: Verify npm registry
         run: |
           VERSION="${{ steps.version.outputs.version }}"
+          wait_for_version() {
+            local pkg="$1"
+            local attempt=1
+            while [ "$attempt" -le 12 ]; do
+              PUBLISHED="$(npm view "${pkg}@${VERSION}" version 2>/dev/null || true)"
+              if [ "$PUBLISHED" = "$VERSION" ]; then
+                echo "OK: ${pkg}@${VERSION}"
+                return 0
+              fi
+              echo "WAIT: ${pkg}@${VERSION} not visible yet (attempt ${attempt}/12)"
+              sleep 5
+              attempt=$((attempt + 1))
+            done
+            echo "Expected ${pkg}@${VERSION}, got: ${PUBLISHED:-<missing>}"
+            return 1
+          }
           for PKG in core cli zod react-hook-form express vue; do
-            PUBLISHED="$(npm view "@br-validators/${PKG}@${VERSION}" version)"
-            if [ "$PUBLISHED" != "$VERSION" ]; then
-              echo "Expected @br-validators/${PKG}@${VERSION}, got: ${PUBLISHED:-<missing>}"
-              exit 1
-            fi
-            echo "OK: @br-validators/${PKG}@${VERSION}"
+            wait_for_version "@br-validators/${PKG}"
           done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
