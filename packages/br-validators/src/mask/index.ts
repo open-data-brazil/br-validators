@@ -16,10 +16,11 @@ import { formatPisPasep } from '../format/pis-pasep.js';
 import { formatPixKey } from '../format/pix.js';
 import { formatPlaca } from '../format/placa.js';
 import { formatProcessoJudicial } from '../format/processo-judicial.js';
+import { formatRg } from '../format/rg.js';
 import { formatRenavam } from '../format/renavam.js';
 import { formatTelefone } from '../format/telefone.js';
 import { formatTituloEleitor } from '../format/titulo-eleitor.js';
-import type { FormatResult, UfCode } from '../types/validation-result.js';
+import type { FormatResult, RgUfCode, UfCode } from '../types/validation-result.js';
 
 export type MaskableDocumentType =
   | 'cpf'
@@ -32,6 +33,7 @@ export type MaskableDocumentType =
   | 'renavam'
   | 'titulo-eleitor'
   | 'processo-judicial'
+  | 'rg'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -50,6 +52,7 @@ export const MASKABLE_DOCUMENT_TYPES = [
   'renavam',
   'titulo-eleitor',
   'processo-judicial',
+  'rg',
   'nfe-chave',
   'boleto',
   'cartao-credito',
@@ -76,6 +79,14 @@ export function mask(
       ok: false,
       code: 'UNSUPPORTED_FORMAT',
       message: 'UF is required for inscricao-estadual masking',
+    };
+  }
+
+  if (type === 'rg' && !options.uf) {
+    return {
+      ok: false,
+      code: 'UNSUPPORTED_FORMAT',
+      message: 'UF is required for RG masking',
     };
   }
 
@@ -116,6 +127,8 @@ function dispatchMask(raw: string, type: MaskableDocumentType, options: MaskOpti
       return formatTituloEleitor(raw);
     case 'processo-judicial':
       return formatProcessoJudicial(raw);
+    case 'rg':
+      return formatRg(raw, { uf: options.uf as RgUfCode });
     case 'nfe-chave':
       return formatNfeChave(raw);
     case 'boleto':

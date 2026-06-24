@@ -23,6 +23,7 @@ export type SanitizableDocumentType =
   | 'renavam'
   | 'titulo-eleitor'
   | 'processo-judicial'
+  | 'rg'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -113,6 +114,8 @@ export function applyFixes(raw: string, type: SanitizableDocumentType): FixResul
     case 'processo-judicial':
     case 'inscricao-estadual':
       return digitsFix(trimmed, fixes);
+    case 'rg':
+      return upperAndStripSeparators(trimmed, fixes);
     case 'cnpj':
       return upperAndStripSeparators(trimmed, fixes);
     case 'placa':
@@ -151,6 +154,8 @@ export function stripForType(value: string, type: SanitizableDocumentType): stri
       return stripTituloEleitor(value);
     case 'processo-judicial':
       return stripProcessoJudicial(value);
+    case 'rg':
+      return value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     case 'nfe-chave':
       return stripNfeChave(value);
     case 'boleto':

@@ -7,6 +7,7 @@ export * from './renavam.js';
 export * from './titulo-eleitor.js';
 export * from './nfe-chave.js';
 export * from './processo-judicial.js';
+export * from './rg.js';
 export * from './inscricao-estadual-produtor-rural.js';
 export * from './brcode.js';
 export * from './placa.js';

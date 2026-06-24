@@ -12,6 +12,7 @@ import {
   PLACA_GOLDEN_MERCOSUL,
   TELEFONE_GOLDEN_CELULAR,
   PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
+  RG_SP_GOLDEN,
   TITULO_ELEITOR_GOLDEN_PRIMARY,
 } from '@br-validators/core';
 import { dispatchArgv, parseArgv } from '../src/argv-dispatch.js';
@@ -115,6 +116,7 @@ describe('dispatchArgv', () => {
       [['titulo-eleitor', 'validate', TITULO_ELEITOR_GOLDEN_PRIMARY, '--quiet'], EXIT.OK],
       [['processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
       [['processo-judicial', 'parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
+      [['rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
       [['pis-pasep', 'validate', '10027230888', '--quiet'], EXIT.OK],
       [['cartao-credito', 'validate', CARTAO_GOLDEN_VISA, '--quiet'], EXIT.OK],
       [['ie', 'validate', IE_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
@@ -153,6 +155,21 @@ describe('dispatchArgv', () => {
     const invalid = io();
     expect(dispatchArgv(['processo-judicial', 'bad'], invalid)).toBe(EXIT.USAGE);
     expect(invalid.stderr[0]).toContain('validate | parse | format | strip');
+  });
+
+  it('dispatches rg actions', () => {
+    const validate = io();
+    expect(dispatchArgv(['rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet'], validate)).toBe(EXIT.OK);
+
+    const missingUf = io();
+    expect(dispatchArgv(['rg', 'validate', RG_SP_GOLDEN, '--quiet'], missingUf)).toBe(EXIT.USAGE);
+
+    const missingValue = io();
+    expect(dispatchArgv(['rg', 'validate', '--uf', 'SP'], missingValue)).toBe(EXIT.USAGE);
+
+    const invalid = io();
+    expect(dispatchArgv(['rg', 'bad'], invalid)).toBe(EXIT.USAGE);
+    expect(invalid.stderr[0]).toContain('validate | format | strip');
   });
 
   it('dispatches brcode actions', () => {

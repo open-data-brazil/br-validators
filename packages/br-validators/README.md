@@ -240,6 +240,7 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
 | Título de Eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo-eleitor …` | `/titulo-eleitor` |
 | Processo judicial CNJ | `@br-validators/core/processo-judicial` | `br-validators processo-judicial …` | `/processo-judicial` |
+| RG (per-UF identity card) | `@br-validators/core/rg` | `br-validators rg … --uf SP` | `/rg` |
 | Placa (Mercosul + legada) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |
 | PIX key | `@br-validators/core/pix` | `br-validators pix …` | `/pix` |

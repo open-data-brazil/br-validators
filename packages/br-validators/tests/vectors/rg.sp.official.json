@@ -1,0 +1,18 @@
+{
+  "source": "Ghiorzi — Carteira de Identidade SSP-SP",
+  "url": "http://ghiorzi.org/DVnew.htm",
+  "valid": {
+    "raw": "120300011",
+    "masked": "12.030.001-1",
+    "note": "Ghiorzi walkthrough base 12030001 → DV 1"
+  },
+  "validX": {
+    "raw": "00000005X",
+    "masked": "00.000.005-X",
+    "note": "DV remainder 10 → X"
+  },
+  "invalid": {
+    "raw": "120300012",
+    "code": "INVALID_CHECK_DIGIT"
+  }
+}

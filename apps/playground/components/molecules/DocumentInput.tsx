@@ -25,6 +25,7 @@ type Props = {
   uf?: UfCode;
   onUfChange?: (uf: UfCode) => void;
   ufLabel?: string;
+  supportedUfs?: readonly UfCode[];
   formats?: readonly string[];
   format?: string;
   onFormatChange?: (format: string) => void;
@@ -46,6 +47,7 @@ export function DocumentInput({
   ufLabel,
   uf,
   onUfChange,
+  supportedUfs,
   formats,
   format,
   onFormatChange,
@@ -69,6 +71,7 @@ export function DocumentInput({
           ufLabel={ufLabel}
           uf={uf}
           onUfChange={onUfChange}
+          supportedUfs={supportedUfs}
           formats={canGenerate ? formats : undefined}
           format={format}
           onFormatChange={canGenerate ? onFormatChange : undefined}

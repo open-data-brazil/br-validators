@@ -233,6 +233,28 @@ getCepFaixaInfo('01310');
 
 ---
 
+## Core API — RG (Registro Geral)
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateRg` | `(input: string, options: { uf: RgUfCode }) => RgValidationResult` | Per-UF validation — **UF required** |
+| `formatRg` | `(input: string, options: { uf: RgUfCode }) => FormatResult` | Display mask when UF supports it |
+| `stripRg` | `(input: string, options: { uf: RgUfCode }) => string` | Canonical value per UF rules |
+| `isValidRg` | `(input: string, options: { uf: RgUfCode }) => boolean` | Convenience wrapper |
+| `getRgUfSupport` | `() => readonly RgUfCode[]` | Implemented states (phase 1: SP, RJ, MG, PR, RS, SC) |
+| `getRgUfRules` | `(uf: RgUfCode) => RgUfRules` | Per-UF format metadata |
+| `getRgOfficialSourceUrl` | `(uf: RgUfCode) => string` | Official or reference URL per UF |
+
+**Success result:** `{ ok: true, value: Rg, uf: RgUfCode, format: 'rg', checkDigitValidated: boolean }`
+
+**Unsupported UF:** `{ ok: false, code: 'UF_NOT_IMPLEMENTED', message: string }` — does not throw.
+
+**Official sources:** [OFFICIAL-SOURCES.md § RG](OFFICIAL-SOURCES.md#rg--reference-index) — [Ghiorzi DV tables](http://ghiorzi.org/DVnew.htm) (SP/RJ/MG) · `RG_OFFICIAL_SOURCE_URLS` · `tests/vectors/rg.{sp,rj,mg,pr,rs,sc}.official.json` · Golden SP: `120300011`
+
+**Not in `detect()`:** RG is too ambiguous without UF — callers must pass `{ uf }`.
+
+---
+
 ## Core API — NF-e chave de acesso
 
 | Function | Signature | Description |

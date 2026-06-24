@@ -13,6 +13,7 @@ import cnhVectors from '../vectors/cnh.official.json';
 import cnpjVectors from '../vectors/cnpj.official.json';
 import cpfVectors from '../vectors/cpf.official.json';
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
+import rgSpVectors from '../vectors/rg.sp.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import pisVectors from '../vectors/pis-pasep.official.json';
@@ -112,6 +113,16 @@ describe('mask()', () => {
     expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
   });
 
+  it('masks RG SP golden vector with uf', () => {
+    const result = mask(rgSpVectors.valid.raw, 'rg', { uf: 'SP' });
+    expect(result).toEqual({ ok: true, formatted: rgSpVectors.valid.masked });
+  });
+
+  it('requires uf for rg', () => {
+    const result = mask(rgSpVectors.valid.raw, 'rg');
+    expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
+  });
+
   it('rejects invalid input without partial mask', () => {
     const result = mask('invalid', 'cpf');
     expect(result.ok).toBe(false);
@@ -136,6 +147,7 @@ describe('mask()', () => {
     expect(mask('bad', 'pix').ok).toBe(false);
     expect(mask('bad', 'inscricao-estadual-produtor-rural').ok).toBe(false);
     expect(mask('bad', 'inscricao-estadual', { uf: 'SP' }).ok).toBe(false);
+    expect(mask('bad', 'rg', { uf: 'SP' }).ok).toBe(false);
   });
 
   it('unsupported type hits default branch', () => {

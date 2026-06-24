@@ -23,6 +23,7 @@ import pixVectors from '../vectors/pix.official.json';
 import brcodeVectors from '../vectors/brcode.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
+import rgSpVectors from '../vectors/rg.sp.official.json';
 import arrecadacaoVectors from '../vectors/boleto-arrecadacao.official.json';
 
 describe('platform types', () => {
@@ -119,6 +120,15 @@ describe('normalizeForPlatform + validateForPlatform', () => {
     expect(validateForPlatform(ieSpVectors.golden.stripped, 'inscricao-estadual').ok).toBe(false);
   });
 
+  it('normalizes and validates RG with uf', () => {
+    expect(normalizeForPlatform(rgSpVectors.valid.masked, 'rg', { uf: 'SP' })).toBe(rgSpVectors.valid.raw);
+    expect(validateForPlatform(rgSpVectors.valid.raw, 'rg', { uf: 'SP' }).ok).toBe(true);
+    expect(validateForPlatform(rgSpVectors.valid.raw, 'rg').ok).toBe(false);
+    expect(normalizeForPlatform(rgSpVectors.valid.masked, 'rg')).toBe(
+      rgSpVectors.valid.raw.replace(/[.-]/g, ''),
+    );
+  });
+
   it('returns validation failures per platform type', () => {
     const failures: Array<[PlatformDocumentType, string, PlatformOptions?]> = [
       ['cpf', 'bad'],
@@ -136,6 +146,7 @@ describe('normalizeForPlatform + validateForPlatform', () => {
       ['cartao-credito', 'bad'],
       ['inscricao-estadual', 'bad', { uf: 'SP' }],
       ['inscricao-estadual-produtor-rural', 'bad'],
+      ['rg', 'bad', { uf: 'SP' }],
       ['pix', 'bad'],
       ['brcode', 'bad'],
     ];
@@ -212,6 +223,7 @@ describe('diff field coverage', () => {
     expect(diff('1', '2', 'boleto').changed).toBe(true);
     expect(diff('1', '2', 'inscricao-estadual', { uf: 'SP' }).changed).toBe(true);
     expect(diff('P1', 'P2', 'inscricao-estadual-produtor-rural').changed).toBe(true);
+    expect(diff(rgSpVectors.valid.raw, '120300012', 'rg', { uf: 'SP' }).changed).toBe(true);
   });
 });
 

@@ -1,4 +1,4 @@
-import { IE_OFFICIAL_SOURCE_URLS, type UfCode } from '@br-validators/core';
+import { IE_OFFICIAL_SOURCE_URLS, RG_OFFICIAL_SOURCE_URLS, type UfCode } from '@br-validators/core';
 import type { DocumentSlug } from './nav';
 
 export type OfficialSourceRef = {
@@ -22,6 +22,7 @@ export const OFFICIAL_SOURCES_ORDER: DocumentSlug[] = [
   'renavam',
   'titulo-eleitor',
   'processo-judicial',
+  'rg',
   'nfe-chave',
   'pix',
   'brcode',
@@ -262,6 +263,28 @@ export const OFFICIAL_SOURCES_CATALOG: Record<DocumentSlug, OfficialSourcesEntry
       {
         label: 'Anexo VIII — Módulo 97 Base 10',
         href: 'https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf',
+      },
+    ],
+  },
+  rg: {
+    title: 'RG (Registro Geral)',
+    agency: 'State civil identification (per UF)',
+    links: [
+      {
+        label: 'Ghiorzi — SSP-SP / IFP-RJ / MaSP-MG check digits',
+        href: RG_OFFICIAL_SOURCE_URLS.SP,
+      },
+      {
+        label: 'IIPAR — Paraná civil identification',
+        href: RG_OFFICIAL_SOURCE_URLS.PR,
+      },
+      {
+        label: 'IGP-RS — Rio Grande do Sul',
+        href: RG_OFFICIAL_SOURCE_URLS.RS,
+      },
+      {
+        label: 'CIASC — Santa Catarina',
+        href: RG_OFFICIAL_SOURCE_URLS.SC,
       },
     ],
   },

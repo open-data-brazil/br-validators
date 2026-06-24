@@ -8,6 +8,7 @@ describe('resolvePlaygroundRoute', () => {
 
   it('resolves document routes', () => {
     expect(resolvePlaygroundRoute('/cpf')).toEqual({ kind: 'document', slug: 'cpf' });
+    expect(resolvePlaygroundRoute('/rg')).toEqual({ kind: 'document', slug: 'rg' });
     expect(resolvePlaygroundRoute('/pix')).toEqual({ kind: 'document', slug: 'pix' });
   });
 

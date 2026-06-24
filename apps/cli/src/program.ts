@@ -11,6 +11,7 @@ import {
   handleTituloEleitorCli,
   handleNfeChaveCli,
   handleProcessoJudicialCli,
+  handleRgCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -38,6 +39,7 @@ import {
   type TituloEleitorCliOptions,
   type NfeChaveCliOptions,
   type ProcessoJudicialCliOptions,
+  type RgCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -462,6 +464,27 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: IeCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleIeCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const rg = program
+    .command('rg')
+    .description('RG (Registro Geral) — per-UF validation (phase 1: SP, RJ, MG, PR, RS, SC)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    rg
+      .command(action)
+      .description(`${action} an RG`)
+      .argument('[value]', 'RG value (raw or masked)')
+      .requiredOption('--uf <uf>', 'State code (SP, RJ, MG, PR, RS, SC)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: RgCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleRgCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

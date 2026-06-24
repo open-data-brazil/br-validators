@@ -18,6 +18,7 @@ import pisVectors from '../vectors/pis-pasep.official.json';
 
 import ieSpRuralVectors from '../vectors/inscricao-estadual-produtor-rural.official.json';
 import ieSpVectors from '../vectors/ie.sp.official.json';
+import rgSpVectors from '../vectors/rg.sp.official.json';
 
 describe('sanitize()', () => {
   it('sanitizes masked CPF with fixes', () => {
@@ -68,6 +69,16 @@ describe('sanitize()', () => {
     expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
   });
 
+  it('sanitizes RG with uf', () => {
+    const result = sanitize(rgSpVectors.valid.masked, 'rg', { uf: 'SP' });
+    expect(result).toMatchObject({ ok: true, value: rgSpVectors.valid.raw });
+  });
+
+  it('requires uf for rg', () => {
+    const result = sanitize(rgSpVectors.valid.masked, 'rg');
+    expect(result).toMatchObject({ ok: false, code: 'UNSUPPORTED_FORMAT' });
+  });
+
   it('returns validation failure for bad CPF', () => {
     const result = sanitize('bad', 'cpf');
     expect(result.ok).toBe(false);
@@ -85,6 +96,7 @@ describe('sanitize()', () => {
       'renavam',
       'titulo-eleitor',
       'processo-judicial',
+      'rg',
       'nfe-chave',
       'boleto',
       'cartao-credito',
@@ -133,6 +145,7 @@ describe('sanitize()', () => {
     expect(sanitize('bad', 'pis-pasep').ok).toBe(false);
     expect(sanitize('bad', 'inscricao-estadual-produtor-rural').ok).toBe(false);
     expect(sanitize('bad', 'inscricao-estadual', { uf: 'SP' }).ok).toBe(false);
+    expect(sanitize('bad', 'rg', { uf: 'SP' }).ok).toBe(false);
   });
 
   it('unsupported type hits default branch', () => {

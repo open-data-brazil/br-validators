@@ -20,6 +20,7 @@ import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
 import { runCnh, type CnhAction } from './commands/cnh.js';
 import { runProcessoJudicial, type ProcessoJudicialAction } from './commands/processo-judicial.js';
+import { runRg, type RgAction } from './commands/rg.js';
 import { runRenavam, type RenavamAction } from './commands/renavam.js';
 import { runTituloEleitor, type TituloEleitorAction } from './commands/titulo-eleitor.js';
 import { runNfeChave, type NfeChaveAction } from './commands/nfe-chave.js';
@@ -54,6 +55,10 @@ export type TelefoneCliOptions = CnpjCliOptions;
 export type CnhCliOptions = CnpjCliOptions;
 
 export type ProcessoJudicialCliOptions = CnpjCliOptions;
+
+export type RgCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
 
 export type RenavamCliOptions = CnpjCliOptions;
 
@@ -584,6 +589,35 @@ export function handleIeCli(
   }
 
   return runIe(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      uf: opts.uf,
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleRgCli(
+  action: RgAction,
+  value: string | undefined,
+  opts: RgCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runRg(
     action,
     value,
     {

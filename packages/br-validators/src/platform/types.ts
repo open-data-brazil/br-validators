@@ -14,6 +14,7 @@ export const PLATFORM_DOCUMENT_TYPES = [
   'renavam',
   'titulo-eleitor',
   'processo-judicial',
+  'rg',
   'nfe-chave',
   'boleto',
   'cartao-credito',

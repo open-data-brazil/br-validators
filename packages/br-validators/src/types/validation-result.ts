@@ -13,7 +13,8 @@ export type DocumentFormat =
   | 'inscricao-estadual-produtor-rural'
   | 'telefone'
   | 'brcode'
-  | 'arrecadacao';
+  | 'arrecadacao'
+  | 'rg';
 
 export type PixKeyType = 'cpf' | 'cnpj' | 'email' | 'phone' | 'evp';
 
@@ -27,7 +28,8 @@ export type ValidationErrorCode =
   | 'INVALID_CHECK_DIGIT'
   | 'KNOWN_INVALID_PATTERN'
   | 'UNSUPPORTED_FORMAT'
-  | 'EMPTY_INPUT';
+  | 'EMPTY_INPUT'
+  | 'UF_NOT_IMPLEMENTED';
 
 export type ValidationResult<T extends string = string> =
   | { ok: true; value: T; format: DocumentFormat }
@@ -53,12 +55,16 @@ export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
 export type CartaoCredito = string & { readonly __brand: 'CartaoCredito' };
 export type InscricaoEstadual = string & { readonly __brand: 'InscricaoEstadual' };
 export type InscricaoEstadualProdutorRural = string & { readonly __brand: 'InscricaoEstadualProdutorRural' };
+export type Rg = string & { readonly __brand: 'Rg' };
 export type Telefone = string & { readonly __brand: 'Telefone' };
 export type BrCodePayload = string & { readonly __brand: 'BrCodePayload' };
 
 export type UfCode =
   | 'AC' | 'AL' | 'AM' | 'AP' | 'BA' | 'CE' | 'DF' | 'ES' | 'GO' | 'MA' | 'MG' | 'MS' | 'MT'
   | 'PA' | 'PB' | 'PE' | 'PI' | 'PR' | 'RJ' | 'RN' | 'RO' | 'RR' | 'RS' | 'SC' | 'SE' | 'SP' | 'TO';
+
+/** Phase-1 RG UFs with implemented validators. */
+export type RgUfCode = 'SP' | 'RJ' | 'MG' | 'PR' | 'RS' | 'SC';
 
 export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard' | 'unknown';
 
@@ -107,6 +113,16 @@ export type InscricaoEstadualValidationResult =
 export type IeProdutorRuralValidationResult =
   | { ok: true; value: InscricaoEstadualProdutorRural; uf: 'SP'; format: 'inscricao-estadual-produtor-rural' }
   | { ok: false; code: ValidationErrorCode; message: string; uf?: UfCode };
+
+export type RgValidationResult =
+  | {
+      ok: true;
+      value: Rg;
+      uf: RgUfCode;
+      format: DocumentFormat;
+      checkDigitValidated: boolean;
+    }
+  | { ok: false; code: ValidationErrorCode; message: string; uf?: RgUfCode };
 
 export type TituloEleitorValidationResult =
   | {
@@ -216,6 +232,10 @@ export function brandInscricaoEstadual(value: string): InscricaoEstadual {
 
 export function brandInscricaoEstadualProdutorRural(value: string): InscricaoEstadualProdutorRural {
   return value as InscricaoEstadualProdutorRural;
+}
+
+export function brandRg(value: string): Rg {
+  return value as Rg;
 }
 
 export function brandTelefone(value: string): Telefone {

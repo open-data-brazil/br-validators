@@ -113,6 +113,7 @@ function splitFields(value: string, type: PlatformDocumentType): Record<string, 
     case 'cartao-credito':
     case 'inscricao-estadual':
     case 'inscricao-estadual-produtor-rural':
+    case 'rg':
     case 'pix':
     case 'brcode':
       return { value };

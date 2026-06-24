@@ -24,6 +24,8 @@ import {
   PIX_OFFICIAL_SOURCE_URL,
   PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
   PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL,
+  RG_OFFICIAL_SOURCE_URL,
+  RG_SP_GOLDEN_MASKED,
   RENAVAM_GOLDEN_DASH_INPUT,
   RENAVAM_OFFICIAL_SOURCE_URL,
   TELEFONE_GOLDEN_CELULAR_MASKED,
@@ -124,6 +126,14 @@ export const DOCUMENT_META: Record<DocumentSlug, DocumentMeta> = {
     inputLabel: 'Número do processo',
     cliSlug: 'processo-judicial',
     officialLinks: [{ href: PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL, label: 'Official source: CNJ Resolução 65/2008' }],
+  },
+  rg: {
+    title: 'RG Validator',
+    description: 'Per-UF identity card · UF required (phase 1: SP, RJ, MG, PR, RS, SC)',
+    defaultInput: RG_SP_GOLDEN_MASKED,
+    inputLabel: 'Input',
+    cliSlug: 'rg',
+    officialLinks: [{ href: RG_OFFICIAL_SOURCE_URL, label: 'Official source: Ghiorzi DV tables (SP/RJ/MG)' }],
   },
   'nfe-chave': {
     title: 'NF-e Chave Validator',

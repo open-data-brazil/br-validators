@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **`@br-validators/core/rg`** — `validateRg(raw, { uf })`, `formatRg`, `stripRg`, `getRgUfSupport()` — per-UF identity card (phase 1: SP, RJ, MG, PR, RS, SC; UF required; no `detect()` auto-classify)
+- CLI: `br-validators rg validate|format|strip … --uf SP`
+- Playground: `/rg` with UF selector (6 implemented states)
+- Community: `.github/ISSUE_TEMPLATE/rg-uf-contribution.md` for remaining 21 UFs
 - **`@br-validators/core/processo-judicial`** — `validateProcessoJudicial`, `formatProcessoJudicial`, `stripProcessoJudicial`, `parseProcessoJudicial` (CNJ Resolução 65/2008, modulo 97-10)
 - CLI: `br-validators processo-judicial validate|parse|format|strip`
 - Playground: `/processo-judicial` with segment breakdown UI
