@@ -28,6 +28,7 @@ import * as cestEntry from '../src/cest.js';
 import * as ncmEntry from '../src/ncm.js';
 import * as cboEntry from '../src/cbo.js';
 import * as portosEntry from '../src/portos.js';
+import * as anpCombustiveisEntry from '../src/anp-combustiveis.js';
 import * as pncpReferenceEntry from '../src/pncp-reference.js';
 import * as transparenciaSnapshotsEntry from '../src/transparencia-snapshots.js';
 import * as dataCatalogEntry from '../src/data-catalog.js';
@@ -301,6 +302,14 @@ describe('package exports', () => {
     expect(portosEntry.getPortosPorMunicipio).toBeTypeOf('function');
     expect(portosEntry.searchPortos).toBeTypeOf('function');
     expect(portosEntry.PORTOS_DATA_VERSION.id).toBe('portos');
+  });
+
+  it('re-exports ANP combustíveis API from anp-combustiveis entry', () => {
+    expect(anpCombustiveisEntry.getAnpPrecosMedios).toBeTypeOf('function');
+    expect(anpCombustiveisEntry.getAnpPrecosMediosPorIbge).toBeTypeOf('function');
+    expect(anpCombustiveisEntry.getAnpSemanaAtual).toBeTypeOf('function');
+    expect(anpCombustiveisEntry.getAnpSemanasPesquisa).toBeTypeOf('function');
+    expect(anpCombustiveisEntry.ANP_COMBUSTIVEIS_DATA_VERSION.id).toBe('anp-combustiveis');
   });
 
   it('re-exports PNCP reference API from pncp-reference entry', () => {

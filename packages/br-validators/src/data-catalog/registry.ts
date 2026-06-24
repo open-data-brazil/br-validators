@@ -16,6 +16,7 @@ import ncmMetadata from '../ncm/data/metadata.json';
 import cboMetadata from '../cbo/data/metadata.json';
 import cepFaixaMetadata from '../core/cep/data/faixa-metadata.json';
 import portosMetadata from '../portos/data/metadata.json';
+import anpCombustiveisMetadata from '../anp-combustiveis/data/metadata.json';
 import pncpReferenceMetadata from '../pncp-reference/data/metadata.json';
 import transparenciaSnapshotsMetadata from '../transparencia-snapshots/data/metadata.json';
 import type { DatasetMetadata } from './types.js';
@@ -44,6 +45,7 @@ export const DATASET_REGISTRY: readonly DatasetRegistryEntry[] = [
   { id: 'cbo', metadata: cboMetadata as DatasetMetadata },
   { id: 'cep-faixas', metadata: cepFaixaMetadata as DatasetMetadata },
   { id: 'portos', metadata: portosMetadata as DatasetMetadata },
+  { id: 'anp-combustiveis', metadata: anpCombustiveisMetadata as DatasetMetadata },
   { id: 'pncp-reference', metadata: pncpReferenceMetadata as DatasetMetadata },
   { id: 'transparencia-snapshots', metadata: transparenciaSnapshotsMetadata as DatasetMetadata },
 ];

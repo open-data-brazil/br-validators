@@ -1,0 +1,37 @@
+{
+  "source": "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-06-14_2026-06-20.xlsx",
+  "listingUrl": "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas",
+  "week": {
+    "inicio": "2026-06-14",
+    "fim": "2026-06-20"
+  },
+  "minPrecosMedios": 2000,
+  "maxPrecosMedios": 3500,
+  "minMunicipios": 350,
+  "maxMunicipios": 450,
+  "produtoCount": 7,
+  "ufCount": 27,
+  "golden": {
+    "saoPauloGasolina": {
+      "uf": "SP",
+      "municipio": "SAO PAULO",
+      "produto": "GASOLINE_REGULAR",
+      "municipioIbge": 3550308,
+      "precoMedio": 6.46
+    },
+    "adamantinaEtanol": {
+      "uf": "SP",
+      "municipio": "ADAMANTINA",
+      "produto": "ETHANOL",
+      "municipioIbge": 3500105,
+      "precoMedio": 3.39
+    },
+    "campoGrandeGlp": {
+      "uf": "MS",
+      "municipio": "CAMPO GRANDE",
+      "produto": "LPG_P13",
+      "municipioIbge": 5002704,
+      "precoMedio": 116.6
+    }
+  }
+}

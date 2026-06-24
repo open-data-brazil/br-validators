@@ -56,6 +56,7 @@
     "ncm",
     "cbo",
     "portos",
+    "anp-combustiveis",
     "pncp-reference",
     "transparencia-snapshots",
     "data-catalog",
@@ -235,6 +236,10 @@
     "./portos": {
       "types": "./dist/portos.d.ts",
       "import": "./dist/portos.js"
+    },
+    "./anp-combustiveis": {
+      "types": "./dist/anp-combustiveis.d.ts",
+      "import": "./dist/anp-combustiveis.js"
     },
     "./pncp-reference": {
       "types": "./dist/pncp-reference.d.ts",

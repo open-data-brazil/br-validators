@@ -1,11 +1,11 @@
 {
   "datasetId": "paises-bacen",
-  "status": "ok",
+  "status": "embedded_retained",
   "endpoints": [
     "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50="
   ],
-  "attempts": 3,
-  "checkedAt": "2026-06-23T18:35:34.021Z",
-  "retainedEmbeddedDataFrom": "2026-06-23",
-  "message": "NF-e portal unavailable; embedded Bacen country table written."
+  "attempts": 5,
+  "checkedAt": "2026-06-24T16:13:39.409Z",
+  "retainedEmbeddedDataFrom": "2026-06-24",
+  "message": "NF-e portal did not return a parseable country table (Portal returned HTML instead of a country table file). Embedded data from 2026-06-24 retained in the API."
 }

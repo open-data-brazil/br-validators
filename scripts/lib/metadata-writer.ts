@@ -26,6 +26,7 @@ export interface MetadataPartial {
   contagens: Record<string, number>;
   documentacao: string;
   referencia?: string;
+  agendamento?: 'diario' | 'semanal';
 }
 
 export function buildMetadata(partial: MetadataPartial, changes: DatasetChanges): DatasetMetadata {
@@ -40,7 +41,7 @@ export function buildMetadata(partial: MetadataPartial, changes: DatasetChanges)
     contagens: partial.contagens,
     alteracoes: changes,
     verificacao: {
-      agendamento: 'diario',
+      agendamento: partial.agendamento ?? 'diario',
       workflow: 'data-refresh-bot.yml',
       ultimaExecucao: now,
     },

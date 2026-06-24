@@ -5,8 +5,8 @@
   "endpoints": [
     "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50="
   ],
-  "capturadoEm": "2026-06-23",
-  "atualizadoEm": "2026-06-23T18:35:34.020Z",
+  "capturadoEm": "2026-06-24",
+  "atualizadoEm": "2026-06-24T16:13:39.400Z",
   "contagens": {
     "paises": 252
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-06-23"
+    "comparadoCom": "2026-06-24"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-06-23T18:35:34.020Z"
+    "ultimaExecucao": "2026-06-24T16:13:39.400Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#paises-bacen"
 }

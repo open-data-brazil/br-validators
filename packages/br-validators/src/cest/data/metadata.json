@@ -5,8 +5,8 @@
   "endpoints": [
     "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
   ],
-  "capturadoEm": "2026-06-23",
-  "atualizadoEm": "2026-06-23T18:40:24.666Z",
+  "capturadoEm": "2026-06-24",
+  "atualizadoEm": "2026-06-24T15:42:59.705Z",
   "contagens": {
     "cest": 1018
   },
@@ -19,7 +19,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-06-23T18:40:24.666Z"
+    "ultimaExecucao": "2026-06-24T15:42:59.705Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cest"
 }

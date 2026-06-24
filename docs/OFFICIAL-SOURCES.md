@@ -46,6 +46,7 @@
 | **Países Bacen (NF-e)** | RFB / Bacen | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 4-digit Bacen country codes for NF-e `cPais`. Golden: **`1058`** → Brasil. Vector: `paises-bacen.official.json`. Embedded fallback when portal redirect fails. |
 | **Incoterms 2020** | ICC | [Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Static ICC 2020 list (11 terms, code + name only). Golden: **`FOB`**. Vector: `incoterms.official.json`. |
 | **Portos (ANTAQ)** | ANTAQ | [Instalações portuárias shape/xlsx zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Outorged port installations (`Portos.xlsx`). Golden: **`BRSSZ`** (Santos), **`BRADR`**, **`BRPNG`**. Vector: `portos.official.json`. IBGE municipality cross-ref via `idcidade`. |
+| **ANP combustíveis (LPC)** | ANP | [Levantamento semanal LPC](https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Weekly municipal fuel averages (`resumo_semanal_lpc` MUNICIPIOS sheet). Golden: **São Paulo/SP `GASOLINE_REGULAR`**, **Adamantina/SP `ETHANOL`**, **Campo Grande/MS `LPG_P13`**. Vector: `anp-combustiveis.official.json`. Product normalization ported from [TABELA-ANP-COMBUSTIVEIS](https://github.com/AlexandreZanata/TABELA-ANP-COMBUSTIVEIS) (MIT). |
 | **PNCP reference** | PNCP / Serpro | [Cadastro API domain tables](https://pncp.gov.br/api/pncp/v1/modalidades) · [OpenAPI](https://pncp.gov.br/api/pncp/v3/api-docs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Static procurement domain tables (modalidades, amparos legais, etc.). Golden: modalidade **`6`** (Pregão Eletrônico). Vector: `pncp-reference.official.json`. Live contract lookup → `@br-validators/adapters-pncp` (RFC). |
 | **Portal da Transparência registry** | CGU | [Swagger UI](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) · [OpenAPI](https://api.portaldatransparencia.gov.br/v3/api-docs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Endpoint classification embed (query-adapter vs out-of-scope). Golden: **`ceis`**, **`peps`**. Vector: `transparencia.official.json`. No live API in core — `@br-validators/adapters-transparencia` (RFC). |
 
@@ -535,6 +536,23 @@ Prefix resolution aggregates IBGE CNEFE 2022 address records by 5-digit CEP pref
 | Informações geográficas page | ANTAQ | https://www.gov.br/antaq/pt-br/central-de-conteudos/informacoes-geograficas |
 
 Golden: **`BRSSZ`** (Santos organized port), **`BRADR`** (Angra dos Reis), **`BRPNG`** (Paranaguá). `getPortosPorMunicipio(ibgeCodigo)` uses ANTAQ `idcidade` normalized to 7-digit IBGE municipality codes.
+
+---
+
+## ANP combustíveis (LPC) {#anp-combustiveis}
+
+> **Vectors:** `packages/br-validators/tests/vectors/anp-combustiveis.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md)  
+> **Sibling reference (MIT):** [TABELA-ANP-COMBUSTIVEIS](https://github.com/AlexandreZanata/TABELA-ANP-COMBUSTIVEIS) — product label normalization and XLSX column layout
+
+| Role | Source | URL |
+|------|--------|-----|
+| Weekly LPC listing page | ANP | https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas |
+| `resumo_semanal_lpc` XLSX | ANP | `https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/{YEAR}/resumo_semanal_lpc_{start}_{end}.xlsx` |
+
+Embedded v1: **latest survey week only**, `MUNICIPIOS` sheet (municipal averages). Station detail (`revendas_lpc`) deferred to Phase 31b.
+
+Golden: **São Paulo/SP `GASOLINE_REGULAR`**, **Adamantina/SP `ETHANOL`**, **Campo Grande/MS `LPG_P13`**. `getAnpPrecosMediosPorIbge(ibge, produto)` uses IBGE municipality codes resolved at fetch time.
 
 ---
 

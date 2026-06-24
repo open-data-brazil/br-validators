@@ -18,6 +18,10 @@ export const DATASET_JSON_FILES: Readonly<Record<string, readonly string[]>> = {
   ncm: ['packages/br-validators/src/ncm/data/ncm.json'],
   cbo: ['packages/br-validators/src/cbo/data/cbo.json'],
   portos: ['packages/br-validators/src/portos/data/portos.json'],
+  'anp-combustiveis': [
+    'packages/br-validators/src/anp-combustiveis/data/precos-medios.json',
+    'packages/br-validators/src/anp-combustiveis/data/semanas.json',
+  ],
   'pncp-reference': [
     'packages/br-validators/src/pncp-reference/data/modalidades.json',
     'packages/br-validators/src/pncp-reference/data/modos-disputa.json',
