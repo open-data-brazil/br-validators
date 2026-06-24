@@ -19,6 +19,7 @@
 | **CNH (Registro Nacional)** | CONTRAN / SENATRAN | [Resolução CONTRAN 511/2014 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [Validar CNH — gov.br](https://www.gov.br/pt-br/servicos/validar-cnh) · Full index: [§ CNH](#cnh--reference-index) | 9 base + 2 DVs = **11 contiguous digits**. Modulo 11 + **desconto**. Golden: **`62472927637`**. |
 | **RENAVAM** | DENATRAN / SENATRAN | [Portaria DENATRAN 27/2013 (PDF)](https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf) · [Consultar veículo RENAVAM — gov.br](https://www.gov.br/pt-br/servicos/consultar-dados-de-veiculo-na-base-renavam) · Full index: [§ RENAVAM](#renavam--reference-index) | 10 base + 1 DV = **11 digits**. Modulo 11 **peso 9**. Golden: **`63977791104`**, **`72176426415`**. |
 | **Título de Eleitor** | TSE | [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) · [Res. 23.659/2021](https://www.tse.jus.br/legislacao/compilada/res/2021/resolucao-no-23-659-de-26-de-outubro-de-2021) · Full index: [§ Título de Eleitor](#título-de-eleitor--reference-index) | 8 seq + 2 UF + 2 DV = **12 digits** (13 for SP/MG). Modulo 11 per Art. 10. Golden: **`004356870906`**. **Weights/SP-MG rule:** [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) + [Ghiorzi](http://ghiorzi.org/DVnew.htm#e). |
+| **Processo judicial (número único CNJ)** | CNJ | [Resolução 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · [Anexo VIII (PDF)](https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf) · Full index: [§ Processo judicial](#processo-judicial--reference-index) | **20 digits** — mask `NNNNNNN-DD.AAAA.J.TR.OOOO`. Modulo **97-10** (ISO 7064:2003). Golden: **`0000100-34.2008.9.21.0000`**. Vector: `processo-judicial.official.json`. |
 | **NF-e chave de acesso** | ENCAT / SEFAZ | [Portal NF-e — MOC index](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · Full index: [§ NF-e chave](#nf-e--nfc-e-chave-de-acesso--reference-index) | **44 digits** — structure + modulo-11 DV on first 43. Models **55** (NF-e) / **65** (NFC-e). Golden: **`52060433009911002506550120000007800267301615`** (MOC §2.2.6.2 worked example, sum=644, DV=5). |
 | **PIX key** | Banco Central | [Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf), [Anexo I — Padrões Iniciação PIX (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf), [DICT API v2.9](https://aprendervalor.bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT_v2-9-0.html) | **Key validation (Phase 4):** five types — CPF, CNPJ, email (max 77 lowercase), phone (`+55` mobile), EVP (UUID). Golden: `pix@bcb.gov.br`, `+5510998765432`, `123e4567-e89b-12d3-a456-426655440000`. |
 | **BR Code payload** | Banco Central | [Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões PIX (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf) | EMV TLV + CRC16-CCITT (tag 63). `parseBrCode` / `validateBrCode` / `buildStaticPixBrCode` (static PIX QR; omit `amount` for permanent QR). Golden: `tests/vectors/brcode.official.json` (≥5 manual examples + `BRCODE_GOLDEN_STATIC_*`). Static EVP CRC `1D3D`. Rule: BR-BRC-005. |
@@ -147,6 +148,29 @@ Negative cross-UF cases: `ie.negative.official.json`.
 | Weights `[2…9]` / `[7,8,9]` | ❌ Not in text | Wikipedia PT + Ghiorzi |
 | SP/MG remainder 0 → DV=1 | ❌ Not in text | Wikipedia PT + Ghiorzi |
 | UF code table 01–28 | ❌ Referenced, not reproduced | Wikipedia PT + Ghiorzi |
+
+---
+
+## Processo judicial — reference index
+
+> **Vectors:** `packages/br-validators/tests/vectors/processo-judicial.official.json`  
+> **Caveat:** Resolução 65/2008 annex examples use illustrative DVs (e.g. `15`) that fail Anexo VIII mod97. Golden vectors use field values from the annex with **computed** DVs.
+
+| Role | Source | URL |
+|------|--------|-----|
+| **Normative** | Resolução CNJ 65/2008 — Art. 1º (structure) | https://atos.cnj.jus.br/atos/detalhar/119 |
+| **Normative** | Anexo VIII — Módulo 97 Base 10 | https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf |
+
+### Segment map
+
+| Field | Digits | Meaning |
+|-------|--------|---------|
+| NNNNNNN | 7 | Sequential number per origin unit (year) |
+| DD | 2 | Check digits (mod97-10) |
+| AAAA | 4 | Filing year |
+| J | 1 | Justice segment (1–9) |
+| TR | 2 | Tribunal code |
+| OOOO | 4 | Origin unit (comarca / vara) |
 
 ---
 

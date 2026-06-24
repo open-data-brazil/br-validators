@@ -11,6 +11,7 @@ import {
   PIX_GOLDEN_EMAIL,
   PLACA_GOLDEN_MERCOSUL,
   TELEFONE_GOLDEN_CELULAR,
+  PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
   TITULO_ELEITOR_GOLDEN_PRIMARY,
 } from '@br-validators/core';
 import { dispatchArgv, parseArgv } from '../src/argv-dispatch.js';
@@ -112,6 +113,8 @@ describe('dispatchArgv', () => {
       [['cnh', 'validate', '62472927637', '--quiet'], EXIT.OK],
       [['renavam', 'validate', '63977791104', '--quiet'], EXIT.OK],
       [['titulo-eleitor', 'validate', TITULO_ELEITOR_GOLDEN_PRIMARY, '--quiet'], EXIT.OK],
+      [['processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
+      [['processo-judicial', 'parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
       [['pis-pasep', 'validate', '10027230888', '--quiet'], EXIT.OK],
       [['cartao-credito', 'validate', CARTAO_GOLDEN_VISA, '--quiet'], EXIT.OK],
       [['ie', 'validate', IE_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
@@ -136,6 +139,20 @@ describe('dispatchArgv', () => {
 
     const invalid = io();
     expect(dispatchArgv(['nfe-chave', 'bad'], invalid)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches processo-judicial actions', () => {
+    const validate = io();
+    expect(
+      dispatchArgv(['processo-judicial', 'validate', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], validate),
+    ).toBe(EXIT.OK);
+
+    const missingValue = io();
+    expect(dispatchArgv(['processo-judicial', 'validate'], missingValue)).toBe(EXIT.USAGE);
+
+    const invalid = io();
+    expect(dispatchArgv(['processo-judicial', 'bad'], invalid)).toBe(EXIT.USAGE);
+    expect(invalid.stderr[0]).toContain('validate | parse | format | strip');
   });
 
   it('dispatches brcode actions', () => {

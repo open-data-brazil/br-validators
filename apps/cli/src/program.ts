@@ -10,6 +10,7 @@ import {
   handleRenavamCli,
   handleTituloEleitorCli,
   handleNfeChaveCli,
+  handleProcessoJudicialCli,
   handleListCli,
   handlePisPasepCli,
   handlePixCli,
@@ -36,6 +37,7 @@ import {
   type RenavamCliOptions,
   type TituloEleitorCliOptions,
   type NfeChaveCliOptions,
+  type ProcessoJudicialCliOptions,
   type CnpjCliOptions,
   type CpfCliOptions,
   type IeCliOptions,
@@ -188,6 +190,26 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: TituloEleitorCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handleTituloEleitorCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const processoJudicial = program
+    .command('processo-judicial')
+    .description('Processo judicial CNJ — número único NNNNNNN-DD.AAAA.J.TR.OOOO (Resolução 65/2008)');
+
+  for (const action of ['validate', 'parse', 'format', 'strip'] as const) {
+    processoJudicial
+      .command(action)
+      .description(`${action} a processo judicial CNJ`)
+      .argument('[value]', 'CNJ process number (masked or 20 digits)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate/parse only)')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: ProcessoJudicialCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleProcessoJudicialCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

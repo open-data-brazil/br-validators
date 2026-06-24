@@ -22,6 +22,8 @@ import {
   PLACA_OFFICIAL_SOURCE_URL,
   PIX_DICT_API_SOURCE_URL,
   PIX_OFFICIAL_SOURCE_URL,
+  PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
+  PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL,
   RENAVAM_GOLDEN_DASH_INPUT,
   RENAVAM_OFFICIAL_SOURCE_URL,
   TELEFONE_GOLDEN_CELULAR_MASKED,
@@ -114,6 +116,14 @@ export const DOCUMENT_META: Record<DocumentSlug, DocumentMeta> = {
     inputLabel: 'Input',
     cliSlug: 'titulo-eleitor',
     officialLinks: [{ href: TITULO_ELEITOR_OFFICIAL_SOURCE_URL, label: 'Official source: TSE manual' }],
+  },
+  'processo-judicial': {
+    title: 'Processo judicial CNJ Validator',
+    description: 'Número único · CNJ Resolução 65/2008 modulo 97-10',
+    defaultInput: PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED,
+    inputLabel: 'Número do processo',
+    cliSlug: 'processo-judicial',
+    officialLinks: [{ href: PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL, label: 'Official source: CNJ Resolução 65/2008' }],
   },
   'nfe-chave': {
     title: 'NF-e Chave Validator',

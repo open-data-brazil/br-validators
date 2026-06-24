@@ -114,6 +114,15 @@
 
 ---
 
+## Processo judicial (número único CNJ)
+
+**Definition:** Standardized national judicial case number — 20 digits in mask `NNNNNNN-DD.AAAA.J.TR.OOOO`. Check digits use modulo 97-10 per ISO 7064:2003 (CNJ Anexo VIII).
+**Not the same as:** NF-e chave, protocol numbers, or pre-2009 legacy court numbers without CNJ structure.
+**Legal reference:** [OFFICIAL-SOURCES.md § Processo judicial](OFFICIAL-SOURCES.md#processo-judicial--reference-index) — [Resolução CNJ 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · Golden: `0000100-34.2008.9.21.0000`
+**Code name:** `ProcessoJudicial`, format `'numeric'`
+
+---
+
 ## NF-e / NFC-e chave de acesso
 
 44-digit numeric access key for electronic fiscal documents (NF-e model 55, NFC-e model 65). Concatenates cUF, AAMM, CNPJ, mod, série, nNF, tpEmis, cNF, and modulo-11 check digit (position 44).

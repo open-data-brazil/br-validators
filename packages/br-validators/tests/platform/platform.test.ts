@@ -15,6 +15,7 @@ import telefoneVectors from '../vectors/telefone.official.json';
 import cnhVectors from '../vectors/cnh.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import boletoVectors from '../vectors/boleto.official.json';
 import cartaoVectors from '../vectors/cartao-credito.official.json';
@@ -59,6 +60,9 @@ describe('normalizeForPlatform + validateForPlatform', () => {
     expect(normalizeForPlatform(tituloVectors.primary.canonical, 'titulo-eleitor')).toBe(
       tituloVectors.primary.canonical,
     );
+    expect(normalizeForPlatform(processoVectors.primary.masked, 'processo-judicial')).toBe(
+      processoVectors.primary.canonical,
+    );
     expect(normalizeForPlatform(nfeVectors.primary.canonical, 'nfe-chave')).toBe(nfeVectors.primary.canonical);
     expect(normalizeForPlatform(boletoVectors.golden.santander.linhaStripped, 'boleto')).toBe(
       boletoVectors.golden.santander.linhaStripped,
@@ -96,6 +100,7 @@ describe('normalizeForPlatform + validateForPlatform', () => {
     expect(validateForPlatform(cnhVectors.primary.canonical, 'cnh').ok).toBe(true);
     expect(validateForPlatform(renavamVectors.primary.canonical, 'renavam').ok).toBe(true);
     expect(validateForPlatform(tituloVectors.primary.canonical, 'titulo-eleitor').ok).toBe(true);
+    expect(validateForPlatform(processoVectors.primary.masked, 'processo-judicial').ok).toBe(true);
     expect(validateForPlatform(nfeVectors.primary.canonical, 'nfe-chave').ok).toBe(true);
     expect(
       validateForPlatform(ieSpVectors.golden.stripped, 'inscricao-estadual', { uf: 'SP' }).ok,
@@ -125,6 +130,7 @@ describe('normalizeForPlatform + validateForPlatform', () => {
       ['cnh', 'bad'],
       ['renavam', 'bad'],
       ['titulo-eleitor', 'bad'],
+      ['processo-judicial', 'bad'],
       ['nfe-chave', 'bad'],
       ['boleto', 'bad'],
       ['cartao-credito', 'bad'],
@@ -187,6 +193,13 @@ describe('diff field coverage', () => {
       expect.arrayContaining([{ field: 'dv', a: renavamVectors.primary.canonical.slice(10), b: '0' }]),
     );
     expect(diff(tituloVectors.primary.canonical, `${tituloVectors.primary.canonical.slice(0, 8)}000000`, 'titulo-eleitor').fields.length).toBeGreaterThan(0);
+    expect(
+      diff(
+        processoVectors.primary.canonical,
+        `${processoVectors.primary.canonical.slice(0, 7)}35${processoVectors.primary.canonical.slice(9)}`,
+        'processo-judicial',
+      ).fields,
+    ).toEqual(expect.arrayContaining([{ field: 'checkDigits', a: '34', b: '35' }]));
     expect(diff(nfeVectors.primary.canonical, `${nfeVectors.primary.canonical.slice(0, 43)}0`, 'nfe-chave').fields).toEqual(
       expect.arrayContaining([{ field: 'cDV', a: nfeVectors.primary.canonical.slice(43), b: '0' }]),
     );

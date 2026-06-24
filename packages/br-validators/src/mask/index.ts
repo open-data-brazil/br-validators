@@ -15,6 +15,7 @@ import { formatNfeChave } from '../format/nfe-chave.js';
 import { formatPisPasep } from '../format/pis-pasep.js';
 import { formatPixKey } from '../format/pix.js';
 import { formatPlaca } from '../format/placa.js';
+import { formatProcessoJudicial } from '../format/processo-judicial.js';
 import { formatRenavam } from '../format/renavam.js';
 import { formatTelefone } from '../format/telefone.js';
 import { formatTituloEleitor } from '../format/titulo-eleitor.js';
@@ -30,6 +31,7 @@ export type MaskableDocumentType =
   | 'cnh'
   | 'renavam'
   | 'titulo-eleitor'
+  | 'processo-judicial'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -47,6 +49,7 @@ export const MASKABLE_DOCUMENT_TYPES = [
   'cnh',
   'renavam',
   'titulo-eleitor',
+  'processo-judicial',
   'nfe-chave',
   'boleto',
   'cartao-credito',
@@ -111,6 +114,8 @@ function dispatchMask(raw: string, type: MaskableDocumentType, options: MaskOpti
       return formatRenavam(raw);
     case 'titulo-eleitor':
       return formatTituloEleitor(raw);
+    case 'processo-judicial':
+      return formatProcessoJudicial(raw);
     case 'nfe-chave':
       return formatNfeChave(raw);
     case 'boleto':

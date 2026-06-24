@@ -13,6 +13,7 @@ import { validateIeSpRural } from '../core/inscricao-estadual/sp-rural.js';
 import { validateNfeChave } from '../core/nfe-chave/index.js';
 import { validatePisPasep } from '../core/pis-pasep/index.js';
 import { validatePlaca } from '../core/placa/index.js';
+import { validateProcessoJudicial } from '../core/processo-judicial/index.js';
 import { validateRenavam } from '../core/renavam/index.js';
 import { validateTelefone } from '../core/telefone/index.js';
 import { validateTituloEleitor } from '../core/titulo-eleitor/index.js';
@@ -29,6 +30,7 @@ export type SanitizableDocumentType =
   | 'cnh'
   | 'renavam'
   | 'titulo-eleitor'
+  | 'processo-judicial'
   | 'nfe-chave'
   | 'boleto'
   | 'cartao-credito'
@@ -118,6 +120,10 @@ function validateFixed(value: string, type: SanitizableDocumentType, uf?: UfCode
     }
     case 'titulo-eleitor': {
       const result = validateTituloEleitor(value);
+      return result.ok ? { ok: true, value: result.value } : result;
+    }
+    case 'processo-judicial': {
+      const result = validateProcessoJudicial(value);
       return result.ok ? { ok: true, value: result.value } : result;
     }
     case 'nfe-chave': {

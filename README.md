@@ -132,6 +132,7 @@ Requires Node ≥ 18. ESM only (`"type": "module"`). Zero runtime dependencies.
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
 | Título de eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo …` | `/titulo-eleitor` |
+| Processo judicial CNJ | `@br-validators/core/processo-judicial` | `br-validators processo-judicial …` | `/processo-judicial` |
 | NF-e chave de acesso | `@br-validators/core/nfe-chave` | `br-validators nfe …` | `/nfe-chave` |
 | License plate (Mercosul + legacy) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |

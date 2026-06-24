@@ -49,6 +49,7 @@ export const CAPABILITIES: Record<DocumentSlug, DocumentCapabilities> = {
   cnh: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   renavam: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   'titulo-eleitor': { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },
+  'processo-judicial': { validate: true, format: true, strip: true, sanitize: true, generate: false, parse: true },
   'nfe-chave': { validate: true, format: true, strip: true, sanitize: true, generate: true, parse: true },
   ie: { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },
   pix: { validate: true, format: true, strip: false, sanitize: false, generate: true },

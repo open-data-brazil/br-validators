@@ -19,6 +19,7 @@ import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
 import { runCnh, type CnhAction } from './commands/cnh.js';
+import { runProcessoJudicial, type ProcessoJudicialAction } from './commands/processo-judicial.js';
 import { runRenavam, type RenavamAction } from './commands/renavam.js';
 import { runTituloEleitor, type TituloEleitorAction } from './commands/titulo-eleitor.js';
 import { runNfeChave, type NfeChaveAction } from './commands/nfe-chave.js';
@@ -51,6 +52,8 @@ export type CepCliOptions = CnpjCliOptions;
 export type TelefoneCliOptions = CnpjCliOptions;
 
 export type CnhCliOptions = CnpjCliOptions;
+
+export type ProcessoJudicialCliOptions = CnpjCliOptions;
 
 export type RenavamCliOptions = CnpjCliOptions;
 
@@ -469,6 +472,34 @@ export function handleTituloEleitorCli(
   }
 
   return runTituloEleitor(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleProcessoJudicialCli(
+  action: ProcessoJudicialAction,
+  value: string | undefined,
+  opts: ProcessoJudicialCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runProcessoJudicial(
     action,
     value,
     {

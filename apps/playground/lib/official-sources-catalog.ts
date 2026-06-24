@@ -21,6 +21,7 @@ export const OFFICIAL_SOURCES_ORDER: DocumentSlug[] = [
   'cnh',
   'renavam',
   'titulo-eleitor',
+  'processo-judicial',
   'nfe-chave',
   'pix',
   'brcode',
@@ -248,6 +249,20 @@ export const OFFICIAL_SOURCES_CATALOG: Record<DocumentSlug, OfficialSourcesEntry
       },
       { label: 'TSE — Portal', href: 'https://www.tse.jus.br/' },
       { label: 'TSE — e-Título', href: 'https://www.tse.jus.br/eleitor/servicos/aplicativo-e-titulo' },
+    ],
+  },
+  'processo-judicial': {
+    title: 'Processo judicial (número único CNJ)',
+    agency: 'CNJ',
+    links: [
+      {
+        label: 'Resolução CNJ 65/2008',
+        href: 'https://atos.cnj.jus.br/atos/detalhar/119',
+      },
+      {
+        label: 'Anexo VIII — Módulo 97 Base 10',
+        href: 'https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf',
+      },
     ],
   },
   'nfe-chave': {

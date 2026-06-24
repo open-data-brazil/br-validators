@@ -86,6 +86,15 @@ function splitFields(value: string, type: PlatformDocumentType): Record<string, 
         uf: value.slice(8, 10),
         dv: value.slice(10, 12),
       };
+    case 'processo-judicial':
+      return {
+        sequencial: value.slice(0, 7),
+        checkDigits: value.slice(7, 9),
+        ano: value.slice(9, 13),
+        segmentoJustica: value.slice(13, 14),
+        tribunal: value.slice(14, 16),
+        origem: value.slice(16, 20),
+      };
     case 'nfe-chave':
       return {
         cUF: value.slice(0, 2),

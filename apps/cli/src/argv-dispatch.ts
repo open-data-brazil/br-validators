@@ -17,6 +17,7 @@ import {
   handleReferenceLookupCli,
   handleListCli,
   handleNfeChaveCli,
+  handleProcessoJudicialCli,
   handlePisPasepCli,
   handlePixCli,
   handlePlacaCli,
@@ -46,6 +47,7 @@ export type ParsedArgv = {
 
 const STANDARD_ACTIONS = ['validate', 'format', 'strip'] as const;
 const NFE_ACTIONS = ['validate', 'parse', 'format', 'strip'] as const;
+const PROCESSO_JUDICIAL_ACTIONS = ['validate', 'parse', 'format', 'strip'] as const;
 const BRCODE_ACTIONS = ['parse', 'validate'] as const;
 const PLACA_ACTIONS = ['validate', 'format', 'strip', 'convert'] as const;
 const PIX_ACTIONS = ['detect', 'validate', 'format'] as const;
@@ -148,7 +150,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · bancos · natureza-juridica · nbs · cest · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · bancos · natureza-juridica · nbs · cest · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
     return EXIT.OK;
   }
 
@@ -181,6 +183,19 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       return dispatchStandard(rest, opts, io, handleRenavamCli);
     case 'titulo-eleitor':
       return dispatchStandard(rest, opts, io, handleTituloEleitorCli);
+    case 'processo-judicial': {
+      const action = rest[0];
+      if (!action || !PROCESSO_JUDICIAL_ACTIONS.includes(action as (typeof PROCESSO_JUDICIAL_ACTIONS)[number])) {
+        return usage(io, 'Expected action: validate | parse | format | strip');
+      }
+      const value = rest.slice(1).join(' ') || undefined;
+      return handleProcessoJudicialCli(
+        action as 'validate' | 'parse' | 'format' | 'strip',
+        value,
+        opts,
+        io,
+      );
+    }
     case 'nfe-chave': {
       const action = rest[0];
       if (!action || !NFE_ACTIONS.includes(action as (typeof NFE_ACTIONS)[number])) {

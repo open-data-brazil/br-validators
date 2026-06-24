@@ -216,6 +216,23 @@ getCepFaixaInfo('01310');
 
 ---
 
+## Core API — Processo judicial CNJ
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `validateProcessoJudicial` | `(input: string) => ProcessoJudicialValidationResult` | Modulo 97-10 + justice segment 1–9 |
+| `parseProcessoJudicial` | `(input: string) => ProcessoJudicialSegments \| undefined` | Segment breakdown; `undefined` when invalid |
+| `formatProcessoJudicial` | `(input: string) => FormatResult` | Official mask `NNNNNNN-DD.AAAA.J.TR.OOOO` |
+| `stripProcessoJudicial` | `(input: string) => string` | Digits only (20) |
+| `isValidProcessoJudicial` | `(input: string) => boolean` | Convenience wrapper |
+| `parseProcessoJudicialParts` | `(stripped: string) => ProcessoJudicialSegments \| null` | Low-level field extraction |
+
+**Success result:** `{ ok: true, value: ProcessoJudicial, format: 'numeric', segments: ProcessoJudicialSegments }`
+
+**Official sources:** [OFFICIAL-SOURCES.md § Processo judicial](OFFICIAL-SOURCES.md#processo-judicial--reference-index) — [Resolução CNJ 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · [Anexo VIII PDF](https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf) · `PROCESSO_JUDICIAL_OFFICIAL_SOURCE_URL` · `tests/vectors/processo-judicial.official.json` · Golden: `0000100-34.2008.9.21.0000`
+
+---
+
 ## Core API — NF-e chave de acesso
 
 | Function | Signature | Description |

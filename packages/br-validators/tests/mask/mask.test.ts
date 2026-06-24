@@ -21,6 +21,7 @@ import placaVectors from '../vectors/placa.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import telefoneVectors from '../vectors/telefone.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 
 describe('mask()', () => {
   it('masks CPF golden vector', () => {
@@ -66,6 +67,11 @@ describe('mask()', () => {
   it('masks título eleitor golden vector', () => {
     const result = mask(tituloVectors.primary.canonical, 'titulo-eleitor');
     expect(result).toEqual({ ok: true, formatted: tituloVectors.primary.officialFormatted });
+  });
+
+  it('masks processo judicial CNJ golden vector', () => {
+    const result = mask(processoVectors.primary.canonical, 'processo-judicial');
+    expect(result).toEqual({ ok: true, formatted: processoVectors.primary.masked });
   });
 
   it('masks NF-e chave golden vector', () => {
@@ -122,6 +128,7 @@ describe('mask()', () => {
     expect(mask('bad', 'cnh').ok).toBe(false);
     expect(mask('bad', 'renavam').ok).toBe(false);
     expect(mask('bad', 'titulo-eleitor').ok).toBe(false);
+    expect(mask('bad', 'processo-judicial').ok).toBe(false);
     expect(mask('bad', 'nfe-chave').ok).toBe(false);
     expect(mask('bad', 'boleto').ok).toBe(false);
     expect(mask('bad', 'cartao-credito').ok).toBe(false);

@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`@br-validators/core/processo-judicial`** — `validateProcessoJudicial`, `formatProcessoJudicial`, `stripProcessoJudicial`, `parseProcessoJudicial` (CNJ Resolução 65/2008, modulo 97-10)
+- CLI: `br-validators processo-judicial validate|parse|format|strip`
+- Playground: `/processo-judicial` with segment breakdown UI
+- `detect()` classifier for 20-digit / masked CNJ numbers
+
 ---
 
 ## [1.5.0] - 2026-06-23

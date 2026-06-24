@@ -29,6 +29,7 @@ export const DOCUMENT_ROUTES = [
   { slug: 'cnh', label: 'CNH', description: 'RENACH modulo 11', group: 'documents' },
   { slug: 'renavam', label: 'RENAVAM', description: 'DENATRAN modulo 11', group: 'documents' },
   { slug: 'titulo-eleitor', label: 'Título de Eleitor', description: 'TSE modulo 11', group: 'documents' },
+  { slug: 'processo-judicial', label: 'Processo judicial', description: 'CNJ número único mod 97', group: 'documents' },
   { slug: 'nfe-chave', label: 'NF-e Chave', description: '44-digit access key', group: 'documents' },
   { slug: 'ie', label: 'Inscrição Estadual', description: '27 UFs', group: 'documents' },
   { slug: 'pix', label: 'PIX Key', description: 'Bacen DICT — 5 types', group: 'documents' },

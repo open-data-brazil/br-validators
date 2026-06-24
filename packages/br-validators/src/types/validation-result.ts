@@ -43,6 +43,7 @@ export type Cnh = string & { readonly __brand: 'Cnh' };
 export type Renavam = string & { readonly __brand: 'Renavam' };
 export type TituloEleitor = string & { readonly __brand: 'TituloEleitor' };
 export type NfeChave = string & { readonly __brand: 'NfeChave' };
+export type ProcessoJudicial = string & { readonly __brand: 'ProcessoJudicial' };
 export type Cep = string & { readonly __brand: 'Cep' };
 export type Placa = string & { readonly __brand: 'Placa' };
 export type PisPasep = string & { readonly __brand: 'PisPasep' };
@@ -175,6 +176,10 @@ export function brandTituloEleitor(value: string): TituloEleitor {
 
 export function brandNfeChave(value: string): NfeChave {
   return value as NfeChave;
+}
+
+export function brandProcessoJudicial(value: string): ProcessoJudicial {
+  return value as ProcessoJudicial;
 }
 
 export function brandCep(value: string): Cep {

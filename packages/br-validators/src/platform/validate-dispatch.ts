@@ -13,6 +13,7 @@ import { validatePlaca } from '../core/placa/index.js';
 import { validatePixKey } from '../core/pix/index.js';
 import { validateRenavam } from '../core/renavam/index.js';
 import { validateTelefone } from '../core/telefone/index.js';
+import { validateProcessoJudicial } from '../core/processo-judicial/index.js';
 import { validateTituloEleitor } from '../core/titulo-eleitor/index.js';
 import type { UfCode, ValidationErrorCode } from '../types/validation-result.js';
 import type { PlatformDocumentType, PlatformOptions } from './types.js';
@@ -73,6 +74,10 @@ export function validateForPlatform(
     }
     case 'titulo-eleitor': {
       const result = validateTituloEleitor(input);
+      return result.ok ? { ok: true, value: result.value } : result;
+    }
+    case 'processo-judicial': {
+      const result = validateProcessoJudicial(input);
       return result.ok ? { ok: true, value: result.value } : result;
     }
     case 'nfe-chave': {

@@ -25,7 +25,7 @@ Every Brazilian SaaS eventually reinvents CPF validation — usually wrong.
 (Receita Federal, Bacen, CONTRAN, TSE, SEFAZ, FEBRABAN, Anatel) so you don't have to.
 
 - ✅ **CNPJ alfanumérico** — new RFB format (effective July 2026), ready now
-- ✅ **18+ document types** — CPF, CNPJ, CEP, NF-e chave, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
+- ✅ **19+ document types** — CPF, CNPJ, CEP, NF-e chave, processo judicial CNJ, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
 - ✅ **Zero runtime dependencies** — pure TypeScript logic, no HTTP calls
 - ✅ **Never throws** — every function returns `{ ok: true, value } | { ok: false, message, code }`
 - ✅ **Tree-shakeable** — subpath imports per document type
@@ -239,6 +239,7 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | CNH | `@br-validators/core/cnh` | `br-validators cnh …` | `/cnh` |
 | RENAVAM | `@br-validators/core/renavam` | `br-validators renavam …` | `/renavam` |
 | Título de Eleitor | `@br-validators/core/titulo-eleitor` | `br-validators titulo-eleitor …` | `/titulo-eleitor` |
+| Processo judicial CNJ | `@br-validators/core/processo-judicial` | `br-validators processo-judicial …` | `/processo-judicial` |
 | Placa (Mercosul + legada) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |
 | PIX key | `@br-validators/core/pix` | `br-validators pix …` | `/pix` |

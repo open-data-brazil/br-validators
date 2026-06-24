@@ -14,6 +14,7 @@ import {
   formatCpf,
   formatInscricaoEstadual,
   formatNfeChave,
+  formatProcessoJudicial,
   formatPisPasep,
   formatPlaca,
   formatRenavam,
@@ -30,6 +31,7 @@ import {
   stripCpf,
   stripInscricaoEstadual,
   stripNfeChave,
+  stripProcessoJudicial,
   stripPisPasep,
   stripPlaca,
   stripRenavam,
@@ -45,6 +47,7 @@ import {
   validateInscricaoEstadual,
   validateIeProdutorRural,
   validateNfeChave,
+  validateProcessoJudicial,
   validatePisPasep,
   validatePlaca,
   validatePixKey,
@@ -86,6 +89,8 @@ function runSanitize(slug: DocumentSlug, input: string, uf: UfCode): SanitizeRes
       return sanitize(input, 'renavam');
     case 'titulo-eleitor':
       return sanitize(input, 'titulo-eleitor');
+    case 'processo-judicial':
+      return sanitize(input, 'processo-judicial');
     case 'nfe-chave':
       return sanitize(input, 'nfe-chave');
     case 'boleto':
@@ -202,6 +207,19 @@ export function computeDocumentResults(
       formattedValue = formatted.ok ? formatted.formatted : formatted.message;
   if (validation.ok && 'ufCode' in validation) {
         extraRows.push({ label: 'UF code', value: String(validation.ufCode) });
+      }
+      break;
+    }
+    case 'processo-judicial': {
+      stripped = stripProcessoJudicial(input);
+      const validation = validateProcessoJudicial(input);
+      const formatted = formatProcessoJudicial(input);
+      validationDetail = validation.ok ? `yes (${validation.format})` : `no — ${validation.code}`;
+      formattedValue = formatted.ok ? formatted.formatted : formatted.message;
+      if (validation.ok) {
+        for (const [key, value] of Object.entries(validation.segments)) {
+          extraRows.push({ label: key, value, mono: true });
+        }
       }
       break;
     }
@@ -341,6 +359,7 @@ export function buildCliCommand(
     cnh: 'cnh',
     renavam: 'renavam',
     'titulo-eleitor': 'titulo-eleitor',
+    'processo-judicial': 'processo-judicial',
     'nfe-chave': 'nfe-chave',
     ie: 'ie',
     pix: 'pix',

@@ -1,0 +1,55 @@
+{
+  "source": "CNJ Resolução 65/2008 — Anexo VIII, algoritmo Módulo 97 Base 10 (ISO 7064:2003)",
+  "url": "https://atos.cnj.jus.br/atos/detalhar/119",
+  "anexoViiiUrl": "https://www.cnj.jus.br/wp-content/uploads/2011/03/minuta_anexos_da_resoluo_numerao_nica_14_12_08.pdf",
+  "primary": {
+    "canonical": "00001003420089210000",
+    "masked": "0000100-34.2008.9.21.0000",
+    "segments": {
+      "sequencial": "0000100",
+      "checkDigits": "34",
+      "ano": "2008",
+      "segmentoJustica": "9",
+      "tribunal": "21",
+      "origem": "0000"
+    },
+    "note": "Field values from Resolução 65/2008 annex examples; DV computed per Anexo VIII (illustrative DV 15 in PDF fails mod97)."
+  },
+  "secondary": {
+    "canonical": "00008354320154058000",
+    "masked": "0000835-43.2015.4.05.8000",
+    "segments": {
+      "sequencial": "0000835",
+      "checkDigits": "43",
+      "ano": "2015",
+      "segmentoJustica": "4",
+      "tribunal": "05",
+      "origem": "8000"
+    }
+  },
+  "tertiary": {
+    "canonical": "00000013920248260100",
+    "masked": "0000001-39.2024.8.26.0100",
+    "segments": {
+      "sequencial": "0000001",
+      "checkDigits": "39",
+      "ano": "2024",
+      "segmentoJustica": "8",
+      "tribunal": "26",
+      "origem": "0100"
+    }
+  },
+  "invalidCheckDigit": {
+    "canonical": "00001001520089210000",
+    "masked": "0000100-15.2008.9.21.0000",
+    "note": "Illustrative DV from PDF annex — fails Anexo VIII verification."
+  },
+  "invalidLength": {
+    "input": "123"
+  },
+  "invalidSegment": {
+    "canonical": "00001008420080210000",
+    "masked": "0000100-84.2008.0.21.0000",
+    "note": "Segment 0 is outside CNJ justice segment range 1–9."
+  }
+}

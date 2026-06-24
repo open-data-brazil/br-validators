@@ -10,6 +10,7 @@ import telefoneVectors from '../vectors/telefone.official.json';
 import cnhVectors from '../vectors/cnh.official.json';
 import renavamVectors from '../vectors/renavam.official.json';
 import tituloVectors from '../vectors/titulo-eleitor.official.json';
+import processoVectors from '../vectors/processo-judicial.official.json';
 import nfeVectors from '../vectors/nfe-chave.official.json';
 import boletoVectors from '../vectors/boleto.official.json';
 import cartaoVectors from '../vectors/cartao-credito.official.json';
@@ -83,6 +84,7 @@ describe('sanitize()', () => {
       'cnh',
       'renavam',
       'titulo-eleitor',
+      'processo-judicial',
       'nfe-chave',
       'boleto',
       'cartao-credito',
@@ -100,6 +102,7 @@ describe('sanitize()', () => {
     expect(sanitize(cnhVectors.primary.officialFormatted, 'cnh').ok).toBe(true);
     expect(sanitize(renavamVectors.primary.canonical, 'renavam').ok).toBe(true);
     expect(sanitize(tituloVectors.primary.officialFormatted, 'titulo-eleitor').ok).toBe(true);
+    expect(sanitize(processoVectors.primary.masked, 'processo-judicial').ok).toBe(true);
     expect(sanitize(nfeVectors.primary.officialFormatted, 'nfe-chave').ok).toBe(true);
     expect(sanitize(boletoVectors.golden.santander.linhaMasked, 'boleto').ok).toBe(true);
     expect(sanitize(cartaoVectors.visa.masked, 'cartao-credito').ok).toBe(true);
@@ -123,6 +126,7 @@ describe('sanitize()', () => {
     expect(sanitize('bad', 'cnh').ok).toBe(false);
     expect(sanitize('bad', 'renavam').ok).toBe(false);
     expect(sanitize('bad', 'titulo-eleitor').ok).toBe(false);
+    expect(sanitize('bad', 'processo-judicial').ok).toBe(false);
     expect(sanitize('bad', 'nfe-chave').ok).toBe(false);
     expect(sanitize('bad', 'boleto').ok).toBe(false);
     expect(sanitize('bad', 'cartao-credito').ok).toBe(false);
