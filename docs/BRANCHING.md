@@ -81,3 +81,43 @@ git checkout developing && git merge main && git push origin developing
 - Required status check: **test** (CI workflow)
 - Required pull request review: **1** approving review
 - Releases use tags — **no** `npm login` / local publish required or supported
+
+## Automated data refresh publish (daily bot)
+
+Workflow: [`.github/workflows/data-refresh-bot.yml`](../.github/workflows/data-refresh-bot.yml)
+
+When embedded reference data **drifts** (`datasetsAlterados > 0` and `totalAdicionados > 0`):
+
+1. `pnpm data:refresh` → `pnpm verify`
+2. `scripts/bump-data-patch.mjs` — PATCH bump on all six packages + CHANGELOG
+3. `scripts/data-refresh-publish.mjs` — commit + push (or open PR)
+4. Tag `vX.Y.Z` → [`.github/workflows/release.yml`](../.github/workflows/release.yml) publishes npm
+
+**`main` is protected** — the default `GITHUB_TOKEN` cannot push to `main`. Choose one setup:
+
+### Option A — fully automated (recommended)
+
+1. GitHub → Settings → Developer settings → **Fine-grained personal access token**
+   - Repository access: this repo only
+   - Permissions: **Contents** read/write, **Pull requests** read/write, **Workflows** read (optional)
+2. Repo → Settings → Secrets → Actions → **`DATA_REFRESH_GITHUB_TOKEN`** — paste the PAT
+3. Branch protection → **Allow specified actors to bypass** → add the PAT owner (or enable bypass for `github-actions[bot]` if using classic PAT via bot)
+
+With the secret set, the bot pushes directly to `main`, pushes the tag, and `release.yml` publishes all six npm packages.
+
+### Option B — PR fallback (no PAT)
+
+Without `DATA_REFRESH_GITHUB_TOKEN`:
+
+1. Bot opens `bot/data-release/vX.Y.Z-YYYY-MM-DD` → PR to `main`
+2. Merge the PR (approval required by branch protection)
+3. [`.github/workflows/data-refresh-tag-on-merge.yml`](../.github/workflows/data-refresh-tag-on-merge.yml) pushes tag `vX.Y.Z` after merge → npm publish
+
+Enable **Allow auto-merge** on the repo if you want zero-touch after the first approval.
+
+### Required secrets
+
+| Secret | Purpose |
+|--------|---------|
+| `NPM_TOKEN` | npm publish (Release workflow) |
+| `DATA_REFRESH_GITHUB_TOKEN` | Optional — direct push + tag from data refresh bot |

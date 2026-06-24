@@ -47,7 +47,7 @@ function renderSourceAlertsSection(alerts: SourceAlert[]): string[] {
     return [
       '## Source health',
       '',
-      'All official endpoints responded successfully. No embedded-data retention warnings.',
+      'All HTTP endpoints responded successfully. No embedded-data retention warnings.',
       '',
     ];
   }
@@ -180,7 +180,7 @@ export function generatePrBody(report: RefreshReport, datasets: DatasetMetadata[
     }
     lines.push('');
   } else {
-    lines.push('### Source health', '', 'All official endpoints responded successfully.', '');
+    lines.push('### Source health', '', 'All HTTP endpoints responded successfully.', '');
   }
 
   if (report.resumo.datasetsAlterados === 0) {

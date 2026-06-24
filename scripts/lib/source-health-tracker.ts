@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import type { SourceAlert, SourceFetchOutcome } from './source-fetch-outcome.js';
+import type { SourceAlert, SourceFetchOutcome, SourceFetchStatus } from './source-fetch-outcome.js';
 import { todayIsoDate } from './fetch-utils.js';
 
 export interface SourceHealthState {
@@ -14,6 +14,7 @@ export interface SourceHealthState {
   severity: 'ok' | 'warning' | 'critical';
   message: string;
   retainedEmbeddedDataFrom: string | null;
+  outcomeStatus: SourceFetchStatus | null;
 }
 
 const DOC_MAINTENANCE =
@@ -39,7 +40,22 @@ function parseHealthState(raw: string): SourceHealthState | null {
     severity: readSeverity(obj, 'severity') ?? 'ok',
     message: readString(obj, 'message') ?? '',
     retainedEmbeddedDataFrom: readString(obj, 'retainedEmbeddedDataFrom') ?? null,
+    outcomeStatus: readOutcomeStatus(obj, 'outcomeStatus'),
   };
+}
+
+function readOutcomeStatus(obj: object, key: string): SourceFetchStatus | null {
+  const value = readString(obj, key);
+  if (
+    value === 'ok' ||
+    value === 'embedded_retained' ||
+    value === 'source_unavailable' ||
+    value === 'source_empty' ||
+    value === 'dependency_failed'
+  ) {
+    return value;
+  }
+  return null;
 }
 
 function readString(obj: object, key: string): string | undefined {
@@ -94,39 +110,33 @@ function isPreviousCalendarDay(previousDate: string, currentDate: string): boole
   return diffMs >= oneDayMs && diffMs < oneDayMs * 2;
 }
 
-function buildFailureMessage(consecutiveFailureDays: number): string {
+function buildFailureMessage(consecutiveFailureDays: number, embedded: boolean): string {
+  if (embedded) {
+    if (consecutiveFailureDays >= 2) {
+      return 'Official source still unavailable — embedded Bacen table retained for 2 or more consecutive days.';
+    }
+    return 'Official source did not return parseable data — embedded Bacen table retained (day 1 warning).';
+  }
   if (consecutiveFailureDays >= 2) {
     return 'Consultation link deprecated — official source unreachable for 2 or more consecutive days.';
   }
   return 'Possible link deprecation — official source unreachable after 5 attempts (2 min interval).';
 }
 
-export function applyFetchOutcomeToHealth(
+function applyDegradedOutcome(
   previous: SourceHealthState | null,
   outcome: SourceFetchOutcome,
-  runDate: string = todayIsoDate(),
+  runDate: string,
+  embedded: boolean,
 ): SourceHealthState {
-  if (outcome.status === 'ok') {
-    return {
-      datasetId: outcome.datasetId,
-      endpoints: outcome.endpoints,
-      consecutiveFailureDays: 0,
-      firstFailureDate: null,
-      lastFailureDate: null,
-      lastSuccessDate: runDate,
-      severity: 'ok',
-      message: 'Official source responded successfully.',
-      retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
-    };
-  }
-
   if (previous !== null && previous.lastFailureDate === runDate) {
     return {
       ...previous,
       endpoints: outcome.endpoints,
       retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom ?? previous.retainedEmbeddedDataFrom,
-      message: buildFailureMessage(previous.consecutiveFailureDays),
+      message: outcome.message.length > 0 ? outcome.message : buildFailureMessage(previous.consecutiveFailureDays, embedded),
       severity: previous.consecutiveFailureDays >= 2 ? 'critical' : 'warning',
+      outcomeStatus: outcome.status,
     };
   }
 
@@ -153,8 +163,76 @@ export function applyFetchOutcomeToHealth(
     lastFailureDate: runDate,
     lastSuccessDate: previous?.lastSuccessDate ?? null,
     severity,
-    message: buildFailureMessage(consecutiveFailureDays),
+    message:
+      outcome.message.length > 0
+        ? outcome.message
+        : buildFailureMessage(consecutiveFailureDays, embedded),
     retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
+    outcomeStatus: outcome.status,
+  };
+}
+
+export function applyFetchOutcomeToHealth(
+  previous: SourceHealthState | null,
+  outcome: SourceFetchOutcome,
+  runDate: string = todayIsoDate(),
+): SourceHealthState {
+  if (outcome.status === 'ok') {
+    return {
+      datasetId: outcome.datasetId,
+      endpoints: outcome.endpoints,
+      consecutiveFailureDays: 0,
+      firstFailureDate: null,
+      lastFailureDate: null,
+      lastSuccessDate: runDate,
+      severity: 'ok',
+      message: 'Official source responded successfully.',
+      retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
+      outcomeStatus: 'ok',
+    };
+  }
+
+  if (outcome.status === 'embedded_retained') {
+    return applyDegradedOutcome(previous, outcome, runDate, true);
+  }
+
+  if (previous !== null && previous.lastFailureDate === runDate) {
+    return {
+      ...previous,
+      endpoints: outcome.endpoints,
+      retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom ?? previous.retainedEmbeddedDataFrom,
+      message: buildFailureMessage(previous.consecutiveFailureDays, false),
+      severity: previous.consecutiveFailureDays >= 2 ? 'critical' : 'warning',
+      outcomeStatus: outcome.status,
+    };
+  }
+
+  let consecutiveFailureDays = 1;
+  let firstFailureDate = runDate;
+
+  if (
+    previous !== null &&
+    previous.lastFailureDate !== null &&
+    isPreviousCalendarDay(previous.lastFailureDate, runDate)
+  ) {
+    consecutiveFailureDays = previous.consecutiveFailureDays + 1;
+    firstFailureDate = previous.firstFailureDate ?? runDate;
+  }
+
+  const severity: SourceHealthState['severity'] =
+    consecutiveFailureDays >= 2 ? 'critical' : 'warning';
+
+  return {
+    datasetId: outcome.datasetId,
+    endpoints: outcome.endpoints,
+    consecutiveFailureDays,
+    firstFailureDate,
+    lastFailureDate: runDate,
+    lastSuccessDate: previous?.lastSuccessDate ?? null,
+    severity,
+    message: buildFailureMessage(consecutiveFailureDays, false),
+    retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
+    outcomeStatus: outcome.status,
   };
 }
 
@@ -203,7 +281,10 @@ export function healthStateToAlert(state: SourceHealthState): SourceAlert | null
   return {
     datasetId: state.datasetId,
     severity: state.severity,
-    status: 'source_unavailable',
+    status:
+      state.outcomeStatus === null || state.outcomeStatus === 'ok'
+        ? 'source_unavailable'
+        : state.outcomeStatus,
     message: state.message,
     endpoints: state.endpoints,
     retainedEmbeddedDataFrom: state.retainedEmbeddedDataFrom,

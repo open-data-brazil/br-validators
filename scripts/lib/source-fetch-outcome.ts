@@ -8,6 +8,7 @@ export { FETCH_MAX_ATTEMPTS, FETCH_RETRY_DELAY_MS } from './fetch-retry-config.j
 
 export type SourceFetchStatus =
   | 'ok'
+  | 'embedded_retained'
   | 'source_unavailable'
   | 'source_empty'
   | 'dependency_failed';
@@ -88,6 +89,25 @@ function classifySourceError(error: unknown): Exclude<SourceFetchStatus, 'ok'> {
     return 'dependency_failed';
   }
   return 'source_unavailable';
+}
+
+export function buildEmbeddedFallbackOutcome(
+  datasetId: string,
+  endpoints: string[],
+  retainedEmbeddedDataFrom: string | null,
+  attempts: number,
+  detail: string,
+): SourceFetchOutcome {
+  const retainedLabel = retainedEmbeddedDataFrom ?? 'unknown date';
+  return {
+    datasetId,
+    status: 'embedded_retained',
+    endpoints,
+    attempts,
+    checkedAt: new Date().toISOString(),
+    retainedEmbeddedDataFrom,
+    message: `${detail} Embedded data from ${retainedLabel} retained in the API.`,
+  };
 }
 
 export function toSourceAlert(outcome: SourceFetchOutcome): SourceAlert | null {

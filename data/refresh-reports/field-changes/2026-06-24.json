@@ -35,10 +35,6 @@
       "status": "unchanged"
     },
     {
-      "id": "feriados",
-      "status": "unchanged"
-    },
-    {
       "id": "cnaes",
       "status": "unchanged"
     },
@@ -67,10 +63,6 @@
       "status": "unchanged"
     },
     {
-      "id": "cep-faixas",
-      "status": "unchanged"
-    },
-    {
       "id": "portos",
       "status": "unchanged"
     },
@@ -80,6 +72,14 @@
     },
     {
       "id": "transparencia-snapshots",
+      "status": "unchanged"
+    },
+    {
+      "id": "feriados",
+      "status": "unchanged"
+    },
+    {
+      "id": "cep-faixas",
       "status": "unchanged"
     }
   ]

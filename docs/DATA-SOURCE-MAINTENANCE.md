@@ -90,6 +90,7 @@ Example critical message (day 2+):
 | Bacen | `scripts/fetch-bancos.ts` | `src/bancos/data/bancos.json` | `#bacen-banks` |
 | DDD | `scripts/fetch-ddd.ts` | `src/core/telefone/data/ddd-municipios.json` | `#anatel-ddd-lookup` |
 | Feriados | _(probe only)_ | `src/feriados/data/portaria-extras.json` | `#feriados-nacionais` |
+| ANP combustíveis | `scripts/fetch-anp-combustiveis.ts` | `src/anp-combustiveis/data/*.json` | `#anp-combustiveis` |
 
 ---
 
@@ -105,4 +106,14 @@ If the Gov.br calendar URL moves:
 
 ---
 
-**See also:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) · `.local/phases/30-daily-data-refresh-bot/TASKS.md`
+**See also:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) · [BRANCHING.md](BRANCHING.md#automated-data-refresh-publish-daily-bot) · `.local/phases/30-daily-data-refresh-bot/TASKS.md`
+
+---
+
+## Automated npm publish on data drift
+
+When the daily bot detects real drift, it PATCH-bumps all six packages and triggers [release.yml](../.github/workflows/release.yml) via git tag.
+
+**One-time setup:** add GitHub Actions secret `DATA_REFRESH_GITHUB_TOKEN` (fine-grained PAT with `main` bypass) — see [BRANCHING.md § Automated data refresh publish](BRANCHING.md#automated-data-refresh-publish-daily-bot).
+
+Without the PAT, the bot opens a PR; after merge, [data-refresh-tag-on-merge.yml](../.github/workflows/data-refresh-tag-on-merge.yml) pushes the tag and npm publish runs.

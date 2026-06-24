@@ -378,7 +378,9 @@ async function main(): Promise<void> {
   }
 
   if (report.resumo.datasetsAlterados === 0 && report.sourceAlerts.length === 0) {
-    console.log('No dataset drift detected. All official sources responded successfully.');
+    console.log('No dataset drift detected. All HTTP sources responded successfully.');
+  } else if (report.resumo.datasetsAlterados === 0 && report.sourceAlerts.length > 0) {
+    console.log('No dataset drift detected. See source alerts above for embedded-data retention warnings.');
   } else if (report.resumo.datasetsAlterados > 0) {
     console.log(
       `Dataset drift detected: +${String(report.resumo.totalAdicionados)} −${String(report.resumo.totalRemovidos)} ~${String(report.resumo.totalAlterados)}`,

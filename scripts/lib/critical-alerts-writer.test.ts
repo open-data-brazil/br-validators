@@ -16,6 +16,7 @@ const criticalState: SourceHealthState = {
   severity: 'critical',
   message: 'Consultation link deprecated — official source unreachable for 2 or more consecutive days.',
   retainedEmbeddedDataFrom: '2026-06-22',
+  outcomeStatus: 'source_unavailable',
 };
 
 describe('critical-alerts-writer', () => {

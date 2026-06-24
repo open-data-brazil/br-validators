@@ -21,13 +21,26 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
   id-token: write
+
+concurrency:
+  group: data-refresh-bot
+  cancel-in-progress: true
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      DATA_REFRESH_DIRECT_PUSH: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Validate force_publish reason
         if: inputs.force_publish == true
@@ -78,43 +91,57 @@ jobs:
           echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
 
       - name: Bump PATCH version
-        if: >-
-          github.ref == 'refs/heads/main' &&
-          (steps.drift.outputs.changed != '0' || inputs.force_publish == true)
+        if: steps.drift.outputs.changed != '0' || inputs.force_publish == true
         id: bump
         run: node scripts/bump-data-patch.mjs --write-changelog --skip-clean-check >> "$GITHUB_OUTPUT"
 
-      - name: Publish PATCH release (full automation)
-        if: >-
-          github.ref == 'refs/heads/main' &&
-          (steps.drift.outputs.changed != '0' || inputs.force_publish == true)
+      - name: Publish PATCH release (data drift)
+        if: steps.drift.outputs.changed != '0' || inputs.force_publish == true
+        id: publish_release
+        env:
+          DATA_REFRESH_REASON: ${{ inputs.reason }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          REASON="${{ inputs.reason }}"
-          if [ -n "$REASON" ]; then
-            git commit -m "chore(release): data refresh PATCH v${{ steps.bump.outputs.VERSION }} — ${REASON}"
-          else
-            git commit -m "chore(release): data refresh PATCH v${{ steps.bump.outputs.VERSION }}"
+          DIRECT=""
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" = "true" ]; then
+            DIRECT="--direct-push"
           fi
-          git push origin main
-          git tag -a "${{ steps.bump.outputs.TAG }}" -m "Release ${{ steps.bump.outputs.TAG }} — data refresh"
-          git push origin "${{ steps.bump.outputs.TAG }}"
+          node scripts/data-refresh-publish.mjs \
+            --mode release \
+            --version "${{ steps.bump.outputs.VERSION }}" \
+            --tag "${{ steps.bump.outputs.TAG }}" \
+            $DIRECT
 
       - name: Commit reports only (no drift)
         if: >-
-          github.ref == 'refs/heads/main' &&
           steps.drift.outputs.changed == '0' &&
           inputs.force_publish != true &&
           inputs.dry_run != true
+        id: publish_reports
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/refresh-reports docs/DATA-FRESHNESS.md
-          if git diff --staged --quiet; then
-            echo "No report changes to commit."
-            exit 0
+          DIRECT=""
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" = "true" ]; then
+            DIRECT="--direct-push"
           fi
-          git commit -m "chore(data): daily refresh reports $(date -u +%Y-%m-%d)"
-          git push origin main
+          node scripts/data-refresh-publish.mjs --mode reports $DIRECT
+
+      - name: Publish summary
+        if: always()
+        run: |
+          echo "### Publish result" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.publish_release.outputs.publish_method }}" ]; then
+            echo "- Release: **${{ steps.publish_release.outputs.publish_method }}**" >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "${{ steps.publish_release.outputs.pr_url }}" ]; then
+              echo "- PR: ${{ steps.publish_release.outputs.pr_url }}" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          elif [ -n "${{ steps.publish_reports.outputs.publish_method }}" ]; then
+            echo "- Reports: **${{ steps.publish_reports.outputs.publish_method }}**" >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "${{ steps.publish_reports.outputs.pr_url }}" ]; then
+              echo "- PR: ${{ steps.publish_reports.outputs.pr_url }}" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- No publish step ran (dry run or no changes)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" != "true" ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "> Set repository secret \`DATA_REFRESH_GITHUB_TOKEN\` (PAT with \`main\` bypass) for fully automated push + tag without PR." >> "$GITHUB_STEP_SUMMARY"
+          fi

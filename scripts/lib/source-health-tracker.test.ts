@@ -62,4 +62,44 @@ describe('source-health-tracker', () => {
     }, '2026-06-24');
     expect(collectHealthAlerts([ok])).toHaveLength(0);
   });
+
+  it('warns when embedded fallback is retained (paises-bacen)', () => {
+    const embedded: SourceFetchOutcome = {
+      datasetId: 'paises-bacen',
+      status: 'embedded_retained',
+      endpoints: ['http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=x'],
+      attempts: 5,
+      checkedAt: '2026-06-24T03:00:00.000Z',
+      retainedEmbeddedDataFrom: '2026-06-20',
+      message: 'NF-e portal did not return a parseable country table. Embedded data from 2026-06-20 retained in the API.',
+    };
+
+    const state = applyFetchOutcomeToHealth(null, embedded, '2026-06-24');
+    expect(state.severity).toBe('warning');
+    expect(state.outcomeStatus).toBe('embedded_retained');
+    expect(state.consecutiveFailureDays).toBe(1);
+
+    const alerts = collectHealthAlerts([state]);
+    expect(alerts).toHaveLength(1);
+    expect(alerts[0]?.status).toBe('embedded_retained');
+  });
+
+  it('escalates embedded fallback to critical on second consecutive day', () => {
+    const embedded: SourceFetchOutcome = {
+      datasetId: 'paises-bacen',
+      status: 'embedded_retained',
+      endpoints: ['http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=x'],
+      attempts: 5,
+      checkedAt: '2026-06-24T03:00:00.000Z',
+      retainedEmbeddedDataFrom: '2026-06-20',
+      message: '',
+    };
+
+    const day1 = applyFetchOutcomeToHealth(null, embedded, '2026-06-24');
+    const day2 = applyFetchOutcomeToHealth(day1, embedded, '2026-06-25');
+
+    expect(day2.severity).toBe('critical');
+    expect(day2.consecutiveFailureDays).toBe(2);
+    expect(day2.message).toContain('embedded Bacen table retained');
+  });
 });
