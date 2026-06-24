@@ -156,7 +156,7 @@ Requires Node ≥ 18. ESM only (`"type": "module"`). Zero runtime dependencies.
 | `compare()` | `/compare` | — | — | Normalized equality |
 | `batch()` | `/batch` | — | — | Bulk validate + summary |
 | `diff()` | `/diff` | — | — | Field-level structural diff |
-| `generate()` | `/generate` | `br-validators generate …` | `/generate` | Synthetic test fixtures |
+| `generate()` | `/generate` | `br-validators generate …` | `/generate` | Synthetic test fixtures — **17/18** document types (alphanumeric CPF blocked until RFB spec) |
 
 ```typescript
 import { compare, batch, diff, mask } from '@br-validators/core';

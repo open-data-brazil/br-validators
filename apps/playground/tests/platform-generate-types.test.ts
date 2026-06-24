@@ -15,5 +15,7 @@ describe('platform-generate-types', () => {
     const titulo = PLATFORM_GENERATABLE.find((item) => item.value === 'titulo-eleitor');
     expect(ie?.ufSelector).toBe(true);
     expect(titulo?.ufSelector).toBe(true);
+    expect(ie?.labelKey).toBe('inscricaoEstadual');
+    expect(titulo?.labelKey).toBe('tituloEleitor');
   });
 });
