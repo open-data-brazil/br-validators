@@ -738,7 +738,38 @@ Per-type formatters: `formatCpf`, `formatCnpj`, `formatCep`, `formatPlaca`, `for
 
 Implementation: `strip → validate → apply mask`. See [use-cases/UC-003-format-document.md](use-cases/UC-003-format-document.md).
 
----
+### Consumer warning — display formatting vs backend normalization
+
+> **Implementation guideline for app/backend integrators — not a library defect.**
+
+`format*`, `mask()`, and `strip*` in `@br-validators/core` follow **validate-then-format** (BR-GLOBAL-002). They **do not** left-pad partial input to full document length. Incomplete CPF input (e.g. `"0"` or `"4673024133"`) returns `{ ok: false, … }` from `formatCpf` / `mask(…, 'cpf')` — never `000.000.000-00`.
+
+A common **consumer-side** bug is mixing display formatting with backend serialization in the same helper, then calling it from `onChange`:
+
+```typescript
+// ❌ Anti-pattern — do NOT use in live input handlers
+function normalizeCpf(value: string): string {
+  const digits = value.replace(/\D/g, '');
+  if (digits.length === 0) return '';
+  return digits.length < 11 ? digits.padStart(11, '0') : digits.slice(0, 11);
+}
+
+function formatCpf(value: string): string {
+  return maskDigitsOnly(normalizeCpf(value)); // padStart makes "0" → "00000000000" → "000.000.000-00"
+}
+```
+
+`padStart(11, '0')` is appropriate **at submit/API boundaries** when the user already entered 9–10 digits without leading zeros (e.g. `4673024133` → `04673024133`). It is **not** appropriate while the user is still typing.
+
+| Concern | When | Use |
+|---------|------|-----|
+| Live masked input | `onChange` / controlled field | Progressive UI mask (digits + punctuation only) **or** debounced `mask()` on sufficiently complete input — **no padding** |
+| Canonical value for API/DB | `onSubmit` / server handler | `stripCpf(input)` or `sanitize(input, 'cpf')` after the field is complete; add explicit `padStart` only if **your** backend contract requires fixed width **and** you know the digit count is final |
+| Validation feedback | blur / submit | `validateCpf(stripCpf(input))` |
+
+**Rule:** mask/format functions must not pad partial input. Padding belongs in a separate `normalize()` / `serialize()` step at the backend boundary, not in display formatters wired to `onChange`.
+
+The library’s `mask()` path strips non-digits and applies official punctuation only after validation succeeds — it never substitutes missing digits with zeros during typing.
 
 ---
 
@@ -828,7 +859,7 @@ function maskRuntime(type: string, raw: string, options?: MaskOptions): FormatRe
 function isMaskableDocumentType(type: string): type is MaskableDocumentType;
 ```
 
-`inscricao-estadual` requires `options.uf`. Use type `'telefone'` (not `'phone'`). Invalid input returns `{ ok: false, code, message }` — **no partial mask** (BR-GLOBAL-002).
+Invalid input returns `{ ok: false, code, message }` — **no partial mask** (BR-GLOBAL-002). See [Consumer warning — display formatting vs backend normalization](#consumer-warning--display-formatting-vs-backend-normalization) — do not pad partial input in app-level `onChange` helpers.
 
 | Type | Official source | Mask example |
 |------|-----------------|--------------|

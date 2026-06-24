@@ -7,6 +7,11 @@ import {
   IBGE_DATA_VERSION,
   IBGE_OFFICIAL_DOCS_URL,
 } from '@br-validators/core/ibge';
+import {
+  TSE_MUNICIPIOS_DATA_VERSION,
+  TSE_MUNICIPIO_IBGE_ZIP_URL,
+  TSE_MUNICIPIOS_GOLDEN_CODIGO_TSE_SAO_PAULO,
+} from '@br-validators/core/tse-municipios';
 import { Label } from '@/components/atoms/Label';
 import { Select } from '@/components/atoms/Select';
 import { Input } from '@/components/atoms/Input';
@@ -15,6 +20,7 @@ import { ResultRow } from '@/components/molecules/ResultRow';
 import { ResultSection } from '@/components/molecules/ResultSection';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { filterMunicipiosByName, getMunicipiosForUf } from '@/lib/reference-data/ibge-filter';
+import { resolveTseCrossRef } from '@/lib/reference-data/tse-lookup';
 import { UF_LABELS } from '@/lib/uf-labels';
 import type { UfCode } from '@br-validators/core';
 import styles from './organisms.module.css';
@@ -25,6 +31,7 @@ export function DataIbgeExplorer() {
   const [uf, setUf] = useState<UfCode>('SP');
   const [nameQuery, setNameQuery] = useState('');
   const [codeInput, setCodeInput] = useState('3550308');
+  const [tseInput, setTseInput] = useState(TSE_MUNICIPIOS_GOLDEN_CODIGO_TSE_SAO_PAULO);
 
   const estados = useMemo(() => getEstados(), []);
   const municipios = useMemo(() => getMunicipiosForUf(uf), [uf]);
@@ -40,6 +47,8 @@ export function DataIbgeExplorer() {
     }
     return getMunicipioPorCodigo(Number(digits)) ?? null;
   }, [codeInput]);
+
+  const tseResult = useMemo(() => resolveTseCrossRef(tseInput), [tseInput]);
 
   return (
     <main className={styles.panel}>
@@ -119,6 +128,48 @@ export function DataIbgeExplorer() {
       ) : (
         codeInput.replace(/\D/g, '').length === 7 ? (
           <p className={styles.description}>{copy.notFound}</p>
+        ) : null
+      )}
+
+      <div>
+        <Label htmlFor="ibge-tse">{copy.tseLabel}</Label>
+        <Input
+          id="ibge-tse"
+          value={tseInput}
+          inputMode="numeric"
+          placeholder={copy.tsePlaceholder}
+          onChange={(event) => {
+            setTseInput(event.target.value);
+          }}
+        />
+        <p className={styles.description}>
+          {copy.tseCapturedAt}: {TSE_MUNICIPIOS_DATA_VERSION.capturadoEm}
+          {' · '}
+          <OfficialSourceLink href={TSE_MUNICIPIO_IBGE_ZIP_URL} label={copy.tseOfficialSource} />
+        </p>
+      </div>
+
+      {tseResult ? (
+        <ResultSection title={copy.tseResultTitle}>
+          {tseResult.kind === 'tse-to-ibge' ? (
+            <>
+              <ResultRow label={copy.tseCodeField} value={tseResult.codigoTse} />
+              <ResultRow label={copy.ibgeCodeField} value={String(tseResult.ibgeCodigo)} />
+              <ResultRow label={copy.nameField} value={tseResult.municipioNome ?? '—'} />
+              <ResultRow label={copy.ufField} value={tseResult.uf ?? '—'} />
+            </>
+          ) : (
+            <>
+              <ResultRow label={copy.ibgeCodeField} value={String(tseResult.ibgeCodigo)} />
+              <ResultRow label={copy.nameField} value={tseResult.municipioNome ?? '—'} />
+              <ResultRow label={copy.ufField} value={tseResult.uf ?? '—'} />
+              <ResultRow label={copy.tseCodesField} value={tseResult.codigosTse.join(', ')} />
+            </>
+          )}
+        </ResultSection>
+      ) : (
+        tseInput.replace(/\D/g, '').length === 5 || tseInput.replace(/\D/g, '').length === 7 ? (
+          <p className={styles.description}>{copy.tseNotFound}</p>
         ) : null
       )}
     </main>

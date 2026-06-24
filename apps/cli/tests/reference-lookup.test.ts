@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { EXIT } from '../src/constants.js';
 import {
   isReferenceLookupCommand,
+  isReferenceSearchCommand,
   REFERENCE_LOOKUP_COMMANDS,
   REFERENCE_LOOKUP_MODULES,
   type ReferenceLookupCommand,
@@ -17,6 +18,13 @@ describe('isReferenceLookupCommand', () => {
       expect(isReferenceLookupCommand(command)).toBe(true);
     }
     expect(isReferenceLookupCommand('bancos')).toBe(false);
+  });
+});
+
+describe('isReferenceSearchCommand', () => {
+  it('accepts searchable commands only', () => {
+    expect(isReferenceSearchCommand('cnae')).toBe(true);
+    expect(isReferenceSearchCommand('moedas')).toBe(false);
   });
 });
 
@@ -46,6 +54,27 @@ describe('runReferenceLookupCommand — fiscal modules', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(runReferenceLookupCommand('cest', '0302100', { json: false, verbose: false }, io)).toBe(EXIT.OK);
     expect(io.stdout[0]).toContain('0302100');
+  });
+
+  it('resolves CNAE, CFOP, NCM, and CBO codes', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(runReferenceLookupCommand('cnae', '6201501', { json: true, verbose: false }, io)).toBe(EXIT.OK);
+    const cnae = JSON.parse(io.stdout[0]) as { cnae: { codigo: string } };
+    expect(cnae.cnae.codigo).toBe('6201501');
+
+    io.stdout.length = 0;
+    runReferenceLookupCommand('cfop', '1102', { json: true, verbose: false }, io);
+    const cfop = JSON.parse(io.stdout[0]) as { cfop: { codigo: string } };
+    expect(cfop.cfop.codigo).toBe('1102');
+
+    io.stdout.length = 0;
+    runReferenceLookupCommand('ncm', '12011000', { json: true, verbose: false }, io);
+    const ncm = JSON.parse(io.stdout[0]) as { ncm: { codigo: string } };
+    expect(ncm.ncm.codigo).toBe('12011000');
+
+    io.stdout.length = 0;
+    runReferenceLookupCommand('cbo', '212405', { json: false, verbose: false }, io);
+    expect(io.stdout[0]).toContain('212405');
   });
 });
 
@@ -130,6 +159,10 @@ describe('REFERENCE_LOOKUP_MODULES formatters', () => {
     const humanCases: Array<[ReferenceLookupCommand, string]> = [
       ['natureza-juridica', '2062'],
       ['nbs', '1.1502.50.00'],
+      ['cnae', '6201501'],
+      ['cfop', '1102'],
+      ['ncm', '12011000'],
+      ['cbo', '212405'],
       ['moedas', 'BRL'],
       ['incoterms', 'CIF'],
     ];

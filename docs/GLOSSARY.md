@@ -23,8 +23,10 @@
 ## Formatter
 
 **Definition:** A function that applies the official display mask to a **already valid** canonical value.
-**Not the same as:** Validator — formatting never runs on unvalidated input in the public pipeline.
-**Code name:** `format*`
+**Not the same as:** Validator (mask only) or online lookup (external API); **not** backend serialization (`padStart`, fixed-width padding).
+**Code name:** `format*`, `mask()`
+
+**Consumer rule:** Never call `format*` / `mask()` from `onChange` together with left-padding (`padStart`) — padding is a submit/API concern. See [LIBRARY-API.md — display vs backend normalization](LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization).
 
 ---
 
@@ -32,7 +34,8 @@
 
 **Definition:** Remove punctuation, whitespace, and apply case rules before validation.
 **CPF/CNPJ numeric:** digits only. **CNPJ alphanumeric / placa:** preserve `A-Z0-9`, uppercase.
-**Code name:** `strip*`
+**Not the same as:** Display mask during typing; optional fixed-width padding for legacy backends belongs in a **separate** serialize step at submit, not inside `format*`.
+**Code name:** `strip*`, `sanitize()`
 
 ---
 

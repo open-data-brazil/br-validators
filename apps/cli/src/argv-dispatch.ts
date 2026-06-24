@@ -1,5 +1,5 @@
 import { EXIT } from './constants.js';
-import { isReferenceLookupCommand } from './commands/reference-lookup/registry.js';
+import { isReferenceLookupCommand, isReferenceSearchCommand } from './commands/reference-lookup/registry.js';
 import {
   handleBoletoCli,
   handleBrCodeCli,
@@ -16,6 +16,13 @@ import {
   handleBancosListCli,
   handleBancosLookupCli,
   handleReferenceLookupCli,
+  handleReferenceSearchCli,
+  handleIbgeLookupCli,
+  handleIbgeListCli,
+  handleFeriadosListCli,
+  handleTseMunicipiosLookupCli,
+  handleCepFaixaCli,
+  handleDddLookupCli,
   handleListCli,
   handleNfeChaveCli,
   handleProcessoJudicialCli,
@@ -43,7 +50,7 @@ export type ParsedArgv = {
     PixCliOptions &
     BoletoCliOptions &
     IeCliOptions &
-    GenerateCliOptions & { verbose?: boolean; limit?: number };
+    GenerateCliOptions & { verbose?: boolean; limit?: number; year?: number };
 };
 
 const STANDARD_ACTIONS = ['validate', 'format', 'strip'] as const;
@@ -120,6 +127,11 @@ export function parseArgv(tokens: string[]): ParsedArgv {
       index += 1;
       continue;
     }
+    if (token === '--year') {
+      opts.year = Number(tokens[index + 1]);
+      index += 1;
+      continue;
+    }
     if (token.startsWith('-')) {
       continue;
     }
@@ -151,7 +163,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · bancos · natureza-juridica · nbs · cest · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · pix · boleto · cartao · cartao-credito · ie · bancos · ibge · feriados · tse-municipios · ddd · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
     return EXIT.OK;
   }
 
@@ -174,8 +186,18 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       return dispatchStandard(rest, opts, io, handleCnpjCli);
     case 'cpf':
       return dispatchStandard(rest, opts, io, handleCpfCli);
-    case 'cep':
-      return dispatchStandard(rest, opts, io, handleCepCli);
+    case 'cep': {
+      const action = rest[0];
+      if (action === 'faixa') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleCepFaixaCli(value, opts, io);
+      }
+      if (!action || !STANDARD_ACTIONS.includes(action as (typeof STANDARD_ACTIONS)[number])) {
+        return usage(io, 'Expected action: validate | format | strip | faixa <prefix>');
+      }
+      const value = rest.slice(1).join(' ') || undefined;
+      return handleCepCli(action as 'validate' | 'format' | 'strip', value, opts, io);
+    }
     case 'telefone':
       return dispatchStandard(rest, opts, io, handleTelefoneCli);
     case 'cnh':
@@ -282,6 +304,47 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       }
       return usage(io, 'Expected: bancos lookup <codigo|ispb> | bancos list [--limit n]');
     }
+    case 'ibge': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleIbgeLookupCli(value, opts, io);
+      }
+      if (action === 'list') {
+        const target = rest[1];
+        if (target === 'estados') {
+          return handleIbgeListCli('estados', opts, io);
+        }
+        if (target === 'municipios') {
+          return handleIbgeListCli('municipios', opts, io);
+        }
+        return usage(io, 'Expected: ibge list estados | ibge list municipios [--uf UF] [--limit n]');
+      }
+      return usage(io, 'Expected: ibge lookup <codigo> | ibge list estados | ibge list municipios');
+    }
+    case 'feriados': {
+      const action = rest[0];
+      if (action === 'list') {
+        return handleFeriadosListCli(opts, io);
+      }
+      return usage(io, 'Expected: feriados list [--year YYYY]');
+    }
+    case 'tse-municipios': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleTseMunicipiosLookupCli(value, opts, io);
+      }
+      return usage(io, 'Expected: tse-municipios lookup <codigo-tse|codigo-ibge>');
+    }
+    case 'ddd': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleDddLookupCli(value, opts, io);
+      }
+      return usage(io, 'Expected: ddd lookup <code>');
+    }
     case 'detect':
       return handleDetectCli(rest.join(' ') || undefined, opts, io);
     case 'sanitize':
@@ -295,7 +358,12 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
           const value = rest.slice(1).join(' ') || undefined;
           return handleReferenceLookupCli(root, value, opts, io);
         }
-        return usage(io, `Expected: ${root} lookup <codigo>`);
+        if (action === 'search' && isReferenceSearchCommand(root)) {
+          const value = rest.slice(1).join(' ') || undefined;
+          return handleReferenceSearchCli(root, value, opts, io);
+        }
+        const searchHint = isReferenceSearchCommand(root) ? ' | search <query>' : '';
+        return usage(io, `Expected: ${root} lookup <codigo>${searchHint}`);
       }
       return usage(io, `Unknown command: ${root}`);
     }

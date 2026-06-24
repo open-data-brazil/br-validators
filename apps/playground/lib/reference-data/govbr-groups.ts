@@ -25,6 +25,26 @@ import {
   getAeroportoPorIcao,
 } from '@br-validators/core/aeroportos';
 import { PORTOS_DATA_VERSION, getPortoPorCodigo } from '@br-validators/core/portos';
+import {
+  CNAES_DATA_VERSION,
+  CNAES_GOLDEN_DESENVOLVIMENTO_PROGRAMAS,
+  getCnaePorCodigo,
+} from '@br-validators/core/cnaes';
+import {
+  CFOP_DATA_VERSION,
+  CFOP_GOLDEN_COMPRA_COMERCIALIZACAO,
+  getCfopPorCodigo,
+} from '@br-validators/core/cfop';
+import {
+  NCM_DATA_VERSION,
+  NCM_GOLDEN_SOJA_SEMENTES,
+  getNcmPorCodigo,
+} from '@br-validators/core/ncm';
+import {
+  CBO_DATA_VERSION,
+  CBO_GOLDEN_ANALISTA_SISTEMAS,
+  getCboPorCodigo,
+} from '@br-validators/core/cbo';
 
 export type GovBrGroupId = 'fiscal' | 'trade' | 'logistics';
 
@@ -32,6 +52,10 @@ export type GovBrModuleId =
   | 'naturezaJuridica'
   | 'nbs'
   | 'cest'
+  | 'cnae'
+  | 'cfop'
+  | 'ncm'
+  | 'cbo'
   | 'moedas'
   | 'paisesBacen'
   | 'incoterms'
@@ -114,6 +138,50 @@ export const FISCAL_MODULES: readonly GovBrModuleDefinition[] = [
         : null;
     },
     fieldKeys: ['codigo', 'descricao', 'segmento', 'ncms'],
+  },
+  {
+    id: 'cnae',
+    defaultCode: CNAES_GOLDEN_DESENVOLVIMENTO_PROGRAMAS,
+    capturadoEm: CNAES_DATA_VERSION.capturadoEm,
+    sourceUrl: sourceFromVersion(CNAES_DATA_VERSION),
+    lookup: (code) => {
+      const row = getCnaePorCodigo(code);
+      return row ? { codigo: row.codigo, descricao: row.descricao } : null;
+    },
+    fieldKeys: ['codigo', 'descricao'],
+  },
+  {
+    id: 'cfop',
+    defaultCode: CFOP_GOLDEN_COMPRA_COMERCIALIZACAO,
+    capturadoEm: CFOP_DATA_VERSION.capturadoEm,
+    sourceUrl: sourceFromVersion(CFOP_DATA_VERSION),
+    lookup: (code) => {
+      const row = getCfopPorCodigo(code);
+      return row ? { codigo: row.codigo, descricao: row.descricao } : null;
+    },
+    fieldKeys: ['codigo', 'descricao'],
+  },
+  {
+    id: 'ncm',
+    defaultCode: NCM_GOLDEN_SOJA_SEMENTES,
+    capturadoEm: NCM_DATA_VERSION.capturadoEm,
+    sourceUrl: sourceFromVersion(NCM_DATA_VERSION),
+    lookup: (code) => {
+      const row = getNcmPorCodigo(code);
+      return row ? { codigo: row.codigo, descricao: row.descricao } : null;
+    },
+    fieldKeys: ['codigo', 'descricao'],
+  },
+  {
+    id: 'cbo',
+    defaultCode: CBO_GOLDEN_ANALISTA_SISTEMAS,
+    capturadoEm: CBO_DATA_VERSION.capturadoEm,
+    sourceUrl: sourceFromVersion(CBO_DATA_VERSION),
+    lookup: (code) => {
+      const row = getCboPorCodigo(code);
+      return row ? { codigo: row.codigo, descricao: row.descricao } : null;
+    },
+    fieldKeys: ['codigo', 'descricao'],
   },
 ];
 

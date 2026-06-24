@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CLI: `br-validators processo-judicial validate|parse|format|strip`
 - Playground: `/processo-judicial` with segment breakdown UI
 - `detect()` classifier for 20-digit / masked CNJ numbers
+- **Phase 27d — reference data surface parity**
+  - CLI: `ibge lookup|list`, `feriados list --year`, `tse-municipios lookup`, `ddd lookup`, `cep faixa`, `cnae|cfop|ncm|cbo lookup|search`
+  - Playground: `/data/fiscal` tabs for CNAE, CFOP, NCM, CBO; `/data/calendar` national holidays; TSE ↔ IBGE cross-ref on `/data/ibge`
+  - Docs: README reference data tables updated for CLI + Playground columns
+- **Docs:** consumer guideline — display `format*` / `mask()` vs backend `strip*` / padding at submit ([LIBRARY-API.md](docs/LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization))
 
 ---
 

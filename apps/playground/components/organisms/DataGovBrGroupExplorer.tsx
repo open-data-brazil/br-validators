@@ -34,7 +34,9 @@ function getGroupModuleCopy(
   moduleId: GovBrModuleId,
 ): GroupModuleCopy {
   if (groupId === 'fiscal') {
-    return messages.referenceData.fiscal.modules[moduleId as 'naturezaJuridica' | 'nbs' | 'cest'];
+    return messages.referenceData.fiscal.modules[
+      moduleId as 'naturezaJuridica' | 'nbs' | 'cest' | 'cnae' | 'cfop' | 'ncm' | 'cbo'
+    ];
   }
   if (groupId === 'trade') {
     return messages.referenceData.trade.modules[moduleId as 'moedas' | 'paisesBacen' | 'incoterms'];

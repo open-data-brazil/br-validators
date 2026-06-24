@@ -701,5 +701,29 @@ describe('program', () => {
     expect(() => {
       run(['node', 'br-validators', 'portos', 'lookup', 'BRSSZ']);
     }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'lookup', '3550308', '--json']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'feriados', 'list', '--year', '2026']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cnae', 'search', 'software', '--limit', '2']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'tse-municipios', 'lookup', '71072', '--json']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ddd', 'lookup', '11']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'cep', 'faixa', '01310']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'list', 'invalid']);
+    }).not.toThrow();
+    expect(() => {
+      run(['node', 'br-validators', 'ibge', 'list', 'estados', '--limit', '1']);
+    }).not.toThrow();
   });
 });

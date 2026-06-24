@@ -26,6 +26,7 @@ describe('resolvePlaygroundRoute', () => {
 
   it('resolves reference data routes', () => {
     expect(resolvePlaygroundRoute('/data/ibge')).toEqual({ kind: 'reference-data', slug: 'data/ibge' });
+    expect(resolvePlaygroundRoute('/data/calendar')).toEqual({ kind: 'reference-data', slug: 'data/calendar' });
     expect(resolvePlaygroundRoute('/data/bancos')).toEqual({ kind: 'reference-data', slug: 'data/bancos' });
     expect(resolvePlaygroundRoute('/data/fiscal')).toEqual({ kind: 'reference-data', slug: 'data/fiscal' });
     expect(resolvePlaygroundRoute('/data/trade')).toEqual({ kind: 'reference-data', slug: 'data/trade' });

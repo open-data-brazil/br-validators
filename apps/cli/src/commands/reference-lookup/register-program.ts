@@ -1,6 +1,6 @@
 import type { Command } from 'commander';
-import { handleReferenceLookupCli, type ReferenceLookupCliOptions, writeCliIo } from '../../handlers.js';
-import { REFERENCE_LOOKUP_MODULES, REFERENCE_LOOKUP_COMMANDS } from './registry.js';
+import { handleReferenceLookupCli, handleReferenceSearchCli, type ReferenceLookupCliOptions, writeCliIo } from '../../handlers.js';
+import { REFERENCE_LOOKUP_MODULES, REFERENCE_LOOKUP_COMMANDS, REFERENCE_SEARCH_COMMANDS } from './registry.js';
 
 export function registerReferenceLookupCommands(program: Command): void {
   for (const command of REFERENCE_LOOKUP_COMMANDS) {
@@ -18,5 +18,20 @@ export function registerReferenceLookupCommands(program: Command): void {
         process.exitCode = handleReferenceLookupCli(command, codigo, opts, io);
         writeCliIo(io);
       });
+
+    if ((REFERENCE_SEARCH_COMMANDS as readonly string[]).includes(command)) {
+      root
+        .command('search')
+        .description(`Search ${command} by description fragment`)
+        .argument('<query>', 'Search query')
+        .option('--json', 'JSON output')
+        .option('--verbose', 'Include dataset capture date')
+        .option('--limit <n>', 'Maximum rows', (v: string) => Number(v))
+        .action((query: string, opts: ReferenceLookupCliOptions & { limit?: number }) => {
+          const io = { stdout: [] as string[], stderr: [] as string[] };
+          process.exitCode = handleReferenceSearchCli(command, query, opts, io);
+          writeCliIo(io);
+        });
+    }
   }
 }
