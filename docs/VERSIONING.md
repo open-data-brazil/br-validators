@@ -114,6 +114,8 @@ Version applies to exports documented in [LIBRARY-API.md](LIBRARY-API.md):
 ### 1. Prepare
 
 - [ ] All changes in [CHANGELOG.md](../CHANGELOG.md) under `[Unreleased]`
+- [ ] **npm READMEs** — `packages/br-validators/README.md` (primary npm page), root `README.md`, and all five adapter/cli `README.md` files show the new version in **Current release** / intro lines (see `.cursor/rules/release-version-publish.mdc`)
+- [ ] New subpaths/features reflected in `packages/br-validators/README.md` document and reference-data tables
 - [ ] Tests pass (CI green)
 - [ ] Official sources cited for algorithm changes
 - [ ] SECURITY review for validation logic changes

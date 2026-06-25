@@ -1,12 +1,12 @@
 ---
-description: Release checklist — version bump, tag, npm publish, avoid CI mismatch
-globs: packages/br-validators/package.json,apps/cli/package.json,packages/br-validators-zod/package.json,packages/br-validators-rhf/package.json,packages/br-validators-express/package.json,packages/br-validators-vue/package.json,CHANGELOG.md,.github/workflows/release.yml,docs/BRANCHING.md,docs/VERSIONING.md
+description: Release checklist — version bump, tag, npm publish, npm README audit, avoid CI mismatch
+globs: packages/br-validators/package.json,apps/cli/package.json,packages/br-validators-zod/package.json,packages/br-validators-rhf/package.json,packages/br-validators-express/package.json,packages/br-validators-vue/package.json,CHANGELOG.md,README.md,packages/br-validators/README.md,apps/cli/README.md,packages/br-validators-zod/README.md,packages/br-validators-rhf/README.md,packages/br-validators-express/README.md,packages/br-validators-vue/README.md,.github/workflows/release.yml,docs/BRANCHING.md,docs/VERSIONING.md
 alwaysApply: false
 ---
 
 # Release + publish — agent checklist
 
-> **Trigger:** version bump, `git tag`, npm publish, GitHub Release, `release.yml`, CHANGELOG.
+> **Trigger:** version bump, `git tag`, npm publish, GitHub Release, `release.yml`, CHANGELOG, npm README.
 
 ## Non-negotiable order
 
@@ -14,12 +14,65 @@ alwaysApply: false
 2. PR `developing` → `main` (CI `test` + approval)
 3. **Bump version** in **all six** publishable packages (same semver)
 4. **CHANGELOG** — move `[Unreleased]` → `[X.Y.Z] - YYYY-MM-DD`
-5. Commit + merge to `main`
-6. **Only then** create and push git tag `vX.Y.Z`
-7. Release workflow publishes npm + GitHub Release
-8. Sync `developing` from `main`
+5. **npm-facing docs** — update READMEs (see checklist below) **before** tag
+6. Commit + merge to `main`
+7. **Only then** create and push git tag `vX.Y.Z`
+8. Release workflow publishes npm + GitHub Release
+9. Sync `developing` from `main`
 
-**NEVER** push a tag before step 3–5. **NEVER** run `pnpm publish` locally — CI-only (`scripts/assert-ci-publish.mjs`).
+**NEVER** push a tag before steps 3–6. **NEVER** run `pnpm publish` locally — CI-only (`scripts/assert-ci-publish.mjs`).
+
+## npm-facing documentation (MANDATORY before tag)
+
+npm renders each package's `README.md` from the repo. Stale **Current release** text (e.g. still **v1.7.0** after bumping to **1.8.0**) ships to [npmjs.com](https://www.npmjs.com/package/@br-validators/core) on publish.
+
+### Files to update every release
+
+| File | What to sync |
+|------|----------------|
+| `packages/br-validators/README.md` | `## Current release`, version table, document-type table, reference-data table, feature bullets |
+| `README.md` (repo root) | `## Current release` version table + release blurb |
+| `apps/cli/README.md` | Core version in intro line |
+| `packages/br-validators-zod/README.md` | Core version in intro line |
+| `packages/br-validators-rhf/README.md` | Core version in intro line |
+| `packages/br-validators-express/README.md` | Core version in intro line |
+| `packages/br-validators-vue/README.md` | Core version in intro line |
+
+### Pre-tag audit (run after bump, before `git tag`)
+
+```bash
+VERSION="1.8.0"   # planned release — no v prefix
+PREV="1.7.0"      # last published — adjust per release
+
+# 1. No stale previous version in publishable READMEs
+if rg -n "$PREV" README.md packages/br-validators/README.md apps/cli/README.md \
+  packages/br-validators-*/README.md 2>/dev/null; then
+  echo "FAIL: stale $PREV in README"; exit 1
+fi
+
+# 2. New version present in all seven READMEs
+for F in README.md packages/br-validators/README.md apps/cli/README.md \
+  packages/br-validators-zod/README.md packages/br-validators-rhf/README.md \
+  packages/br-validators-express/README.md packages/br-validators-vue/README.md; do
+  rg -q "$VERSION" "$F" || { echo "MISSING $VERSION in $F"; exit 1; }
+done
+
+# 3. CHANGELOG section exists for this version
+rg -q "## \[$VERSION\]" CHANGELOG.md || { echo "CHANGELOG missing [$VERSION]"; exit 1; }
+
+echo "README audit OK"
+```
+
+### Content checklist (new subpaths / features)
+
+When the release adds validators or reference data:
+
+- [ ] `packages/br-validators/README.md` — **All supported types** table (document + platform rows)
+- [ ] `packages/br-validators/README.md` — **Reference data** table (if applicable)
+- [ ] `CHANGELOG.md` — `[Unreleased]` moved to dated `## [X.Y.Z]`
+- [ ] Root `README.md` — **Current release** blurb matches CHANGELOG scope (not previous release highlights)
+
+**Post-publish verify:** `npm view @br-validators/core version` and spot-check https://www.npmjs.com/package/@br-validators/core README.
 
 ## Files that MUST match
 
@@ -72,8 +125,9 @@ Workflow: `.github/workflows/release.yml` — requires secret **`NPM_TOKEN`**. P
 
 1. Bump **all six** `package.json` files in the same commit.
 2. Update `CHANGELOG.md` for the release scope only.
-3. Run pre-tag verification commands; report mismatch before tagging.
-4. Do **not** paste or commit `NPM_TOKEN` — GitHub secret only.
-5. After release, confirm: `npm view @br-validators/core version` (and express, vue).
+3. **Audit and update all seven npm-facing READMEs** (see npm-facing documentation above).
+4. Run pre-tag verification commands; report mismatch before tagging.
+5. Do **not** paste or commit `NPM_TOKEN` — GitHub secret only.
+6. After release, confirm: `npm view @br-validators/core version` (and express, vue); spot-check npm README.
 
 **Docs:** `docs/BRANCHING.md`, `docs/VERSIONING.md` — **Troubleshooting:** `npm-publish-ci.mdc`

@@ -36,7 +36,8 @@ After merge to `main`:
 ```bash
 # 1. Bump version in ALL six package.json files (identical semver)
 # 2. Move CHANGELOG [Unreleased] → [X.Y.Z] - YYYY-MM-DD
-# 3. Commit and push to main (via PR from developing)
+# 3. Update npm-facing READMEs (Current release + feature tables) — see .cursor/rules/release-version-publish.mdc
+# 4. Commit and push to main (via PR from developing)
 
 # 4. Only then — tag must match package.json (with v prefix)
 git tag -a v1.6.1 -m "Release v1.6.1"

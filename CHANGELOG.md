@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [1.8.0] - 2026-06-25
+
 ### Added
 
 - **`@br-validators/core/cst`** — offline CST lookup for ICMS, IPI, PIS, and COFINS (`getCstIcmsPorCodigo`, `getCstIpiPorCodigo`, `getCstPisPorCodigo`, `getCstCofinsPorCodigo`, `searchCstIcms`); embedded from RFB SPED Fiscal tables; `pnpm fetch:data:cst` (manual refresh)

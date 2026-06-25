@@ -71,7 +71,7 @@ CI (`.github/workflows/ci.yml`) MUST build core **once** before `pnpm typecheck`
 
 1. `pnpm verify` green on `developing`
 2. PR `developing` → `main` (CI + maintainer approval)
-3. Version bump + `CHANGELOG` on `main`
+3. Version bump + `CHANGELOG` + **npm README audit** (see `release-version-publish.mdc`) on `main`
 4. `git tag vX.Y.Z && git push origin vX.Y.Z` → **Release workflow** publishes all six npm packages + GitHub Release
 5. Sync `developing` from `main`
 

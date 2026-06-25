@@ -1,7 +1,7 @@
 # @br-validators/core
 
 > **The** Brazilian document validation library for TypeScript.  
-> Validate, format, and generate CPF, CNPJ (including the new alphanumeric format), NF-e, BR Code PIX, boleto, IE (all 27 states), ANP fuel prices, and 15+ more — zero dependencies, fully typed, never throws.
+> Validate, format, and generate CPF, CNPJ (including the new alphanumeric format), NF-e, BR Code PIX, boleto, IE (all 27 states), EAN barcodes, CNIS/NIT, ANP fuel prices, and 20+ more — zero dependencies, fully typed, never throws.
 
 [![npm](https://img.shields.io/npm/v/@br-validators/core)](https://www.npmjs.com/package/@br-validators/core)
 [![npm downloads](https://img.shields.io/npm/dm/@br-validators/core?label=downloads)](https://www.npmjs.com/package/@br-validators/core)
@@ -27,11 +27,11 @@ Every Brazilian SaaS eventually reinvents CPF validation — usually wrong.
 (Receita Federal, Bacen, CONTRAN, TSE, SEFAZ, FEBRABAN, Anatel) so you don't have to.
 
 - ✅ **CNPJ alfanumérico** — new RFB format (effective July 2026), ready now
-- ✅ **19+ document types** — CPF, CNPJ, CEP, NF-e chave, processo judicial CNJ, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
+- ✅ **21+ document types** — CPF, CNPJ, CEP, NF-e chave, processo judicial CNJ, BR Code PIX, boleto (cobrança + arrecadação), CNH, RENAVAM, placa, PIS/PASEP, CNIS/NIT, EAN-8/EAN-13, PIX key, cartão de crédito, IE (27 UFs), IE produtor rural, título de eleitor, telefone, + platform APIs above
 - ✅ **Zero runtime dependencies** — pure TypeScript logic, no HTTP calls
 - ✅ **Never throws** — every function returns `{ ok: true, value } | { ok: false, message, code }`
 - ✅ **Tree-shakeable** — subpath imports per document type
-- ✅ **Reference data** — IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, NCM, CBO, natureza jurídica, NBS, CEST, eSocial categorias, moedas, PTAX cotações, países Bacen, Incoterms, portos, aeroportos, **ANP fuel prices (LPC)** — embedded offline with daily freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md); ANP weekly)
+- ✅ **Reference data** — IBGE (municipalities + NF-e `cMunFG`), Bacen banks, DDD lookup, national holidays, CNAE, CFOP, CST, LC 116, NCM, IBPT tax burden, Simples Nacional, CBO, natureza jurídica, NBS, CEST, eSocial categorias, CNPJ motivos, moedas, PTAX cotações, países Bacen, Incoterms, portos, aeroportos, **ANP fuel prices (LPC)** — embedded offline with daily freshness ([DATA-FRESHNESS.md](../../docs/DATA-FRESHNESS.md); ANP weekly)
 - ✅ **ESM only**, Node ≥ 18, works in browser, Bun, Deno
 
 ---
@@ -247,6 +247,8 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | RG (per-UF identity card) | `@br-validators/core/rg` | `br-validators rg … --uf SP` | `/rg` |
 | Placa (Mercosul + legada) | `@br-validators/core/placa` | `br-validators placa …` | `/placa` |
 | PIS / PASEP / NIS | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | `/pis` |
+| CNIS / NIT (worker ID) | `@br-validators/core/cnis` | `br-validators cnis …` | `/cnis` |
+| EAN-8 / EAN-13 (barcode) | `@br-validators/core/ean` | `br-validators ean …` | `/ean` |
 | PIX key | `@br-validators/core/pix` | `br-validators pix …` | `/pix` |
 | BR Code (PIX QR payload + builder) | `@br-validators/core/brcode` | `br-validators brcode …` | `/brcode` |
 | Boleto cobrança (Situação 1 + 2) | `@br-validators/core/boleto` | `br-validators boleto …` | `/boleto` |
@@ -270,7 +272,7 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 
 | Dataset | Subpath | CLI | Playground | Key APIs | Official source |
 |---------|---------|-----|------------|----------|-----------------|
-| IBGE states + municipalities | `@br-validators/core/ibge` | `ibge lookup` · `list` | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
+| IBGE states + municipalities + NF-e cMunFG | `@br-validators/core/ibge` | `ibge lookup` · `list` | `/data/ibge` | `getEstados`, `getMunicipios`, `getMunicipioPorCodigo`, `toCmunFg`, `parseCmunFg` | [IBGE localidades API](https://servicodados.ibge.gov.br/api/docs/localidades) |
 | Bacen STR banks (COMPE / ISPB) | `@br-validators/core/bancos` | `bancos lookup` · `list` | `/data/bancos` | `getBancos`, `getBancoPorCodigo`, `getBancoPorIspb` | [Bacen Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | ANAC public aerodromos | `@br-validators/core/aeroportos` | `aeroportos lookup` | `/data/logistics` | `getAeroportos`, `getAeroportoPorIata`, `getAeroportoPorIcao`, `getAeroportosPorMunicipio` | [ANAC aeródromos públicos CSV](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | ANTAQ port installations | `@br-validators/core/portos` | `portos lookup` | `/data/logistics` | `getPortoPorCodigo`, `searchPortos`, `getPortosPorMunicipio` | [ANTAQ instalações portuárias zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
@@ -284,6 +286,9 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 | LC 116 ISS services | `@br-validators/core/lc116` | — | `/data/fiscal` | `getLc116PorCodigo`, `searchLc116` | [LC 116/2003 Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | eSocial worker categories | `@br-validators/core/esocial` | — | `/data/fiscal` | `getEsocialCategoriaPorCodigo`, `searchEsocialCategorias` | [eSocial S-1.3 Tabelas](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) |
 | NCM Mercosur nomenclature | `@br-validators/core/ncm` | `ncm lookup` · `search` | `/data/fiscal` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
+| IBPT approximate NCM tax burden | `@br-validators/core/ibpt` | — | `/data/fiscal` | `getIbptCargaPorNcmUf`, `computeIbptCargaTotal` | [IBPT Lei 12.741/2012](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12741.htm) |
+| Simples Nacional annex tables | `@br-validators/core/simples-nacional` | — | `/data/fiscal` | `getSimplesAnexo`, `getSimplesFaixa`, `computeSimplesAliquotaEfetiva` | [LC 123/2006 Planalto](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2006/lei/l123.htm) |
+| CNPJ motivos situação cadastral | `@br-validators/core/cnpj-motivos` | — | `/data/fiscal` | `getMotivosSituacaoCadastral`, `getMotivoSituacaoCadastralPorCodigo` | [RFB Motivos.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
 | Natureza jurídica (CNPJ) | `@br-validators/core/natureza-juridica` | `natureza-juridica lookup` | `/data/fiscal` | `getNaturezaJuridicaPorCodigo` | [RFB Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
 | NBS (NFSe Nacional) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
 | CEST (substituição tributária) | `@br-validators/core/cest` | `cest lookup` | `/data/fiscal` | `getCestPorCodigo`, `getCestPorNcm`, `searchCest` | [CONFAZ ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
@@ -343,7 +348,7 @@ Freshness table (auto-updated daily; ANP weekly): [docs/DATA-FRESHNESS.md](https
 
 ## Current release
 
-**v1.7.0** — all six `@br-validators/*` packages ship the same semver. New in core: `@br-validators/core/anp-combustiveis` (`getAnpPrecosMedios`, `getAnpPrecosMediosPorIbge`, `getAnpSemanaAtual`). [CHANGELOG](https://github.com/AlexandreZanata/br-validators/blob/main/CHANGELOG.md#170---2026-06-24)
+**v1.8.0** — all six `@br-validators/*` packages ship the same semver. Ten new core subpaths: `cst`, `lc116`, `ptax`, `esocial`, `ean`, `simples-nacional`, IBGE `cMunFG`, `cnpj-motivos`, `ibpt`, `cnis`. [CHANGELOG](https://github.com/AlexandreZanata/br-validators/blob/main/CHANGELOG.md#180---2026-06-25)
 
 ---
 
