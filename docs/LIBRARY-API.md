@@ -43,6 +43,7 @@
 | `@br-validators/core/bancos` | Bacen STR participants with COMPE / ISPB lookup |
 | `@br-validators/core/feriados` | Brazilian national federal holidays (fixed dates) + optional facultative days |
 | `@br-validators/core/cnaes` | IBGE CNAE 2.3 economic activity subclass lookup |
+| `@br-validators/core/cnpj-motivos` | RFB CNPJ motivos de situação cadastral (Motivos.zip) |
 | `@br-validators/core/cfop` | CONFAZ CFOP fiscal operation code lookup |
 | `@br-validators/core/cst` | RFB SPED CST lookup (ICMS, IPI, PIS, COFINS) |
 | `@br-validators/core/lc116` | LC 116/2003 ISS national service list lookup |
@@ -659,6 +660,34 @@ Golden vectors: `6201501` (custom software development), `6201502` (web design).
 ```typescript
 import { getCnaePorCodigo, searchCnaes, CNAES_DATA_VERSION } from '@br-validators/core/cnaes';
 ```
+
+Complementary RFB source: [Cnaes.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) — subclass codes must match IBGE embed.
+
+---
+
+## Core API — CNPJ motivos (reference data)
+
+> **Offline embedded data** from [RFB CNPJ Motivos.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — monthly (`pnpm fetch:data:cnpj-motivos`)
+
+| Function | Returns |
+|----------|---------|
+| `getMotivosSituacaoCadastral()` | All motivo de situação cadastral codes |
+| `getMotivoSituacaoCadastralPorCodigo(codigo)` | Single motivo or `undefined` (2-digit code) |
+| `SITUACAO_CADASTRAL_LABELS` | Estabelecimentos `situacao_cadastral` status labels (reference) |
+| `CNPJ_MOTIVOS_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `01` (extinção voluntária), `02` (incorporação). Vector: `cnpj-motivos.official.json`.
+
+```typescript
+import {
+  getMotivoSituacaoCadastralPorCodigo,
+  getMotivosSituacaoCadastral,
+  CNPJ_MOTIVOS_DATA_VERSION,
+} from '@br-validators/core/cnpj-motivos';
+```
+
+**Out of scope:** empresa/sócio/endereço lookup (~GB RFB dumps).
 
 ---
 

@@ -24,6 +24,7 @@
     "fetch:data:cnaes": "tsx scripts/fetch-cnaes.ts",
     "fetch:data:cfop": "tsx scripts/fetch-cfop.ts",
     "fetch:data:natureza-juridica": "tsx scripts/fetch-natureza-juridica.ts",
+    "fetch:data:cnpj-motivos": "tsx scripts/fetch-cnpj-motivos.ts",
     "fetch:data:nbs": "tsx scripts/fetch-nbs.ts",
     "fetch:data:cest": "tsx scripts/fetch-cest.ts",
     "fetch:data:cst": "tsx scripts/fetch-cst.ts",

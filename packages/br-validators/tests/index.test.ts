@@ -24,6 +24,7 @@ import * as feriadosEntry from '../src/feriados.js';
 import * as cnaesEntry from '../src/cnaes.js';
 import * as cfopEntry from '../src/cfop.js';
 import * as naturezaJuridicaEntry from '../src/natureza-juridica.js';
+import * as cnpjMotivosEntry from '../src/cnpj-motivos.js';
 import * as nbsEntry from '../src/nbs.js';
 import * as cestEntry from '../src/cest.js';
 import * as cstEntry from '../src/cst.js';
@@ -281,6 +282,12 @@ describe('package exports', () => {
     expect(naturezaJuridicaEntry.getNaturezasJuridicas).toBeTypeOf('function');
     expect(naturezaJuridicaEntry.getNaturezaJuridicaPorCodigo).toBeTypeOf('function');
     expect(naturezaJuridicaEntry.NATUREZA_JURIDICA_DATA_VERSION.id).toBe('natureza-juridica');
+  });
+
+  it('re-exports CNPJ motivos API from cnpj-motivos entry', () => {
+    expect(cnpjMotivosEntry.getMotivosSituacaoCadastral).toBeTypeOf('function');
+    expect(cnpjMotivosEntry.getMotivoSituacaoCadastralPorCodigo).toBeTypeOf('function');
+    expect(cnpjMotivosEntry.CNPJ_MOTIVOS_DATA_VERSION.id).toBe('cnpj-motivos');
   });
 
   it('re-exports NBS API from nbs entry', () => {

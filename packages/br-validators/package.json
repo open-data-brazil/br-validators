@@ -52,6 +52,7 @@
     "cnaes",
     "cfop",
     "natureza-juridica",
+    "cnpj-motivos",
     "nbs",
     "cest",
     "cst",
@@ -226,6 +227,10 @@
     "./natureza-juridica": {
       "types": "./dist/natureza-juridica.d.ts",
       "import": "./dist/natureza-juridica.js"
+    },
+    "./cnpj-motivos": {
+      "types": "./dist/cnpj-motivos.d.ts",
+      "import": "./dist/cnpj-motivos.js"
     },
     "./nbs": {
       "types": "./dist/nbs.d.ts",

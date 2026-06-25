@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`@br-validators/core/ean`** — GS1 EAN-8 / EAN-13 product barcodes (`validateEan`, `formatEan`, `stripEan`, `detectEanFormat`); modulo-10 weights 1/3; CLI + playground
 - **`@br-validators/core/simples-nacional`** — LC 123/2006 Simples Nacional annex tables (`getSimplesAnexo`, `getSimplesFaixa`, `computeSimplesAliquotaEfetiva`); Anexos I–V embedded; `pnpm fetch:data:simples-nacional` (manual refresh)
 - **`@br-validators/core/ibge`** — NF-e `cMunFG` helpers (`toCmunFg`, `parseCmunFg`, `computeCmunFgCheckDigit`); IBGE modulo-10 DV + nine official exceptions; golden vector `ibge.cmunfg.official.json`
+- **`@br-validators/core/cnpj-motivos`** — RFB CNPJ motivos de situação cadastral (`getMotivosSituacaoCadastral`, `getMotivoSituacaoCadastralPorCodigo`); embedded from `Motivos.zip`; `pnpm fetch:data:cnpj-motivos` (monthly refresh)
 
 ---
 

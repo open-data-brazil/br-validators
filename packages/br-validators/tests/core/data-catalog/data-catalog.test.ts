@@ -25,6 +25,7 @@ describe('Data catalog — transparency API', () => {
     expect(catalog.some((entry) => entry.id === 'cnaes')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'cfop')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'natureza-juridica')).toBe(true);
+    expect(catalog.some((entry) => entry.id === 'cnpj-motivos')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'nbs')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'cest')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'cst')).toBe(true);
