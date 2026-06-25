@@ -19,6 +19,9 @@ import {
   IE_SP_GOLDEN,
   NFE_CHAVE_GOLDEN_PRIMARY,
   NFE_CHAVE_OFFICIAL_SOURCE_URL,
+  CNIS_GOLDEN_INSS_NIT_MASKED,
+  CNIS_INSS_NIT_SERVICE_URL,
+  CNIS_OFFICIAL_VALIDATION_URL,
   PIS_PASEP_OFFICIAL_SOURCE_URL,
   PLACA_GOLDEN_MERCOSUL,
   PLACA_OFFICIAL_SOURCE_URL,
@@ -96,6 +99,17 @@ export const DOCUMENT_META: Record<DocumentSlug, DocumentMeta> = {
     inputLabel: 'Input',
     cliSlug: 'pis-pasep',
     officialLinks: [{ href: PIS_PASEP_OFFICIAL_SOURCE_URL, label: 'Official source: SIPREV RV_03 (gov.br)' }],
+  },
+  cnis: {
+    title: 'CNIS / NIT Validator',
+    description: 'Modulo 11 · issuer inss | caixa metadata',
+    defaultInput: CNIS_GOLDEN_INSS_NIT_MASKED,
+    inputLabel: 'Input',
+    cliSlug: 'cnis',
+    officialLinks: [
+      { href: CNIS_OFFICIAL_VALIDATION_URL, label: 'Official source: SIPREV RV_03 (gov.br)' },
+      { href: CNIS_INSS_NIT_SERVICE_URL, label: 'Official source: INSS NIT enrollment (gov.br)' },
+    ],
   },
   cnh: {
     title: 'CNH Validator',

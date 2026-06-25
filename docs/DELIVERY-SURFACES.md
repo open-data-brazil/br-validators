@@ -46,6 +46,7 @@ As each module ships, **all three** must be updated:
 | BR Code | `@br-validators/core/brcode` | `br-validators brcode …` | `/brcode` | [Bacen Manual BR Code](OFFICIAL-SOURCES.md) |
 | Placa | `@br-validators/core/placa` | `br-validators placa …` | Placa | [CONTRAN 729/2018](OFFICIAL-SOURCES.md) |
 | PIS/PASEP | `@br-validators/core/pis-pasep` | `br-validators pis-pasep …` | PIS/PASEP | [SIPREV RV_03](OFFICIAL-SOURCES.md) |
+| CNIS / NIT | `@br-validators/core/cnis` | `br-validators cnis …` | CNIS / NIT | [SIPREV RV_03 + INSS NIT](OFFICIAL-SOURCES.md) |
 | PIX key | `@br-validators/core/pix` | `br-validators pix …` | PIX | [Bacen PIX / DICT](OFFICIAL-SOURCES.md) |
 | Boleto cobrança | `@br-validators/core/boleto` | `br-validators boleto …` | Boleto | [FEBRABAN FB-0061/2021](OFFICIAL-SOURCES.md) |
 | Boleto arrecadação | `@br-validators/core/boleto` | `br-validators boleto …` | Boleto | [FEBRABAN Layout v7](OFFICIAL-SOURCES.md) |

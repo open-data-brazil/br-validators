@@ -25,7 +25,8 @@
 | `@br-validators/core/nfe-chave` | NF-e / NFC-e chave de acesso — 44-digit access key |
 | `@br-validators/core/brcode` | BR Code PIX QR payload (EMV TLV + CRC16) |
 | `@br-validators/core/placa` | License plates |
-| `@br-validators/core/pis-pasep` | PIS / PASEP / NIS / NIT |
+| `@br-validators/core/pis-pasep` | PIS / PASEP / NIS (checksum — no issuer metadata) |
+| `@br-validators/core/cnis` | CNIS / NIT with `issuer` + `tipo` metadata |
 | `@br-validators/core/pix` | PIX keys |
 | `@br-validators/core/boleto` | Boleto (linha digitável + código de barras) |
 | `@br-validators/core/cartao-credito` | Credit card PAN (Luhn / ISO 7812) |
@@ -343,9 +344,34 @@ validateBrCode(permanent).ok; // true — matches BRCODE_GOLDEN_STATIC_EMAIL whe
 | `validatePisPasep` | `(input: string) => ValidationResult<PisPasep>` | Full result with canonical 11 digits |
 | `formatPisPasep` | `(input: string) => FormatResult` | `XXX.XXXXX.XX-X` after validation |
 
-**Invariants:** Output canonical form is exactly 11 digits. Covers PIS, PASEP, NIS, and NIT (same CNIS algorithm).
+**Invariants:** Output canonical form is exactly 11 digits. Same modulo-11 family as NIT — use `@br-validators/core/cnis` when issuer metadata is required.
 
 **Official source:** [SIPREV RV_03 (PDF)](https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf) · `PIS_PASEP_OFFICIAL_SOURCE_URL` · `tests/vectors/pis-pasep.official.json` · Golden: `10027230888`, `12056456402`
+
+---
+
+## Core API — CNIS / NIT
+
+| Function | Signature | Behavior |
+|----------|-----------|----------|
+| `stripNit` | `(input: string) => string` | Remove non-digits (same mask as PIS/PASEP) |
+| `isValidNit` | `(input: string, options?) => boolean` | Modulo 11 per RV_03 |
+| `validateNit` | `(input: string, options?) => NitValidationResult` | Checksum + `issuer` (`inss` \| `caixa`) + `tipo` (`nit` \| `pis` \| `nis`) |
+| `inferNitIssuer` | `(canonical: string) => NitIssuer` | Heuristic when caller context unknown |
+| `inferNitTipo` | `(canonical: string) => NitTipo` | Heuristic series (0 → nit, 1–3 → pis, 4–9 → nis) |
+| `formatNit` | `(input: string) => FormatResult` | `XXX.XXXXX.XX-X` after validation |
+
+```typescript
+type NitValidationResult =
+  | { ok: true; value: Nit; format: 'numeric'; issuer: 'inss' | 'caixa'; tipo: 'nit' | 'pis' | 'nis' }
+  | { ok: false; code: ValidationErrorCode; message: string };
+
+type ValidateNitOptions = { issuer?: 'inss' | 'caixa'; tipo?: 'nit' | 'pis' | 'nis' };
+```
+
+**Issuer inference** is heuristic only — RV_03 validates checksum, not cadastro origin. Pass explicit `issuer` / `tipo` when your domain context is known (payroll vs INSS enrollment).
+
+**Official sources:** [SIPREV RV_03 (PDF)](https://www.gov.br/previdencia/pt-br/outros/imagens/2015/07/rgrva_RegrasValidacao.pdf) · [INSS NIT enrollment](https://www.gov.br/pt-br/servicos/obter-numero-de-inscricao-no-inss-nit) · `tests/vectors/cnis.official.json` · Golden: `01234567897` (INSS NIT), `10027230888` (Caixa PIS cross-check)
 
 ---
 

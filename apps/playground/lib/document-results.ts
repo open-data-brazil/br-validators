@@ -17,6 +17,7 @@ import {
   formatInscricaoEstadual,
   formatNfeChave,
   formatProcessoJudicial,
+  formatNit,
   formatPisPasep,
   formatPlaca,
   formatRenavam,
@@ -36,6 +37,7 @@ import {
   stripInscricaoEstadual,
   stripNfeChave,
   stripProcessoJudicial,
+  stripNit,
   stripPisPasep,
   stripPlaca,
   stripRenavam,
@@ -54,6 +56,7 @@ import {
   validateIeProdutorRural,
   validateNfeChave,
   validateProcessoJudicial,
+  validateNit,
   validatePisPasep,
   validatePlaca,
   validatePixKey,
@@ -199,6 +202,20 @@ export function computeDocumentResults(
       const formatted = formatPisPasep(input);
       validationDetail = validation.ok ? `yes (${validation.format})` : `no — ${validation.code}`;
       formattedValue = formatted.ok ? formatted.formatted : formatted.message;
+      break;
+    }
+    case 'cnis': {
+      stripped = stripNit(input);
+      const validation = validateNit(input);
+      const formatted = formatNit(input);
+      validationDetail = validation.ok
+        ? `yes — issuer ${validation.issuer} / tipo ${validation.tipo}`
+        : `no — ${validation.code}`;
+      formattedValue = formatted.ok ? formatted.formatted : formatted.message;
+      if (validation.ok) {
+        extraRows.push({ label: 'Issuer', value: validation.issuer });
+        extraRows.push({ label: 'Tipo', value: validation.tipo });
+      }
       break;
     }
     case 'cnh': {
@@ -401,6 +418,7 @@ export function buildCliCommand(
     telefone: 'telefone',
     placa: 'placa',
     pis: 'pis-pasep',
+    cnis: 'cnis',
     cnh: 'cnh',
     renavam: 'renavam',
     'titulo-eleitor': 'titulo-eleitor',

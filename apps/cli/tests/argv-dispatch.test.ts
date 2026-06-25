@@ -119,6 +119,7 @@ describe('dispatchArgv', () => {
       [['processo-judicial', 'parse', PROCESSO_JUDICIAL_GOLDEN_PRIMARY_MASKED, '--quiet'], EXIT.OK],
       [['rg', 'validate', RG_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],
       [['pis-pasep', 'validate', '10027230888', '--quiet'], EXIT.OK],
+      [['cnis', 'validate', '01234567897', '--quiet'], EXIT.OK],
       [['cartao-credito', 'validate', CARTAO_GOLDEN_VISA, '--quiet'], EXIT.OK],
       [['ean', 'validate', EAN_GOLDEN_13, '--quiet'], EXIT.OK],
       [['ie', 'validate', IE_SP_GOLDEN, '--uf', 'SP', '--quiet'], EXIT.OK],

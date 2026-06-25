@@ -26,6 +26,7 @@
     "titulo-eleitor",
     "placa",
     "pis-pasep",
+    "cnis",
     "telefone",
     "pix",
     "brcode",
@@ -132,6 +133,10 @@
     "./pis-pasep": {
       "types": "./dist/pis-pasep.d.ts",
       "import": "./dist/pis-pasep.js"
+    },
+    "./cnis": {
+      "types": "./dist/cnis.d.ts",
+      "import": "./dist/cnis.js"
     },
     "./pix": {
       "types": "./dist/pix.d.ts",

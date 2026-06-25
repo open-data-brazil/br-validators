@@ -14,6 +14,7 @@ import {
   handleRgCli,
   handleListCli,
   handlePisPasepCli,
+  handleCnisCli,
   handlePixCli,
   handleBoletoCli,
   handleCartaoCli,
@@ -56,6 +57,7 @@ import {
   type SanitizeCliOptions,
   type GenerateCliOptions,
   type PisPasepCliOptions,
+  type CnisCliOptions,
   type PixCliOptions,
   type PlacaCliOptions,
 } from './handlers.js';
@@ -307,6 +309,26 @@ export function createProgram(): Command {
       .action((value: string | undefined, opts: PisPasepCliOptions) => {
         const io = { stdout: [] as string[], stderr: [] as string[] };
         process.exitCode = handlePisPasepCli(action, value, opts, io);
+        writeCliIo(io);
+      });
+  }
+
+  const cnis = program.command('cnis').description('CNIS / NIT — modulo 11 with issuer metadata (INSS vs Caixa)');
+
+  for (const action of ['validate', 'format', 'strip'] as const) {
+    cnis
+      .command(action)
+      .description(`${action} a NIT (CNIS worker ID)`)
+      .argument('[value]', 'NIT value (raw or masked)')
+      .option('--json', 'JSON output')
+      .option('-q, --quiet', 'Exit code only')
+      .option('--source', 'Include official source URL (validate only)')
+      .option('--issuer <issuer>', 'Override issuer: inss | caixa')
+      .option('--tipo <tipo>', 'Override tipo: nit | pis | nis')
+      .option('-f, --file <path>', 'Read value from file')
+      .action((value: string | undefined, opts: CnisCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handleCnisCli(action, value, opts, io);
         writeCliIo(io);
       });
   }

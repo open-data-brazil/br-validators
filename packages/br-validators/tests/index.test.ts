@@ -9,6 +9,7 @@ import * as renavamEntry from '../src/renavam.js';
 import * as brcodeEntry from '../src/brcode.js';
 import * as placaEntry from '../src/placa.js';
 import * as pisPasepEntry from '../src/pis-pasep.js';
+import * as cnisEntry from '../src/cnis.js';
 import * as pixEntry from '../src/pix.js';
 import * as boletoEntry from '../src/boleto.js';
 import * as cartaoCreditoEntry from '../src/cartao-credito.js';
@@ -180,6 +181,12 @@ describe('package exports', () => {
 
   it('re-exports PIS/PASEP API from pis-pasep entry', () => {
     expect(pisPasepEntry.validatePisPasep).toBe(root.validatePisPasep);
+  });
+
+  it('re-exports CNIS / NIT API from cnis entry', () => {
+    expect(cnisEntry.validateNit).toBe(root.validateNit);
+    expect(cnisEntry.inferNitIssuer).toBe(root.inferNitIssuer);
+    expect(cnisEntry.stripNit).toBe(root.stripNit);
   });
 
   it('re-exports PIX API from pix entry', () => {

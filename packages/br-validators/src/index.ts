@@ -12,6 +12,7 @@ export * from './inscricao-estadual-produtor-rural.js';
 export * from './brcode.js';
 export * from './placa.js';
 export * from './pis-pasep.js';
+export * from './cnis.js';
 export {
   computeModulo10FieldDv,
   computeModulo11BarcodeDv,

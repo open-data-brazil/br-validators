@@ -51,6 +51,14 @@ export type ProcessoJudicial = string & { readonly __brand: 'ProcessoJudicial' }
 export type Cep = string & { readonly __brand: 'Cep' };
 export type Placa = string & { readonly __brand: 'Placa' };
 export type PisPasep = string & { readonly __brand: 'PisPasep' };
+export type Nit = string & { readonly __brand: 'Nit' };
+
+export type NitIssuer = 'inss' | 'caixa';
+export type NitTipo = 'nit' | 'pis' | 'nis';
+
+export type NitValidationResult =
+  | { ok: true; value: Nit; format: 'numeric'; issuer: NitIssuer; tipo: NitTipo }
+  | { ok: false; code: ValidationErrorCode; message: string };
 export type PixKey = string & { readonly __brand: 'PixKey' };
 export type LinhaDigitavel = string & { readonly __brand: 'LinhaDigitavel' };
 export type CodigoBarras = string & { readonly __brand: 'CodigoBarras' };
@@ -215,6 +223,10 @@ export function brandPlaca(value: string): Placa {
 
 export function brandPisPasep(value: string): PisPasep {
   return value as PisPasep;
+}
+
+export function brandNit(value: string): Nit {
+  return value as Nit;
 }
 
 export function brandPixKey(value: string): PixKey {

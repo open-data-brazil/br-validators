@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`@br-validators/core/ibge`** — NF-e `cMunFG` helpers (`toCmunFg`, `parseCmunFg`, `computeCmunFgCheckDigit`); IBGE modulo-10 DV + nine official exceptions; golden vector `ibge.cmunfg.official.json`
 - **`@br-validators/core/cnpj-motivos`** — RFB CNPJ motivos de situação cadastral (`getMotivosSituacaoCadastral`, `getMotivoSituacaoCadastralPorCodigo`); embedded from `Motivos.zip`; `pnpm fetch:data:cnpj-motivos` (monthly refresh)
 - **`@br-validators/core/ibpt`** — IBPT approximate NCM tax burden Lei 12.741/2012 (`getIbptCargaPorNcmUf`, `computeIbptCargaTotal`); golden NCM×UF subset; `pnpm fetch:data:ibpt` (semestral refresh)
+- **`@br-validators/core/cnis`** — CNIS / NIT worker ID (`validateNit`, `inferNitIssuer`); RV_03 modulo 11 + `issuer`/`tipo` metadata; library + CLI + playground; golden `cnis.official.json`
 
 ---
 

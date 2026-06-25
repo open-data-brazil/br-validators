@@ -35,6 +35,7 @@ import { runCnpj, type CnpjAction } from './commands/cnpj.js';
 import { runCpf, type CpfAction } from './commands/cpf.js';
 import { runPlaca, type PlacaAction } from './commands/placa.js';
 import { runPisPasep, type PisPasepAction } from './commands/pis-pasep.js';
+import { runCnis, type CnisAction } from './commands/cnis.js';
 import { runPix, type PixAction } from './commands/pix.js';
 import { runBoleto, type BoletoAction, type BoletoConvertDirection } from './commands/boleto.js';
 import { runCartao, type CartaoAction } from './commands/cartao.js';
@@ -93,6 +94,11 @@ export type CartaoCliOptions = CnpjCliOptions;
 export type CartaoCreditoCliOptions = CnpjCliOptions;
 
 export type EanCliOptions = CnpjCliOptions;
+
+export type CnisCliOptions = CnpjCliOptions & {
+  issuer?: 'inss' | 'caixa';
+  tipo?: 'nit' | 'pis' | 'nis';
+};
 
 export type IeCliOptions = CnpjCliOptions & {
   uf?: string;
@@ -327,6 +333,36 @@ export function handlePisPasepCli(
       json: Boolean(opts.json),
       quiet: Boolean(opts.quiet),
       source: Boolean(opts.source),
+      file: fileContent,
+    },
+    io,
+  );
+}
+
+export function handleCnisCli(
+  action: CnisAction,
+  value: string | undefined,
+  opts: CnisCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let fileContent: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    fileContent = content;
+  }
+
+  return runCnis(
+    action,
+    value,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      source: Boolean(opts.source),
+      issuer: opts.issuer,
+      tipo: opts.tipo,
       file: fileContent,
     },
     io,

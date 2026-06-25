@@ -49,6 +49,7 @@ export const CAPABILITIES: Record<DocumentSlug, DocumentCapabilities> = {
     generateFormats: ['mercosul', 'legacy'],
   },
   pis: { validate: true, format: true, strip: true, sanitize: true, generate: true },
+  cnis: { validate: true, format: true, strip: true, sanitize: false, generate: false },
   cnh: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   renavam: { validate: true, format: true, strip: true, sanitize: true, generate: true },
   'titulo-eleitor': { validate: true, format: true, strip: true, sanitize: true, generate: true, ufSelector: true },

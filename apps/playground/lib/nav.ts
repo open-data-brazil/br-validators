@@ -26,6 +26,7 @@ export const DOCUMENT_ROUTES = [
   { slug: 'telefone', label: 'Telefone', description: 'DDD + 8/9 digits', group: 'documents' },
   { slug: 'placa', label: 'Placa', description: 'Legacy + Mercosul', group: 'documents' },
   { slug: 'pis', label: 'PIS/PASEP', description: 'CNIS modulo 11', group: 'documents' },
+  { slug: 'cnis', label: 'CNIS / NIT', description: 'Worker ID + issuer metadata', group: 'documents' },
   { slug: 'cnh', label: 'CNH', description: 'RENACH modulo 11', group: 'documents' },
   { slug: 'renavam', label: 'RENAVAM', description: 'DENATRAN modulo 11', group: 'documents' },
   { slug: 'titulo-eleitor', label: 'Título de Eleitor', description: 'TSE modulo 11', group: 'documents' },

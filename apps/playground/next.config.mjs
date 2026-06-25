@@ -21,6 +21,7 @@ const subpaths = [
   'inscricao-estadual-produtor-rural',
   'nfe-chave',
   'pis-pasep',
+  'cnis',
   'pix',
   'placa',
   'renavam',
