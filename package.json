@@ -26,6 +26,7 @@
     "fetch:data:nbs": "tsx scripts/fetch-nbs.ts",
     "fetch:data:cest": "tsx scripts/fetch-cest.ts",
     "fetch:data:cst": "tsx scripts/fetch-cst.ts",
+    "fetch:data:lc116": "tsx scripts/fetch-lc116.ts",
     "fetch:data:portos": "tsx scripts/fetch-portos.ts",
     "fetch:data:anp-combustiveis": "tsx scripts/fetch-anp-combustiveis.ts",
     "fetch:data:pncp-reference": "tsx scripts/fetch-pncp-reference.ts",

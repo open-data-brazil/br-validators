@@ -24,7 +24,7 @@
 | **Documentation** | [docs.br-validators.dev](https://docs.br-validators.dev/) — VitePress deep reference (README = quick start) |
 | **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
 
-Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, CST, NCM, CBO, natureza jurídica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos, ANP fuel prices) are embedded offline and refreshed **daily** (00:00 Brasília) — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md). CST uses **manual** maintainer refresh (`pnpm fetch:data:cst`). Critical source failures: [data/refresh-reports/CRITICAL-ALERTS.md](data/refresh-reports/CRITICAL-ALERTS.md).
+Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, CST, LC 116, NCM, CBO, natureza jurídica, NBS, CEST, moedas, países Bacen, Incoterms, portos, aeroportos, ANP fuel prices) are embedded offline and refreshed **daily** (00:00 Brasília) — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md). CST and LC 116 use **manual** maintainer refresh (`pnpm fetch:data:cst`, `pnpm fetch:data:lc116`). Critical source failures: [data/refresh-reports/CRITICAL-ALERTS.md](data/refresh-reports/CRITICAL-ALERTS.md).
 
 > **Note:** The unscoped npm name [`br-validators`](https://www.npmjs.com/package/br-validators) belongs to another project. Install **`@br-validators/core`** or **`@br-validators/cli`**.
 
@@ -206,6 +206,7 @@ Government classification tables embedded in the library — **zero runtime fetc
 | CNAE 2.3 subclasses | `@br-validators/core/cnaes` | `cnae lookup` · `cnae search` | `/data/fiscal` | `getCnaePorCodigo`, `searchCnaes` | [IBGE CNAE API](https://servicodados.ibge.gov.br/api/docs/cnae) |
 | CFOP fiscal operations | `@br-validators/core/cfop` | `cfop lookup` · `cfop search` | `/data/fiscal` | `getCfopPorCodigo`, `searchCfop` | [CONFAZ CFOP](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | CST (ICMS, IPI, PIS, COFINS) | `@br-validators/core/cst` | — | `/data/fiscal` | `getCstIcmsPorCodigo`, `getCstIpiPorCodigo`, `searchCstIcms` | [RFB SPED CST tables](http://www.sped.fazenda.gov.br/spedtabelas/AppConsulta/publico/aspx/ConsultaTabelasExternas.aspx?CodSistema=SpedFiscal) |
+| LC 116 ISS services | `@br-validators/core/lc116` | — | `/data/fiscal` | `getLc116PorCodigo`, `searchLc116` | [LC 116/2003 Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | NCM Mercosur codes | `@br-validators/core/ncm` | `ncm lookup` · `ncm search` | `/data/fiscal` | `getNcmPorCodigo`, `searchNcm` | [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) |
 | Natureza jurídica (CNPJ) | `@br-validators/core/natureza-juridica` | `natureza-juridica lookup` | `/data/fiscal` | `getNaturezaJuridicaPorCodigo` | [RFB Naturezas.zip](https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/) |
 | NBS (NFSe) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
@@ -221,6 +222,7 @@ Government classification tables embedded in the library — **zero runtime fetc
 import { getNcmPorCodigo } from '@br-validators/core/ncm';
 import { getCfopPorCodigo } from '@br-validators/core/cfop';
 import { getCstIcmsPorCodigo } from '@br-validators/core/cst';
+import { getLc116PorCodigo } from '@br-validators/core/lc116';
 import { getCnaePorCodigo } from '@br-validators/core/cnaes';
 import { getNaturezaJuridicaPorCodigo } from '@br-validators/core/natureza-juridica';
 import { getNbsPorCodigo } from '@br-validators/core/nbs';
@@ -236,6 +238,7 @@ import { getDataCatalog } from '@br-validators/core/data-catalog';
 getNcmPorCodigo('01012100');   // NCM leaf code lookup
 getCfopPorCodigo('1102');      // fiscal operation code
 getCstIcmsPorCodigo('00');     // ICMS CST — tributada integralmente
+getLc116PorCodigo('1.01');    // ISS — análise e desenvolvimento de sistemas
 getCnaePorCodigo('6201501');   // economic activity (CNPJ complement)
 getNaturezaJuridicaPorCodigo('2062'); // Ltda. legal nature
 getNbsPorCodigo('1.1502.50.00');      // NFSe service code

@@ -44,6 +44,7 @@
 | `@br-validators/core/cnaes` | IBGE CNAE 2.3 economic activity subclass lookup |
 | `@br-validators/core/cfop` | CONFAZ CFOP fiscal operation code lookup |
 | `@br-validators/core/cst` | RFB SPED CST lookup (ICMS, IPI, PIS, COFINS) |
+| `@br-validators/core/lc116` | LC 116/2003 ISS national service list lookup |
 | `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
 | `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
 | `@br-validators/core/data-catalog` | Aggregated dataset transparency metadata |
@@ -696,6 +697,26 @@ import {
   searchCstIcms,
   CST_DATA_VERSION,
 } from '@br-validators/core/cst';
+```
+
+---
+
+## Core API — LC 116 (reference data)
+
+> **Offline embedded data** from [LC 116/2003 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) with [NFSe republication](https://www.gov.br/nfse/pt-br/mei-e-demais-empresas/codigos-de-tributacao-nacional-nbs) fetch fallback.  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — manual maintainer refresh (`pnpm fetch:data:lc116`)
+
+| Function | Returns |
+|----------|---------|
+| `getLc116List()` | All LC 116 ISS service items |
+| `getLc116PorCodigo(codigo)` | Single item or `undefined` (accepts `1.01` or NFSe `010101`) |
+| `searchLc116(query, { limit? })` | Description search (default limit 10) |
+| `LC116_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: `1.01` (análise e desenvolvimento de sistemas), `7.02` (obras de construção civil).
+
+```typescript
+import { getLc116PorCodigo, searchLc116, LC116_DATA_VERSION } from '@br-validators/core/lc116';
 ```
 
 ---

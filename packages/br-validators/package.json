@@ -1,7 +1,7 @@
 {
   "name": "@br-validators/core",
   "version": "1.7.0",
-  "description": "The Brazilian document validation library for TypeScript — CPF, CNPJ (alphanumeric), NF-e, PIX, boleto, IE (27 UFs), offline IBGE/ANP/NCM/CST reference data, and 15+ more. Zero deps, fully typed, never throws.",
+  "description": "The Brazilian document validation library for TypeScript — CPF, CNPJ (alphanumeric), NF-e, PIX, boleto, IE (27 UFs), offline IBGE/ANP/NCM/CST/LC116 reference data, and 15+ more. Zero deps, fully typed, never throws.",
   "homepage": "https://www.npmjs.com/package/@br-validators/core",
   "license": "MIT",
   "type": "module",
@@ -54,6 +54,7 @@
     "nbs",
     "cest",
     "cst",
+    "lc116",
     "ncm",
     "cbo",
     "portos",
@@ -229,6 +230,10 @@
     "./cst": {
       "types": "./dist/cst.d.ts",
       "import": "./dist/cst.js"
+    },
+    "./lc116": {
+      "types": "./dist/lc116.d.ts",
+      "import": "./dist/lc116.js"
     },
     "./ncm": {
       "types": "./dist/ncm.d.ts",

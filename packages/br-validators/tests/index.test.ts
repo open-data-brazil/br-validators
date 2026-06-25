@@ -26,6 +26,7 @@ import * as naturezaJuridicaEntry from '../src/natureza-juridica.js';
 import * as nbsEntry from '../src/nbs.js';
 import * as cestEntry from '../src/cest.js';
 import * as cstEntry from '../src/cst.js';
+import * as lc116Entry from '../src/lc116.js';
 import * as ncmEntry from '../src/ncm.js';
 import * as cboEntry from '../src/cbo.js';
 import * as portosEntry from '../src/portos.js';
@@ -290,6 +291,13 @@ describe('package exports', () => {
     expect(cstEntry.getCstCofinsPorCodigo).toBeTypeOf('function');
     expect(cstEntry.searchCstIcms).toBeTypeOf('function');
     expect(cstEntry.CST_DATA_VERSION.id).toBe('cst');
+  });
+
+  it('re-exports LC 116 API from lc116 entry', () => {
+    expect(lc116Entry.getLc116List).toBeTypeOf('function');
+    expect(lc116Entry.getLc116PorCodigo).toBeTypeOf('function');
+    expect(lc116Entry.searchLc116).toBeTypeOf('function');
+    expect(lc116Entry.LC116_DATA_VERSION.id).toBe('lc116');
   });
 
   it('re-exports NCM API from ncm entry', () => {

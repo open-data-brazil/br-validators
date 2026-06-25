@@ -53,6 +53,7 @@ const DATASET_METADATA_PATHS = [
   path.join(ROOT, 'packages/br-validators/src/nbs/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cest/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cst/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/lc116/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/ncm/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/cbo/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/core/cep/data/faixa-metadata.json'),

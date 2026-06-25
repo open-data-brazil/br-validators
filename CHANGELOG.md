@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **`@br-validators/core/cst`** — offline CST lookup for ICMS, IPI, PIS, and COFINS (`getCstIcmsPorCodigo`, `getCstIpiPorCodigo`, `getCstPisPorCodigo`, `getCstCofinsPorCodigo`, `searchCstIcms`); embedded from RFB SPED Fiscal tables; `pnpm fetch:data:cst` (manual refresh)
+- **`@br-validators/core/lc116`** — LC 116/2003 ISS national service list (`getLc116PorCodigo`, `searchLc116`); embedded from Planalto / NFSe republication; `pnpm fetch:data:lc116` (manual refresh)
 
 ---
 
