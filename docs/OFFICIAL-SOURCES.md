@@ -40,6 +40,7 @@
 | **CST** | RFB SPED | [SPED Fiscal — Tabelas de Situação Tributária](http://www.sped.fazenda.gov.br/spedtabelas/AppConsulta/publico/aspx/ConsultaTabelasExternas.aspx?CodSistema=SpedFiscal) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | NF-e CST codes for ICMS, IPI, PIS, COFINS. Golden: ICMS **`00`** / **`10`**, IPI **`50`** / **`00`**, PIS **`01`** / **`07`**, COFINS **`01`** / **`07`**. Vector: `cst.official.json`. CSOSN deferred. Manual refresh (`agendamento: manual`). |
 | **LC 116** | Planalto / NFSe | [LC 116/2003 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) · [NFSe LC 116 list](https://www.gov.br/nfse/pt-br/mei-e-demais-empresas/codigos-de-tributacao-nacional-nbs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | ISS national service list (~200 items). Golden: **`1.01`** (análise e desenvolvimento de sistemas), **`7.02`** (obras de construção civil). Vector: `lc116.official.json`. Municipal ISS **rates** out of scope. Manual refresh. |
 | **eSocial categorias** | eSocial / MTE | [eSocial S-1.3 Tabelas](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Tabela 01 worker categories (~47). Golden: **`101`** (empregado geral), **`103`** (aprendiz), **`901`** (estagiário). Vector: `esocial.official.json`. Manual refresh. Natureza rubricas / leave types deferred v2. |
+| **Simples Nacional** | Planalto / RFB | [LC 123/2006 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm) · [Receita Anexo I](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=48430) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Anexos I–V rate tables (6 faixas each, LC 155/2016). Golden: Anexo **`I`** RBT12 **`700000`** (alíquota efetiva **7,52%**), Anexo **`III`** faixa 1, Anexo **`V`** RBT12 **`200000`**. Vector: `simples-nacional.official.json`. CNAE→anexo mapping deferred. Manual refresh. |
 | **NCM** | Receita / Siscomex | [NCM JSON download](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Mercosur nomenclature leaf codes (8 digits). Golden: **`01012100`** (purebred horses). Vector: `ncm.official.json`. |
 | **CBO** | MTE | [CBO 2002 downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Occupation codes (eSocial / HR). Golden: **`212405`** (systems analyst). Vector: `cbo.official.json`. |
 | **CEP prefix lookup** | IBGE CNEFE | [CNEFE Censo 2022 UF CSV](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 5-digit prefix → UF + IBGE municipality. Golden: **`01310`** (São Paulo/SP), **`20040`** (Rio/RJ). Extends `@br-validators/core/cep`. Vector: `cep-faixa.official.json`. |
@@ -550,6 +551,23 @@ Golden: `1.01` (análise e desenvolvimento de sistemas), `7.02` (execução de o
 Golden: **`101`** (empregado geral — CLT), **`103`** (aprendiz), **`901`** (estagiário). Each row includes `grupo`, `inicio`, and `termino` (`null` when still active).
 
 **Scope v1:** Tabela 01 — Categorias de Trabalhadores only. **Natureza rubricas** (Tabela 03) and **leave types** (Tabela 18) deferred to v2.
+
+---
+
+## Simples Nacional annex tables {#simples-nacional-anexos}
+
+> **Vectors:** `packages/br-validators/tests/vectors/simples-nacional.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual`
+
+| Role | Source | URL |
+|------|--------|-----|
+| LC 123/2006 (consolidated) | Planalto | https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm |
+| Anexo I — Comércio (rates + repartição) | Receita Federal / normas | http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=48430 |
+| Resolução CGSN 140/2018 (regulation) | Receita Federal / normas | http://normas.receita.fazenda.gov.br/sijut2consulta/link.action?visao=anotado&idAto=115262 |
+
+Golden: Anexo **`I`** RBT12 **`700000`** → faixa 3, alíquota nominal **9,5%**, parcela **R$ 13.860**, alíquota efetiva **7,52%**; Anexo **`III`** RBT12 **`180000`** → faixa 1 (**6%**); Anexo **`V`** RBT12 **`200000`** → faixa 2, alíquota efetiva **15,75%**.
+
+**Scope v1:** Anexos **I–V** progressive rate tables (6 faixas each, LC 155/2016 redação). **CNAE→anexo** mapping and **tributo repartição** percentages deferred v2. Receita **Anexo VI** (CNAE impeditivos) is a separate exclusion list — out of scope.
 
 ---
 

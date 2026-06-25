@@ -47,6 +47,7 @@
 | `@br-validators/core/cst` | RFB SPED CST lookup (ICMS, IPI, PIS, COFINS) |
 | `@br-validators/core/lc116` | LC 116/2003 ISS national service list lookup |
 | `@br-validators/core/esocial` | eSocial Tabela 01 worker category lookup |
+| `@br-validators/core/simples-nacional` | LC 123/2006 Simples Nacional annex rate tables |
 | `@br-validators/core/ptax` | Bacen PTAX Fechamento exchange rates (pairs with `moedas`) |
 | `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
 | `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
@@ -744,6 +745,32 @@ import {
   searchEsocialCategorias,
   ESOCIAL_DATA_VERSION,
 } from '@br-validators/core/esocial';
+```
+
+---
+
+## Core API — Simples Nacional (reference data)
+
+> **Offline embedded data** from [LC 123/2006 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm) with [Receita Federal annex republication](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=48430).  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — manual maintainer refresh (`pnpm fetch:data:simples-nacional`)
+
+| Function | Returns |
+|----------|---------|
+| `getSimplesAnexos()` | All annex rate tables (I–V) |
+| `getSimplesAnexo(anexo)` | Single annex or `undefined` (accepts `I`, `ANEXO III`, `3`) |
+| `getSimplesFaixa({ anexo, receitaBruta })` | Matching faixa row + annex id, or `undefined` |
+| `computeSimplesAliquotaEfetiva({ anexo, receitaBruta })` | Effective rate decimal per Resolução CGSN art. 22, or `undefined` |
+| `SIMPLES_NACIONAL_DATA_VERSION` | `DatasetMetadata` |
+
+Golden vectors: Anexo `I` RBT12 `700000` (efetiva `0.0752`), Anexo `III` faixa 1 at `180000`, Anexo `V` RBT12 `200000` (efetiva `0.1575`).
+
+```typescript
+import {
+  getSimplesAnexo,
+  getSimplesFaixa,
+  computeSimplesAliquotaEfetiva,
+  SIMPLES_NACIONAL_DATA_VERSION,
+} from '@br-validators/core/simples-nacional';
 ```
 
 ---

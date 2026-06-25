@@ -29,6 +29,7 @@ import * as cestEntry from '../src/cest.js';
 import * as cstEntry from '../src/cst.js';
 import * as lc116Entry from '../src/lc116.js';
 import * as esocialEntry from '../src/esocial.js';
+import * as simplesNacionalEntry from '../src/simples-nacional.js';
 import * as eanEntry from '../src/ean.js';
 import * as ncmEntry from '../src/ncm.js';
 import * as cboEntry from '../src/cbo.js';
@@ -315,6 +316,14 @@ describe('package exports', () => {
     expect(esocialEntry.getEsocialCategoriaPorCodigo).toBeTypeOf('function');
     expect(esocialEntry.searchEsocialCategorias).toBeTypeOf('function');
     expect(esocialEntry.ESOCIAL_DATA_VERSION.id).toBe('esocial');
+  });
+
+  it('re-exports Simples Nacional API from simples-nacional entry', () => {
+    expect(simplesNacionalEntry.getSimplesAnexos).toBeTypeOf('function');
+    expect(simplesNacionalEntry.getSimplesAnexo).toBeTypeOf('function');
+    expect(simplesNacionalEntry.getSimplesFaixa).toBeTypeOf('function');
+    expect(simplesNacionalEntry.computeSimplesAliquotaEfetiva).toBeTypeOf('function');
+    expect(simplesNacionalEntry.SIMPLES_NACIONAL_DATA_VERSION.id).toBe('simples-nacional');
   });
 
   it('re-exports EAN API from ean entry', () => {

@@ -57,6 +57,7 @@
     "cst",
     "lc116",
     "esocial",
+    "simples-nacional",
     "ean",
     "ncm",
     "cbo",
@@ -245,6 +246,10 @@
     "./esocial": {
       "types": "./dist/esocial.d.ts",
       "import": "./dist/esocial.js"
+    },
+    "./simples-nacional": {
+      "types": "./dist/simples-nacional.d.ts",
+      "import": "./dist/simples-nacional.js"
     },
     "./ean": {
       "types": "./dist/ean.d.ts",

@@ -29,6 +29,7 @@
     "fetch:data:cst": "tsx scripts/fetch-cst.ts",
     "fetch:data:lc116": "tsx scripts/fetch-lc116.ts",
     "fetch:data:esocial": "tsx scripts/fetch-esocial.ts",
+    "fetch:data:simples-nacional": "tsx scripts/fetch-simples-nacional.ts",
     "fetch:data:portos": "tsx scripts/fetch-portos.ts",
     "fetch:data:anp-combustiveis": "tsx scripts/fetch-anp-combustiveis.ts",
     "fetch:data:pncp-reference": "tsx scripts/fetch-pncp-reference.ts",
