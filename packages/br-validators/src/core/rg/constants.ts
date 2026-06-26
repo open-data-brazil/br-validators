@@ -16,13 +16,13 @@ export const RG_OFFICIAL_SOURCE_URLS: Record<RgUfCode, string> = {
   SC: 'https://www.ciasc.sc.gov.br/',
   BA: 'https://www.ba.gov.br/policiatecnica/972/instituto-de-identificacao-pedro-mello-iipm',
   AC: 'https://www.policiacivil.ac.gov.br/',
+  AL: 'https://alagoasdigital.al.gov.br/servico/8',
 };
 
-export const RG_SUPPORTED_UFS = ['SP', 'RJ', 'MG', 'PR', 'RS', 'SC', 'BA', 'AC'] as const satisfies readonly RgUfCode[];
+export const RG_SUPPORTED_UFS = ['SP', 'RJ', 'MG', 'PR', 'RS', 'SC', 'BA', 'AC', 'AL'] as const satisfies readonly RgUfCode[];
 
 /** Brazilian UFs without RG validator yet — community contributions (phase 33c). */
 export const RG_PENDING_UFS = [
-  'AL',
   'AM',
   'AP',
   'CE',
@@ -45,7 +45,6 @@ export const RG_PENDING_UFS = [
 
 /** SSP / Polícia Civil entry points for pending UF research — not algorithm sources. */
 export const RG_RESEARCH_URLS: Record<(typeof RG_PENDING_UFS)[number], string> = {
-  AL: 'https://www.policiacivil.al.gov.br/',
   AM: 'https://www.policiacivil.am.gov.br/',
   AP: 'https://www.policiacivil.ap.gov.br/',
   CE: 'https://www.policiacivil.ce.gov.br/',
@@ -87,6 +86,8 @@ export const RG_SC_GOLDEN = '123456789';
 export const RG_BA_GOLDEN = '1234567800';
 
 export const RG_AC_GOLDEN = '123456';
+
+export const RG_AL_GOLDEN = '1234567';
 
 export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
   SP: {
@@ -150,6 +151,14 @@ export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
     uf: 'AC',
     canonicalLength: 6,
     baseLength: 6,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  AL: {
+    uf: 'AL',
+    canonicalLength: 7,
+    baseLength: 7,
     dvAlgorithm: 'format-only',
     allowsCheckDigitX: false,
     supportsMask: false,

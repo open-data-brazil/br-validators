@@ -13,7 +13,8 @@ describe('rg CLI', () => {
   it('resolves supported UF codes', () => {
     expect(resolveRgUf('sp')).toBe('SP');
     expect(resolveRgUf('ac')).toBe('AC');
-    expect(resolveRgUf('AL')).toBeNull();
+    expect(resolveRgUf('al')).toBe('AL');
+    expect(resolveRgUf('AM')).toBeNull();
     expect(resolveRgUf(undefined)).toBeNull();
   });
 
