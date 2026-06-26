@@ -29,6 +29,8 @@ import {
   handleIbgeLookupCli,
   handleIbgeListCli,
   handleFeriadosListCli,
+  handleInssCalcCli,
+  handleInssTabelaCli,
   handleIrpfCalcCli,
   handleIrpfTabelaCli,
   handleTseMunicipiosLookupCli,
@@ -192,7 +194,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · irpf · tse-municipios · ddd · nfe-cuf · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · inss · irpf · tse-municipios · ddd · nfe-cuf · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
     return EXIT.OK;
   }
 
@@ -367,6 +369,17 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
         return handleFeriadosListCli(opts, io);
       }
       return usage(io, 'Expected: feriados list [--year YYYY]');
+    }
+    case 'inss': {
+      const action = rest[0];
+      if (action === 'tabela') {
+        return handleInssTabelaCli(opts, io);
+      }
+      if (action === 'calc') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleInssCalcCli(value, opts, io);
+      }
+      return usage(io, 'Expected: inss tabela [--ano YYYY] | inss calc <salario> [--ano YYYY]');
     }
     case 'irpf': {
       const action = rest[0];

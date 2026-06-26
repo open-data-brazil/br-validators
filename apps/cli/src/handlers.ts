@@ -30,6 +30,7 @@ import { runCstLookup, runCstSearch, runCstValidate } from './commands/cst/index
 import { runIbgeLookup } from './commands/ibge/lookup.js';
 import { runIbgeList } from './commands/ibge/list.js';
 import { runFeriadosList } from './commands/feriados/list.js';
+import { runInssCalc, runInssTabela } from './commands/inss/index.js';
 import { runIrpfCalc, runIrpfTabela } from './commands/irpf/index.js';
 import { runTseMunicipiosLookup } from './commands/tse-municipios/lookup.js';
 import { runCepFaixa } from './commands/cep/faixa.js';
@@ -1085,6 +1086,29 @@ export function handleFeriadosListCli(
     json: Boolean(opts.json),
     verbose: Boolean(opts.verbose),
     year: opts.year,
+  }, io);
+}
+
+export function handleInssTabelaCli(
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runInssTabela({
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    ano: opts.year,
+  }, io);
+}
+
+export function handleInssCalcCli(
+  value: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runInssCalc(value, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    ano: opts.year,
   }, io);
 }
 

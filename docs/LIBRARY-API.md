@@ -53,6 +53,7 @@
 | `@br-validators/core/esocial` | eSocial Tabela 01 worker category lookup |
 | `@br-validators/core/simples-nacional` | LC 123/2006 Simples Nacional annex rate tables |
 | `@br-validators/core/irpf` | RFB IRPF monthly progressive withholding table |
+| `@br-validators/core/inss` | INSS employee progressive contribution table (Anexo II) |
 | `@br-validators/core/ptax` | Bacen PTAX Fechamento exchange rates (pairs with `moedas`) |
 | `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
 | `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
@@ -385,6 +386,38 @@ calcularIrpfMensal(3000, 2025); // { imposto: 68.56, faixa: 3, ... }
 **Official sources:** [OFFICIAL-SOURCES.md § IRPF](OFFICIAL-SOURCES.md#irpf) — [RFB Tabelas IRPF](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) · [Lei 7.713/1988](https://www.planalto.gov.br/ccivil_03/leis/l7713.htm)
 
 CLI: `br-validators irpf tabela [--ano 2025]` · `br-validators irpf calc <base> [--ano 2025]`
+
+---
+
+## Core API — INSS employee contribution table
+
+> **Offline embedded data** from [Portaria MPS/MF nº 6/2025 — Anexo II](https://www.in.gov.br/web/dou/-/portaria-interministerial-mps/mf-n-6-de-10-de-janeiro-de-2025-606526848).  
+> Payroll complement to `@br-validators/core/irpf` and `@br-validators/core/esocial`.  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (annual refresh)
+
+| Function | Returns |
+|----------|---------|
+| `getInssTabelaContribuicao(ano?)` | Full table `{ ano, teto, faixas }` or `undefined` |
+| `getInssFaixaPorSalario(valor, ano?)` | Bracket row for salary or `undefined` |
+| `calcularInssMensal(salarioContribuicao, ano?)` | `{ ano, salarioContribuicao, salarioEfetivo, faixa, aliquota, contribuicao, teto }` or `undefined` |
+| `getInssAnosDisponiveis()` | Embedded competência years |
+| `roundInssCentavos(valor)` | Half-up rounding to 2 decimal places |
+| `INSS_DATA_VERSION` | `DatasetMetadata` |
+
+Formula: progressive sum of `(portion in bracket × aliquota)` capped at **teto**; salaries above teto use teto as `salarioEfetivo`.
+
+Golden vectors: **`1518`** → **`113.85`**; **`2793.88`** → **`228.68`**; **`3000`** → **`253.41`**; **`8157.41`** → **`951.63`**. Vector: `inss.official.json`.
+
+```typescript
+import { calcularInssMensal, getInssTabelaContribuicao } from '@br-validators/core/inss';
+
+getInssTabelaContribuicao(2025); // 4 faixas, teto 8157.41
+calcularInssMensal(3000, 2025); // { contribuicao: 253.41, faixa: 3, ... }
+```
+
+**Official sources:** [OFFICIAL-SOURCES.md § INSS](OFFICIAL-SOURCES.md#inss) — [Portaria MPS/MF nº 6/2025](https://www.in.gov.br/web/dou/-/portaria-interministerial-mps/mf-n-6-de-10-de-janeiro-de-2025-606526848) · [Lei 10.887/2004](https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10887.htm)
+
+CLI: `br-validators inss tabela [--ano 2025]` · `br-validators inss calc <salario> [--ano 2025]`
 
 ---
 

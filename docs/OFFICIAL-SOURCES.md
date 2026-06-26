@@ -45,6 +45,7 @@
 | **eSocial categorias** | eSocial / MTE | [eSocial S-1.3 Tabelas](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Tabela 01 worker categories (~47). Golden: **`101`** (empregado geral), **`103`** (aprendiz), **`901`** (estagiário). Vector: `esocial.official.json`. Manual refresh. Natureza rubricas / leave types deferred v2. |
 | **Simples Nacional** | Planalto / RFB | [LC 123/2006 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm) · [Receita Anexo I](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=48430) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Anexos I–V rate tables (6 faixas each, LC 155/2016). Golden: Anexo **`I`** RBT12 **`700000`** (alíquota efetiva **7,52%**), Anexo **`III`** faixa 1, Anexo **`V`** RBT12 **`200000`**. Vector: `simples-nacional.official.json`. CNAE→anexo mapping deferred. Manual refresh. |
 | **IRPF (tabela progressiva mensal)** | RFB | [Tabelas IRPF](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) · [Tabela progressiva mensal](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/tabela-progressiva-mensal) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · Full index: [§ IRPF](#irpf) | Monthly withholding brackets (5 faixas). Golden: base **`3000`** → imposto **`68.56`**; **`2826.65`** → **`42.56`**; **`5000`** → **`479`**. Vector: `irpf.official.json`. Annual declaration / 13º IRRF deferred. Manual refresh (`agendamento: manual`). |
+| **INSS (contribuição empregado)** | MPS/MF / INSS | [Portaria MPS/MF nº 6/2025](https://www.in.gov.br/web/dou/-/portaria-interministerial-mps/mf-n-6-de-10-de-janeiro-de-2025-606526848) · [INSS alíquotas 2025](https://www.gov.br/inss/pt-br/noticias/confira-como-ficaram-as-aliquotas-de-contribuicao-ao-inss) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · Full index: [§ INSS](#inss) | Employee progressive brackets (4 faixas, teto **`8157.41`**). Golden: **`1518`** → **`113.85`**; **`3000`** → **`253.41`**; **`8157.41`** → **`951.63`**. Vector: `inss.official.json`. RPPS / MEI deferred. Manual refresh (`agendamento: manual`). |
 | **NCM** | Receita / Siscomex | [NCM JSON download](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Mercosur nomenclature leaf codes (8 digits). Golden: **`01012100`** (purebred horses). Vector: `ncm.official.json`. **IBPT** approximate burden: `@br-validators/core/ibpt`. |
 | **IBPT carga tributária** | IBPT | [De Olho no Imposto](https://deolhonoimposto.ibpt.org.br/) · [Lei 12.741/2012](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12741.htm) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Approximate federal + state + municipal burden per NCM×UF (golden subset embed). Golden: **`01012100`/SP** total **31,45%** nacional. Vector: `ibpt.official.json`. Full matrix out of scope. |
 | **CBO** | MTE | [CBO 2002 downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Occupation codes (eSocial / HR). Golden: **`212405`** (systems analyst). Vector: `cbo.official.json`. |
@@ -280,6 +281,24 @@ Golden: `35` (São Paulo/SP), `53` (Distrito Federal), `11` (Rondônia). All **2
 Golden: base **`2000`** → **`0`**; **`2826.65`** → **`42.56`**; **`3000`** → **`68.56`** (faixa 3); **`5000`** → **`479`**. Tax year **2025** embedded (5 faixas).
 
 `calcularIrpfMensal` — progressive monthly withholding estimate only. Annual IRPF declaration and automatic 13º IRRF out of scope v1.
+
+---
+
+## INSS employee contribution table {#inss}
+
+> **Vectors:** `packages/br-validators/tests/vectors/inss.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (annual probe in January)
+
+| Role | Source | URL |
+|------|--------|-----|
+| Portaria Interministerial MPS/MF nº 6/2025 | DOU | https://www.in.gov.br/web/dou/-/portaria-interministerial-mps/mf-n-6-de-10-de-janeiro-de-2025-606526848 |
+| PDF oficial | Previdência | https://www.gov.br/previdencia/pt-br/assuntos/rpps/legislacao-dos-rpps/2025/PortariaInterministerialMPSMFn6de10jan2025.pdf |
+| INSS — alíquotas 2025 | INSS | https://www.gov.br/inss/pt-br/noticias/confira-como-ficaram-as-aliquotas-de-contribuicao-ao-inss |
+| Lei 10.887/2004 (alíquotas progressivas) | Planalto | https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10887.htm |
+
+Golden: **`1518`** → **`113.85`**; **`2793.88`** → **`228.68`**; **`3000`** → **`253.41`** (faixa 3); **`8157.41`** → **`951.63`** (teto). Competência year **2025** embedded (4 faixas).
+
+`calcularInssMensal` — progressive employee contribution estimate (Anexo II). RPPS Anexo III and MEI fixed % out of scope v1.
 
 ---
 

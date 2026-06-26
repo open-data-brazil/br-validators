@@ -122,6 +122,10 @@
       "types": "./dist/irpf.d.ts",
       "import": "./dist/irpf.js"
     },
+    "./inss": {
+      "types": "./dist/inss.d.ts",
+      "import": "./dist/inss.js"
+    },
     "./processo-judicial": {
       "types": "./dist/processo-judicial.d.ts",
       "import": "./dist/processo-judicial.js"

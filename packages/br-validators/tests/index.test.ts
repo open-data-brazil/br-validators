@@ -23,6 +23,7 @@ import * as paisesBacenEntry from '../src/paises-bacen.js';
 import * as incotermsEntry from '../src/incoterms.js';
 import * as nfeCufEntry from '../src/nfe-cuf.js';
 import * as irpfEntry from '../src/irpf.js';
+import * as inssEntry from '../src/inss.js';
 import * as feriadosEntry from '../src/feriados.js';
 import * as cnaesEntry from '../src/cnaes.js';
 import * as cfopEntry from '../src/cfop.js';
@@ -273,6 +274,14 @@ describe('package exports', () => {
     expect(nfeCufEntry.getCufPorUf).toBeTypeOf('function');
     expect(nfeCufEntry.lookupCufPorCodigo).toBeTypeOf('function');
     expect(nfeCufEntry.NFE_CUF_DATA_VERSION.id).toBe('nfe-cuf');
+  });
+
+  it('re-exports INSS API from inss entry', () => {
+    expect(inssEntry.getInssTabelaContribuicao).toBeTypeOf('function');
+    expect(inssEntry.calcularInssMensal).toBeTypeOf('function');
+    expect(inssEntry.getInssFaixaPorSalario).toBeTypeOf('function');
+    expect(inssEntry.getInssAnosDisponiveis).toBeTypeOf('function');
+    expect(inssEntry.INSS_DATA_VERSION.id).toBe('inss');
   });
 
   it('re-exports IRPF API from irpf entry', () => {

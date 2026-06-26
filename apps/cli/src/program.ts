@@ -39,6 +39,8 @@ import {
   handleCstSearchCli,
   handleCstValidateCli,
   handleFeriadosListCli,
+  handleInssCalcCli,
+  handleInssTabelaCli,
   handleIrpfCalcCli,
   handleIrpfTabelaCli,
   handleIbgeListCli,
@@ -650,6 +652,33 @@ export function createProgram(): Command {
     .action((opts: ReferenceDatasetCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleFeriadosListCli(opts, io);
+      writeCliIo(io);
+    });
+
+  const inss = program.command('inss').description('INSS employee contribution progressive table — offline');
+
+  inss
+    .command('tabela')
+    .description('Show embedded progressive contribution brackets')
+    .option('--ano <yyyy>', 'Competência year', (v: string) => Number(v))
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((opts: ReferenceDatasetCliOptions & { ano?: number }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleInssTabelaCli({ ...opts, year: opts.ano ?? opts.year }, io);
+      writeCliIo(io);
+    });
+
+  inss
+    .command('calc')
+    .description('Estimate monthly INSS contribution from salary')
+    .argument('<salario>', 'Monthly contribution salary (BRL)')
+    .option('--ano <yyyy>', 'Competência year', (v: string) => Number(v))
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((salario: string, opts: ReferenceDatasetCliOptions & { ano?: number }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleInssCalcCli(salario, { ...opts, year: opts.ano ?? opts.year }, io);
       writeCliIo(io);
     });
 

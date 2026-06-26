@@ -54,7 +54,7 @@ export const PLATFORM_ROUTES = [
 export const REFERENCE_DATA_ROUTES = [
   { slug: 'data/ibge', label: 'IBGE', description: 'States + municipalities', group: 'reference-data' },
   { slug: 'data/calendar', label: 'Calendar', description: 'National holidays by year', group: 'reference-data' },
-  { slug: 'data/payroll', label: 'Payroll', description: 'IRPF progressive monthly table', group: 'reference-data' },
+  { slug: 'data/payroll', label: 'Payroll', description: 'IRPF + INSS progressive tables', group: 'reference-data' },
   { slug: 'data/bancos', label: 'Bancos', description: 'Bacen STR participants', group: 'reference-data' },
   { slug: 'data/fiscal', label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST, CNAE, CFOP, NCM, CBO', group: 'reference-data' },
   { slug: 'data/trade', label: 'Trade', description: 'Moedas, países Bacen, Incoterms', group: 'reference-data' },

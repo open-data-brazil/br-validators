@@ -313,6 +313,9 @@ describe('dispatchArgv', () => {
     expect(parseArgv(['feriados', 'list', '--year', '2026']).opts).toMatchObject({
       year: 2026,
     });
+    expect(parseArgv(['inss', 'tabela', '--ano', '2025']).opts).toMatchObject({
+      year: 2025,
+    });
     expect(parseArgv(['irpf', 'tabela', '--ano', '2025']).opts).toMatchObject({
       year: 2025,
     });
@@ -383,6 +386,13 @@ describe('dispatchArgv', () => {
 
     const feriados = io();
     expect(dispatchArgv(['feriados', 'list', '--year', '2026', '--json'], feriados)).toBe(EXIT.OK);
+
+    const inss = io();
+    expect(dispatchArgv(['inss', 'tabela', '--ano', '2025', '--json'], inss)).toBe(EXIT.OK);
+    expect(dispatchArgv(['inss', 'calc', '3000', '--json'], io())).toBe(EXIT.OK);
+
+    const inssCalcMissing = io();
+    expect(dispatchArgv(['inss', 'calc', '--json'], inssCalcMissing)).toBe(EXIT.USAGE);
 
     const irpf = io();
     expect(dispatchArgv(['irpf', 'tabela', '--ano', '2025', '--json'], irpf)).toBe(EXIT.OK);
@@ -460,6 +470,9 @@ describe('dispatchArgv', () => {
 
     const feriadosUsage = io();
     expect(dispatchArgv(['feriados', 'unknown'], feriadosUsage)).toBe(EXIT.USAGE);
+
+    const inssUsage = io();
+    expect(dispatchArgv(['inss', 'unknown'], inssUsage)).toBe(EXIT.USAGE);
 
     const irpfUsage = io();
     expect(dispatchArgv(['irpf', 'unknown'], irpfUsage)).toBe(EXIT.USAGE);
