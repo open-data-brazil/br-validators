@@ -1,11 +1,11 @@
 {
   "datasetId": "cest",
-  "status": "ok",
+  "status": "source_unavailable",
   "endpoints": [
     "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
   ],
   "attempts": 5,
-  "checkedAt": "2026-06-26T11:31:08.446Z",
+  "checkedAt": "2026-06-26T13:38:37.155Z",
   "retainedEmbeddedDataFrom": "2026-06-26",
-  "message": "Official CONFAZ CEST table fetch succeeded."
+  "message": "Possible link deprecation — official source unreachable after 5 attempts (interval 120000ms) (fetch failed). No new data returned — embedded data from 2026-06-26 retained in the API."
 }

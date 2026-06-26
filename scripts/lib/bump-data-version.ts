@@ -1,9 +1,9 @@
-/** Parsed semver for human releases (1.8.3) or bot data releases (1.8.3-data.0001). */
+/** Parsed semver for human releases (1.8.3) or bot data releases (1.8.3-data.1). */
 export interface ParsedPublishVersion {
   major: number;
   minor: number;
   patch: number;
-  /** Set when version is a daily data refresh build (`-data.NNNN`). */
+  /** Set when version is a daily data refresh build (`-data.N`). */
   dataSeq: number | null;
 }
 
@@ -39,16 +39,14 @@ export function parsePublishVersion(version: string): ParsedPublishVersion | nul
   return null;
 }
 
-function formatDataSeq(seq: number): string {
-  return String(seq).padStart(4, '0');
-}
-
 /**
  * Next version for the daily data refresh bot.
  *
- * Human release `1.8.3` → first data drift → `1.8.3-data.0001` (not `1.8.4`).
- * Subsequent bot runs → `1.8.3-data.0002`, …
- * Next human release `1.8.4` → bot resets counter → `1.8.4-data.0001`.
+ * Human release `1.8.3` → first data drift → `1.8.3-data.1` (not `1.8.4`).
+ * Subsequent bot runs → `1.8.3-data.2`, …
+ * Next human release `1.8.4` → bot resets counter → `1.8.4-data.1`.
+ *
+ * Counter is never zero-padded — matches npm registry SemVer canonical form.
  */
 export function bumpDataVersion(current: string): string {
   const parsed = parsePublishVersion(current);
@@ -58,10 +56,10 @@ export function bumpDataVersion(current: string): string {
 
   if (parsed.dataSeq !== null) {
     const nextSeq = parsed.dataSeq + 1;
-    return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)}-data.${formatDataSeq(nextSeq)}`;
+    return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)}-data.${String(nextSeq)}`;
   }
 
-  return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)}-data.0001`;
+  return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)}-data.1`;
 }
 
 /** Human-readable label for CHANGELOG / bot summaries. */
@@ -70,5 +68,5 @@ export function formatDataVersionLabel(version: string): string {
   if (parsed === null || parsed.dataSeq === null) {
     return version;
   }
-  return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)} data #${formatDataSeq(parsed.dataSeq)}`;
+  return `${String(parsed.major)}.${String(parsed.minor)}.${String(parsed.patch)} data #${String(parsed.dataSeq)}`;
 }

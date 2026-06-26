@@ -82,3 +82,15 @@ GitHub secret required: **`NPM_TOKEN`** (Automation or granular, all `@br-valida
 **Symptom:** Release job fails at publish with `401` / `ENEEDAUTH`, or `express`/`vue` never appear on npm.
 
 **Fix:** Update `NPM_TOKEN` with create + publish on entire `@br-validators` scope. Re-run workflow (idempotent — skips versions already published).
+
+## Release CI: data tag must match npm SemVer (`1.8.3-data.1`, not `1.8.3-data.0001`)
+
+**Symptom:**
+
+```
+Expected @br-validators/core@1.8.3-data.0001, got: 1.8.3-data.1
+```
+
+**Cause:** Zero-padded prerelease counters (`-data.0001`) are normalized by npm to `-data.1`. Tags and `package.json` must use the **same** string npm stores.
+
+**Fix:** `scripts/lib/bump-data-version.ts` emits `1.8.3-data.1` (no leading zeroes). Re-tag failed releases as `v1.8.3-data.1` and re-run Release workflow (publish skips if already on npm).

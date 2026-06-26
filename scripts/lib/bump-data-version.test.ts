@@ -16,7 +16,22 @@ describe('parsePublishVersion', () => {
     });
   });
 
-  it('parses bot data release with zero-padded counter', () => {
+  it('parses bot data release (npm canonical counter)', () => {
+    expect(parsePublishVersion('1.8.3-data.1')).toEqual({
+      major: 1,
+      minor: 8,
+      patch: 3,
+      dataSeq: 1,
+    });
+    expect(parsePublishVersion('1.8.3-data.42')).toEqual({
+      major: 1,
+      minor: 8,
+      patch: 3,
+      dataSeq: 42,
+    });
+  });
+
+  it('normalizes legacy zero-padded counter when parsing', () => {
     expect(parsePublishVersion('1.8.3-data.0001')).toEqual({
       major: 1,
       minor: 8,
@@ -33,22 +48,22 @@ describe('parsePublishVersion', () => {
 
 describe('bumpDataVersion', () => {
   it('starts data line from human release', () => {
-    expect(bumpDataVersion('1.8.3')).toBe('1.8.3-data.0001');
+    expect(bumpDataVersion('1.8.3')).toBe('1.8.3-data.1');
   });
 
   it('increments data counter without bumping human patch', () => {
-    expect(bumpDataVersion('1.8.3-data.0001')).toBe('1.8.3-data.0002');
-    expect(bumpDataVersion('1.8.3-data.0009')).toBe('1.8.3-data.0010');
+    expect(bumpDataVersion('1.8.3-data.1')).toBe('1.8.3-data.2');
+    expect(bumpDataVersion('1.8.3-data.9')).toBe('1.8.3-data.10');
   });
 
   it('resets counter after new human release', () => {
-    expect(bumpDataVersion('1.8.4')).toBe('1.8.4-data.0001');
+    expect(bumpDataVersion('1.8.4')).toBe('1.8.4-data.1');
   });
 });
 
 describe('formatDataVersionLabel', () => {
   it('labels data builds', () => {
-    expect(formatDataVersionLabel('1.8.3-data.0042')).toBe('1.8.3 data #0042');
+    expect(formatDataVersionLabel('1.8.3-data.42')).toBe('1.8.3 data #42');
   });
 
   it('passes through human versions', () => {
