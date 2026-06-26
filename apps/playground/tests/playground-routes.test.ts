@@ -33,6 +33,7 @@ describe('resolvePlaygroundRoute', () => {
     expect(resolvePlaygroundRoute('/data/bancos')).toEqual({ kind: 'reference-data', slug: 'data/bancos' });
     expect(resolvePlaygroundRoute('/data/fiscal')).toEqual({ kind: 'reference-data', slug: 'data/fiscal' });
     expect(resolvePlaygroundRoute('/data/payroll')).toEqual({ kind: 'reference-data', slug: 'data/payroll' });
+    expect(resolvePlaygroundRoute('/data/finance')).toEqual({ kind: 'reference-data', slug: 'data/finance' });
     expect(resolvePlaygroundRoute('/data/trade')).toEqual({ kind: 'reference-data', slug: 'data/trade' });
     expect(resolvePlaygroundRoute('/data/logistics')).toEqual({ kind: 'reference-data', slug: 'data/logistics' });
   });

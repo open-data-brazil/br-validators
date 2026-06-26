@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **SELIC meta SGS 432 (33n)** — `@br-validators/core/selic` with `getSelicMeta`, `getSelicMetaPorData`, `getSelicHistorico`; 90-day rolling embed; staleness API; CLI `selic [--date]`; playground `/data/finance`; `pnpm fetch:data:selic`; daily refresh bot
 - **INSS contribution table (33m)** — `@br-validators/core/inss` with `getInssTabelaContribuicao`, `calcularInssMensal`, `getInssFaixaPorSalario`; 2025 employee brackets (teto R$ 8.157,41); CLI `inss tabela` and `inss calc`; playground `/data/payroll`; `pnpm fetch:data:inss`
 - **IRPF progressive table (33l)** — `@br-validators/core/irpf` with `getIrpfTabelaProgressiva`, `calcularIrpfMensal`, `getIrpfFaixaPorValor`; 2025 monthly brackets; CLI `irpf tabela` and `irpf calc`; playground `/data/payroll`; `pnpm fetch:data:irpf`
 - **NF-e cUF lookup (33k)** — `@br-validators/core/nfe-cuf` with `getCufPorCodigo`, `getCufPorUf`, `getAllCuf`; static 27-row SEFAZ table + IBGE cross-ref; CLI `nfe-cuf lookup`; playground `/data/fiscal` module; `pnpm fetch:data:nfe-cuf`

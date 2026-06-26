@@ -54,6 +54,7 @@
 | **TSE ↔ IBGE municipios** | TSE | [municipio_tse_ibge.zip](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) · [Portal dados abertos](https://dadosabertos.tse.jus.br/dataset/codigos-oficiais-de-uf-e-municipios-segundo-o-tse-e-o-ibge) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Electoral municipality codes cross-walk to IBGE `codigo`. Golden: TSE **`71072`** → IBGE **`3550308`** (São Paulo/SP). Vector: `tse-municipios.official.json`. Lookup-only — does not change `titulo-eleitor` validation. |
 | **Moedas (ISO 4217 + Bacen)** | ISO / Bacen | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | ISO 4217 embedded baseline merged with Bacen PTAX `tipoMoeda` (A/B). Golden: **`BRL`**, **`USD`**, **`EUR`**. Vector: `moedas.official.json`. |
 | **PTAX cotações** | Bacen | [Bacen Olinda PTAX API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Fechamento PTAX for Bacen tipo A/B currencies (~10). Rolling **5 business days** embedded. Golden: USD último dia útil **`2026-06-25`**, EUR último dia útil. Vector: `ptax.official.json`. **`isStale` / `dataReferencia` / `warning`** on lookup hits. Pairs with `@br-validators/core/moedas`. Daily refresh. |
+| **SELIC meta (SGS 432)** | Bacen | [SGS série 432](https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · Full index: [§ SELIC](#selic-meta-sgs-432) | Copom target rate (% a.a.). Rolling **90 calendar days** embedded. Golden: **`2026-06-26`** → **`14.25`**; COPOM **`2026-06-18`**. Vector: `selic.official.json`. **`isStale` / `dataReferencia` / `warning`**. Pairs with `@br-validators/core/ptax`. Daily refresh. |
 | **Países Bacen (NF-e)** | RFB / Bacen | [NF-e Diversos — Tabela de Países](http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=) · [Bacen FTP paises.txt](https://www.bcb.gov.br/ftp/paises.txt) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | 4-digit Bacen country codes for NF-e `cPais`. Golden: **`1058`** → Brasil. Vector: `paises-bacen.official.json`. Fetch chain: NF-e ODS (NT 2018.003 v1.01) → Bacen FTP merge → embedded fallback. |
 | **Incoterms 2020** | ICC | [Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Static ICC 2020 list (11 terms, code + name only). Golden: **`FOB`**. Vector: `incoterms.official.json`. |
 | **Portos (ANTAQ)** | ANTAQ | [Instalações portuárias shape/xlsx zip](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Outorged port installations (`Portos.xlsx`). Golden: **`BRSSZ`** (Santos), **`BRADR`**, **`BRPNG`**. Vector: `portos.official.json`. IBGE municipality cross-ref via `idcidade`. |
@@ -453,6 +454,26 @@ Fetch embeds **Fechamento PTAX** closing rates for Bacen `tipoMoeda` **A/B** cur
 **Staleness API (v1.9+):** `getPtaxCotacao` / `getPtaxUltimoDiaUtil` return `dataReferencia`, `isStale` (more than **1 business day** before Brazil local today), and `warning` when stale — live rates via `@br-validators/adapters-ptax` (adapter package). `PTAX_DATA_VERSION.capturadoEm` is the embed capture calendar day.
 
 Golden: USD último dia útil **`2026-06-25`**; USD histórico **`2026-06-23`**; EUR último dia útil **`2026-06-25`**. `getPtaxCotacao('USD')` without date returns latest embedded Fechamento with staleness metadata; dates accept ISO `YYYY-MM-DD` or Bacen `MM-DD-YYYY`.
+
+---
+
+## SELIC meta (SGS 432) {#selic-meta-sgs-432}
+
+> **Vectors:** `packages/br-validators/tests/vectors/selic.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: diario`
+
+| Role | Source | URL |
+|------|--------|-----|
+| BCB Dados Abertos — Série 432 | Bacen | https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom |
+| SGS API (JSON) | Bacen | https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json |
+| SGS consulta gráfico | Bacen | https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=432 |
+| Bacen — conceito Selic / COPOM | Bacen | https://www.bcb.gov.br/controleinflacao/copom |
+
+Fetch embeds **Meta Selic** (% a.a.) from SGS série **432**. Rolling window: **90 calendar days** (`scripts/lib/selic-sgs-api.ts`). Dates stored as ISO `YYYY-MM-DD`; API input uses `DD/MM/YYYY`.
+
+**Staleness API:** `getSelicMeta` / `getSelicMetaPorData` return `dataReferencia`, `isStale` (more than **1 business day** before Brazil local today), and `warning` when stale — live series via `@br-validators/adapters-selic` (adapter package).
+
+Golden: latest **`2026-06-26`** → **`14.25`**; COPOM **`2026-06-18`** → **`14.25`**; before COPOM **`2026-06-17`** → **`14.50`**. Selic diária (11) and CDI (12) out of scope v1.
 
 ---
 

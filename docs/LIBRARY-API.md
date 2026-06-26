@@ -55,6 +55,7 @@
 | `@br-validators/core/irpf` | RFB IRPF monthly progressive withholding table |
 | `@br-validators/core/inss` | INSS employee progressive contribution table (Anexo II) |
 | `@br-validators/core/ptax` | Bacen PTAX Fechamento exchange rates (pairs with `moedas`) |
+| `@br-validators/core/selic` | Bacen SGS 432 Copom SELIC meta rate |
 | `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
 | `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
 | `@br-validators/core/data-catalog` | Aggregated dataset transparency metadata |
@@ -1135,6 +1136,37 @@ getPtaxCotacao('USD', '2026-06-23');
 ```
 
 CLI: `br-validators ptax lookup <moeda> [data] [--json] [--verbose]` — verbose prints `dataReferencia`, `isStale`, and `warning` when stale.
+
+---
+
+## Core API — SELIC meta (SGS 432)
+
+> **Offline embedded data** from [Bacen SGS série 432](https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json).  
+> Financial complement to `@br-validators/core/ptax`.  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — daily refresh (`pnpm fetch:data:selic`); rolling **90 calendar days** embedded.
+
+| Function | Returns |
+|----------|---------|
+| `getSelicMeta(options?)` | Latest `SelicMetaResult` or `undefined` |
+| `getSelicMetaPorData(isoDate, options?)` | Historical observation with staleness metadata |
+| `getSelicHistorico({ from?, to? })` | Inclusive date range, ascending |
+| `getSelicList()` | All embedded observations |
+| `SELIC_DATA_VERSION` | `DatasetMetadata` |
+
+**Staleness:** every hit includes `dataReferencia`, `isStale`, and `warning` when stale — same business-day rule as PTAX (33g). Override with `options.asOfDate`.
+
+Golden vectors: **`2026-06-26`** → **`14.25`**; COPOM **`2026-06-18`** → **`14.25`**; **`2026-06-17`** → **`14.50`**. Vector: `selic.official.json`.
+
+```typescript
+import { getSelicMeta, getSelicHistorico } from '@br-validators/core/selic';
+
+getSelicMeta(); // { valor: 14.25, dataReferencia: '2026-06-26', isStale: false, ... }
+getSelicHistorico({ from: '2026-06-17', to: '2026-06-19' }); // COPOM window
+```
+
+**Official sources:** [OFFICIAL-SOURCES.md § SELIC](OFFICIAL-SOURCES.md#selic-meta-sgs-432) — [BCB SGS 432](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) · [COPOM](https://www.bcb.gov.br/controleinflacao/copom)
+
+CLI: `br-validators selic [--date YYYY-MM-DD] [--json] [--verbose]`
 
 ---
 

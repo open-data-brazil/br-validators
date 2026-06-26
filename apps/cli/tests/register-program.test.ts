@@ -67,6 +67,17 @@ describe('registerReferenceLookupCommands via createProgram', () => {
     );
   });
 
+  it('wires selic command to handler', async () => {
+    const spy = vi.spyOn(handlers, 'handleSelicCli').mockReturnValue(0);
+    vi.spyOn(handlers, 'writeCliIo').mockImplementation(() => undefined);
+    const program = createProgram();
+    await program.parseAsync(['selic', '--json', '--date', '2026-06-18'], { from: 'user' });
+    expect(spy).toHaveBeenCalledWith(
+      expect.objectContaining({ json: true, date: '2026-06-18' }),
+      expect.objectContaining({ stdout: expect.any(Array), stderr: expect.any(Array) }),
+    );
+  });
+
   it('wires irpf subcommands to handlers', async () => {
     const tabelaSpy = vi.spyOn(handlers, 'handleIrpfTabelaCli').mockReturnValue(0);
     const calcSpy = vi.spyOn(handlers, 'handleIrpfCalcCli').mockReturnValue(0);

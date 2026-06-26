@@ -126,6 +126,10 @@
       "types": "./dist/inss.d.ts",
       "import": "./dist/inss.js"
     },
+    "./selic": {
+      "types": "./dist/selic.d.ts",
+      "import": "./dist/selic.js"
+    },
     "./processo-judicial": {
       "types": "./dist/processo-judicial.d.ts",
       "import": "./dist/processo-judicial.js"

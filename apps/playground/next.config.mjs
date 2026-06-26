@@ -31,6 +31,8 @@ const subpaths = [
   'ibge',
   'irpf',
   'inss',
+  'selic',
+  'ptax',
   'bancos',
   'data-catalog',
 ];

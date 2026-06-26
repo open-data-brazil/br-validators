@@ -36,6 +36,7 @@ import { runTseMunicipiosLookup } from './commands/tse-municipios/lookup.js';
 import { runCepFaixa } from './commands/cep/faixa.js';
 import { runDddLookup } from './commands/ddd/lookup.js';
 import { runNfeCufLookup } from './commands/nfe-cuf/lookup.js';
+import { runSelicCommand } from './commands/selic/index.js';
 import { runPtaxLookup } from './commands/ptax/lookup.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
@@ -1165,6 +1166,17 @@ export function handleNfeCufLookupCli(
   io: CliIo = { stdout: [], stderr: [] },
 ): number {
   return runNfeCufLookup(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handleSelicCli(
+  opts: ReferenceDatasetCliOptions & { date?: string },
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runSelicCommand({
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    date: opts.date,
+  }, io);
 }
 
 export function handlePtaxLookupCli(

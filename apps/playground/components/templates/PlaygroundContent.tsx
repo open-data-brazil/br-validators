@@ -13,6 +13,7 @@ import { PlatformSanitize } from '@/components/organisms/PlatformSanitize';
 import { OfficialSourcesPage } from '@/components/organisms/OfficialSourcesPage';
 import { DataIbgeExplorer } from '@/components/organisms/DataIbgeExplorer';
 import { DataBancosLookup } from '@/components/organisms/DataBancosLookup';
+import { DataFinanceExplorer } from '@/components/organisms/DataFinanceExplorer';
 import { DataPayrollExplorer } from '@/components/organisms/DataPayrollExplorer';
 import { DataCalendarExplorer } from '@/components/organisms/DataCalendarExplorer';
 import { DataCatalogTable } from '@/components/organisms/DataCatalogTable';
@@ -56,6 +57,8 @@ function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
       return <DataCalendarExplorer />;
     case 'data/payroll':
       return <DataPayrollExplorer />;
+    case 'data/finance':
+      return <DataFinanceExplorer />;
     case 'data/bancos':
       return <DataBancosLookup />;
     case 'data/fiscal':

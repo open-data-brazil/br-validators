@@ -37,6 +37,7 @@ import {
   handleCepFaixaCli,
   handleDddLookupCli,
   handleNfeCufLookupCli,
+  handleSelicCli,
   handlePtaxLookupCli,
   handleListCli,
   handleNfeChaveCli,
@@ -67,7 +68,7 @@ export type ParsedArgv = {
     PixCliOptions &
     BoletoCliOptions &
     IeCliOptions &
-    GenerateCliOptions & { verbose?: boolean; limit?: number; year?: number; tax?: string };
+    GenerateCliOptions & { verbose?: boolean; limit?: number; year?: number; tax?: string; date?: string };
 };
 
 const STANDARD_ACTIONS = ['validate', 'format', 'strip'] as const;
@@ -163,6 +164,11 @@ export function parseArgv(tokens: string[]): ParsedArgv {
       index += 1;
       continue;
     }
+    if (token === '--date') {
+      opts.date = tokens[index + 1];
+      index += 1;
+      continue;
+    }
     if (token.startsWith('-')) {
       continue;
     }
@@ -194,7 +200,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · inss · irpf · tse-municipios · ddd · nfe-cuf · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · inss · irpf · tse-municipios · ddd · nfe-cuf · selic · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
     return EXIT.OK;
   }
 
@@ -415,6 +421,9 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
         return handleNfeCufLookupCli(value, opts, io);
       }
       return usage(io, 'Expected: nfe-cuf lookup <code>');
+    }
+    case 'selic': {
+      return handleSelicCli(opts, io);
     }
     case 'ptax': {
       const action = rest[0];

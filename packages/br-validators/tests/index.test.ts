@@ -24,6 +24,7 @@ import * as incotermsEntry from '../src/incoterms.js';
 import * as nfeCufEntry from '../src/nfe-cuf.js';
 import * as irpfEntry from '../src/irpf.js';
 import * as inssEntry from '../src/inss.js';
+import * as selicEntry from '../src/selic.js';
 import * as feriadosEntry from '../src/feriados.js';
 import * as cnaesEntry from '../src/cnaes.js';
 import * as cfopEntry from '../src/cfop.js';
@@ -274,6 +275,14 @@ describe('package exports', () => {
     expect(nfeCufEntry.getCufPorUf).toBeTypeOf('function');
     expect(nfeCufEntry.lookupCufPorCodigo).toBeTypeOf('function');
     expect(nfeCufEntry.NFE_CUF_DATA_VERSION.id).toBe('nfe-cuf');
+  });
+
+  it('re-exports SELIC API from selic entry', () => {
+    expect(selicEntry.getSelicMeta).toBeTypeOf('function');
+    expect(selicEntry.getSelicMetaPorData).toBeTypeOf('function');
+    expect(selicEntry.getSelicHistorico).toBeTypeOf('function');
+    expect(selicEntry.getSelicList).toBeTypeOf('function');
+    expect(selicEntry.SELIC_DATA_VERSION.id).toBe('selic');
   });
 
   it('re-exports INSS API from inss entry', () => {

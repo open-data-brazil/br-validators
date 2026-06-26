@@ -34,6 +34,7 @@ import {
   handleCepFaixaCli,
   handleDddLookupCli,
   handleNfeCufLookupCli,
+  handleSelicCli,
   handlePtaxLookupCli,
   handleCstLookupCli,
   handleCstSearchCli,
@@ -750,6 +751,19 @@ export function createProgram(): Command {
     .action((code: string, opts: ReferenceDatasetCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleNfeCufLookupCli(code, opts, io);
+      writeCliIo(io);
+    });
+
+  const selic = program.command('selic').description('Bacen SELIC meta (SGS 432) — offline embedded series');
+
+  selic
+    .description('Resolve Copom SELIC meta rate (optional historical date)')
+    .option('--date <yyyy-mm-dd>', 'Observation date (ISO or MM-DD-YYYY)')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataReferencia, staleness, and dataset capture date')
+    .action((opts: ReferenceDatasetCliOptions & { date?: string }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleSelicCli(opts, io);
       writeCliIo(io);
     });
 
