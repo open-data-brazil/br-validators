@@ -7,6 +7,7 @@ import {
   RG_BA_GOLDEN,
   RG_DF_GOLDEN,
   RG_ES_GOLDEN,
+  RG_GO_GOLDEN,
   RG_MG_GOLDEN,
   RG_MG_GOLDEN_MASKED,
   RG_MG_GOLDEN_PREFIXED,
@@ -48,6 +49,7 @@ import {
   validateRgBa,
   validateRgDf,
   validateRgEs,
+  validateRgGo,
   validateRgMg,
   validateRgPr,
   validateRgRj,
@@ -66,6 +68,7 @@ import apVectors from '../../vectors/rg.ap.official.json';
 import baVectors from '../../vectors/rg.ba.official.json';
 import dfVectors from '../../vectors/rg.df.official.json';
 import esVectors from '../../vectors/rg.es.official.json';
+import goVectors from '../../vectors/rg.go.official.json';
 import spVectors from '../../vectors/rg.sp.official.json';
 import rjVectors from '../../vectors/rg.rj.official.json';
 import mgVectors from '../../vectors/rg.mg.official.json';
@@ -171,6 +174,12 @@ describe('RG golden vectors — per UF', () => {
     expect(RG_ES_GOLDEN).toBe(esVectors.valid.raw);
   });
 
+  it('validates GO format-only vectors', () => {
+    expect(isValidRg(goVectors.valid.raw, { uf: 'GO' })).toBe(true);
+    expect(validateRg(goVectors.invalid.raw, { uf: 'GO' }).ok).toBe(false);
+    expect(RG_GO_GOLDEN).toBe(goVectors.valid.raw);
+  });
+
   it('exports official source URLs', () => {
     expect(RG_OFFICIAL_SOURCE_URL).toBe(spVectors.url);
     expect(getRgOfficialSourceUrl('SP')).toBe(RG_OFFICIAL_SOURCE_URLS.SP);
@@ -182,6 +191,7 @@ describe('RG golden vectors — per UF', () => {
     expect(getRgOfficialSourceUrl('AP')).toBe(apVectors.url);
     expect(getRgOfficialSourceUrl('DF')).toBe(dfVectors.url);
     expect(getRgOfficialSourceUrl('ES')).toBe(esVectors.url);
+    expect(getRgOfficialSourceUrl('GO')).toBe(goVectors.url);
   });
 });
 
@@ -202,7 +212,7 @@ describe('RG registry', () => {
 
   it('reports implemented vs pending UFs', () => {
     expect(getRgPendingUfs()).toEqual(RG_PENDING_UFS);
-    expect(getRgPendingUfs()).toHaveLength(14);
+    expect(getRgPendingUfs()).toHaveLength(13);
     expect(isRgUfImplemented('SP')).toBe(true);
     expect(isRgUfImplemented('BA')).toBe(true);
     expect(isRgUfImplemented('AC')).toBe(true);
@@ -211,6 +221,7 @@ describe('RG registry', () => {
     expect(isRgUfImplemented('AP')).toBe(true);
     expect(isRgUfImplemented('DF')).toBe(true);
     expect(isRgUfImplemented('ES')).toBe(true);
+    expect(isRgUfImplemented('GO')).toBe(true);
     expect(getRgResearchUrl('SP')).toBe(RG_OFFICIAL_SOURCE_URLS.SP);
     expect(getRgResearchUrl('BA')).toBe(RG_OFFICIAL_SOURCE_URLS.BA);
     expect(getRgResearchUrl('AC')).toBe(RG_OFFICIAL_SOURCE_URLS.AC);
@@ -219,6 +230,7 @@ describe('RG registry', () => {
     expect(getRgResearchUrl('AP')).toBe(RG_OFFICIAL_SOURCE_URLS.AP);
     expect(getRgResearchUrl('DF')).toBe(RG_OFFICIAL_SOURCE_URLS.DF);
     expect(getRgResearchUrl('ES')).toBe(RG_OFFICIAL_SOURCE_URLS.ES);
+    expect(getRgResearchUrl('GO')).toBe(RG_OFFICIAL_SOURCE_URLS.GO);
     expect(getRgResearchUrl('CE')).toBe(RG_RESEARCH_URLS.CE);
     expect(getRgResearchUrl('ZZ' as never)).toBeUndefined();
   });
@@ -257,6 +269,7 @@ describe('RG masks', () => {
     expect(applyRgMask(RG_AP_GOLDEN, 'AP')).toBe(RG_AP_GOLDEN);
     expect(applyRgMask(RG_DF_GOLDEN, 'DF')).toBe(RG_DF_GOLDEN);
     expect(applyRgMask(RG_ES_GOLDEN, 'ES')).toBe(RG_ES_GOLDEN);
+    expect(applyRgMask(RG_GO_GOLDEN, 'GO')).toBe(RG_GO_GOLDEN);
   });
 
   it('throws on invalid mask lengths', () => {
@@ -275,6 +288,7 @@ describe('RG masks', () => {
     expect(formatRg(RG_AP_GOLDEN, { uf: 'AP' })).toEqual({ ok: true, formatted: RG_AP_GOLDEN });
     expect(formatRg(RG_DF_GOLDEN, { uf: 'DF' })).toEqual({ ok: true, formatted: RG_DF_GOLDEN });
     expect(formatRg(RG_ES_GOLDEN, { uf: 'ES' })).toEqual({ ok: true, formatted: RG_ES_GOLDEN });
+    expect(formatRg(RG_GO_GOLDEN, { uf: 'GO' })).toEqual({ ok: true, formatted: RG_GO_GOLDEN });
     expect(formatRgBarrel(RG_SC_GOLDEN, { uf: 'SC' })).toEqual({
       ok: true,
       formatted: scVectors.valid.masked,
@@ -357,6 +371,12 @@ describe('RG per-UF edge cases', () => {
     expect(validateRgEs('12345678')).toMatchObject({ ok: false, code: 'INVALID_LENGTH' });
   });
 
+  it('GO rejects empty, invalid chars, wrong length', () => {
+    expect(validateRgGo('')).toMatchObject({ ok: false, code: 'EMPTY_INPUT' });
+    expect(validateRgGo('12A')).toMatchObject({ ok: false, code: 'INVALID_CHARACTER' });
+    expect(validateRgGo('12345678')).toMatchObject({ ok: false, code: 'INVALID_LENGTH' });
+  });
+
   it('BA rejects empty, invalid chars, wrong length', () => {
     expect(validateRgBa('')).toMatchObject({ ok: false, code: 'EMPTY_INPUT' });
     expect(validateRgBa('12A')).toMatchObject({ ok: false, code: 'INVALID_CHARACTER' });
@@ -383,5 +403,6 @@ describe('RG per-UF edge cases', () => {
     expect(stripRg(RG_AP_GOLDEN, { uf: 'AP' })).toBe(RG_AP_GOLDEN);
     expect(stripRg(RG_DF_GOLDEN, { uf: 'DF' })).toBe(RG_DF_GOLDEN);
     expect(stripRg(RG_ES_GOLDEN, { uf: 'ES' })).toBe(RG_ES_GOLDEN);
+    expect(stripRg(RG_GO_GOLDEN, { uf: 'GO' })).toBe(RG_GO_GOLDEN);
   });
 });

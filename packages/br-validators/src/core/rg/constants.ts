@@ -21,14 +21,14 @@ export const RG_OFFICIAL_SOURCE_URLS: Record<RgUfCode, string> = {
   AP: 'https://apdigital.portal.ap.gov.br/carta-de-servico/solicitacao-de-agendamento-para-emissao-da-1o-via-da-carteira-de-identidade-nacional-cin1',
   DF: 'https://www.nahora.df.gov.br/policia_civil/',
   ES: 'https://pci.es.gov.br/perguntas-frequentes',
+  GO: 'https://identificacao.policiacivil.go.gov.br/1a-via-do-rg-goias/',
 };
 
-export const RG_SUPPORTED_UFS = ['SP', 'RJ', 'MG', 'PR', 'RS', 'SC', 'BA', 'AC', 'AL', 'AM', 'AP', 'DF', 'ES'] as const satisfies readonly RgUfCode[];
+export const RG_SUPPORTED_UFS = ['SP', 'RJ', 'MG', 'PR', 'RS', 'SC', 'BA', 'AC', 'AL', 'AM', 'AP', 'DF', 'ES', 'GO'] as const satisfies readonly RgUfCode[];
 
 /** Brazilian UFs without RG validator yet — community contributions (phase 33c). */
 export const RG_PENDING_UFS = [
   'CE',
-  'GO',
   'MA',
   'MS',
   'MT',
@@ -46,7 +46,6 @@ export const RG_PENDING_UFS = [
 /** SSP / Polícia Civil entry points for pending UF research — not algorithm sources. */
 export const RG_RESEARCH_URLS: Record<(typeof RG_PENDING_UFS)[number], string> = {
   CE: 'https://www.policiacivil.ce.gov.br/',
-  GO: 'https://www.policiacivil.go.gov.br/',
   MA: 'https://www.policiacivil.ma.gov.br/',
   MS: 'https://www.pc.ms.gov.br/',
   MT: 'https://www.policiacivil.mt.gov.br/',
@@ -92,6 +91,8 @@ export const RG_AP_GOLDEN = '123456789';
 export const RG_DF_GOLDEN = '1234567';
 
 export const RG_ES_GOLDEN = '123456789';
+
+export const RG_GO_GOLDEN = '123456789';
 
 export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
   SP: {
@@ -193,6 +194,14 @@ export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
   },
   ES: {
     uf: 'ES',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  GO: {
+    uf: 'GO',
     canonicalLength: 9,
     baseLength: 9,
     dvAlgorithm: 'format-only',

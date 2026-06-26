@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **RG UF AP** — format-only legacy PCA/SSP-AP validator (9 digits); `rg.ap.official.json`; 11/27 UFs shipped
 - **RG UF DF** — format-only legacy PCDF validator (7 digits); `rg.df.official.json`; 12/27 UFs shipped
 - **RG UF ES** — format-only legacy PCIES validator (9 digits); `rg.es.official.json`; 13/27 UFs shipped
+- **RG UF GO** — format-only legacy PCGO validator (9 digits); `rg.go.official.json`; 14/27 UFs shipped
 
 ### Changed
 
