@@ -11,10 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [1.9.0] - 2026-06-26
+
 ### Changed
 
 - **generate() output options (33e)** — `GenerateOptions.stripped` explicit flag; `stripped: true` wins over `masked: true`; CLI `--stripped`; default behavior unchanged (stripped when unmasked)
 - **Branded types audit (33d)** — `validateCpf`, `validateCnpj`, `validateCep`, and `validatePisPasep` now return `ValidationResult<BrandedT>`; new `Arrecadacao` brand for boleto arrecadação success paths; compile-time + runtime branded return tests; `docs/LIBRARY-API.md` branded type inventory table
+- **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.NNNN` (e.g. `1.8.3-data.0001`) instead of incrementing human PATCH (`1.8.4`)
 
 ### Added
 
@@ -45,10 +50,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **RG UFs MA, MS, MT, PA, PB** — format-only legacy validators (9 digits each); `rg.{ma,ms,mt,pa,pb}.official.json`; 19/27 UFs shipped
 - **RG UFs CE, PE, PI, RN, RO, RR, SE, TO** — format-only legacy validators (9 digits each); `rg.{ce,pe,pi,rn,ro,rr,se,to}.official.json`; **27/27 UFs shipped** (phase 33c complete)
 - **RG contributor guide** — [docs/community/RG-CONTRIBUTOR-GUIDE.md](docs/community/RG-CONTRIBUTOR-GUIDE.md): how to open issues, cite official SSP/PCivil sources, report algorithms; documents that most UFs lack consistent official legacy RG/DV data
-
-### Changed
-
-- **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.NNNN` (e.g. `1.8.3-data.0001`) instead of incrementing human PATCH (`1.8.4`)
 
 ---
 
