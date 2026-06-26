@@ -370,7 +370,7 @@ describe('dispatchArgv', () => {
     expect(dispatchArgv(['incoterms', 'lookup'], missing)).toBe(EXIT.USAGE);
   });
 
-  it('dispatches ibge, feriados, tse-municipios, ddd, cep faixa, and search', () => {
+  it('dispatches ibge, feriados, tse-municipios, ddd, ptax, cep faixa, and search', () => {
     const ibge = io();
     expect(dispatchArgv(['ibge', 'lookup', '3550308', '--json'], ibge)).toBe(EXIT.OK);
 
@@ -386,6 +386,9 @@ describe('dispatchArgv', () => {
 
     const ddd = io();
     expect(dispatchArgv(['ddd', 'lookup', '11', '--json'], ddd)).toBe(EXIT.OK);
+
+    const ptax = io();
+    expect(dispatchArgv(['ptax', 'lookup', 'USD', '--json', '--verbose'], ptax)).toBe(EXIT.OK);
 
     const faixa = io();
     expect(dispatchArgv(['cep', 'faixa', '01310', '--json'], faixa)).toBe(EXIT.OK);
@@ -406,6 +409,9 @@ describe('dispatchArgv', () => {
 
     const dddUsage = io();
     expect(dispatchArgv(['ddd', 'unknown'], dddUsage)).toBe(EXIT.USAGE);
+
+    const ptaxUsage = io();
+    expect(dispatchArgv(['ptax', 'unknown'], ptaxUsage)).toBe(EXIT.USAGE);
 
     const searchUsage = io();
     expect(dispatchArgv(['moedas', 'search', 'real'], searchUsage)).toBe(EXIT.USAGE);
@@ -430,6 +436,9 @@ describe('dispatchArgv', () => {
 
     const tseMissing = io();
     expect(dispatchArgv(['tse-municipios', 'lookup'], tseMissing)).toBe(EXIT.USAGE);
+
+    const ptaxMissing = io();
+    expect(dispatchArgv(['ptax', 'lookup'], ptaxMissing)).toBe(EXIT.USAGE);
 
     const dddMissing = io();
     expect(dispatchArgv(['ddd', 'lookup'], dddMissing)).toBe(EXIT.USAGE);

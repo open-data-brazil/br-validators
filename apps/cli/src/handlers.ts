@@ -31,6 +31,7 @@ import { runFeriadosList } from './commands/feriados/list.js';
 import { runTseMunicipiosLookup } from './commands/tse-municipios/lookup.js';
 import { runCepFaixa } from './commands/cep/faixa.js';
 import { runDddLookup } from './commands/ddd/lookup.js';
+import { runPtaxLookup } from './commands/ptax/lookup.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
@@ -1047,6 +1048,15 @@ export function handleDddLookupCli(
   io: CliIo = { stdout: [], stderr: [] },
 ): number {
   return runDddLookup(value, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handlePtaxLookupCli(
+  moeda: string | undefined,
+  data: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runPtaxLookup(moeda, data, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
 }
 
 export function writeCliIo(io: CliIo): void {

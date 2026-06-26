@@ -27,6 +27,7 @@ import {
   handleTseMunicipiosLookupCli,
   handleCepFaixaCli,
   handleDddLookupCli,
+  handlePtaxLookupCli,
   handleListCli,
   handleNfeChaveCli,
   handleProcessoJudicialCli,
@@ -364,6 +365,15 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
         return handleDddLookupCli(value, opts, io);
       }
       return usage(io, 'Expected: ddd lookup <code>');
+    }
+    case 'ptax': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const moeda = rest[1];
+        const data = rest.slice(2).join(' ') || undefined;
+        return handlePtaxLookupCli(moeda, data, opts, io);
+      }
+      return usage(io, 'Expected: ptax lookup <moeda> [data]');
     }
     case 'detect':
       return handleDetectCli(rest.join(' ') || undefined, opts, io);

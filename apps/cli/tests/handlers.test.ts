@@ -823,6 +823,9 @@ describe('program', () => {
       run(['node', 'br-validators', 'ddd', 'lookup', '11']);
     }).not.toThrow();
     expect(() => {
+      run(['node', 'br-validators', 'ptax', 'lookup', 'USD', '--verbose']);
+    }).not.toThrow();
+    expect(() => {
       run(['node', 'br-validators', 'cep', 'faixa', '01310']);
     }).not.toThrow();
     expect(() => {

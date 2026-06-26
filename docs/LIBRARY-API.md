@@ -887,24 +887,31 @@ import {
 ## Core API — PTAX (reference data)
 
 > **Offline embedded data** from [Bacen Olinda PTAX API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3) — Fechamento closing rates for Bacen tipo A/B currencies in `@br-validators/core/moedas`.  
-> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — daily refresh (`pnpm fetch:data:ptax`)
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — daily refresh (`pnpm fetch:data:ptax`); rolling **5 business days** embedded.
 
 | Function | Returns |
 |----------|---------|
 | `getPtaxList()` | All embedded Fechamento PTAX rows |
-| `getPtaxCotacao(moeda, data?)` | Single closing rate or `undefined` (ISO or Bacen date; omit `data` for latest) |
-| `getPtaxUltimoDiaUtil(moeda)` | Latest embedded Fechamento for currency |
+| `getPtaxCotacao(moeda, data?, options?)` | `PtaxCotacaoResult` or `undefined` (ISO or Bacen date; omit `data` for latest) |
+| `getPtaxUltimoDiaUtil(moeda, options?)` | Latest embedded Fechamento with staleness metadata |
 | `getPtaxCotacoesPorMoeda(moeda)` | All embedded days for currency, newest first |
-| `PTAX_DATA_VERSION` | `DatasetMetadata` |
+| `PTAX_DATA_VERSION` | `DatasetMetadata` (`capturadoEm` aligns with embed capture day) |
 
-Golden vectors: USD `2026-06-24` (compra `5.2092`, venda `5.2098`); USD `2026-06-23` historical; EUR último dia útil `2026-06-24`.
+**Staleness (v1.9+):** every hit includes `dataReferencia` (ISO quote date), `isStale` (`true` when more than **1 business day** before Brazil local today), and `warning` when stale — points to `@br-validators/adapters-ptax` for live rates. Override evaluation with `options.asOfDate` (tests / deterministic jobs).
+
+Golden vectors: USD último dia útil `2026-06-25`; USD `2026-06-23` historical; EUR último dia útil `2026-06-25`.
 
 ```typescript
 import { getPtaxCotacao, getPtaxUltimoDiaUtil, PTAX_DATA_VERSION } from '@br-validators/core/ptax';
 
-getPtaxCotacao('USD', '2026-06-24');
-getPtaxUltimoDiaUtil('EUR');
+const latest = getPtaxUltimoDiaUtil('USD');
+// { cotacaoCompra, cotacaoVenda, dataReferencia: '2026-06-25', isStale: false, ... }
+
+getPtaxCotacao('USD', '2026-06-23');
+// { ..., isStale: true, warning: 'Embedded data. For real-time use @br-validators/adapters-ptax' }
 ```
+
+CLI: `br-validators ptax lookup <moeda> [data] [--json] [--verbose]` — verbose prints `dataReferencia`, `isStale`, and `warning` when stale.
 
 ---
 

@@ -33,6 +33,7 @@ import {
   handleBancosListCli,
   handleCepFaixaCli,
   handleDddLookupCli,
+  handlePtaxLookupCli,
   handleFeriadosListCli,
   handleIbgeListCli,
   handleIbgeLookupCli,
@@ -672,6 +673,21 @@ export function createProgram(): Command {
     .action((code: string, opts: ReferenceDatasetCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleDddLookupCli(code, opts, io);
+      writeCliIo(io);
+    });
+
+  const ptax = program.command('ptax').description('Bacen PTAX Fechamento — offline embedded rates');
+
+  ptax
+    .command('lookup')
+    .description('Resolve Fechamento PTAX for currency (optional ISO or Bacen date)')
+    .argument('<moeda>', 'ISO 4217 currency code (e.g. USD)')
+    .argument('[data]', 'Quote date — YYYY-MM-DD or MM-DD-YYYY')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataReferencia, staleness, and dataset capture date')
+    .action((moeda: string, data: string | undefined, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handlePtaxLookupCli(moeda, data, opts, io);
       writeCliIo(io);
     });
 
