@@ -90,7 +90,7 @@ Workflow: [`.github/workflows/data-refresh-bot.yml`](../.github/workflows/data-r
 When embedded reference data **drifts** (`datasetsAlterados > 0` and at least one of `totalAdicionados`, `totalRemovidos`, or `totalAlterados` > 0):
 
 1. `pnpm data:refresh` → `pnpm verify`
-2. `scripts/bump-data-patch.mjs` — PATCH bump on all six packages + CHANGELOG
+2. `scripts/bump-data-patch.ts` — data-line bump (`1.8.3` → `1.8.3-data.0001`, not `1.8.4`) on all six packages + CHANGELOG
 3. `scripts/data-refresh-publish.mjs` — commit + push (or open PR)
 4. Tag `vX.Y.Z` → [`.github/workflows/release.yml`](../.github/workflows/release.yml) publishes npm
 

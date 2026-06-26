@@ -87,7 +87,7 @@ jobs:
       - name: Bump PATCH version
         if: steps.drift.outputs.changed != '0' || inputs.force_publish == true
         id: bump
-        run: node scripts/bump-data-patch.mjs --write-changelog --skip-clean-check >> "$GITHUB_OUTPUT"
+        run: pnpm exec tsx scripts/bump-data-patch.ts --write-changelog --skip-clean-check >> "$GITHUB_OUTPUT"
 
       - name: Publish PATCH release (data drift)
         if: steps.drift.outputs.changed != '0' || inputs.force_publish == true

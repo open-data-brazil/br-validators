@@ -228,14 +228,22 @@ Action: audit stored CNPJs; re-validate with v1.y.z+
 
 ---
 
-## Data-only PATCH releases (automated daily bot)
+## Data-only releases (automated daily bot)
 
 When the daily data refresh bot (`.github/workflows/data-refresh-bot.yml`) detects embedded JSON drift or is triggered with `force_publish`:
 
-| Trigger | SemVer | Automation |
-|---------|--------|------------|
-| Rows added/removed/changed or field-level `~alterados` drift | **PATCH** | `scripts/bump-data-patch.mjs` → tag → `release.yml` |
-| Manual `force_publish` dispatch | **PATCH** | Same pipeline; `reason` input required |
+| Trigger | Version format | Example |
+|---------|----------------|---------|
+| Human code/data fix release | `MAJOR.MINOR.PATCH` | `1.8.3` |
+| Bot drift (daily) | `MAJOR.MINOR.PATCH-data.NNNN` | `1.8.3-data.0001`, `1.8.3-data.0002` |
+| Manual `force_publish` | Same as bot drift | `reason` input required |
+
+**Why not `1.8.0001`?** npm/SemVer treat `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3` and would break `latest`. The `-data.NNNN` suffix keeps the human base (`1.8.3`) and a 4-digit daily counter (`0001`).
+
+| Automation | Script |
+|------------|--------|
+| Drift detected | `scripts/bump-data-patch.ts` → tag `v1.8.3-data.0001` → `release.yml` |
+| No drift | Reports commit only — no version bump |
 
 **Not handled by the bot:** MINOR (new dataset module) or MAJOR (API break) — human release per [Release process](#2-version-bump).
 
