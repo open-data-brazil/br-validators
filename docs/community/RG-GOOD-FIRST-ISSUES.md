@@ -22,13 +22,13 @@ Phase 1 covers six states (~70% of population). The remaining **21 UFs** are ide
 | BA | Format-only (10 digits; IIPM legacy) | `1234567800` |
 | AC | Format-only (6 digits; SSP-AC legacy) | `123456` |
 | AL | Format-only (7 digits; POLCAL/IIEAL legacy) | `1234567` |
+| AM | Format-only (9 digits; IIACM/SSP-AM legacy) | `123456789` |
+| AP | Format-only (9 digits; PCA/SSP-AP legacy) | `123456789` |
 
 ## Open for contribution
 
 | UF | Issue title suggestion | Research URL (`getRgResearchUrl`) |
 |----|------------------------|-----------------------------------|
-| AM | `[rg] Add RG validation for UF AM` | PCivil AM |
-| AP | `[rg] Add RG validation for UF AP` | PCivil AP |
 | CE | `[rg] Add RG validation for UF CE` | PCivil CE |
 | DF | `[rg] Add RG validation for UF DF` | PCDF |
 | ES | `[rg] Add RG validation for UF ES` | PCivil ES |

@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **RG UF BA** — format-only legacy IIPM validator (10 digits); `rg.ba.official.json`; 7/27 UFs shipped
 - **RG UF AC** — format-only legacy SSP-AC validator (6 digits); `rg.ac.official.json`; 8/27 UFs shipped
 - **RG UF AL** — format-only legacy POLCAL/IIEAL validator (7 digits); `rg.al.official.json`; 9/27 UFs shipped
+- **RG UF AM** — format-only legacy IIACM/SSP-AM validator (9 digits); `rg.am.official.json`; 10/27 UFs shipped
+- **RG UF AP** — format-only legacy PCA/SSP-AP validator (9 digits); `rg.ap.official.json`; 11/27 UFs shipped
 
 ### Changed
 
