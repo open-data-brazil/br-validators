@@ -235,14 +235,14 @@ When the daily data refresh bot (`.github/workflows/data-refresh-bot.yml`) detec
 | Trigger | Version format | Example |
 |---------|----------------|---------|
 | Human code/data fix release | `MAJOR.MINOR.PATCH` | `1.8.3` |
-| Bot drift (daily) | `MAJOR.MINOR.PATCH-data.NNNN` | `1.8.3-data.0001`, `1.8.3-data.0002` |
+| Bot drift (daily) | `MAJOR.MINOR.PATCH-data.N` | `1.8.3-data.1`, `1.8.3-data.2` |
 | Manual `force_publish` | Same as bot drift | `reason` input required |
 
-**Why not `1.8.0001`?** npm/SemVer treat `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3` and would break `latest`. The `-data.NNNN` suffix keeps the human base (`1.8.3`) and a 4-digit daily counter (`0001`).
+**Why not `1.8.0001`?** npm/SemVer treat `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3` and would break `latest`. The `-data.N` suffix keeps the human base (`1.8.3`) and a numeric daily counter (`1`, `2`, …) identical in **git tags, `package.json`, and npm**.
 
 | Automation | Script |
 |------------|--------|
-| Drift detected | `scripts/bump-data-patch.ts` → tag `v1.8.3-data.0001` → `release.yml` |
+| Drift detected | `scripts/bump-data-patch.ts` → tag `v1.8.3-data.1` → `release.yml` |
 | No drift | Reports commit only — no version bump |
 
 **Not handled by the bot:** MINOR (new dataset module) or MAJOR (API break) — human release per [Release process](#2-version-bump).

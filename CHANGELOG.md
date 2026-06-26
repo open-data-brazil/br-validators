@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Data refresh bot version format** — bot tags and `package.json` use npm-canonical `1.8.3-data.1` (not zero-padded `1.8.3-data.0001`) so Release CI registry checks match the published version
+
 ## [1.8.3-data.0001] - 2026-06-26
 
 ### Changed
@@ -20,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.NNNN` (e.g. `1.8.3-data.0001`) instead of incrementing human PATCH (`1.8.4`)
+- **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.N` (e.g. `1.8.3-data.1`) instead of incrementing human PATCH (`1.8.4`); first data-line tag used zero-padded `1.8.3-data.0001` (npm canonical: `1.8.3-data.1`)
 
 ---
 

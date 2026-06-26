@@ -3,7 +3,7 @@
  * Data-refresh version bump for the daily bot.
  *
  * Human releases stay at MAJOR.MINOR.PATCH (e.g. 1.8.3).
- * Bot drift publishes MAJOR.MINOR.PATCH-data.NNNN (e.g. 1.8.3-data.0001).
+ * Bot drift publishes MAJOR.MINOR.PATCH-data.N (e.g. 1.8.3-data.1) — npm-canonical SemVer.
  *
  * Usage: pnpm exec tsx scripts/bump-data-patch.ts [--write-changelog] [--skip-clean-check]
  */
