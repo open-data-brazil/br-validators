@@ -29,6 +29,7 @@ const subpaths = [
   'telefone',
   'titulo-eleitor',
   'ibge',
+  'irpf',
   'bancos',
   'data-catalog',
 ];

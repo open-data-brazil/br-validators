@@ -52,6 +52,7 @@
 | `@br-validators/core/lc116` | LC 116/2003 ISS national service list lookup |
 | `@br-validators/core/esocial` | eSocial Tabela 01 worker category lookup |
 | `@br-validators/core/simples-nacional` | LC 123/2006 Simples Nacional annex rate tables |
+| `@br-validators/core/irpf` | RFB IRPF monthly progressive withholding table |
 | `@br-validators/core/ptax` | Bacen PTAX Fechamento exchange rates (pairs with `moedas`) |
 | `@br-validators/core/ncm` | Siscomex NCM Mercosur nomenclature lookup |
 | `@br-validators/core/cbo` | MTE CBO 2002 occupation lookup |
@@ -352,6 +353,38 @@ getCufPorUf('SP');     // same row
 **Official sources:** [OFFICIAL-SOURCES.md § NF-e cUF](OFFICIAL-SOURCES.md#nfe-cuf) — [Manual NF-e Tabela de UF](http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=Il8k4BIjb48=) · [IBGE UF codes (cross-ref)](https://www.ibge.gov.br/explica/codigos-dos-municipios.php)
 
 CLI: `br-validators nfe-cuf lookup <code>`
+
+---
+
+## Core API — IRPF progressive monthly table
+
+> **Offline embedded data** from [RFB Tabela progressiva mensal](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/tabela-progressiva-mensal).  
+> Payroll complement to `@br-validators/core/simples-nacional` and `@br-validators/core/esocial`.  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (annual refresh)
+
+| Function | Returns |
+|----------|---------|
+| `getIrpfTabelaProgressiva(ano?)` | Five monthly brackets for tax year or `undefined` |
+| `getIrpfFaixaPorValor(valor, ano?)` | Bracket row for taxable base or `undefined` |
+| `calcularIrpfMensal(baseCalculo, ano?)` | `{ ano, baseCalculo, faixa, aliquota, parcelaDeduzir, imposto }` or `undefined` |
+| `getIrpfAnosDisponiveis()` | Embedded tax years |
+| `roundIrpfCentavos(valor)` | Half-up rounding to 2 decimal places |
+| `IRPF_DATA_VERSION` | `DatasetMetadata` |
+
+Formula: `imposto = round(max(0, base × aliquota − parcelaDeduzir), 2)`.
+
+Golden vectors: base **`2000`** → **`0`**; **`2826.65`** → **`42.56`**; **`3000`** → **`68.56`**; **`5000`** → **`479`**. Vector: `irpf.official.json`.
+
+```typescript
+import { calcularIrpfMensal, getIrpfTabelaProgressiva } from '@br-validators/core/irpf';
+
+getIrpfTabelaProgressiva(2025); // 5 faixas
+calcularIrpfMensal(3000, 2025); // { imposto: 68.56, faixa: 3, ... }
+```
+
+**Official sources:** [OFFICIAL-SOURCES.md § IRPF](OFFICIAL-SOURCES.md#irpf) — [RFB Tabelas IRPF](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) · [Lei 7.713/1988](https://www.planalto.gov.br/ccivil_03/leis/l7713.htm)
+
+CLI: `br-validators irpf tabela [--ano 2025]` · `br-validators irpf calc <base> [--ano 2025]`
 
 ---
 

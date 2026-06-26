@@ -22,6 +22,7 @@ import * as ptaxEntry from '../src/ptax.js';
 import * as paisesBacenEntry from '../src/paises-bacen.js';
 import * as incotermsEntry from '../src/incoterms.js';
 import * as nfeCufEntry from '../src/nfe-cuf.js';
+import * as irpfEntry from '../src/irpf.js';
 import * as feriadosEntry from '../src/feriados.js';
 import * as cnaesEntry from '../src/cnaes.js';
 import * as cfopEntry from '../src/cfop.js';
@@ -272,6 +273,14 @@ describe('package exports', () => {
     expect(nfeCufEntry.getCufPorUf).toBeTypeOf('function');
     expect(nfeCufEntry.lookupCufPorCodigo).toBeTypeOf('function');
     expect(nfeCufEntry.NFE_CUF_DATA_VERSION.id).toBe('nfe-cuf');
+  });
+
+  it('re-exports IRPF API from irpf entry', () => {
+    expect(irpfEntry.getIrpfTabelaProgressiva).toBeTypeOf('function');
+    expect(irpfEntry.calcularIrpfMensal).toBeTypeOf('function');
+    expect(irpfEntry.getIrpfFaixaPorValor).toBeTypeOf('function');
+    expect(irpfEntry.getIrpfAnosDisponiveis).toBeTypeOf('function');
+    expect(irpfEntry.IRPF_DATA_VERSION.id).toBe('irpf');
   });
 
   it('re-exports Feriados API from feriados entry', () => {

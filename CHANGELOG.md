@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **IRPF progressive table (33l)** — `@br-validators/core/irpf` with `getIrpfTabelaProgressiva`, `calcularIrpfMensal`, `getIrpfFaixaPorValor`; 2025 monthly brackets; CLI `irpf tabela` and `irpf calc`; playground `/data/payroll`; `pnpm fetch:data:irpf`
 - **NF-e cUF lookup (33k)** — `@br-validators/core/nfe-cuf` with `getCufPorCodigo`, `getCufPorUf`, `getAllCuf`; static 27-row SEFAZ table + IBGE cross-ref; CLI `nfe-cuf lookup`; playground `/data/fiscal` module; `pnpm fetch:data:nfe-cuf`
 - **Fiscal code validators (33j)** — `validateNcm`, `validateCfop`, `validateCst({ tax })` combine format rules with embedded lookup; `FiscalCodeValidationResult`; CLI `ncm|cfop validate` and `cst lookup|search|validate --tax`; playground `/data/fiscal` validate tab + CST module
 - **Lookup result standardization (33i)** — `LookupResult<T>` with `NOT_FOUND` / `INVALID_FORMAT` / `INVALID_INPUT`; `lookup*PorCodigo` on all offline lookup modules; legacy `get*` delegates via `unwrapLookupValue`; new `@br-validators/core/lookup` subpath; CLI reference/bancos/ibge lookup JSON failure shape `{ ok: false, code, message }`; [MIGRATION.md](MIGRATION.md) v2.0 lookup section

@@ -41,6 +41,7 @@ describe('Data catalog — transparency API', () => {
     expect(catalog.some((entry) => entry.id === 'pncp-reference')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'transparencia-snapshots')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'nfe-cuf')).toBe(true);
+    expect(catalog.some((entry) => entry.id === 'irpf')).toBe(true);
   });
 
   it('resolves IBGE metadata by id', () => {

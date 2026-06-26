@@ -44,6 +44,7 @@
 | **LC 116** | Planalto / NFSe | [LC 116/2003 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) · [NFSe LC 116 list](https://www.gov.br/nfse/pt-br/mei-e-demais-empresas/codigos-de-tributacao-nacional-nbs) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | ISS national service list (~200 items). Golden: **`1.01`** (análise e desenvolvimento de sistemas), **`7.02`** (obras de construção civil). Vector: `lc116.official.json`. Municipal ISS **rates** out of scope. Manual refresh. |
 | **eSocial categorias** | eSocial / MTE | [eSocial S-1.3 Tabelas](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Tabela 01 worker categories (~47). Golden: **`101`** (empregado geral), **`103`** (aprendiz), **`901`** (estagiário). Vector: `esocial.official.json`. Manual refresh. Natureza rubricas / leave types deferred v2. |
 | **Simples Nacional** | Planalto / RFB | [LC 123/2006 — Planalto](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm) · [Receita Anexo I](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=48430) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Anexos I–V rate tables (6 faixas each, LC 155/2016). Golden: Anexo **`I`** RBT12 **`700000`** (alíquota efetiva **7,52%**), Anexo **`III`** faixa 1, Anexo **`V`** RBT12 **`200000`**. Vector: `simples-nacional.official.json`. CNAE→anexo mapping deferred. Manual refresh. |
+| **IRPF (tabela progressiva mensal)** | RFB | [Tabelas IRPF](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) · [Tabela progressiva mensal](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/tabela-progressiva-mensal) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) · Full index: [§ IRPF](#irpf) | Monthly withholding brackets (5 faixas). Golden: base **`3000`** → imposto **`68.56`**; **`2826.65`** → **`42.56`**; **`5000`** → **`479`**. Vector: `irpf.official.json`. Annual declaration / 13º IRRF deferred. Manual refresh (`agendamento: manual`). |
 | **NCM** | Receita / Siscomex | [NCM JSON download](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Mercosur nomenclature leaf codes (8 digits). Golden: **`01012100`** (purebred horses). Vector: `ncm.official.json`. **IBPT** approximate burden: `@br-validators/core/ibpt`. |
 | **IBPT carga tributária** | IBPT | [De Olho no Imposto](https://deolhonoimposto.ibpt.org.br/) · [Lei 12.741/2012](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12741.htm) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Approximate federal + state + municipal burden per NCM×UF (golden subset embed). Golden: **`01012100`/SP** total **31,45%** nacional. Vector: `ibpt.official.json`. Full matrix out of scope. |
 | **CBO** | MTE | [CBO 2002 downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) · [DATA-FRESHNESS.md](DATA-FRESHNESS.md) | Occupation codes (eSocial / HR). Golden: **`212405`** (systems analyst). Vector: `cbo.official.json`. |
@@ -262,6 +263,23 @@ Negative cross-UF cases: `ie.negative.official.json`.
 Golden: `35` (São Paulo/SP), `53` (Distrito Federal), `11` (Rondônia). All **27** UFs embedded.
 
 `getCufPorCodigo` / `getCufPorUf` — lookup only. Numeric values coincide with IBGE UF codes but NF-e `cUF` field semantics differ from `@br-validators/core/ibge` locality API.
+
+---
+
+## IRPF progressive monthly table {#irpf}
+
+> **Vectors:** `packages/br-validators/tests/vectors/irpf.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (annual probe in January)
+
+| Role | Source | URL |
+|------|--------|-----|
+| RFB — Tabelas IRPF | Receita Federal | https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas |
+| Tabela progressiva mensal | Receita Federal | https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/tabela-progressiva-mensal |
+| Lei 7.713/1988 (base legal) | Planalto | https://www.planalto.gov.br/ccivil_03/leis/l7713.htm |
+
+Golden: base **`2000`** → **`0`**; **`2826.65`** → **`42.56`**; **`3000`** → **`68.56`** (faixa 3); **`5000`** → **`479`**. Tax year **2025** embedded (5 faixas).
+
+`calcularIrpfMensal` — progressive monthly withholding estimate only. Annual IRPF declaration and automatic 13º IRRF out of scope v1.
 
 ---
 

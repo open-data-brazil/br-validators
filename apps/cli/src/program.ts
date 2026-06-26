@@ -39,6 +39,8 @@ import {
   handleCstSearchCli,
   handleCstValidateCli,
   handleFeriadosListCli,
+  handleIrpfCalcCli,
+  handleIrpfTabelaCli,
   handleIbgeListCli,
   handleIbgeLookupCli,
   handleTseMunicipiosLookupCli,
@@ -648,6 +650,33 @@ export function createProgram(): Command {
     .action((opts: ReferenceDatasetCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleFeriadosListCli(opts, io);
+      writeCliIo(io);
+    });
+
+  const irpf = program.command('irpf').description('RFB IRPF progressive monthly table — offline');
+
+  irpf
+    .command('tabela')
+    .description('Show embedded monthly progressive brackets')
+    .option('--ano <yyyy>', 'Tax year', (v: string) => Number(v))
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((opts: ReferenceDatasetCliOptions & { ano?: number }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIrpfTabelaCli({ ...opts, year: opts.ano ?? opts.year }, io);
+      writeCliIo(io);
+    });
+
+  irpf
+    .command('calc')
+    .description('Estimate monthly IRPF from taxable base')
+    .argument('<base>', 'Monthly taxable base (BRL)')
+    .option('--ano <yyyy>', 'Tax year', (v: string) => Number(v))
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((base: string, opts: ReferenceDatasetCliOptions & { ano?: number }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIrpfCalcCli(base, { ...opts, year: opts.ano ?? opts.year }, io);
       writeCliIo(io);
     });
 

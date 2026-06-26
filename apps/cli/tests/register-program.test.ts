@@ -46,4 +46,24 @@ describe('registerReferenceLookupCommands via createProgram', () => {
       expect.objectContaining({ stdout: expect.any(Array), stderr: expect.any(Array) }),
     );
   });
+
+  it('wires irpf subcommands to handlers', async () => {
+    const tabelaSpy = vi.spyOn(handlers, 'handleIrpfTabelaCli').mockReturnValue(0);
+    const calcSpy = vi.spyOn(handlers, 'handleIrpfCalcCli').mockReturnValue(0);
+    vi.spyOn(handlers, 'writeCliIo').mockImplementation(() => undefined);
+    const program = createProgram();
+    await program.parseAsync(['irpf', 'tabela', '--ano', '2025', '--json'], { from: 'user' });
+    await program.parseAsync(['irpf', 'tabela', '--json'], { from: 'user' });
+    await program.parseAsync(['irpf', 'calc', '3000', '--json'], { from: 'user' });
+    expect(tabelaSpy).toHaveBeenCalledTimes(2);
+    expect(tabelaSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ json: true, year: 2025 }),
+      expect.objectContaining({ stdout: expect.any(Array), stderr: expect.any(Array) }),
+    );
+    expect(calcSpy).toHaveBeenCalledWith(
+      '3000',
+      expect.objectContaining({ json: true }),
+      expect.objectContaining({ stdout: expect.any(Array), stderr: expect.any(Array) }),
+    );
+  });
 });

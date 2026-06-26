@@ -118,6 +118,10 @@
       "types": "./dist/nfe-cuf.d.ts",
       "import": "./dist/nfe-cuf.js"
     },
+    "./irpf": {
+      "types": "./dist/irpf.d.ts",
+      "import": "./dist/irpf.js"
+    },
     "./processo-judicial": {
       "types": "./dist/processo-judicial.d.ts",
       "import": "./dist/processo-judicial.js"
