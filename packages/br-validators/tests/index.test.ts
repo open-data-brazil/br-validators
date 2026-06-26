@@ -25,6 +25,7 @@ import * as nfeCufEntry from '../src/nfe-cuf.js';
 import * as irpfEntry from '../src/irpf.js';
 import * as inssEntry from '../src/inss.js';
 import * as selicEntry from '../src/selic.js';
+import * as issMunicipalEntry from '../src/iss-municipal.js';
 import * as feriadosEntry from '../src/feriados.js';
 import * as cnaesEntry from '../src/cnaes.js';
 import * as cfopEntry from '../src/cfop.js';
@@ -283,6 +284,14 @@ describe('package exports', () => {
     expect(selicEntry.getSelicHistorico).toBeTypeOf('function');
     expect(selicEntry.getSelicList).toBeTypeOf('function');
     expect(selicEntry.SELIC_DATA_VERSION.id).toBe('selic');
+  });
+
+  it('re-exports ISS municipal API from iss-municipal entry', () => {
+    expect(issMunicipalEntry.getAllIssMunicipal).toBeTypeOf('function');
+    expect(issMunicipalEntry.getIssMunicipalPorIbge).toBeTypeOf('function');
+    expect(issMunicipalEntry.getIssMunicipalPorUfMunicipio).toBeTypeOf('function');
+    expect(issMunicipalEntry.searchIssMunicipal).toBeTypeOf('function');
+    expect(issMunicipalEntry.ISS_MUNICIPAL_DATA_VERSION.id).toBe('iss-municipal');
   });
 
   it('re-exports INSS API from inss entry', () => {

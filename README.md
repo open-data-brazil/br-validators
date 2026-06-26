@@ -295,6 +295,8 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | [apps/docs/](apps/docs/) | VitePress site — [docs.br-validators.dev](https://docs.br-validators.dev/) (API synced from `LIBRARY-API.md`) |
 | [docs/community/RG-GOOD-FIRST-ISSUES.md](docs/community/RG-GOOD-FIRST-ISSUES.md) | RG remaining 21 UFs — `good first issue` |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [MIGRATION.md](MIGRATION.md) | v1.x → v2.0 breaking-change guide (lookup + deprecated getters) |
+| [docs/VERSIONING.md](docs/VERSIONING.md) | SemVer policy and deprecation windows |
 
 ---
 

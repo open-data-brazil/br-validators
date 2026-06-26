@@ -44,6 +44,7 @@ describe('Data catalog — transparency API', () => {
     expect(catalog.some((entry) => entry.id === 'irpf')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'inss')).toBe(true);
     expect(catalog.some((entry) => entry.id === 'selic')).toBe(true);
+    expect(catalog.some((entry) => entry.id === 'iss-municipal')).toBe(true);
   });
 
   it('resolves IBGE metadata by id', () => {

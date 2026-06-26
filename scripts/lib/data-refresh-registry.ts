@@ -10,6 +10,7 @@ export const MANUAL_FETCH_DATASET_IDS = [
   'lc116',
   'esocial',
   'simples-nacional',
+  'iss-municipal',
 ] as const;
 
 export const DATASET_METADATA_PATHS = [
@@ -20,6 +21,7 @@ export const DATASET_METADATA_PATHS = [
   path.join(ROOT, 'packages/br-validators/src/moedas/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/ptax/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/selic/data/metadata.json'),
+  path.join(ROOT, 'packages/br-validators/src/iss-municipal/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/paises-bacen/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/incoterms/data/metadata.json'),
   path.join(ROOT, 'packages/br-validators/src/core/telefone/data/ddd-metadata.json'),

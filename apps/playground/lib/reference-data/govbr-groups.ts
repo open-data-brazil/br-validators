@@ -55,6 +55,11 @@ import {
   validateCst,
   type CstTax,
 } from '@br-validators/core/cst';
+import {
+  getIssMunicipalPorIbge,
+  ISS_MUNICIPAL_DATA_VERSION,
+  ISS_MUNICIPAL_GOLDEN_SAO_PAULO,
+} from '@br-validators/core/iss-municipal';
 import type { FiscalCodeValidationResult } from '@br-validators/core/lookup';
 import {
   CBO_DATA_VERSION,
@@ -74,6 +79,7 @@ export type GovBrModuleId =
   | 'nfeCuf'
   | 'cbo'
   | 'cst'
+  | 'issMunicipal'
   | 'moedas'
   | 'paisesBacen'
   | 'incoterms'
@@ -233,6 +239,26 @@ export const FISCAL_MODULES: readonly GovBrModuleDefinition[] = [
     },
     validate: (code, context) => validateCst(code, { tax: context?.cstTax ?? 'icms' }),
     fieldKeys: ['codigo', 'descricao', 'tax'],
+  },
+  {
+    id: 'issMunicipal',
+    defaultCode: String(ISS_MUNICIPAL_GOLDEN_SAO_PAULO),
+    capturadoEm: ISS_MUNICIPAL_DATA_VERSION.capturadoEm,
+    sourceUrl: ISS_MUNICIPAL_DATA_VERSION.endpoints[0] ?? '',
+    lookup: (code) => {
+      const row = getIssMunicipalPorIbge(code);
+      return row
+        ? {
+            codigoIbge: row.codigoIbge,
+            nome: row.nome,
+            uf: row.uf,
+            aliquotaMin: row.aliquotaMin,
+            aliquotaMax: row.aliquotaMax,
+            warning: row.warning,
+          }
+        : null;
+    },
+    fieldKeys: ['codigoIbge', 'nome', 'uf', 'aliquotaMin', 'aliquotaMax', 'warning'],
   },
   {
     id: 'cbo',

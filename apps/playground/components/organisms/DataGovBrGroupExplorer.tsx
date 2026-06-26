@@ -118,6 +118,10 @@ export function DataGovBrGroupExplorer({ groupId }: { groupId: GovBrGroupId }) {
         })}
       </div>
 
+      {fiscalCopy && activeModule.id === 'issMunicipal' ? (
+        <p className={styles.description}>{fiscalCopy.issMunicipalDisclaimer}</p>
+      ) : null}
+
       {fiscalCopy && supportsValidate ? (
         <div className={styles.referenceDataTabs} role="tablist" aria-label={fiscalCopy.modeTabLabel}>
           {(['lookup', 'validate'] as const).map((tabMode) => {

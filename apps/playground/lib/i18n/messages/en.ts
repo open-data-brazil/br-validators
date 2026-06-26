@@ -121,6 +121,8 @@ export const en = {
       validateError: 'Validation failed',
       validateFields: { value: 'Value', description: 'Description', format: 'Display format' },
       cstTaxLabel: 'CST tax table',
+      issMunicipalDisclaimer:
+        'Partial municipal ISS embed for estimation only — not for NFSe emission. Confirm current alíquota with the municipality.',
       notFound: 'Code not found.',
       capturedAt: 'Dataset captured',
       officialSource: 'Official source',
@@ -165,6 +167,17 @@ export const en = {
         cst: {
           label: 'CST',
           fields: { codigo: 'Code', descricao: 'Description', tax: 'Tax' },
+        },
+        issMunicipal: {
+          label: 'ISS municipal',
+          fields: {
+            codigoIbge: 'IBGE code',
+            nome: 'Municipality',
+            uf: 'UF',
+            aliquotaMin: 'Min rate (%)',
+            aliquotaMax: 'Max rate (%)',
+            warning: 'Disclaimer',
+          },
         },
       },
     },

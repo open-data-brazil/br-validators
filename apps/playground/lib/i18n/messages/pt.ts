@@ -121,6 +121,8 @@ export const pt = {
       validateError: 'Validação falhou',
       validateFields: { value: 'Valor', description: 'Descrição', format: 'Formato de exibição' },
       cstTaxLabel: 'Tabela CST',
+      issMunicipalDisclaimer:
+        'Embed parcial de ISS municipal apenas para estimativa — não use para emissão de NFSe. Confirme a alíquota vigente com o município.',
       notFound: 'Código não encontrado.',
       capturedAt: 'Dataset capturado em',
       officialSource: 'Fonte oficial',
@@ -165,6 +167,17 @@ export const pt = {
         cst: {
           label: 'CST',
           fields: { codigo: 'Código', descricao: 'Descrição', tax: 'Tributo' },
+        },
+        issMunicipal: {
+          label: 'ISS municipal',
+          fields: {
+            codigoIbge: 'Código IBGE',
+            nome: 'Município',
+            uf: 'UF',
+            aliquotaMin: 'Alíquota mín. (%)',
+            aliquotaMax: 'Alíquota máx. (%)',
+            warning: 'Aviso',
+          },
         },
       },
     },

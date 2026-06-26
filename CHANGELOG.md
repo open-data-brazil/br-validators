@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Migration guide (33p)** — root [MIGRATION.md](MIGRATION.md): v1.x → v2.0 lookup + deprecated `getAll*` inventory with before/after examples; v0.x → v1.0 changelog index; maintainer update policy; linked from README and `docs/README.md`
+- **ISS municipal partial embed (33o)** — `@br-validators/core/iss-municipal` with `getIssMunicipalPorIbge`, `getIssMunicipalPorUfMunicipio`, `searchIssMunicipal`, `getAllIssMunicipal`; 100 cities (27 capitals + top PIB); estimation-only `warning` on every result; CLI `iss-municipal lookup|resolve|search`; playground `/data/fiscal` module; `pnpm fetch:data:iss-municipal` (manual — not daily bot)
 - **SELIC meta SGS 432 (33n)** — `@br-validators/core/selic` with `getSelicMeta`, `getSelicMetaPorData`, `getSelicHistorico`; 90-day rolling embed; staleness API; CLI `selic [--date]`; playground `/data/finance`; `pnpm fetch:data:selic`; daily refresh bot
 - **INSS contribution table (33m)** — `@br-validators/core/inss` with `getInssTabelaContribuicao`, `calcularInssMensal`, `getInssFaixaPorSalario`; 2025 employee brackets (teto R$ 8.157,41); CLI `inss tabela` and `inss calc`; playground `/data/payroll`; `pnpm fetch:data:inss`
 - **IRPF progressive table (33l)** — `@br-validators/core/irpf` with `getIrpfTabelaProgressiva`, `calcularIrpfMensal`, `getIrpfFaixaPorValor`; 2025 monthly brackets; CLI `irpf tabela` and `irpf calc`; playground `/data/payroll`; `pnpm fetch:data:irpf`

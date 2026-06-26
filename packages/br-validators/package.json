@@ -130,6 +130,10 @@
       "types": "./dist/selic.d.ts",
       "import": "./dist/selic.js"
     },
+    "./iss-municipal": {
+      "types": "./dist/iss-municipal.d.ts",
+      "import": "./dist/iss-municipal.js"
+    },
     "./processo-judicial": {
       "types": "./dist/processo-judicial.d.ts",
       "import": "./dist/processo-judicial.js"

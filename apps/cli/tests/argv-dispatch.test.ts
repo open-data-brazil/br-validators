@@ -417,6 +417,11 @@ describe('dispatchArgv', () => {
     expect(dispatchArgv(['selic', '--json'], selic)).toBe(EXIT.OK);
     expect(dispatchArgv(['selic', '--date', '2026-06-18', '--json'], io())).toBe(EXIT.OK);
 
+    const issMunicipal = io();
+    expect(dispatchArgv(['iss-municipal', 'lookup', '3550308', '--json'], issMunicipal)).toBe(EXIT.OK);
+    expect(dispatchArgv(['iss-municipal', 'resolve', 'SP', 'São Paulo', '--json'], io())).toBe(EXIT.OK);
+    expect(dispatchArgv(['iss-municipal', 'search', 'campinas', '--json'], io())).toBe(EXIT.OK);
+
     const faixa = io();
     expect(dispatchArgv(['cep', 'faixa', '01310', '--json'], faixa)).toBe(EXIT.OK);
 
@@ -495,6 +500,15 @@ describe('dispatchArgv', () => {
 
     const ptaxUsage = io();
     expect(dispatchArgv(['ptax', 'unknown'], ptaxUsage)).toBe(EXIT.USAGE);
+
+    const issMunicipalUsage = io();
+    expect(dispatchArgv(['iss-municipal', 'unknown'], issMunicipalUsage)).toBe(EXIT.USAGE);
+
+    const issMunicipalResolveMissing = io();
+    expect(dispatchArgv(['iss-municipal', 'resolve', 'SP'], issMunicipalResolveMissing)).toBe(EXIT.USAGE);
+
+    const issMunicipalSearchMissing = io();
+    expect(dispatchArgv(['iss-municipal', 'search'], issMunicipalSearchMissing)).toBe(EXIT.USAGE);
 
     const searchUsage = io();
     expect(dispatchArgv(['moedas', 'search', 'real'], searchUsage)).toBe(EXIT.USAGE);

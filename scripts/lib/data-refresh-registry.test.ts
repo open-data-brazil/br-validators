@@ -27,8 +27,8 @@ describe('data-refresh-registry', () => {
       const raw = await readFile(metadataPath, 'utf8');
       ids.push(parseDatasetMetadata(raw).id);
     }
-    expect(ids.length).toBe(29);
-    expect(new Set(ids).size).toBe(29);
+    expect(ids.length).toBe(30);
+    expect(new Set(ids).size).toBe(30);
   });
 
   it('requires diario/semanal datasets in daily fetch or probe-only lists', async () => {

@@ -50,6 +50,7 @@
 | `@br-validators/core/cfop` | CONFAZ CFOP fiscal operation code lookup |
 | `@br-validators/core/cst` | RFB SPED CST lookup (ICMS, IPI, PIS, COFINS) |
 | `@br-validators/core/lc116` | LC 116/2003 ISS national service list lookup |
+| `@br-validators/core/iss-municipal` | Partial municipal ISS alíquota bands (~100 cities; estimation only) |
 | `@br-validators/core/esocial` | eSocial Tabela 01 worker category lookup |
 | `@br-validators/core/simples-nacional` | LC 123/2006 Simples Nacional annex rate tables |
 | `@br-validators/core/irpf` | RFB IRPF monthly progressive withholding table |
@@ -1167,6 +1168,36 @@ getSelicHistorico({ from: '2026-06-17', to: '2026-06-19' }); // COPOM window
 **Official sources:** [OFFICIAL-SOURCES.md § SELIC](OFFICIAL-SOURCES.md#selic-meta-sgs-432) — [BCB SGS 432](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) · [COPOM](https://www.bcb.gov.br/controleinflacao/copom)
 
 CLI: `br-validators selic [--date YYYY-MM-DD] [--json] [--verbose]`
+
+---
+
+## Core API — ISS municipal (partial embed)
+
+> **Offline embedded data** — 27 capitals + top IBGE PIB municipalities (100 rows). **Estimation / quoting only — not NFSe emission.**  
+> Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (`pnpm fetch:data:iss-municipal`); **not** in daily refresh bot.
+
+| Function | Returns |
+|----------|---------|
+| `getAllIssMunicipal()` | All embedded rows (`IssMunicipalRow[]`) |
+| `getIssMunicipalPorIbge(codigo)` | `IssMunicipalResult` or `undefined` |
+| `getIssMunicipalPorUfMunicipio(uf, nome)` | Accent-insensitive name match |
+| `searchIssMunicipal(query, { limit? })` | `IssMunicipalResult[]` |
+| `ISS_MUNICIPAL_DATA_VERSION` | `IssMunicipalDataVersion` (`estimativa: true`) |
+
+Every `IssMunicipalResult` includes `warning`, `aliquotaMin`, `aliquotaMax`, `leiUrl`, `capturadoEm`, and `estimativa`.
+
+Golden: IBGE **`3550308`** (São Paulo), **`3304557`** (Rio de Janeiro), **`3106200`** (Belo Horizonte). Vector: `iss-municipal.official.json`.
+
+```typescript
+import { getIssMunicipalPorIbge } from '@br-validators/core/iss-municipal';
+
+const sp = getIssMunicipalPorIbge('3550308');
+// { codigoIbge: 3550308, aliquotaMin: 2, aliquotaMax: 5, warning: '...', estimativa: false, ... }
+```
+
+**Official sources:** [OFFICIAL-SOURCES.md § ISS municipal](OFFICIAL-SOURCES.md#iss-municipal) — [LC 116 Art. 8](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm#art8) · [IBGE PIB municipal](https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html)
+
+CLI: `br-validators iss-municipal lookup <codigoIbge>` · `resolve <uf> <nome>` · `search <query> [--json] [--verbose]`
 
 ---
 

@@ -8,6 +8,7 @@ import { CNAES_GOLDEN_DESENVOLVIMENTO_PROGRAMAS } from '@br-validators/core/cnae
 import { CFOP_GOLDEN_COMPRA_COMERCIALIZACAO } from '@br-validators/core/cfop';
 import { CBO_GOLDEN_ANALISTA_SISTEMAS } from '@br-validators/core/cbo';
 import { NCM_GOLDEN_SOJA_SEMENTES } from '@br-validators/core/ncm';
+import { ISS_MUNICIPAL_GOLDEN_SAO_PAULO } from '@br-validators/core/iss-municipal';
 import { resolveCatalogDocUrl } from '../lib/reference-data/catalog-docs';
 import { FISCAL_MODULES, LOGISTICS_MODULES, TRADE_MODULES } from '../lib/reference-data/govbr-groups';
 import { resolveBancoFromInput } from '../lib/reference-data/bancos-lookup';
@@ -89,6 +90,12 @@ describe('Gov.br reference groups', () => {
     expect(cfop?.lookup(CFOP_GOLDEN_COMPRA_COMERCIALIZACAO)?.codigo).toBe(CFOP_GOLDEN_COMPRA_COMERCIALIZACAO);
     expect(ncm?.lookup(NCM_GOLDEN_SOJA_SEMENTES)?.codigo).toBe(NCM_GOLDEN_SOJA_SEMENTES);
     expect(cbo?.lookup(CBO_GOLDEN_ANALISTA_SISTEMAS)?.codigo).toBe(CBO_GOLDEN_ANALISTA_SISTEMAS);
+  });
+
+  it('resolves fiscal ISS municipal golden São Paulo IBGE code', () => {
+    const module = FISCAL_MODULES.find((entry) => entry.id === 'issMunicipal');
+    expect(module?.lookup(String(ISS_MUNICIPAL_GOLDEN_SAO_PAULO))?.codigoIbge).toBe(ISS_MUNICIPAL_GOLDEN_SAO_PAULO);
+    expect(module?.lookup(String(ISS_MUNICIPAL_GOLDEN_SAO_PAULO))?.warning).toContain('NFSe');
   });
 
   it('resolves trade golden moeda BRL', () => {

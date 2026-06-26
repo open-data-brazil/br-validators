@@ -32,6 +32,7 @@ const subpaths = [
   'irpf',
   'inss',
   'selic',
+  'iss-municipal',
   'ptax',
   'bancos',
   'data-catalog',

@@ -32,6 +32,7 @@ pnpm fetch:data:nfe-cuf    # SEFAZ NF-e cUF codes → packages/br-validators/src
 pnpm fetch:data:irpf       # RFB IRPF monthly progressive table → packages/br-validators/src/irpf/data/
 pnpm fetch:data:inss       # INSS employee contribution table → packages/br-validators/src/inss/data/
 pnpm fetch:data:selic      # Bacen SGS 432 SELIC meta → packages/br-validators/src/selic/data/
+pnpm fetch:data:iss-municipal  # ISS municipal partial embed (manual; not daily bot) → packages/br-validators/src/iss-municipal/data/
 pnpm fetch:data           # All lightweight fetchers above (excludes cep-faixas)
 pnpm data:refresh         # All datasets + diff report + docs/DATA-FRESHNESS.md
 pnpm data:refresh:report  # Regenerate reports from committed JSON (no fetch)

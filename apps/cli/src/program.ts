@@ -35,6 +35,9 @@ import {
   handleDddLookupCli,
   handleNfeCufLookupCli,
   handleSelicCli,
+  handleIssMunicipalLookupCli,
+  handleIssMunicipalResolveCli,
+  handleIssMunicipalSearchCli,
   handlePtaxLookupCli,
   handleCstLookupCli,
   handleCstSearchCli,
@@ -764,6 +767,48 @@ export function createProgram(): Command {
     .action((opts: ReferenceDatasetCliOptions & { date?: string }) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleSelicCli(opts, io);
+      writeCliIo(io);
+    });
+
+  const issMunicipal = program
+    .command('iss-municipal')
+    .description('Municipal ISS alíquotas — partial embed (estimation only, not NFSe)');
+
+  issMunicipal
+    .command('lookup')
+    .description('Resolve ISS band by IBGE municipality code')
+    .argument('<codigoIbge>', 'IBGE municipality code (7 digits)')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include leiUrl, estimativa flag, and dataset capture date')
+    .action((codigoIbge: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIssMunicipalLookupCli(codigoIbge, opts, io);
+      writeCliIo(io);
+    });
+
+  issMunicipal
+    .command('resolve')
+    .description('Resolve ISS band by UF and municipality name')
+    .argument('<uf>', 'UF sigla (2 letters)')
+    .argument('<nome>', 'Municipality name')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include leiUrl, estimativa flag, and dataset capture date')
+    .action((uf: string, nome: string, opts: ReferenceDatasetCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIssMunicipalResolveCli(uf, nome, opts, io);
+      writeCliIo(io);
+    });
+
+  issMunicipal
+    .command('search')
+    .description('Search embedded municipalities by name, UF, or IBGE code fragment')
+    .argument('<query>', 'Search query')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date in JSON responses')
+    .option('--limit <n>', 'Maximum rows', (value: string) => Number(value))
+    .action((query: string, opts: ReferenceDatasetCliOptions & { limit?: number }) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleIssMunicipalSearchCli(query, opts, io);
       writeCliIo(io);
     });
 

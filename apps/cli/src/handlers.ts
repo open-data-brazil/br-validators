@@ -37,6 +37,11 @@ import { runCepFaixa } from './commands/cep/faixa.js';
 import { runDddLookup } from './commands/ddd/lookup.js';
 import { runNfeCufLookup } from './commands/nfe-cuf/lookup.js';
 import { runSelicCommand } from './commands/selic/index.js';
+import {
+  runIssMunicipalLookup,
+  runIssMunicipalResolve,
+  runIssMunicipalSearch,
+} from './commands/iss-municipal/index.js';
 import { runPtaxLookup } from './commands/ptax/lookup.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
@@ -1177,6 +1182,35 @@ export function handleSelicCli(
     verbose: Boolean(opts.verbose),
     date: opts.date,
   }, io);
+}
+
+export function handleIssMunicipalLookupCli(
+  codigo: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runIssMunicipalLookup(codigo, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handleIssMunicipalSearchCli(
+  query: string | undefined,
+  opts: ReferenceDatasetCliOptions & { limit?: number },
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runIssMunicipalSearch(query, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    limit: opts.limit,
+  }, io);
+}
+
+export function handleIssMunicipalResolveCli(
+  uf: string | undefined,
+  nome: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runIssMunicipalResolve(uf, nome, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
 }
 
 export function handlePtaxLookupCli(

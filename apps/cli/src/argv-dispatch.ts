@@ -38,6 +38,9 @@ import {
   handleDddLookupCli,
   handleNfeCufLookupCli,
   handleSelicCli,
+  handleIssMunicipalLookupCli,
+  handleIssMunicipalResolveCli,
+  handleIssMunicipalSearchCli,
   handlePtaxLookupCli,
   handleListCli,
   handleNfeChaveCli,
@@ -200,7 +203,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · inss · irpf · tse-municipios · ddd · nfe-cuf · selic · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · inss · irpf · tse-municipios · ddd · nfe-cuf · selic · iss-municipal · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
     return EXIT.OK;
   }
 
@@ -424,6 +427,23 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
     }
     case 'selic': {
       return handleSelicCli(opts, io);
+    }
+    case 'iss-municipal': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest[1];
+        return handleIssMunicipalLookupCli(value, opts, io);
+      }
+      if (action === 'resolve') {
+        const uf = rest[1];
+        const nome = rest.slice(2).join(' ') || undefined;
+        return handleIssMunicipalResolveCli(uf, nome, opts, io);
+      }
+      if (action === 'search') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleIssMunicipalSearchCli(value, opts, io);
+      }
+      return usage(io, 'Expected: iss-municipal lookup|resolve|search <args>');
     }
     case 'ptax': {
       const action = rest[0];
