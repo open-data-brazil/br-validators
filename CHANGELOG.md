@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **RG UF ES** — format-only legacy PCIES validator (9 digits); `rg.es.official.json`; 13/27 UFs shipped
 - **RG UF GO** — format-only legacy PCGO validator (9 digits); `rg.go.official.json`; 14/27 UFs shipped
 - **RG UFs MA, MS, MT, PA, PB** — format-only legacy validators (9 digits each); `rg.{ma,ms,mt,pa,pb}.official.json`; 19/27 UFs shipped
+- **RG UFs CE, PE, PI, RN, RO, RR, SE, TO** — format-only legacy validators (9 digits each); `rg.{ce,pe,pi,rn,ro,rr,se,to}.official.json`; **27/27 UFs shipped** (phase 33c complete)
 - **RG contributor guide** — [docs/community/RG-CONTRIBUTOR-GUIDE.md](docs/community/RG-CONTRIBUTOR-GUIDE.md): how to open issues, cite official SSP/PCivil sources, report algorithms; documents that most UFs lack consistent official legacy RG/DV data
 
 ### Changed

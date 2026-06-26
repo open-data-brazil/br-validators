@@ -20,7 +20,8 @@ describe('rg CLI', () => {
     expect(resolveRgUf('es')).toBe('ES');
     expect(resolveRgUf('go')).toBe('GO');
     expect(resolveRgUf('ma')).toBe('MA');
-    expect(resolveRgUf('CE')).toBeNull();
+    expect(resolveRgUf('ce')).toBe('CE');
+    expect(resolveRgUf('ZZ')).toBeNull();
     expect(resolveRgUf(undefined)).toBeNull();
   });
 

@@ -94,7 +94,15 @@ export type RgUfCode =
   | 'MS'
   | 'MT'
   | 'PA'
-  | 'PB';
+  | 'PB'
+  | 'CE'
+  | 'PE'
+  | 'PI'
+  | 'RN'
+  | 'RO'
+  | 'RR'
+  | 'SE'
+  | 'TO';
 
 export type CardBrand = 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard' | 'unknown';
 

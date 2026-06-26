@@ -15,6 +15,7 @@ import { validateRgAl, stripRgAl } from './al.js';
 import { validateRgAm, stripRgAm } from './am.js';
 import { validateRgAp, stripRgAp } from './ap.js';
 import { validateRgBa, stripRgBa } from './ba.js';
+import { validateRgCe, stripRgCe } from './ce.js';
 import { validateRgDf, stripRgDf } from './df.js';
 import { validateRgEs, stripRgEs } from './es.js';
 import { validateRgGo, stripRgGo } from './go.js';
@@ -23,6 +24,13 @@ import { validateRgMs, stripRgMs } from './ms.js';
 import { validateRgMt, stripRgMt } from './mt.js';
 import { validateRgPa, stripRgPa } from './pa.js';
 import { validateRgPb, stripRgPb } from './pb.js';
+import { validateRgPe, stripRgPe } from './pe.js';
+import { validateRgPi, stripRgPi } from './pi.js';
+import { validateRgRn, stripRgRn } from './rn.js';
+import { validateRgRo, stripRgRo } from './ro.js';
+import { validateRgRr, stripRgRr } from './rr.js';
+import { validateRgSe, stripRgSe } from './se.js';
+import { validateRgTo, stripRgTo } from './to.js';
 import { validateRgMg, stripRgMg } from './mg.js';
 import { applyRgMask } from './mask.js';
 import { validateRgPr, stripRgPr } from './pr.js';
@@ -49,6 +57,14 @@ export {
   RG_MT_GOLDEN,
   RG_PA_GOLDEN,
   RG_PB_GOLDEN,
+  RG_CE_GOLDEN,
+  RG_PE_GOLDEN,
+  RG_PI_GOLDEN,
+  RG_RN_GOLDEN,
+  RG_RO_GOLDEN,
+  RG_RR_GOLDEN,
+  RG_SE_GOLDEN,
+  RG_TO_GOLDEN,
   RG_OFFICIAL_SOURCE_URL,
   RG_OFFICIAL_SOURCE_URLS,
   RG_PENDING_UFS,
@@ -71,6 +87,7 @@ export { stripRgAl, validateRgAl } from './al.js';
 export { stripRgAm, validateRgAm } from './am.js';
 export { stripRgAp, validateRgAp } from './ap.js';
 export { stripRgBa, validateRgBa } from './ba.js';
+export { stripRgCe, validateRgCe } from './ce.js';
 export { stripRgDf, validateRgDf } from './df.js';
 export { stripRgEs, validateRgEs } from './es.js';
 export { stripRgGo, validateRgGo } from './go.js';
@@ -79,6 +96,13 @@ export { stripRgMs, validateRgMs } from './ms.js';
 export { stripRgMt, validateRgMt } from './mt.js';
 export { stripRgPa, validateRgPa } from './pa.js';
 export { stripRgPb, validateRgPb } from './pb.js';
+export { stripRgPe, validateRgPe } from './pe.js';
+export { stripRgPi, validateRgPi } from './pi.js';
+export { stripRgRn, validateRgRn } from './rn.js';
+export { stripRgRo, validateRgRo } from './ro.js';
+export { stripRgRr, validateRgRr } from './rr.js';
+export { stripRgSe, validateRgSe } from './se.js';
+export { stripRgTo, validateRgTo } from './to.js';
 export { stripRgMg, validateRgMg } from './mg.js';
 export { applyRgMask, applyRgRjStyleMask, applyRgScMask, applyRgSpStyleMask } from './mask.js';
 export { stripRgPr, validateRgPr } from './pr.js';
@@ -112,6 +136,14 @@ const VALIDATORS: Record<RgUfCode, ValidatorFn> = {
   MT: validateRgMt,
   PA: validateRgPa,
   PB: validateRgPb,
+  CE: validateRgCe,
+  PE: validateRgPe,
+  PI: validateRgPi,
+  RN: validateRgRn,
+  RO: validateRgRo,
+  RR: validateRgRr,
+  SE: validateRgSe,
+  TO: validateRgTo,
 };
 
 const STRIPPERS: Record<RgUfCode, StripperFn> = {
@@ -134,6 +166,14 @@ const STRIPPERS: Record<RgUfCode, StripperFn> = {
   MT: stripRgMt,
   PA: stripRgPa,
   PB: stripRgPb,
+  CE: stripRgCe,
+  PE: stripRgPe,
+  PI: stripRgPi,
+  RN: stripRgRn,
+  RO: stripRgRo,
+  RR: stripRgRr,
+  SE: stripRgSe,
+  TO: stripRgTo,
 };
 
 function failure(code: FailedResult['code'], message: string): FailedResult {
@@ -160,18 +200,12 @@ export function isRgUfImplemented(uf: string): uf is RgUfCode {
   return (RG_SUPPORTED_UFS as readonly string[]).includes(uf);
 }
 
-function isRgUfPending(uf: UfCode): uf is (typeof RG_PENDING_UFS)[number] {
-  return (RG_PENDING_UFS as readonly string[]).includes(uf);
-}
-
 export function getRgResearchUrl(uf: UfCode): string | undefined {
   if (isRgUfImplemented(uf)) {
     return getRgOfficialSourceUrl(uf);
   }
-  if (isRgUfPending(uf)) {
-    return RG_RESEARCH_URLS[uf];
-  }
-  return undefined;
+  const research = RG_RESEARCH_URLS as Readonly<Partial<Record<UfCode, string>>>;
+  return research[uf];
 }
 
 export function getRgUfRules(uf: RgUfCode) {

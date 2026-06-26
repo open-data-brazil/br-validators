@@ -27,6 +27,14 @@ export const RG_OFFICIAL_SOURCE_URLS: Record<RgUfCode, string> = {
   MT: 'https://www.politec.mt.gov.br/',
   PA: 'https://www.policiacivil.pa.gov.br/',
   PB: 'https://agendamentos.pb.gov.br/SAA/ipc/home',
+  CE: 'https://www.policiacivil.ce.gov.br/',
+  PE: 'https://www.policiacivil.pe.gov.br/',
+  PI: 'https://www.policiacivil.pi.gov.br/',
+  RN: 'https://www.policiacivil.rn.gov.br/',
+  RO: 'https://www.policiacivil.ro.gov.br/',
+  RR: 'https://www.policiacivil.rr.gov.br/',
+  SE: 'https://www.policiacivil.se.gov.br/',
+  TO: 'https://www.policiacivil.to.gov.br/',
 };
 
 export const RG_SUPPORTED_UFS = [
@@ -49,22 +57,21 @@ export const RG_SUPPORTED_UFS = [
   'MT',
   'PA',
   'PB',
+  'CE',
+  'PE',
+  'PI',
+  'RN',
+  'RO',
+  'RR',
+  'SE',
+  'TO',
 ] as const satisfies readonly RgUfCode[];
 
-/** Brazilian UFs without RG validator yet — community contributions (phase 33c). */
-export const RG_PENDING_UFS = ['CE', 'PE', 'PI', 'RN', 'RO', 'RR', 'SE', 'TO'] as const satisfies readonly UfCode[];
+/** Brazilian UFs without RG validator — empty when 27/27 shipped. */
+export const RG_PENDING_UFS = [] as const satisfies readonly UfCode[];
 
-/** SSP / Polícia Civil entry points for pending UF research — not algorithm sources. */
-export const RG_RESEARCH_URLS: Record<(typeof RG_PENDING_UFS)[number], string> = {
-  CE: 'https://www.policiacivil.ce.gov.br/',
-  PE: 'https://www.policiacivil.pe.gov.br/',
-  PI: 'https://www.policiacivil.pi.gov.br/',
-  RN: 'https://www.policiacivil.rn.gov.br/',
-  RO: 'https://www.policiacivil.ro.gov.br/',
-  RR: 'https://www.policiacivil.rr.gov.br/',
-  SE: 'https://www.policiacivil.se.gov.br/',
-  TO: 'https://www.policiacivil.to.gov.br/',
-};
+/** SSP / Polícia Civil entry points for pending UF research — empty when 27/27 shipped. */
+export const RG_RESEARCH_URLS = {} as const satisfies Record<(typeof RG_PENDING_UFS)[number], string>;
 
 export const RG_SP_GOLDEN = '120300011';
 export const RG_SP_GOLDEN_MASKED = '12.030.001-1';
@@ -109,6 +116,22 @@ export const RG_MT_GOLDEN = '123456789';
 export const RG_PA_GOLDEN = '123456789';
 
 export const RG_PB_GOLDEN = '123456789';
+
+export const RG_CE_GOLDEN = '123456789';
+
+export const RG_PE_GOLDEN = '123456789';
+
+export const RG_PI_GOLDEN = '123456789';
+
+export const RG_RN_GOLDEN = '123456789';
+
+export const RG_RO_GOLDEN = '123456789';
+
+export const RG_RR_GOLDEN = '123456789';
+
+export const RG_SE_GOLDEN = '123456789';
+
+export const RG_TO_GOLDEN = '123456789';
 
 export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
   SP: {
@@ -258,6 +281,70 @@ export const RG_UF_RULES: Record<RgUfCode, RgUfRules> = {
   },
   PB: {
     uf: 'PB',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  CE: {
+    uf: 'CE',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  PE: {
+    uf: 'PE',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  PI: {
+    uf: 'PI',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  RN: {
+    uf: 'RN',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  RO: {
+    uf: 'RO',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  RR: {
+    uf: 'RR',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  SE: {
+    uf: 'SE',
+    canonicalLength: 9,
+    baseLength: 9,
+    dvAlgorithm: 'format-only',
+    allowsCheckDigitX: false,
+    supportsMask: false,
+  },
+  TO: {
+    uf: 'TO',
     canonicalLength: 9,
     baseLength: 9,
     dvAlgorithm: 'format-only',

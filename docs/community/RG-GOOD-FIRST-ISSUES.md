@@ -1,51 +1,30 @@
 # RG good first issues — remaining UFs
 
+> **Status:** Phase 33c complete — **27/27 UFs shipped** (2026-06-26 batch 3: CE, PE, PI, RN, RO, RR, SE, TO).
+
 > **Labels:** `good first issue`, `rg-uf`  
 > **Template:** [.github/ISSUE_TEMPLATE/rg-uf-contribution.md](../../.github/ISSUE_TEMPLATE/rg-uf-contribution.md)  
 > **Depends on:** Phase 27c RG phase 1 (SP, RJ, MG, PR, RS, SC shipped)
 
 > **Contributor guide (how to open issues, official sources, algorithm reporting):** [RG-CONTRIBUTOR-GUIDE.md](RG-CONTRIBUTOR-GUIDE.md)  
 > **Implementation checklist:** `packages/br-validators/src/core/rg/CONTRIBUTING-UF.md`  
-> **Pending list API:** `getRgPendingUfs()` · **Research URLs:** `getRgResearchUrl(uf)`
+> **Pending list API:** `getRgPendingUfs()` — returns `[]` when complete · **Research URLs:** `getRgResearchUrl(uf)`
 
-Phase 1 covers six states (~70% of population). Remaining UFs are **good first issues** for contributors who can cite state **SSP / Polícia Civil** sources. **Most UFs lack a single consistent official RG/DV publication** — see the contributor guide before opening an issue.
+All Brazilian states now have RG validators. New contributions should target **DV algorithm upgrades** (when official SSP walkthroughs are found) or **length-range support** for legacy booklets — not net-new UF registration.
 
-## Shipped (do not re-open)
+## Shipped (all 27 UFs)
 
-| UF | Algorithm | Golden vector |
-|----|-----------|---------------|
-| SP | Modulo 11 | `120300011` |
-| RJ | Modulo 10 | `27998111` |
-| MG | Modulo 10 + optional `M` | `27998111` |
-| PR | Format-only (8 digits) | `12345678` |
-| RS | Format-only (10 digits) | `1234567890` |
-| SC | Format-only (9 digits) | `123456789` |
-| BA | Format-only (10 digits; IIPM legacy) | `1234567800` |
-| AC | Format-only (6 digits; SSP-AC legacy) | `123456` |
-| AL | Format-only (7 digits; POLCAL/IIEAL legacy) | `1234567` |
-| AM | Format-only (9 digits; IIACM/SSP-AM legacy) | `123456789` |
-| AP | Format-only (9 digits; PCA/SSP-AP legacy) | `123456789` |
-| DF | Format-only (7 digits; PCDF legacy) | `1234567` |
-| ES | Format-only (9 digits; PCIES/SESP-ES legacy) | `123456789` |
-| GO | Format-only (9 digits; PCGO legacy) | `123456789` |
-| MA | Format-only (9 digits; Ident-MA legacy) | `123456789` |
-| MS | Format-only (9 digits; SEJUSP/PCMS legacy) | `123456789` |
-| MT | Format-only (9 digits; POLITEC/PCMT legacy) | `123456789` |
-| PA | Format-only (9 digits; PC-PA legacy) | `123456789` |
-| PB | Format-only (9 digits; IPC/PB legacy) | `123456789` |
+See [OFFICIAL-SOURCES.md § RG](../OFFICIAL-SOURCES.md#rg--reference-index) for the full table, golden vectors, and official URLs.
+
+| Group | UFs | Notes |
+|-------|-----|-------|
+| Ghiorzi DV | SP, RJ, MG | Modulo-11 / mod10-alternating |
+| Format-only + mask | SC | 9 digits + CIASC mask |
+| Format-only | PR, RS, BA, AC, AL, AM, AP, DF, ES, GO, MA, MS, MT, PA, PB, CE, PE, PI, RN, RO, RR, SE, TO | `checkDigitValidated: false` |
 
 ## Open for contribution
 
-| UF | Issue title suggestion | Research URL (`getRgResearchUrl`) |
-|----|------------------------|-----------------------------------|
-| CE | `[rg] Add RG validation for UF CE` | PCivil CE |
-| PE | `[rg] Add RG validation for UF PE` | PCivil PE |
-| PI | `[rg] Add RG validation for UF PI` | PCivil PI |
-| RN | `[rg] Add RG validation for UF RN` | PCivil RN |
-| RO | `[rg] Add RG validation for UF RO` | PCivil RO |
-| RR | `[rg] Add RG validation for UF RR` | PCivil RR |
-| SE | `[rg] Add RG validation for UF SE` | PCivil SE |
-| TO | `[rg] Add RG validation for UF TO` | PCivil TO |
+None — `getRgPendingUfs()` is empty. File issues for DV upgrades or documented format corrections only.
 
 ## Maintainer checklist when merging a UF
 

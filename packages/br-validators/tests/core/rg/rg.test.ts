@@ -13,6 +13,14 @@ import {
   RG_MT_GOLDEN,
   RG_PA_GOLDEN,
   RG_PB_GOLDEN,
+  RG_CE_GOLDEN,
+  RG_PE_GOLDEN,
+  RG_PI_GOLDEN,
+  RG_RN_GOLDEN,
+  RG_RO_GOLDEN,
+  RG_RR_GOLDEN,
+  RG_SE_GOLDEN,
+  RG_TO_GOLDEN,
   RG_MG_GOLDEN,
   RG_MG_GOLDEN_MASKED,
   RG_MG_GOLDEN_PREFIXED,
@@ -60,6 +68,14 @@ import {
   validateRgMt,
   validateRgPa,
   validateRgPb,
+  validateRgCe,
+  validateRgPe,
+  validateRgPi,
+  validateRgRn,
+  validateRgRo,
+  validateRgRr,
+  validateRgSe,
+  validateRgTo,
   validateRgMg,
   validateRgPr,
   validateRgRj,
@@ -84,12 +100,37 @@ import msVectors from '../../vectors/rg.ms.official.json';
 import mtVectors from '../../vectors/rg.mt.official.json';
 import paVectors from '../../vectors/rg.pa.official.json';
 import pbVectors from '../../vectors/rg.pb.official.json';
+import ceVectors from '../../vectors/rg.ce.official.json';
+import peVectors from '../../vectors/rg.pe.official.json';
+import piVectors from '../../vectors/rg.pi.official.json';
+import rnVectors from '../../vectors/rg.rn.official.json';
+import roVectors from '../../vectors/rg.ro.official.json';
+import rrVectors from '../../vectors/rg.rr.official.json';
+import seVectors from '../../vectors/rg.se.official.json';
+import toVectors from '../../vectors/rg.to.official.json';
 import spVectors from '../../vectors/rg.sp.official.json';
 import rjVectors from '../../vectors/rg.rj.official.json';
 import mgVectors from '../../vectors/rg.mg.official.json';
 import prVectors from '../../vectors/rg.pr.official.json';
 import rsVectors from '../../vectors/rg.rs.official.json';
 import scVectors from '../../vectors/rg.sc.official.json';
+import type { RgValidationResult } from '../../../src/core/rg/types.js';
+
+const BATCH3_FORMAT_ONLY: Array<{
+  uf: 'CE' | 'PE' | 'PI' | 'RN' | 'RO' | 'RR' | 'SE' | 'TO';
+  golden: string;
+  vectors: { valid: { raw: string }; invalid: { raw: string }; url: string };
+  validate: (input: string) => RgValidationResult;
+}> = [
+  { uf: 'CE', golden: RG_CE_GOLDEN, vectors: ceVectors, validate: validateRgCe },
+  { uf: 'PE', golden: RG_PE_GOLDEN, vectors: peVectors, validate: validateRgPe },
+  { uf: 'PI', golden: RG_PI_GOLDEN, vectors: piVectors, validate: validateRgPi },
+  { uf: 'RN', golden: RG_RN_GOLDEN, vectors: rnVectors, validate: validateRgRn },
+  { uf: 'RO', golden: RG_RO_GOLDEN, vectors: roVectors, validate: validateRgRo },
+  { uf: 'RR', golden: RG_RR_GOLDEN, vectors: rrVectors, validate: validateRgRr },
+  { uf: 'SE', golden: RG_SE_GOLDEN, vectors: seVectors, validate: validateRgSe },
+  { uf: 'TO', golden: RG_TO_GOLDEN, vectors: toVectors, validate: validateRgTo },
+];
 
 describe('RG barrel export', () => {
   it('re-exports public API from rg.ts', () => {
@@ -225,6 +266,26 @@ describe('RG golden vectors — per UF', () => {
     expect(RG_PB_GOLDEN).toBe(pbVectors.valid.raw);
   });
 
+  describe.each(BATCH3_FORMAT_ONLY)('validates $uf format-only vectors (batch 3)', ({ uf, golden, vectors, validate }) => {
+    it('matches golden vector and official URL', () => {
+      expect(isValidRg(vectors.valid.raw, { uf })).toBe(true);
+      expect(validateRg(vectors.invalid.raw, { uf }).ok).toBe(false);
+      expect(golden).toBe(vectors.valid.raw);
+      expect(getRgOfficialSourceUrl(uf)).toBe(vectors.url);
+    });
+
+    it('rejects empty, invalid chars, wrong length', () => {
+      expect(validate('')).toMatchObject({ ok: false, code: 'EMPTY_INPUT' });
+      expect(validate('12A')).toMatchObject({ ok: false, code: 'INVALID_CHARACTER' });
+      expect(validate('12345678')).toMatchObject({ ok: false, code: 'INVALID_LENGTH' });
+    });
+
+    it('applies mask and format unchanged', () => {
+      expect(applyRgMask(golden, uf)).toBe(golden);
+      expect(formatRg(golden, { uf })).toEqual({ ok: true, formatted: golden });
+    });
+  });
+
   it('exports official source URLs', () => {
     expect(RG_OFFICIAL_SOURCE_URL).toBe(spVectors.url);
     expect(getRgOfficialSourceUrl('SP')).toBe(RG_OFFICIAL_SOURCE_URLS.SP);
@@ -252,51 +313,29 @@ describe('RG registry', () => {
   });
 
   it('returns UF_NOT_IMPLEMENTED for unsupported UF', () => {
-    const result = validateRg('123', { uf: 'CE' as ValidateRgOptions['uf'] });
+    const result = validateRg('123', { uf: 'ZZ' as ValidateRgOptions['uf'] });
     expect(result).toEqual({
       ok: false,
       code: 'UF_NOT_IMPLEMENTED',
-      message: 'UF CE is not implemented for RG validation',
+      message: 'UF ZZ is not implemented for RG validation',
     });
   });
 
   it('reports implemented vs pending UFs', () => {
     expect(getRgPendingUfs()).toEqual(RG_PENDING_UFS);
-    expect(getRgPendingUfs()).toHaveLength(8);
+    expect(getRgPendingUfs()).toHaveLength(0);
+    expect(RG_RESEARCH_URLS).toEqual({});
     expect(isRgUfImplemented('SP')).toBe(true);
-    expect(isRgUfImplemented('BA')).toBe(true);
-    expect(isRgUfImplemented('AC')).toBe(true);
-    expect(isRgUfImplemented('AL')).toBe(true);
-    expect(isRgUfImplemented('AM')).toBe(true);
-    expect(isRgUfImplemented('AP')).toBe(true);
-    expect(isRgUfImplemented('DF')).toBe(true);
-    expect(isRgUfImplemented('ES')).toBe(true);
-    expect(isRgUfImplemented('GO')).toBe(true);
-    expect(isRgUfImplemented('MA')).toBe(true);
-    expect(isRgUfImplemented('MS')).toBe(true);
-    expect(isRgUfImplemented('MT')).toBe(true);
-    expect(isRgUfImplemented('PA')).toBe(true);
-    expect(isRgUfImplemented('PB')).toBe(true);
-    expect(getRgResearchUrl('SP')).toBe(RG_OFFICIAL_SOURCE_URLS.SP);
-    expect(getRgResearchUrl('BA')).toBe(RG_OFFICIAL_SOURCE_URLS.BA);
-    expect(getRgResearchUrl('AC')).toBe(RG_OFFICIAL_SOURCE_URLS.AC);
-    expect(getRgResearchUrl('AL')).toBe(RG_OFFICIAL_SOURCE_URLS.AL);
-    expect(getRgResearchUrl('AM')).toBe(RG_OFFICIAL_SOURCE_URLS.AM);
-    expect(getRgResearchUrl('AP')).toBe(RG_OFFICIAL_SOURCE_URLS.AP);
-    expect(getRgResearchUrl('DF')).toBe(RG_OFFICIAL_SOURCE_URLS.DF);
-    expect(getRgResearchUrl('ES')).toBe(RG_OFFICIAL_SOURCE_URLS.ES);
-    expect(getRgResearchUrl('GO')).toBe(RG_OFFICIAL_SOURCE_URLS.GO);
-    expect(getRgResearchUrl('MA')).toBe(RG_OFFICIAL_SOURCE_URLS.MA);
-    expect(getRgResearchUrl('MS')).toBe(RG_OFFICIAL_SOURCE_URLS.MS);
-    expect(getRgResearchUrl('MT')).toBe(RG_OFFICIAL_SOURCE_URLS.MT);
-    expect(getRgResearchUrl('PA')).toBe(RG_OFFICIAL_SOURCE_URLS.PA);
-    expect(getRgResearchUrl('PB')).toBe(RG_OFFICIAL_SOURCE_URLS.PB);
-    expect(getRgResearchUrl('CE')).toBe(RG_RESEARCH_URLS.CE);
+    expect(isRgUfImplemented('CE')).toBe(true);
+    expect(isRgUfImplemented('TO')).toBe(true);
+    expect(getRgResearchUrl('CE')).toBe(RG_OFFICIAL_SOURCE_URLS.CE);
+    expect(getRgResearchUrl('PE')).toBe(RG_OFFICIAL_SOURCE_URLS.PE);
+    expect(getRgUfSupport()).toHaveLength(27);
     expect(getRgResearchUrl('ZZ' as never)).toBeUndefined();
   });
 
   it('strips with unsupported UF fallback', () => {
-    expect(stripRg('12.3', { uf: 'CE' as ValidateRgOptions['uf'] })).toBe('123');
+    expect(stripRg('12.3', { uf: 'ZZ' as ValidateRgOptions['uf'] })).toBe('123');
   });
 });
 
@@ -509,5 +548,7 @@ describe('RG per-UF edge cases', () => {
     expect(stripRg(RG_MT_GOLDEN, { uf: 'MT' })).toBe(RG_MT_GOLDEN);
     expect(stripRg(RG_PA_GOLDEN, { uf: 'PA' })).toBe(RG_PA_GOLDEN);
     expect(stripRg(RG_PB_GOLDEN, { uf: 'PB' })).toBe(RG_PB_GOLDEN);
+    expect(stripRgBarrel(RG_CE_GOLDEN, { uf: 'CE' })).toBe(RG_CE_GOLDEN);
+    expect(stripRg(RG_TO_GOLDEN, { uf: 'TO' })).toBe(RG_TO_GOLDEN);
   });
 });
