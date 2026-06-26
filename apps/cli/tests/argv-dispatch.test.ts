@@ -264,6 +264,11 @@ describe('dispatchArgv', () => {
       EXIT.OK,
     );
 
+    const generateStripped = io();
+    expect(
+      dispatchArgv(['generate', 'cpf', '--quiet', '--seed', '42', '--stripped'], generateStripped),
+    ).toBe(EXIT.OK);
+
     const generateEmpty = io();
     expect(dispatchArgv(['generate'], generateEmpty)).toBe(EXIT.USAGE);
   });

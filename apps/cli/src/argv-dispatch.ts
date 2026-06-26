@@ -94,6 +94,10 @@ export function parseArgv(tokens: string[]): ParsedArgv {
       opts.masked = true;
       continue;
     }
+    if (token === '--stripped') {
+      opts.stripped = true;
+      continue;
+    }
     if (token === '-f' || token === '--file') {
       opts.file = tokens[index + 1];
       index += 1;

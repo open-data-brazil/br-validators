@@ -1261,6 +1261,7 @@ type GeneratableDocumentType =
 type GenerateOptions = {
   format?: 'numeric' | 'alphanumeric' | 'legacy' | 'mercosul' | 'celular' | 'fixo';
   masked?: boolean;
+  stripped?: boolean;
   seed?: number;
   uf?: UfCode;
   brand?: 'visa' | 'mastercard' | 'amex' | 'elo' | 'hipercard';
@@ -1274,6 +1275,16 @@ type GenerateOptions = {
 function generate(type: GeneratableDocumentType, options?: GenerateOptions): string;
 ```
 
+| Option | Type | Default | Output |
+|--------|------|---------|--------|
+| `stripped` | `boolean` | implicit `true` when `masked` is false | Canonical digits / stripped payload |
+| `masked` | `boolean` | `false` | Masked/formatted string via `format*` |
+| Precedence | — | — | **`stripped: true` wins over `masked: true`** |
+
+```typescript
+function generate(type: GeneratableDocumentType, options?: GenerateOptions): string;
+```
+
 Uses Mulberry32 when `seed` is set; reuses official DV helpers per type. See [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md) for normative references. Alphanumeric CPF generation returns `CPF_ALPHA_SPEC_PENDING` until RFB publishes spec.
 
 ```typescript
@@ -1283,6 +1294,10 @@ import { validateInscricaoEstadual } from '@br-validators/core/inscricao-estadua
 
 const cpf = generate('cpf', { seed: 42 });
 validateCpf(cpf).ok; // true
+
+const cpfExplicit = generate('cpf', { stripped: true, seed: 42 }); // same as default
+
+const cnpjMasked = generate('cnpj', { masked: true, seed: 7 }); // formatted
 
 const ie = generate('inscricao-estadual', { uf: 'SP', seed: 42, masked: true });
 validateInscricaoEstadual(ie, { uf: 'SP' }).ok; // true
@@ -1299,7 +1314,7 @@ validateCartaoCredito(card).ok; // true
 ```bash
 br-validators detect [value] [--uf SP] [--json] [--quiet] [--file]
 br-validators sanitize <type> [value] [--uf SP] [--json] [--quiet] [--file]
-br-validators generate <type> [--masked] [--format mercosul] [--seed 42] [--uf SP] [--brand visa] [--json] [--quiet]
+br-validators generate <type> [--stripped] [--masked] [--format mercosul] [--seed 42] [--uf SP] [--brand visa] [--json] [--quiet]
 ```
 
 ---

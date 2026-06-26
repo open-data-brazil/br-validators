@@ -723,6 +723,7 @@ export function createProgram(): Command {
     .option('--json', 'JSON output')
     .option('-q, --quiet', 'Exit code only')
     .option('--masked', 'Return masked/formatted output')
+    .option('--stripped', 'Return canonical stripped digits (default; explicit flag)')
     .option('--format <format>', 'Format variant (numeric, alphanumeric, legacy, mercosul, celular, fixo)')
     .option('--seed <number>', 'Deterministic PRNG seed', (v: string) => Number(v))
     .option('--uf <uf>', 'State code (required for inscricao-estadual and titulo-eleitor)')

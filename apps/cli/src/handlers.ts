@@ -146,6 +146,7 @@ export type GenerateCliOptions = {
   json?: boolean;
   quiet?: boolean;
   masked?: boolean;
+  stripped?: boolean;
   format?: string;
   seed?: number;
   uf?: string;
@@ -918,6 +919,7 @@ export function handleGenerateCli(
       json: Boolean(opts.json),
       quiet: Boolean(opts.quiet),
       masked: Boolean(opts.masked),
+      stripped: Boolean(opts.stripped),
       format: opts.format,
       seed: opts.seed,
       uf: opts.uf,

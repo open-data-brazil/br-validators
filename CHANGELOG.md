@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **generate() output options (33e)** — `GenerateOptions.stripped` explicit flag; `stripped: true` wins over `masked: true`; CLI `--stripped`; default behavior unchanged (stripped when unmasked)
 - **Branded types audit (33d)** — `validateCpf`, `validateCnpj`, `validateCep`, and `validatePisPasep` now return `ValidationResult<BrandedT>`; new `Arrecadacao` brand for boleto arrecadação success paths; compile-time + runtime branded return tests; `docs/LIBRARY-API.md` branded type inventory table
 
 ### Added
