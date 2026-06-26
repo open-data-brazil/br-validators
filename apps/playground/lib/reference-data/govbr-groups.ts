@@ -33,13 +33,23 @@ import {
 import {
   CFOP_DATA_VERSION,
   CFOP_GOLDEN_COMPRA_COMERCIALIZACAO,
+  validateCfop,
   getCfopPorCodigo,
 } from '@br-validators/core/cfop';
 import {
   NCM_DATA_VERSION,
   NCM_GOLDEN_SOJA_SEMENTES,
+  validateNcm,
   getNcmPorCodigo,
 } from '@br-validators/core/ncm';
+import {
+  CST_DATA_VERSION,
+  CST_GOLDEN_ICMS_TRIBUTADA,
+  SPED_CST_CONSULTA_URL,
+  validateCst,
+  type CstTax,
+} from '@br-validators/core/cst';
+import type { FiscalCodeValidationResult } from '@br-validators/core/lookup';
 import {
   CBO_DATA_VERSION,
   CBO_GOLDEN_ANALISTA_SISTEMAS,
@@ -56,6 +66,7 @@ export type GovBrModuleId =
   | 'cfop'
   | 'ncm'
   | 'cbo'
+  | 'cst'
   | 'moedas'
   | 'paisesBacen'
   | 'incoterms'
@@ -64,6 +75,10 @@ export type GovBrModuleId =
 
 export type GovBrLookupRow = Record<string, string | number | null>;
 
+export type GovBrValidateContext = {
+  cstTax?: CstTax;
+};
+
 export interface GovBrModuleDefinition {
   id: GovBrModuleId;
   defaultCode: string;
@@ -71,6 +86,9 @@ export interface GovBrModuleDefinition {
   sourceUrl: string;
   lookup: (code: string) => GovBrLookupRow | null;
   fieldKeys: readonly string[];
+  validate?: (code: string, context?: GovBrValidateContext) => FiscalCodeValidationResult;
+  validateRequiresCstTax?: boolean;
+  defaultCstTax?: CstTax;
 }
 
 function sourceFromVersion(version: { endpoints: string[]; fonte: string }): string {
@@ -159,6 +177,7 @@ export const FISCAL_MODULES: readonly GovBrModuleDefinition[] = [
       const row = getCfopPorCodigo(code);
       return row ? { codigo: row.codigo, descricao: row.descricao } : null;
     },
+    validate: (code) => validateCfop(code),
     fieldKeys: ['codigo', 'descricao'],
   },
   {
@@ -170,7 +189,25 @@ export const FISCAL_MODULES: readonly GovBrModuleDefinition[] = [
       const row = getNcmPorCodigo(code);
       return row ? { codigo: row.codigo, descricao: row.descricao } : null;
     },
+    validate: (code) => validateNcm(code),
     fieldKeys: ['codigo', 'descricao'],
+  },
+  {
+    id: 'cst',
+    defaultCode: CST_GOLDEN_ICMS_TRIBUTADA,
+    capturadoEm: CST_DATA_VERSION.capturadoEm,
+    sourceUrl: SPED_CST_CONSULTA_URL,
+    defaultCstTax: 'icms',
+    validateRequiresCstTax: true,
+    lookup: (code) => {
+      const row = validateCst(code, { tax: 'icms' });
+      if (!row.ok) {
+        return null;
+      }
+      return { codigo: row.value, descricao: row.description, tax: 'icms' };
+    },
+    validate: (code, context) => validateCst(code, { tax: context?.cstTax ?? 'icms' }),
+    fieldKeys: ['codigo', 'descricao', 'tax'],
   },
   {
     id: 'cbo',

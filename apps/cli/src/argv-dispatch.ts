@@ -1,5 +1,6 @@
 import { EXIT } from './constants.js';
 import { isReferenceLookupCommand, isReferenceSearchCommand } from './commands/reference-lookup/registry.js';
+import { isReferenceValidateCommand } from './commands/reference-lookup/validate.js';
 import {
   handleBoletoCli,
   handleBrCodeCli,
@@ -21,6 +22,10 @@ import {
   handleBancosLookupCli,
   handleReferenceLookupCli,
   handleReferenceSearchCli,
+  handleReferenceValidateCli,
+  handleCstLookupCli,
+  handleCstSearchCli,
+  handleCstValidateCli,
   handleIbgeLookupCli,
   handleIbgeListCli,
   handleFeriadosListCli,
@@ -57,7 +62,7 @@ export type ParsedArgv = {
     PixCliOptions &
     BoletoCliOptions &
     IeCliOptions &
-    GenerateCliOptions & { verbose?: boolean; limit?: number; year?: number };
+    GenerateCliOptions & { verbose?: boolean; limit?: number; year?: number; tax?: string };
 };
 
 const STANDARD_ACTIONS = ['validate', 'format', 'strip'] as const;
@@ -138,6 +143,11 @@ export function parseArgv(tokens: string[]): ParsedArgv {
       index += 1;
       continue;
     }
+    if (token === '--tax') {
+      opts.tax = tokens[index + 1];
+      index += 1;
+      continue;
+    }
     if (token === '--year') {
       opts.year = Number(tokens[index + 1]);
       index += 1;
@@ -174,7 +184,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · tse-municipios · ddd · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · tse-municipios · ddd · ptax · cst · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · mask · compare · batch · diff · generate');
     return EXIT.OK;
   }
 
@@ -375,6 +385,22 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       }
       return usage(io, 'Expected: ptax lookup <moeda> [data]');
     }
+    case 'cst': {
+      const action = rest[0];
+      if (action === 'lookup') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleCstLookupCli(value, opts, io);
+      }
+      if (action === 'search') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleCstSearchCli(value, opts, io);
+      }
+      if (action === 'validate') {
+        const value = rest.slice(1).join(' ') || undefined;
+        return handleCstValidateCli(value, opts, io);
+      }
+      return usage(io, 'Expected: cst lookup|search|validate <codigo|query> --tax icms|ipi|pis|cofins');
+    }
     case 'detect':
       return handleDetectCli(rest.join(' ') || undefined, opts, io);
     case 'sanitize':
@@ -419,8 +445,13 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
           const value = rest.slice(1).join(' ') || undefined;
           return handleReferenceSearchCli(root, value, opts, io);
         }
+        if (action === 'validate' && isReferenceValidateCommand(root)) {
+          const value = rest.slice(1).join(' ') || undefined;
+          return handleReferenceValidateCli(root, value, opts, io);
+        }
         const searchHint = isReferenceSearchCommand(root) ? ' | search <query>' : '';
-        return usage(io, `Expected: ${root} lookup <codigo>${searchHint}`);
+        const validateHint = isReferenceValidateCommand(root) ? ' | validate <codigo>' : '';
+        return usage(io, `Expected: ${root} lookup <codigo>${searchHint}${validateHint}`);
       }
       return usage(io, `Unknown command: ${root}`);
     }

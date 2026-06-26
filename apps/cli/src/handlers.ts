@@ -25,6 +25,8 @@ import { runBancosList } from './commands/bancos/list.js';
 import { runBancosLookup } from './commands/bancos/lookup.js';
 import { runReferenceLookup } from './commands/reference-lookup/lookup.js';
 import { runReferenceSearch } from './commands/reference-lookup/search.js';
+import { runReferenceValidate } from './commands/reference-lookup/validate.js';
+import { runCstLookup, runCstSearch, runCstValidate } from './commands/cst/index.js';
 import { runIbgeLookup } from './commands/ibge/lookup.js';
 import { runIbgeList } from './commands/ibge/list.js';
 import { runFeriadosList } from './commands/feriados/list.js';
@@ -992,6 +994,64 @@ export function handleReferenceSearchCli(
     },
     io,
   );
+}
+
+export function handleReferenceValidateCli(
+  command: string,
+  value: string | undefined,
+  opts: ReferenceLookupCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runReferenceValidate(
+    command,
+    value,
+    {
+      json: Boolean(opts.json),
+      verbose: Boolean(opts.verbose),
+    },
+    io,
+  );
+}
+
+export type CstCliOptions = ReferenceDatasetCliOptions & {
+  tax?: string;
+};
+
+export function handleCstLookupCli(
+  value: string | undefined,
+  opts: CstCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runCstLookup(value, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    tax: opts.tax,
+  }, io);
+}
+
+export function handleCstSearchCli(
+  query: string | undefined,
+  opts: CstCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runCstSearch(query, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    tax: opts.tax,
+    limit: opts.limit,
+  }, io);
+}
+
+export function handleCstValidateCli(
+  value: string | undefined,
+  opts: CstCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runCstValidate(value, {
+    json: Boolean(opts.json),
+    verbose: Boolean(opts.verbose),
+    tax: opts.tax,
+  }, io);
 }
 
 export function handleIbgeLookupCli(

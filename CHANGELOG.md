@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Fiscal code validators (33j)** — `validateNcm`, `validateCfop`, `validateCst({ tax })` combine format rules with embedded lookup; `FiscalCodeValidationResult`; CLI `ncm|cfop validate` and `cst lookup|search|validate --tax`; playground `/data/fiscal` validate tab + CST module
 - **Lookup result standardization (33i)** — `LookupResult<T>` with `NOT_FOUND` / `INVALID_FORMAT` / `INVALID_INPUT`; `lookup*PorCodigo` on all offline lookup modules; legacy `get*` delegates via `unwrapLookupValue`; new `@br-validators/core/lookup` subpath; CLI reference/bancos/ibge lookup JSON failure shape `{ ok: false, code, message }`; [MIGRATION.md](MIGRATION.md) v2.0 lookup section
 - **Lookup `getAll*` naming (33h)** — canonical `getAll{Entity}()` list getters on every lookup module; legacy plural names deprecated until v2.0; `tests/lookup/getall-aliases.test.ts`
 - **PTAX staleness API (33g)** — `getPtaxCotacao` / `getPtaxUltimoDiaUtil` return `dataReferencia`, `isStale`, and `warning` when embed is more than 1 business day old; CLI `ptax lookup` with `--verbose` staleness output; `PtaxCotacaoResult` type

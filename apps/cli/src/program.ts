@@ -34,6 +34,9 @@ import {
   handleCepFaixaCli,
   handleDddLookupCli,
   handlePtaxLookupCli,
+  handleCstLookupCli,
+  handleCstSearchCli,
+  handleCstValidateCli,
   handleFeriadosListCli,
   handleIbgeListCli,
   handleIbgeLookupCli,
@@ -69,6 +72,7 @@ import {
   type CnisCliOptions,
   type PixCliOptions,
   type PlacaCliOptions,
+  type CstCliOptions,
 } from './handlers.js';
 
 export function createProgram(): Command {
@@ -688,6 +692,47 @@ export function createProgram(): Command {
     .action((moeda: string, data: string | undefined, opts: ReferenceDatasetCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handlePtaxLookupCli(moeda, data, opts, io);
+      writeCliIo(io);
+    });
+
+  const cst = program.command('cst').description('RFB SPED CST — offline ICMS, IPI, PIS, COFINS tables');
+
+  cst
+    .command('lookup')
+    .description('Resolve CST by code and tax')
+    .argument('<codigo>', 'CST code')
+    .requiredOption('--tax <tax>', 'Tax table: icms | ipi | pis | cofins')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include dataset capture date')
+    .action((codigo: string, opts: CstCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCstLookupCli(codigo, opts, io);
+      writeCliIo(io);
+    });
+
+  cst
+    .command('search')
+    .description('Search CST descriptions by tax')
+    .argument('<query>', 'Search query')
+    .requiredOption('--tax <tax>', 'Tax table: icms | ipi | pis | cofins')
+    .option('--json', 'JSON output')
+    .option('--limit <n>', 'Maximum rows', (v: string) => Number(v))
+    .action((query: string, opts: CstCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCstSearchCli(query, opts, io);
+      writeCliIo(io);
+    });
+
+  cst
+    .command('validate')
+    .description('Validate CST format and embedded table')
+    .argument('<codigo>', 'CST code')
+    .requiredOption('--tax <tax>', 'Tax table: icms | ipi | pis | cofins')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include tax metadata')
+    .action((codigo: string, opts: CstCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCstValidateCli(codigo, opts, io);
       writeCliIo(io);
     });
 

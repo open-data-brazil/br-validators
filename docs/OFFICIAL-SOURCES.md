@@ -511,7 +511,7 @@ Golden: **`00`** (sem motivo), **`01`** (extinção por encerramento liquidaçã
 
 Golden: `1102` (purchase for resale), `5102` (sale of goods acquired from third parties).
 
-Lookup only — CFOP business-rule validation is out of scope.
+`validateCfop(raw)` — 4-digit format + embedded table (`FiscalCodeValidationResult`). CFOP **business-rule** validation (e.g. operation type vs. document) remains out of scope.
 
 ---
 
@@ -576,6 +576,8 @@ Golden: `0302100` (returnable beer bottle). Cross-ref: NCM `22030000` maps to mu
 SPED table ids embedded at fetch time: ICMS `130`, IPI `26`, PIS `27`, COFINS `23` (package `5` — Tabelas de Situação Tributária).
 
 Golden: ICMS `00` (tributada integralmente), `10` (ST); IPI `50` (saída tributada), `00` (entrada com crédito); PIS `01` / `07`; COFINS `01` / `07`.
+
+`validateCst(raw, { tax })` — 2-digit format + per-tax embedded table (`FiscalCodeValidationResult`); `tax`: `icms` | `ipi` | `pis` | `cofins`.
 
 **Scope v1:** NF-e 2-digit CST for ICMS (Nacional/Estrangeira origins from SPED 3-digit rows). **CSOSN** (Simples Nacional) deferred — overlaps separate code family.
 
@@ -642,7 +644,7 @@ Golden: Anexo **`I`** RBT12 **`700000`** → faixa 3, alíquota nominal **9,5%**
 
 Golden: `01012100` (purebred horse breeders), `12011000` (soybean seeds for sowing).
 
-Tax rates (IPI/ICMS) are out of scope — code + description lookup only. Pair with `@br-validators/core/ibpt` for Lei 12.741/2012 approximate total burden.
+`validateNcm(raw)` — 8-digit format + embedded table (`FiscalCodeValidationResult`). Tax rates (IPI/ICMS) are out of scope — pair with `@br-validators/core/ibpt` for Lei 12.741/2012 approximate total burden.
 
 ---
 

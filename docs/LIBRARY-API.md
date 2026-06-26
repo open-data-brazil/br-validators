@@ -698,6 +698,30 @@ See [MIGRATION.md](../MIGRATION.md) for v1.x → v2.0 lookup migration.
 
 ---
 
+## Fiscal code validation — `validateNcm` / `validateCfop` / `validateCst` (v1.9+)
+
+Format check **and** embedded-table lookup in one call. Distinct `INVALID_FORMAT` vs `NOT_FOUND` for fiscal forms.
+
+```typescript
+import type { FiscalCodeValidationResult } from '@br-validators/core/lookup';
+
+type FiscalCodeValidationResult =
+  | { ok: true; value: string; description: string; format?: string }
+  | { ok: false; code: LookupErrorCode; message: string };
+```
+
+| Function | Format rule | Display `format` |
+|----------|-------------|------------------|
+| `validateNcm(raw)` | 8 numeric digits (strips `.`) | `0101.21.00` |
+| `validateCfop(raw)` | 4 numeric digits | `5.102` |
+| `validateCst(raw, { tax })` | 2 numeric digits per SPED table | — |
+
+CLI: `br-validators ncm validate <code>`, `br-validators cfop validate <code>`, `br-validators cst validate <code> --tax icms`.
+
+**Official sources:** [OFFICIAL-SOURCES.md § NCM](OFFICIAL-SOURCES.md#ncm-mercosur-nomenclature) (Siscomex JSON · RFB classificação fiscal) · [§ CFOP](OFFICIAL-SOURCES.md#cfop-fiscal-operations) (CONFAZ SINIEF) · [§ CST](OFFICIAL-SOURCES.md#cst-situacao-tributaria) (RFB SPED Fiscal tables). Golden vectors: `ncm.official.json`, `cfop.official.json`, `cst.official.json`.
+
+---
+
 ## Core API — IBGE localities (reference data)
 
 > **Offline embedded data** from [IBGE Serviço de Dados](https://servicodados.ibge.gov.br/api/docs/localidades).  
@@ -863,6 +887,8 @@ import {
 | `getAllCfop()` | All CFOP codes |
 | `getCfops()` | **Deprecated** — use `getAllCfop()` (removed v2.0) |
 | `getCfopPorCodigo(codigo)` | Single CFOP or `undefined` (4-digit code) |
+| `validateCfop(raw)` | `FiscalCodeValidationResult` — format + table |
+| `isValidCfop(raw)` | `boolean` shorthand |
 | `searchCfop(query, { limit? })` | Description search (default limit 10) |
 | `CFOP_DATA_VERSION` | `DatasetMetadata` |
 
@@ -890,6 +916,8 @@ import { getCfopPorCodigo, searchCfop, CFOP_DATA_VERSION } from '@br-validators/
 | `getCstIpiPorCodigo(codigo)` | Single IPI CST or `undefined` |
 | `getCstPisPorCodigo(codigo)` | Single PIS CST or `undefined` |
 | `getCstCofinsPorCodigo(codigo)` | Single COFINS CST or `undefined` |
+| `validateCst(raw, { tax })` | `FiscalCodeValidationResult` — `tax`: `icms` \| `ipi` \| `pis` \| `cofins` |
+| `isValidCst(raw, { tax })` | `boolean` shorthand |
 | `searchCstIcms(query, { limit? })` | ICMS description search (default limit 10) |
 | `searchCstIpi(query, { limit? })` | IPI description search |
 | `searchCstPis(query, { limit? })` | PIS description search |
@@ -1023,6 +1051,8 @@ CLI: `br-validators ptax lookup <moeda> [data] [--json] [--verbose]` — verbose
 | `getAllNcm()` | All 8-digit leaf NCM codes |
 | `getNcms()` | **Deprecated** — use `getAllNcm()` (removed v2.0) |
 | `getNcmPorCodigo(codigo)` | Single NCM or `undefined` (accepts dotted input) |
+| `validateNcm(raw)` | `FiscalCodeValidationResult` — format + table |
+| `isValidNcm(raw)` | `boolean` shorthand |
 | `searchNcm(query, { limit? })` | Description search (default limit 10) |
 | `NCM_DATA_VERSION` | `DatasetMetadata` |
 

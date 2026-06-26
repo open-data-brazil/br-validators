@@ -13,3 +13,5 @@ export {
   lookupNotFound,
   unwrapLookupValue,
 } from '../types/lookup-result.js';
+export { fiscalValidationFromLookup } from './fiscal-validation.js';
+export type { FiscalCodeValidationResult, FiscalCodeRow } from '../types/fiscal-code-result.js';

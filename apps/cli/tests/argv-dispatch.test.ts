@@ -397,6 +397,50 @@ describe('dispatchArgv', () => {
     expect(dispatchArgv(['cnae', 'search', 'software', '--json', '--limit', '3'], search)).toBe(EXIT.OK);
   });
 
+  it('dispatches fiscal validate and cst commands', () => {
+    const ncmValidate = io();
+    expect(dispatchArgv(['ncm', 'validate', '01012100', '--json'], ncmValidate)).toBe(EXIT.OK);
+    const parsed = JSON.parse(ncmValidate.stdout[0]) as { value: string; format: string };
+    expect(parsed.value).toBe('01012100');
+    expect(parsed.format).toBe('0101.21.00');
+
+    const cstValidate = io();
+    expect(dispatchArgv(['cst', 'validate', '00', '--tax', 'icms', '--json'], cstValidate)).toBe(EXIT.OK);
+
+    const cstLookup = io();
+    expect(dispatchArgv(['cst', 'lookup', '00', '--tax', 'icms', '--json'], cstLookup)).toBe(EXIT.OK);
+
+    const cstSearch = io();
+    expect(dispatchArgv(['cst', 'search', 'tributada', '--tax', 'icms', '--limit', '1'], cstSearch)).toBe(EXIT.OK);
+
+    const cfopValidate = io();
+    expect(dispatchArgv(['cfop', 'validate', '5102', '--json'], cfopValidate)).toBe(EXIT.OK);
+
+    const cstSearchMissing = io();
+    expect(dispatchArgv(['cst', 'search', '--tax', 'icms'], cstSearchMissing)).toBe(EXIT.USAGE);
+
+    const cstValidateMissing = io();
+    expect(dispatchArgv(['cst', 'validate', '--tax', 'icms'], cstValidateMissing)).toBe(EXIT.USAGE);
+
+    const cstLookupMissing = io();
+    expect(dispatchArgv(['cst', 'lookup', '--tax', 'icms'], cstLookupMissing)).toBe(EXIT.USAGE);
+
+    const ncmValidateMissing = io();
+    expect(dispatchArgv(['ncm', 'validate', '--json'], ncmValidateMissing)).toBe(EXIT.USAGE);
+
+    const ncmUsage = io();
+    expect(dispatchArgv(['ncm', 'unknown'], ncmUsage)).toBe(EXIT.USAGE);
+    expect(ncmUsage.stderr[0]).toContain('validate');
+
+    const cnaeUsage = io();
+    expect(dispatchArgv(['cnae', 'unknown'], cnaeUsage)).toBe(EXIT.USAGE);
+    expect(cnaeUsage.stderr[0]).not.toContain('validate');
+
+    const cstUsage = io();
+    expect(dispatchArgv(['cst', 'validate', '00'], cstUsage)).toBe(EXIT.USAGE);
+    expect(dispatchArgv(['cst', 'unknown'], cstUsage)).toBe(EXIT.USAGE);
+  });
+
   it('returns usage for incomplete reference dataset commands', () => {
     const ibgeUsage = io();
     expect(dispatchArgv(['ibge', 'unknown'], ibgeUsage)).toBe(EXIT.USAGE);
