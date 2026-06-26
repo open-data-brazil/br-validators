@@ -260,9 +260,9 @@ br-validators generate inscricao-estadual-produtor-rural --masked --seed 42
 | **detect()** | `@br-validators/core/detect` | `br-validators detect …` | `/detect` |
 | **sanitize()** | `@br-validators/core/sanitize` | `br-validators sanitize …` | `/sanitize` |
 | **mask()** | `@br-validators/core/mask` | — | via per-type `format` |
-| **compare()** | `@br-validators/core/compare` | — | — |
-| **batch()** | `@br-validators/core/batch` | — | — |
-| **diff()** | `@br-validators/core/diff` | — | — |
+| **compare()** | `@br-validators/core/compare` | `br-validators compare …` | `/compare` |
+| **batch()** | `@br-validators/core/batch` | `br-validators batch …` | `/batch` |
+| **diff()** | `@br-validators/core/diff` | `br-validators diff …` | `/diff` |
 | **generate()** | `@br-validators/core/generate` | `br-validators generate …` | `/generate` |
 | **buildStaticPixBrCode()** | `@br-validators/core/brcode` | — | `/pix` (QR panel) |
 

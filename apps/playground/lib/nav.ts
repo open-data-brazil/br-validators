@@ -44,6 +44,9 @@ export const DOCUMENT_ROUTES = [
 export const PLATFORM_ROUTES = [
   { slug: 'detect', label: 'Detect', description: 'Auto-identify document type', group: 'platform' },
   { slug: 'sanitize', label: 'Sanitize', description: 'ETL fixes + validate', group: 'platform' },
+  { slug: 'compare', label: 'Compare', description: 'Normalized equality', group: 'platform' },
+  { slug: 'batch', label: 'Batch', description: 'Bulk validate + summary', group: 'platform' },
+  { slug: 'diff', label: 'Diff', description: 'Field-level structural diff', group: 'platform' },
   { slug: 'generate', label: 'Generate', description: 'Synthetic test fixtures', group: 'platform' },
   { slug: 'official-sources', label: 'Official sources', description: 'Normative references by data type', group: 'platform' },
 ] as const satisfies readonly PlatformRoute[];

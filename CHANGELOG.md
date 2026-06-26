@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Platform CLI + playground** — `compare`, `batch`, and `diff` commands and routes (`/compare`, `/batch`, `/diff`) — closes DELIVERY-SURFACES parity gap for Layer 3 APIs
+
 ### Changed
 
 - **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.NNNN` (e.g. `1.8.3-data.0001`) instead of incrementing human PATCH (`1.8.4`)

@@ -1,11 +1,20 @@
+import { createRequire } from 'node:module';
+
+const nodeRequire = createRequire(import.meta.url);
+
+function readNodeFileSync(
+  path: string | number,
+  encoding: 'utf8',
+): string {
+  const fs = nodeRequire('node:fs') as typeof import('node:fs');
+  return fs.readFileSync(path, encoding);
+}
+
 export type CliIo = { stdout: string[]; stderr: string[] };
 
 export function readInputFile(path: string, io: CliIo): string | null {
   try {
-    // Lazy Node fs — avoids bundling fs in browser builds that alias node:fs to a stub.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports -- runtime-only in Node CLI
-    const fsModule = require('node:fs') as typeof import('node:fs');
-    return fsModule.readFileSync(path, 'utf8');
+    return readNodeFileSync(path, 'utf8');
   } catch {
     io.stderr.push(`Cannot read file: ${path}`);
     return null;
@@ -44,6 +53,9 @@ import { runEan, type EanAction } from './commands/ean.js';
 import { runIe, type IeAction } from './commands/ie.js';
 import { runDetect } from './commands/detect.js';
 import { runSanitize } from './commands/sanitize.js';
+import { runCompare } from './commands/compare.js';
+import { runBatch } from './commands/batch.js';
+import { runDiff } from './commands/diff.js';
 import { runGenerate } from './commands/generate.js';
 import { listSupportedTypes } from './commands/list.js';
 import { EXIT } from './constants.js';
@@ -110,6 +122,19 @@ export type DetectCliOptions = CnpjCliOptions & {
 
 export type SanitizeCliOptions = CnpjCliOptions & {
   uf?: string;
+};
+
+export type CompareCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
+
+export type DiffCliOptions = CnpjCliOptions & {
+  uf?: string;
+};
+
+export type BatchCliOptions = CnpjCliOptions & {
+  uf?: string;
+  limit?: number;
 };
 
 export type GenerateCliOptions = {
@@ -760,6 +785,90 @@ export function handleSanitizeCli(
       quiet: Boolean(opts.quiet),
       uf: opts.uf,
       file: fileContent,
+    },
+    io,
+  );
+}
+
+export function readStdinSync(io: CliIo): string | null {
+  try {
+    if (process.stdin.isTTY) {
+      return null;
+    }
+    return readNodeFileSync(0, 'utf8');
+  } catch {
+    io.stderr.push('Cannot read stdin.');
+    return null;
+  }
+}
+
+export function handleCompareCli(
+  type: string,
+  valueA: string | undefined,
+  valueB: string | undefined,
+  opts: CompareCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runCompare(
+    type,
+    valueA,
+    valueB,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      uf: opts.uf,
+    },
+    io,
+  );
+}
+
+export function handleDiffCli(
+  type: string,
+  valueA: string | undefined,
+  valueB: string | undefined,
+  opts: DiffCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runDiff(
+    type,
+    valueA,
+    valueB,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      uf: opts.uf,
+    },
+    io,
+  );
+}
+
+export function handleBatchCli(
+  type: string,
+  opts: BatchCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  let lines: string | undefined;
+  if (opts.file) {
+    const content = readInputFile(opts.file, io);
+    if (content === null) {
+      return EXIT.USAGE;
+    }
+    lines = content;
+  } else {
+    const stdin = readStdinSync(io);
+    if (stdin !== null) {
+      lines = stdin;
+    }
+  }
+
+  return runBatch(
+    type,
+    {
+      json: Boolean(opts.json),
+      quiet: Boolean(opts.quiet),
+      uf: opts.uf,
+      lines,
+      limit: opts.limit,
     },
     io,
   );

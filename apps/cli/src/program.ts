@@ -23,6 +23,9 @@ import {
   handleIeCli,
   handleDetectCli,
   handleSanitizeCli,
+  handleCompareCli,
+  handleBatchCli,
+  handleDiffCli,
   handleGenerateCli,
   handlePlacaCli,
   handleBancosLookupCli,
@@ -55,6 +58,9 @@ import {
   type IeCliOptions,
   type DetectCliOptions,
   type SanitizeCliOptions,
+  type CompareCliOptions,
+  type BatchCliOptions,
+  type DiffCliOptions,
   type GenerateCliOptions,
   type PisPasepCliOptions,
   type CnisCliOptions,
@@ -709,6 +715,44 @@ export function createProgram(): Command {
     .action((type: string, opts: GenerateCliOptions) => {
       const io = { stdout: [] as string[], stderr: [] as string[] };
       process.exitCode = handleGenerateCli(type, opts, io);
+      writeCliIo(io);
+    });
+
+  program
+    .command('compare <type> <valueA> [valueB...]')
+    .description('Compare two values for normalized equality')
+    .option('--uf <uf>', 'State code (required for inscricao-estadual, rg, titulo-eleitor)')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .action((type: string, valueA: string, valueB: string[], opts: CompareCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleCompareCli(type, valueA, valueB.join(' ') || undefined, opts, io);
+      writeCliIo(io);
+    });
+
+  program
+    .command('batch <type>')
+    .description('Bulk validate values from stdin or --file')
+    .option('--uf <uf>', 'State code (required for inscricao-estadual, rg, titulo-eleitor)')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .option('-f, --file <path>', 'Read values from file (one per line)')
+    .option('--limit <n>', 'Max number of values to process', (v: string) => Number(v))
+    .action((type: string, opts: BatchCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleBatchCli(type, opts, io);
+      writeCliIo(io);
+    });
+
+  program
+    .command('diff <type> <valueA> [valueB...]')
+    .description('Field-level structural diff between two values')
+    .option('--uf <uf>', 'State code (required for inscricao-estadual, rg, titulo-eleitor)')
+    .option('--json', 'JSON output')
+    .option('-q, --quiet', 'Exit code only')
+    .action((type: string, valueA: string, valueB: string[], opts: DiffCliOptions) => {
+      const io = { stdout: [] as string[], stderr: [] as string[] };
+      process.exitCode = handleDiffCli(type, valueA, valueB.join(' ') || undefined, opts, io);
       writeCliIo(io);
     });
 

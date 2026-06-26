@@ -76,19 +76,25 @@ br-validators ie validate P-01100424.3/002 --uf SP   # SP produtor rural (auto-d
 |---------|-------------|
 | `detect [value]` | Classify raw input; `--uf` for IE |
 | `sanitize <type> [value]` | ETL fixes + validate; `--uf` for `inscricao-estadual` |
+| `compare <type> <valueA> <valueB>` | Normalized equality; `--uf` for IE / RG / título |
+| `batch <type>` | Bulk validate (stdin or `--file`); `--uf`, `--limit` |
+| `diff <type> <valueA> <valueB>` | Field-level diff; `--uf` for IE / RG / título |
 | `generate <type>` | Synthetic test document; `--seed`, `--masked`, `--format` |
-
-> **Library-only platform APIs:** `mask`, `compare`, `batch`, and `diff` are available via `@br-validators/core` subpaths — no dedicated CLI commands yet.
 
 ```bash
 br-validators detect '123.456.789-09' --json
 br-validators detect '110042490114' --uf SP --json
 br-validators sanitize cpf ' 123.456.789-09 ' --json
 br-validators sanitize inscricao-estadual '110.042.490.114' --uf SP --json
+br-validators compare cpf '123.456.789-09' 12345678909 --json
+br-validators batch cpf --file values.txt --json
+br-validators diff cpf 12345678909 12345678901 --json
 br-validators generate cpf --seed 42 --masked --json
 br-validators generate cnpj --format alphanumeric --seed 7 --json
 br-validators generate placa --format mercosul --seed 3
 ```
+
+> **Library-only platform API:** `mask()` — use `@br-validators/core/mask` or per-type `format` CLI actions.
 
 ---
 

@@ -12,6 +12,9 @@ import {
   handleCpfCli,
   handleDetectCli,
   handleGenerateCli,
+  handleCompareCli,
+  handleBatchCli,
+  handleDiffCli,
   handleIeCli,
   handleRgCli,
   handleBancosListCli,
@@ -165,7 +168,7 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
   if (tokens.length === 0 || tokens.includes('--help') || tokens.includes('-h')) {
     io.stdout.push('br-validators — 100% open-source Brazilian document validators');
     io.stdout.push('Usage: br-validators <command> ...');
-    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · tse-municipios · ddd · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · generate');
+    io.stdout.push('Commands: list · cpf · cnpj · cep · telefone · cnh · renavam · titulo-eleitor · processo-judicial · rg · nfe-chave · brcode · placa · pis-pasep · cnis · pix · boleto · cartao · cartao-credito · ean · ie · bancos · ibge · feriados · tse-municipios · ddd · natureza-juridica · nbs · cest · cnae · cfop · ncm · cbo · moedas · paises-bacen · incoterms · portos · aeroportos · detect · sanitize · compare · batch · diff · generate');
     return EXIT.OK;
   }
 
@@ -361,6 +364,31 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
       return handleDetectCli(rest.join(' ') || undefined, opts, io);
     case 'sanitize':
       return handleSanitizeCli(rest[0] ?? '', rest.slice(1).join(' ') || undefined, opts, io);
+    case 'compare': {
+      const type = rest[0];
+      const valueA = rest[1];
+      const valueB = rest.slice(2).join(' ') || undefined;
+      if (!type) {
+        return usage(io, 'Expected: compare <type> <valueA> <valueB>');
+      }
+      return handleCompareCli(type, valueA, valueB, opts, io);
+    }
+    case 'batch': {
+      const type = rest[0];
+      if (!type) {
+        return usage(io, 'Expected: batch <type> [--file path]');
+      }
+      return handleBatchCli(type, opts, io);
+    }
+    case 'diff': {
+      const type = rest[0];
+      const valueA = rest[1];
+      const valueB = rest.slice(2).join(' ') || undefined;
+      if (!type) {
+        return usage(io, 'Expected: diff <type> <valueA> <valueB>');
+      }
+      return handleDiffCli(type, valueA, valueB, opts, io);
+    }
     case 'generate':
       return handleGenerateCli(rest[0] ?? '', opts, io);
     default: {

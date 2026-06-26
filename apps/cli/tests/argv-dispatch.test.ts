@@ -1,4 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { mkdtempSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import {
   BOLETO_GOLDEN_LINHA_STRIPPED,
   CARTAO_GOLDEN_VISA,
@@ -7,6 +10,7 @@ import {
   CNPJ_GOLDEN_ALPHANUMERIC,
   CPF_GOLDEN_PRIMARY,
   CPF_GOLDEN_PRIMARY_MASKED,
+  CPF_GOLDEN_SECONDARY,
   IE_SP_GOLDEN,
   NFE_CHAVE_GOLDEN_PRIMARY,
   PIX_GOLDEN_EMAIL,
@@ -256,6 +260,38 @@ describe('dispatchArgv', () => {
 
     const generateEmpty = io();
     expect(dispatchArgv(['generate'], generateEmpty)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches compare batch and diff', () => {
+    const compare = io();
+    expect(
+      dispatchArgv(['compare', 'cpf', CPF_GOLDEN_PRIMARY_MASKED, CPF_GOLDEN_PRIMARY, '--quiet'], compare),
+    ).toBe(EXIT.OK);
+
+    const compareEmpty = io();
+    expect(dispatchArgv(['compare'], compareEmpty)).toBe(EXIT.USAGE);
+
+    const diff = io();
+    expect(
+      dispatchArgv(['diff', 'cpf', CPF_GOLDEN_PRIMARY, CPF_GOLDEN_SECONDARY, '--quiet'], diff),
+    ).toBe(EXIT.INVALID);
+
+    const diffEmpty = io();
+    expect(dispatchArgv(['diff'], diffEmpty)).toBe(EXIT.USAGE);
+
+    const batchEmpty = io();
+    expect(dispatchArgv(['batch', 'cpf'], batchEmpty)).toBe(EXIT.USAGE);
+
+    const batchNoType = io();
+    expect(dispatchArgv(['batch'], batchNoType)).toBe(EXIT.USAGE);
+  });
+
+  it('dispatches batch with file', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'br-validators-batch-'));
+    const file = join(dir, 'values.txt');
+    writeFileSync(file, `${CPF_GOLDEN_PRIMARY}\ninvalid`, 'utf8');
+    const batch = io();
+    expect(dispatchArgv(['batch', 'cpf', '--file', file, '--quiet'], batch)).toBe(EXIT.INVALID);
   });
 
   it('parses verbose and limit flags', () => {

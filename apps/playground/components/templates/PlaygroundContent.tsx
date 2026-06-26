@@ -5,6 +5,9 @@ import { DocumentWorkspace } from '@/components/organisms/DocumentWorkspace';
 import { HomePage } from '@/components/organisms/HomePage';
 import { PixWorkspace } from '@/components/organisms/PixWorkspace';
 import { PlatformDetect } from '@/components/organisms/PlatformDetect';
+import { PlatformCompare } from '@/components/organisms/PlatformCompare';
+import { PlatformBatch } from '@/components/organisms/PlatformBatch';
+import { PlatformDiff } from '@/components/organisms/PlatformDiff';
 import { PlatformGenerate } from '@/components/organisms/PlatformGenerate';
 import { PlatformSanitize } from '@/components/organisms/PlatformSanitize';
 import { OfficialSourcesPage } from '@/components/organisms/OfficialSourcesPage';
@@ -31,6 +34,12 @@ function PlatformPane({ slug }: { slug: PlatformSlug }) {
       return <PlatformDetect />;
     case 'sanitize':
       return <PlatformSanitize />;
+    case 'compare':
+      return <PlatformCompare />;
+    case 'batch':
+      return <PlatformBatch />;
+    case 'diff':
+      return <PlatformDiff />;
     case 'generate':
       return <PlatformGenerate />;
     case 'official-sources':

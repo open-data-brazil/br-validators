@@ -160,9 +160,9 @@ Requires Node ≥ 18. ESM only (`"type": "module"`). Zero runtime dependencies.
 | `detect()` | `/detect` | `br-validators detect …` | `/detect` | Auto-classify raw input |
 | `sanitize()` | `/sanitize` | `br-validators sanitize <type> …` | `/sanitize` | ETL fixes + validate |
 | `mask()` | `/mask` | — | via `format` actions | Unified display mask |
-| `compare()` | `/compare` | — | — | Normalized equality |
-| `batch()` | `/batch` | — | — | Bulk validate + summary |
-| `diff()` | `/diff` | — | — | Field-level structural diff |
+| `compare()` | `/compare` | `br-validators compare <type> …` | `/compare` | Normalized equality |
+| `batch()` | `/batch` | `br-validators batch <type> …` | `/batch` | Bulk validate + summary |
+| `diff()` | `/diff` | `br-validators diff <type> …` | `/diff` | Field-level structural diff |
 | `generate()` | `/generate` | `br-validators generate …` | `/generate` | Synthetic test fixtures — **17/18** document types (alphanumeric CPF blocked until RFB spec) |
 
 ```typescript
@@ -318,7 +318,6 @@ See [CHANGELOG.md](CHANGELOG.md) for release notes.
 | Gap | Status |
 |-----|--------|
 | Alphanumeric CPF | Blocked — RFB spec not published |
-| `compare` / `batch` / `diff` CLI commands | Library-only — use `@br-validators/core` |
 | `@br-validators/adapters-correios` | Planned — CEP HTTP lookup |
 
 ---
