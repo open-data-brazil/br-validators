@@ -33,9 +33,12 @@
 
 **Totals:** +0 −0 ~0
 
-### Source health
+### Source health alerts
 
-All HTTP endpoints responded successfully.
+- **cfop** (warning/source_unavailable): Possible link deprecation — official source unreachable after 5 attempts (2 min interval). Embedded data from **2026-06-26** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **cest** (warning/source_unavailable): Possible link deprecation — official source unreachable after 5 attempts (2 min interval). Embedded data from **2026-06-26** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
 
 ### Drift
 

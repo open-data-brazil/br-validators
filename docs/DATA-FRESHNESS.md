@@ -1,7 +1,7 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-06-26T11:31:13.160Z
+> Last bot run: 2026-06-26T13:02:04.329Z
 
 ## Summary
 
@@ -36,9 +36,22 @@
 | PNCP domain reference tables | 2026-06-26 | 19 modalidades / 183 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | Portal da Transparência endpoint registry | 2026-06-26 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-## Source health
+## Source health alerts
 
-All HTTP endpoints responded successfully. No embedded-data retention warnings.
+> Official source unreachable or deprecated. **Embedded data was retained** — the published API continues to serve the last successful capture.
+
+| Dataset | Severity | Status | Embedded data from | Message |
+|---------|----------|--------|--------------------|---------|
+| cfop | warning | source_unavailable | 2026-06-26 | Possible link deprecation — official source unreachable after 5 attempts (2 min interval). |
+| cest | warning | source_unavailable | 2026-06-26 | Possible link deprecation — official source unreachable after 5 attempts (2 min interval). |
+
+### Maintainer action required
+
+1. Read [DATA-SOURCE-MAINTENANCE.md](DATA-SOURCE-MAINTENANCE.md).
+2. Scan [CRITICAL-ALERTS.md](../data/refresh-reports/CRITICAL-ALERTS.md) when severity is **critical**.
+3. Verify whether the official URL moved (404) or the payload schema changed.
+4. Update `docs/OFFICIAL-SOURCES.md`, the relevant `scripts/fetch-*.ts` endpoint(s), and `metadata.json`.
+5. Run `pnpm data:refresh` locally and confirm alerts are cleared in `data/refresh-reports/latest.json`.
 
 ## Verification
 
@@ -59,7 +72,7 @@ All HTTP endpoints responded successfully. No embedded-data retention warnings.
   "totalAdicionados": 0,
   "totalRemovidos": 0,
   "totalAlterados": 0,
-  "sourceAlerts": 0,
+  "sourceAlerts": 2,
   "criticalAlerts": 0,
   "baselinesSelados": 0
 }

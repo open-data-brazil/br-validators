@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-06-26T11:31:13.160Z",
+  "executadoEm": "2026-06-26T13:02:04.329Z",
   "runDate": "2026-06-26",
   "schedule": "diario",
   "agendamento": "diario",
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "estados": 27,
@@ -25,7 +25,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "bancos": 469
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "moedas": 154
@@ -106,7 +106,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "incoterms": 11
@@ -119,7 +119,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "ddds": 67
@@ -147,7 +147,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "cnaes": 1332
@@ -173,7 +173,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "naturezas": 90
@@ -186,7 +186,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "motivos": 61
@@ -199,7 +199,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "cargas": 12
@@ -212,7 +212,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "nbs": 917
@@ -294,7 +294,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "ncm": 10515
@@ -307,7 +307,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "cbo": 2694
@@ -333,7 +333,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "portos": 1094
@@ -346,7 +346,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "semanas": 1,
@@ -363,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "modalidades": 19,
@@ -383,7 +383,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-06-26"
       },
       "contagens": {
         "endpoints": 8,
@@ -391,14 +391,39 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "cfop",
+      "severity": "warning",
+      "status": "source_unavailable",
+      "message": "Possible link deprecation — official source unreachable after 5 attempts (2 min interval).",
+      "endpoints": [
+        "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente"
+      ],
+      "retainedEmbeddedDataFrom": "2026-06-26",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "cest",
+      "severity": "warning",
+      "status": "source_unavailable",
+      "message": "Possible link deprecation — official source unreachable after 5 attempts (2 min interval).",
+      "endpoints": [
+        "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
+      ],
+      "retainedEmbeddedDataFrom": "2026-06-26",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 28,
     "datasetsAlterados": 0,
     "totalAdicionados": 0,
     "totalRemovidos": 0,
     "totalAlterados": 0,
-    "sourceAlerts": 0,
+    "sourceAlerts": 2,
     "criticalAlerts": 0,
     "baselinesSelados": 0
   }
