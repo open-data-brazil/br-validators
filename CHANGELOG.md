@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **E2E subpath import tests (33s)** — `tests/integration/subpath-imports/` mini-consumer resolves all 61 `@br-validators/core` export map entries via native Node `import`; dedicated smokes for `cnpj`, `ncm`, `cst`, `compare`; esbuild tree-shake regression; wired into `pnpm test:integration` and CI
 - **TypeDoc + VitePress API reference (33r)** — `typedoc.json` + `typedoc-plugin-markdown`; `pnpm docs:api` generates `apps/docs/api-reference/` from `@br-validators/core` subpath barrels; VitePress sidebar **API Reference**; CI `docs` job runs `docs:build`; narrative `LIBRARY-API.md` unchanged
 - **Security CVE + audit CI (33q)** — `SECURITY.md` CVE request SLA table, `pnpm audit` CI gate (`--prod` fails on high/critical; devDeps warn-only), npm publish integrity notes, false-positive override process
 - **Migration guide (33p)** — root [MIGRATION.md](MIGRATION.md): v1.x → v2.0 lookup + deprecated `getAll*` inventory with before/after examples; v0.x → v1.0 changelog index; maintainer update policy; linked from README and `docs/README.md`

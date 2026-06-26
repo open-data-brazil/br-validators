@@ -11,7 +11,7 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "pnpm --filter @br-validators/core build && pnpm -r --sequential typecheck && pnpm typecheck:scripts",
     "typecheck:scripts": "tsc -p scripts/tsconfig.json --noEmit",
-    "verify": "pnpm --filter @br-validators/core build && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:scripts && pnpm build",
+    "verify": "pnpm --filter @br-validators/core build && pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm test:scripts && pnpm test:integration && pnpm build",
     "fetch:data:ibge": "tsx scripts/fetch-ibge.ts",
     "fetch:data:bancos": "tsx scripts/fetch-bancos.ts",
     "fetch:data:aeroportos": "tsx scripts/fetch-aeroportos.ts",
@@ -48,6 +48,7 @@
     "data:refresh": "tsx scripts/data-refresh-bot.ts",
     "data:refresh:report": "tsx scripts/data-refresh-bot.ts --report-only",
     "test:scripts": "vitest run --config scripts/vitest.config.ts",
+    "test:integration": "pnpm --filter @br-validators/core build && pnpm --filter @br-validators/subpath-imports-e2e test",
     "docs:api": "pnpm --filter @br-validators/docs api",
     "docs:build": "pnpm docs:api && pnpm --filter @br-validators/docs build",
     "docs:dev": "pnpm docs:api && pnpm --filter @br-validators/docs dev"

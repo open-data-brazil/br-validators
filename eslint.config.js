@@ -13,6 +13,7 @@ export default tseslint.config(
       '**/.vitepress/dist/**',
       'apps/docs/api/**',
       'apps/docs/api-reference/**',
+      'tests/integration/subpath-imports/.tmp/**',
       'apps/playground/playwright-report/**',
       'apps/playground/test-results/**',
       'agent-harness/**',
@@ -57,6 +58,16 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         project: './scripts/tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+        projectService: false,
+      },
+    },
+  },
+  {
+    files: ['tests/integration/subpath-imports/**/*.{ts,mts}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tests/integration/subpath-imports/tsconfig.json',
         tsconfigRootDir: import.meta.dirname,
         projectService: false,
       },
