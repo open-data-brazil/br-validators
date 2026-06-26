@@ -34,6 +34,7 @@
 | [../SECURITY.md](../SECURITY.md) | Report vulnerabilities (private) |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | How to contribute |
 | [../CHANGELOG.md](../CHANGELOG.md) | Release history |
+| [API Reference (TypeDoc)](https://docs.br-validators.dev/api-reference/) | Auto-generated signatures — `pnpm docs:api` |
 
 ## Use cases
 

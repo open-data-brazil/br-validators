@@ -297,6 +297,7 @@ Every shipped type exists in **library + CLI + playground**. See [docs/DELIVERY-
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [MIGRATION.md](MIGRATION.md) | v1.x → v2.0 breaking-change guide (lookup + deprecated getters) |
 | [docs/VERSIONING.md](docs/VERSIONING.md) | SemVer policy and deprecation windows |
+| [docs.br-validators.dev/api-reference](https://docs.br-validators.dev/api-reference/) | Auto-generated TypeDoc signatures (`pnpm docs:api`) |
 
 ---
 

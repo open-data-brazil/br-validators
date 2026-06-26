@@ -12,6 +12,7 @@ export default tseslint.config(
       '**/.vitepress/cache/**',
       '**/.vitepress/dist/**',
       'apps/docs/api/**',
+      'apps/docs/api-reference/**',
       'apps/playground/playwright-report/**',
       'apps/playground/test-results/**',
       'agent-harness/**',

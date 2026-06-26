@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **TypeDoc + VitePress API reference (33r)** — `typedoc.json` + `typedoc-plugin-markdown`; `pnpm docs:api` generates `apps/docs/api-reference/` from `@br-validators/core` subpath barrels; VitePress sidebar **API Reference**; CI `docs` job runs `docs:build`; narrative `LIBRARY-API.md` unchanged
+- **Security CVE + audit CI (33q)** — `SECURITY.md` CVE request SLA table, `pnpm audit` CI gate (`--prod` fails on high/critical; devDeps warn-only), npm publish integrity notes, false-positive override process
 - **Migration guide (33p)** — root [MIGRATION.md](MIGRATION.md): v1.x → v2.0 lookup + deprecated `getAll*` inventory with before/after examples; v0.x → v1.0 changelog index; maintainer update policy; linked from README and `docs/README.md`
 - **ISS municipal partial embed (33o)** — `@br-validators/core/iss-municipal` with `getIssMunicipalPorIbge`, `getIssMunicipalPorUfMunicipio`, `searchIssMunicipal`, `getAllIssMunicipal`; 100 cities (27 capitals + top PIB); estimation-only `warning` on every result; CLI `iss-municipal lookup|resolve|search`; playground `/data/fiscal` module; `pnpm fetch:data:iss-municipal` (manual — not daily bot)
 - **SELIC meta SGS 432 (33n)** — `@br-validators/core/selic` with `getSelicMeta`, `getSelicMetaPorData`, `getSelicHistorico`; 90-day rolling embed; staleness API; CLI `selic [--date]`; playground `/data/finance`; `pnpm fetch:data:selic`; daily refresh bot
