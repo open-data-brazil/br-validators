@@ -1,7 +1,7 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-06-26T13:02:04.329Z
+> Last bot run: 2026-06-26T13:38:56.170Z
 
 ## Summary
 

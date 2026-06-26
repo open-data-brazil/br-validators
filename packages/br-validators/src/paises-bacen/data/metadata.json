@@ -8,7 +8,7 @@
     "https://www.bcb.gov.br/ftp/paises.txt"
   ],
   "capturadoEm": "2026-06-26",
-  "atualizadoEm": "2026-06-26T11:18:52.926Z",
+  "atualizadoEm": "2026-06-26T13:08:13.955Z",
   "contagens": {
     "paises": 253
   },
@@ -21,7 +21,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-06-26T11:18:52.926Z"
+    "ultimaExecucao": "2026-06-26T13:08:13.955Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#paises-bacen"
 }

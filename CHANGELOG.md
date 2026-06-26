@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.3-data.0001] - 2026-06-26
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.8.3 data #0001**: 0 dataset(s) changed (+0 −0 ~0).
+
+
 ### Changed
 
 - **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.NNNN` (e.g. `1.8.3-data.0001`) instead of incrementing human PATCH (`1.8.4`)

@@ -9,7 +9,7 @@
     "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/MG.json.gz"
   ],
   "attempts": 5,
-  "checkedAt": "2026-06-26T12:52:55.061Z",
+  "checkedAt": "2026-06-26T13:29:41.702Z",
   "retainedEmbeddedDataFrom": "2026-06-26",
   "message": "IBPT golden NCM×UF subset fetch succeeded."
 }

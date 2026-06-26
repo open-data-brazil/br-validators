@@ -7,7 +7,7 @@
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-06-14_2026-06-20.xlsx"
   ],
   "capturadoEm": "2026-06-26",
-  "atualizadoEm": "2026-06-26T11:31:11.665Z",
+  "atualizadoEm": "2026-06-26T13:38:49.394Z",
   "contagens": {
     "semanas": 1,
     "precosMedios": 2357,
@@ -19,12 +19,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-06-24"
+    "comparadoCom": "2026-06-26"
   },
   "verificacao": {
     "agendamento": "semanal",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-06-26T11:31:11.665Z"
+    "ultimaExecucao": "2026-06-26T13:38:49.394Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#anp-combustiveis"
 }
