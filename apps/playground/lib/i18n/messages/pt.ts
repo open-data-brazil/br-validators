@@ -67,6 +67,15 @@ export const pt = {
       codeField: 'Código',
       descriptionField: 'Descrição',
       openExplorer: 'Abrir explorador dedicado',
+      exportDownload: 'Baixar TXT',
+      exportCopy: 'Copiar TXT',
+      exportCopied: 'Copiado!',
+      exportRowCount: '{count} linhas',
+      exportSelectDataset: 'Incluir na exportação múltipla',
+      exportAllRows: 'Exportar todas as linhas',
+      exportAllLoading: 'Carregando…',
+      exportConfirmLarge:
+        'Esta exportação tem {count} linhas (acima de 10.000). Continuar?',
     },
     ibge: {
       title: 'Localidades IBGE',

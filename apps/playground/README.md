@@ -20,9 +20,11 @@ Typed dataset registry under `lib/reference-data/` maps every `getDataCatalog()`
 - `dataset-adapter.ts` — `DatasetAdapter`, `SearchOptions`, `normalizeSearchQuery`, `clientFilterRows`, `rowToKeyValueBlock`
 - `dataset-registry.ts` — 34 adapters; `getDatasetAdapter(id)`, `getAllDatasetAdapters()`
 - `dataset-search.ts` — `searchDatasets()` cross-catalog orchestrator (used by `/data/explorer`)
+- `txt-export.ts` — `formatTxtSection()`, `formatTxtBundle()`, `downloadTextFile()` for UTF-8 `.txt` exports
+- `ExportToolbar` molecule — download / copy actions on the data explorer
 - `dataset-registry.gaps.md` — catalog IDs using alternative loaders (no blocking gaps)
 
-Used by the `/data/explorer` unified search hub (Phase 36b). TXT export follows in Phase 36c.
+Used by the `/data/explorer` unified search hub (Phase 36b) with TXT export (Phase 36c).
 
 ## Deploy (Vercel)
 

@@ -409,7 +409,7 @@ Freshness table (auto-updated daily; ANP weekly): [docs/DATA-FRESHNESS.md](https
 
 ## Current release
 
-**v1.9.0** — Phase 33 maturity: `LookupResult` API, fiscal validators, IRPF / INSS / SELIC / ISS municipal / NF-e cUF datasets, platform CLI (`compare` / `batch` / `diff` / `mask`), RG 27/27 UFs, `MIGRATION.md`, TypeDoc API reference. [CHANGELOG](https://github.com/open-data-brazil/br-validators/blob/main/CHANGELOG.md#190---2026-06-26)
+**v1.10.0** — Phase 35 (EXP-35): CSOSN, eSocial rubricas, PTAX 90d + `getPtaxHistorico`, ISS MUNIC/IBGE cascade, batch CSV, PIX sanitize, bundle size docs, ISS `fonte`. [CHANGELOG](https://github.com/open-data-brazil/br-validators/blob/main/CHANGELOG.md#1100---2026-06-27)
 
 ---
 
@@ -425,7 +425,7 @@ import { parseNfeChave } from '@br-validators/core/nfe-chave';
 
 ## Bundle size (gzipped)
 
-Measured `@br-validators/core@1.9.0` with `pnpm measure:bundle-sizes` (esbuild ESM bundle per subpath). **Reference-data subpaths include embedded JSON**; some validators (e.g. `cep`, `sanitize`) also bundle shared core dependencies when imported alone.
+Measured `@br-validators/core@1.10.0` with `pnpm measure:bundle-sizes` (esbuild ESM bundle per subpath). **Reference-data subpaths include embedded JSON**; some validators (e.g. `cep`, `sanitize`) also bundle shared core dependencies when imported alone.
 
 | Subpath | Raw (esbuild) | Gzip | Notes |
 |---------|---------------|------|-------|

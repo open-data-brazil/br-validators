@@ -67,6 +67,15 @@ export const en = {
       codeField: 'Code',
       descriptionField: 'Description',
       openExplorer: 'Open dedicated explorer',
+      exportDownload: 'Download TXT',
+      exportCopy: 'Copy TXT',
+      exportCopied: 'Copied!',
+      exportRowCount: '{count} rows',
+      exportSelectDataset: 'Include in multi-export',
+      exportAllRows: 'Export all rows',
+      exportAllLoading: 'Loading…',
+      exportConfirmLarge:
+        'This export has {count} rows (over 10,000). Continue?',
     },
     ibge: {
       title: 'IBGE localities',

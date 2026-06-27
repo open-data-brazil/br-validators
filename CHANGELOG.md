@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [1.10.0] - 2026-06-27
+
 ### Added
 
 - **Batch CSV column extraction (EXP-35-C)** — `parseBatchCsv()` in `@br-validators/core`; CLI `batch <type> --file data.csv --col cpf` with `--delimiter` and `--skip-header`
