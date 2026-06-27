@@ -60,6 +60,7 @@ export const REFERENCE_DATA_ROUTES = [
   { slug: 'data/fiscal', label: 'Fiscal', description: 'Natureza jurídica, NBS, CEST, CNAE, CFOP, NCM, CBO', group: 'reference-data' },
   { slug: 'data/trade', label: 'Trade', description: 'Moedas, países Bacen, Incoterms', group: 'reference-data' },
   { slug: 'data/logistics', label: 'Logistics', description: 'Portos ANTAQ, aeroportos ANAC', group: 'reference-data' },
+  { slug: 'data/explorer', label: 'Data explorer', description: 'Cross-dataset search across embedded catalogs', group: 'reference-data' },
   { slug: 'data/catalog', label: 'Data catalog', description: 'Embedded dataset metadata', group: 'reference-data' },
 ] as const satisfies readonly ReferenceDataRoute[];
 

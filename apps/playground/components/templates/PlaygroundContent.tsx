@@ -17,6 +17,7 @@ import { DataFinanceExplorer } from '@/components/organisms/DataFinanceExplorer'
 import { DataPayrollExplorer } from '@/components/organisms/DataPayrollExplorer';
 import { DataCalendarExplorer } from '@/components/organisms/DataCalendarExplorer';
 import { DataCatalogTable } from '@/components/organisms/DataCatalogTable';
+import { DataExplorerHub } from '@/components/organisms/DataExplorerHub';
 import { DataGovBrGroupExplorer } from '@/components/organisms/DataGovBrGroupExplorer';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import type { DocumentSlug, PlatformSlug, ReferenceDataSlug } from '@/lib/nav';
@@ -67,6 +68,8 @@ function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
       return <DataGovBrGroupExplorer groupId="trade" />;
     case 'data/logistics':
       return <DataGovBrGroupExplorer groupId="logistics" />;
+    case 'data/explorer':
+      return <DataExplorerHub />;
     case 'data/catalog':
       return <DataCatalogTable />;
   }
