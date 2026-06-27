@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo } from 'react';
 import { getDataCatalog } from '@br-validators/core/data-catalog';
 import { useI18n } from '@/components/providers/I18nProvider';
@@ -22,11 +23,12 @@ export function DataCatalogTable() {
       </header>
 
       <div className={styles.officialSourcesPage}>
-        <div className={styles.officialSourcesTableHeader}>
+        <div className={styles.referenceDataCatalogHeader}>
           <span>{copy.idColumn}</span>
           <span>{copy.nameColumn}</span>
           <span>{copy.capturedColumn}</span>
           <span>{copy.sourceColumn}</span>
+          <span>{copy.explorerColumn}</span>
         </div>
 
         {rows.map((row) => (
@@ -45,6 +47,14 @@ export function DataCatalogTable() {
               >
                 {copy.docsLink}
               </a>
+            </span>
+            <span>
+              <Link
+                className={styles.officialSourcesPageLink}
+                href={`/data/explorer?dataset=${row.id}`}
+              >
+                {copy.exploreExportLink}
+              </Link>
             </span>
           </article>
         ))}

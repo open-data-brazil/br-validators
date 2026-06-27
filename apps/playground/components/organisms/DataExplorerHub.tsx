@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Label } from '@/components/atoms/Label';
 import { Select } from '@/components/atoms/Select';
 import { ExportToolbar } from '@/components/molecules/ExportToolbar';
+import { ExportProgressPanel } from '@/components/molecules/ExportProgressPanel';
 import { ResultRow } from '@/components/molecules/ResultRow';
 import { ResultSection } from '@/components/molecules/ResultSection';
 import { useI18n } from '@/components/providers/I18nProvider';
@@ -19,12 +21,18 @@ import {
   type DatasetSearchResult,
 } from '@/lib/reference-data/dataset-search';
 import { getAllDatasetAdapters, getDatasetAdapter } from '@/lib/reference-data/dataset-registry';
+import type { FullExportContext } from '@/lib/reference-data/dataset-export-rules';
+import { ExportCancelledError } from '@/lib/reference-data/async-export';
+import { runFullDatasetExport } from '@/lib/reference-data/run-full-export';
+import { PREVIEW_ROW_CAP } from '@/lib/reference-data/export-limits';
 import {
   buildExportFilename,
   downloadTextFile,
+  formatExportByteSize,
   formatTxtBundle,
-  formatTxtSection,
+  getUtf8ByteLength,
   shouldConfirmLargeExport,
+  shouldShowExportSizeHint,
   type TxtSection,
 } from '@/lib/reference-data/txt-export';
 import styles from './organisms.module.css';
@@ -32,7 +40,11 @@ import styles from './organisms.module.css';
 const SEARCH_DEBOUNCE_MS = 300;
 
 function formatResultCount(template: string, count: number): string {
-  return template.replace('{count}', String(count));
+  return template.replace('{count}', String(count)).replace('{cap}', String(PREVIEW_ROW_CAP));
+}
+
+function formatExportSize(template: string, byteLength: number): string {
+  return template.replace('{size}', formatExportByteSize(byteLength));
 }
 
 function toggleSelection(previous: ReadonlySet<string>, datasetId: string, checked: boolean): Set<string> {
@@ -45,7 +57,12 @@ function toggleSelection(previous: ReadonlySet<string>, datasetId: string, check
   return next;
 }
 
+const DATASETS_REQUIRING_UF = new Set(['ibge', 'iss-municipal']);
+const DATASETS_REQUIRING_YEAR = new Set(['feriados']);
+const DATASETS_REQUIRING_PTAX = new Set(['ptax']);
+
 export function DataExplorerHub() {
+  const searchParams = useSearchParams();
   const { messages } = useI18n();
   const copy = messages.referenceData.explorer;
   const { copied, copy: copyToClipboard } = useClipboard();
@@ -61,6 +78,27 @@ export function DataExplorerHub() {
   const [loading, setLoading] = useState(false);
   const [selectedDatasetIds, setSelectedDatasetIds] = useState<ReadonlySet<string>>(() => new Set());
   const [exportingDatasetId, setExportingDatasetId] = useState<string | null>(null);
+  const [exportContextByDataset, setExportContextByDataset] = useState<Record<string, FullExportContext>>({});
+  const [exportProgress, setExportProgress] = useState<{ processedRows: number; totalRows: number } | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
+  const exportAbortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    const datasetParam = searchParams.get('dataset');
+    if (datasetParam !== null && getDatasetAdapter(datasetParam) !== undefined) {
+      setDatasetFilter(datasetParam);
+    }
+  }, [searchParams]);
+
+  const updateExportContext = useCallback(
+    (datasetId: string, patch: Partial<FullExportContext>) => {
+      setExportContextByDataset((previous) => ({
+        ...previous,
+        [datasetId]: { ...previous[datasetId], ...patch },
+      }));
+    },
+    [],
+  );
 
   useEffect(() => {
     const handle = setTimeout(() => {
@@ -131,6 +169,19 @@ export function DataExplorerHub() {
     [debouncedQuery],
   );
 
+  const searchExportByteLength = useMemo(() => {
+    const target = selectedResults.length > 0 ? selectedResults : results;
+    if (target.length === 0) {
+      return 0;
+    }
+    const sections = buildSearchSections(target);
+    return getUtf8ByteLength(formatTxtBundle(sections));
+  }, [buildSearchSections, results, selectedResults]);
+
+  const searchExportSizeHint = shouldShowExportSizeHint(searchExportByteLength)
+    ? formatExportSize(copy.exportSizeHint, searchExportByteLength)
+    : undefined;
+
   const confirmLargeExport = useCallback(
     (rowCount: number): boolean => {
       if (!shouldConfirmLargeExport(rowCount)) {
@@ -184,20 +235,40 @@ export function DataExplorerHub() {
         return;
       }
 
+      setExportError(null);
       setExportingDatasetId(datasetId);
+      setExportProgress({ processedRows: 0, totalRows: 0 });
+      const controller = new AbortController();
+      exportAbortRef.current = controller;
+
       try {
-        const rows = await adapter.loadAll();
-        if (!confirmLargeExport(rows.length)) {
-          return;
+        const result = await runFullDatasetExport({
+          adapter,
+          context: exportContextByDataset[datasetId] ?? {},
+          confirm: (message) => window.confirm(message),
+          onProgress: setExportProgress,
+          signal: controller.signal,
+        });
+        if (!result.ok && result.errorMessage !== undefined) {
+          setExportError(result.errorMessage);
         }
-        const content = formatTxtSection(adapter, rows, { mode: 'single-dataset' });
-        downloadTextFile(buildExportFilename(datasetId, 'single-dataset'), content);
+      } catch (error) {
+        if (!(error instanceof ExportCancelledError)) {
+          const message = error instanceof Error ? error.message : 'Export failed';
+          setExportError(message);
+        }
       } finally {
+        exportAbortRef.current = null;
         setExportingDatasetId(null);
+        setExportProgress(null);
       }
     },
-    [confirmLargeExport],
+    [exportContextByDataset],
   );
+
+  const handleCancelExport = useCallback(() => {
+    exportAbortRef.current?.abort();
+  }, []);
 
   return (
     <main className={styles.panel}>
@@ -261,10 +332,20 @@ export function DataExplorerHub() {
       ) : null}
 
       {!loading && isDatasetSearchQueryEligible(debouncedQuery) ? (
-        <p className={styles.description}>
-          {formatResultCount(copy.resultCount, totalRows)}
-        </p>
+        <p className={styles.description}>{formatResultCount(copy.resultCount, totalRows)}</p>
       ) : null}
+
+      {exportProgress !== null ? (
+        <ExportProgressPanel
+          label={copy.exportProgressLabel}
+          processedRows={exportProgress.processedRows}
+          totalRows={exportProgress.totalRows}
+          cancelLabel={copy.exportCancel}
+          onCancel={handleCancelExport}
+        />
+      ) : null}
+
+      {exportError !== null ? <p className={styles.description}>{exportError}</p> : null}
 
       {!loading && isDatasetSearchQueryEligible(debouncedQuery) && results.length > 0 ? (
         <ExportToolbar
@@ -274,6 +355,7 @@ export function DataExplorerHub() {
           copyLabel={copy.exportCopy}
           copiedLabel={copy.exportCopied}
           rowCountLabel={copy.exportRowCount}
+          sizeHintLabel={searchExportSizeHint}
           onDownload={handleDownloadSearch}
           onCopy={handleCopySearch}
         />
@@ -291,6 +373,7 @@ export function DataExplorerHub() {
         const fieldKeys = adapter?.fieldKeys ?? [];
         const isSelected = selectedDatasetIds.has(group.datasetId);
         const isExporting = exportingDatasetId === group.datasetId;
+        const exportContext = exportContextByDataset[group.datasetId] ?? {};
 
         const title = (
           <span className={styles.explorerSectionTitle}>
@@ -307,6 +390,69 @@ export function DataExplorerHub() {
         return (
           <ResultSection key={group.datasetId} title={title}>
             <div className={styles.explorerSectionActions}>
+              {DATASETS_REQUIRING_UF.has(group.datasetId) ? (
+                <div>
+                  <Label htmlFor={`export-uf-${group.datasetId}`}>{copy.exportUfLabel}</Label>
+                  <Input
+                    id={`export-uf-${group.datasetId}`}
+                    value={exportContext.uf ?? ''}
+                    placeholder="SP"
+                    maxLength={2}
+                    onChange={(event) => {
+                      updateExportContext(group.datasetId, { uf: event.target.value.toUpperCase() });
+                    }}
+                  />
+                </div>
+              ) : null}
+              {DATASETS_REQUIRING_YEAR.has(group.datasetId) ? (
+                <div>
+                  <Label htmlFor={`export-year-${group.datasetId}`}>{copy.exportYearLabel}</Label>
+                  <Input
+                    id={`export-year-${group.datasetId}`}
+                    type="number"
+                    value={exportContext.year ?? new Date().getFullYear()}
+                    onChange={(event) => {
+                      updateExportContext(group.datasetId, { year: Number(event.target.value) });
+                    }}
+                  />
+                </div>
+              ) : null}
+              {DATASETS_REQUIRING_PTAX.has(group.datasetId) ? (
+                <>
+                  <div>
+                    <Label htmlFor={`export-moeda-${group.datasetId}`}>{copy.exportMoedaLabel}</Label>
+                    <Input
+                      id={`export-moeda-${group.datasetId}`}
+                      value={exportContext.moeda ?? 'USD'}
+                      onChange={(event) => {
+                        updateExportContext(group.datasetId, { moeda: event.target.value.toUpperCase() });
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor={`export-desde-${group.datasetId}`}>{copy.exportDesdeLabel}</Label>
+                    <Input
+                      id={`export-desde-${group.datasetId}`}
+                      value={exportContext.desde ?? ''}
+                      placeholder="2026-01-01"
+                      onChange={(event) => {
+                        updateExportContext(group.datasetId, { desde: event.target.value });
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor={`export-ate-${group.datasetId}`}>{copy.exportAteLabel}</Label>
+                    <Input
+                      id={`export-ate-${group.datasetId}`}
+                      value={exportContext.ate ?? ''}
+                      placeholder="2026-06-30"
+                      onChange={(event) => {
+                        updateExportContext(group.datasetId, { ate: event.target.value });
+                      }}
+                    />
+                  </div>
+                </>
+              ) : null}
               <label className={styles.description}>
                 <input
                   type="checkbox"

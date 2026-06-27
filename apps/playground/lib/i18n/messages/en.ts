@@ -62,7 +62,7 @@ export const en = {
       allDatasets: 'All datasets',
       queryTooShort: 'Enter at least 2 characters, or a numeric code.',
       emptyState: 'No matches in the selected scope.',
-      resultCount: '{count} rows shown (preview cap per dataset)',
+      resultCount: '{count} rows shown (preview cap {cap} per dataset)',
       datasetError: 'Could not search this dataset: {message}',
       codeField: 'Code',
       descriptionField: 'Description',
@@ -76,6 +76,16 @@ export const en = {
       exportAllLoading: 'Loading…',
       exportConfirmLarge:
         'This export has {count} rows (over 10,000). Continue?',
+      exportSizeHint: 'Approx. {size}',
+      exportConfirmLargeSize:
+        'This export is about {size} (over 1 MB). Continue?',
+      exportProgressLabel: 'Exporting rows',
+      exportCancel: 'Cancel export',
+      exportUfLabel: 'UF for full export',
+      exportYearLabel: 'Year for full export',
+      exportMoedaLabel: 'Currency (PTAX)',
+      exportDesdeLabel: 'From date (PTAX)',
+      exportAteLabel: 'To date (PTAX)',
     },
     ibge: {
       title: 'IBGE localities',
@@ -130,7 +140,9 @@ export const en = {
       nameColumn: 'Name',
       capturedColumn: 'Captured',
       sourceColumn: 'Documentation',
+      explorerColumn: 'Explorer',
       docsLink: 'Docs',
+      exploreExportLink: 'Explore & export',
       freshnessLink: 'DATA-FRESHNESS.md on GitHub',
     },
     fiscal: {

@@ -62,7 +62,7 @@ export const pt = {
       allDatasets: 'Todos os datasets',
       queryTooShort: 'Digite ao menos 2 caracteres ou um código numérico.',
       emptyState: 'Nenhum resultado no escopo selecionado.',
-      resultCount: '{count} linhas exibidas (prévia limitada por dataset)',
+      resultCount: '{count} linhas exibidas (prévia limitada a {cap} por dataset)',
       datasetError: 'Não foi possível buscar neste dataset: {message}',
       codeField: 'Código',
       descriptionField: 'Descrição',
@@ -76,6 +76,16 @@ export const pt = {
       exportAllLoading: 'Carregando…',
       exportConfirmLarge:
         'Esta exportação tem {count} linhas (acima de 10.000). Continuar?',
+      exportSizeHint: 'Aprox. {size}',
+      exportConfirmLargeSize:
+        'Esta exportação tem cerca de {size} (acima de 1 MB). Continuar?',
+      exportProgressLabel: 'Exportando linhas',
+      exportCancel: 'Cancelar exportação',
+      exportUfLabel: 'UF para exportação completa',
+      exportYearLabel: 'Ano para exportação completa',
+      exportMoedaLabel: 'Moeda (PTAX)',
+      exportDesdeLabel: 'Data inicial (PTAX)',
+      exportAteLabel: 'Data final (PTAX)',
     },
     ibge: {
       title: 'Localidades IBGE',
@@ -130,7 +140,9 @@ export const pt = {
       nameColumn: 'Nome',
       capturedColumn: 'Capturado',
       sourceColumn: 'Documentação',
+      explorerColumn: 'Explorador',
       docsLink: 'Docs',
+      exploreExportLink: 'Explorar e exportar',
       freshnessLink: 'DATA-FRESHNESS.md no GitHub',
     },
     fiscal: {

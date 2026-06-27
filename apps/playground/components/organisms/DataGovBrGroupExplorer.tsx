@@ -5,11 +5,18 @@ import { Label } from '@/components/atoms/Label';
 import { Badge } from '@/components/atoms/Badge';
 import { Input } from '@/components/atoms/Input';
 import { Select } from '@/components/atoms/Select';
+import { ExportToolbar } from '@/components/molecules/ExportToolbar';
 import { OfficialSourceLink } from '@/components/molecules/OfficialSourceLink';
 import { ResultRow } from '@/components/molecules/ResultRow';
 import { ResultSection } from '@/components/molecules/ResultSection';
 import { useI18n } from '@/components/providers/I18nProvider';
+import { useClipboard } from '@/hooks/useClipboard';
 import type { Messages } from '@/lib/i18n/types';
+import type { NormalizedRow } from '@/lib/reference-data/dataset-adapter';
+import { getDatasetAdapter } from '@/lib/reference-data/dataset-registry';
+import { resolveGovBrModuleDatasetId } from '@/lib/reference-data/govbr-module-dataset';
+import { exportNormalizedRows } from '@/lib/reference-data/run-full-export';
+import { formatTxtSection } from '@/lib/reference-data/txt-export';
 import {
   getIssMunicipalFieldValue,
   issMunicipalFonteBadgeVariant,
@@ -117,6 +124,8 @@ function getGroupModuleCopy(
 export function DataGovBrGroupExplorer({ groupId }: { groupId: GovBrGroupId }) {
   const { messages } = useI18n();
   const copy = messages.referenceData[groupId];
+  const exportCopy = messages.referenceData.explorer;
+  const { copied, copy: copyToClipboard } = useClipboard();
   const fiscalCopy = groupId === 'fiscal' ? messages.referenceData.fiscal : null;
   const issMunicipalFonteLabels = {
     oficial: fiscalCopy?.issMunicipalFonteOficial ?? 'oficial',
@@ -174,6 +183,46 @@ export function DataGovBrGroupExplorer({ groupId }: { groupId: GovBrGroupId }) {
     }
     return activeModule.validate?.(lookupInput, { cstTax });
   }, [activeModule, lookupInput, supportsValidate, cstTax]);
+
+  const fiscalDatasetAdapter = useMemo(() => {
+    if (groupId !== 'fiscal') {
+      return undefined;
+    }
+    const datasetId = resolveGovBrModuleDatasetId(activeModule.id);
+    return datasetId === undefined ? undefined : getDatasetAdapter(datasetId);
+  }, [activeModule.id, groupId]);
+
+  const fiscalExportRows = useMemo((): readonly NormalizedRow[] => {
+    if (groupId !== 'fiscal' || mode !== 'lookup') {
+      return [];
+    }
+    if (isIssMunicipalModule && issMunicipalExplorer !== null && issMunicipalExplorer.rows.length > 0) {
+      return issMunicipalExplorer.rows.map((row) => ({
+        codigoIbge: row.codigoIbge,
+        nome: row.nome,
+        uf: row.uf,
+        aliquotaMin: row.aliquotaMin,
+        aliquotaMax: row.aliquotaMax,
+        fonte: row.fonte,
+        warning: row.warning,
+      }));
+    }
+    if (lookupResult !== null) {
+      return [lookupResult];
+    }
+    return [];
+  }, [groupId, isIssMunicipalModule, issMunicipalExplorer, lookupResult, mode]);
+
+  const fiscalExportTxt = useMemo(() => {
+    if (fiscalDatasetAdapter === undefined || fiscalExportRows.length === 0) {
+      return '';
+    }
+    return formatTxtSection(fiscalDatasetAdapter, fiscalExportRows, {
+      mode: 'search-results',
+      query: lookupInput.trim().length > 0 ? lookupInput : undefined,
+      uf: issMunicipalUf.length > 0 ? issMunicipalUf : undefined,
+    });
+  }, [fiscalDatasetAdapter, fiscalExportRows, issMunicipalUf, lookupInput]);
 
   function selectModule(module: GovBrModuleDefinition) {
     setActiveModuleId(module.id);
@@ -394,6 +443,28 @@ export function DataGovBrGroupExplorer({ groupId }: { groupId: GovBrGroupId }) {
       lookupInput.trim() &&
       (!isIssMunicipalModule || issMunicipalExplorer?.mode === 'single' || issMunicipalExplorer?.mode === 'search') ? (
         <p className={styles.description}>{copy.notFound}</p>
+      ) : null}
+
+      {groupId === 'fiscal' && fiscalDatasetAdapter !== undefined && fiscalExportRows.length > 0 ? (
+        <ExportToolbar
+          rowCount={fiscalExportRows.length}
+          copied={copied}
+          downloadLabel={exportCopy.exportDownload}
+          copyLabel={exportCopy.exportCopy}
+          copiedLabel={exportCopy.exportCopied}
+          rowCountLabel={exportCopy.exportRowCount}
+          onDownload={() => {
+            exportNormalizedRows(fiscalDatasetAdapter, fiscalExportRows, {
+              query: lookupInput.trim().length > 0 ? lookupInput : undefined,
+              uf: issMunicipalUf.length > 0 ? issMunicipalUf : undefined,
+            });
+          }}
+          onCopy={() => {
+            if (fiscalExportTxt.length > 0) {
+              void copyToClipboard(fiscalExportTxt);
+            }
+          }}
+        />
       ) : null}
     </main>
   );

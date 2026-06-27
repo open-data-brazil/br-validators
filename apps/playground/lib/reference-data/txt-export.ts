@@ -5,6 +5,9 @@ import { resolveCatalogDocUrl } from './catalog-docs';
 export const TXT_SECTION_SEPARATOR = '='.repeat(80);
 export const TXT_ROW_SEPARATOR = '-'.repeat(80);
 export const TXT_EXPORT_ROW_COUNT_CONFIRM_THRESHOLD = 10_000;
+export const TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES = 1_048_576;
+
+const textEncoder = new TextEncoder();
 
 export type TxtExportMode = 'search-results' | 'single-dataset' | 'multi-dataset';
 
@@ -13,6 +16,11 @@ export interface TxtSectionMeta {
   sourceUrl?: string;
   query?: string;
   mode: TxtExportMode;
+  uf?: string;
+  year?: number;
+  moeda?: string;
+  desde?: string;
+  ate?: string;
 }
 
 export interface TxtSection {
@@ -62,10 +70,10 @@ export function formatTxtRowBlock(row: NormalizedRow, fieldKeys: readonly string
     .join('\n');
 }
 
-/** Header + body for one dataset section. Empty rows still emit header with `rows: 0`. */
-export function formatTxtSection(
+/** Machine-skippable `#` header lines for one dataset section. */
+export function formatTxtHeader(
   adapter: DatasetAdapter,
-  rows: readonly NormalizedRow[],
+  rowCount: number,
   meta: TxtSectionMeta,
 ): string {
   const exportedAt = meta.exportedAt ?? new Date().toISOString();
@@ -76,18 +84,42 @@ export function formatTxtSection(
     `# nome: ${adapter.nome}`,
     `# capturadoEm: ${adapter.capturadoEm}`,
     `# exportedAt: ${exportedAt}`,
-    `# rows: ${rows.length}`,
+    `# rows: ${rowCount}`,
     `# mode: ${meta.mode}`,
   ];
 
   if (meta.query !== undefined && meta.query.length > 0) {
     headerLines.push(`# query: ${meta.query}`);
   }
+  if (meta.uf !== undefined && meta.uf.length > 0) {
+    headerLines.push(`# uf: ${meta.uf}`);
+  }
+  if (meta.year !== undefined) {
+    headerLines.push(`# year: ${String(meta.year)}`);
+  }
+  if (meta.moeda !== undefined && meta.moeda.length > 0) {
+    headerLines.push(`# moeda: ${meta.moeda}`);
+  }
+  if (meta.desde !== undefined && meta.desde.length > 0) {
+    headerLines.push(`# desde: ${meta.desde}`);
+  }
+  if (meta.ate !== undefined && meta.ate.length > 0) {
+    headerLines.push(`# ate: ${meta.ate}`);
+  }
   if (sourceUrl.length > 0) {
     headerLines.push(`# source: ${sourceUrl}`);
   }
 
-  const header = [...headerLines, TXT_SECTION_SEPARATOR, ''].join('\n');
+  return [...headerLines, TXT_SECTION_SEPARATOR, ''].join('\n');
+}
+
+/** Header + body for one dataset section. Empty rows still emit header with `rows: 0`. */
+export function formatTxtSection(
+  adapter: DatasetAdapter,
+  rows: readonly NormalizedRow[],
+  meta: TxtSectionMeta,
+): string {
+  const header = formatTxtHeader(adapter, rows.length, meta);
 
   if (rows.length === 0) {
     return header;
@@ -130,4 +162,24 @@ export function downloadTextFile(filename: string, content: string): void {
 
 export function shouldConfirmLargeExport(rowCount: number): boolean {
   return rowCount > TXT_EXPORT_ROW_COUNT_CONFIRM_THRESHOLD;
+}
+
+/** UTF-8 byte length of export content (matches Blob download size). */
+export function getUtf8ByteLength(content: string): number {
+  return textEncoder.encode(content).length;
+}
+
+export function shouldShowExportSizeHint(byteLength: number): boolean {
+  return byteLength > TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES;
+}
+
+/** Human-readable size for export hints (1 decimal MB, rounded KB). */
+export function formatExportByteSize(bytes: number): string {
+  if (bytes >= TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES) {
+    return `${(bytes / TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES).toFixed(1)} MB`;
+  }
+  if (bytes >= 1024) {
+    return `${String(Math.round(bytes / 1024))} KB`;
+  }
+  return `${String(bytes)} B`;
 }

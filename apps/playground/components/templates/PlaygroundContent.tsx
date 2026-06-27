@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, Suspense } from 'react';
 import { DocumentWorkspace } from '@/components/organisms/DocumentWorkspace';
 import { HomePage } from '@/components/organisms/HomePage';
 import { PixWorkspace } from '@/components/organisms/PixWorkspace';
@@ -69,7 +69,11 @@ function ReferenceDataPane({ slug }: { slug: ReferenceDataSlug }) {
     case 'data/logistics':
       return <DataGovBrGroupExplorer groupId="logistics" />;
     case 'data/explorer':
-      return <DataExplorerHub />;
+      return (
+        <Suspense fallback={null}>
+          <DataExplorerHub />
+        </Suspense>
+      );
     case 'data/catalog':
       return <DataCatalogTable />;
   }

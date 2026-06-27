@@ -4,9 +4,15 @@ import { NCM_GOLDEN_SOJA_SEMENTES } from '@br-validators/core/ncm';
 import {
   isDatasetSearchQueryEligible,
   searchDatasets,
+  DATASET_SEARCH_DEFAULT_LIMIT,
 } from '../lib/reference-data/dataset-search';
+import { PREVIEW_ROW_CAP } from '../lib/reference-data/export-limits';
 
 describe('isDatasetSearchQueryEligible', () => {
+  it('uses PREVIEW_ROW_CAP as default search limit', () => {
+    expect(DATASET_SEARCH_DEFAULT_LIMIT).toBe(PREVIEW_ROW_CAP);
+  });
+
   it('allows numeric codes with fewer than 2 chars', () => {
     expect(isDatasetSearchQueryEligible('1')).toBe(true);
   });

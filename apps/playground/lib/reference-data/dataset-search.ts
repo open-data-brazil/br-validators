@@ -4,8 +4,9 @@ import {
   type NormalizedRow,
 } from './dataset-adapter';
 import { getAllDatasetAdapters, getDatasetAdapter } from './dataset-registry';
+import { PREVIEW_ROW_CAP } from './export-limits';
 
-export const DATASET_SEARCH_DEFAULT_LIMIT = 25;
+export const DATASET_SEARCH_DEFAULT_LIMIT = PREVIEW_ROW_CAP;
 export const DATASET_SEARCH_MIN_CHARS = 2;
 
 export interface DatasetSearchOptions {

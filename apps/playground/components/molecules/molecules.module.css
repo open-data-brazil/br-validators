@@ -92,6 +92,45 @@
   background: var(--bg-subtle);
 }
 
+.exportToolbarMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.exportSizeHint {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.exportProgressPanel {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.exportProgressLabel {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.exportProgressTrack {
+  height: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--border);
+  overflow: hidden;
+}
+
+.exportProgressFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.15s ease;
+}
+
 .exportToolbarActions {
   display: flex;
   flex-wrap: wrap;

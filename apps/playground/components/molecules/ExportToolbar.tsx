@@ -12,6 +12,7 @@ export interface ExportToolbarProps {
   copyLabel: string;
   copiedLabel: string;
   rowCountLabel: string;
+  sizeHintLabel?: string;
   onDownload: () => void;
   onCopy: () => void;
 }
@@ -28,6 +29,7 @@ export function ExportToolbar({
   copyLabel,
   copiedLabel,
   rowCountLabel,
+  sizeHintLabel,
   onDownload,
   onCopy,
 }: ExportToolbarProps) {
@@ -35,7 +37,12 @@ export function ExportToolbar({
 
   return (
     <div className={styles.exportToolbar}>
-      <Badge variant="neutral">{formatRowCount(rowCountLabel, rowCount)}</Badge>
+      <div className={styles.exportToolbarMeta}>
+        <Badge variant="neutral">{formatRowCount(rowCountLabel, rowCount)}</Badge>
+        {sizeHintLabel !== undefined && sizeHintLabel.length > 0 ? (
+          <span className={styles.exportSizeHint}>{sizeHintLabel}</span>
+        ) : null}
+      </div>
       <div className={styles.exportToolbarActions}>
         <Button type="button" disabled={exportDisabled} onClick={onDownload}>
           {downloadLabel}

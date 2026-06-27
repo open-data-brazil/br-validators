@@ -285,18 +285,20 @@
 
 @media (min-width: 768px) {
   .referenceDataCatalogRow {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
     align-items: center;
   }
 
+  .referenceDataCatalogHeader,
   .officialSourcesTableHeader + .referenceDataCatalogRow,
   .referenceDataCatalogRow {
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   }
 
+  .referenceDataCatalogHeader,
   .officialSourcesTableHeader {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
     gap: var(--space-2);
     font-size: var(--text-xs);
     font-weight: 700;

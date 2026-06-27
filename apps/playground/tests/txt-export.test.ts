@@ -7,6 +7,11 @@ import {
   formatTxtBundle,
   formatTxtRowBlock,
   formatTxtSection,
+  formatTxtHeader,
+  formatExportByteSize,
+  getUtf8ByteLength,
+  shouldShowExportSizeHint,
+  TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES,
 } from '../lib/reference-data/txt-export';
 
 describe('txt-export', () => {
@@ -74,10 +79,43 @@ describe('txt-export', () => {
     expect(section).not.toContain(TXT_ROW_SEPARATOR);
   });
 
+  it('formatTxtHeader includes dataset scope metadata', () => {
+    expect(ncmAdapter).toBeDefined();
+    const header = formatTxtHeader(ncmAdapter as NonNullable<typeof ncmAdapter>, 1, {
+      mode: 'single-dataset',
+      uf: 'SP',
+      year: 2025,
+      moeda: 'USD',
+      desde: '2026-01-01',
+      ate: '2026-06-01',
+    });
+    expect(header).toContain('# uf: SP');
+    expect(header).toContain('# year: 2025');
+    expect(header).toContain('# moeda: USD');
+    expect(header).toContain('# desde: 2026-01-01');
+    expect(header).toContain('# ate: 2026-06-01');
+  });
+
   it('buildExportFilename follows id-date pattern', () => {
     const date = new Date('2026-06-27T15:00:00.000Z');
     expect(buildExportFilename('ncm', 'single-dataset', date)).toBe('ncm-2026-06-27.txt');
     expect(buildExportFilename('ncm', 'search-results', date)).toBe('search-2026-06-27.txt');
     expect(buildExportFilename('ncm-cfop', 'multi-dataset', date)).toBe('bundle-ncm-cfop-2026-06-27.txt');
+  });
+
+  it('getUtf8ByteLength counts UTF-8 bytes', () => {
+    expect(getUtf8ByteLength('abc')).toBe(3);
+    expect(getUtf8ByteLength('é')).toBe(2);
+  });
+
+  it('shouldShowExportSizeHint triggers above 1 MB', () => {
+    expect(shouldShowExportSizeHint(TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES)).toBe(false);
+    expect(shouldShowExportSizeHint(TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES + 1)).toBe(true);
+  });
+
+  it('formatExportByteSize renders readable units', () => {
+    expect(formatExportByteSize(512)).toBe('512 B');
+    expect(formatExportByteSize(2048)).toBe('2 KB');
+    expect(formatExportByteSize(TXT_EXPORT_SIZE_HINT_THRESHOLD_BYTES + 100_000)).toBe('1.1 MB');
   });
 });
