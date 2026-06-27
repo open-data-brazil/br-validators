@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { getAllBancos } from '@br-validators/core/bancos';
 import { IBGE_GOLDEN_MUNICIPIO_SP } from '@br-validators/core/ibge';
 import {
   TSE_MUNICIPIOS_GOLDEN_CODIGO_TSE_SAO_PAULO,
@@ -17,7 +18,7 @@ import {
 } from '../lib/reference-data/iss-municipal-filter';
 import { resolveCatalogDocUrl } from '../lib/reference-data/catalog-docs';
 import { FISCAL_MODULES, LOGISTICS_MODULES, TRADE_MODULES } from '../lib/reference-data/govbr-groups';
-import { resolveBancoFromInput } from '../lib/reference-data/bancos-lookup';
+import { resolveBancoFromInput, filterBancosByQuery } from '../lib/reference-data/bancos-lookup';
 import { filterMunicipiosByName, getMunicipiosForUf } from '../lib/reference-data/ibge-filter';
 import { resolveTseCrossRef } from '../lib/reference-data/tse-lookup';
 import { playgroundRouteKey, resolvePlaygroundRoute } from '../lib/playground-routes';
@@ -60,6 +61,20 @@ describe('Bancos reference data helpers', () => {
     const banco = resolveBancoFromInput('001');
     expect(banco?.codigo).toBe('001');
     expect(banco?.nome).toContain('Brasil');
+  });
+
+  it('filters bancos by name or code', () => {
+    const byName = filterBancosByQuery(getAllBancos(), 'brasil');
+    expect(byName.length).toBeGreaterThan(0);
+    expect(
+      byName.every(
+        (row) =>
+          row.nome.toLowerCase().includes('brasil') || row.nomeReduzido.toLowerCase().includes('brasil'),
+      ),
+    ).toBe(true);
+
+    const byCode = filterBancosByQuery(getAllBancos(), '001');
+    expect(byCode.some((row) => row.codigo === '001')).toBe(true);
   });
 });
 

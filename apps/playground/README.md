@@ -32,7 +32,7 @@ Used by the `/data/explorer` unified search hub (Phase 36b) with TXT export (Pha
 - `async-export.ts` — chunked TXT body formatting with progress + cancel
 - `dataset-export-rules.ts` — IBGE UF, NCM embed warn, feriados year, PTAX moeda/range, ISS UF filter
 - `run-full-export.ts` — orchestrates full-dataset export from the hub
-- Catalog table links to `/data/explorer?dataset=<id>`; IBGE + fiscal explorers reuse `ExportToolbar`
+- Catalog table links to `/data/explorer?dataset=<id>`; IBGE, fiscal, and bancos explorers reuse `ExportToolbar`
 
 ## Deploy (Vercel)
 

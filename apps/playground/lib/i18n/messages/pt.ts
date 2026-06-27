@@ -126,6 +126,8 @@ export const pt = {
       shortNameField: 'Nome reduzido',
       notFound: 'Banco não encontrado.',
       listTitle: 'Amostra da lista',
+      listCount: 'Bancos no filtro',
+      listTruncated: 'Exibindo os primeiros 100 resultados.',
       listSearchLabel: 'Filtrar lista',
       listSearchPlaceholder: 'Buscar por nome ou código',
       showList: 'Mostrar amostra da lista',

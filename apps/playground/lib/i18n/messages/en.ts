@@ -126,6 +126,8 @@ export const en = {
       shortNameField: 'Short name',
       notFound: 'Bank not found.',
       listTitle: 'Sample list',
+      listCount: 'Banks matching filter',
+      listTruncated: 'Showing first 100 matches.',
       listSearchLabel: 'Filter list',
       listSearchPlaceholder: 'Search by name or code',
       showList: 'Show sample list',

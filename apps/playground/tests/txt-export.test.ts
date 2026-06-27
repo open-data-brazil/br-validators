@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { resolveBancoFromInput } from '../lib/reference-data/bancos-lookup';
 import { getDatasetAdapter } from '../lib/reference-data/dataset-registry';
 import {
   TXT_ROW_SEPARATOR,
@@ -94,6 +95,31 @@ describe('txt-export', () => {
     expect(header).toContain('# moeda: USD');
     expect(header).toContain('# desde: 2026-01-01');
     expect(header).toContain('# ate: 2026-06-01');
+  });
+
+  it('formatTxtSection for bancos includes COMPE and ISPB fields', () => {
+    const bancosAdapter = getDatasetAdapter('bancos');
+    expect(bancosAdapter).toBeDefined();
+    const banco = resolveBancoFromInput('001');
+    expect(banco).toBeDefined();
+    const section = formatTxtSection(bancosAdapter as NonNullable<typeof bancosAdapter>, [
+      {
+        codigo: banco?.codigo ?? '',
+        ispb: banco?.ispb ?? '',
+        nome: banco?.nome ?? '',
+        nomeReduzido: banco?.nomeReduzido ?? '',
+        participaCompe: banco?.participaCompe ?? false,
+      },
+    ], {
+      mode: 'search-results',
+      query: '001',
+    });
+
+    expect(section).toContain('# @br-validators/core — dataset: bancos');
+    expect(section).toContain('# query: 001');
+    expect(section).toContain('[codigo: 001]');
+    expect(section).toContain('ispb: 00000000');
+    expect(section).toContain('participaCompe: true');
   });
 
   it('buildExportFilename follows id-date pattern', () => {
