@@ -82,7 +82,7 @@ validateInscricaoEstadual('110042490114', { uf: 'SP' });
 
 ### Bundle size (gzipped)
 
-Measured `@br-validators/core@1.9.0` with `pnpm measure:bundle-sizes` (esbuild ESM bundle per subpath). **Reference-data subpaths include embedded JSON**; some validators (e.g. `cep`, `sanitize`) also bundle shared core dependencies when tree-shaken alone.
+Measured `@br-validators/core@1.10.0` with `pnpm measure:bundle-sizes` (esbuild ESM bundle per subpath). **Reference-data subpaths include embedded JSON**; some validators (e.g. `cep`, `sanitize`) also bundle shared core dependencies when tree-shaken alone.
 
 | Subpath | Raw (esbuild) | Gzip | Notes |
 |---------|---------------|------|-------|
@@ -380,14 +380,14 @@ Regenerate gap lists after ISS/IBGE updates: `pnpm generate:coverage-gaps`
 
 | Package | npm | Version |
 |---------|-----|---------|
-| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.9.0` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.9.0` |
-| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.9.0` |
-| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.9.0` |
-| `@br-validators/express` | [npm](https://www.npmjs.com/package/@br-validators/express) | `1.9.0` |
-| `@br-validators/vue` | [npm](https://www.npmjs.com/package/@br-validators/vue) | `1.9.0` |
+| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.10.0` |
+| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.10.0` |
+| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.10.0` |
+| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.10.0` |
+| `@br-validators/express` | [npm](https://www.npmjs.com/package/@br-validators/express) | `1.10.0` |
+| `@br-validators/vue` | [npm](https://www.npmjs.com/package/@br-validators/vue) | `1.10.0` |
 
-**v1.9.0** — Phase 33 maturity: `LookupResult` API, fiscal validators (`validateNcm` / `validateCfop` / `validateCst`), IRPF / INSS / SELIC / ISS municipal / NF-e cUF datasets, platform CLI (`compare` / `batch` / `diff` / `mask`), RG 27/27 UFs, `MIGRATION.md`, TypeDoc API reference, security audit CI, E2E subpath import tests. See [CHANGELOG.md](CHANGELOG.md#190---2026-06-26).
+**v1.10.0** — Phase 35 (EXP-35): CSOSN embed, eSocial Tabela 03 rubricas, PTAX 90 business days + `getPtaxHistorico`, ISS MUNIC/IBGE cascade (`lookupIssMunicipalPorIbge`), batch CSV `--col`, PIX `sanitize`, bundle size docs, ISS `fonte` field. See [CHANGELOG.md](CHANGELOG.md#1100---2026-06-27).
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
