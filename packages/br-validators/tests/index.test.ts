@@ -256,6 +256,7 @@ describe('package exports', () => {
     expect(ptaxEntry.getPtaxCotacao).toBeTypeOf('function');
     expect(ptaxEntry.getPtaxUltimoDiaUtil).toBeTypeOf('function');
     expect(ptaxEntry.getPtaxCotacoesPorMoeda).toBeTypeOf('function');
+    expect(ptaxEntry.getPtaxHistorico).toBeTypeOf('function');
     expect(ptaxEntry.PTAX_DATA_VERSION.id).toBe('ptax');
   });
 

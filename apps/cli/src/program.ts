@@ -40,6 +40,7 @@ import {
   handleIssMunicipalResolveCli,
   handleIssMunicipalSearchCli,
   handlePtaxLookupCli,
+  handlePtaxHistoricoCli,
   handleCstLookupCli,
   handleCstSearchCli,
   handleCstValidateCli,
@@ -841,6 +842,22 @@ export function createProgram(): Command {
       process.exitCode = handlePtaxLookupCli(moeda, data, opts, io);
       writeCliIo(io);
     });
+
+  ptax
+    .command('historico')
+    .description('List embedded Fechamento PTAX rows for a currency and date range')
+    .argument('<moeda>', 'ISO 4217 currency code (e.g. USD)')
+    .argument('<desde>', 'Range start — YYYY-MM-DD or MM-DD-YYYY')
+    .argument('<ate>', 'Range end — YYYY-MM-DD or MM-DD-YYYY')
+    .option('--json', 'JSON output')
+    .option('--verbose', 'Include capturadoEm and janelaDiasUteis in JSON responses')
+    .action(
+      (moeda: string, desde: string, ate: string, opts: ReferenceDatasetCliOptions) => {
+        const io = { stdout: [] as string[], stderr: [] as string[] };
+        process.exitCode = handlePtaxHistoricoCli(moeda, desde, ate, opts, io);
+        writeCliIo(io);
+      },
+    );
 
   const cst = program.command('cst').description('RFB SPED CST — offline ICMS, IPI, PIS, COFINS tables');
 

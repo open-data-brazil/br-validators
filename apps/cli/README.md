@@ -161,9 +161,10 @@ br-validators paises-bacen lookup 1058 --verbose
 br-validators incoterms lookup FOB --json
 br-validators ptax lookup USD --verbose
 br-validators ptax lookup USD 2026-06-20 --json --verbose
+br-validators ptax historico USD 2026-06-01 2026-06-26 --json --verbose
 ```
 
-**PTAX:** offline embed — last **5 business days** only (not live Bacen). `--verbose` prints `dataReferencia`, `isStale`, and `warning` when stale.
+**PTAX:** offline embed — last **90 business days** (`janelaDiasUteis: 90`; not live Bacen). `--verbose` prints `dataReferencia`, `isStale`, and `warning` when stale. `ptax historico` lists all embedded rows in a date range.
 
 ### Finance (SELIC)
 

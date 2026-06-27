@@ -43,6 +43,7 @@ import {
   handleIssMunicipalResolveCli,
   handleIssMunicipalSearchCli,
   handlePtaxLookupCli,
+  handlePtaxHistoricoCli,
   handleListCli,
   handleNfeChaveCli,
   handleProcessoJudicialCli,
@@ -456,7 +457,13 @@ export function dispatchArgv(tokens: string[], io: CliIo): number {
         const data = rest.slice(2).join(' ') || undefined;
         return handlePtaxLookupCli(moeda, data, opts, io);
       }
-      return usage(io, 'Expected: ptax lookup <moeda> [data]');
+      if (action === 'historico') {
+        const moeda = rest[1];
+        const desde = rest[2];
+        const ate = rest[3];
+        return handlePtaxHistoricoCli(moeda, desde, ate, opts, io);
+      }
+      return usage(io, 'Expected: ptax lookup <moeda> [data] | ptax historico <moeda> <desde> <ate>');
     }
     case 'cst': {
       const action = rest[0];

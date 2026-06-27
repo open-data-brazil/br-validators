@@ -44,6 +44,7 @@ import {
   runIssMunicipalSearch,
 } from './commands/iss-municipal/index.js';
 import { runPtaxLookup } from './commands/ptax/lookup.js';
+import { runPtaxHistorico } from './commands/ptax/historico.js';
 import { runBrCode, type BrCodeAction } from './commands/brcode.js';
 import { runCep, type CepAction } from './commands/cep.js';
 import { runTelefone, type TelefoneAction } from './commands/telefone.js';
@@ -1240,6 +1241,22 @@ export function handlePtaxLookupCli(
   io: CliIo = { stdout: [], stderr: [] },
 ): number {
   return runPtaxLookup(moeda, data, { json: Boolean(opts.json), verbose: Boolean(opts.verbose) }, io);
+}
+
+export function handlePtaxHistoricoCli(
+  moeda: string | undefined,
+  desde: string | undefined,
+  ate: string | undefined,
+  opts: ReferenceDatasetCliOptions,
+  io: CliIo = { stdout: [], stderr: [] },
+): number {
+  return runPtaxHistorico(
+    moeda,
+    desde,
+    ate,
+    { json: Boolean(opts.json), verbose: Boolean(opts.verbose) },
+    io,
+  );
 }
 
 export function writeCliIo(io: CliIo): void {

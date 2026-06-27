@@ -213,7 +213,7 @@ Government classification tables embedded in the library — **zero runtime fetc
 | NBS (NFSe) | `@br-validators/core/nbs` | `nbs lookup` | `/data/fiscal` | `getNbsPorCodigo`, `searchNbs` | [NFSe Anexo B NBS2 xlsx](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx) |
 | CEST (ST) | `@br-validators/core/cest` | `cest lookup` | `/data/fiscal` | `getCestPorCodigo`, `getCestPorNcm`, `searchCest` | [CONFAZ ICMS 142/2018](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
 | ISO 4217 + Bacen PTAX moedas | `@br-validators/core/moedas` | `moedas lookup` | `/data/trade` | `getMoedaPorCodigo`, `searchMoedas` | [Bacen PTAX Moedas API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | `@br-validators/core/ptax` | `ptax lookup` | `/data/trade` | `getPtaxCotacao`, `getPtaxUltimoDiaUtil` (+ `dataReferencia`, `isStale`) | [Bacen Olinda PTAX API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3) |
+| Bacen PTAX Fechamento | `@br-validators/core/ptax` | `ptax lookup` · `ptax historico` | `/data/trade` | `getPtaxCotacao`, `getPtaxHistorico`, `getPtaxUltimoDiaUtil` (+ `dataReferencia`, `isStale`) | [Bacen Olinda PTAX API](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3) |
 | NF-e Bacen country codes | `@br-validators/core/paises-bacen` | `paises-bacen lookup` | `/data/trade` | `getPaisPorCodigoBacen`, `getPaisesBacen` | [NF-e country table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) |
 | NF-e cUF (IBGE state codes) | `@br-validators/core/nfe-cuf` | `nfe-cuf lookup` | `/data/fiscal` | `getCufPorCodigo`, `lookupCufPorCodigo` | [NF-e cUF table](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50=) |
 | IRPF progressive brackets | `@br-validators/core/irpf` | `irpf tabela` · `irpf calc` | `/data/payroll` | `getIrpfTabelaProgressiva`, `calcularIrpfMensal` | [RFB IRPF tables](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) |
@@ -225,7 +225,7 @@ Government classification tables embedded in the library — **zero runtime fetc
 | CEP prefix lookup | `@br-validators/core/cep` | `cep faixa` | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
 | Transparency catalog | `@br-validators/core/data-catalog` | — | `/data/catalog` | `getDataCatalog`, `getDatasetMetadata` | See [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) |
 
-> **PTAX embed:** last **5 business days** only — not live Bacen. Every cotacao includes `dataReferencia` and `isStale`; when stale, `warning` advises against settlement without a live fetch. Details: [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) (row **Bacen PTAX Fechamento**).
+> **PTAX embed:** last **90 business days** (`janelaDiasUteis: 90`) — not live Bacen. Every cotacao includes `dataReferencia` and `isStale`; when stale, `warning` advises against settlement without a live fetch. Use `getPtaxHistorico(moeda, { desde, ate })` for FX variation over contract periods. Details: [DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md) (row **Bacen PTAX Fechamento**).
 >
 > **`getAll*()`:** lookup modules export `getAll<Type>()` for full embedded tables — see [Listing reference data](#listing-reference-data) below. Full API list: [docs.br-validators.dev/api-reference](https://docs.br-validators.dev/api-reference/).
 
@@ -240,7 +240,7 @@ import { getNaturezaJuridicaPorCodigo } from '@br-validators/core/natureza-jurid
 import { getNbsPorCodigo } from '@br-validators/core/nbs';
 import { getCestPorCodigo } from '@br-validators/core/cest';
 import { getMoedaPorCodigo } from '@br-validators/core/moedas';
-import { getPtaxUltimoDiaUtil } from '@br-validators/core/ptax';
+import { getPtaxUltimoDiaUtil, getPtaxHistorico } from '@br-validators/core/ptax';
 import { getIssMunicipalPorIbge } from '@br-validators/core/iss-municipal';
 import { getPaisPorCodigoBacen } from '@br-validators/core/paises-bacen';
 import { getIncotermPorCodigo } from '@br-validators/core/incoterms';
@@ -261,9 +261,12 @@ getCestPorCodigo('0302100');          // ST specifier
 getMoedaPorCodigo('BRL');             // Real Brasileiro
 
 const ptax = getPtaxUltimoDiaUtil('USD');
-ptax.dataReferencia;                 // '2026-06-25' — always expose to callers
+ptax.dataReferencia;                 // '2026-06-26' — always expose to callers
 ptax.isStale;                        // true when embed > 1 business day old
 ptax.warning;                        // present when stale — not for settlement without live fetch
+
+getPtaxHistorico('USD', { desde: '2026-06-01', ate: '2026-06-26' });
+// readonly PtaxCotacaoResult[] — each row has dataReferencia, isStale, warning
 
 const iss = getIssMunicipalPorIbge(3509502); // Campinas — estimativa row
 if (iss?.fonte === 'estimativa') {
