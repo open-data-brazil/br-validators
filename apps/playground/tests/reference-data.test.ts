@@ -8,7 +8,7 @@ import { CNAES_GOLDEN_DESENVOLVIMENTO_PROGRAMAS } from '@br-validators/core/cnae
 import { CFOP_GOLDEN_COMPRA_COMERCIALIZACAO } from '@br-validators/core/cfop';
 import { CBO_GOLDEN_ANALISTA_SISTEMAS } from '@br-validators/core/cbo';
 import { NCM_GOLDEN_SOJA_SEMENTES } from '@br-validators/core/ncm';
-import { ISS_MUNICIPAL_GOLDEN_SAO_PAULO } from '@br-validators/core/iss-municipal';
+import { ISS_MUNIC_GOLDEN_ACRELANDIA, ISS_MUNICIPAL_GOLDEN_SAO_PAULO } from '@br-validators/core/iss-municipal';
 import {
   countIssMunicipalForUf,
   getIssMunicipalFieldValue,
@@ -127,6 +127,11 @@ describe('Gov.br reference groups', () => {
     expect(getIssMunicipalFieldValue(row, 'unknown')).toBeNull();
     expect(issMunicipalFonteBadgeVariant('oficial')).toBe('success');
     expect(issMunicipalFonteBadgeVariant('estimativa')).toBe('warning');
+    expect(issMunicipalFonteBadgeVariant('munic-ibge')).toBe('warning');
+
+    const municRow = resolveIssMunicipalExplorerResults(String(ISS_MUNIC_GOLDEN_ACRELANDIA), '');
+    expect(municRow.mode).toBe('single');
+    expect(municRow.rows[0]?.fonte).toBe('munic-ibge');
   });
 
   it('resolves trade golden moeda BRL', () => {

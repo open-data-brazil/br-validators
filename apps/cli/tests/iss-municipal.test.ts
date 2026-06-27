@@ -14,9 +14,20 @@ import {
   handleIssMunicipalResolveCli,
   handleIssMunicipalSearchCli,
 } from '../src/handlers.js';
-import { ISS_MUNICIPAL_GOLDEN_SAO_PAULO } from '@br-validators/core/iss-municipal';
+import { ISS_MUNIC_GOLDEN_ACRELANDIA, ISS_MUNICIPAL_GOLDEN_SAO_PAULO } from '@br-validators/core/iss-municipal';
 
 describe('iss-municipal CLI', () => {
+  it('looks up MUNIC/IBGE fallback municipality via cascade', () => {
+    const io = { stdout: [] as string[], stderr: [] as string[] };
+    expect(
+      runIssMunicipalLookup(String(ISS_MUNIC_GOLDEN_ACRELANDIA), { json: true, verbose: false }, io),
+    ).toBe(EXIT.OK);
+    const parsed = JSON.parse(io.stdout[0]) as { iss: { codigoIbge: number; fonte: string; nome: string } };
+    expect(parsed.iss.codigoIbge).toBe(ISS_MUNIC_GOLDEN_ACRELANDIA);
+    expect(parsed.iss.fonte).toBe('munic-ibge');
+    expect(parsed.iss.nome).toBe('Acrelândia');
+  });
+
   it('looks up golden São Paulo with disclaimer on stderr', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(

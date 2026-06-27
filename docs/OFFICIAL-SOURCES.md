@@ -708,9 +708,29 @@ Golden: `1.01` (análise e desenvolvimento de sistemas), `7.02` (execução de o
 
 Golden: IBGE **`3550308`** (São Paulo/SP — alíquota band 2%–5%, `legislacao.prefeitura.sp.gov.br`), **`3304557`** (Rio de Janeiro/RJ), **`3106200`** (Belo Horizonte/MG), **`3509502`** (Campinas/SP — high-PIB non-capital, `estimativa: true`).
 
-`getIssMunicipalPorIbge`, `getIssMunicipalPorUf`, `getIssMunicipalPorUfMunicipio`, `searchIssMunicipal(query, { uf?, limit? })`, `getIssMunicipalUfsDisponiveis`, `getAllIssMunicipal` — every `IssMunicipalResult` includes `fonte` (`'oficial'` | `'estimativa'`), `warning` (estimation / quoting only; **not** NFSe emission), and legacy `estimativa` boolean.
+`getIssMunicipalPorIbge`, `lookupIssMunicipalPorIbge`, `getIssMunicipalPorUf`, `getIssMunicipalPorUfMunicipio`, `searchIssMunicipal(query, { uf?, limit? })`, `getIssMunicipalUfsDisponiveis`, `getAllIssMunicipal` — every `IssMunicipalResult` includes `fonte` (`'oficial'` | `'munic-ibge'` | `'estimativa'`), `warning` (estimation / quoting only; **not** NFSe emission), and legacy `estimativa` boolean.
 
-**Scope v1:** 27 state capitals + top PIB municipalities (SIDRA 5938, PIB 2022) deduplicated to **500 rows**. Fields: `aliquotaMin`, `aliquotaMax`, `leiUrl`, `capturadoEm`, `fonte`, `estimativa`. `fonte: 'oficial'` — capital seed with verified municipal legislation URL; `fonte: 'estimativa'` — LC 116 Art. 8 band fallback (**473 rows**). Capital rows cite municipal portals; non-capital rows use LC 116 Art. 8 band with `estimativa: true` — **not** verified municipal legislation. **Out of scope:** all 5.570 municipalities, per-LC-116-item municipal rates, NFSe emission validation.
+**Scope v1:** 27 state capitals + top PIB municipalities (SIDRA 5938, PIB 2022) deduplicated to **500 rows**. Fields: `aliquotaMin`, `aliquotaMax`, `leiUrl`, `capturadoEm`, `fonte`, `estimativa`. `fonte: 'oficial'` — capital seed with verified municipal legislation URL; `fonte: 'estimativa'` — LC 116 Art. 8 band fallback (**473 rows**). Capital rows cite municipal portals; non-capital rows use LC 116 Art. 8 band with `estimativa: true` — **not** verified municipal legislation. **Out of scope:** per-LC-116-item municipal rates, NFSe emission validation.
+
+---
+
+## ISS municipal MUNIC/IBGE fallback {#iss-munic-ibge}
+
+> **Vectors:** `packages/br-validators/tests/vectors/iss-munic-ibge.official.json`  
+> **Freshness:** [DATA-FRESHNESS.md](DATA-FRESHNESS.md) — `agendamento: manual` (`pnpm fetch:data:iss-munic-ibge`)
+
+| Role | Source | URL |
+|------|--------|-----|
+| IBGE MUNIC — Pesquisa de Informações Básicas Municipais | IBGE | https://www.ibge.gov.br/estatisticas/economicas/contabilidade/9078-pesquisa-de-informacoes-municipais.html |
+| MUNIC 2024 base (research / join) | IBGE FTP | https://ftp.ibge.gov.br/Perfil_Municipios/2024/Base_de_Dados/Base_MUNIC_2024_20251107.xlsx |
+| IBGE localidades — municipality join | IBGE API v1 | https://servicodados.ibge.gov.br/api/v1/localidades/municipios |
+| LC 116 Art. 8 — legal band fallback | Planalto | https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm#art8 |
+
+**Research spike (2026-06):** MUNIC 2024 public SIDRA tables and base xlsx **do not expose** a dedicated ISS alíquota variable. v1 embed covers **5.071** municipalities outside the 500-row partial embed using the MUNIC survey universe + **LC 116 Art. 8 legal band (2%–5%)** — `fonte: 'munic-ibge'`, not exact municipal legislation.
+
+Golden: IBGE **`1200013`** (Acrelândia/AC — `fonte: 'munic-ibge'`, MUNIC survey year **2024**).
+
+`lookupIssMunicipalPorIbge(codigo)` cascade: partial **500** embed → **MUNIC/IBGE** fallback → **LC 116** generic band (`resolveIbgeLc116Fallback`) for IBGE localities not yet in the MUNIC embed. CLI `iss-municipal lookup` uses the cascade.
 
 ---
 

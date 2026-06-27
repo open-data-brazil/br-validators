@@ -129,6 +129,7 @@ export const pt = {
       issMunicipalListPreview: 'Exibindo os primeiros {shown} de {count} municípios',
       issMunicipalFonteOficial: 'Oficial',
       issMunicipalFonteEstimativa: 'Estimativa',
+      issMunicipalFonteMunicIbge: 'MUNIC/IBGE',
       notFound: 'Código não encontrado.',
       capturedAt: 'Dataset capturado em',
       officialSource: 'Fonte oficial',

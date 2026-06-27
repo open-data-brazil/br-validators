@@ -129,6 +129,7 @@ export const en = {
       issMunicipalListPreview: 'Showing first {shown} of {count} municipalities',
       issMunicipalFonteOficial: 'Official',
       issMunicipalFonteEstimativa: 'Estimate',
+      issMunicipalFonteMunicIbge: 'MUNIC/IBGE',
       notFound: 'Code not found.',
       capturedAt: 'Dataset captured',
       officialSource: 'Official source',

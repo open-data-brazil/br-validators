@@ -314,7 +314,7 @@ Embedded JSON from official `.gov.br` sources — **no runtime HTTP**. Each modu
 | IRPF progressive brackets | `@br-validators/core/irpf` | `irpf tabela` · `irpf calc` | `/data/payroll` | `getIrpfTabelaProgressiva`, `calcularIrpfMensal` | [RFB IRPF tables](https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas) |
 | INSS contribution brackets | `@br-validators/core/inss` | `inss tabela` · `inss calc` | `/data/payroll` | `getInssTabelaContribuicao`, `calcularInssMensal` | [INSS contribution rates](https://www.gov.br/inss/pt-br/direitos-e-deveres/inscricao-e-contribuicao/tabelas-de-contribuicao) |
 | Bacen SELIC meta | `@br-validators/core/selic` | `selic` | `/data/finance` | `getSelicMeta`, `getSelicMetaPorData` | [Bacen SGS série 432](https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries) |
-| ISS municipal rates (top 500 PIB) | `@br-validators/core/iss-municipal` | `iss-municipal lookup` · `list` · `search [--uf]` | `/data/fiscal` | `getIssMunicipalPorIbge`, `getAllIssMunicipal` — check `fonte` + `warning` (**473/500** `estimativa`) | [IBGE SIDRA PIB 5938](https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2022) |
+| ISS municipal rates (top 500 PIB + MUNIC/IBGE fallback) | `@br-validators/core/iss-municipal` | `iss-municipal lookup` · `list` · `search [--uf]` | `/data/fiscal` | `lookupIssMunicipalPorIbge` (500 → `munic-ibge` → LC 116), `getIssMunicipalPorIbge`, `getAllIssMunicipal` — check `fonte` + `warning` | [IBGE SIDRA PIB 5938](https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2022) · [MUNIC 2024](https://www.ibge.gov.br/estatisticas/economicas/contabilidade/9078-pesquisa-de-informacoes-municipais.html) |
 | ICC Incoterms 2020 | `@br-validators/core/incoterms` | `incoterms lookup` | `/data/trade` | `getIncotermPorCodigo`, `getIncoterms` | [ICC Incoterms rules](https://iccwbo.org/resources-for-business/incoterms-rules/) |
 | CBO 2002 occupations | `@br-validators/core/cbo` | `cbo lookup` · `search` | `/data/fiscal` | `getCboPorCodigo`, `searchCbo` | [MTE CBO downloads](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads) |
 | CEP prefix lookup | `@br-validators/core/cep` | `cep faixa` | — | `getCepFaixaInfo`, `getCepFaixas` | [IBGE CNEFE 2022](https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html) |
@@ -349,7 +349,7 @@ import { getSelicMeta } from '@br-validators/core/selic';
 import { getIrpfTabelaProgressiva } from '@br-validators/core/irpf';
 import { getInssTabelaContribuicao } from '@br-validators/core/inss';
 import { getCufPorCodigo } from '@br-validators/core/nfe-cuf';
-import { getIssMunicipalPorIbge } from '@br-validators/core/iss-municipal';
+import { lookupIssMunicipalPorIbge } from '@br-validators/core/iss-municipal';
 import { getDataCatalog } from '@br-validators/core/data-catalog';
 
 getMunicipioPorCodigo(3550308)?.nome; // São Paulo

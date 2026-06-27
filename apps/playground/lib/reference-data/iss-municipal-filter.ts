@@ -1,6 +1,6 @@
 import {
-  getIssMunicipalPorIbge,
   getIssMunicipalPorUf,
+  lookupIssMunicipalPorIbge,
   searchIssMunicipal,
   type IssMunicipalFonte,
   type IssMunicipalResult,
@@ -74,7 +74,7 @@ export function resolveIssMunicipalExplorerResults(query: string, uf: string): I
   }
 
   if (isIbgeLookupQuery(trimmed)) {
-    const row = getIssMunicipalPorIbge(trimmed);
+    const row = lookupIssMunicipalPorIbge(trimmed);
     if (row === undefined) {
       return { mode: 'single', rows: [], totalForUf };
     }

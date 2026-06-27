@@ -295,6 +295,9 @@ describe('package exports', () => {
     expect(issMunicipalEntry.getIssMunicipalPorUfMunicipio).toBeTypeOf('function');
     expect(issMunicipalEntry.getIssMunicipalUfsDisponiveis).toBeTypeOf('function');
     expect(issMunicipalEntry.searchIssMunicipal).toBeTypeOf('function');
+    expect(issMunicipalEntry.lookupIssMunicipalPorIbge).toBeTypeOf('function');
+    expect(issMunicipalEntry.getIssMunicIbgeCount()).toBeGreaterThan(5000);
+    expect(issMunicipalEntry.ISS_MUNIC_IBGE_DATA_VERSION.id).toBe('iss-munic-ibge');
     expect(issMunicipalEntry.ISS_MUNICIPAL_DATA_VERSION.id).toBe('iss-municipal');
   });
 

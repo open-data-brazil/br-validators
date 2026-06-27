@@ -43,14 +43,20 @@ function formatIssMunicipalListPreview(template: string, shown: number, count: n
 
 function formatIssMunicipalFonteLabel(
   fonte: IssMunicipalResult['fonte'],
-  labels: { oficial: string; estimativa: string },
+  labels: { oficial: string; estimativa: string; municIbge: string },
 ): string {
-  return fonte === 'oficial' ? labels.oficial : labels.estimativa;
+  if (fonte === 'oficial') {
+    return labels.oficial;
+  }
+  if (fonte === 'munic-ibge') {
+    return labels.municIbge;
+  }
+  return labels.estimativa;
 }
 
 function renderIssMunicipalTitle(
   row: IssMunicipalResult,
-  labels: { oficial: string; estimativa: string },
+  labels: { oficial: string; estimativa: string; municIbge: string },
 ): React.ReactNode {
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -65,7 +71,7 @@ function renderIssMunicipalTitle(
 function renderIssMunicipalFieldValue(
   row: IssMunicipalResult,
   fieldKey: string,
-  fonteLabels: { oficial: string; estimativa: string },
+  fonteLabels: { oficial: string; estimativa: string; municIbge: string },
 ): string {
   if (fieldKey === 'fonte') {
     return formatIssMunicipalFonteLabel(row.fonte, fonteLabels);
@@ -115,6 +121,7 @@ export function DataGovBrGroupExplorer({ groupId }: { groupId: GovBrGroupId }) {
   const issMunicipalFonteLabels = {
     oficial: fiscalCopy?.issMunicipalFonteOficial ?? 'oficial',
     estimativa: fiscalCopy?.issMunicipalFonteEstimativa ?? 'estimativa',
+    municIbge: fiscalCopy?.issMunicipalFonteMunicIbge ?? 'munic-ibge',
   };
   const modules = GOVBR_GROUPS[groupId];
   const issMunicipalUfs = useMemo(() => getIssMunicipalUfsDisponiveis(), []);

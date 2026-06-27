@@ -62,7 +62,7 @@ import {
   validateCsosn,
 } from '@br-validators/core/csosn';
 import {
-  getIssMunicipalPorIbge,
+  lookupIssMunicipalPorIbge,
   ISS_MUNICIPAL_DATA_VERSION,
   ISS_MUNICIPAL_GOLDEN_SAO_PAULO,
 } from '@br-validators/core/iss-municipal';
@@ -268,7 +268,7 @@ export const FISCAL_MODULES: readonly GovBrModuleDefinition[] = [
     capturadoEm: ISS_MUNICIPAL_DATA_VERSION.capturadoEm,
     sourceUrl: ISS_MUNICIPAL_DATA_VERSION.endpoints[0] ?? '',
     lookup: (code) => {
-      const row = getIssMunicipalPorIbge(code);
+      const row = lookupIssMunicipalPorIbge(code);
       return row
         ? {
             codigoIbge: row.codigoIbge,

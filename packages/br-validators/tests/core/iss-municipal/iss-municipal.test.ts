@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildIssMunicipalResult, resolveIssMunicipalFonte } from '../../../src/iss-municipal/result.js';
+import { buildIssMunicipalResult, buildIssMunicIbgeResult, buildLc116EstimativaResult, resolveIssMunicipalFonte } from '../../../src/iss-municipal/result.js';
 import {
   getAllIssMunicipal,
   getIssMunicipalPorIbge,
@@ -9,7 +9,9 @@ import {
   getIssMunicipalUfsDisponiveis,
   searchIssMunicipal,
 } from '../../../src/iss-municipal/lookup.js';
+import { getAllIssMunicIbge } from '../../../src/iss-municipal/cascade-lookup.js';
 import {
+  ISS_MUNIC_GOLDEN_ACRELANDIA,
   ISS_MUNICIPAL_CAPITAL_COUNT,
   ISS_MUNICIPAL_ESTIMATION_WARNING,
   ISS_MUNICIPAL_GOLDEN_RIO,
@@ -18,6 +20,7 @@ import {
   ISS_MUNICIPAL_LC116_MIN,
   ISS_MUNICIPAL_TARGET_COUNT,
   ISS_MUNICIPAL_DATA_VERSION,
+  PLANALTO_LC116_ART8_URL,
 } from '../../../src/iss-municipal/index.js';
 import vectors from '../../vectors/iss-municipal.official.json';
 
@@ -172,6 +175,24 @@ describe('ISS municipal — embed policy', () => {
     expect(buildIssMunicipalResult(oficialRow).fonte).toBe('oficial');
     expect(buildIssMunicipalResult(estimativaRow).fonte).toBe('estimativa');
     expect(buildIssMunicipalResult(oficialRow).warning).toBe(ISS_MUNICIPAL_ESTIMATION_WARNING);
+  });
+
+  it('buildIssMunicIbgeResult and buildLc116EstimativaResult attach fonte tiers', () => {
+    const municRow = getAllIssMunicIbge().find((row) => row.codigoIbge === ISS_MUNIC_GOLDEN_ACRELANDIA);
+    expect(municRow).toBeDefined();
+    if (municRow === undefined) {
+      return;
+    }
+    expect(buildIssMunicIbgeResult(municRow).fonte).toBe('munic-ibge');
+    expect(buildLc116EstimativaResult({
+      codigoIbge: municRow.codigoIbge,
+      nome: municRow.nome,
+      uf: municRow.uf,
+      aliquotaMin: ISS_MUNICIPAL_LC116_MIN,
+      aliquotaMax: ISS_MUNICIPAL_LC116_MAX,
+      leiUrl: PLANALTO_LC116_ART8_URL,
+      capturadoEm: ISS_MUNICIPAL_DATA_VERSION.capturadoEm,
+    }).fonte).toBe('estimativa');
   });
 
   it('resolveIssMunicipalFonte mirrors estimativa flag', () => {
