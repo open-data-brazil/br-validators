@@ -306,6 +306,9 @@ async function main(): Promise<void> {
     if (vectorSync.ptaxUpdated) {
       console.log('Synced tests/vectors/ptax.official.json with embedded PTAX window.');
     }
+    if (vectorSync.anpUpdated) {
+      console.log('Synced tests/vectors/anp-combustiveis.official.json with embedded ANP week.');
+    }
   }
 
   const report = await writeReports(options.dryRun, options.noArchive, snapshots, baselinesSelados);

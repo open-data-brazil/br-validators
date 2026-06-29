@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 async function main(): Promise<void> {
-  const { selicUpdated, ptaxUpdated } = await syncDailyGoldenVectors({ rootDir: ROOT });
+  const { selicUpdated, ptaxUpdated, anpUpdated } = await syncDailyGoldenVectors({ rootDir: ROOT });
 
   if (selicUpdated) {
     console.log('Updated packages/br-validators/tests/vectors/selic.official.json');
@@ -16,8 +16,11 @@ async function main(): Promise<void> {
   if (ptaxUpdated) {
     console.log('Updated packages/br-validators/tests/vectors/ptax.official.json');
   }
-  if (!selicUpdated && !ptaxUpdated) {
-    console.log('Daily golden vectors already in sync (selic, ptax).');
+  if (anpUpdated) {
+    console.log('Updated packages/br-validators/tests/vectors/anp-combustiveis.official.json');
+  }
+  if (!selicUpdated && !ptaxUpdated && !anpUpdated) {
+    console.log('Golden vectors already in sync (selic, ptax, anp-combustiveis).');
   }
 }
 

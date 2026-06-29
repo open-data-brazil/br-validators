@@ -195,6 +195,173 @@ export async function syncPtaxGoldenVectors(
   return true;
 }
 
+interface AnpSemanaPesquisa {
+  inicio: string;
+  fim: string;
+}
+
+interface AnpPrecoMedioRecord {
+  semanaInicio: string;
+  semanaFim: string;
+  uf: string;
+  municipioNome: string;
+  municipioIbge: number | null;
+  produto: string;
+  precoMedio: number;
+}
+
+interface AnpGoldenMunicipio {
+  uf: string;
+  municipio: string;
+  produto: string;
+  municipioIbge: number;
+  precoMedio: number;
+}
+
+interface AnpGoldenIbge {
+  uf: string;
+  municipio: string;
+  produto: string;
+  municipioIbge: number;
+  precoMedio: number;
+}
+
+interface AnpOfficialVectors {
+  source: string;
+  listingUrl: string;
+  week: AnpSemanaPesquisa;
+  golden: {
+    saoPauloGasolina: AnpGoldenMunicipio;
+    adamantinaEtanol: AnpGoldenMunicipio;
+    campoGrandeGlp: AnpGoldenIbge;
+  };
+}
+
+function normalizeAnpPlaceName(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toUpperCase()
+    .trim();
+}
+
+function findAnpPrecoByMunicipio(
+  records: readonly AnpPrecoMedioRecord[],
+  uf: string,
+  municipio: string,
+  produto: string,
+): AnpPrecoMedioRecord | undefined {
+  const normalizedUf = uf.toUpperCase();
+  const normalizedMunicipio = normalizeAnpPlaceName(municipio);
+  const normalizedProduto = produto.toUpperCase();
+
+  return records.find(
+    (record) =>
+      record.uf === normalizedUf &&
+      normalizeAnpPlaceName(record.municipioNome) === normalizedMunicipio &&
+      record.produto === normalizedProduto,
+  );
+}
+
+function findAnpPrecoByIbge(
+  records: readonly AnpPrecoMedioRecord[],
+  municipioIbge: number,
+  produto: string,
+): AnpPrecoMedioRecord | undefined {
+  return records.find(
+    (record) => record.municipioIbge === municipioIbge && record.produto === produto.toUpperCase(),
+  );
+}
+
+function resolveAnpSourceUrl(endpoints: readonly string[]): string {
+  for (const endpoint of endpoints) {
+    if (endpoint.endsWith('.xlsx')) {
+      return endpoint;
+    }
+  }
+  if (endpoints.length === 0) {
+    return '';
+  }
+  return endpoints[endpoints.length - 1];
+}
+
+export async function syncAnpGoldenVectors(
+  precosPath: string,
+  semanasPath: string,
+  metadataPath: string,
+  vectorsPath: string,
+): Promise<boolean> {
+  const precos = JSON.parse(await readFile(precosPath, 'utf8')) as AnpPrecoMedioRecord[];
+  const semanas = JSON.parse(await readFile(semanasPath, 'utf8')) as AnpSemanaPesquisa[];
+  const metadata = JSON.parse(await readFile(metadataPath, 'utf8')) as { endpoints: string[] };
+  const vectors = JSON.parse(await readFile(vectorsPath, 'utf8')) as AnpOfficialVectors;
+
+  const week = semanas.at(0);
+  if (week === undefined) {
+    return false;
+  }
+
+  const saoPaulo = findAnpPrecoByMunicipio(
+    precos,
+    vectors.golden.saoPauloGasolina.uf,
+    vectors.golden.saoPauloGasolina.municipio,
+    vectors.golden.saoPauloGasolina.produto,
+  );
+  const adamantina = findAnpPrecoByMunicipio(
+    precos,
+    vectors.golden.adamantinaEtanol.uf,
+    vectors.golden.adamantinaEtanol.municipio,
+    vectors.golden.adamantinaEtanol.produto,
+  );
+  const campoGrande = findAnpPrecoByIbge(
+    precos,
+    vectors.golden.campoGrandeGlp.municipioIbge,
+    vectors.golden.campoGrandeGlp.produto,
+  );
+
+  if (saoPaulo === undefined || adamantina === undefined || campoGrande === undefined) {
+    return false;
+  }
+
+  const next: AnpOfficialVectors = {
+    ...vectors,
+    source: resolveAnpSourceUrl(metadata.endpoints),
+    week,
+    golden: {
+      saoPauloGasolina: {
+        ...vectors.golden.saoPauloGasolina,
+        precoMedio: saoPaulo.precoMedio,
+        municipioIbge:
+          saoPaulo.municipioIbge !== null
+            ? saoPaulo.municipioIbge
+            : vectors.golden.saoPauloGasolina.municipioIbge,
+      },
+      adamantinaEtanol: {
+        ...vectors.golden.adamantinaEtanol,
+        precoMedio: adamantina.precoMedio,
+        municipioIbge:
+          adamantina.municipioIbge !== null
+            ? adamantina.municipioIbge
+            : vectors.golden.adamantinaEtanol.municipioIbge,
+      },
+      campoGrandeGlp: {
+        ...vectors.golden.campoGrandeGlp,
+        precoMedio: campoGrande.precoMedio,
+        uf: campoGrande.uf,
+      },
+    },
+  };
+
+  const serialized = `${JSON.stringify(next, null, 2)}\n`;
+  const previous = `${JSON.stringify(vectors, null, 2)}\n`;
+  if (serialized === previous) {
+    return false;
+  }
+
+  await writeFile(vectorsPath, serialized);
+  return true;
+}
+
 export interface DailyGoldenVectorPaths {
   rootDir: string;
 }
@@ -202,6 +369,7 @@ export interface DailyGoldenVectorPaths {
 export async function syncDailyGoldenVectors(paths: DailyGoldenVectorPaths): Promise<{
   selicUpdated: boolean;
   ptaxUpdated: boolean;
+  anpUpdated: boolean;
 }> {
   const coreData = path.join(paths.rootDir, 'packages/br-validators');
   const vectorsDir = path.join(coreData, 'tests/vectors');
@@ -218,5 +386,12 @@ export async function syncDailyGoldenVectors(paths: DailyGoldenVectorPaths): Pro
     path.join(vectorsDir, 'ptax.official.json'),
   );
 
-  return { selicUpdated, ptaxUpdated };
+  const anpUpdated = await syncAnpGoldenVectors(
+    path.join(coreData, 'src/anp-combustiveis/data/precos-medios.json'),
+    path.join(coreData, 'src/anp-combustiveis/data/semanas.json'),
+    path.join(coreData, 'src/anp-combustiveis/data/metadata.json'),
+    path.join(vectorsDir, 'anp-combustiveis.official.json'),
+  );
+
+  return { selicUpdated, ptaxUpdated, anpUpdated };
 }

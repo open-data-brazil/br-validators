@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 import { afterEach, describe, expect, it } from 'vitest';
 
-import { syncPtaxGoldenVectors, syncSelicGoldenVectors } from './sync-daily-golden-vectors.js';
+import { syncAnpGoldenVectors, syncPtaxGoldenVectors, syncSelicGoldenVectors } from './sync-daily-golden-vectors.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURE_ROOT = path.join(__dirname, '../fixtures/sync-daily-golden-vectors');
@@ -130,4 +130,82 @@ describe('sync-daily-golden-vectors', () => {
     expect(vectors.staleness.freshReferenceDate).toBe('2026-06-29');
   });
 
+  it('updates ANP week and golden prices from embedded data', async () => {
+    const precosPath = await writeJson('anp/precos-medios.json', [
+      {
+        semanaInicio: '2026-06-21',
+        semanaFim: '2026-06-27',
+        uf: 'SP',
+        municipioNome: 'SAO PAULO',
+        municipioIbge: 3550308,
+        produto: 'GASOLINE_REGULAR',
+        precoMedio: 6.5,
+      },
+      {
+        semanaInicio: '2026-06-21',
+        semanaFim: '2026-06-27',
+        uf: 'SP',
+        municipioNome: 'ADAMANTINA',
+        municipioIbge: 3500105,
+        produto: 'ETHANOL',
+        precoMedio: 3.4,
+      },
+      {
+        semanaInicio: '2026-06-21',
+        semanaFim: '2026-06-27',
+        uf: 'MS',
+        municipioNome: 'CAMPO GRANDE',
+        municipioIbge: 5002704,
+        produto: 'LPG_P13',
+        precoMedio: 115.18,
+      },
+    ]);
+    const semanasPath = await writeJson('anp/semanas.json', [{ inicio: '2026-06-21', fim: '2026-06-27' }]);
+    const metadataPath = await writeJson('anp/metadata.json', {
+      endpoints: [
+        'https://www.gov.br/anp/pt-br/listing',
+        'https://www.gov.br/anp/pt-br/arquivos/resumo_semanal_lpc_2026-06-21_2026-06-27.xlsx',
+      ],
+    });
+    const vectorsPath = await writeJson('anp/anp-combustiveis.official.json', {
+      source: 'https://www.gov.br/anp/pt-br/old.xlsx',
+      listingUrl: 'https://www.gov.br/anp/pt-br/listing',
+      week: { inicio: '2026-06-14', fim: '2026-06-20' },
+      golden: {
+        saoPauloGasolina: {
+          uf: 'SP',
+          municipio: 'SAO PAULO',
+          produto: 'GASOLINE_REGULAR',
+          municipioIbge: 3550308,
+          precoMedio: 6.46,
+        },
+        adamantinaEtanol: {
+          uf: 'SP',
+          municipio: 'ADAMANTINA',
+          produto: 'ETHANOL',
+          municipioIbge: 3500105,
+          precoMedio: 3.39,
+        },
+        campoGrandeGlp: {
+          uf: 'MS',
+          municipio: 'CAMPO GRANDE',
+          produto: 'LPG_P13',
+          municipioIbge: 5002704,
+          precoMedio: 116.6,
+        },
+      },
+    });
+
+    const updated = await syncAnpGoldenVectors(precosPath, semanasPath, metadataPath, vectorsPath);
+    expect(updated).toBe(true);
+
+    const vectors = JSON.parse(await readFile(vectorsPath, 'utf8')) as {
+      source: string;
+      week: { inicio: string; fim: string };
+      golden: { saoPauloGasolina: { precoMedio: number } };
+    };
+    expect(vectors.week).toEqual({ inicio: '2026-06-21', fim: '2026-06-27' });
+    expect(vectors.source).toContain('2026-06-21_2026-06-27.xlsx');
+    expect(vectors.golden.saoPauloGasolina.precoMedio).toBe(6.5);
+  });
 });
