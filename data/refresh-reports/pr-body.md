@@ -3,14 +3,14 @@
 | Dataset | Records | + added | − removed | ~ changed | Fields Δ | Captured | Source |
 |---------|---------|---------|-----------|-----------|----------|----------|--------|
 | ibge | 27 estados / 5571 municipios | 0 | 0 | 0 | — | 2026-07-01 | [official](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
-| bancos | 469 bancos | 0 | 0 | 0 | — | 2026-07-01 | [official](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| bancos | 469 bancos | 0 | 0 | 1 | participaCompe | 2026-07-01 | [official](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | aeroportos | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | 2026-07-01 | [official](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | tse-municipios | 5571 municipios | 0 | 0 | 0 | — | 2026-07-01 | [official](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | moedas | 154 moedas | 0 | 0 | 0 | — | 2026-07-01 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| ptax | 850 cotacoes / 10 moedas / 85 diasUteis | 10 | 10 | 0 | — | 2026-07-01 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| selic | 90 observacoes / 90 dias | 1 | 1 | 0 | — | 2026-07-01 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| ptax | 850 cotacoes / 10 moedas / 85 diasUteis | 0 | 0 | 0 | — | 2026-07-01 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| selic | 90 observacoes / 90 dias | 0 | 0 | 0 | — | 2026-07-01 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | iss-municipal | 500 municipios / 27 capitais / 473 estimativaRows | 400 | 0 | 0 | — | 2026-06-26 | [official](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
-| paises-bacen | 253 paises | 0 | 0 | 0 | — | 2026-07-01 | [official](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
+| paises-bacen | 260 paises | 11 | 4 | 33 | — | 2026-07-01 | [official](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | incoterms | 11 incoterms | 0 | 0 | 0 | — | 2026-07-01 | [official](https://iccwbo.org/resources-for-business/incoterms-rules/) |
 | telefone-ddd | 67 ddds | 0 | 0 | 0 | — | 2026-07-01 | [official](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
 | feriados | 9 feriadosNacionaisFixos / 1 feriadosNacionaisMoveis / 9 pontosFacultativosFederais | 0 | 0 | 0 | — | 2026-06-23 | [official](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
@@ -33,11 +33,30 @@
 | pncp-reference | 19 modalidades / 183 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | 2026-07-01 | [official](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | transparencia-snapshots | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | 2026-07-01 | [official](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-**Totals:** +619 −11 ~0
+**Totals:** +608 −0 ~1
 
-### Source health
+### Source health alerts
 
-All HTTP endpoints responded successfully.
+- **ibge** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **tse-municipios** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **cnaes** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **nbs** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **ncm** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **cbo** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **portos** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **anp-combustiveis** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **pncp-reference** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. Embedded data from **2026-07-01** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
+- **feriados** (warning/source_unavailable): Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API. Embedded data from **2026-06-23** retained in the API.
+  - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
 
 ### Verification
 

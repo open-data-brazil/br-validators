@@ -8,7 +8,16 @@
     },
     {
       "id": "bancos",
-      "status": "unchanged"
+      "status": "changed",
+      "adicionados": 0,
+      "removidos": 0,
+      "alterados": 1,
+      "camposAlterados": [
+        "participaCompe"
+      ],
+      "amostraChavesAlteradas": [
+        "623"
+      ]
     },
     {
       "id": "aeroportos",
@@ -24,24 +33,11 @@
     },
     {
       "id": "ptax",
-      "status": "changed",
-      "adicionados": 10,
-      "removidos": 10,
-      "alterados": 0
+      "status": "unchanged"
     },
     {
       "id": "selic",
-      "status": "changed",
-      "adicionados": 1,
-      "removidos": 1,
-      "alterados": 0
-    },
-    {
-      "id": "iss-municipal",
-      "status": "changed",
-      "adicionados": 400,
-      "removidos": 0,
-      "alterados": 0
+      "status": "unchanged"
     },
     {
       "id": "paises-bacen",
@@ -53,10 +49,6 @@
     },
     {
       "id": "telefone-ddd",
-      "status": "unchanged"
-    },
-    {
-      "id": "feriados",
       "status": "unchanged"
     },
     {
@@ -88,34 +80,11 @@
       "status": "unchanged"
     },
     {
-      "id": "cst",
-      "status": "unchanged"
-    },
-    {
-      "id": "lc116",
-      "status": "unchanged"
-    },
-    {
-      "id": "esocial",
-      "status": "changed",
-      "adicionados": 208,
-      "removidos": 0,
-      "alterados": 0
-    },
-    {
-      "id": "simples-nacional",
-      "status": "unchanged"
-    },
-    {
       "id": "ncm",
       "status": "unchanged"
     },
     {
       "id": "cbo",
-      "status": "unchanged"
-    },
-    {
-      "id": "cep-faixas",
       "status": "unchanged"
     },
     {
@@ -132,6 +101,14 @@
     },
     {
       "id": "transparencia-snapshots",
+      "status": "unchanged"
+    },
+    {
+      "id": "feriados",
+      "status": "unchanged"
+    },
+    {
+      "id": "cep-faixas",
       "status": "unchanged"
     }
   ]

@@ -2,7 +2,7 @@
   "datasetId": "cest",
   "endpoints": [
     "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18",
-    "/data/dev/projects/webstorm/doc-raiz/data/source-mirrors/confaz/cest_cv142_18.html"
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cest_cv142_18.html"
   ],
   "consecutiveFailureDays": 0,
   "firstFailureDate": null,

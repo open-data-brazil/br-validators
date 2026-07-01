@@ -5,12 +5,13 @@
     "https://deolhonoimposto.ibpt.org.br/",
     "https://apidoni.ibpt.org.br/api/v1/produtos",
     "https://ibpt.valraw.com.br/api/meta.json",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/SP.json.gz",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/RJ.json.gz",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/MG.json.gz"
+    "https://ibpt.valraw.com.br/api/ncm/SP.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/RJ.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/MG.json.gz (resolved after meta.json)",
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-01T12:04:47.528Z",
+  "checkedAt": "2026-07-01T13:02:56.464Z",
   "retainedEmbeddedDataFrom": "2026-07-01",
-  "message": "IBPT golden NCM×UF subset fetched via valraw community mirror."
+  "message": "IBPT golden NCM×UF subset loaded from repo cache after network sources failed."
 }

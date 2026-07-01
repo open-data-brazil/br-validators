@@ -1,21 +1,21 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-07-01T12:05:30.847Z
+> Last bot run: 2026-07-01T13:46:04.311Z
 
 ## Summary
 
 | Dataset | Last capture | Records | + added | − removed | ~ changed | Fields Δ | Official source |
 |---------|--------------|---------|---------|-----------|-----------|----------|-----------------|
 | IBGE Localidades | 2026-07-01 | 27 estados / 5571 municipios | 0 | 0 | 0 | — | [IBGE API v1 /localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
-| Bacen STR Participants | 2026-07-01 | 469 bancos | 0 | 0 | 0 | — | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| Bacen STR Participants | 2026-07-01 | 469 bancos | 0 | 0 | 1 | participaCompe | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | ANAC Public Aerodromos | 2026-07-01 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | TSE ↔ IBGE Municipality Codes | 2026-07-01 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | ISO 4217 Currencies + Bacen PTAX | 2026-07-01 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | 2026-07-01 | 850 cotacoes / 10 moedas / 85 diasUteis | 10 | 10 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| Bacen SGS — Meta Selic (série 432) | 2026-07-01 | 90 observacoes / 90 dias | 1 | 1 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| Bacen PTAX Fechamento | 2026-07-01 | 850 cotacoes / 10 moedas / 85 diasUteis | 0 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| Bacen SGS — Meta Selic (série 432) | 2026-07-01 | 90 observacoes / 90 dias | 0 | 0 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | ISS municipal alíquotas — partial embed (capitals + top PIB) | 2026-06-26 | 500 municipios / 27 capitais / 473 estimativaRows | 400 | 0 | 0 | — | [SIDRA 5938 PIB 2022 + LC 116 Art. 8 band + capital legislation seeds](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
-| NF-e Bacen Country Codes | 2026-07-01 | 253 paises | 0 | 0 | 0 | — | [Portal Nacional NF-e — Tabela de Países (Bacen)](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
+| NF-e Bacen Country Codes | 2026-07-01 | 260 paises | 11 | 4 | 33 | — | [Banco Central FTP paises.txt + NF-e supplemental codes](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | ICC Incoterms 2020 | 2026-07-01 | 11 incoterms | 0 | 0 | 0 | — | [International Chamber of Commerce — Incoterms 2020 (static reference)](https://iccwbo.org/resources-for-business/incoterms-rules/) |
 | Anatel DDD Geographic Lookup | 2026-07-01 | 67 ddds | 0 | 0 | 0 | — | [Anatel Plano de Numeração + IBGE municipios](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
 | Feriados Nacionais Federais | 2026-06-23 | 9 feriadosNacionaisFixos / 1 feriadosNacionaisMoveis / 9 pontosFacultativosFederais | 0 | 0 | 0 | — | [Lei 662/1949 + Portaria MGI (calendário federal)](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
@@ -38,9 +38,30 @@
 | PNCP domain reference tables | 2026-07-01 | 19 modalidades / 183 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | Portal da Transparência endpoint registry | 2026-07-01 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-## Source health
+## Source health alerts
 
-All HTTP endpoints responded successfully. No embedded-data retention warnings.
+> Official source unreachable or deprecated. **Embedded data was retained** — the published API continues to serve the last successful capture.
+
+| Dataset | Severity | Status | Embedded data from | Message |
+|---------|----------|--------|--------------------|---------|
+| ibge | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| tse-municipios | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| cnaes | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| nbs | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| ncm | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| cbo | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| portos | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| anp-combustiveis | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| pncp-reference | warning | source_blocked | 2026-07-01 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API. |
+| feriados | warning | source_unavailable | 2026-06-23 | Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API. |
+
+### Maintainer action required
+
+1. Read [DATA-SOURCE-MAINTENANCE.md](DATA-SOURCE-MAINTENANCE.md).
+2. Scan [CRITICAL-ALERTS.md](../data/refresh-reports/CRITICAL-ALERTS.md) when severity is **critical**.
+3. Verify whether the official URL moved (404) or the payload schema changed.
+4. Update `docs/OFFICIAL-SOURCES.md`, the relevant `scripts/fetch-*.ts` endpoint(s), and `metadata.json`.
+5. Run `pnpm data:refresh` locally and confirm alerts are cleared in `data/refresh-reports/latest.json`.
 
 ## Verification
 
@@ -57,11 +78,11 @@ All HTTP endpoints responded successfully. No embedded-data retention warnings.
 ```json
 {
   "datasetsVerificados": 30,
-  "datasetsAlterados": 4,
-  "totalAdicionados": 619,
-  "totalRemovidos": 11,
-  "totalAlterados": 0,
-  "sourceAlerts": 0,
+  "datasetsAlterados": 3,
+  "totalAdicionados": 608,
+  "totalRemovidos": 0,
+  "totalAlterados": 1,
+  "sourceAlerts": 10,
   "criticalAlerts": 0,
   "baselinesSelados": 0
 }

@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-07-01T12:05:30.847Z",
+  "executadoEm": "2026-07-01T13:46:04.311Z",
   "runDate": "2026-07-01",
   "schedule": "diario",
   "agendamento": "diario",
@@ -20,16 +20,19 @@
     },
     {
       "id": "bancos",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "alterados": 1,
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "bancos": 469
-      }
+      },
+      "camposAlterados": [
+        "participaCompe"
+      ]
     },
     {
       "id": "aeroportos",
@@ -38,7 +41,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "aeroportos": 533,
@@ -65,7 +68,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "moedas": 154
@@ -73,12 +76,12 @@
     },
     {
       "id": "ptax",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 10,
-        "removidos": 10,
+        "adicionados": 0,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "cotacoes": 850,
@@ -88,12 +91,12 @@
     },
     {
       "id": "selic",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 1,
-        "removidos": 1,
+        "adicionados": 0,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "observacoes": 90,
@@ -119,13 +122,13 @@
       "id": "paises-bacen",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 0,
-        "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "adicionados": 11,
+        "removidos": 4,
+        "alterados": 33,
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
-        "paises": 253
+        "paises": 260
       }
     },
     {
@@ -135,7 +138,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +151,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "ddds": 67
@@ -202,7 +205,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +218,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "motivos": 61
@@ -413,7 +416,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-30"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "endpoints": 8,
@@ -421,14 +424,143 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "ibge",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+        "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "tse-municipios",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "cnaes",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "nbs",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "ncm",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "cbo",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "portos",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "anp-combustiveis",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "pncp-reference",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-01 retained in the API.",
+      "endpoints": [
+        "https://pncp.gov.br/api/pncp/v1/modalidades",
+        "https://pncp.gov.br/api/pncp/v1/amparos-legais",
+        "https://pncp.gov.br/api/pncp/v1/modos-disputas",
+        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-convocatorios",
+        "https://pncp.gov.br/api/pncp/v1/tipos-contratos",
+        "https://pncp.gov.br/api/pncp/v1/criterios-julgamentos",
+        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
+        "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
+      ],
+      "retainedEmbeddedDataFrom": "2026-07-01",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    },
+    {
+      "datasetId": "feriados",
+      "severity": "warning",
+      "status": "source_unavailable",
+      "message": "Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API.",
+      "endpoints": [
+        "https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026"
+      ],
+      "retainedEmbeddedDataFrom": "2026-06-23",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 4,
-    "totalAdicionados": 619,
-    "totalRemovidos": 11,
-    "totalAlterados": 0,
-    "sourceAlerts": 0,
+    "datasetsAlterados": 3,
+    "totalAdicionados": 608,
+    "totalRemovidos": 0,
+    "totalAlterados": 1,
+    "sourceAlerts": 10,
     "criticalAlerts": 0,
     "baselinesSelados": 0
   }

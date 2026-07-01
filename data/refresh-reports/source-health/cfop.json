@@ -2,7 +2,7 @@
   "datasetId": "cfop",
   "endpoints": [
     "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente",
-    "/data/dev/projects/webstorm/doc-raiz/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
   ],
   "consecutiveFailureDays": 0,
   "firstFailureDate": null,

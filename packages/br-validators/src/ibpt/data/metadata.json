@@ -6,12 +6,13 @@
     "https://deolhonoimposto.ibpt.org.br/",
     "https://apidoni.ibpt.org.br/api/v1/produtos",
     "https://ibpt.valraw.com.br/api/meta.json",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/SP.json.gz",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/RJ.json.gz",
-    "https://ibpt.valraw.com.br/api/2026/26.1.K/ncm/MG.json.gz"
+    "https://ibpt.valraw.com.br/api/ncm/SP.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/RJ.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/MG.json.gz (resolved after meta.json)",
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
   ],
   "capturadoEm": "2026-07-01",
-  "atualizadoEm": "2026-07-01T12:04:47.528Z",
+  "atualizadoEm": "2026-07-01T13:02:56.463Z",
   "contagens": {
     "cargas": 12
   },
@@ -24,7 +25,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-01T12:04:47.528Z"
+    "ultimaExecucao": "2026-07-01T13:02:56.463Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibpt-carga-tributaria-ncm"
 }

@@ -9,21 +9,21 @@
     "https://www.bcb.gov.br/controleinflacao/copom"
   ],
   "capturadoEm": "2026-07-01",
-  "atualizadoEm": "2026-07-01T07:07:12.822Z",
+  "atualizadoEm": "2026-07-01T12:23:47.338Z",
   "contagens": {
     "observacoes": 90,
     "dias": 90
   },
   "alteracoes": {
-    "adicionados": 1,
-    "removidos": 1,
+    "adicionados": 0,
+    "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-06-30"
+    "comparadoCom": "2026-07-01"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-01T07:07:12.822Z"
+    "ultimaExecucao": "2026-07-01T12:23:47.338Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#selic-meta-sgs-432"
 }

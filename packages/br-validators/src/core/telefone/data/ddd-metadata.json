@@ -7,7 +7,7 @@
     "packages/br-validators/src/ibge/data/municipios.json"
   ],
   "capturadoEm": "2026-07-01",
-  "atualizadoEm": "2026-07-01T07:07:16.193Z",
+  "atualizadoEm": "2026-07-01T12:32:52.995Z",
   "contagens": {
     "ddds": 67
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-06-30"
+    "comparadoCom": "2026-07-01"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-01T07:07:16.193Z"
+    "ultimaExecucao": "2026-07-01T12:32:52.995Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#anatel-ddd-lookup"
 }
