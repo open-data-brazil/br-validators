@@ -10,8 +10,8 @@ import {
   SourceDataError,
   writeSourceFetchOutcome,
 } from './lib/source-fetch-outcome.js';
-import { FETCH_RETRY_DELAY_MS } from './lib/fetch-retry-config.js';
-import { fetchTextWithRetry, todayIsoDate, CONFAZ_HTML_TIMEOUT_MS } from './lib/fetch-utils.js';
+import { fetchConfazHtml } from './lib/fetch-confaz-html.js';
+import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { parseCfopHtml, type CfopRecord } from './lib/parse-cfop-html.js';
 
@@ -20,8 +20,11 @@ const ROOT = path.resolve(__dirname, '..');
 const CFOP_DATA_DIR = path.join(ROOT, 'packages/br-validators/src/cfop/data');
 const FETCH_OUTCOME_DIR = path.join(ROOT, 'data/refresh-reports/fetch-outcomes');
 
-const CFOP_HTML_URL =
+export const CFOP_HTML_URL =
   'https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente';
+
+export const CFOP_MIRROR_FILE = 'cfop_cvsn_70_vigente.html';
+
 const MIN_CFOP = 600;
 const MAX_CFOP = 750;
 
@@ -34,19 +37,21 @@ async function readJsonIfExists<T>(filePath: string): Promise<T | null> {
   }
 }
 
+function cfopSuccessMessage(source: 'official' | 'repo_mirror'): string {
+  if (source === 'official') {
+    return 'Official CONFAZ CFOP table fetch succeeded.';
+  }
+  return 'CONFAZ CFOP table loaded from repo HTML cache after official host blocked from CI.';
+}
+
 async function main(): Promise<void> {
   const metadataPath = path.join(CFOP_DATA_DIR, 'metadata.json');
   const previousMetadata = await readJsonIfExists<{ capturadoEm: string }>(metadataPath);
   const endpoints = [CFOP_HTML_URL];
 
   try {
-    const html = await fetchTextWithRetry(
-      CFOP_HTML_URL,
-      FETCH_MAX_ATTEMPTS,
-      FETCH_RETRY_DELAY_MS,
-      CONFAZ_HTML_TIMEOUT_MS,
-    );
-    const cfops = parseCfopHtml(html);
+    const fetched = await fetchConfazHtml(CFOP_HTML_URL, CFOP_MIRROR_FILE);
+    const cfops = parseCfopHtml(fetched.html);
 
     if (cfops.length < MIN_CFOP || cfops.length > MAX_CFOP) {
       throw new SourceDataError(
@@ -70,7 +75,7 @@ async function main(): Promise<void> {
         id: 'cfop',
         nome: 'CONFAZ CFOP',
         fonte: 'CONFAZ SINIEF Convênio s/nº 1970 — Anexo II',
-        endpoints,
+        endpoints: fetched.endpoints,
         contagens: { cfop: cfops.length },
         documentacao: 'docs/OFFICIAL-SOURCES.md#cfop-fiscal-operations',
       },
@@ -84,11 +89,11 @@ async function main(): Promise<void> {
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, {
       datasetId: 'cfop',
       status: 'ok',
-      endpoints,
+      endpoints: fetched.endpoints,
       attempts: FETCH_MAX_ATTEMPTS,
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message: 'Official CONFAZ CFOP table fetch succeeded.',
+      message: cfopSuccessMessage(fetched.source),
     });
 
     console.log(`CFOP data written (${todayIsoDate()}): ${String(cfops.length)} codes`);
@@ -99,6 +104,7 @@ async function main(): Promise<void> {
       previousMetadata?.capturadoEm ?? null,
       error,
       FETCH_MAX_ATTEMPTS,
+      [CFOP_HTML_URL, `data/source-mirrors/confaz/${CFOP_MIRROR_FILE}`],
     );
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, outcome);
     console.warn(`[cfop] ${outcome.message}`);

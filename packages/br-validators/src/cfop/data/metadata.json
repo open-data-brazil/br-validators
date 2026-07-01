@@ -3,10 +3,11 @@
   "nome": "CONFAZ CFOP",
   "fonte": "CONFAZ SINIEF Convênio s/nº 1970 — Anexo II",
   "endpoints": [
-    "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente"
+    "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente",
+    "/data/dev/projects/webstorm/doc-raiz/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
   ],
-  "capturadoEm": "2026-06-26",
-  "atualizadoEm": "2026-06-26T11:18:58.362Z",
+  "capturadoEm": "2026-07-01",
+  "atualizadoEm": "2026-07-01T12:04:36.700Z",
   "contagens": {
     "cfop": 689
   },
@@ -14,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-06-26"
+    "comparadoCom": "2026-07-01"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-06-26T11:18:58.362Z"
+    "ultimaExecucao": "2026-07-01T12:04:36.700Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cfop-fiscal-operations"
 }

@@ -1,7 +1,7 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-07-01T07:40:03.014Z
+> Last bot run: 2026-07-01T12:05:30.847Z
 
 ## Summary
 
@@ -20,12 +20,12 @@
 | Anatel DDD Geographic Lookup | 2026-07-01 | 67 ddds | 0 | 0 | 0 | — | [Anatel Plano de Numeração + IBGE municipios](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
 | Feriados Nacionais Federais | 2026-06-23 | 9 feriadosNacionaisFixos / 1 feriadosNacionaisMoveis / 9 pontosFacultativosFederais | 0 | 0 | 0 | — | [Lei 662/1949 + Portaria MGI (calendário federal)](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
 | IBGE CNAE 2.3 Subclasses | 2026-07-01 | 1332 cnaes | 0 | 0 | 0 | — | [IBGE API v2 /cnae/subclasses](https://servicodados.ibge.gov.br/api/v2/cnae/subclasses) |
-| CONFAZ CFOP | 2026-06-26 | 689 cfop | 0 | 0 | 0 | — | [CONFAZ SINIEF Convênio s/nº 1970 — Anexo II](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| CONFAZ CFOP | 2026-07-01 | 689 cfop | 0 | 0 | 0 | — | [CONFAZ SINIEF Convênio s/nº 1970 — Anexo II](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
 | RFB CNPJ Naturezas Jurídicas | 2026-07-01 | 90 naturezas | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Naturezas.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip) |
 | RFB CNPJ Motivos de Situação Cadastral | 2026-07-01 | 61 motivos | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Motivos.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Motivos.zip) |
-| IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012) | 2026-06-26 | 12 cargas | 0 | 0 | 0 | — | [IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)](https://deolhonoimposto.ibpt.org.br/) |
+| IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012) | 2026-07-01 | 12 cargas | 0 | 0 | 0 | — | [IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)](https://deolhonoimposto.ibpt.org.br/) |
 | NFSe NBS | 2026-07-01 | 917 nbs | 0 | 0 | 0 | — | [NFSe Nacional — Anexo B NBS2 Lista Serviço Nacional](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx) |
-| CONFAZ CEST | 2026-06-26 | 1018 cest | 0 | 0 | 0 | — | [CONFAZ Convênio ICMS 142/2018 — Anexos II a XXVI](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
+| CONFAZ CEST | 2026-07-01 | 1018 cest | 0 | 0 | 0 | — | [CONFAZ Convênio ICMS 142/2018 — Anexos II a XXVI](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
 | RFB SPED — CST (ICMS, IPI, PIS, COFINS) | 2026-06-24 | 11 icms / 14 ipi / 33 pis / 33 cofins | 0 | 0 | 0 | — | [SPED Fiscal — Tabelas de Situação Tributária (IN RFB 932/2009 family)](http://www.sped.fazenda.gov.br/spedtabelas/AppConsulta/publico/aspx/ConsultaTabelasExternas.aspx?CodSistema=SpedFiscal) |
 | LC 116/2003 — Lista de Serviços ISS | 2026-06-25 | 200 lc116 | 0 | 0 | 0 | — | [Lei Complementar 116/2003 — Anexo (Lista de Serviços)](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | eSocial S-1.3 — Tabela 01 (Categorias) + Tabela 03 (Rubricas) | 2026-06-27 | 47 categorias / 208 rubricas | 208 | 0 | 0 | — | [eSocial S-1.3 — Tabelas 01 e 03](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) |
@@ -38,28 +38,9 @@
 | PNCP domain reference tables | 2026-07-01 | 19 modalidades / 183 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | Portal da Transparência endpoint registry | 2026-07-01 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-## ⚠️ Critical source alerts
+## Source health
 
-**3** dataset(s) marked as **consultation link deprecated** (2+ consecutive failure days).
-See [`data/refresh-reports/CRITICAL-ALERTS.md`](../data/refresh-reports/CRITICAL-ALERTS.md).
-
-## Source health alerts
-
-> Official source unreachable or deprecated. **Embedded data was retained** — the published API continues to serve the last successful capture.
-
-| Dataset | Severity | Status | Embedded data from | Message |
-|---------|----------|--------|--------------------|---------|
-| cfop | critical | source_unavailable | 2026-06-26 | Consultation link deprecated — official source unreachable for 2 or more consecutive days. |
-| ibpt | critical | source_empty | 2026-06-26 | Consultation link deprecated — official source unreachable for 2 or more consecutive days. |
-| cest | critical | source_unavailable | 2026-06-26 | Consultation link deprecated — official source unreachable for 2 or more consecutive days. |
-
-### Maintainer action required
-
-1. Read [DATA-SOURCE-MAINTENANCE.md](DATA-SOURCE-MAINTENANCE.md).
-2. Scan [CRITICAL-ALERTS.md](../data/refresh-reports/CRITICAL-ALERTS.md) when severity is **critical**.
-3. Verify whether the official URL moved (404) or the payload schema changed.
-4. Update `docs/OFFICIAL-SOURCES.md`, the relevant `scripts/fetch-*.ts` endpoint(s), and `metadata.json`.
-5. Run `pnpm data:refresh` locally and confirm alerts are cleared in `data/refresh-reports/latest.json`.
+All HTTP endpoints responded successfully. No embedded-data retention warnings.
 
 ## Verification
 
@@ -76,12 +57,12 @@ See [`data/refresh-reports/CRITICAL-ALERTS.md`](../data/refresh-reports/CRITICAL
 ```json
 {
   "datasetsVerificados": 30,
-  "datasetsAlterados": 2,
-  "totalAdicionados": 608,
-  "totalRemovidos": 0,
+  "datasetsAlterados": 4,
+  "totalAdicionados": 619,
+  "totalRemovidos": 11,
   "totalAlterados": 0,
-  "sourceAlerts": 3,
-  "criticalAlerts": 3,
+  "sourceAlerts": 0,
+  "criticalAlerts": 0,
   "baselinesSelados": 0
 }
 ```

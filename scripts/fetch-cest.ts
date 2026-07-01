@@ -10,8 +10,8 @@ import {
   SourceDataError,
   writeSourceFetchOutcome,
 } from './lib/source-fetch-outcome.js';
-import { FETCH_RETRY_DELAY_MS } from './lib/fetch-retry-config.js';
-import { fetchTextWithRetry, todayIsoDate, CONFAZ_HTML_TIMEOUT_MS } from './lib/fetch-utils.js';
+import { fetchConfazHtml } from './lib/fetch-confaz-html.js';
+import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { parseCestHtml, type CestRecord } from './lib/parse-cest-html.js';
 
@@ -22,6 +22,8 @@ const FETCH_OUTCOME_DIR = path.join(ROOT, 'data/refresh-reports/fetch-outcomes')
 
 export const CEST_HTML_URL =
   'https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18';
+
+export const CEST_MIRROR_FILE = 'cest_cv142_18.html';
 
 export const MIN_CEST = 950;
 export const MAX_CEST = 1050;
@@ -35,19 +37,21 @@ async function readJsonIfExists<T>(filePath: string): Promise<T | null> {
   }
 }
 
+function cestSuccessMessage(source: 'official' | 'repo_mirror'): string {
+  if (source === 'official') {
+    return 'Official CONFAZ CEST table fetch succeeded.';
+  }
+  return 'CONFAZ CEST table loaded from repo HTML cache after official host blocked from CI.';
+}
+
 async function main(): Promise<void> {
   const metadataPath = path.join(DATA_DIR, 'metadata.json');
   const previousMetadata = await readJsonIfExists<{ capturadoEm: string }>(metadataPath);
   const endpoints = [CEST_HTML_URL];
 
   try {
-    const html = await fetchTextWithRetry(
-      CEST_HTML_URL,
-      FETCH_MAX_ATTEMPTS,
-      FETCH_RETRY_DELAY_MS,
-      CONFAZ_HTML_TIMEOUT_MS,
-    );
-    const cests = parseCestHtml(html);
+    const fetched = await fetchConfazHtml(CEST_HTML_URL, CEST_MIRROR_FILE);
+    const cests = parseCestHtml(fetched.html);
 
     if (cests.length < MIN_CEST || cests.length > MAX_CEST) {
       throw new SourceDataError(
@@ -76,7 +80,7 @@ async function main(): Promise<void> {
         id: 'cest',
         nome: 'CONFAZ CEST',
         fonte: 'CONFAZ Convênio ICMS 142/2018 — Anexos II a XXVI',
-        endpoints,
+        endpoints: fetched.endpoints,
         contagens: { cest: cests.length },
         documentacao: 'docs/OFFICIAL-SOURCES.md#cest',
       },
@@ -90,11 +94,11 @@ async function main(): Promise<void> {
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, {
       datasetId: 'cest',
       status: 'ok',
-      endpoints,
+      endpoints: fetched.endpoints,
       attempts: FETCH_MAX_ATTEMPTS,
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message: 'Official CONFAZ CEST table fetch succeeded.',
+      message: cestSuccessMessage(fetched.source),
     });
 
     console.log(`CEST data written (${todayIsoDate()}): ${String(cests.length)} codes`);
@@ -105,6 +109,7 @@ async function main(): Promise<void> {
       previousMetadata?.capturadoEm ?? null,
       error,
       FETCH_MAX_ATTEMPTS,
+      [CEST_HTML_URL, `data/source-mirrors/confaz/${CEST_MIRROR_FILE}`],
     );
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, outcome);
     console.warn(`[cest] ${outcome.message}`);

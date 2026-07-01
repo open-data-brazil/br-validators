@@ -10,8 +10,15 @@ export type SourceFetchStatus =
   | 'ok'
   | 'embedded_retained'
   | 'source_unavailable'
+  | 'source_blocked'
   | 'source_empty'
   | 'dependency_failed';
+
+export type SourceFailureKind =
+  | 'link_deprecated'
+  | 'source_blocked'
+  | 'parse_error'
+  | 'auth_missing';
 
 export interface SourceFetchOutcome {
   datasetId: string;
@@ -22,6 +29,8 @@ export interface SourceFetchOutcome {
   retainedEmbeddedDataFrom: string | null;
   message: string;
   httpStatus?: number;
+  failureKind?: SourceFailureKind;
+  attemptedEndpoints?: string[];
 }
 
 export interface SourceAlert {
@@ -49,36 +58,32 @@ export class SourceDataError extends Error {
   }
 }
 
-export function buildFailureOutcome(
-  datasetId: string,
-  endpoints: string[],
-  retainedEmbeddedDataFrom: string | null,
-  error: unknown,
-  attempts: number,
-): SourceFetchOutcome {
-  const httpStatus = error instanceof FetchError ? error.status : undefined;
-  const status = classifySourceError(error);
-  const detail = error instanceof Error ? error.message : 'Unknown fetch error';
-  const retainedLabel = retainedEmbeddedDataFrom ?? 'unknown date';
-  const retryDelayMs = FETCH_RETRY_DELAY_MS;
-  const message =
-    status === 'dependency_failed'
-      ? `${detail} Embedded data from ${retainedLabel} retained in the API.`
-      : `Possible link deprecation — official source unreachable after ${String(attempts)} attempts (interval ${String(retryDelayMs)}ms) (${detail}). No new data returned — embedded data from ${retainedLabel} retained in the API.`;
-
-  return {
-    datasetId,
-    status,
-    endpoints,
-    attempts,
-    checkedAt: new Date().toISOString(),
-    retainedEmbeddedDataFrom,
-    message,
-    ...(httpStatus === undefined ? {} : { httpStatus }),
-  };
+function classifyFailureKind(error: unknown): SourceFailureKind {
+  if (error instanceof FetchError) {
+    if (error.status === 404) {
+      return 'link_deprecated';
+    }
+    if (error.status === 403 || error.status === 429) {
+      return 'source_blocked';
+    }
+    if (error.message.includes('fetch failed') || error.message.includes('Timeout')) {
+      return 'source_blocked';
+    }
+  }
+  if (error instanceof SourceDataError) {
+    return 'parse_error';
+  }
+  if (error instanceof Error && error.message.includes('fetch failed')) {
+    return 'source_blocked';
+  }
+  return 'link_deprecated';
 }
 
 function classifySourceError(error: unknown): Exclude<SourceFetchStatus, 'ok'> {
+  const failureKind = classifyFailureKind(error);
+  if (failureKind === 'source_blocked') {
+    return 'source_blocked';
+  }
   if (error instanceof SourceDataError) {
     return error.status;
   }
@@ -89,6 +94,55 @@ function classifySourceError(error: unknown): Exclude<SourceFetchStatus, 'ok'> {
     return 'dependency_failed';
   }
   return 'source_unavailable';
+}
+
+function buildFailureDetailMessage(failureKind: SourceFailureKind, detail: string): string {
+  if (failureKind === 'source_blocked') {
+    return `Source blocked or unreachable from CI network — not link deprecation (${detail})`;
+  }
+  if (failureKind === 'parse_error') {
+    return `Official source responded but data was not parseable (${detail})`;
+  }
+  if (failureKind === 'auth_missing') {
+    return `Official API credentials missing (${detail})`;
+  }
+  return `Possible link deprecation (${detail})`;
+}
+
+export function buildFailureOutcome(
+  datasetId: string,
+  endpoints: string[],
+  retainedEmbeddedDataFrom: string | null,
+  error: unknown,
+  attempts: number,
+  attemptedEndpoints?: string[],
+): SourceFetchOutcome {
+  const httpStatus = error instanceof FetchError ? error.status : undefined;
+  const failureKind = classifyFailureKind(error);
+  const status = classifySourceError(error);
+  const detail = error instanceof Error ? error.message : 'Unknown fetch error';
+  const retainedLabel = retainedEmbeddedDataFrom ?? 'unknown date';
+  const retryDelayMs = FETCH_RETRY_DELAY_MS;
+  const classifiedDetail = buildFailureDetailMessage(failureKind, detail);
+  const message =
+    status === 'dependency_failed'
+      ? `${detail} Embedded data from ${retainedLabel} retained in the API.`
+      : `${classifiedDetail}. No new data after ${String(attempts)} attempts (interval ${String(retryDelayMs)}ms) — embedded data from ${retainedLabel} retained in the API.`;
+
+  const allEndpoints = attemptedEndpoints ?? endpoints;
+
+  return {
+    datasetId,
+    status,
+    endpoints: allEndpoints,
+    attempts,
+    checkedAt: new Date().toISOString(),
+    retainedEmbeddedDataFrom,
+    message,
+    failureKind,
+    attemptedEndpoints: allEndpoints,
+    ...(httpStatus === undefined ? {} : { httpStatus }),
+  };
 }
 
 export function buildEmbeddedFallbackOutcome(
