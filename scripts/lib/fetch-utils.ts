@@ -22,7 +22,11 @@ export class FetchError extends Error {
   }
 }
 
-export async function fetchText(url: string, timeoutMs = DEFAULT_TIMEOUT_MS): Promise<string> {
+export async function fetchText(
+  url: string,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  accept = 'text/csv,text/plain,*/*',
+): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => {
     controller.abort();
@@ -32,7 +36,7 @@ export async function fetchText(url: string, timeoutMs = DEFAULT_TIMEOUT_MS): Pr
     const response = await fetch(url, {
       signal: controller.signal,
       headers: {
-        Accept: 'text/csv,text/plain,*/*',
+        Accept: accept,
         'User-Agent': USER_AGENT,
       },
     });
@@ -116,8 +120,9 @@ export async function fetchTextWithRetry(
   attempts = FETCH_MAX_ATTEMPTS,
   delayMs = FETCH_RETRY_DELAY_MS,
   timeoutMs = DEFAULT_TIMEOUT_MS,
+  accept = 'text/csv,text/plain,*/*',
 ): Promise<string> {
-  return fetchWithRetry(() => fetchText(url, timeoutMs), attempts, delayMs);
+  return fetchWithRetry(() => fetchText(url, timeoutMs, accept), attempts, delayMs);
 }
 
 export async function fetchJsonWithRetry<T>(

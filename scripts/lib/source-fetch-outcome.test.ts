@@ -4,7 +4,22 @@ import { buildEmbeddedFallbackOutcome, buildFailureOutcome, FETCH_MAX_ATTEMPTS }
 import { FetchError } from './fetch-utils.js';
 
 describe('source-fetch-outcome', () => {
-  it('builds possible link deprecation message after 5 attempts', () => {
+  it('builds blocked-network message for fetch failed errors', () => {
+    const outcome = buildFailureOutcome(
+      'cfop',
+      ['https://www.confaz.fazenda.gov.br/x'],
+      '2026-06-23',
+      new FetchError('fetch failed', 'https://www.confaz.fazenda.gov.br/x'),
+      FETCH_MAX_ATTEMPTS,
+    );
+
+    expect(outcome.status).toBe('source_blocked');
+    expect(outcome.failureKind).toBe('source_blocked');
+    expect(outcome.message).toContain('not link deprecation');
+    expect(outcome.message).toContain('5 attempts');
+  });
+
+  it('builds link deprecation message for HTTP 404', () => {
     const outcome = buildFailureOutcome(
       'ibge',
       ['https://example.gov.br/data'],
@@ -13,11 +28,29 @@ describe('source-fetch-outcome', () => {
       FETCH_MAX_ATTEMPTS,
     );
 
-    expect(outcome.attempts).toBe(5);
     expect(outcome.status).toBe('source_unavailable');
+    expect(outcome.failureKind).toBe('link_deprecated');
     expect(outcome.message).toContain('Possible link deprecation');
-    expect(outcome.message).toContain('5 attempts');
-    expect(outcome.message).toContain('120000ms');
+  });
+
+  it('records attempted endpoints on IBPT-style failures', () => {
+    const attempted = [
+      'https://deolhonoimposto.ibpt.org.br/',
+      'https://apidoni.ibpt.org.br/api/v1/produtos',
+      'https://ibpt.valraw.com.br/api/meta.json',
+    ];
+    const outcome = buildFailureOutcome(
+      'ibpt',
+      ['https://deolhonoimposto.ibpt.org.br/'],
+      '2026-06-26',
+      new FetchError('HTTP 403 downloading https://ibpt.valraw.com.br/api/meta.json', 'https://ibpt.valraw.com.br/api/meta.json', 403),
+      FETCH_MAX_ATTEMPTS,
+      attempted,
+    );
+
+    expect(outcome.status).toBe('source_blocked');
+    expect(outcome.endpoints).toEqual(attempted);
+    expect(outcome.message).toContain('403');
   });
 
   it('builds embedded_retained outcome for fallback datasets', () => {

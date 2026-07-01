@@ -1,107 +1,38 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { gunzipSync } from 'node:zlib';
 
 import { diffRecordsByKey } from './lib/diff-dataset.js';
-import { exitWithError, toError } from './lib/errors.js';
+import { exitWithError } from './lib/errors.js';
 import {
   buildFailureOutcome,
   FETCH_MAX_ATTEMPTS,
   SourceDataError,
   writeSourceFetchOutcome,
 } from './lib/source-fetch-outcome.js';
+import {
+  buildIbptCandidateEndpoints,
+  fetchIbptGoldenCargas,
+  IBPT_MAX_CARGAS,
+  IBPT_MIN_CARGAS,
+  IBPT_OFFICIAL_PORTAL_URL,
+  ibptSuccessMessage,
+} from './lib/fetch-ibpt-golden.js';
+import type { IbptCargaRecord } from './lib/parse-ibpt-ncm-json.js';
 import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
-import {
-  extractGoldenIbptCargas,
-  type IbptCargaRecord,
-  type IbptNcmPayload,
-} from './lib/parse-ibpt-ncm-json.js';
-import {
-  resolveLatestIbptTabela,
-  type IbptMetaPayload,
-} from './lib/resolve-ibpt-tabela.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'packages/br-validators/src/ibpt/data');
 const FETCH_OUTCOME_DIR = path.join(ROOT, 'data/refresh-reports/fetch-outcomes');
 
-export const IBPT_OFFICIAL_PORTAL_URL = 'https://deolhonoimposto.ibpt.org.br/';
-
-/**
- * Dev fallback — republication of official IBPT NCM tables (subset fetch only).
- * @see https://ibpt.valraw.com.br/
- */
-export const IBPT_DEV_API_BASE_URL = 'https://ibpt.valraw.com.br/api';
-
-export const IBPT_GOLDEN_NCMS = ['01012100', '12011000', '22030000'] as const;
-export const IBPT_GOLDEN_UFS = ['SP', 'RJ', 'MG'] as const;
-
-export const IBPT_MIN_CARGAS = 4;
-export const IBPT_MAX_CARGAS = 12;
-
-async function downloadText(url: string, gzip: boolean): Promise<string> {
-  let lastError: object | string | number | boolean | null = null;
-  for (let attempt = 1; attempt <= FETCH_MAX_ATTEMPTS; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        headers: { 'User-Agent': 'br-validators-data-refresh/1.0' },
-        signal: AbortSignal.timeout(60_000),
-      });
-      if (!response.ok) {
-        throw new SourceDataError(`HTTP ${String(response.status)} downloading ${url}`);
-      }
-      const buffer = Buffer.from(await response.arrayBuffer());
-      if (gzip) {
-        return gunzipSync(buffer).toString('utf8');
-      }
-      return buffer.toString('utf8');
-    } catch (error) {
-      lastError = error instanceof Error ? error : 'Unknown download error';
-      if (attempt < FETCH_MAX_ATTEMPTS) {
-        await new Promise((resolve) => {
-          setTimeout(resolve, 2000);
-        });
-      }
-    }
-  }
-  throw toError(lastError ?? 'Unknown download error');
-}
-
-function parseJsonObject(raw: string): object {
-  const parsed = JSON.parse(raw) as string | number | boolean | object | null;
-  if (typeof parsed !== 'object' || parsed === null) {
-    throw new SourceDataError('Expected JSON object from IBPT API');
-  }
-  return parsed;
-}
-
-async function fetchGoldenCargas(endpoints: string[]): Promise<IbptCargaRecord[]> {
-  const metaUrl = `${IBPT_DEV_API_BASE_URL}/meta.json`;
-  const metaRaw = await downloadText(metaUrl, false);
-  endpoints.push(metaUrl);
-  const meta = parseJsonObject(metaRaw) as IbptMetaPayload;
-  const { ano, tabela } = resolveLatestIbptTabela(meta);
-
-  const cargas: IbptCargaRecord[] = [];
-  for (const uf of IBPT_GOLDEN_UFS) {
-    const url = `${IBPT_DEV_API_BASE_URL}/${String(ano)}/${tabela}/ncm/${uf}.json.gz`;
-    const raw = await downloadText(url, true);
-    endpoints.push(url);
-    const payload = parseJsonObject(raw) as IbptNcmPayload;
-    cargas.push(...extractGoldenIbptCargas(payload, uf, IBPT_GOLDEN_NCMS));
-  }
-
-  return cargas.sort((left, right) => {
-    const byUf = left.uf.localeCompare(right.uf);
-    if (byUf !== 0) {
-      return byUf;
-    }
-    return left.ncm.localeCompare(right.ncm);
-  });
-}
+export {
+  IBPT_GOLDEN_NCMS,
+  IBPT_GOLDEN_UFS,
+  IBPT_OFFICIAL_PORTAL_URL,
+  IBPT_VALRAW_API_BASE_URL,
+} from './lib/fetch-ibpt-golden.js';
 
 async function readJsonIfExists<T>(filePath: string): Promise<T | null> {
   try {
@@ -116,10 +47,11 @@ async function main(): Promise<void> {
   const dataPath = path.join(DATA_DIR, 'cargas.json');
   const metadataPath = path.join(DATA_DIR, 'metadata.json');
   const previousMetadata = await readJsonIfExists<{ capturadoEm: string }>(metadataPath);
-  const endpoints: string[] = [IBPT_OFFICIAL_PORTAL_URL];
+  const candidateEndpoints = buildIbptCandidateEndpoints();
 
   try {
-    const cargas = await fetchGoldenCargas(endpoints);
+    const fetched = await fetchIbptGoldenCargas();
+    const cargas = fetched.cargas;
 
     if (cargas.length < IBPT_MIN_CARGAS || cargas.length > IBPT_MAX_CARGAS) {
       throw new SourceDataError(
@@ -149,7 +81,7 @@ async function main(): Promise<void> {
         id: 'ibpt',
         nome: 'IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012)',
         fonte: 'IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)',
-        endpoints,
+        endpoints: fetched.endpoints,
         contagens: { cargas: cargas.length },
         documentacao: 'docs/OFFICIAL-SOURCES.md#ibpt-carga-tributaria-ncm',
       },
@@ -163,21 +95,22 @@ async function main(): Promise<void> {
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, {
       datasetId: 'ibpt',
       status: 'ok',
-      endpoints,
+      endpoints: fetched.endpoints,
       attempts: FETCH_MAX_ATTEMPTS,
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message: 'IBPT golden NCM×UF subset fetch succeeded.',
+      message: ibptSuccessMessage(fetched.source),
     });
 
     console.log(`IBPT data written (${todayIsoDate()}): ${String(cargas.length)} cargas, tabela ${tabela}`);
   } catch (error) {
     const outcome = buildFailureOutcome(
       'ibpt',
-      endpoints,
+      [IBPT_OFFICIAL_PORTAL_URL],
       previousMetadata?.capturadoEm ?? null,
       error,
       FETCH_MAX_ATTEMPTS,
+      candidateEndpoints,
     );
     await writeSourceFetchOutcome(FETCH_OUTCOME_DIR, outcome);
     console.warn(`[ibpt] ${outcome.message}`);

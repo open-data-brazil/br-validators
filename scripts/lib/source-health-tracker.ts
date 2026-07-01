@@ -50,6 +50,7 @@ function readOutcomeStatus(obj: object, key: string): SourceFetchStatus | null {
     value === 'ok' ||
     value === 'embedded_retained' ||
     value === 'source_unavailable' ||
+    value === 'source_blocked' ||
     value === 'source_empty' ||
     value === 'dependency_failed'
   ) {
@@ -110,15 +111,21 @@ function isPreviousCalendarDay(previousDate: string, currentDate: string): boole
   return diffMs >= oneDayMs && diffMs < oneDayMs * 2;
 }
 
-function buildFailureMessage(consecutiveFailureDays: number, embedded: boolean): string {
+function buildFailureMessage(consecutiveFailureDays: number, embedded: boolean, failureKind?: string): string {
   if (embedded) {
     if (consecutiveFailureDays >= 2) {
       return 'Official source still unavailable — embedded Bacen table retained for 2 or more consecutive days.';
     }
     return 'Official source did not return parseable data — embedded Bacen table retained (day 1 warning).';
   }
+  if (failureKind === 'source_blocked') {
+    if (consecutiveFailureDays >= 2) {
+      return 'Official source blocked from CI network for 2 or more consecutive days — check repo mirrors or runner egress.';
+    }
+    return 'Official source blocked or unreachable from CI network (day 1 warning) — not link deprecation.';
+  }
   if (consecutiveFailureDays >= 2) {
-    return 'Consultation link deprecated — official source unreachable for 2 or more consecutive days.';
+    return 'Consultation link may be deprecated — official source unreachable for 2 or more consecutive days.';
   }
   return 'Possible link deprecation — official source unreachable after 5 attempts (2 min interval).';
 }
@@ -134,7 +141,7 @@ function applyDegradedOutcome(
       ...previous,
       endpoints: outcome.endpoints,
       retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom ?? previous.retainedEmbeddedDataFrom,
-      message: outcome.message.length > 0 ? outcome.message : buildFailureMessage(previous.consecutiveFailureDays, embedded),
+      message: outcome.message.length > 0 ? outcome.message : buildFailureMessage(previous.consecutiveFailureDays, embedded, outcome.failureKind),
       severity: previous.consecutiveFailureDays >= 2 ? 'critical' : 'warning',
       outcomeStatus: outcome.status,
     };
@@ -166,7 +173,7 @@ function applyDegradedOutcome(
     message:
       outcome.message.length > 0
         ? outcome.message
-        : buildFailureMessage(consecutiveFailureDays, embedded),
+        : buildFailureMessage(consecutiveFailureDays, embedded, outcome.failureKind),
     retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
     outcomeStatus: outcome.status,
   };
@@ -201,7 +208,10 @@ export function applyFetchOutcomeToHealth(
       ...previous,
       endpoints: outcome.endpoints,
       retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom ?? previous.retainedEmbeddedDataFrom,
-      message: buildFailureMessage(previous.consecutiveFailureDays, false),
+      message:
+        outcome.message.length > 0
+          ? outcome.message
+          : buildFailureMessage(previous.consecutiveFailureDays, false, outcome.failureKind),
       severity: previous.consecutiveFailureDays >= 2 ? 'critical' : 'warning',
       outcomeStatus: outcome.status,
     };
@@ -230,7 +240,10 @@ export function applyFetchOutcomeToHealth(
     lastFailureDate: runDate,
     lastSuccessDate: previous?.lastSuccessDate ?? null,
     severity,
-    message: buildFailureMessage(consecutiveFailureDays, false),
+    message:
+      outcome.message.length > 0
+        ? outcome.message
+        : buildFailureMessage(consecutiveFailureDays, false, outcome.failureKind),
     retainedEmbeddedDataFrom: outcome.retainedEmbeddedDataFrom,
     outcomeStatus: outcome.status,
   };

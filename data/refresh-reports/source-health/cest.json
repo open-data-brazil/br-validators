@@ -1,14 +1,15 @@
 {
   "datasetId": "cest",
   "endpoints": [
-    "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
+    "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18",
+    "/data/dev/projects/webstorm/doc-raiz/data/source-mirrors/confaz/cest_cv142_18.html"
   ],
-  "consecutiveFailureDays": 3,
-  "firstFailureDate": "2026-06-29",
-  "lastFailureDate": "2026-07-01",
-  "lastSuccessDate": "2026-06-26",
-  "severity": "critical",
-  "message": "Consultation link deprecated — official source unreachable for 2 or more consecutive days.",
-  "retainedEmbeddedDataFrom": "2026-06-26",
-  "outcomeStatus": "source_unavailable"
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-07-01",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-07-01",
+  "outcomeStatus": "ok"
 }

@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-07-01T07:40:03.014Z",
+  "executadoEm": "2026-07-01T12:05:30.847Z",
   "runDate": "2026-07-01",
   "schedule": "diario",
   "agendamento": "diario",
@@ -73,7 +73,7 @@
     },
     {
       "id": "ptax",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 10,
         "removidos": 10,
@@ -88,7 +88,7 @@
     },
     {
       "id": "selic",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 1,
         "removidos": 1,
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "cfop": 689
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "cargas": 12
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "comparadoCom": "2026-07-01"
       },
       "contagens": {
         "cest": 1018
@@ -421,52 +421,15 @@
       }
     }
   ],
-  "sourceAlerts": [
-    {
-      "datasetId": "cfop",
-      "severity": "critical",
-      "status": "source_unavailable",
-      "message": "Consultation link deprecated — official source unreachable for 2 or more consecutive days.",
-      "endpoints": [
-        "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente"
-      ],
-      "retainedEmbeddedDataFrom": "2026-06-26",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 3
-    },
-    {
-      "datasetId": "ibpt",
-      "severity": "critical",
-      "status": "source_empty",
-      "message": "Consultation link deprecated — official source unreachable for 2 or more consecutive days.",
-      "endpoints": [
-        "https://deolhonoimposto.ibpt.org.br/"
-      ],
-      "retainedEmbeddedDataFrom": "2026-06-26",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 3
-    },
-    {
-      "datasetId": "cest",
-      "severity": "critical",
-      "status": "source_unavailable",
-      "message": "Consultation link deprecated — official source unreachable for 2 or more consecutive days.",
-      "endpoints": [
-        "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18"
-      ],
-      "retainedEmbeddedDataFrom": "2026-06-26",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 3
-    }
-  ],
+  "sourceAlerts": [],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 2,
-    "totalAdicionados": 608,
-    "totalRemovidos": 0,
+    "datasetsAlterados": 4,
+    "totalAdicionados": 619,
+    "totalRemovidos": 11,
     "totalAlterados": 0,
-    "sourceAlerts": 3,
-    "criticalAlerts": 3,
+    "sourceAlerts": 0,
+    "criticalAlerts": 0,
     "baselinesSelados": 0
   }
 }

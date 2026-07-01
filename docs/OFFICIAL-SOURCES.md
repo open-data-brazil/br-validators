@@ -797,6 +797,8 @@ Golden: `01012100` (purebred horse breeders), `12011000` (soybean seeds for sowi
 | Role | Source | URL |
 |------|--------|-----|
 | De Olho no Imposto (official tables) | IBPT | https://deolhonoimposto.ibpt.org.br/ |
+| Official REST API (golden subset) | IBPT apidoni | https://apidoni.ibpt.org.br/api/v1/produtos |
+| Community mirror (CI fallback) | valraw | https://ibpt.valraw.com.br/api/meta.json |
 | Legal basis | Planalto | https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12741.htm |
 | Layout / integration | IBPT portal | https://deolhonoimposto.ibpt.org.br/ |
 
@@ -804,7 +806,7 @@ Golden: NCM **`01012100`** / UF **`SP`** — nacional federal **13,45%** + estad
 
 **Scope v1:** golden NCM×UF subset embedded (~5 rows). **Out of scope:** full ~11k NCM × 27 UF matrix in core bundle. Rates are **approximate** per Lei 12.741/2012 — not a substitute for SEFAZ calculation.
 
-**Fetch:** `pnpm fetch:data:ibpt` — refreshes golden subset from latest IBPT table (dev mirror documented in `fetch-ibpt.ts`).
+**Fetch:** `pnpm fetch:data:ibpt` — apidoni when `IBPT_TOKEN` + `IBPT_CNPJ` are set; else valraw community mirror; repo cache at `data/source-mirrors/ibpt/golden-cargas.json` when CI networks block both.
 
 ---
 

@@ -6,7 +6,7 @@ import {
 } from './source-health-tracker.js';
 import type { SourceFetchOutcome } from './source-fetch-outcome.js';
 
-function failureOutcome(datasetId: string): SourceFetchOutcome {
+function failureOutcome(datasetId: string, message = ''): SourceFetchOutcome {
   return {
     datasetId,
     status: 'source_unavailable',
@@ -14,7 +14,8 @@ function failureOutcome(datasetId: string): SourceFetchOutcome {
     attempts: 5,
     checkedAt: '2026-06-24T03:00:00.000Z',
     retainedEmbeddedDataFrom: '2026-06-20',
-    message: 'fetch failed',
+    message,
+    failureKind: 'link_deprecated',
   };
 }
 
@@ -32,7 +33,24 @@ describe('source-health-tracker', () => {
 
     expect(day2.severity).toBe('critical');
     expect(day2.consecutiveFailureDays).toBe(2);
-    expect(day2.message).toContain('Consultation link deprecated');
+    expect(day2.message).toContain('may be deprecated');
+  });
+
+  it('uses blocked-network messaging for source_blocked outcomes', () => {
+    const blocked: SourceFetchOutcome = {
+      datasetId: 'cfop',
+      status: 'source_blocked',
+      endpoints: ['https://www.confaz.fazenda.gov.br/x'],
+      attempts: 5,
+      checkedAt: '2026-06-24T03:00:00.000Z',
+      retainedEmbeddedDataFrom: '2026-06-20',
+      message: 'Source blocked or unreachable from CI network — not link deprecation (fetch failed).',
+      failureKind: 'source_blocked',
+    };
+
+    const state = applyFetchOutcomeToHealth(null, blocked, '2026-06-24');
+    expect(state.outcomeStatus).toBe('source_blocked');
+    expect(state.message).toContain('not link deprecation');
   });
 
   it('resets streak after success', () => {

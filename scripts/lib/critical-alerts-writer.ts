@@ -2,7 +2,10 @@ import { writeFile } from 'node:fs/promises';
 
 import type { SourceHealthState } from './source-health-tracker.js';
 
-const DOC_ACTION =
+const DOC_ACTION_BLOCKED =
+  'CI network block — verify repo mirrors under data/source-mirrors/ or configure IBPT_TOKEN/IBPT_CNPJ; run pnpm data:refresh locally if needed.';
+
+const DOC_ACTION_DEPRECATED =
   'Update docs/OFFICIAL-SOURCES.md and scripts/fetch-*.ts endpoint(s), then run pnpm data:refresh.';
 
 export interface CriticalAlertsPaths {
@@ -12,6 +15,17 @@ export interface CriticalAlertsPaths {
 
 function criticalStates(states: readonly SourceHealthState[]): SourceHealthState[] {
   return states.filter((state) => state.severity === 'critical');
+}
+
+function resolveDocAction(state: SourceHealthState): string {
+  if (
+    state.outcomeStatus === 'source_blocked' ||
+    state.message.includes('blocked from CI') ||
+    state.message.includes('not link deprecation')
+  ) {
+    return DOC_ACTION_BLOCKED;
+  }
+  return DOC_ACTION_DEPRECATED;
 }
 
 export function generateCriticalAlertsMarkdown(
@@ -47,7 +61,7 @@ export function generateCriticalAlertsMarkdown(
     const retained = state.retainedEmbeddedDataFrom ?? 'unknown';
     const firstFailure = state.firstFailureDate ?? '—';
     lines.push(
-      `| ${state.datasetId} | ${endpoints} | ${state.severity} | ${String(state.consecutiveFailureDays)} | ${firstFailure} | ${retained} | ${DOC_ACTION} |`,
+      `| ${state.datasetId} | ${endpoints} | ${state.severity} | ${String(state.consecutiveFailureDays)} | ${firstFailure} | ${retained} | ${resolveDocAction(state)} |`,
     );
   }
 
