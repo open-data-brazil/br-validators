@@ -7,7 +7,7 @@
     "https://www.bcb.gov.br/ftp/paises.txt"
   ],
   "attempts": 1,
-  "checkedAt": "2026-07-02T06:54:03.032Z",
-  "retainedEmbeddedDataFrom": "2026-07-02",
+  "checkedAt": "2026-07-03T06:44:51.085Z",
+  "retainedEmbeddedDataFrom": "2026-07-03",
   "message": "NF-e portal unavailable (fetch failed); Bacen FTP merged with NF-e supplemental codes."
 }
