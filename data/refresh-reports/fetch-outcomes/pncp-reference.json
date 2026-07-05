@@ -12,7 +12,7 @@
     "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-04T06:45:02.896Z",
-  "retainedEmbeddedDataFrom": "2026-07-04",
+  "checkedAt": "2026-07-05T07:05:48.333Z",
+  "retainedEmbeddedDataFrom": "2026-07-05",
   "message": "PNCP reference tables written."
 }

@@ -6,8 +6,8 @@
     "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente",
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
   ],
-  "capturadoEm": "2026-07-04",
-  "atualizadoEm": "2026-07-04T06:23:36.662Z",
+  "capturadoEm": "2026-07-05",
+  "atualizadoEm": "2026-07-05T06:44:20.446Z",
   "contagens": {
     "cfop": 689
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-03"
+    "comparadoCom": "2026-07-04"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-04T06:23:36.662Z"
+    "ultimaExecucao": "2026-07-05T06:44:20.446Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cfop-fiscal-operations"
 }
