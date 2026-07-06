@@ -5,7 +5,7 @@
     "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-05T06:35:04.719Z",
-  "retainedEmbeddedDataFrom": "2026-07-05",
+  "checkedAt": "2026-07-06T07:06:19.919Z",
+  "retainedEmbeddedDataFrom": "2026-07-06",
   "message": "Official TSE municipio_tse_ibge zip fetch succeeded."
 }
