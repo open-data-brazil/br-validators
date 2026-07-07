@@ -6,8 +6,8 @@
     "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18",
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cest_cv142_18.html"
   ],
-  "capturadoEm": "2026-07-06",
-  "atualizadoEm": "2026-07-06T07:36:45.846Z",
+  "capturadoEm": "2026-07-07",
+  "atualizadoEm": "2026-07-07T07:10:32.609Z",
   "contagens": {
     "cest": 1018
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-05"
+    "comparadoCom": "2026-07-06"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-06T07:36:45.846Z"
+    "ultimaExecucao": "2026-07-07T07:10:32.609Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cest"
 }

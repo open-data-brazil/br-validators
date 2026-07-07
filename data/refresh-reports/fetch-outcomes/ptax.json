@@ -6,7 +6,7 @@
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-06T07:06:27.546Z",
-  "retainedEmbeddedDataFrom": "2026-07-06",
-  "message": "Bacen PTAX Fechamento embedded for 10 currencies (2026-03-03..2026-07-06)."
+  "checkedAt": "2026-07-07T06:40:10.088Z",
+  "retainedEmbeddedDataFrom": "2026-07-07",
+  "message": "Bacen PTAX Fechamento embedded for 10 currencies (2026-03-04..2026-07-07)."
 }
