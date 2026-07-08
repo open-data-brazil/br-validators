@@ -12,9 +12,9 @@
   "consecutiveFailureDays": 0,
   "firstFailureDate": null,
   "lastFailureDate": null,
-  "lastSuccessDate": "2026-07-07",
+  "lastSuccessDate": "2026-07-08",
   "severity": "ok",
   "message": "Official source responded successfully.",
-  "retainedEmbeddedDataFrom": "2026-07-07",
+  "retainedEmbeddedDataFrom": "2026-07-08",
   "outcomeStatus": "ok"
 }
