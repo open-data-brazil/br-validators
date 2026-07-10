@@ -1,11 +1,15 @@
 {
   "datasetId": "feriados",
-  "status": "ok",
+  "status": "source_unavailable",
   "endpoints": [
     "https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-09T07:08:15.745Z",
+  "checkedAt": "2026-07-10T08:10:13.500Z",
   "retainedEmbeddedDataFrom": "2026-06-23",
-  "message": "Operational endpoint probe succeeded."
+  "message": "Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API.",
+  "failureKind": "link_deprecated",
+  "attemptedEndpoints": [
+    "https://www.gov.br/gestao/pt-br/assuntos/noticias/2025/dezembro/confira-o-calendario-oficial-de-feriados-nacionais-e-pontos-facultativos-em-2026"
+  ]
 }

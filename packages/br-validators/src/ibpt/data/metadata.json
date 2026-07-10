@@ -11,8 +11,8 @@
     "https://ibpt.valraw.com.br/api/ncm/MG.json.gz (resolved after meta.json)",
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
   ],
-  "capturadoEm": "2026-07-09",
-  "atualizadoEm": "2026-07-09T06:59:01.501Z",
+  "capturadoEm": "2026-07-10",
+  "atualizadoEm": "2026-07-10T07:27:00.343Z",
   "contagens": {
     "cargas": 12
   },
@@ -20,12 +20,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-08"
+    "comparadoCom": "2026-07-09"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-09T06:59:01.501Z"
+    "ultimaExecucao": "2026-07-10T07:27:00.343Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibpt-carga-tributaria-ncm"
 }

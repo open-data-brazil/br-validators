@@ -1,11 +1,15 @@
 {
   "datasetId": "cbo",
-  "status": "ok",
+  "status": "source_blocked",
   "endpoints": [
     "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-09T07:08:01.528Z",
+  "checkedAt": "2026-07-10T07:45:07.304Z",
   "retainedEmbeddedDataFrom": "2026-07-09",
-  "message": "Official MTE CBO occupations CSV fetch succeeded."
+  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-09 retained in the API.",
+  "failureKind": "source_blocked",
+  "attemptedEndpoints": [
+    "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
+  ]
 }
