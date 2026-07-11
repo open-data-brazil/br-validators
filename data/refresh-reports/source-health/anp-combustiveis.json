@@ -1,14 +1,15 @@
 {
   "datasetId": "anp-combustiveis",
   "endpoints": [
-    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas"
+    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas",
+    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-07-05_2026-07-11.xlsx"
   ],
-  "consecutiveFailureDays": 1,
-  "firstFailureDate": "2026-07-10",
-  "lastFailureDate": "2026-07-10",
-  "lastSuccessDate": "2026-07-09",
-  "severity": "warning",
-  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-09 retained in the API.",
-  "retainedEmbeddedDataFrom": "2026-07-09",
-  "outcomeStatus": "source_blocked"
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-07-11",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-07-11",
+  "outcomeStatus": "ok"
 }

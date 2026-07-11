@@ -2289,6 +2289,13 @@
     "participaCompe": false
   },
   {
+    "codigo": "571",
+    "ispb": "50489148",
+    "nome": "MONTE BRAVO CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "MONTE BRAVO CTVM S.A.",
+    "participaCompe": false
+  },
+  {
     "codigo": "572",
     "ispb": "51414521",
     "nome": "ALL IN CRED SOCIEDADE DE CREDITO DIRETO S.A.",
@@ -3140,6 +3147,13 @@
     "ispb": "24313102",
     "nome": "99PAY INSTITUICAO DE PAGAMENTO S.A.",
     "nomeReduzido": "99PAY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "770",
+    "ispb": "38320462",
+    "nome": "V3 INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "V3 IP S.A.",
     "participaCompe": false
   },
   {
