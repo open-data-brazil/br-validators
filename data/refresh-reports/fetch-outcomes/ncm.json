@@ -1,11 +1,15 @@
 {
   "datasetId": "ncm",
-  "status": "ok",
+  "status": "source_empty",
   "endpoints": [
     "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-13T06:39:05.770Z",
+  "checkedAt": "2026-07-14T05:54:10.980Z",
   "retainedEmbeddedDataFrom": "2026-07-13",
-  "message": "Official Siscomex NCM JSON fetch succeeded."
+  "message": "Official source responded but data was not parseable (Official Siscomex NCM JSON returned an empty payload). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-13 retained in the API.",
+  "failureKind": "parse_error",
+  "attemptedEndpoints": [
+    "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json"
+  ]
 }
