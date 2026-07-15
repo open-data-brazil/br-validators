@@ -1,1 +1,2 @@
-OK no critical alerts last_check=2026-07-14T05:54:33.237Z
+CRITICAL dataset=ncm streak=2 first_failure=2026-07-14 retained=2026-07-13 message="Official source responded but data was not parseable (Official Siscomex NCM JSON returned an empty payload). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-13 retained in the API."
+UPDATED 2026-07-15T05:55:44.060Z
