@@ -1,5 +1,5 @@
 {
-  "source": "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json",
+  "source": "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO",
   "minLeafCodes": 10000,
   "maxLeafCodes": 11500,
   "golden": {

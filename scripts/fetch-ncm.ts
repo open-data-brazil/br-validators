@@ -18,8 +18,9 @@ const ROOT = path.resolve(__dirname, '..');
 const NCM_DATA_DIR = path.join(ROOT, 'packages/br-validators/src/ncm/data');
 const FETCH_OUTCOME_DIR = path.join(ROOT, 'data/refresh-reports/fetch-outcomes');
 
+/** Prefer `?perfil=PUBLICO` — bare path only returns HTTP 307. */
 const NCM_JSON_URL =
-  'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json';
+  'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO';
 const MIN_NCM = 10_000;
 const MAX_NCM = 11_500;
 

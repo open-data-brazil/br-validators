@@ -59,7 +59,7 @@ const leaf = getNcmPorCodigo('01012100');
 console.log(leaf?.descricao);
 ```
 
-**Official source:** [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json)
+**Official source:** [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO)
 
 ---
 

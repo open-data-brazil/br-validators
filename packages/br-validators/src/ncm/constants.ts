@@ -1,5 +1,6 @@
+/** Prefer `?perfil=PUBLICO` — bare path only returns HTTP 307. */
 export const NCM_JSON_URL =
-  'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json';
+  'https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO';
 
 export const NCM_GOLDEN_CAVALOS_REPRODUTORES = '01012100';
 export const NCM_GOLDEN_SOJA_SEMENTES = '12011000';

@@ -1213,7 +1213,7 @@ CLI: `br-validators iss-municipal lookup <codigoIbge>` · `list --uf SP` · `res
 
 ## Core API — NCM (reference data)
 
-> **Offline embedded data** from [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json).  
+> **Offline embedded data** from [Siscomex NCM JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO).  
 > Freshness: [DATA-FRESHNESS.md](DATA-FRESHNESS.md)
 
 | Function | Returns |
