@@ -1,21 +1,11 @@
 ### Data refresh report
 
-- Run date: 2026-07-15
+- Run date: 2026-07-16
 - Datasets checked: 30
 - Datasets changed: 2
 - Baselines sealed this run: 0
-- Source alerts: 1
-- Critical alerts: 1
-
-### ⚠️ Critical — consultation link deprecated
-
-See `data/refresh-reports/CRITICAL-ALERTS.md` for maintainer actions.
-
-### Source health alerts
-
-- **ncm** (critical): Official source responded but data was not parseable (Official Siscomex NCM JSON returned an empty payload). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-13 retained in the API. (embedded data from 2026-07-13 retained)
-
-See `docs/DATA-SOURCE-MAINTENANCE.md` for remediation steps.
+- Source alerts: 0
+- Critical alerts: 0
 
 ### Dataset drift
 
