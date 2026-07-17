@@ -5,8 +5,8 @@
   "endpoints": [
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas"
   ],
-  "capturadoEm": "2026-07-16",
-  "atualizadoEm": "2026-07-16T05:33:36.531Z",
+  "capturadoEm": "2026-07-17",
+  "atualizadoEm": "2026-07-17T05:35:09.211Z",
   "contagens": {
     "moedas": 154
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-15"
+    "comparadoCom": "2026-07-16"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-16T05:33:36.531Z"
+    "ultimaExecucao": "2026-07-17T05:35:09.211Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#moedas"
 }
