@@ -1,11 +1,15 @@
 {
   "datasetId": "tse-municipios",
-  "status": "ok",
+  "status": "source_blocked",
   "endpoints": [
     "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-17T05:35:07.977Z",
+  "checkedAt": "2026-07-18T05:28:57.180Z",
   "retainedEmbeddedDataFrom": "2026-07-17",
-  "message": "Official TSE municipio_tse_ibge zip fetch succeeded."
+  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-17 retained in the API.",
+  "failureKind": "source_blocked",
+  "attemptedEndpoints": [
+    "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
+  ]
 }
