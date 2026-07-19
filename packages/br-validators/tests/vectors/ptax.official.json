@@ -36,10 +36,10 @@
     }
   },
   "staleness": {
-    "asOfFresh": "2026-07-18",
+    "asOfFresh": "2026-07-19",
     "freshReferenceDate": "2026-07-17",
     "staleReferenceDate": "2026-06-23",
-    "capturadoEm": "2026-07-18",
+    "capturadoEm": "2026-07-19",
     "staleWarning": "Embedded data. For real-time use @br-validators/adapters-ptax"
   }
 }

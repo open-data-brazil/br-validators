@@ -12,8 +12,8 @@
     "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
     "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
   ],
-  "capturadoEm": "2026-07-17",
-  "atualizadoEm": "2026-07-17T06:05:49.488Z",
+  "capturadoEm": "2026-07-19",
+  "atualizadoEm": "2026-07-19T06:15:38.285Z",
   "contagens": {
     "modalidades": 19,
     "amparos-legais": 183,
@@ -28,12 +28,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-16"
+    "comparadoCom": "2026-07-17"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-17T06:05:49.488Z"
+    "ultimaExecucao": "2026-07-19T06:15:38.285Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#pncp-reference"
 }

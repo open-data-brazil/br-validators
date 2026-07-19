@@ -5,7 +5,7 @@
     "https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Motivos.zip"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-18T06:08:07.676Z",
-  "retainedEmbeddedDataFrom": "2026-07-18",
+  "checkedAt": "2026-07-19T06:06:18.910Z",
+  "retainedEmbeddedDataFrom": "2026-07-19",
   "message": "Official RFB Motivos.zip fetch succeeded."
 }
