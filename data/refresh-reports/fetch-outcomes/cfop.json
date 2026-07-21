@@ -6,7 +6,7 @@
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-20T06:19:47.630Z",
-  "retainedEmbeddedDataFrom": "2026-07-20",
+  "checkedAt": "2026-07-21T05:55:11.679Z",
+  "retainedEmbeddedDataFrom": "2026-07-21",
   "message": "CONFAZ CFOP table loaded from repo HTML cache after official host blocked from CI."
 }
