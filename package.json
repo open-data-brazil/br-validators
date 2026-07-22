@@ -62,6 +62,11 @@
     "node": ">=18"
   },
   "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.35.3"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@types/node": "^22.15.21",
