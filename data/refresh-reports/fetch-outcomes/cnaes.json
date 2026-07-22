@@ -5,7 +5,7 @@
     "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-21T05:46:18.250Z",
-  "retainedEmbeddedDataFrom": "2026-07-21",
+  "checkedAt": "2026-07-22T05:43:01.661Z",
+  "retainedEmbeddedDataFrom": "2026-07-22",
   "message": "Official IBGE CNAE subclasses fetch succeeded."
 }

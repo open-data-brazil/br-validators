@@ -5,8 +5,8 @@
   "endpoints": [
     "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx"
   ],
-  "capturadoEm": "2026-07-21",
-  "atualizadoEm": "2026-07-21T06:07:31.243Z",
+  "capturadoEm": "2026-07-22",
+  "atualizadoEm": "2026-07-22T06:04:14.610Z",
   "contagens": {
     "nbs": 917
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-20"
+    "comparadoCom": "2026-07-21"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-21T06:07:31.243Z"
+    "ultimaExecucao": "2026-07-22T06:04:14.610Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#nbs"
 }
