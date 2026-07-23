@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0-data.27] - 2026-07-23
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #27**: 2 dataset(s) changed (+608 −0 ~0).
+
+
 ### Security
 
 - Force `sharp@^0.35.3` via pnpm override (Next 15 still pins `^0.34.3`) to clear GHSA-f88m-g3jw-g9cj / libvips CVEs blocking `pnpm audit --prod --audit-level=high`.
