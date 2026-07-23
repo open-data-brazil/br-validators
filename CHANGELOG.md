@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- Bump playground `next` to `^15.5.21` (lockfile `15.5.21`) for GHSA-m99w-x7hq-7vfj, GHSA-89xv-2m56-2m9x, and GHSA-p9j2-gv94-2wf4 (DoS / SSRF) so prod audit `--audit-level=high` passes.
+
 ## [1.10.0-data.27] - 2026-07-23
 
 ### Changed
