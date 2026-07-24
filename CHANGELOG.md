@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0-data.28] - 2026-07-24
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #28**: 2 dataset(s) changed (+608 −0 ~0).
+
+
 ### Security
 
 - Bump playground `next` to `^15.5.21` (lockfile `15.5.21`) for GHSA-m99w-x7hq-7vfj, GHSA-89xv-2m56-2m9x, and GHSA-p9j2-gv94-2wf4 (DoS / SSRF) so prod audit `--audit-level=high` passes.
