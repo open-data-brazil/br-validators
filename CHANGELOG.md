@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- Force `postcss@^8.5.12` via pnpm override (Next 15.5.21 still pins `8.4.31`) to clear GHSA-6g55-p6wh-862q (arbitrary file read) blocking `pnpm audit --prod --audit-level=high`.
+
 ## [1.10.0-data.28] - 2026-07-24
 
 ### Changed
