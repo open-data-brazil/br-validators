@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0-data.29] - 2026-07-25
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #29**: 3 dataset(s) changed (+610 −2 ~0).
+
+
 ### Security
 
 - Force `postcss@^8.5.12` via pnpm override (Next 15.5.21 still pins `8.4.31`) to clear GHSA-6g55-p6wh-862q (arbitrary file read) blocking `pnpm audit --prod --audit-level=high`.
