@@ -5,19 +5,15 @@
   },
   {
     "codigo": "0153",
-    "nome": "Aland, Ilhas"
+    "nome": "ALAND, ILHAS"
   },
   {
-    "codigo": "0175",
-    "nome": "ALBANIA, REPUBLICA DA"
+    "codigo": "0200",
+    "nome": "CURACAO"
   },
   {
     "codigo": "0230",
     "nome": "ALEMANHA"
-  },
-  {
-    "codigo": "0256",
-    "nome": "Alemanha, República Democrática da"
   },
   {
     "codigo": "0310",
@@ -37,15 +33,11 @@
   },
   {
     "codigo": "0420",
-    "nome": "Antártica"
+    "nome": "ANTARTICA"
   },
   {
     "codigo": "0434",
     "nome": "ANTIGUA E BARBUDA"
-  },
-  {
-    "codigo": "0477",
-    "nome": "ANTILHAS HOLANDESAS"
   },
   {
     "codigo": "0531",
@@ -117,7 +109,7 @@
   },
   {
     "codigo": "0973",
-    "nome": "BOLIVIA"
+    "nome": "BOLIVIA, ESTADO PLURINACIONAL DA"
   },
   {
     "codigo": "0981",
@@ -125,7 +117,7 @@
   },
   {
     "codigo": "0990",
-    "nome": "Bonaire, Santo Eustáquio e Saba"
+    "nome": "BONAIRE"
   },
   {
     "codigo": "1015",
@@ -133,7 +125,7 @@
   },
   {
     "codigo": "1023",
-    "nome": "Bouvet, Ilha"
+    "nome": "BOUVET, ILHA"
   },
   {
     "codigo": "1058",
@@ -177,11 +169,11 @@
   },
   {
     "codigo": "1504",
-    "nome": "CANAL, ILHAS DO (JERSEY E GUERNSEY)"
+    "nome": "GUERNSEY, ILHA DO CANAL (INCLUI ALDERNEY E SARK)"
   },
   {
-    "codigo": "1511",
-    "nome": "CANARIAS, ILHAS"
+    "codigo": "1508",
+    "nome": "JERSEY, ILHA DO CANAL"
   },
   {
     "codigo": "1538",
@@ -221,7 +213,7 @@
   },
   {
     "codigo": "1775",
-    "nome": "CONGO, REPUBLICA DO"
+    "nome": "CONGO"
   },
   {
     "codigo": "1830",
@@ -229,11 +221,11 @@
   },
   {
     "codigo": "1872",
-    "nome": "COREIA, REP.POP.DEMOCRATICA"
+    "nome": "COREIA (DO NORTE), REP.POP.DEMOCRATICA"
   },
   {
     "codigo": "1902",
-    "nome": "COREIA, REPUBLICA DA"
+    "nome": "COREIA (DO SUL), REPUBLICA DA"
   },
   {
     "codigo": "1937",
@@ -249,7 +241,7 @@
   },
   {
     "codigo": "1988",
-    "nome": "COVEITE"
+    "nome": "KUWAIT"
   },
   {
     "codigo": "1996",
@@ -257,7 +249,7 @@
   },
   {
     "codigo": "2003",
-    "nome": "Curaçao"
+    "nome": "CURACAO"
   },
   {
     "codigo": "2291",
@@ -281,7 +273,7 @@
   },
   {
     "codigo": "2437",
-    "nome": "Eritreia"
+    "nome": "ERITREIA"
   },
   {
     "codigo": "2445",
@@ -349,7 +341,7 @@
   },
   {
     "codigo": "2925",
-    "nome": "Ilhas Geórgia do Sul e Sandwich do Sul"
+    "nome": "ILHAS GEORGIA DO SUL E SANDWICH DO SUL"
   },
   {
     "codigo": "2933",
@@ -381,7 +373,7 @@
   },
   {
     "codigo": "3212",
-    "nome": "Guernsey, Ilha do Canal (Inclui Alderney e Sark)"
+    "nome": "GUERNSEY, ILHA DO CANAL (INCLUI ALDERNEY E SARK)"
   },
   {
     "codigo": "3255",
@@ -409,7 +401,7 @@
   },
   {
     "codigo": "3433",
-    "nome": "Ilha Heard e Ilhas McDonald"
+    "nome": "ILHA HEARD E ILHAS MCDONALD"
   },
   {
     "codigo": "3450",
@@ -430,6 +422,10 @@
   {
     "codigo": "3595",
     "nome": "MAN, ILHA DE"
+  },
+  {
+    "codigo": "3599",
+    "nome": "BONAIRE"
   },
   {
     "codigo": "3611",
@@ -464,20 +460,12 @@
     "nome": "ITALIA"
   },
   {
-    "codigo": "3883",
-    "nome": "IUGOSLAVIA, REP.FED.DA"
-  },
-  {
     "codigo": "3913",
     "nome": "JAMAICA"
   },
   {
     "codigo": "3930",
-    "nome": "Jersey, Ilha do Canal"
-  },
-  {
-    "codigo": "3964",
-    "nome": "JOHNSTON, ILHAS"
+    "nome": "JERSEY, ILHA DO CANAL"
   },
   {
     "codigo": "3999",
@@ -533,15 +521,11 @@
   },
   {
     "codigo": "4499",
-    "nome": "MACEDONIA, ANT.REP.IUGOSLAVA"
+    "nome": "MACEDONIA DO NORTE"
   },
   {
     "codigo": "4502",
     "nome": "MADAGASCAR"
-  },
-  {
-    "codigo": "4525",
-    "nome": "MADEIRA, ILHA DA"
   },
   {
     "codigo": "4553",
@@ -585,15 +569,15 @@
   },
   {
     "codigo": "4880",
-    "nome": "Mauritânia"
+    "nome": "MAURITANIA"
+  },
+  {
+    "codigo": "4885",
+    "nome": "MAYOTTE (ILHAS FRANCESAS)"
   },
   {
     "codigo": "4898",
-    "nome": "Mayotte (Ilhas Francesas)"
-  },
-  {
-    "codigo": "4901",
-    "nome": "MIDWAY, ILHAS"
+    "nome": "MAYOTTE (ILHAS FRANCESAS)"
   },
   {
     "codigo": "4936",
@@ -613,7 +597,7 @@
   },
   {
     "codigo": "4985",
-    "nome": "Montenegro"
+    "nome": "MONTENEGRO"
   },
   {
     "codigo": "4995",
@@ -705,7 +689,7 @@
   },
   {
     "codigo": "5780",
-    "nome": "Palestina"
+    "nome": "PALESTINA"
   },
   {
     "codigo": "5800",
@@ -784,10 +768,6 @@
     "nome": "SALOMAO, ILHAS"
   },
   {
-    "codigo": "6781",
-    "nome": "SAINT KITTS E NEVIS"
-  },
-  {
     "codigo": "6858",
     "nome": "SAARA OCIDENTAL"
   },
@@ -797,7 +777,7 @@
   },
   {
     "codigo": "6904",
-    "nome": "Samoa"
+    "nome": "SAMOA"
   },
   {
     "codigo": "6912",
@@ -805,7 +785,7 @@
   },
   {
     "codigo": "6939",
-    "nome": "São Bartolomeu"
+    "nome": "SAO BARTOLOMEU"
   },
   {
     "codigo": "6955",
@@ -817,11 +797,11 @@
   },
   {
     "codigo": "6980",
-    "nome": "São Martinho (Parte Francesa)"
+    "nome": "SAO MARTINHO, ILHA DE (PARTE FRANCESA)"
   },
   {
     "codigo": "6998",
-    "nome": "São Martinho (Parte Holandesa)"
+    "nome": "SAO MARTINHO, ILHA DE (PARTE HOLANDESA)"
   },
   {
     "codigo": "7005",
@@ -857,7 +837,7 @@
   },
   {
     "codigo": "7370",
-    "nome": "Servia"
+    "nome": "SERVIA"
   },
   {
     "codigo": "7412",
@@ -877,11 +857,11 @@
   },
   {
     "codigo": "7544",
-    "nome": "SUAZILANDIA"
+    "nome": "ESSUATINI"
   },
   {
     "codigo": "7552",
-    "nome": "Svalbard e Jan Mayen"
+    "nome": "SVALBARD E JAN MAYERN"
   },
   {
     "codigo": "7560",
@@ -893,7 +873,7 @@
   },
   {
     "codigo": "7600",
-    "nome": "Sudão do Sul"
+    "nome": "SUDÃO DO SUL"
   },
   {
     "codigo": "7641",
@@ -917,11 +897,11 @@
   },
   {
     "codigo": "7803",
-    "nome": "Tanzânia"
+    "nome": "TANZANIA, REP.UNIDA DA"
   },
   {
     "codigo": "7811",
-    "nome": "Terras Austrais e Antárticas Francesas"
+    "nome": "TERRAS AUSTRAIS E ANTARTICAS FRANCESAS"
   },
   {
     "codigo": "7820",
@@ -1020,23 +1000,15 @@
     "nome": "FIJI"
   },
   {
-    "codigo": "8737",
-    "nome": "WAKE, ILHA"
-  },
-  {
     "codigo": "8753",
-    "nome": "Wallis e Futuna, Ilhas"
+    "nome": "WALLIS E FUTUNA, ILHAS"
   },
   {
     "codigo": "8885",
-    "nome": "Congo, República Democrática do"
+    "nome": "CONGO, REPUBLICA DEMOCRATICA DO"
   },
   {
     "codigo": "8907",
     "nome": "ZAMBIA"
-  },
-  {
-    "codigo": "8958",
-    "nome": "ZONA DO CANAL DO PANAMA"
   }
 ]

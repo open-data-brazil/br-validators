@@ -1,15 +1,11 @@
 {
   "datasetId": "nbs",
-  "status": "source_blocked",
+  "status": "ok",
   "endpoints": [
     "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx"
   ],
   "attempts": 5,
-  "checkedAt": "2026-07-26T06:45:24.707Z",
-  "retainedEmbeddedDataFrom": "2026-07-25",
-  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-07-25 retained in the API.",
-  "failureKind": "source_blocked",
-  "attemptedEndpoints": [
-    "https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx"
-  ]
+  "checkedAt": "2026-07-27T06:43:36.021Z",
+  "retainedEmbeddedDataFrom": "2026-07-27",
+  "message": "Official NFSe Anexo B NBS xlsx fetch succeeded."
 }
