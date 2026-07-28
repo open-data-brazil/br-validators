@@ -5,8 +5,8 @@
   "endpoints": [
     "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
   ],
-  "capturadoEm": "2026-07-27",
-  "atualizadoEm": "2026-07-27T06:52:33.365Z",
+  "capturadoEm": "2026-07-28",
+  "atualizadoEm": "2026-07-28T06:11:16.737Z",
   "contagens": {
     "ncm": 10515
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-25"
+    "comparadoCom": "2026-07-27"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-27T06:52:33.365Z"
+    "ultimaExecucao": "2026-07-28T06:11:16.737Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ncm-mercosur-nomenclature"
 }
