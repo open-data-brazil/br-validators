@@ -5,8 +5,8 @@
   "endpoints": [
     "https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip"
   ],
-  "capturadoEm": "2026-07-29",
-  "atualizadoEm": "2026-07-29T05:44:54.343Z",
+  "capturadoEm": "2026-07-31",
+  "atualizadoEm": "2026-07-31T05:59:48.481Z",
   "contagens": {
     "municipios": 5571
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-28"
+    "comparadoCom": "2026-07-29"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-29T05:44:54.343Z"
+    "ultimaExecucao": "2026-07-31T05:59:48.481Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#tse-municipios"
 }
