@@ -5,8 +5,8 @@
   "endpoints": [
     "https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip"
   ],
-  "capturadoEm": "2026-07-31",
-  "atualizadoEm": "2026-07-31T06:20:05.946Z",
+  "capturadoEm": "2026-08-01",
+  "atualizadoEm": "2026-08-01T06:04:10.201Z",
   "contagens": {
     "naturezas": 90
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-07-30"
+    "comparadoCom": "2026-07-31"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-07-31T06:20:05.946Z"
+    "ultimaExecucao": "2026-08-01T06:04:10.201Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#natureza-juridica"
 }
