@@ -8,7 +8,7 @@
     "https://www.bcb.gov.br/controleinflacao/copom"
   ],
   "attempts": 5,
-  "checkedAt": "2026-08-01T05:49:05.252Z",
-  "retainedEmbeddedDataFrom": "2026-08-01",
-  "message": "Bacen SELIC meta embedded (2026-05-04..2026-08-01) — latest 2026-08-01 = 14.25% a.a."
+  "checkedAt": "2026-08-02T05:50:00.750Z",
+  "retainedEmbeddedDataFrom": "2026-08-02",
+  "message": "Bacen SELIC meta embedded (2026-05-05..2026-08-02) — latest 2026-08-02 = 14.25% a.a."
 }
