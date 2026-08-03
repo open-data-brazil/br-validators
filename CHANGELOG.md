@@ -83,7 +83,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-- Force `postcss@^8.5.12` via pnpm override (Next 15.5.21 still pins `8.4.31`) to clear GHSA-6g55-p6wh-862q (arbitrary file read) blocking `pnpm audit --prod --audit-level=high`.
+- Bump `postcss` pnpm override to `^8.5.18` (lockfile resolves patched release) for GHSA-r28c-9q8g-f849 (sourceMappingURL path traversal / `.map` disclosure). Previous `^8.5.12` still allowed vulnerable `8.5.15`.
+- Mirror overrides in `pnpm-workspace.yaml` for CI audit (pnpm 11+ ignores `package.json#pnpm`); keep `package.json#pnpm.overrides` for local pnpm 9 lockfile resolution.
 
 ## [1.10.0-data.28] - 2026-07-24
 

@@ -2,3 +2,9 @@ packages:
   - 'packages/*'
   - 'apps/*'
   - 'tests/integration/*'
+
+# pnpm 11+ reads overrides from this file (package.json#pnpm is ignored).
+# Keep until Next.js ships postcss>=8.5.18 and sharp>=0.35.
+overrides:
+  sharp: ^0.35.3
+  postcss: ^8.5.18

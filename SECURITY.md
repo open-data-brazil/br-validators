@@ -104,7 +104,7 @@ References: [pnpm audit](https://pnpm.io/cli/audit) · [npm audit](https://docs.
 
 1. **Confirm** the advisory applies to code paths we ship (`@br-validators/core` has **zero** runtime npm dependencies).
 2. **Prefer upgrade** — bump the vulnerable package in `pnpm-lock.yaml` via `pnpm update <pkg>` and re-run `pnpm verify`.
-3. **pnpm overrides** — only when upstream has no patch; document in [CHANGELOG.md](CHANGELOG.md) and `.local/security-audit.md` with review date.
+3. **pnpm overrides** — only when upstream has no patch; set in both `package.json#pnpm.overrides` (pnpm 9 lockfile) and `pnpm-workspace.yaml` (pnpm 11+ CI audit). Document in [CHANGELOG.md](CHANGELOG.md) and `.local/security-audit.md` with review date.
 4. **Dev-only high** — if the finding is in Vitest/VitePress/playground tooling with no production path, track in `.local/security-audit.md`; CI warns but does not fail.
 
 Maintainers re-run `pnpm audit --prod --audit-level=high` before every release tag (also enforced in Release workflow via `pnpm verify`).
