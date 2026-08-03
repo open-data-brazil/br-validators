@@ -5,8 +5,8 @@
   "endpoints": [
     "https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv"
   ],
-  "capturadoEm": "2026-08-02",
-  "atualizadoEm": "2026-08-02T05:49:48.988Z",
+  "capturadoEm": "2026-08-03",
+  "atualizadoEm": "2026-08-03T06:13:58.231Z",
   "contagens": {
     "aeroportos": 533,
     "comIata": 87
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-08-01"
+    "comparadoCom": "2026-08-02"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-08-02T05:49:48.988Z"
+    "ultimaExecucao": "2026-08-03T06:13:58.231Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#aeroportos"
 }
