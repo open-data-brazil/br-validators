@@ -4,12 +4,12 @@
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
   ],
-  "consecutiveFailureDays": 0,
-  "firstFailureDate": null,
-  "lastFailureDate": null,
+  "consecutiveFailureDays": 1,
+  "firstFailureDate": "2026-08-11",
+  "lastFailureDate": "2026-08-11",
   "lastSuccessDate": "2026-08-05",
-  "severity": "ok",
-  "message": "Official source responded successfully.",
+  "severity": "warning",
+  "message": "Possible link deprecation (HTTP 502 fetching https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='AUD'&@dataInicial='04-08-2026'&@dataFinalCotacao='08-11-2026'&$format=json). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-08-05 retained in the API.",
   "retainedEmbeddedDataFrom": "2026-08-05",
-  "outcomeStatus": "ok"
+  "outcomeStatus": "source_unavailable"
 }

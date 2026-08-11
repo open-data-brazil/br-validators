@@ -1,12 +1,18 @@
 {
   "datasetId": "ptax",
-  "status": "ok",
+  "status": "source_unavailable",
   "endpoints": [
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
   ],
   "attempts": 5,
-  "checkedAt": "2026-08-05T05:40:22.255Z",
+  "checkedAt": "2026-08-11T04:47:13.118Z",
   "retainedEmbeddedDataFrom": "2026-08-05",
-  "message": "Bacen PTAX Fechamento embedded for 10 currencies (2026-04-02..2026-08-05)."
+  "message": "Possible link deprecation (HTTP 502 fetching https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='AUD'&@dataInicial='04-08-2026'&@dataFinalCotacao='08-11-2026'&$format=json). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-08-05 retained in the API.",
+  "failureKind": "link_deprecated",
+  "attemptedEndpoints": [
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
+  ],
+  "httpStatus": 502
 }

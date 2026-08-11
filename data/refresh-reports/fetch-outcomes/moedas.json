@@ -1,11 +1,16 @@
 {
   "datasetId": "moedas",
-  "status": "ok",
+  "status": "source_unavailable",
   "endpoints": [
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas"
   ],
   "attempts": 5,
-  "checkedAt": "2026-08-05T05:40:16.559Z",
+  "checkedAt": "2026-08-11T04:39:07.870Z",
   "retainedEmbeddedDataFrom": "2026-08-05",
-  "message": "ISO 4217 baseline merged with Bacen PTAX Moedas API."
+  "message": "Possible link deprecation (HTTP 502 fetching https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-08-05 retained in the API.",
+  "failureKind": "link_deprecated",
+  "attemptedEndpoints": [
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas"
+  ],
+  "httpStatus": 502
 }

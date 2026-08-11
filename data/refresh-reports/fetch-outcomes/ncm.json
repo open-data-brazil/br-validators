@@ -1,11 +1,15 @@
 {
   "datasetId": "ncm",
-  "status": "ok",
+  "status": "source_blocked",
   "endpoints": [
     "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
   ],
   "attempts": 5,
-  "checkedAt": "2026-08-05T06:10:41.919Z",
+  "checkedAt": "2026-08-11T05:44:33.773Z",
   "retainedEmbeddedDataFrom": "2026-08-05",
-  "message": "Official Siscomex NCM JSON fetch succeeded."
+  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-08-05 retained in the API.",
+  "failureKind": "source_blocked",
+  "attemptedEndpoints": [
+    "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
+  ]
 }
