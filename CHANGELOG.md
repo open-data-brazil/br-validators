@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1] - 2026-09-25
+
+### Changed
+
+- Stable roll-up since **1.10.0** (data.47–data.49 were tagged but never reached npm due to NPM_TOKEN 404): includes all data drift from data.47–data.49 plus ISS municipal upgrades (473 → 50 estimation-only), playground workspaces, and CI reliability fixes.
+
 ## [1.10.0-data.49] - 2026-09-25
 
 ### Changed
