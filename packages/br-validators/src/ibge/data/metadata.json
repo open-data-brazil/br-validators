@@ -6,8 +6,8 @@
     "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
     "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
   ],
-  "capturadoEm": "2026-09-21",
-  "atualizadoEm": "2026-09-21T08:27:36.082Z",
+  "capturadoEm": "2026-09-25",
+  "atualizadoEm": "2026-09-25T08:26:03.769Z",
   "contagens": {
     "estados": 27,
     "municipios": 5571
@@ -16,12 +16,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-09-20"
+    "comparadoCom": "2026-09-21"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-09-21T08:27:36.082Z"
+    "ultimaExecucao": "2026-09-25T08:26:03.769Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibge-localities"
 }

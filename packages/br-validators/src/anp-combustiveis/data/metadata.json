@@ -6,8 +6,8 @@
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas",
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-09-13_2026-09-19.xlsx"
   ],
-  "capturadoEm": "2026-09-21",
-  "atualizadoEm": "2026-09-21T09:00:16.666Z",
+  "capturadoEm": "2026-09-25",
+  "atualizadoEm": "2026-09-25T08:56:42.296Z",
   "contagens": {
     "semanas": 1,
     "precosMedios": 2383,
@@ -19,12 +19,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-09-20"
+    "comparadoCom": "2026-09-21"
   },
   "verificacao": {
     "agendamento": "semanal",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-09-21T09:00:16.666Z"
+    "ultimaExecucao": "2026-09-25T08:56:42.296Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#anp-combustiveis"
 }

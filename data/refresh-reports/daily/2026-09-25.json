@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-06-25T16:37:00.889Z",
-  "runDate": "2026-06-25",
+  "executadoEm": "2026-09-25T08:58:08.133Z",
+  "runDate": "2026-09-25",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "estados": 27,
@@ -22,15 +22,18 @@
       "id": "bancos",
       "status": "changed",
       "alteracoes": {
-        "adicionados": 1,
+        "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-23"
+        "alterados": 2,
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
-        "bancos": 469
+        "bancos": 463
       },
-      "camposAlterados": []
+      "camposAlterados": [
+        "nome",
+        "nomeReduzido"
+      ]
     },
     {
       "id": "aeroportos",
@@ -39,7 +42,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-23"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "aeroportos": 533,
@@ -53,7 +56,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-23"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "municipios": 5571
@@ -66,7 +69,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-23"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "moedas": 154
@@ -76,15 +79,44 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 10,
-        "removidos": 0,
+        "adicionados": 40,
+        "removidos": 40,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
-        "cotacoes": 50,
+        "cotacoes": 870,
         "moedas": 10,
-        "diasUteis": 5
+        "diasUteis": 87
+      }
+    },
+    {
+      "id": "selic",
+      "status": "unchanged",
+      "alteracoes": {
+        "adicionados": 4,
+        "removidos": 4,
+        "alterados": 0,
+        "comparadoCom": "2026-09-21"
+      },
+      "contagens": {
+        "observacoes": 90,
+        "dias": 90
+      }
+    },
+    {
+      "id": "iss-municipal",
+      "status": "changed",
+      "alteracoes": {
+        "adicionados": 0,
+        "removidos": 0,
+        "alterados": 1,
+        "comparadoCom": "2026-09-24"
+      },
+      "contagens": {
+        "municipios": 500,
+        "capitais": 27,
+        "estimativaRows": 50
       }
     },
     {
@@ -94,10 +126,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
-        "paises": 252
+        "paises": 253
       }
     },
     {
@@ -107,7 +139,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "incoterms": 11
@@ -120,7 +152,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "ddds": 67
@@ -148,7 +180,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "cnaes": 1332
@@ -161,7 +193,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "cfop": 689
@@ -174,7 +206,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "naturezas": 90
@@ -187,7 +219,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-25"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "motivos": 61
@@ -200,10 +232,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": null
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
-        "cargas": 5
+        "cargas": 12
       }
     },
     {
@@ -213,7 +245,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "nbs": 917
@@ -226,7 +258,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "cest": 1018
@@ -263,15 +295,16 @@
     },
     {
       "id": "esocial",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
+        "adicionados": 208,
         "removidos": 0,
         "alterados": 0,
         "comparadoCom": "2026-06-25"
       },
       "contagens": {
-        "categorias": 47
+        "categorias": 47,
+        "rubricas": 208
       }
     },
     {
@@ -295,7 +328,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "ncm": 10515
@@ -308,7 +341,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "cbo": 2694
@@ -334,7 +367,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "portos": 1094
@@ -347,12 +380,12 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2357,
-        "municipios": 386,
+        "precosMedios": 2383,
+        "municipios": 389,
         "produtos": 7,
         "ufs": 27
       }
@@ -364,11 +397,11 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-17"
       },
       "contagens": {
         "modalidades": 19,
-        "amparos-legais": 183,
+        "amparos-legais": 189,
         "modos-disputa": 6,
         "tipos-instrumentos-convocatorios": 5,
         "tipos-contrato": 12,
@@ -384,7 +417,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-06-24"
+        "comparadoCom": "2026-09-21"
       },
       "contagens": {
         "endpoints": 8,
@@ -392,41 +425,15 @@
       }
     }
   ],
-  "sourceAlerts": [
-    {
-      "datasetId": "paises-bacen",
-      "severity": "warning",
-      "status": "embedded_retained",
-      "message": "NF-e portal did not return a parseable country table (Portal returned HTML instead of a country table file). Embedded data from 2026-06-24 retained in the API.",
-      "endpoints": [
-        "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FOXZNFX/p50="
-      ],
-      "retainedEmbeddedDataFrom": "2026-06-24",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
-    },
-    {
-      "datasetId": "ibpt",
-      "severity": "warning",
-      "status": "source_empty",
-      "message": "Possible link deprecation — official source unreachable after 5 attempts (2 min interval).",
-      "endpoints": [
-        "https://deolhonoimposto.ibpt.org.br/",
-        "https://ibpt.valraw.com.br/api/meta.json"
-      ],
-      "retainedEmbeddedDataFrom": "2026-06-25",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
-    }
-  ],
+  "sourceAlerts": [],
   "resumo": {
-    "datasetsVerificados": 28,
-    "datasetsAlterados": 1,
-    "totalAdicionados": 1,
+    "datasetsVerificados": 30,
+    "datasetsAlterados": 3,
+    "totalAdicionados": 208,
     "totalRemovidos": 0,
-    "totalAlterados": 0,
-    "sourceAlerts": 2,
+    "totalAlterados": 3,
+    "sourceAlerts": 0,
     "criticalAlerts": 0,
-    "baselinesSelados": 3
+    "baselinesSelados": 0
   }
 }
