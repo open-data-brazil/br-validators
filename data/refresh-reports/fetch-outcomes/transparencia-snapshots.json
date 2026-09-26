@@ -1,13 +1,13 @@
 {
   "datasetId": "transparencia-snapshots",
-  "status": "ok",
+  "status": "source_unavailable",
   "endpoints": [
     "https://api.portaldatransparencia.gov.br/swagger-ui/index.html",
     "https://api.portaldatransparencia.gov.br/v3/api-docs",
     "https://portaldatransparencia.gov.br/"
   ],
   "attempts": 5,
-  "checkedAt": "2026-09-25T08:58:06.842Z",
-  "retainedEmbeddedDataFrom": "2026-09-25",
-  "message": "Transparência registry refreshed; Swagger/OpenAPI reachable."
+  "checkedAt": "2026-09-26T09:05:40.318Z",
+  "retainedEmbeddedDataFrom": "2026-09-26",
+  "message": "Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification."
 }

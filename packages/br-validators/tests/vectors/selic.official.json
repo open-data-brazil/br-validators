@@ -6,33 +6,33 @@
   "maxRecords": 95,
   "golden": {
     "ultimaMeta": {
-      "data": "2026-09-25",
+      "data": "2026-09-26",
       "valor": 13.75
     },
     "inicioJanela": {
-      "data": "2026-06-28",
+      "data": "2026-06-29",
       "valor": 14.25
     },
     "historicoRange": {
       "from": {
-        "data": "2026-06-28",
-        "valor": 14.25
-      },
-      "middle": {
         "data": "2026-06-29",
         "valor": 14.25
       },
-      "to": {
+      "middle": {
         "data": "2026-06-30",
+        "valor": 14.25
+      },
+      "to": {
+        "data": "2026-07-01",
         "valor": 14.25
       }
     }
   },
   "staleness": {
-    "asOfFresh": "2026-09-25",
-    "freshReferenceDate": "2026-09-25",
-    "staleReferenceDate": "2026-06-28",
-    "capturadoEm": "2026-09-25",
+    "asOfFresh": "2026-09-26",
+    "freshReferenceDate": "2026-09-26",
+    "staleReferenceDate": "2026-06-29",
+    "capturadoEm": "2026-09-26",
     "staleWarning": "Embedded data. For real-time use @br-validators/adapters-selic"
   },
   "negative": {

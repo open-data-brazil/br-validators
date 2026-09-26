@@ -3,10 +3,10 @@
   "status": "ok",
   "endpoints": [
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas",
-    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-09-13_2026-09-19.xlsx"
+    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-09-20_2026-09-26.xlsx"
   ],
   "attempts": 5,
-  "checkedAt": "2026-09-25T08:56:42.304Z",
-  "retainedEmbeddedDataFrom": "2026-09-25",
+  "checkedAt": "2026-09-26T08:43:48.381Z",
+  "retainedEmbeddedDataFrom": "2026-09-26",
   "message": "Official ANP LPC weekly summary XLSX fetch succeeded."
 }
