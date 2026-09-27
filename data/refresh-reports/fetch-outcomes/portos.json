@@ -1,11 +1,15 @@
 {
   "datasetId": "portos",
-  "status": "ok",
+  "status": "source_blocked",
   "endpoints": [
     "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
   ],
   "attempts": 5,
-  "checkedAt": "2026-09-26T08:43:46.318Z",
+  "checkedAt": "2026-09-27T09:56:17.073Z",
   "retainedEmbeddedDataFrom": "2026-09-26",
-  "message": "ANTAQ portos written."
+  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API.",
+  "failureKind": "source_blocked",
+  "attemptedEndpoints": [
+    "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
+  ]
 }
