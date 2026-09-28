@@ -5,12 +5,12 @@
     "https://api.portaldatransparencia.gov.br/v3/api-docs",
     "https://portaldatransparencia.gov.br/"
   ],
-  "consecutiveFailureDays": 2,
+  "consecutiveFailureDays": 3,
   "firstFailureDate": "2026-09-26",
-  "lastFailureDate": "2026-09-27",
+  "lastFailureDate": "2026-09-28",
   "lastSuccessDate": "2026-09-25",
   "severity": "critical",
   "message": "Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification.",
-  "retainedEmbeddedDataFrom": "2026-09-27",
+  "retainedEmbeddedDataFrom": "2026-09-28",
   "outcomeStatus": "source_unavailable"
 }

@@ -7,7 +7,7 @@
     "https://portaldatransparencia.gov.br/"
   ],
   "attempts": 5,
-  "checkedAt": "2026-09-27T10:29:15.920Z",
-  "retainedEmbeddedDataFrom": "2026-09-27",
+  "checkedAt": "2026-09-28T10:00:27.110Z",
+  "retainedEmbeddedDataFrom": "2026-09-28",
   "message": "Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification."
 }

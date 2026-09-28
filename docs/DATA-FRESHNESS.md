@@ -1,42 +1,42 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-09-27T10:37:17.933Z
+> Last bot run: 2026-09-28T10:00:28.334Z
 
 ## Summary
 
 | Dataset | Last capture | Records | + added | − removed | ~ changed | Fields Δ | Official source |
 |---------|--------------|---------|---------|-----------|-----------|----------|-----------------|
-| IBGE Localidades | 2026-09-26 | 27 estados / 5571 municipios | 0 | 0 | 0 | — | [IBGE API v1 /localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
-| Bacen STR Participants | 2026-09-27 | 463 bancos | 0 | 0 | 0 | — | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
-| ANAC Public Aerodromos | 2026-09-27 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
-| TSE ↔ IBGE Municipality Codes | 2026-09-27 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
-| ISO 4217 Currencies + Bacen PTAX | 2026-09-27 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | 2026-09-27 | 880 cotacoes / 10 moedas / 88 diasUteis | 0 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| Bacen SGS — Meta Selic (série 432) | 2026-09-27 | 90 observacoes / 90 dias | 1 | 1 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| IBGE Localidades | 2026-09-28 | 27 estados / 5571 municipios | 0 | 0 | 0 | — | [IBGE API v1 /localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
+| Bacen STR Participants | 2026-09-28 | 463 bancos | 0 | 0 | 0 | — | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| ANAC Public Aerodromos | 2026-09-28 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
+| TSE ↔ IBGE Municipality Codes | 2026-09-28 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
+| ISO 4217 Currencies + Bacen PTAX | 2026-09-28 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
+| Bacen PTAX Fechamento | 2026-09-28 | 870 cotacoes / 10 moedas / 87 diasUteis | 0 | 10 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| Bacen SGS — Meta Selic (série 432) | 2026-09-28 | 90 observacoes / 90 dias | 1 | 1 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | ISS municipal alíquotas — partial embed (capitals + top PIB) | 2026-09-24 | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | [Municipal legislation + gov.br NFS-e registered alíquotas + LC 116/2003 Art. 8 band + IBGE SIDRA PIB municipal ranking](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
-| NF-e Bacen Country Codes | 2026-09-27 | 260 paises | 11 | 4 | 33 | — | [Banco Central FTP paises.txt + NF-e supplemental codes](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
-| ICC Incoterms 2020 | 2026-09-27 | 11 incoterms | 0 | 0 | 0 | — | [International Chamber of Commerce — Incoterms 2020 (static reference)](https://iccwbo.org/resources-for-business/incoterms-rules/) |
-| Anatel DDD Geographic Lookup | 2026-09-27 | 67 ddds | 0 | 0 | 0 | — | [Anatel Plano de Numeração + IBGE municipios](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
+| NF-e Bacen Country Codes | 2026-09-28 | 253 paises | 4 | 11 | 33 | — | [Portal Nacional NF-e — Tabela de Países (Bacen)](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
+| ICC Incoterms 2020 | 2026-09-28 | 11 incoterms | 0 | 0 | 0 | — | [International Chamber of Commerce — Incoterms 2020 (static reference)](https://iccwbo.org/resources-for-business/incoterms-rules/) |
+| Anatel DDD Geographic Lookup | 2026-09-28 | 67 ddds | 0 | 0 | 0 | — | [Anatel Plano de Numeração + IBGE municipios](https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais) |
 | Feriados Nacionais Federais | 2026-06-23 | 9 feriadosNacionaisFixos / 1 feriadosNacionaisMoveis / 9 pontosFacultativosFederais | 0 | 0 | 0 | — | [Lei 662/1949 + Portaria MGI (calendário federal)](https://www.planalto.gov.br/ccivil_03/leis/l0662.htm) |
-| IBGE CNAE 2.3 Subclasses | 2026-09-26 | 1332 cnaes | 0 | 0 | 0 | — | [IBGE API v2 /cnae/subclasses](https://servicodados.ibge.gov.br/api/v2/cnae/subclasses) |
-| CONFAZ CFOP | 2026-09-27 | 689 cfop | 0 | 0 | 0 | — | [CONFAZ SINIEF Convênio s/nº 1970 — Anexo II](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
-| RFB CNPJ Naturezas Jurídicas | 2026-09-27 | 90 naturezas | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Naturezas.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip) |
-| RFB CNPJ Motivos de Situação Cadastral | 2026-09-27 | 61 motivos | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Motivos.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Motivos.zip) |
-| IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012) | 2026-09-27 | 12 cargas | 0 | 0 | 0 | — | [IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)](https://deolhonoimposto.ibpt.org.br/) |
-| NFSe NBS | 2026-09-26 | 917 nbs | 0 | 0 | 0 | — | [NFSe Nacional — Anexo B NBS2 Lista Serviço Nacional](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx) |
-| CONFAZ CEST | 2026-09-27 | 1018 cest | 0 | 0 | 0 | — | [CONFAZ Convênio ICMS 142/2018 — Anexos II a XXVI](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
+| IBGE CNAE 2.3 Subclasses | 2026-09-28 | 1332 cnaes | 0 | 0 | 0 | — | [IBGE API v2 /cnae/subclasses](https://servicodados.ibge.gov.br/api/v2/cnae/subclasses) |
+| CONFAZ CFOP | 2026-09-28 | 689 cfop | 0 | 0 | 0 | — | [CONFAZ SINIEF Convênio s/nº 1970 — Anexo II](https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente) |
+| RFB CNPJ Naturezas Jurídicas | 2026-09-28 | 90 naturezas | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Naturezas.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip) |
+| RFB CNPJ Motivos de Situação Cadastral | 2026-09-28 | 61 motivos | 0 | 0 | 0 | — | [Receita Federal — Dados Abertos CNPJ (Motivos.zip)](https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Motivos.zip) |
+| IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012) | 2026-09-28 | 12 cargas | 0 | 0 | 0 | — | [IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)](https://deolhonoimposto.ibpt.org.br/) |
+| NFSe NBS | 2026-09-28 | 917 nbs | 0 | 0 | 0 | — | [NFSe Nacional — Anexo B NBS2 Lista Serviço Nacional](https://www.gov.br/nfse/pt-br/biblioteca/documentacao-tecnica/documentacao-atual/anexo_b-nbs2-lista_servico_nacional-snnfse.xlsx/@@download/file/ANEXO_B-NBS2-LISTA_SERVICO_NACIONAL-SNNFSe.xlsx) |
+| CONFAZ CEST | 2026-09-28 | 1018 cest | 0 | 0 | 0 | — | [CONFAZ Convênio ICMS 142/2018 — Anexos II a XXVI](https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18) |
 | RFB SPED — CST (ICMS, IPI, PIS, COFINS) | 2026-06-24 | 11 icms / 14 ipi / 33 pis / 33 cofins | 0 | 0 | 0 | — | [SPED Fiscal — Tabelas de Situação Tributária (IN RFB 932/2009 family)](http://www.sped.fazenda.gov.br/spedtabelas/AppConsulta/publico/aspx/ConsultaTabelasExternas.aspx?CodSistema=SpedFiscal) |
 | LC 116/2003 — Lista de Serviços ISS | 2026-06-25 | 200 lc116 | 0 | 0 | 0 | — | [Lei Complementar 116/2003 — Anexo (Lista de Serviços)](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | eSocial S-1.3 — Tabela 01 (Categorias) + Tabela 03 (Rubricas) | 2026-06-27 | 47 categorias / 208 rubricas | 208 | 0 | 0 | — | [eSocial S-1.3 — Tabelas 01 e 03](https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-versao-s-1-3-nt-06-2026/tabelas.html) |
 | LC 123/2006 — Simples Nacional (anexos e faixas) | 2026-06-25 | 5 anexos / 30 faixas | 0 | 0 | 0 | — | [Lei Complementar 123/2006 — Anexos I a V (redação LC 155/2016)](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm) |
-| NCM — Nomenclatura Comum do Mercosul | 2026-09-26 | 10515 ncm | 0 | 0 | 0 | — | [Receita Federal / Siscomex nomenclatura JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO) |
-| CBO 2002 — Brazilian Occupations | 2026-09-26 | 2694 cbo | 0 | 0 | 0 | — | [MTE CBO 2002 ocupacao.csv](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
+| NCM — Nomenclatura Comum do Mercosul | 2026-09-28 | 10515 ncm | 0 | 0 | 0 | — | [Receita Federal / Siscomex nomenclatura JSON](https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO) |
+| CBO 2002 — Brazilian Occupations | 2026-09-28 | 2694 cbo | 0 | 0 | 0 | — | [MTE CBO 2002 ocupacao.csv](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv) |
 | CEP prefix lookup (IBGE CNEFE 2022) | 2026-06-23 | 24649 faixas | 0 | 0 | 0 | — | [IBGE CNEFE Censo 2022 microdata by UF](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF) |
-| ANTAQ port installations | 2026-09-26 | 1094 portos | 0 | 0 | 0 | — | [ANTAQ — Instalações Portuárias Outorgadas (Portos.xlsx)](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
-| ANP — Levantamento de Preços de Combustíveis (LPC) | 2026-09-26 | 1 semanas / 2461 precosMedios / 403 municipios / 7 produtos / 27 ufs | 2461 | 2383 | 0 | — | [ANP — resumo_semanal_lpc (municipal averages)](https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas) |
-| PNCP domain reference tables | 2026-09-26 | 19 modalidades / 189 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
-| Portal da Transparência endpoint registry | 2026-09-27 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
+| ANTAQ port installations | 2026-09-28 | 1094 portos | 0 | 0 | 0 | — | [ANTAQ — Instalações Portuárias Outorgadas (Portos.xlsx)](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
+| ANP — Levantamento de Preços de Combustíveis (LPC) | 2026-09-28 | 1 semanas / 2461 precosMedios / 403 municipios / 7 produtos / 27 ufs | 0 | 0 | 0 | — | [ANP — resumo_semanal_lpc (municipal averages)](https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas) |
+| PNCP domain reference tables | 2026-09-28 | 19 modalidades / 189 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 9 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
+| Portal da Transparência endpoint registry | 2026-09-28 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
 ## ⚠️ Critical source alerts
 
@@ -49,16 +49,7 @@ See [`data/refresh-reports/CRITICAL-ALERTS.md`](../data/refresh-reports/CRITICAL
 
 | Dataset | Severity | Status | Embedded data from | Message |
 |---------|----------|--------|--------------------|---------|
-| ibge | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| cnaes | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| nbs | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| ncm | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| cbo | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| portos | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| anp-combustiveis | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| pncp-reference | warning | source_blocked | 2026-09-26 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-26 retained in the API. |
-| transparencia-snapshots | critical | source_unavailable | 2026-09-27 | Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification. |
-| feriados | warning | source_unavailable | 2026-06-23 | Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API. |
+| transparencia-snapshots | critical | source_unavailable | 2026-09-28 | Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification. |
 
 ### Maintainer action required
 
@@ -87,7 +78,7 @@ See [`data/refresh-reports/CRITICAL-ALERTS.md`](../data/refresh-reports/CRITICAL
   "totalAdicionados": 208,
   "totalRemovidos": 0,
   "totalAlterados": 1,
-  "sourceAlerts": 10,
+  "sourceAlerts": 1,
   "criticalAlerts": 1,
   "baselinesSelados": 0
 }
