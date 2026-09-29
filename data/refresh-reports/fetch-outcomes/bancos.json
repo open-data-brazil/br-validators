@@ -5,7 +5,7 @@
     "https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv"
   ],
   "attempts": 5,
-  "checkedAt": "2026-09-28T09:13:47.325Z",
-  "retainedEmbeddedDataFrom": "2026-09-28",
+  "checkedAt": "2026-09-29T09:21:57.851Z",
+  "retainedEmbeddedDataFrom": "2026-09-29",
   "message": "Official Bacen STR CSV fetch succeeded."
 }
