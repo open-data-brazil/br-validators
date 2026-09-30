@@ -1,2 +1,1 @@
-CRITICAL dataset=transparencia-snapshots streak=4 first_failure=2026-09-26 retained=2026-09-29 message="Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification."
-UPDATED 2026-09-29T10:09:10.843Z
+OK no critical alerts last_check=2026-09-30T09:51:11.033Z

@@ -5,8 +5,8 @@
   "endpoints": [
     "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
   ],
-  "capturadoEm": "2026-09-29",
-  "atualizadoEm": "2026-09-29T09:22:18.075Z",
+  "capturadoEm": "2026-09-30",
+  "atualizadoEm": "2026-09-30T09:12:49.999Z",
   "contagens": {
     "cnaes": 1332
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-09-28"
+    "comparadoCom": "2026-09-29"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-09-29T09:22:18.075Z"
+    "ultimaExecucao": "2026-09-30T09:12:49.999Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cnae-economic-activity"
 }

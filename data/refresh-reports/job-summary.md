@@ -1,19 +1,15 @@
 ### Data refresh report
 
-- Run date: 2026-09-29
+- Run date: 2026-09-30
 - Datasets checked: 30
 - Datasets changed: 2
 - Baselines sealed this run: 0
 - Source alerts: 1
-- Critical alerts: 1
-
-### ⚠️ Critical — consultation link deprecated
-
-See `data/refresh-reports/CRITICAL-ALERTS.md` for maintainer actions.
+- Critical alerts: 0
 
 ### Source health alerts
 
-- **transparencia-snapshots** (critical): Transparência registry written; Swagger/OpenAPI probe failed — retained previous classification. (embedded data from 2026-09-29 retained)
+- **pncp-reference** (warning): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-09-29 retained in the API. (embedded data from 2026-09-29 retained)
 
 See `docs/DATA-SOURCE-MAINTENANCE.md` for remediation steps.
 
