@@ -19577,7 +19577,7 @@
   },
   {
     "codigo": "39139050",
-    "descricao": "Quitosan (<i>Chitosan</i>), seus sais ou seus derivados"
+    "descricao": "Quitosana, seus sais ou seus derivados"
   },
   {
     "codigo": "39139060",
@@ -36806,6 +36806,10 @@
   {
     "codigo": "85181010",
     "descricao": "Piezelétricos próprios para aparelhos telefônicos"
+  },
+  {
+    "codigo": "85181020",
+    "descricao": "Outros microfones, sem suporte"
   },
   {
     "codigo": "85181090",
