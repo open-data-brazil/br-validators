@@ -1185,8 +1185,8 @@
   {
     "codigo": "365",
     "ispb": "68757681",
-    "nome": "SIMPAUL CORRETORA DE CAMBIO E VALORES MOBILIARIOS  S.A.",
-    "nomeReduzido": "SIMPAUL",
+    "nome": "BINANCE BRASIL CORRETORA DE CÂMBIO E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "BINANCE BRASIL",
     "participaCompe": false
   },
   {
@@ -2258,13 +2258,6 @@
     "ispb": "33040601",
     "nome": "MERCANTIL FINANCEIRA S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO.",
     "nomeReduzido": "MERCANTIL FINANCEIRA",
-    "participaCompe": false
-  },
-  {
-    "codigo": "568",
-    "ispb": "49933388",
-    "nome": "BRCONDOS SOCIEDADE DE CRÉDITO DIRETO S.A.",
-    "nomeReduzido": "BRCONDOS SCD S.A.",
     "participaCompe": false
   },
   {
