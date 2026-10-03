@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-10-02T09:44:43.299Z",
-  "runDate": "2026-10-02",
+  "executadoEm": "2026-10-03T09:25:14.308Z",
+  "runDate": "2026-10-03",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "estados": 27,
@@ -20,20 +20,16 @@
     },
     {
       "id": "bancos",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
         "adicionados": 0,
-        "removidos": 1,
-        "alterados": 1,
-        "comparadoCom": "2026-10-01"
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "bancos": 462
-      },
-      "camposAlterados": [
-        "nome",
-        "nomeReduzido"
-      ]
+      }
     },
     {
       "id": "aeroportos",
@@ -42,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "aeroportos": 533,
@@ -56,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "municipios": 5571
@@ -69,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "moedas": 154
@@ -80,14 +76,14 @@
       "status": "unchanged",
       "alteracoes": {
         "adicionados": 10,
-        "removidos": 10,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
-        "cotacoes": 870,
+        "cotacoes": 880,
         "moedas": 10,
-        "diasUteis": 87
+        "diasUteis": 88
       }
     },
     {
@@ -126,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "paises": 253
@@ -139,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "incoterms": 11
@@ -152,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "ddds": 67
@@ -180,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "cnaes": 1332
@@ -193,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "cfop": 689
@@ -206,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "naturezas": 90
@@ -219,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "motivos": 61
@@ -232,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "cargas": 12
@@ -245,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "nbs": 917
@@ -258,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "cest": 1018
@@ -328,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "ncm": 10516
@@ -341,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "cbo": 2694
@@ -367,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "portos": 1094
@@ -375,20 +371,21 @@
     },
     {
       "id": "anp-combustiveis",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
-        "removidos": 0,
+        "adicionados": 2,
+        "removidos": 2,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2461,
-        "municipios": 403,
+        "precosMedios": 2454,
+        "municipios": 399,
         "produtos": 7,
         "ufs": 27
-      }
+      },
+      "camposAlterados": []
     },
     {
       "id": "pncp-reference",
@@ -397,7 +394,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "modalidades": 19,
@@ -417,7 +414,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "endpoints": 8,
@@ -425,14 +422,30 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "selic",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-02 retained in the API.",
+      "endpoints": [
+        "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+        "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
+        "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=432",
+        "https://www.bcb.gov.br/controleinflacao/copom"
+      ],
+      "retainedEmbeddedDataFrom": "2026-10-02",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 30,
     "datasetsAlterados": 3,
-    "totalAdicionados": 208,
-    "totalRemovidos": 1,
-    "totalAlterados": 2,
-    "sourceAlerts": 0,
+    "totalAdicionados": 210,
+    "totalRemovidos": 2,
+    "totalAlterados": 1,
+    "sourceAlerts": 1,
     "criticalAlerts": 0,
     "baselinesSelados": 0
   }
