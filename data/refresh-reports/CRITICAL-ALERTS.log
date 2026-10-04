@@ -1,1 +1,2 @@
-OK no critical alerts last_check=2026-10-03T09:25:14.308Z
+CRITICAL dataset=selic streak=2 first_failure=2026-10-03 retained=2026-10-02 message="Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-02 retained in the API."
+UPDATED 2026-10-04T09:59:50.410Z

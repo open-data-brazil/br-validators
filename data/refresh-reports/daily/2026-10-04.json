@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-07-05T07:05:51.539Z",
-  "runDate": "2026-07-05",
+  "executadoEm": "2026-10-04T09:59:50.410Z",
+  "runDate": "2026-10-04",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "estados": 27,
@@ -25,10 +25,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
-        "bancos": 468
+        "bancos": 462
       }
     },
     {
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "moedas": 154
@@ -78,12 +78,12 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
-        "cotacoes": 860,
+        "cotacoes": 880,
         "moedas": 10,
-        "diasUteis": 86
+        "diasUteis": 88
       }
     },
     {
@@ -93,7 +93,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-01"
       },
       "contagens": {
         "observacoes": 90,
@@ -104,15 +104,15 @@
       "id": "iss-municipal",
       "status": "changed",
       "alteracoes": {
-        "adicionados": 400,
+        "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "alterados": 1,
+        "comparadoCom": "2026-09-24"
       },
       "contagens": {
         "municipios": 500,
         "capitais": 27,
-        "estimativaRows": 473
+        "estimativaRows": 50
       }
     },
     {
@@ -122,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "cargas": 12
@@ -241,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "nbs": 917
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "cest": 1018
@@ -324,10 +324,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
-        "ncm": 10515
+        "ncm": 10516
       }
     },
     {
@@ -337,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "cbo": 2694
@@ -363,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "portos": 1094
@@ -376,12 +376,12 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2376,
-        "municipios": 386,
+        "precosMedios": 2454,
+        "municipios": 399,
         "produtos": 7,
         "ufs": 27
       }
@@ -393,11 +393,11 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "modalidades": 19,
-        "amparos-legais": 183,
+        "amparos-legais": 189,
         "modos-disputa": 6,
         "tipos-instrumentos-convocatorios": 5,
         "tipos-contrato": 12,
@@ -413,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-04"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "endpoints": 8,
@@ -421,15 +421,50 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "selic",
+      "severity": "critical",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-02 retained in the API.",
+      "endpoints": [
+        "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+        "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
+        "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=432",
+        "https://www.bcb.gov.br/controleinflacao/copom"
+      ],
+      "retainedEmbeddedDataFrom": "2026-10-02",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 2
+    },
+    {
+      "datasetId": "pncp-reference",
+      "severity": "warning",
+      "status": "source_unavailable",
+      "message": "Possible link deprecation (HTTP 502 fetching https://pncp.gov.br/api/pncp/v1/modalidades). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-03 retained in the API.",
+      "endpoints": [
+        "https://pncp.gov.br/api/pncp/v1/modalidades",
+        "https://pncp.gov.br/api/pncp/v1/amparos-legais",
+        "https://pncp.gov.br/api/pncp/v1/modos-disputas",
+        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-convocatorios",
+        "https://pncp.gov.br/api/pncp/v1/tipos-contratos",
+        "https://pncp.gov.br/api/pncp/v1/criterios-julgamentos",
+        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
+        "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
+      ],
+      "retainedEmbeddedDataFrom": "2026-10-03",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 30,
     "datasetsAlterados": 2,
-    "totalAdicionados": 608,
+    "totalAdicionados": 208,
     "totalRemovidos": 0,
-    "totalAlterados": 0,
-    "sourceAlerts": 0,
-    "criticalAlerts": 0,
+    "totalAlterados": 1,
+    "sourceAlerts": 2,
+    "criticalAlerts": 1,
     "baselinesSelados": 0
   }
 }
