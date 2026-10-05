@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-10-04T09:59:50.410Z",
-  "runDate": "2026-10-04",
+  "executadoEm": "2026-10-05T10:24:03.073Z",
+  "runDate": "2026-10-05",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "estados": 27,
@@ -25,7 +25,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "bancos": 462
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "moedas": 154
@@ -76,24 +76,24 @@
       "status": "unchanged",
       "alteracoes": {
         "adicionados": 0,
-        "removidos": 0,
+        "removidos": 10,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
-        "cotacoes": 880,
+        "cotacoes": 870,
         "moedas": 10,
-        "diasUteis": 88
+        "diasUteis": 87
       }
     },
     {
       "id": "selic",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 1,
-        "removidos": 1,
+        "adicionados": 3,
+        "removidos": 3,
         "alterados": 0,
-        "comparadoCom": "2026-10-01"
+        "comparadoCom": "2026-10-02"
       },
       "contagens": {
         "observacoes": 90,
@@ -122,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "cargas": 12
@@ -241,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "nbs": 917
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "cest": 1018
@@ -324,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "ncm": 10516
@@ -337,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "cbo": 2694
@@ -363,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "portos": 1094
@@ -376,7 +376,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "semanas": 1,
@@ -393,7 +393,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-02"
+        "comparadoCom": "2026-10-03"
       },
       "contagens": {
         "modalidades": 19,
@@ -413,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-03"
+        "comparadoCom": "2026-10-04"
       },
       "contagens": {
         "endpoints": 8,
@@ -421,50 +421,15 @@
       }
     }
   ],
-  "sourceAlerts": [
-    {
-      "datasetId": "selic",
-      "severity": "critical",
-      "status": "source_blocked",
-      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-02 retained in the API.",
-      "endpoints": [
-        "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
-        "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
-        "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=432",
-        "https://www.bcb.gov.br/controleinflacao/copom"
-      ],
-      "retainedEmbeddedDataFrom": "2026-10-02",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 2
-    },
-    {
-      "datasetId": "pncp-reference",
-      "severity": "warning",
-      "status": "source_unavailable",
-      "message": "Possible link deprecation (HTTP 502 fetching https://pncp.gov.br/api/pncp/v1/modalidades). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-03 retained in the API.",
-      "endpoints": [
-        "https://pncp.gov.br/api/pncp/v1/modalidades",
-        "https://pncp.gov.br/api/pncp/v1/amparos-legais",
-        "https://pncp.gov.br/api/pncp/v1/modos-disputas",
-        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-convocatorios",
-        "https://pncp.gov.br/api/pncp/v1/tipos-contratos",
-        "https://pncp.gov.br/api/pncp/v1/criterios-julgamentos",
-        "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
-        "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
-      ],
-      "retainedEmbeddedDataFrom": "2026-10-03",
-      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
-    }
-  ],
+  "sourceAlerts": [],
   "resumo": {
     "datasetsVerificados": 30,
     "datasetsAlterados": 2,
     "totalAdicionados": 208,
     "totalRemovidos": 0,
     "totalAlterados": 1,
-    "sourceAlerts": 2,
-    "criticalAlerts": 1,
+    "sourceAlerts": 0,
+    "criticalAlerts": 0,
     "baselinesSelados": 0
   }
 }
