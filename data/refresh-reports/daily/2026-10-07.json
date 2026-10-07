@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-07-08T06:15:14.959Z",
-  "runDate": "2026-07-08",
+  "executadoEm": "2026-10-07T10:11:18.539Z",
+  "runDate": "2026-10-07",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "estados": 27,
@@ -25,10 +25,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
-        "bancos": 468
+        "bancos": 462
       }
     },
     {
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "moedas": 154
@@ -78,12 +78,12 @@
         "adicionados": 10,
         "removidos": 10,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
-        "cotacoes": 850,
+        "cotacoes": 870,
         "moedas": 10,
-        "diasUteis": 85
+        "diasUteis": 87
       }
     },
     {
@@ -93,7 +93,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "observacoes": 90,
@@ -104,15 +104,15 @@
       "id": "iss-municipal",
       "status": "changed",
       "alteracoes": {
-        "adicionados": 400,
+        "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "alterados": 1,
+        "comparadoCom": "2026-09-24"
       },
       "contagens": {
         "municipios": 500,
         "capitais": 27,
-        "estimativaRows": 473
+        "estimativaRows": 50
       }
     },
     {
@@ -122,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "cargas": 12
@@ -241,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "nbs": 917
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "cest": 1018
@@ -324,10 +324,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
-        "ncm": 10515
+        "ncm": 10516
       }
     },
     {
@@ -337,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "cbo": 2694
@@ -363,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "portos": 1094
@@ -376,12 +376,12 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2376,
-        "municipios": 386,
+        "precosMedios": 2454,
+        "municipios": 399,
         "produtos": 7,
         "ufs": 27
       }
@@ -393,11 +393,11 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "modalidades": 19,
-        "amparos-legais": 183,
+        "amparos-legais": 189,
         "modos-disputa": 6,
         "tipos-instrumentos-convocatorios": 5,
         "tipos-contrato": 12,
@@ -413,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-07"
+        "comparadoCom": "2026-10-06"
       },
       "contagens": {
         "endpoints": 8,
@@ -425,9 +425,9 @@
   "resumo": {
     "datasetsVerificados": 30,
     "datasetsAlterados": 2,
-    "totalAdicionados": 608,
+    "totalAdicionados": 208,
     "totalRemovidos": 0,
-    "totalAlterados": 0,
+    "totalAlterados": 1,
     "sourceAlerts": 0,
     "criticalAlerts": 0,
     "baselinesSelados": 0
