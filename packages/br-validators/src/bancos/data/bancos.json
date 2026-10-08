@@ -1981,13 +1981,6 @@
     "participaCompe": false
   },
   {
-    "codigo": "525",
-    "ispb": "34265629",
-    "nome": "INTERCAM CORRETORA DE CÂMBIO LTDA.",
-    "nomeReduzido": "INTERCAM CC LTDA",
-    "participaCompe": false
-  },
-  {
     "codigo": "526",
     "ispb": "46026562",
     "nome": "MONETARIE SOCIEDADE DE CRÉDITO DIRETO S.A.",
@@ -2186,8 +2179,8 @@
   {
     "codigo": "556",
     "ispb": "40333582",
-    "nome": "SAYGO CORRETORA DE CÂMBIO S.A.",
-    "nomeReduzido": "SAYGO CÂMBIO",
+    "nome": "SAYGO SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "SAYGO CC S.A.",
     "participaCompe": false
   },
   {
