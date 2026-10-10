@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-10-09T10:24:04.423Z",
-  "runDate": "2026-10-09",
+  "executadoEm": "2026-10-10T09:47:42.031Z",
+  "runDate": "2026-10-10",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "estados": 27,
@@ -20,17 +20,16 @@
     },
     {
       "id": "bancos",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
         "adicionados": 0,
-        "removidos": 1,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "bancos": 460
-      },
-      "camposAlterados": []
+      }
     },
     {
       "id": "aeroportos",
@@ -39,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "aeroportos": 533,
@@ -53,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "municipios": 5571
@@ -66,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "moedas": 154
@@ -77,14 +76,14 @@
       "status": "unchanged",
       "alteracoes": {
         "adicionados": 10,
-        "removidos": 10,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
-        "cotacoes": 880,
+        "cotacoes": 890,
         "moedas": 10,
-        "diasUteis": 88
+        "diasUteis": 89
       }
     },
     {
@@ -94,7 +93,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "observacoes": 90,
@@ -123,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "paises": 253
@@ -136,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "incoterms": 11
@@ -149,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "ddds": 67
@@ -177,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "cnaes": 1332
@@ -190,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "cfop": 689
@@ -203,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "naturezas": 90
@@ -216,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "motivos": 61
@@ -229,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "cargas": 12
@@ -242,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "nbs": 917
@@ -255,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "cest": 1018
@@ -325,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "ncm": 10516
@@ -338,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "cbo": 2694
@@ -364,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "portos": 1094
@@ -372,20 +371,21 @@
     },
     {
       "id": "anp-combustiveis",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
-        "removidos": 0,
+        "adicionados": 2,
+        "removidos": 2,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2454,
-        "municipios": 399,
+        "precosMedios": 2426,
+        "municipios": 396,
         "produtos": 7,
         "ufs": 27
-      }
+      },
+      "camposAlterados": []
     },
     {
       "id": "pncp-reference",
@@ -394,7 +394,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "modalidades": 19,
@@ -414,7 +414,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-08"
+        "comparadoCom": "2026-10-09"
       },
       "contagens": {
         "endpoints": 8,
@@ -426,8 +426,8 @@
   "resumo": {
     "datasetsVerificados": 30,
     "datasetsAlterados": 3,
-    "totalAdicionados": 208,
-    "totalRemovidos": 1,
+    "totalAdicionados": 210,
+    "totalRemovidos": 2,
     "totalAlterados": 1,
     "sourceAlerts": 0,
     "criticalAlerts": 0,

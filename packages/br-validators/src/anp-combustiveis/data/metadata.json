@@ -4,27 +4,27 @@
   "fonte": "ANP — resumo_semanal_lpc (municipal averages)",
   "endpoints": [
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas",
-    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-09-27_2026-10-03.xlsx"
+    "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-10-04_2026-10-10.xlsx"
   ],
-  "capturadoEm": "2026-10-09",
-  "atualizadoEm": "2026-10-09T10:23:32.162Z",
+  "capturadoEm": "2026-10-10",
+  "atualizadoEm": "2026-10-10T09:47:35.812Z",
   "contagens": {
     "semanas": 1,
-    "precosMedios": 2454,
-    "municipios": 399,
+    "precosMedios": 2426,
+    "municipios": 396,
     "produtos": 7,
     "ufs": 27
   },
   "alteracoes": {
-    "adicionados": 0,
-    "removidos": 0,
+    "adicionados": 2426,
+    "removidos": 2454,
     "alterados": 0,
-    "comparadoCom": "2026-10-08"
+    "comparadoCom": "2026-10-09"
   },
   "verificacao": {
     "agendamento": "semanal",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-09T10:23:32.162Z"
+    "ultimaExecucao": "2026-10-10T09:47:35.812Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#anp-combustiveis"
 }
