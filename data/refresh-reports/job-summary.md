@@ -1,15 +1,19 @@
 ### Data refresh report
 
-- Run date: 2026-10-11
+- Run date: 2026-10-12
 - Datasets checked: 30
 - Datasets changed: 2
 - Baselines sealed this run: 0
 - Source alerts: 1
-- Critical alerts: 0
+- Critical alerts: 1
+
+### ⚠️ Critical — consultation link deprecated
+
+See `data/refresh-reports/CRITICAL-ALERTS.md` for maintainer actions.
 
 ### Source health alerts
 
-- **pncp-reference** (warning): Source blocked or unreachable from CI network — not link deprecation (Timeout after 30000ms). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-10 retained in the API. (embedded data from 2026-10-10 retained)
+- **pncp-reference** (critical): Source blocked or unreachable from CI network — not link deprecation (Timeout after 30000ms). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-10 retained in the API. (embedded data from 2026-10-10 retained)
 
 See `docs/DATA-SOURCE-MAINTENANCE.md` for remediation steps.
 
