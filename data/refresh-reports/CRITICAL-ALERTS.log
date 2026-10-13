@@ -1,2 +1,1 @@
-CRITICAL dataset=pncp-reference streak=2 first_failure=2026-10-11 retained=2026-10-10 message="Source blocked or unreachable from CI network — not link deprecation (Timeout after 30000ms). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-10 retained in the API."
-UPDATED 2026-10-12T10:45:29.550Z
+OK no critical alerts last_check=2026-10-13T10:27:45.496Z
