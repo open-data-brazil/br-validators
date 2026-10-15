@@ -5,8 +5,8 @@
   "endpoints": [
     "https://iccwbo.org/resources-for-business/incoterms-rules/"
   ],
-  "capturadoEm": "2026-10-14",
-  "atualizadoEm": "2026-10-14T08:17:18.682Z",
+  "capturadoEm": "2026-10-15",
+  "atualizadoEm": "2026-10-15T08:04:45.635Z",
   "contagens": {
     "incoterms": 11
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-13"
+    "comparadoCom": "2026-10-14"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-14T08:17:18.682Z"
+    "ultimaExecucao": "2026-10-15T08:04:45.635Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#incoterms"
 }
