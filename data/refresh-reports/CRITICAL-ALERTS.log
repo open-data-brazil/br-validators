@@ -1,1 +1,3 @@
-OK no critical alerts last_check=2026-10-15T08:43:10.932Z
+CRITICAL dataset=ibge streak=2 first_failure=2026-10-15 retained=2026-10-14 message="Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-14 retained in the API."
+CRITICAL dataset=cnaes streak=2 first_failure=2026-10-15 retained=2026-10-14 message="Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-14 retained in the API."
+UPDATED 2026-10-16T08:33:44.426Z
