@@ -52,5 +52,47 @@
     "nome": "Conteúdo artístico",
     "descricao": "Critério de julgamento que avalia exclusivamente o valor e os atributos artísticos, culturais ou estéticos da proposta ou do trabalho apresentado (Lei nº 14.133/2021, art. 33, III e art. 35).",
     "ativo": true
+  },
+  {
+    "id": 21,
+    "nome": "Menor valor da tarifa",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso I, da Lei nº 8.987/1995: menor valor da tarifa do serviço público a ser prestado.",
+    "ativo": true
+  },
+  {
+    "id": 22,
+    "nome": "Maior oferta pela outorga",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso II, da Lei nº 8.987/1995: maior oferta, nos casos de pagamento ao poder concedente pela outorga da concessão.",
+    "ativo": true
+  },
+  {
+    "id": 23,
+    "nome": "Combinação dos critérios dos incisos I, II e VII do art. 15 da Lei nº 8.987/1995",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso III, da Lei nº 8.987/1995: combinação, dois a dois, dos critérios referidos nos incisos I, II e VII.",
+    "ativo": true
+  },
+  {
+    "id": 24,
+    "nome": "Melhor proposta técnica, com preço fixado no edital",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso IV, da Lei nº 8.987/1995.",
+    "ativo": true
+  },
+  {
+    "id": 25,
+    "nome": "Menor tarifa combinada com melhor técnica",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso V, da Lei nº 8.987/1995: melhor proposta em razão da combinação do menor valor da tarifa com o de melhor técnica.",
+    "ativo": true
+  },
+  {
+    "id": 26,
+    "nome": "Maior oferta pela outorga combinada com melhor técnica",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso VI, da Lei nº 8.987/1995: melhor proposta em razão da combinação da maior oferta pela outorga da concessão com o de melhor técnica.",
+    "ativo": true
+  },
+  {
+    "id": 27,
+    "nome": "Melhor oferta de pagamento pela outorga após qualificação técnica",
+    "descricao": "Critério de julgamento previsto no art. 15, inciso VII, da Lei nº 8.987/1995.",
+    "ativo": true
   }
 ]

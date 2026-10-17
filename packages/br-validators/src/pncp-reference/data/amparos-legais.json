@@ -1132,5 +1132,11 @@
     "nome": "Lei 12.232/2010, Art. 5º",
     "descricao": "Dispõe sobre as normas gerais para licitação e contratação pela administração pública de serviços de publicidade prestados por intermédio de agências de propaganda e dá outras providências.",
     "ativo": true
+  },
+  {
+    "id": 190,
+    "nome": "Lei nº 8.987/1995",
+    "descricao": "Lei nº 8.987, de 13 de fevereiro de 1995. Dispõe sobre o regime de concessão e permissão da prestação de serviços públicos previsto no art. 175 da Constituição Federal, e dá outras providências.",
+    "ativo": true
   }
 ]
