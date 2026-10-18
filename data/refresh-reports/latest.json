@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-10-17T07:55:16.265Z",
-  "runDate": "2026-10-17",
+  "executadoEm": "2026-10-18T08:19:26.553Z",
+  "runDate": "2026-10-18",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-14"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "estados": 27,
@@ -25,7 +25,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "bancos": 460
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "moedas": 154
@@ -75,10 +75,10 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 10,
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cotacoes": 880,
@@ -122,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-14"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cargas": 12
@@ -241,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "nbs": 917
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cest": 1018
@@ -324,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "ncm": 10516
@@ -337,7 +337,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "cbo": 2694
@@ -363,7 +363,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "portos": 1094
@@ -376,7 +376,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "semanas": 1,
@@ -388,12 +388,12 @@
     },
     {
       "id": "pncp-reference",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 8,
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "modalidades": 19,
@@ -404,8 +404,7 @@
         "criterios-julgamento": 16,
         "tipos-instrumentos-cobranca": 1,
         "fontes-orcamentarias": 6
-      },
-      "camposAlterados": []
+      }
     },
     {
       "id": "transparencia-snapshots",
@@ -414,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-16"
+        "comparadoCom": "2026-10-17"
       },
       "contagens": {
         "endpoints": 8,
@@ -422,14 +421,30 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "selic",
+      "severity": "warning",
+      "status": "source_unavailable",
+      "message": "Possible link deprecation (Unexpected token '<', \"<?xml vers\"... is not valid JSON). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-17 retained in the API.",
+      "endpoints": [
+        "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+        "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
+        "https://www3.bcb.gov.br/sgspub/consultarvalores/consultarValoresSeries.do?method=consultarGraficoPorId&hdOidSeriesSelecionadas=432",
+        "https://www.bcb.gov.br/controleinflacao/copom"
+      ],
+      "retainedEmbeddedDataFrom": "2026-10-17",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 3,
-    "totalAdicionados": 216,
+    "datasetsAlterados": 2,
+    "totalAdicionados": 208,
     "totalRemovidos": 0,
     "totalAlterados": 1,
-    "sourceAlerts": 0,
+    "sourceAlerts": 1,
     "criticalAlerts": 0,
     "baselinesSelados": 0
   }

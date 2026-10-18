@@ -7,8 +7,8 @@
     "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=",
     "https://www.bcb.gov.br/ftp/paises.txt"
   ],
-  "capturadoEm": "2026-10-17",
-  "atualizadoEm": "2026-10-17T07:24:45.913Z",
+  "capturadoEm": "2026-10-18",
+  "atualizadoEm": "2026-10-18T07:49:01.990Z",
   "contagens": {
     "paises": 253
   },
@@ -16,12 +16,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-16"
+    "comparadoCom": "2026-10-17"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-17T07:24:45.913Z"
+    "ultimaExecucao": "2026-10-18T07:49:01.990Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#paises-bacen"
 }
