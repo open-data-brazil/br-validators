@@ -1,6 +1,6 @@
 {
   "datasetId": "selic",
-  "status": "source_unavailable",
+  "status": "source_blocked",
   "endpoints": [
     "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
     "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
@@ -8,10 +8,10 @@
     "https://www.bcb.gov.br/controleinflacao/copom"
   ],
   "attempts": 5,
-  "checkedAt": "2026-10-18T07:48:59.754Z",
+  "checkedAt": "2026-10-19T08:31:59.666Z",
   "retainedEmbeddedDataFrom": "2026-10-17",
-  "message": "Possible link deprecation (Unexpected token '<', \"<?xml vers\"... is not valid JSON). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-17 retained in the API.",
-  "failureKind": "link_deprecated",
+  "message": "Source blocked or unreachable from CI network — not link deprecation (Timeout after 30000ms). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-17 retained in the API.",
+  "failureKind": "source_blocked",
   "attemptedEndpoints": [
     "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
     "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
