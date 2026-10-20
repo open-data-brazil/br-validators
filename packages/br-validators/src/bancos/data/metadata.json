@@ -6,7 +6,7 @@
     "https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv"
   ],
   "capturadoEm": "2026-10-20",
-  "atualizadoEm": "2026-10-20T16:07:31.981Z",
+  "atualizadoEm": "2026-10-20T19:46:11.863Z",
   "contagens": {
     "bancos": 460
   },
@@ -19,7 +19,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-20T16:07:31.981Z"
+    "ultimaExecucao": "2026-10-20T19:46:11.863Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#bacen-banks"
 }

@@ -9,7 +9,7 @@
     "https://www.bcb.gov.br/controleinflacao/copom"
   ],
   "capturadoEm": "2026-10-20",
-  "atualizadoEm": "2026-10-20T16:07:43.474Z",
+  "atualizadoEm": "2026-10-20T19:46:23.261Z",
   "contagens": {
     "observacoes": 90,
     "dias": 90
@@ -23,7 +23,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-20T16:07:43.474Z"
+    "ultimaExecucao": "2026-10-20T19:46:23.261Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#selic-meta-sgs-432"
 }

@@ -7,7 +7,7 @@
 | aeroportos | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | 2026-10-20 | [official](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | tse-municipios | 5571 municipios | 0 | 0 | 0 | — | 2026-10-20 | [official](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | moedas | 154 moedas | 0 | 0 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| ptax | 870 cotacoes / 10 moedas / 87 diasUteis | 0 | 0 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| ptax | 880 cotacoes / 10 moedas / 88 diasUteis | 10 | 0 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
 | selic | 90 observacoes / 90 dias | 0 | 0 | 0 | — | 2026-10-20 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | iss-municipal | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | 2026-09-24 | [official](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | paises-bacen | 253 paises | 0 | 0 | 0 | — | 2026-10-20 | [official](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |

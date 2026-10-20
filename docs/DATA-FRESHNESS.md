@@ -1,7 +1,7 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-10-20T16:38:10.955Z
+> Last bot run: 2026-10-20T20:16:52.718Z
 
 ## Summary
 
@@ -12,7 +12,7 @@
 | ANAC Public Aerodromos | 2026-10-20 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | TSE ↔ IBGE Municipality Codes | 2026-10-20 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | ISO 4217 Currencies + Bacen PTAX | 2026-10-20 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | 2026-10-20 | 870 cotacoes / 10 moedas / 87 diasUteis | 0 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| Bacen PTAX Fechamento | 2026-10-20 | 880 cotacoes / 10 moedas / 88 diasUteis | 10 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
 | Bacen SGS — Meta Selic (série 432) | 2026-10-20 | 90 observacoes / 90 dias | 0 | 0 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | ISS municipal alíquotas — partial embed (capitals + top PIB) | 2026-09-24 | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | [Municipal legislation + gov.br NFS-e registered alíquotas + LC 116/2003 Art. 8 band + IBGE SIDRA PIB municipal ranking](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | NF-e Bacen Country Codes | 2026-10-20 | 253 paises | 0 | 0 | 0 | — | [Portal Nacional NF-e — Tabela de Países (Bacen)](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |

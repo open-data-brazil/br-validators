@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-10-20T16:38:10.955Z",
+  "executadoEm": "2026-10-20T20:16:52.718Z",
   "runDate": "2026-10-20",
   "schedule": "diario",
   "agendamento": "diario",
@@ -75,15 +75,15 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 0,
+        "adicionados": 10,
         "removidos": 0,
         "alterados": 0,
         "comparadoCom": "2026-10-20"
       },
       "contagens": {
-        "cotacoes": 870,
+        "cotacoes": 880,
         "moedas": 10,
-        "diasUteis": 87
+        "diasUteis": 88
       }
     },
     {

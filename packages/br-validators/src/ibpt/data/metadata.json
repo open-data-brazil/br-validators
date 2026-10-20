@@ -12,7 +12,7 @@
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
   ],
   "capturadoEm": "2026-10-20",
-  "atualizadoEm": "2026-10-20T16:29:01.145Z",
+  "atualizadoEm": "2026-10-20T20:07:40.777Z",
   "contagens": {
     "cargas": 12
   },
@@ -25,7 +25,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-20T16:29:01.145Z"
+    "ultimaExecucao": "2026-10-20T20:07:40.777Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibpt-carga-tributaria-ncm"
 }
