@@ -118,6 +118,7 @@ Maintainers re-run `pnpm audit --prod --audit-level=high` before every release t
 | **Version gate** | Release workflow verifies git tag matches all six `package.json` versions |
 | **OIDC** | Release workflow sets `id-token: write` for npm trusted publishing / provenance |
 | **Registry verify** | Post-publish `npm view @br-validators/*@version` smoke check |
+| **Publishable manifest** | `scripts/prepare-npm-publish.ts` materializes `workspace:` ranges before the npm CLI packs the tarball |
 
 Published runtime packages (`@br-validators/core`, adapters) bundle **no third-party runtime deps** — supply-chain risk is primarily **publish pipeline** integrity, not transitive npm deps in the tarball.
 

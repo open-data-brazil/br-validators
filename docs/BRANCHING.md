@@ -62,12 +62,23 @@ Pushing tag `v*` triggers the Release workflow:
 
 Actions → **Release** → **Run workflow** → enter the existing tag (e.g. `v1.6.0`).
 
-### One-time setup: `NPM_TOKEN`
+### One-time setup: npm authentication
 
-1. [npmjs.com](https://www.npmjs.com) → Access Tokens → **Granular Access Token** (or **Automation** token)
-2. Permissions: **Read and write** on **all** packages matching `@br-validators/*` (include permission to **create** new scoped packages)
-3. GitHub repo → Settings → Secrets and variables → Actions → **New repository secret**
-4. Name: `NPM_TOKEN` — paste the token
+Preferred — **npm trusted publishing (OIDC)**, no long-lived secret:
+
+1. [npmjs.com](https://www.npmjs.com) → open each package (`@br-validators/core`, `cli`, `zod`, `react-hook-form`, `express`, `vue`) → **Settings** → **Trusted Publisher** → **GitHub Actions**
+2. Organization/user: `open-data-brazil` · Repository: `br-validators` · Workflow filename: `release.yml` · Environment: *(empty)*
+3. Repeat for all six packages.
+
+The Release workflow already requests `id-token: write`, so the npm CLI exchanges the GitHub Actions ID token for a short-lived registry token. Nothing is stored in GitHub.
+
+Fallback — **repository secret `NPM_TOKEN`** (needed until the trusted publisher is configured on every package):
+
+1. [npmjs.com](https://www.npmjs.com) → Access Tokens → **Granular Access Token**
+2. Packages and scopes: **Read and write** on the `@br-validators` scope · Organizations: `br-validators` → **Read and write**
+3. Expiration: **90 days** (npm caps write tokens at 90 days — rotate before it expires) · **Bypass 2FA: ON** (required for non-interactive publish)
+4. GitHub repo → Settings → Secrets and variables → Actions → **New repository secret**
+5. Name: `NPM_TOKEN` — paste the token
 
 Local `pnpm publish` is blocked by `scripts/assert-ci-publish.mjs` (`prepublishOnly` on every publishable package).
 
@@ -120,5 +131,5 @@ Enable **Allow auto-merge** on the repo if you want zero-touch after the first a
 
 | Secret | Purpose |
 |--------|---------|
-| `NPM_TOKEN` | npm publish (Release workflow) |
+| `NPM_TOKEN` | npm publish fallback (Release workflow) — omit once every package has a trusted publisher |
 | `DATA_REFRESH_GITHUB_TOKEN` | Optional — direct push + tag from data refresh bot |

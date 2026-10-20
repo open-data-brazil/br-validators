@@ -3,7 +3,12 @@ name: Release
 # Publish to npm when a version tag is pushed on main (after merge + version bump).
 # CI-only: local pnpm publish is blocked by scripts/assert-ci-publish.mjs.
 # Publishes all six @br-validators/* packages (see docs/BRANCHING.md).
-# Requires repository secret: NPM_TOKEN (Automation or granular — read/write + create on @br-validators/*).
+#
+# Authentication (npm CLI 11.5.1+):
+#   - Preferred: npm trusted publishing (OIDC) — no secret, configured per package
+#     on npmjs.com (Settings → Trusted Publisher → GitHub Actions).
+#   - Fallback: repository secret NPM_TOKEN (granular token — read/write + create
+#     on @br-validators/*, bypass 2FA, max 90 days lifetime).
 
 on:
   push:
@@ -70,22 +75,42 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
+      # npm CLI 11.5.1+ exchanges the GitHub Actions ID token for a registry
+      # token (npm trusted publishing / OIDC).
+      - name: Ensure npm CLI supports OIDC
+        run: |
+          npm install -g npm@11
+          npm --version
+
       - run: pnpm install --frozen-lockfile
 
       - name: Quality gate
         run: pnpm verify
+
+      # The npm CLI does not understand the pnpm `workspace:` protocol, so the
+      # internal ranges are materialized before packing (same result as
+      # `pnpm publish`).
+      - name: Prepare workspace protocol for npm publish
+        run: |
+          pnpm exec tsx scripts/prepare-npm-publish.ts \
+            packages/br-validators \
+            apps/cli \
+            packages/br-validators-zod \
+            packages/br-validators-rhf \
+            packages/br-validators-express \
+            packages/br-validators-vue
 
       - name: Publish npm packages (CI only)
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           NPM_TAG="${{ steps.version.outputs.npm_tag }}"
           chmod +x scripts/publish-npm-if-missing.sh
-          ./scripts/publish-npm-if-missing.sh @br-validators/core @br-validators/core "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh @br-validators/cli @br-validators/cli "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh @br-validators/zod @br-validators/zod "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh @br-validators/react-hook-form @br-validators/react-hook-form "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh @br-validators/express @br-validators/express "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh @br-validators/vue @br-validators/vue "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh packages/br-validators @br-validators/core "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh apps/cli @br-validators/cli "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh packages/br-validators-zod @br-validators/zod "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh packages/br-validators-rhf @br-validators/react-hook-form "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh packages/br-validators-express @br-validators/express "$VERSION" "$NPM_TAG"
+          ./scripts/publish-npm-if-missing.sh packages/br-validators-vue @br-validators/vue "$VERSION" "$NPM_TAG"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

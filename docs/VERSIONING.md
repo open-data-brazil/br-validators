@@ -149,7 +149,7 @@ git tag -a v1.6.1 -m "Release v1.6.1"
 git push origin v1.6.1
 ```
 
-Requires GitHub secret `NPM_TOKEN` (Automation or granular token with read/write on **all** `@br-validators/*` packages, including create).
+Requires npm authentication in the Release workflow: **trusted publishing (OIDC)** — one trusted publisher per package on npmjs.com — or, as fallback, the repository secret `NPM_TOKEN` (granular token with read/write on **all** `@br-validators/*` packages, including create, bypass 2FA, max 90 days).
 
 **Re-run after failure:** Actions → **Release** → **Run workflow** with the tag name.
 
