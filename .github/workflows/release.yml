@@ -82,6 +82,14 @@ jobs:
           npm install -g npm@11
           npm --version
 
+      - name: Check OIDC availability
+        run: |
+          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] && [ -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
+            echo "OIDC token endpoint available — trusted publishing can be used."
+          else
+            echo "::warning::OIDC token endpoint unavailable — publishing falls back to the NPM_TOKEN secret."
+          fi
+
       - run: pnpm install --frozen-lockfile
 
       - name: Quality gate
