@@ -14,6 +14,15 @@ NPM_NAME="${2:?npm package name}"
 VERSION="${3:?semver}"
 NPM_TAG="${4:?dist-tag (latest|alpha|beta|rc)}"
 
+# A bare relative path is parsed by npm as a hosted git shortcut
+# ("packages/br-validators" → github.com/packages/br-validators), so the
+# directory is forced into an explicit local file spec.
+case "${PACKAGE_DIR}" in
+  /*) SPEC="file:${PACKAGE_DIR}" ;;
+  file:*) SPEC="${PACKAGE_DIR}" ;;
+  *) SPEC="file:./${PACKAGE_DIR#./}" ;;
+esac
+
 has_token=0
 if [ -n "${NODE_AUTH_TOKEN:-}" ] || [ -n "${NPM_TOKEN:-}" ]; then
   has_token=1
@@ -34,7 +43,7 @@ elif [ "$has_token" -eq 0 ] && [ "$has_oidc" -eq 0 ]; then
 else
   echo "PUBLISH: ${NPM_NAME}@${VERSION} (tag ${NPM_TAG}, auth: $([ "$has_oidc" -eq 1 ] && echo 'oidc+token' || echo 'token'))"
   set +e
-  npm publish "${PACKAGE_DIR}" --access public --tag "${NPM_TAG}"
+  npm publish "${SPEC}" --access public --tag "${NPM_TAG}"
   status=$?
   set -e
   if [ "$status" -ne 0 ]; then
