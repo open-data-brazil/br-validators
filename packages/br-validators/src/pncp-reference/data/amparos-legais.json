@@ -1138,5 +1138,11 @@
     "nome": "Lei nº 8.987/1995",
     "descricao": "Lei nº 8.987, de 13 de fevereiro de 1995. Dispõe sobre o regime de concessão e permissão da prestação de serviços públicos previsto no art. 175 da Constituição Federal, e dá outras providências.",
     "ativo": true
+  },
+  {
+    "id": 191,
+    "nome": "Lei 14.133/2021, Art. 79, IV",
+    "descricao": "Comércio eletrônico por meio de credenciamento, destinado à contratação de bens e serviços comuns padronizados.",
+    "ativo": true
   }
 ]

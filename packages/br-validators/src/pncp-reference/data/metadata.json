@@ -12,11 +12,11 @@
     "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
     "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
   ],
-  "capturadoEm": "2026-10-19",
-  "atualizadoEm": "2026-10-19T09:02:27.683Z",
+  "capturadoEm": "2026-10-20",
+  "atualizadoEm": "2026-10-20T08:35:56.932Z",
   "contagens": {
     "modalidades": 19,
-    "amparos-legais": 190,
+    "amparos-legais": 191,
     "modos-disputa": 6,
     "tipos-instrumentos-convocatorios": 5,
     "tipos-contrato": 12,
@@ -28,12 +28,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-18"
+    "comparadoCom": "2026-10-19"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-19T09:02:27.683Z"
+    "ultimaExecucao": "2026-10-20T08:35:56.932Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#pncp-reference"
 }
