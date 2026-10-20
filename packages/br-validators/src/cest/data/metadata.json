@@ -7,7 +7,7 @@
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cest_cv142_18.html"
   ],
   "capturadoEm": "2026-10-20",
-  "atualizadoEm": "2026-10-20T08:35:44.874Z",
+  "atualizadoEm": "2026-10-20T16:37:56.107Z",
   "contagens": {
     "cest": 1018
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-19"
+    "comparadoCom": "2026-10-20"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-20T08:35:44.874Z"
+    "ultimaExecucao": "2026-10-20T16:37:56.107Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cest"
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-10-20",
-  "summary": "drift",
+  "summary": "no_drift",
   "datasets": [
     {
       "id": "ibge",
@@ -88,12 +88,7 @@
     },
     {
       "id": "pncp-reference",
-      "status": "changed",
-      "adicionados": 1,
-      "removidos": 0,
-      "alterados": 0,
-      "camposAlterados": [],
-      "amostraChavesAlteradas": []
+      "status": "unchanged"
     },
     {
       "id": "transparencia-snapshots",

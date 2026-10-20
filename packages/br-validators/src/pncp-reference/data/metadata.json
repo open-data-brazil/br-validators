@@ -13,7 +13,7 @@
     "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
   ],
   "capturadoEm": "2026-10-20",
-  "atualizadoEm": "2026-10-20T08:35:56.932Z",
+  "atualizadoEm": "2026-10-20T16:38:08.520Z",
   "contagens": {
     "modalidades": 19,
     "amparos-legais": 191,
@@ -28,12 +28,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-19"
+    "comparadoCom": "2026-10-20"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-10-20T08:35:56.932Z"
+    "ultimaExecucao": "2026-10-20T16:38:08.520Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#pncp-reference"
 }

@@ -1,7 +1,7 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-10-20T08:35:59.448Z
+> Last bot run: 2026-10-20T16:38:10.955Z
 
 ## Summary
 
@@ -12,8 +12,8 @@
 | ANAC Public Aerodromos | 2026-10-20 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | TSE ↔ IBGE Municipality Codes | 2026-10-20 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | ISO 4217 Currencies + Bacen PTAX | 2026-10-20 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | 2026-10-20 | 870 cotacoes / 10 moedas / 87 diasUteis | 10 | 10 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| Bacen SGS — Meta Selic (série 432) | 2026-10-20 | 90 observacoes / 90 dias | 3 | 3 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| Bacen PTAX Fechamento | 2026-10-20 | 870 cotacoes / 10 moedas / 87 diasUteis | 0 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| Bacen SGS — Meta Selic (série 432) | 2026-10-20 | 90 observacoes / 90 dias | 0 | 0 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | ISS municipal alíquotas — partial embed (capitals + top PIB) | 2026-09-24 | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | [Municipal legislation + gov.br NFS-e registered alíquotas + LC 116/2003 Art. 8 band + IBGE SIDRA PIB municipal ranking](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | NF-e Bacen Country Codes | 2026-10-20 | 253 paises | 0 | 0 | 0 | — | [Portal Nacional NF-e — Tabela de Países (Bacen)](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | ICC Incoterms 2020 | 2026-10-20 | 11 incoterms | 0 | 0 | 0 | — | [International Chamber of Commerce — Incoterms 2020 (static reference)](https://iccwbo.org/resources-for-business/incoterms-rules/) |
@@ -35,7 +35,7 @@
 | CEP prefix lookup (IBGE CNEFE 2022) | 2026-06-23 | 24649 faixas | 0 | 0 | 0 | — | [IBGE CNEFE Censo 2022 microdata by UF](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF) |
 | ANTAQ port installations | 2026-10-20 | 1094 portos | 0 | 0 | 0 | — | [ANTAQ — Instalações Portuárias Outorgadas (Portos.xlsx)](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
 | ANP — Levantamento de Preços de Combustíveis (LPC) | 2026-10-20 | 1 semanas / 2426 precosMedios / 396 municipios / 7 produtos / 27 ufs | 0 | 0 | 0 | — | [ANP — resumo_semanal_lpc (municipal averages)](https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas) |
-| PNCP domain reference tables | 2026-10-20 | 19 modalidades / 191 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 16 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 1 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
+| PNCP domain reference tables | 2026-10-20 | 19 modalidades / 191 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 16 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | [PNCP Cadastro API — static domain tables (Lei 14.133 ecosystem)](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | Portal da Transparência endpoint registry | 2026-10-20 | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | [CGU Portal da Transparência — Swagger audit (query endpoints; no bulk embed in v1)](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
 ## Source health
@@ -57,8 +57,8 @@ All HTTP endpoints responded successfully. No embedded-data retention warnings.
 ```json
 {
   "datasetsVerificados": 30,
-  "datasetsAlterados": 3,
-  "totalAdicionados": 209,
+  "datasetsAlterados": 2,
+  "totalAdicionados": 208,
   "totalRemovidos": 0,
   "totalAlterados": 1,
   "sourceAlerts": 0,

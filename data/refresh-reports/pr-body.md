@@ -7,8 +7,8 @@
 | aeroportos | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | 2026-10-20 | [official](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | tse-municipios | 5571 municipios | 0 | 0 | 0 | — | 2026-10-20 | [official](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | moedas | 154 moedas | 0 | 0 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| ptax | 870 cotacoes / 10 moedas / 87 diasUteis | 10 | 10 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| selic | 90 observacoes / 90 dias | 3 | 3 | 0 | — | 2026-10-20 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| ptax | 870 cotacoes / 10 moedas / 87 diasUteis | 0 | 0 | 0 | — | 2026-10-20 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| selic | 90 observacoes / 90 dias | 0 | 0 | 0 | — | 2026-10-20 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | iss-municipal | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | 2026-09-24 | [official](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | paises-bacen | 253 paises | 0 | 0 | 0 | — | 2026-10-20 | [official](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | incoterms | 11 incoterms | 0 | 0 | 0 | — | 2026-10-20 | [official](https://iccwbo.org/resources-for-business/incoterms-rules/) |
@@ -30,10 +30,10 @@
 | cep-faixas | 24649 faixas | 0 | 0 | 0 | — | 2026-06-23 | [official](https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF) |
 | portos | 1094 portos | 0 | 0 | 0 | — | 2026-10-20 | [official](https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip) |
 | anp-combustiveis | 1 semanas / 2426 precosMedios / 396 municipios / 7 produtos / 27 ufs | 0 | 0 | 0 | — | 2026-10-20 | [official](https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/levantamento-de-precos-de-combustiveis-ultimas-semanas-pesquisadas) |
-| pncp-reference | 19 modalidades / 191 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 16 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 1 | 0 | 0 | — | 2026-10-20 | [official](https://pncp.gov.br/api/pncp/v1/modalidades) |
+| pncp-reference | 19 modalidades / 191 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 16 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | 2026-10-20 | [official](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | transparencia-snapshots | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | 2026-10-20 | [official](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-**Totals:** +209 −0 ~1
+**Totals:** +208 −0 ~1
 
 ### Source health
 
