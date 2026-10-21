@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-10-20T20:16:52.718Z",
-  "runDate": "2026-10-20",
+  "executadoEm": "2026-10-21T08:42:01.682Z",
+  "runDate": "2026-10-21",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -75,23 +75,23 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 10,
-        "removidos": 0,
+        "adicionados": 0,
+        "removidos": 10,
         "alterados": 0,
         "comparadoCom": "2026-10-20"
       },
       "contagens": {
-        "cotacoes": 880,
+        "cotacoes": 870,
         "moedas": 10,
-        "diasUteis": 88
+        "diasUteis": 87
       }
     },
     {
       "id": "selic",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 0,
-        "removidos": 0,
+        "adicionados": 1,
+        "removidos": 1,
         "alterados": 0,
         "comparadoCom": "2026-10-20"
       },
