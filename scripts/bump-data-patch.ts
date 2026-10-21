@@ -151,6 +151,8 @@ async function main(): Promise<void> {
     await writeJson(pkgPath, withVersion(pkg, nextVersion));
   }
 
+  await writeFile(path.join(ROOT, 'VERSION'), `${nextVersion}\n`);
+
   if (writeChangelog) {
     const resumo = await readLatestReportSummary();
     await updateChangelog(nextVersion, resumo);
