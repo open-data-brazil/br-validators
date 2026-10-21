@@ -90,6 +90,19 @@ jobs:
             echo "::warning::OIDC token endpoint unavailable — publishing falls back to the NPM_TOKEN secret."
           fi
 
+      # npm only logs why an OIDC exchange failed at verbose level, so the
+      # dry-run publish is repeated with verbose output to surface it.
+      - name: Diagnose npm authentication
+        run: |
+          set +e
+          OUT="$(npm publish "file:./packages/br-validators" --dry-run --ignore-scripts --access public --loglevel=verbose 2>&1)"
+          set -e
+          if echo "$OUT" | grep -qi "oidc"; then
+            echo "$OUT" | grep -i "oidc"
+          else
+            echo "::warning::npm did not attempt an OIDC exchange — trusted publishing is not usable for this run."
+          fi
+
       - run: pnpm install --frozen-lockfile
 
       - name: Quality gate
