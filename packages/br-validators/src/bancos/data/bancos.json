@@ -287,13 +287,6 @@
     "participaCompe": true
   },
   {
-    "codigo": "088",
-    "ispb": "11476673",
-    "nome": "BANCO RANDON S.A.",
-    "nomeReduzido": "BANCO RANDON S.A.",
-    "participaCompe": false
-  },
-  {
     "codigo": "089",
     "ispb": "62109566",
     "nome": "CREDISAN COOPERATIVA DE CRÉDITO",
@@ -3082,8 +3075,8 @@
   {
     "codigo": "772",
     "ispb": "20833992",
-    "nome": "COOPERATIVA DE CRÉDITO MÚTUO DOS EMPREGADOS DO CENTRO UNIVERSITÁRIO NEWTON PAIVA LTDA. - CREDIPAIVA",
-    "nomeReduzido": "CC MECUNP",
+    "nome": "COOPERATIVA DE CRÉDITO MÚTUO DOS EMPREGADOS DO CENTRO UNIVERSITÁRIO NEWTON PAIVA LTDA. - CREDIPAIVA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "CC MECUNP - EM LIQUIDAÇÃO EXTRAJUDICIAL",
     "participaCompe": false
   },
   {
