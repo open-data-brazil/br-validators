@@ -5,7 +5,7 @@
     "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
   ],
   "attempts": 5,
-  "checkedAt": "2026-10-24T08:36:27.213Z",
-  "retainedEmbeddedDataFrom": "2026-10-24",
+  "checkedAt": "2026-10-25T08:47:55.192Z",
+  "retainedEmbeddedDataFrom": "2026-10-25",
   "message": "Official Siscomex NCM JSON fetch succeeded."
 }
