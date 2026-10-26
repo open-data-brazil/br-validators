@@ -30,16 +30,16 @@
       "moeda": "USD",
       "desde": "2026-06-20",
       "ate": "2026-10-23",
-      "expectedRowCount": 88,
-      "firstDate": "2026-06-22",
+      "expectedRowCount": 87,
+      "firstDate": "2026-06-23",
       "lastDate": "2026-10-23"
     }
   },
   "staleness": {
-    "asOfFresh": "2026-10-25",
+    "asOfFresh": "2026-10-26",
     "freshReferenceDate": "2026-10-23",
     "staleReferenceDate": "2026-06-23",
-    "capturadoEm": "2026-10-25",
+    "capturadoEm": "2026-10-26",
     "staleWarning": "Embedded data. For real-time use @br-validators/adapters-ptax"
   }
 }
