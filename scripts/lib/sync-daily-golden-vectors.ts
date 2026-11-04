@@ -197,12 +197,10 @@ export async function syncPtaxGoldenVectors(
 
   // The embed is a rolling 90-business-day window: the historical golden row must
   // follow the window or tests break as soon as the old date is evicted.
+  // Non-empty: usdLatest above proves at least one USD row exists.
   const usdOldest = ptax
     .filter((row) => row.moeda === 'USD')
     .sort((left, right) => left.data.localeCompare(right.data))[0];
-  if (usdOldest === undefined) {
-    return false;
-  }
 
   const range = vectors.golden.historicoRange;
   const rangeRows = ptax
