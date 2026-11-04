@@ -17,10 +17,39 @@ export class FetchError extends Error {
     message: string,
     readonly url: string,
     readonly status?: number,
+    /** Low-level network code from undici (`error.cause.code`), e.g. `UND_ERR_CONNECT_TIMEOUT`. */
+    readonly causeCode?: string,
   ) {
     super(message);
     this.name = 'FetchError';
   }
+}
+
+/**
+ * Hosts that drop TCP connections from the CI network (IBGE servicodados blocks
+ * GitHub-hosted runners) never recover within a run — retrying them 5× with 2 min
+ * pauses only burns ~10 min per dataset.
+ */
+const CONNECT_BLOCKED_CODES = new Set([
+  'UND_ERR_CONNECT_TIMEOUT',
+  'ECONNREFUSED',
+  'ECONNRESET',
+  'EHOSTUNREACH',
+  'ENETUNREACH',
+  'ENOTFOUND',
+]);
+export const CONNECT_BLOCKED_MAX_ATTEMPTS = 2;
+
+export function isConnectBlocked(error: unknown): boolean {
+  return error instanceof FetchError && error.causeCode !== undefined && CONNECT_BLOCKED_CODES.has(error.causeCode);
+}
+
+function networkCauseCode(error: unknown): string | undefined {
+  if (!(error instanceof Error) || typeof error.cause !== 'object' || error.cause === null) {
+    return undefined;
+  }
+  const code = (error.cause as { code?: unknown }).code;
+  return typeof code === 'string' ? code : undefined;
 }
 
 export async function fetchText(
@@ -54,7 +83,12 @@ export async function fetchText(
     if (error instanceof Error && error.name === 'AbortError') {
       throw new FetchError(`Timeout after ${String(timeoutMs)}ms`, url);
     }
-    throw new FetchError(error instanceof Error ? error.message : 'Unknown fetch error', url);
+    throw new FetchError(
+      error instanceof Error ? error.message : 'Unknown fetch error',
+      url,
+      undefined,
+      networkCauseCode(error),
+    );
   } finally {
     clearTimeout(timer);
   }
@@ -87,7 +121,12 @@ export async function fetchJson<T>(url: string, timeoutMs = DEFAULT_TIMEOUT_MS):
     if (error instanceof Error && error.name === 'AbortError') {
       throw new FetchError(`Timeout after ${String(timeoutMs)}ms`, url);
     }
-    throw new FetchError(error instanceof Error ? error.message : 'Unknown fetch error', url);
+    throw new FetchError(
+      error instanceof Error ? error.message : 'Unknown fetch error',
+      url,
+      undefined,
+      networkCauseCode(error),
+    );
   } finally {
     clearTimeout(timer);
   }
@@ -97,7 +136,7 @@ export function todayIsoDate(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-async function fetchWithRetry<T>(
+export async function fetchWithRetry<T>(
   fetchOnce: () => Promise<T>,
   attempts: number,
   delayMs: number,
@@ -108,6 +147,9 @@ async function fetchWithRetry<T>(
       return await fetchOnce();
     } catch (error) {
       lastError = error;
+      if (isConnectBlocked(error) && attempt >= CONNECT_BLOCKED_MAX_ATTEMPTS) {
+        break;
+      }
       if (attempt < attempts) {
         await sleep(delayMs);
       }
