@@ -9,6 +9,7 @@ import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { findZipEntryName } from './lib/parse-xlsx-zip.js';
 import { parsePortosXlsx } from './lib/parse-portos-xlsx.js';
+import { repairPortosText, type IbgeMunicipioName } from './lib/repair-portos-text.js';
 import {
   buildFailureOutcome,
   FETCH_MAX_ATTEMPTS,
@@ -21,6 +22,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PORTOS_DATA_DIR = path.join(ROOT, 'packages/br-validators/src/portos/data');
 const FETCH_OUTCOME_DIR = path.join(ROOT, 'data/refresh-reports/fetch-outcomes');
 const TMP_DIR = path.join(ROOT, '.tmp');
+const IBGE_MUNICIPIOS_PATH = path.join(ROOT, 'packages/br-validators/src/ibge/data/municipios.json');
 
 export const ANTAQ_PORTOS_ZIP_URL =
   'https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip';
@@ -91,7 +93,15 @@ async function main(): Promise<void> {
 
     await downloadZip(ANTAQ_PORTOS_ZIP_URL, zipPath);
     await extractPortosXlsx(zipPath, xlsxPath);
-    const portos = parsePortosXlsx(xlsxPath) as PortoRecord[];
+    const municipios = (await readJsonIfExists<IbgeMunicipioName[]>(IBGE_MUNICIPIOS_PATH)) ?? [];
+    // ANTAQ ships Portos.xlsx with U+FFFD instead of accented letters — repair before diffing.
+    const repaired = repairPortosText(parsePortosXlsx(xlsxPath), municipios);
+    const portos = repaired.portos as PortoRecord[];
+    if (repaired.unresolved.length > 0) {
+      console.warn(
+        `[portos] ${String(repaired.unresolved.length)} damaged token(s) not repaired — add them to scripts/lib/pt-br-repair-words.ts: ${repaired.unresolved.join(', ')}`,
+      );
+    }
 
     if (portos.length < MIN_PORTOS || portos.length > MAX_PORTOS) {
       throw new SourceDataError(

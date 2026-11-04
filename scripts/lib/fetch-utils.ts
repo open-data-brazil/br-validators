@@ -1,3 +1,4 @@
+import { decodeTextBuffer } from './decode-text.js';
 import { FETCH_MAX_ATTEMPTS, FETCH_RETRY_DELAY_MS } from './fetch-retry-config.js';
 
 const DEFAULT_TIMEOUT_MS = 30_000;
@@ -45,7 +46,7 @@ export async function fetchText(
       throw new FetchError(`HTTP ${String(response.status)} fetching ${url}`, url, response.status);
     }
 
-    return await response.text();
+    return decodeTextBuffer(new Uint8Array(await response.arrayBuffer()));
   } catch (error) {
     if (error instanceof FetchError) {
       throw error;

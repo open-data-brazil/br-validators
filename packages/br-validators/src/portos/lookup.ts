@@ -56,19 +56,29 @@ export function searchPortos(query: string, options?: { limit?: number }): reado
   }
 
   const limit = options?.limit ?? 10;
-  const results: Porto[] = [];
+  const ranked: { porto: Porto; rank: number }[] = [];
 
   for (const porto of portos) {
-    const matchesNome = porto.nome.toLowerCase().includes(normalizedQuery);
-    const matchesCodigo = porto.codigo.toLowerCase().includes(normalizedQuery);
+    const nome = porto.nome.toLowerCase();
+    const codigo = porto.codigo.toLowerCase();
+    const matchesNome = nome.includes(normalizedQuery);
+    const matchesCodigo = codigo.includes(normalizedQuery);
     const matchesMunicipio = porto.municipioNome.toLowerCase().includes(normalizedQuery);
-    if (matchesNome || matchesCodigo || matchesMunicipio) {
-      results.push(porto);
-      if (results.length >= limit) {
-        break;
-      }
+    if (!matchesNome && !matchesCodigo && !matchesMunicipio) {
+      continue;
     }
+    // Exact code/name first, then name prefix, then any substring — stable within a rank.
+    let rank = 2;
+    if (codigo === normalizedQuery || nome === normalizedQuery) {
+      rank = 0;
+    } else if (nome.startsWith(normalizedQuery)) {
+      rank = 1;
+    }
+    ranked.push({ porto, rank });
   }
 
-  return results;
+  return ranked
+    .sort((left, right) => left.rank - right.rank)
+    .slice(0, limit)
+    .map((entry) => entry.porto);
 }

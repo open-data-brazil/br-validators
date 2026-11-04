@@ -10,6 +10,7 @@ import {
   writeSourceFetchOutcome,
 } from './lib/source-fetch-outcome.js';
 import { todayIsoDate } from './lib/fetch-utils.js';
+import { decodeTextBuffer } from './lib/decode-text.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { parseSemicolonCsv } from './lib/parse-semicolon-csv.js';
 
@@ -130,13 +131,14 @@ async function downloadZip(url: string, destination: string): Promise<void> {
 async function extractCsvFromZip(zipPath: string): Promise<string> {
   const { spawnSync } = await import('node:child_process');
   const result = spawnSync('unzip', ['-p', zipPath, 'municipio_tse_ibge.csv'], {
-    encoding: 'utf8',
+    encoding: 'buffer',
     maxBuffer: 10 * 1024 * 1024,
   });
   if (result.status !== 0 || result.stdout.length === 0) {
     throw new SourceDataError('Failed to extract municipio_tse_ibge.csv from TSE zip');
   }
-  return result.stdout;
+  // TSE publishes the CSV in ISO-8859-1.
+  return decodeTextBuffer(new Uint8Array(result.stdout));
 }
 
 async function readJsonIfExists<T>(filePath: string): Promise<T | null> {
