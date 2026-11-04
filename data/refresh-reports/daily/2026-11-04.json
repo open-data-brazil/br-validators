@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-08-01T06:19:42.186Z",
-  "runDate": "2026-08-01",
+  "executadoEm": "2026-11-04T14:45:16.850Z",
+  "runDate": "2026-11-04",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-22"
       },
       "contagens": {
         "estados": 27,
@@ -22,13 +22,13 @@
       "id": "bancos",
       "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
-        "removidos": 0,
-        "alterados": 1,
-        "comparadoCom": "2026-07-31"
+        "adicionados": 1,
+        "removidos": 2,
+        "alterados": 2,
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
-        "bancos": 470
+        "bancos": 459
       },
       "camposAlterados": [
         "nome",
@@ -42,7 +42,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "aeroportos": 533,
@@ -56,7 +56,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "municipios": 5571
@@ -69,7 +69,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "moedas": 154
@@ -79,10 +79,10 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 10,
-        "removidos": 0,
+        "adicionados": 60,
+        "removidos": 70,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "cotacoes": 860,
@@ -94,10 +94,10 @@
       "id": "selic",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 1,
-        "removidos": 1,
+        "adicionados": 9,
+        "removidos": 9,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "observacoes": 90,
@@ -108,15 +108,15 @@
       "id": "iss-municipal",
       "status": "changed",
       "alteracoes": {
-        "adicionados": 400,
+        "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-06-26"
+        "alterados": 1,
+        "comparadoCom": "2026-09-24"
       },
       "contagens": {
         "municipios": 500,
         "capitais": 27,
-        "estimativaRows": 473
+        "estimativaRows": 50
       }
     },
     {
@@ -126,7 +126,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "paises": 253
@@ -139,7 +139,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "incoterms": 11
@@ -152,7 +152,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "ddds": 67
@@ -180,7 +180,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-21"
       },
       "contagens": {
         "cnaes": 1332
@@ -193,7 +193,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "cfop": 689
@@ -206,7 +206,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "naturezas": 90
@@ -219,7 +219,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "motivos": 61
@@ -232,7 +232,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "cargas": 12
@@ -245,7 +245,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "nbs": 917
@@ -258,7 +258,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "cest": 1018
@@ -328,10 +328,10 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
-        "ncm": 10515
+        "ncm": 10516
       }
     },
     {
@@ -341,7 +341,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "cbo": 2694
@@ -367,7 +367,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "portos": 1094
@@ -375,21 +375,20 @@
     },
     {
       "id": "anp-combustiveis",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 2,
-        "removidos": 2,
+        "adicionados": 0,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "semanas": 1,
-        "precosMedios": 2358,
-        "municipios": 386,
+        "precosMedios": 2426,
+        "municipios": 396,
         "produtos": 7,
         "ufs": 27
-      },
-      "camposAlterados": []
+      }
     },
     {
       "id": "pncp-reference",
@@ -398,15 +397,15 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-25"
       },
       "contagens": {
         "modalidades": 19,
-        "amparos-legais": 183,
+        "amparos-legais": 191,
         "modos-disputa": 6,
         "tipos-instrumentos-convocatorios": 5,
         "tipos-contrato": 12,
-        "criterios-julgamento": 9,
+        "criterios-julgamento": 16,
         "tipos-instrumentos-cobranca": 1,
         "fontes-orcamentarias": 6
       }
@@ -418,7 +417,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-07-31"
+        "comparadoCom": "2026-10-26"
       },
       "contagens": {
         "endpoints": 8,
@@ -426,14 +425,27 @@
       }
     }
   ],
-  "sourceAlerts": [],
+  "sourceAlerts": [
+    {
+      "datasetId": "cnaes",
+      "severity": "warning",
+      "status": "source_blocked",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
+      "endpoints": [
+        "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
+      ],
+      "retainedEmbeddedDataFrom": "2026-10-22",
+      "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
+      "consecutiveFailureDays": 1
+    }
+  ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 4,
-    "totalAdicionados": 610,
+    "datasetsAlterados": 3,
+    "totalAdicionados": 209,
     "totalRemovidos": 2,
-    "totalAlterados": 1,
-    "sourceAlerts": 0,
+    "totalAlterados": 3,
+    "sourceAlerts": 1,
     "criticalAlerts": 0,
     "baselinesSelados": 0
   }

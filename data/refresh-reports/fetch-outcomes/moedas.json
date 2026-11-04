@@ -5,7 +5,7 @@
     "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas"
   ],
   "attempts": 5,
-  "checkedAt": "2026-10-26T08:30:36.074Z",
-  "retainedEmbeddedDataFrom": "2026-10-26",
+  "checkedAt": "2026-11-04T14:25:28.083Z",
+  "retainedEmbeddedDataFrom": "2026-11-04",
   "message": "ISO 4217 baseline merged with Bacen PTAX Moedas API."
 }

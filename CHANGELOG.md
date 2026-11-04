@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1-data.34] - 2026-11-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #34**: 3 dataset(s) changed (+209 −2 ~3).
+
+
 ### Changed
 
 - **Distribution moved to GitHub Releases — npm registry publishing removed.** Every tag `v*` now attaches `npm pack` tarballs of all six packages, `br-validators-data-<version>.tar.gz`, `catalog.json` and `SHA256SUMS` to the GitHub Release (`scripts/build-release-artifacts.ts`). No `NPM_TOKEN`/OTP: the v1.10.1-data.33 release failed with `EOTP` and nothing after it shipped. Adapter tarballs resolve `@br-validators/core` from the same release. npm `1.10.1` is the last registry version. Removed `npm-dist-tag.yml`, `publish-npm-if-missing.sh` and `prepare-npm-publish.ts`.

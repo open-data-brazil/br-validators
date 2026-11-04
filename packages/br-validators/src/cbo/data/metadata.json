@@ -6,20 +6,20 @@
     "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
   ],
   "capturadoEm": "2026-11-04",
-  "atualizadoEm": "2026-11-04T12:14:21.081Z",
+  "atualizadoEm": "2026-11-04T14:45:07.251Z",
   "contagens": {
     "cbo": 2694
   },
   "alteracoes": {
     "adicionados": 0,
     "removidos": 0,
-    "alterados": 1687,
-    "comparadoCom": "2026-10-26"
+    "alterados": 0,
+    "comparadoCom": "2026-11-04"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-04T12:14:21.081Z"
+    "ultimaExecucao": "2026-11-04T14:45:07.251Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cbo-occupations"
 }

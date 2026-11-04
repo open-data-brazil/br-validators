@@ -854,13 +854,6 @@
     "participaCompe": false
   },
   {
-    "codigo": "278",
-    "ispb": "27652684",
-    "nome": "Genial Investimentos Corretora de Valores Mobiliários S.A.",
-    "nomeReduzido": "GENIAL INVESTIMENTOS CVM S.A.",
-    "participaCompe": false
-  },
-  {
     "codigo": "280",
     "ispb": "23862762",
     "nome": "WILL FINANCEIRA S.A. CRÉDITO, FINANCIAMENTO E INVESTIMENTO - EM LIQUIDAÇÃO EXTRAJUDICIAL",
@@ -919,8 +912,8 @@
   {
     "codigo": "296",
     "ispb": "04062902",
-    "nome": "OZ CORRETORA DE CÂMBIO S.A.",
-    "nomeReduzido": "OZ CORRETORA DE CÂMBIO S.A.",
+    "nome": "OZ SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "OZ CÂMBIO",
     "participaCompe": false
   },
   {
@@ -2779,13 +2772,6 @@
     "participaCompe": false
   },
   {
-    "codigo": "691",
-    "ispb": "49686505",
-    "nome": "WASU - WALLET SUPPORT INSTITUIÇÃO DE PAGAMENTO LTDA",
-    "nomeReduzido": "WASU IP LTDA.",
-    "participaCompe": false
-  },
-  {
     "codigo": "692",
     "ispb": "56198117",
     "nome": "ZYDI SOCIEDADE DE CRÉDITO DIRETO S.A.",
@@ -2844,8 +2830,8 @@
   {
     "codigo": "700",
     "ispb": "53822116",
-    "nome": "MW INSTITUICAO DE PAGAMENTO LTDA",
-    "nomeReduzido": "MW IP LTDA.",
+    "nome": "MW INSTITUICAO DE PAGAMENTO LTDA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "MW IP LTDA. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
     "participaCompe": false
   },
   {
@@ -3217,6 +3203,13 @@
     "ispb": "32343119",
     "nome": "MÊNTORE INSTITUIÇÃO DE PAGAMENTO S.A.",
     "nomeReduzido": "MÊNTORE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "805",
+    "ispb": "38486817",
+    "nome": "BANCO DE DESENVOLVIMENTO DE MINAS GERAIS S.A.-BDMG",
+    "nomeReduzido": "BCO DES. DE MG S.A.",
     "participaCompe": false
   }
 ]
