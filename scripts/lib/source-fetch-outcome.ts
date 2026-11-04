@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { FetchError } from './fetch-utils.js';
+import { CONNECT_BLOCKED_MAX_ATTEMPTS, FetchError, isConnectBlocked } from './fetch-utils.js';
 import { FETCH_RETRY_DELAY_MS } from './fetch-retry-config.js';
 
 export { FETCH_MAX_ATTEMPTS, FETCH_RETRY_DELAY_MS } from './fetch-retry-config.js';
@@ -118,6 +118,8 @@ export function buildFailureOutcome(
   attemptedEndpoints?: string[],
 ): SourceFetchOutcome {
   const httpStatus = error instanceof FetchError ? error.status : undefined;
+  // fetchWithRetry stops early on connect-level failures — report what actually ran.
+  const attemptsMade = isConnectBlocked(error) ? Math.min(attempts, CONNECT_BLOCKED_MAX_ATTEMPTS) : attempts;
   const failureKind = classifyFailureKind(error);
   const status = classifySourceError(error);
   const detail = error instanceof Error ? error.message : 'Unknown fetch error';
@@ -127,7 +129,7 @@ export function buildFailureOutcome(
   const message =
     status === 'dependency_failed'
       ? `${detail} Embedded data from ${retainedLabel} retained in the API.`
-      : `${classifiedDetail}. No new data after ${String(attempts)} attempts (interval ${String(retryDelayMs)}ms) — embedded data from ${retainedLabel} retained in the API.`;
+      : `${classifiedDetail}. No new data after ${String(attemptsMade)} attempts (interval ${String(retryDelayMs)}ms) — embedded data from ${retainedLabel} retained in the API.`;
 
   const allEndpoints = attemptedEndpoints ?? endpoints;
 
@@ -135,7 +137,7 @@ export function buildFailureOutcome(
     datasetId,
     status,
     endpoints: allEndpoints,
-    attempts,
+    attempts: attemptsMade,
     checkedAt: new Date().toISOString(),
     retainedEmbeddedDataFrom,
     message,

@@ -11,15 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Data-release CHANGELOG entries**: the bot merges its bullet into the `[Unreleased]` notes (one `### Changed` list per release) instead of stacking a second `### Changed` section, so GitHub Release notes show every change of the version.
+- **Source-failure messages**: hosts that drop connections now report the attempts actually made (2), not the configured 5.
+
 ## [1.10.1-data.34] - 2026-11-04
 
 ### Changed
 
 - Reference data refresh (daily bot) — **1.10.1 data #34**: 3 dataset(s) changed (+209 −2 ~3).
-
-
-### Changed
-
 - **Distribution moved to GitHub Releases — npm registry publishing removed.** Every tag `v*` now attaches `npm pack` tarballs of all six packages, `br-validators-data-<version>.tar.gz`, `catalog.json` and `SHA256SUMS` to the GitHub Release (`scripts/build-release-artifacts.ts`). No `NPM_TOKEN`/OTP: the v1.10.1-data.33 release failed with `EOTP` and nothing after it shipped. Adapter tarballs resolve `@br-validators/core` from the same release. npm `1.10.1` is the last registry version. Removed `npm-dist-tag.yml`, `publish-npm-if-missing.sh` and `prepare-npm-publish.ts`.
 - `searchPortos` ranks exact code/name matches first, then name prefixes, then substrings.
 
@@ -28,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Daily data refresh red since 2026-10-27:** PTAX tests pinned dates (2026-06-23/24/25) that left the rolling 90-business-day embed. The golden-vector sync now moves `usdHistorico` with the window and the tests derive dates from the data.
 - **Mojibake in `cbo`, `tse-municipios` and `portos`:** ISO-8859-1 sources (MTE CBO CSV, TSE zip) are decoded as Windows-1252 instead of UTF-8 (1687 + 2384 rows fixed). ANTAQ ships `Portos.xlsx` with U+FFFD already in it; `fetch-portos` now restores `municipioNome` from IBGE and repairs free text with a deterministic dictionary (17 proper nouns still flagged). A new test fails if any embedded dataset regains U+FFFD.
 - **IBGE blocked on GitHub runners:** `servicodados.ibge.gov.br` drops connections from GitHub-hosted runners; `fetch-ibge` falls back to IBGE SIDRA (table 6579), which yields byte-identical `estados`/`municipios`. Connect-level failures now stop after 2 attempts instead of 5 × 2 min (≈20 min saved per run when IBGE/CNAE are blocked).
+- **IBGE metadata on the SIDRA fallback** (#50): `metadata.endpoints` now keeps the official `/localidades` URLs and appends the SIDRA URLs actually used — the first post-merge bot run failed two transparency tests because only SIDRA was listed.
+- **ANTAQ zip on GitHub runners** (#50): `Portos.xlsx` is extracted in-process by its ASCII file name (`extractZipEntryBySuffix`). The folder name inside the ANTAQ zip is not UTF-8 and Ubuntu's `unzip` could not re-match it, so `portos` had been retained (not refreshed) on every CI run.
+- **CLI PTAX tests pinned to June** (#51): the CLI suite derives PTAX dates from the embedded window (`apps/cli/tests/ptax-window.ts`) — same rolling-window break as the core tests.
+- **New IBPT tabela** (#51): IBPT moved from `26.1.K` to `26.2.C`; the daily golden-vector sync now moves the tabela id with the data (golden aliquotas stay pinned).
 
 ## [1.10.1-data.33] - 2026-10-26
 

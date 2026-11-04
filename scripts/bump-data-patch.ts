@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 
 import { bumpDataVersion, formatDataVersionLabel } from './lib/bump-data-version.js';
+import { insertDataReleaseEntry } from './lib/changelog-data-entry.js';
 import { exitWithError } from './lib/errors.js';
 import { type PatchReleaseResumo } from './lib/should-patch-release.js';
 
@@ -105,28 +106,22 @@ async function readLatestReportSummary(): Promise<PatchReleaseResumo | null> {
   }
 }
 
-function buildChangelogEntry(version: string, resumo: PatchReleaseResumo | null): string {
-  const today = new Date().toISOString().slice(0, 10);
+function buildChangelogBullet(version: string, resumo: PatchReleaseResumo | null): string {
   const label = formatDataVersionLabel(version);
-  const lines = [`## [${version}] - ${today}`, '', '### Changed', ''];
-
   if (resumo === null) {
-    lines.push(`- Reference data refresh (daily bot) — **${label}**.`, '');
-    return lines.join('\n');
+    return `- Reference data refresh (daily bot) — **${label}**.`;
   }
-
-  lines.push(
-    `- Reference data refresh (daily bot) — **${label}**: ${String(resumo.datasetsAlterados)} dataset(s) changed (+${String(resumo.totalAdicionados)} −${String(resumo.totalRemovidos)} ~${String(resumo.totalAlterados)}).`,
-    '',
-  );
-  return lines.join('\n');
+  return `- Reference data refresh (daily bot) — **${label}**: ${String(resumo.datasetsAlterados)} dataset(s) changed (+${String(resumo.totalAdicionados)} −${String(resumo.totalRemovidos)} ~${String(resumo.totalAlterados)}).`;
 }
 
 async function updateChangelog(version: string, resumo: PatchReleaseResumo | null): Promise<void> {
   const changelogPath = path.join(ROOT, 'CHANGELOG.md');
   const raw = await readFile(changelogPath, 'utf8');
-  const entry = buildChangelogEntry(version, resumo);
-  const updated = raw.replace('## [Unreleased]', `## [Unreleased]\n\n${entry}`);
+  const updated = insertDataReleaseEntry(raw, {
+    version,
+    date: new Date().toISOString().slice(0, 10),
+    bullet: buildChangelogBullet(version, resumo),
+  });
   await writeFile(changelogPath, updated);
 }
 

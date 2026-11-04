@@ -66,4 +66,16 @@ describe('source-fetch-outcome', () => {
     expect(outcome.message).toContain('Embedded data from 2026-06-20 retained');
     expect(outcome.message).toContain('redirect loop');
   });
+
+  it('reports the attempts actually made when a host drops connections', () => {
+    const outcome = buildFailureOutcome(
+      'cnaes',
+      ['https://servicodados.ibge.gov.br/api/v2/cnae/subclasses'],
+      '2026-10-22',
+      new FetchError('fetch failed', 'https://servicodados.ibge.gov.br/api/v2/cnae/subclasses', undefined, 'UND_ERR_CONNECT_TIMEOUT'),
+      5,
+    );
+    expect(outcome.attempts).toBe(2);
+    expect(outcome.message).toContain('No new data after 2 attempts');
+  });
 });
