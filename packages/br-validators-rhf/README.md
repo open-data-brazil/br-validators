@@ -1,6 +1,5 @@
 # @br-validators/react-hook-form
 
-[![npm](https://img.shields.io/npm/v/@br-validators/react-hook-form)](https://www.npmjs.com/package/@br-validators/react-hook-form)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
@@ -9,7 +8,8 @@
 ## Install
 
 ```bash
-pnpm add @br-validators/react-hook-form @br-validators/core react react-hook-form
+VERSION=1.10.1-data.34   # any tag from https://github.com/open-data-brazil/br-validators/releases
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-react-hook-form-$VERSION.tgz" "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz" react react-hook-form
 ```
 
 ## Register + validate rule

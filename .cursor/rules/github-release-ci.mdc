@@ -1,0 +1,31 @@
+---
+description: GitHub Release distribution (no npm registry) — troubleshooting
+alwaysApply: false
+---
+
+# GitHub Release distribution — known failures
+
+> **Release checklist (version + tag):** see `release-version-publish.mdc`.
+> **Policy:** `@br-validators/*` is **not** published to npm (last registry version `1.10.1`).
+> Every tag `v*` becomes a GitHub Release with `npm pack` tarballs + reference data.
+> `pnpm publish` is blocked everywhere by `scripts/assert-ci-publish.mjs`. Never add an npm token.
+
+## Release workflow fails at "Verify tag matches package versions"
+
+**Cause:** the tag was created before bumping all six `package.json` files.
+**Fix:** bump all six, merge `main`, delete the bad tag (`git push origin :refs/tags/vX`), retag `main` HEAD.
+
+## Release workflow fails at "Build release assets"
+
+**Cause:** `npm pack` needs a built `dist/` — `pnpm verify` must have run first; or a new package was added without an entry in `RELEASE_PACKAGES` (`scripts/lib/github-release-artifacts.ts`).
+**Fix:** add the package to `RELEASE_PACKAGES` and re-run Actions → Release → Run workflow with the tag.
+
+## Daily data release never published
+
+**Cause:** the tag was pushed with `GITHUB_TOKEN`, which does not trigger `release.yml`.
+**Fix:** `data-refresh-tag-on-merge.yml` calls `release.yml` via `workflow_call` when `DATA_REFRESH_GITHUB_TOKEN` is absent; for an old tag, run Actions → Release → Run workflow manually.
+
+## Consumer install fails with 404 on `@br-validators/core`
+
+**Cause:** an adapter tarball from release `vX` points at `br-validators-core-<X>.tgz` of the same release; the asset is missing (partial upload).
+**Fix:** re-run the Release workflow for that tag — uploads use `--clobber` and are idempotent.

@@ -1,6 +1,8 @@
 name: Data refresh tag on merge
 
-# After a bot/data-release/* PR merges to main, push the version tag → release.yml publishes npm.
+# After a bot/data-release/* PR merges to main, push the version tag and publish the
+# GitHub Release. A tag pushed with GITHUB_TOKEN does not trigger release.yml, so the
+# release job below calls it directly in that case.
 on:
   pull_request:
     types: [closed]
@@ -11,6 +13,9 @@ permissions:
 
 jobs:
   tag-release:
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      call_release: ${{ steps.release_trigger.outputs.call_release }}
     if: >-
       github.event.pull_request.merged == true &&
       startsWith(github.event.pull_request.head.ref, 'bot/data-release/')
@@ -54,3 +59,25 @@ jobs:
           git checkout developing
           git merge origin/main -m "chore: sync developing after data refresh release ${{ steps.version.outputs.tag }}"
           git push origin developing
+
+      - name: Decide how release.yml runs
+        id: release_trigger
+        if: steps.tag_check.outputs.exists == 'false'
+        env:
+          HAS_PAT: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN != '' }}
+        run: |
+          # A PAT-pushed tag triggers release.yml on its own; a GITHUB_TOKEN push does not.
+          if [ "$HAS_PAT" = "true" ]; then
+            echo "call_release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "call_release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  release:
+    needs: tag-release
+    if: needs.tag-release.outputs.call_release == 'true'
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.tag-release.outputs.tag }}
+    permissions:
+      contents: write

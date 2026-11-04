@@ -3,20 +3,19 @@
 > **The** Brazilian document validation library for TypeScript.  
 > Validate, format, and generate CPF, CNPJ (including the new alphanumeric format), NF-e, BR Code PIX, boleto, IE (all 27 states), EAN barcodes, CNIS/NIT, ANP fuel prices, and 20+ more — zero dependencies, fully typed, never throws.
 
-[![npm](https://img.shields.io/npm/v/@br-validators/core)](https://www.npmjs.com/package/@br-validators/core)
-[![npm downloads](https://img.shields.io/npm/dm/@br-validators/core?label=downloads)](https://www.npmjs.com/package/@br-validators/core)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
 [![Node ≥ 18](https://img.shields.io/badge/node-%3E%3D18-brightgreen)]()
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
 ```bash
-npm install @br-validators/core
+VERSION=1.10.1-data.34   # any tag from https://github.com/open-data-brazil/br-validators/releases
+npm install "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 ```
 
 **Try it now → [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app)**  
-**CLI → `npm install -g @br-validators/cli`**
+**CLI → `npm install -g https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz`**
 
-> ⚠️ The unscoped `br-validators` on npm is a different package. Use **`@br-validators/core`**.
+> Distributed through **GitHub Releases** only (npm `1.10.1` is the last registry version). The unscoped `br-validators` on npm is a different package.
 
 ---
 
@@ -446,13 +445,13 @@ Full table (62 subpaths): [data/bundle-sizes/subpath-sizes.md](../../data/bundle
 
 ## Related packages
 
-| Package | npm |
+| Package | GitHub Release asset |
 |---|---|
-| [`@br-validators/cli`](https://www.npmjs.com/package/@br-validators/cli) | Terminal — validate, format, detect, generate |
-| [`@br-validators/zod`](https://www.npmjs.com/package/@br-validators/zod) | Zod 3/4 schemas |
-| [`@br-validators/react-hook-form`](https://www.npmjs.com/package/@br-validators/react-hook-form) | RHF rules + resolvers |
-| [`@br-validators/express`](https://www.npmjs.com/package/@br-validators/express) | Express + Fastify middleware |
-| [`@br-validators/vue`](https://www.npmjs.com/package/@br-validators/vue) | Vue 3 composables |
+| [`@br-validators/cli`](https://github.com/open-data-brazil/br-validators/releases) | Terminal — validate, format, detect, generate |
+| [`@br-validators/zod`](https://github.com/open-data-brazil/br-validators/releases) | Zod 3/4 schemas |
+| [`@br-validators/react-hook-form`](https://github.com/open-data-brazil/br-validators/releases) | RHF rules + resolvers |
+| [`@br-validators/express`](https://github.com/open-data-brazil/br-validators/releases) | Express + Fastify middleware |
+| [`@br-validators/vue`](https://github.com/open-data-brazil/br-validators/releases) | Vue 3 composables |
 
 ---
 

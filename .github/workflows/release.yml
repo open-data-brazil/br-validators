@@ -1,194 +1,114 @@
 name: Release
 
-# Publish to npm when a version tag is pushed on main (after merge + version bump).
-# CI-only: local pnpm publish is blocked by scripts/assert-ci-publish.mjs.
-# Publishes all six @br-validators/* packages (see docs/BRANCHING.md).
+# Publish a GitHub Release when a version tag is pushed on main.
+# Distribution is GitHub-only: every workspace package is attached as an `npm pack`
+# tarball plus the embedded reference data (tar.gz + catalog.json + SHA256SUMS).
+# No npm registry, no NPM_TOKEN, no OTP — see docs/BRANCHING.md.
 #
-# Authentication (npm CLI 11.5.1+):
-#   - Preferred: npm trusted publishing (OIDC) — no secret, configured per package
-#     on npmjs.com (Settings → Trusted Publisher → GitHub Actions).
-#   - Fallback: repository secret NPM_TOKEN (granular token — read/write + create
-#     on @br-validators/*, bypass 2FA, max 90 days lifetime).
+# Install from a release:
+#   npm install https://github.com/open-data-brazil/br-validators/releases/download/<tag>/br-validators-core-<version>.tgz
 
 on:
   push:
     tags:
       - 'v*'
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Existing git tag to release (e.g. v1.10.1-data.34)'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Existing git tag to release (e.g. v0.11.0-alpha.0)'
+        description: 'Existing git tag to release (e.g. v1.10.1-data.34)'
         required: true
         type: string
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    # A PAT-pushed tag and a workflow_call for the same tag must not race.
+    concurrency:
+      group: release-${{ inputs.tag || github.ref_name }}
+      cancel-in-progress: false
     steps:
       - name: Resolve release tag
         id: version
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            TAG="${{ inputs.tag }}"
-          else
-            TAG="${GITHUB_REF_NAME}"
-          fi
+          TAG="${{ inputs.tag || github.ref_name }}"
           VERSION="${TAG#v}"
-          if [[ "$VERSION" == *-alpha* ]]; then NPM_TAG=alpha
-          elif [[ "$VERSION" == *-beta* ]]; then NPM_TAG=beta
-          elif [[ "$VERSION" == *-rc* ]]; then NPM_TAG=rc
-          else NPM_TAG=latest
+          PRERELEASE=false
+          if [[ "$VERSION" == *-alpha* || "$VERSION" == *-beta* || "$VERSION" == *-rc* ]]; then
+            PRERELEASE=true
           fi
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "npm_tag=$NPM_TAG" >> "$GITHUB_OUTPUT"
+          {
+            echo "tag=$TAG"
+            echo "version=$VERSION"
+            echo "prerelease=$PRERELEASE"
+          } >> "$GITHUB_OUTPUT"
 
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.tag) || github.ref }}
+          ref: refs/tags/${{ steps.version.outputs.tag }}
 
       - name: Verify tag matches package versions
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          CORE="$(jq -r .version packages/br-validators/package.json)"
-          CLI="$(jq -r .version apps/cli/package.json)"
-          ZOD="$(jq -r .version packages/br-validators-zod/package.json)"
-          RHF="$(jq -r .version packages/br-validators-rhf/package.json)"
-          EXPRESS="$(jq -r .version packages/br-validators-express/package.json)"
-          VUE="$(jq -r .version packages/br-validators-vue/package.json)"
-          if [ "$VERSION" != "$CORE" ] || [ "$VERSION" != "$CLI" ] || [ "$VERSION" != "$ZOD" ] || [ "$VERSION" != "$RHF" ] || [ "$VERSION" != "$EXPRESS" ] || [ "$VERSION" != "$VUE" ]; then
-            echo "Tag version $VERSION does not match package.json (core=$CORE, cli=$CLI, zod=$ZOD, rhf=$RHF, express=$EXPRESS, vue=$VUE)"
-            exit 1
-          fi
+          for PKG in packages/br-validators apps/cli packages/br-validators-zod packages/br-validators-rhf packages/br-validators-express packages/br-validators-vue; do
+            ACTUAL="$(jq -r .version "$PKG/package.json")"
+            if [ "$ACTUAL" != "$VERSION" ]; then
+              echo "Tag version $VERSION does not match $PKG/package.json ($ACTUAL)"
+              exit 1
+            fi
+          done
 
       - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: pnpm
-          registry-url: https://registry.npmjs.org
-
-      # npm CLI 11.5.1+ exchanges the GitHub Actions ID token for a registry
-      # token (npm trusted publishing / OIDC).
-      - name: Ensure npm CLI supports OIDC
-        run: |
-          npm install -g npm@11
-          npm --version
-
-      - name: Check OIDC availability
-        run: |
-          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] && [ -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]; then
-            echo "OIDC token endpoint available — trusted publishing can be used."
-          else
-            echo "::warning::OIDC token endpoint unavailable — publishing falls back to the NPM_TOKEN secret."
-          fi
-
-      # npm only logs why an OIDC exchange failed at verbose level, so the
-      # dry-run publish is repeated with verbose output to surface it.
-      - name: Diagnose npm authentication
-        run: |
-          set +e
-          OUT="$(npm publish "file:./packages/br-validators" --dry-run --ignore-scripts --access public --loglevel=verbose 2>&1)"
-          set -e
-          if echo "$OUT" | grep -qi "oidc"; then
-            echo "$OUT" | grep -i "oidc"
-          else
-            echo "::warning::npm did not attempt an OIDC exchange — trusted publishing is not usable for this run."
-          fi
 
       - run: pnpm install --frozen-lockfile
 
       - name: Quality gate
         run: pnpm verify
 
-      # The npm CLI does not understand the pnpm `workspace:` protocol, so the
-      # internal ranges are materialized before packing (same result as
-      # `pnpm publish`).
-      - name: Prepare workspace protocol for npm publish
+      - name: Build release assets (npm pack tarballs + reference data)
         run: |
-          pnpm exec tsx scripts/prepare-npm-publish.ts \
-            packages/br-validators \
-            apps/cli \
-            packages/br-validators-zod \
-            packages/br-validators-rhf \
-            packages/br-validators-express \
-            packages/br-validators-vue
+          pnpm exec tsx scripts/build-release-artifacts.ts \
+            --tag "${{ steps.version.outputs.tag }}" \
+            --out dist/release \
+            --notes dist/release-notes.md
 
-      - name: Publish npm packages (CI only)
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          NPM_TAG="${{ steps.version.outputs.npm_tag }}"
-          chmod +x scripts/publish-npm-if-missing.sh
-          ./scripts/publish-npm-if-missing.sh packages/br-validators @br-validators/core "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh apps/cli @br-validators/cli "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh packages/br-validators-zod @br-validators/zod "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh packages/br-validators-rhf @br-validators/react-hook-form "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh packages/br-validators-express @br-validators/express "$VERSION" "$NPM_TAG"
-          ./scripts/publish-npm-if-missing.sh packages/br-validators-vue @br-validators/vue "$VERSION" "$NPM_TAG"
+      - name: Create or update GitHub Release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Verify npm registry
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          PACKAGES=(
-            @br-validators/core
-            @br-validators/cli
-            @br-validators/zod
-            @br-validators/react-hook-form
-            @br-validators/express
-            @br-validators/vue
-          )
-          MAX_ATTEMPTS=24
-          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
-            missing=()
-            for PKG in "${PACKAGES[@]}"; do
-              PUBLISHED="$(npm view "${PKG}@${VERSION}" version --registry=https://registry.npmjs.org 2>/dev/null || true)"
-              if [ "$PUBLISHED" = "$VERSION" ]; then
-                echo "OK: ${PKG}@${VERSION}"
-              else
-                echo "WAIT: ${PKG}@${VERSION} not visible yet (attempt ${attempt}/${MAX_ATTEMPTS})"
-                missing+=("$PKG")
-              fi
-            done
-            if [ "${#missing[@]}" -eq 0 ]; then
-              exit 0
-            fi
-            if [ "$attempt" -lt "$MAX_ATTEMPTS" ]; then
-              sleep 10
-            fi
-          done
-          echo "Expected ${VERSION} for all packages, but these were not visible: ${missing[*]}"
-          exit 1
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Point npm latest at release
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          npm dist-tag add "@br-validators/core@${VERSION}" latest
-          npm dist-tag add "@br-validators/cli@${VERSION}" latest
-          npm dist-tag add "@br-validators/zod@${VERSION}" latest
-          npm dist-tag add "@br-validators/react-hook-form@${VERSION}" latest
-          npm dist-tag add "@br-validators/express@${VERSION}" latest
-          npm dist-tag add "@br-validators/vue@${VERSION}" latest
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create GitHub Release
+          GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists — skipping"
+            gh release edit "$TAG" --notes-file dist/release-notes.md
+            gh release upload "$TAG" dist/release/* --clobber
+          elif [ "${{ steps.version.outputs.prerelease }}" = "true" ]; then
+            gh release create "$TAG" dist/release/* --title "$TAG" --notes-file dist/release-notes.md --verify-tag --prerelease
           else
-            gh release create "$TAG" --generate-notes --title "$TAG"
+            gh release create "$TAG" dist/release/* --title "$TAG" --notes-file dist/release-notes.md --verify-tag --latest
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release summary
+        run: |
+          {
+            echo "### Release ${{ steps.version.outputs.tag }}"
+            echo ""
+            echo "Assets: $(find dist/release -maxdepth 1 -type f -printf '%f ' | sort)"
+            echo ""
+            echo '```bash'
+            echo "npm install https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.tag }}/br-validators-core-${{ steps.version.outputs.version }}.tgz"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
