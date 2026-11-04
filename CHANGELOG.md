@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1-data.35] - 2026-11-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #35**: 2 dataset(s) changed (+208 −0 ~1).
+
 ### Fixed
 
 - **Data-release CHANGELOG entries**: the bot merges its bullet into the `[Unreleased]` notes (one `### Changed` list per release) instead of stacking a second `### Changed` section, so GitHub Release notes show every change of the version.

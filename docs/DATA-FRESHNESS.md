@@ -1,19 +1,19 @@
 # Data freshness — reference datasets
 
 > **Auto-generated** by `scripts/data-refresh-bot.ts` — do not edit manually.
-> Last bot run: 2026-11-04T14:45:16.850Z
+> Last bot run: 2026-11-04T15:45:49.639Z
 
 ## Summary
 
 | Dataset | Last capture | Records | + added | − removed | ~ changed | Fields Δ | Official source |
 |---------|--------------|---------|---------|-----------|-----------|----------|-----------------|
 | IBGE Localidades | 2026-11-04 | 27 estados / 5571 municipios | 0 | 0 | 0 | — | [IBGE API v1 /localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
-| Bacen STR Participants | 2026-11-04 | 459 bancos | 1 | 2 | 2 | nome, nomeReduzido | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| Bacen STR Participants | 2026-11-04 | 459 bancos | 0 | 0 | 0 | — | [Banco Central — Participantes STR](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | ANAC Public Aerodromos | 2026-11-04 | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | [ANAC — Lista de aeródromos de uso público](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | TSE ↔ IBGE Municipality Codes | 2026-11-04 | 5571 municipios | 0 | 0 | 0 | — | [TSE — Códigos oficiais de UF e municípios segundo o TSE e o IBGE](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | ISO 4217 Currencies + Bacen PTAX | 2026-11-04 | 154 moedas | 0 | 0 | 0 | — | [ISO 4217 (embedded) + Banco Central PTAX Moedas](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| Bacen PTAX Fechamento | 2026-11-04 | 860 cotacoes / 10 moedas / 86 diasUteis | 60 | 70 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| Bacen SGS — Meta Selic (série 432) | 2026-11-04 | 90 observacoes / 90 dias | 9 | 9 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| Bacen PTAX Fechamento | 2026-11-04 | 860 cotacoes / 10 moedas / 86 diasUteis | 0 | 0 | 0 | — | [Banco Central Olinda PTAX API — Fechamento PTAX](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| Bacen SGS — Meta Selic (série 432) | 2026-11-04 | 90 observacoes / 90 dias | 0 | 0 | 0 | — | [Banco Central — Taxa meta Selic definida pelo Copom](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | ISS municipal alíquotas — partial embed (capitals + top PIB) | 2026-09-24 | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | [Municipal legislation + gov.br NFS-e registered alíquotas + LC 116/2003 Art. 8 band + IBGE SIDRA PIB municipal ranking](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | NF-e Bacen Country Codes | 2026-11-04 | 253 paises | 0 | 0 | 0 | — | [Portal Nacional NF-e — Tabela de Países (Bacen)](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | ICC Incoterms 2020 | 2026-11-04 | 11 incoterms | 0 | 0 | 0 | — | [International Chamber of Commerce — Incoterms 2020 (static reference)](https://iccwbo.org/resources-for-business/incoterms-rules/) |
@@ -44,7 +44,7 @@
 
 | Dataset | Severity | Status | Embedded data from | Message |
 |---------|----------|--------|--------------------|---------|
-| cnaes | warning | source_blocked | 2026-10-22 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API. |
+| cnaes | warning | source_blocked | 2026-10-22 | Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API. |
 
 ### Maintainer action required
 
@@ -69,10 +69,10 @@
 ```json
 {
   "datasetsVerificados": 30,
-  "datasetsAlterados": 3,
-  "totalAdicionados": 209,
-  "totalRemovidos": 2,
-  "totalAlterados": 3,
+  "datasetsAlterados": 2,
+  "totalAdicionados": 208,
+  "totalRemovidos": 0,
+  "totalAlterados": 1,
   "sourceAlerts": 1,
   "criticalAlerts": 0,
   "baselinesSelados": 0

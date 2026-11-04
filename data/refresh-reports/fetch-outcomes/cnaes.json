@@ -4,10 +4,10 @@
   "endpoints": [
     "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
   ],
-  "attempts": 5,
-  "checkedAt": "2026-11-04T14:28:01.139Z",
+  "attempts": 2,
+  "checkedAt": "2026-11-04T15:28:30.721Z",
   "retainedEmbeddedDataFrom": "2026-10-22",
-  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
+  "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
   "failureKind": "source_blocked",
   "attemptedEndpoints": [
     "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"

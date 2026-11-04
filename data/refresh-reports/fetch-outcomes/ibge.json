@@ -8,7 +8,7 @@
     "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/last"
   ],
   "attempts": 5,
-  "checkedAt": "2026-11-04T14:25:21.717Z",
+  "checkedAt": "2026-11-04T15:25:52.340Z",
   "retainedEmbeddedDataFrom": "2026-11-04",
   "message": "IBGE /localidades blocked — data fetched from IBGE SIDRA (table 6579)."
 }

@@ -7,7 +7,7 @@
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
   ],
   "capturadoEm": "2026-11-04",
-  "atualizadoEm": "2026-11-04T14:30:22.921Z",
+  "atualizadoEm": "2026-11-04T15:30:52.527Z",
   "contagens": {
     "cfop": 689
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-10-26"
+    "comparadoCom": "2026-11-04"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-04T14:30:22.921Z"
+    "ultimaExecucao": "2026-11-04T15:30:52.527Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cfop-fiscal-operations"
 }

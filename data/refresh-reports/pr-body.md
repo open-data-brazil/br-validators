@@ -3,12 +3,12 @@
 | Dataset | Records | + added | − removed | ~ changed | Fields Δ | Captured | Source |
 |---------|---------|---------|-----------|-----------|----------|----------|--------|
 | ibge | 27 estados / 5571 municipios | 0 | 0 | 0 | — | 2026-11-04 | [official](https://servicodados.ibge.gov.br/api/v1/localidades/estados) |
-| bancos | 459 bancos | 1 | 2 | 2 | nome, nomeReduzido | 2026-11-04 | [official](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
+| bancos | 459 bancos | 0 | 0 | 0 | — | 2026-11-04 | [official](https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv) |
 | aeroportos | 533 aeroportos / 87 comIata | 0 | 0 | 0 | — | 2026-11-04 | [official](https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv) |
 | tse-municipios | 5571 municipios | 0 | 0 | 0 | — | 2026-11-04 | [official](https://cdn.tse.jus.br/estatistica/sead/odsele/municipio_tse_ibge/municipio_tse_ibge.zip) |
 | moedas | 154 moedas | 0 | 0 | 0 | — | 2026-11-04 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas) |
-| ptax | 860 cotacoes / 10 moedas / 86 diasUteis | 60 | 70 | 0 | — | 2026-11-04 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
-| selic | 90 observacoes / 90 dias | 9 | 9 | 0 | — | 2026-11-04 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
+| ptax | 860 cotacoes / 10 moedas / 86 diasUteis | 0 | 0 | 0 | — | 2026-11-04 | [official](https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)) |
+| selic | 90 observacoes / 90 dias | 0 | 0 | 0 | — | 2026-11-04 | [official](https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom) |
 | iss-municipal | 500 municipios / 27 capitais / 50 estimativaRows | 0 | 0 | 1 | — | 2026-09-24 | [official](https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm) |
 | paises-bacen | 253 paises | 0 | 0 | 0 | — | 2026-11-04 | [official](http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=) |
 | incoterms | 11 incoterms | 0 | 0 | 0 | — | 2026-11-04 | [official](https://iccwbo.org/resources-for-business/incoterms-rules/) |
@@ -33,11 +33,11 @@
 | pncp-reference | 19 modalidades / 191 amparos-legais / 6 modos-disputa / 5 tipos-instrumentos-convocatorios / 12 tipos-contrato / 16 criterios-julgamento / 1 tipos-instrumentos-cobranca / 6 fontes-orcamentarias | 0 | 0 | 0 | — | 2026-11-04 | [official](https://pncp.gov.br/api/pncp/v1/modalidades) |
 | transparencia-snapshots | 8 endpoints / 7 queryAdapter | 0 | 0 | 0 | — | 2026-11-04 | [official](https://api.portaldatransparencia.gov.br/swagger-ui/index.html) |
 
-**Totals:** +209 −2 ~3
+**Totals:** +208 −0 ~1
 
 ### Source health alerts
 
-- **cnaes** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API. Embedded data from **2026-10-22** retained in the API.
+- **cnaes** (warning/source_blocked): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API. Embedded data from **2026-10-22** retained in the API.
   - Action: See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.
 
 ### Verification

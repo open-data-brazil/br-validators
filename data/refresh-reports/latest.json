@@ -1,5 +1,5 @@
 {
-  "executadoEm": "2026-11-04T14:45:16.850Z",
+  "executadoEm": "2026-11-04T15:45:49.639Z",
   "runDate": "2026-11-04",
   "schedule": "diario",
   "agendamento": "diario",
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-22"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "estados": 27,
@@ -20,20 +20,16 @@
     },
     {
       "id": "bancos",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 1,
-        "removidos": 2,
-        "alterados": 2,
-        "comparadoCom": "2026-10-26"
+        "adicionados": 0,
+        "removidos": 0,
+        "alterados": 0,
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "bancos": 459
-      },
-      "camposAlterados": [
-        "nome",
-        "nomeReduzido"
-      ]
+      }
     },
     {
       "id": "aeroportos",
@@ -42,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "aeroportos": 533,
@@ -69,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "moedas": 154
@@ -79,10 +75,10 @@
       "id": "ptax",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 60,
-        "removidos": 70,
+        "adicionados": 0,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "cotacoes": 860,
@@ -94,10 +90,10 @@
       "id": "selic",
       "status": "unchanged",
       "alteracoes": {
-        "adicionados": 9,
-        "removidos": 9,
+        "adicionados": 0,
+        "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "observacoes": 90,
@@ -126,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "paises": 253
@@ -139,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "incoterms": 11
@@ -152,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "ddds": 67
@@ -193,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "cfop": 689
@@ -206,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "naturezas": 90
@@ -219,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "motivos": 61
@@ -232,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "cargas": 12
@@ -245,7 +241,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "nbs": 917
@@ -258,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "cest": 1018
@@ -328,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "ncm": 10516
@@ -380,7 +376,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "semanas": 1,
@@ -397,7 +393,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-25"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "modalidades": 19,
@@ -417,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-26"
+        "comparadoCom": "2026-11-04"
       },
       "contagens": {
         "endpoints": 8,
@@ -430,7 +426,7 @@
       "datasetId": "cnaes",
       "severity": "warning",
       "status": "source_blocked",
-      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
+      "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
       "endpoints": [
         "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
       ],
@@ -441,10 +437,10 @@
   ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 3,
-    "totalAdicionados": 209,
-    "totalRemovidos": 2,
-    "totalAlterados": 3,
+    "datasetsAlterados": 2,
+    "totalAdicionados": 208,
+    "totalRemovidos": 0,
+    "totalAlterados": 1,
     "sourceAlerts": 1,
     "criticalAlerts": 0,
     "baselinesSelados": 0

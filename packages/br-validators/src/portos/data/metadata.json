@@ -6,7 +6,7 @@
     "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
   ],
   "capturadoEm": "2026-11-04",
-  "atualizadoEm": "2026-11-04T14:45:09.573Z",
+  "atualizadoEm": "2026-11-04T15:45:39.437Z",
   "contagens": {
     "portos": 1094
   },
@@ -19,7 +19,7 @@
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-04T14:45:09.573Z"
+    "ultimaExecucao": "2026-11-04T15:45:39.437Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#portos"
 }
