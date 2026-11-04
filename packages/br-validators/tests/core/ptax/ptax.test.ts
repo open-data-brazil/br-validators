@@ -107,14 +107,19 @@ describe('PTAX — historico', () => {
   });
 
   it('accepts Bacen MM-DD-YYYY date format in historico range', () => {
+    // Rolling 90-business-day embed: derive the dates from the data, never hardcode them.
+    const [first, second] = getPtaxCotacoesPorMoeda('USD')
+      .map((row) => row.data)
+      .sort();
+    const toBacen = (iso: string) => `${iso.slice(5, 7)}-${iso.slice(8, 10)}-${iso.slice(0, 4)}`;
     const results = getPtaxHistorico('USD', {
-      desde: '06-23-2026',
-      ate: '06-24-2026',
+      desde: toBacen(first),
+      ate: toBacen(second),
       asOfDate: vectors.staleness.asOfFresh,
     });
     expect(results).toHaveLength(2);
-    expect(results[0].data).toBe('2026-06-23');
-    expect(results[1].data).toBe('2026-06-24');
+    expect(results[0].data).toBe(first);
+    expect(results[1].data).toBe(second);
   });
 });
 
@@ -174,8 +179,10 @@ describe('PTAX — staleness helpers', () => {
 
   it('buildPtaxCotacaoResult uses Brazil today when asOfDate omitted', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-06-26T12:00:00.000Z'));
-    const row = getPtaxList().find((entry) => entry.moeda === 'USD' && entry.data === '2026-06-25');
+    vi.setSystemTime(new Date(`${vectors.staleness.asOfFresh}T15:00:00.000Z`));
+    const row = getPtaxList().find(
+      (entry) => entry.moeda === 'USD' && entry.data === vectors.staleness.freshReferenceDate,
+    );
     expect(row).toBeDefined();
     const result = buildPtaxCotacaoResult(row!);
     expect(result.isStale).toBe(false);
