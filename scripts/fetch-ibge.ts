@@ -144,7 +144,9 @@ async function main(): Promise<void> {
       console.warn(
         `[ibge] /localidades unavailable (${primaryError instanceof Error ? primaryError.message : String(primaryError)}) — falling back to IBGE SIDRA.`,
       );
-      endpoints = [IBGE_SIDRA_ESTADOS_URL, IBGE_SIDRA_MUNICIPIOS_URL];
+      // Keep the canonical /localidades endpoints listed (they stay the documented source)
+      // and record the SIDRA endpoints actually used.
+      endpoints = [IBGE_ESTADOS_URL, IBGE_MUNICIPIOS_URL, IBGE_SIDRA_ESTADOS_URL, IBGE_SIDRA_MUNICIPIOS_URL];
       localidades = await fetchFromSidra();
     }
     const { estados, municipios } = localidades;
@@ -212,7 +214,7 @@ async function main(): Promise<void> {
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
       message:
-        endpoints[0] === IBGE_ESTADOS_URL
+        !endpoints.includes(IBGE_SIDRA_MUNICIPIOS_URL)
           ? 'Official IBGE API fetch succeeded.'
           : 'IBGE /localidades blocked — data fetched from IBGE SIDRA (table 6579).',
     });
