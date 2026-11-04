@@ -16,11 +16,17 @@ import {
   runPtaxHistorico,
   runPtaxHistoricoCommand,
 } from '../src/commands/ptax/historico.js';
+import {
+  PTAX_AS_OF_LATEST,
+  PTAX_USD_LATEST,
+  PTAX_USD_OLDEST,
+  PTAX_USD_SECOND_OLDEST,
+} from './ptax-window.js';
 
 describe('runPtaxLookupCommand', () => {
   it('prints USD último dia útil with verbose staleness metadata', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-06-27T15:00:00.000Z'));
+    vi.setSystemTime(PTAX_AS_OF_LATEST);
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(
       runPtaxLookupCommand(PTAX_GOLDEN_USD, undefined, { json: false, verbose: true }, io),
@@ -33,10 +39,10 @@ describe('runPtaxLookupCommand', () => {
 
   it('emits JSON with cotacao staleness fields', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-06-27T15:00:00.000Z'));
+    vi.setSystemTime(PTAX_AS_OF_LATEST);
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(
-      runPtaxLookupCommand(PTAX_GOLDEN_USD, '2026-06-23', { json: true, verbose: true }, io),
+      runPtaxLookupCommand(PTAX_GOLDEN_USD, PTAX_USD_OLDEST, { json: true, verbose: true }, io),
     ).toBe(EXIT.OK);
     const parsed = JSON.parse(io.stdout[0] ?? '{}') as {
       ok: boolean;
@@ -46,16 +52,16 @@ describe('runPtaxLookupCommand', () => {
     expect(parsed.ok).toBe(true);
     expect(parsed.cotacao.isStale).toBe(true);
     expect(parsed.cotacao.warning).toBe(PTAX_STALE_WARNING);
-    expect(parsed.cotacao.dataReferencia).toBe('2026-06-23');
+    expect(parsed.cotacao.dataReferencia).toBe(PTAX_USD_OLDEST);
     expect(parsed.capturadoEm).toBe(PTAX_DATA_VERSION.capturadoEm);
   });
 
   it('prints warning in verbose human mode for stale quotes', () => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date('2026-06-27T15:00:00.000Z'));
+    vi.setSystemTime(PTAX_AS_OF_LATEST);
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(
-      runPtaxLookupCommand(PTAX_GOLDEN_USD, '2026-06-23', { json: false, verbose: true }, io),
+      runPtaxLookupCommand(PTAX_GOLDEN_USD, PTAX_USD_OLDEST, { json: false, verbose: true }, io),
     ).toBe(EXIT.OK);
     expect(io.stdout).toContain(`warning: ${PTAX_STALE_WARNING}`);
     expect(io.stdout).toContain('isStale: true');
@@ -97,8 +103,8 @@ describe('runPtaxHistoricoCommand', () => {
     expect(
       runPtaxHistoricoCommand(
         'USD',
-        '2026-06-20',
-        '2026-06-26',
+        PTAX_USD_OLDEST,
+        PTAX_USD_LATEST,
         { json: false, verbose: true },
         io,
       ),
@@ -114,8 +120,8 @@ describe('runPtaxHistoricoCommand', () => {
     expect(
       runPtaxHistoricoCommand(
         'USD',
-        '2026-06-23',
-        '2026-06-24',
+        PTAX_USD_OLDEST,
+        PTAX_USD_SECOND_OLDEST,
         { json: true, verbose: true },
         io,
       ),
@@ -169,7 +175,7 @@ describe('runPtaxHistorico', () => {
   it('delegates with moeda and date range', () => {
     const io = { stdout: [] as string[], stderr: [] as string[] };
     expect(
-      runPtaxHistorico('USD', '2026-06-23', '2026-06-24', { json: true, verbose: false }, io),
+      runPtaxHistorico('USD', PTAX_USD_OLDEST, PTAX_USD_SECOND_OLDEST, { json: true, verbose: false }, io),
     ).toBe(EXIT.OK);
   });
 

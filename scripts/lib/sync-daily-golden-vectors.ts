@@ -436,10 +436,29 @@ export interface DailyGoldenVectorPaths {
   rootDir: string;
 }
 
+/**
+ * IBPT publishes a new tabela every semester (e.g. 26.1.K → 26.2.C). The golden
+ * aliquotas stay pinned (they are the real check); only the tabela id follows the data.
+ */
+export async function syncIbptGoldenVectors(cargasPath: string, vectorsPath: string): Promise<boolean> {
+  const cargas = JSON.parse(await readFile(cargasPath, 'utf8')) as { tabela?: string }[];
+  const tabelas = [...new Set(cargas.map((row) => row.tabela).filter((tabela) => tabela !== undefined && tabela !== ''))];
+  if (tabelas.length !== 1) {
+    return false;
+  }
+  const vectors = JSON.parse(await readFile(vectorsPath, 'utf8')) as { tabela?: string };
+  if (vectors.tabela === tabelas[0]) {
+    return false;
+  }
+  await writeFile(vectorsPath, `${JSON.stringify({ ...vectors, tabela: tabelas[0] }, null, 2)}\n`);
+  return true;
+}
+
 export async function syncDailyGoldenVectors(paths: DailyGoldenVectorPaths): Promise<{
   selicUpdated: boolean;
   ptaxUpdated: boolean;
   anpUpdated: boolean;
+  ibptUpdated: boolean;
 }> {
   const coreData = path.join(paths.rootDir, 'packages/br-validators');
   const vectorsDir = path.join(coreData, 'tests/vectors');
@@ -463,5 +482,10 @@ export async function syncDailyGoldenVectors(paths: DailyGoldenVectorPaths): Pro
     path.join(vectorsDir, 'anp-combustiveis.official.json'),
   );
 
-  return { selicUpdated, ptaxUpdated, anpUpdated };
+  const ibptUpdated = await syncIbptGoldenVectors(
+    path.join(coreData, 'src/ibpt/data/cargas.json'),
+    path.join(vectorsDir, 'ibpt.official.json'),
+  );
+
+  return { selicUpdated, ptaxUpdated, anpUpdated, ibptUpdated };
 }

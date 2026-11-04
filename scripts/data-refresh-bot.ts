@@ -309,6 +309,9 @@ async function main(): Promise<void> {
     if (vectorSync.anpUpdated) {
       console.log('Synced tests/vectors/anp-combustiveis.official.json with embedded ANP week.');
     }
+    if (vectorSync.ibptUpdated) {
+      console.log('Synced tests/vectors/ibpt.official.json with the embedded IBPT tabela.');
+    }
   }
 
   const report = await writeReports(options.dryRun, options.noArchive, snapshots, baselinesSelados);

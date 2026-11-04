@@ -4,7 +4,12 @@ import { fileURLToPath } from 'node:url';
 
 import { afterEach, describe, expect, it } from 'vitest';
 
-import { syncAnpGoldenVectors, syncPtaxGoldenVectors, syncSelicGoldenVectors } from './sync-daily-golden-vectors.js';
+import {
+  syncAnpGoldenVectors,
+  syncIbptGoldenVectors,
+  syncPtaxGoldenVectors,
+  syncSelicGoldenVectors,
+} from './sync-daily-golden-vectors.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURE_ROOT = path.join(__dirname, '../fixtures/sync-daily-golden-vectors');
@@ -279,6 +284,26 @@ describe('sync-daily-golden-vectors', () => {
     });
     expect(vectors.golden.historicoRange.firstDate).toBe('2026-07-01');
     expect(vectors.golden.historicoRange.expectedRowCount).toBe(2);
+  });
+
+  it('moves the IBPT tabela id with the embedded data, keeping golden aliquotas', async () => {
+    const cargasPath = await writeJson('ibpt/cargas.json', [
+      { ncm: '01012100', uf: 'SP', tabela: '26.2.C' },
+      { ncm: '01012100', uf: 'RJ', tabela: '26.2.C' },
+    ]);
+    const vectorsPath = await writeJson('ibpt/ibpt.official.json', {
+      tabela: '26.1.K',
+      golden: { cavalosSp: { aliquotaEstadual: 18 } },
+    });
+
+    expect(await syncIbptGoldenVectors(cargasPath, vectorsPath)).toBe(true);
+    const vectors = JSON.parse(await readFile(vectorsPath, 'utf8')) as {
+      tabela: string;
+      golden: { cavalosSp: { aliquotaEstadual: number } };
+    };
+    expect(vectors.tabela).toBe('26.2.C');
+    expect(vectors.golden.cavalosSp.aliquotaEstadual).toBe(18);
+    expect(await syncIbptGoldenVectors(cargasPath, vectorsPath)).toBe(false);
   });
 
   it('updates ANP week and golden prices from embedded data', async () => {

@@ -23,6 +23,7 @@ import {
 import { dispatchArgv, parseArgv } from '../src/argv-dispatch.js';
 import { EXIT } from '../src/constants.js';
 import vectors from '../../../packages/br-validators/tests/vectors/selic.official.json';
+import { PTAX_USD_OLDEST, PTAX_USD_SECOND_OLDEST } from './ptax-window.js';
 
 const historicalSelicDate = vectors.golden.historicoRange.middle.data;
 
@@ -416,7 +417,7 @@ describe('dispatchArgv', () => {
     const ptax = io();
     expect(dispatchArgv(['ptax', 'lookup', 'USD', '--json', '--verbose'], ptax)).toBe(EXIT.OK);
     expect(
-      dispatchArgv(['ptax', 'historico', 'USD', '2026-06-23', '2026-06-24', '--json'], io()),
+      dispatchArgv(['ptax', 'historico', 'USD', PTAX_USD_OLDEST, PTAX_USD_SECOND_OLDEST, '--json'], io()),
     ).toBe(EXIT.OK);
 
     const selic = io();
