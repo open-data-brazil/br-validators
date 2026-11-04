@@ -1,10 +1,16 @@
 # Install
 
+Packages are distributed as **GitHub Release assets** — they are not published to the npm registry (npm `1.10.1` is the last registry version and no longer updated). Each [release](https://github.com/open-data-brazil/br-validators/releases) attaches an `npm pack` tarball per package, so npm, pnpm, yarn and bun install straight from the URL and the lockfile pins its integrity.
+
 ```bash
-pnpm add @br-validators/core
+# newest release (or set VERSION=1.10.1-data.35 to pin one)
+VERSION=$(curl -fsSL https://api.github.com/repos/open-data-brazil/br-validators/releases/latest | jq -r .tag_name | sed 's/^v//')
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 # or
-npm install @br-validators/core
+npm install "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 ```
+
+Every release also ships `br-validators-data-<version>.tar.gz` (all embedded datasets), `catalog.json` and `SHA256SUMS`; the newest catalog is always at [`releases/latest/download/catalog.json`](https://github.com/open-data-brazil/br-validators/releases/latest/download/catalog.json).
 
 ## Subpath imports (tree-shaking)
 
@@ -36,17 +42,23 @@ Full table: [data/bundle-sizes/subpath-sizes.md](https://github.com/open-data-br
 ## CLI
 
 ```bash
-npm install -g @br-validators/cli
+npm install -g "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz"
 br-validators cpf validate 12345678909
 ```
 
 ## Adapters
 
-| Adapter | Install |
-|---------|---------|
-| Zod | `pnpm add @br-validators/zod` |
-| React Hook Form | `pnpm add @br-validators/react-hook-form` |
-| Express | `pnpm add @br-validators/express` |
-| Vue 3 | `pnpm add @br-validators/vue` |
+Each adapter tarball resolves `@br-validators/core` from **the same release**, so no registry lookup happens. Install the adapter and the core from the same `VERSION`:
+
+| Adapter | Release asset |
+|---------|---------------|
+| Zod | `br-validators-zod-$VERSION.tgz` |
+| React Hook Form | `br-validators-react-hook-form-$VERSION.tgz` |
+| Express | `br-validators-express-$VERSION.tgz` |
+| Vue 3 | `br-validators-vue-$VERSION.tgz` |
+
+```bash
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-zod-$VERSION.tgz" zod
+```
 
 See [Framework adapters](/guide/adapters).
