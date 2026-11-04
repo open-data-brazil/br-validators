@@ -12,6 +12,13 @@ import {
 import { fetchJsonWithRetry, todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
 import { exitWithError } from './lib/errors.js';
+import {
+  IBGE_SIDRA_ESTADOS_URL,
+  IBGE_SIDRA_MUNICIPIOS_URL,
+  parseSidraEstados,
+  parseSidraMunicipios,
+  type SidraRow,
+} from './lib/ibge-sidra-localidades.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -101,23 +108,46 @@ async function readJsonIfExists<T>(filePath: string): Promise<T | null> {
   }
 }
 
+async function fetchFromLocalidadesApi(): Promise<{ estados: EstadoRecord[]; municipios: MunicipioRecord[] }> {
+  const [rawEstados, rawMunicipios] = await Promise.all([
+    fetchJsonWithRetry<IbgeApiEstado[]>(IBGE_ESTADOS_URL, FETCH_MAX_ATTEMPTS),
+    fetchJsonWithRetry<IbgeApiMunicipio[]>(IBGE_MUNICIPIOS_URL, FETCH_MAX_ATTEMPTS),
+  ]);
+  if (rawEstados.length === 0 || rawMunicipios.length === 0) {
+    throw new SourceDataError('Official IBGE API returned an empty payload');
+  }
+  return {
+    estados: rawEstados.map(normalizeEstado).sort((a, b) => a.codigo - b.codigo),
+    municipios: rawMunicipios.map(normalizeMunicipio).sort((a, b) => a.codigo - b.codigo),
+  };
+}
+
+async function fetchFromSidra(): Promise<{ estados: EstadoRecord[]; municipios: MunicipioRecord[] }> {
+  const [rawEstados, rawMunicipios] = await Promise.all([
+    fetchJsonWithRetry<SidraRow[]>(IBGE_SIDRA_ESTADOS_URL, FETCH_MAX_ATTEMPTS),
+    fetchJsonWithRetry<SidraRow[]>(IBGE_SIDRA_MUNICIPIOS_URL, FETCH_MAX_ATTEMPTS),
+  ]);
+  return { estados: parseSidraEstados(rawEstados), municipios: parseSidraMunicipios(rawMunicipios) };
+}
+
 async function main(): Promise<void> {
   const metadataPath = path.join(IBGE_DATA_DIR, 'metadata.json');
   const previousMetadata = await readJsonIfExists<{ capturadoEm: string }>(metadataPath);
-  const endpoints = [IBGE_ESTADOS_URL, IBGE_MUNICIPIOS_URL];
+  let endpoints = [IBGE_ESTADOS_URL, IBGE_MUNICIPIOS_URL];
 
   try {
-    const [rawEstados, rawMunicipios] = await Promise.all([
-      fetchJsonWithRetry<IbgeApiEstado[]>(IBGE_ESTADOS_URL, FETCH_MAX_ATTEMPTS),
-      fetchJsonWithRetry<IbgeApiMunicipio[]>(IBGE_MUNICIPIOS_URL, FETCH_MAX_ATTEMPTS),
-    ]);
-
-    if (rawEstados.length === 0 || rawMunicipios.length === 0) {
-      throw new SourceDataError('Official IBGE API returned an empty payload');
+    let localidades: { estados: EstadoRecord[]; municipios: MunicipioRecord[] };
+    try {
+      localidades = await fetchFromLocalidadesApi();
+    } catch (primaryError) {
+      // servicodados.ibge.gov.br blocks GitHub-hosted runners; SIDRA is the same IBGE data.
+      console.warn(
+        `[ibge] /localidades unavailable (${primaryError instanceof Error ? primaryError.message : String(primaryError)}) — falling back to IBGE SIDRA.`,
+      );
+      endpoints = [IBGE_SIDRA_ESTADOS_URL, IBGE_SIDRA_MUNICIPIOS_URL];
+      localidades = await fetchFromSidra();
     }
-
-    const estados = rawEstados.map(normalizeEstado).sort((a, b) => a.codigo - b.codigo);
-    const municipios = rawMunicipios.map(normalizeMunicipio).sort((a, b) => a.codigo - b.codigo);
+    const { estados, municipios } = localidades;
 
     if (estados.length !== EXPECTED_ESTADOS) {
       throw new SourceDataError(
@@ -181,7 +211,10 @@ async function main(): Promise<void> {
       attempts: FETCH_MAX_ATTEMPTS,
       checkedAt: new Date().toISOString(),
       retainedEmbeddedDataFrom: metadata.capturadoEm,
-      message: 'Official IBGE API fetch succeeded.',
+      message:
+        endpoints[0] === IBGE_ESTADOS_URL
+          ? 'Official IBGE API fetch succeeded.'
+          : 'IBGE /localidades blocked — data fetched from IBGE SIDRA (table 6579).',
     });
 
     console.log(

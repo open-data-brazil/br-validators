@@ -106,7 +106,7 @@ git tag -a v1.6.1 -m "Release v1.6.1"
 git push origin v1.6.1
 ```
 
-Workflow: `.github/workflows/release.yml` — requires secret **`NPM_TOKEN`**. Publishes all six packages; sets npm **`latest`**.
+Workflow: `.github/workflows/release.yml` — no secret needed. Builds `npm pack` tarballs of all six packages + reference data and attaches them to the GitHub Release (marked *latest*). Nothing goes to the npm registry.
 
 **Re-run:** Actions → Release → workflow_dispatch with tag `v1.6.1`.
 
@@ -117,9 +117,8 @@ Workflow: `.github/workflows/release.yml` — requires secret **`NPM_TOKEN`**. P
 | Tag `v1.6.1` but `package.json` still `1.6.0` | Bump all six `package.json`, merge `main`, delete bad tag, retag |
 | Tag on wrong commit (old code) | Delete remote tag + release; tag `main` HEAD after merge |
 | Local `pnpm publish` | Blocked by design — push tag or re-run Release workflow |
-| Re-tag same version already on npm | Bump to next patch/prerelease — or re-run workflow (skips existing versions) |
+| Re-tag same version already released | Bump to next patch/prerelease — or re-run workflow (re-uploads assets with `--clobber`) |
 | Any package version differs | Set all six to identical semver before tag |
-| `express` / `vue` 404 on npm | Fix `NPM_TOKEN` — token must allow **create** on `@br-validators/*` |
 
 ## Agent duties on release tasks
 
@@ -127,7 +126,7 @@ Workflow: `.github/workflows/release.yml` — requires secret **`NPM_TOKEN`**. P
 2. Update `CHANGELOG.md` for the release scope only.
 3. **Audit and update all seven npm-facing READMEs** (see npm-facing documentation above).
 4. Run pre-tag verification commands; report mismatch before tagging.
-5. Do **not** paste or commit `NPM_TOKEN` — GitHub secret only.
-6. After release, confirm: `npm view @br-validators/core version` (and express, vue); spot-check npm README.
+5. Do **not** add npm tokens or `npm publish` steps — distribution is GitHub Releases only.
+6. After release, confirm: `gh release view vX.Y.Z` lists the six `.tgz`, `br-validators-data-*.tar.gz`, `catalog.json` and `SHA256SUMS`.
 
-**Docs:** `docs/BRANCHING.md`, `docs/VERSIONING.md` — **Troubleshooting:** `npm-publish-ci.mdc`
+**Docs:** `docs/BRANCHING.md`, `docs/VERSIONING.md` — **Troubleshooting:** `github-release-ci.mdc`

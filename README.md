@@ -1,13 +1,6 @@
 # BR Validators
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![core](https://img.shields.io/npm/v/@br-validators/core?label=core)](https://www.npmjs.com/package/@br-validators/core)
-[![cli](https://img.shields.io/npm/v/@br-validators/cli?label=cli)](https://www.npmjs.com/package/@br-validators/cli)
-[![zod](https://img.shields.io/npm/v/@br-validators/zod?label=zod)](https://www.npmjs.com/package/@br-validators/zod)
-[![rhf](https://img.shields.io/npm/v/@br-validators/react-hook-form?label=rhf)](https://www.npmjs.com/package/@br-validators/react-hook-form)
-[![express](https://img.shields.io/npm/v/@br-validators/express?label=express)](https://www.npmjs.com/package/@br-validators/express)
-[![vue](https://img.shields.io/npm/v/@br-validators/vue?label=vue)](https://www.npmjs.com/package/@br-validators/vue)
-[![npm downloads](https://img.shields.io/npm/dm/@br-validators/core?label=downloads)](https://www.npmjs.com/package/@br-validators/core)
 [![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF%20Best%20Practices-self--certify-blue)](https://www.bestpractices.dev/en/projects)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
@@ -15,38 +8,48 @@
 
 | Surface | Package / URL |
 |---------|---------------|
-| **Library** | [`@br-validators/core`](https://www.npmjs.com/package/@br-validators/core) on npm |
-| **CLI** | [`@br-validators/cli`](https://www.npmjs.com/package/@br-validators/cli) on npm |
-| **Zod** | [`@br-validators/zod`](https://www.npmjs.com/package/@br-validators/zod) on npm |
-| **React Hook Form** | [`@br-validators/react-hook-form`](https://www.npmjs.com/package/@br-validators/react-hook-form) on npm |
-| **Express / Fastify** | [`@br-validators/express`](https://www.npmjs.com/package/@br-validators/express) on npm |
-| **Vue 3** | [`@br-validators/vue`](https://www.npmjs.com/package/@br-validators/vue) on npm |
+| **Library** | [`@br-validators/core`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-core-<version>.tgz` on GitHub Releases |
+| **CLI** | [`@br-validators/cli`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-cli-<version>.tgz` on GitHub Releases |
+| **Zod** | [`@br-validators/zod`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-zod-<version>.tgz` on GitHub Releases |
+| **React Hook Form** | [`@br-validators/react-hook-form`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-react-hook-form-<version>.tgz` on GitHub Releases |
+| **Express / Fastify** | [`@br-validators/express`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-express-<version>.tgz` on GitHub Releases |
+| **Vue 3** | [`@br-validators/vue`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-vue-<version>.tgz` on GitHub Releases |
 | **Documentation** | [docs.br-validators.dev](https://docs.br-validators.dev/) — VitePress deep reference (README = quick start) |
 | **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
 
 Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, CST, LC 116, eSocial categorias, NCM, CBO, natureza jurídica, NBS, CEST, moedas, PTAX cotações, países Bacen, NF-e cUF, IRPF / INSS tables, SELIC meta, ISS municipal top 500 PIB, Incoterms, portos, aeroportos, ANP fuel prices) are embedded offline and refreshed **daily** (00:00 Brasília) — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md). CST, LC 116, eSocial, and ISS municipal use **manual** maintainer refresh (`pnpm fetch:data:cst`, `pnpm fetch:data:lc116`, `pnpm fetch:data:esocial`, `pnpm fetch:data:iss-municipal`). Critical source failures: [data/refresh-reports/CRITICAL-ALERTS.md](data/refresh-reports/CRITICAL-ALERTS.md).
 
-> **Note:** The unscoped npm name [`br-validators`](https://www.npmjs.com/package/br-validators) belongs to another project. Install **`@br-validators/core`** or **`@br-validators/cli`**.
+> **Distribution:** since v1.10.1-data.34 every package is published **only as a GitHub Release asset** (`npm pack` tarballs + reference data) — no npm registry, no token. Versions up to `1.10.1` remain on npm but are no longer updated. The unscoped npm name `br-validators` belongs to another project.
 
 ---
 
 ## Install
 
+Pick a tag from [GitHub Releases](https://github.com/open-data-brazil/br-validators/releases) — each release attaches every package as an `npm pack` tarball. npm, pnpm, yarn and bun install straight from the URL (the lockfile pins the tarball integrity).
+
 ### Library (Node, Bun, bundlers)
 
 ```bash
-npm install @br-validators/core
+VERSION=1.10.1-data.34   # any tag from the Releases page, without the leading "v"
+npm install "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 # or
-pnpm add @br-validators/core
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 ```
 
 ### CLI
 
 ```bash
-npm install -g @br-validators/cli
-# or one-off
-npx @br-validators/cli --help
+npm install -g "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz"
+br-validators --help
 ```
+
+### Adapters
+
+Attached to the same release (`br-validators-zod-…`, `br-validators-react-hook-form-…`, `br-validators-express-…`, `br-validators-vue-…`). Their `@br-validators/core` dependency points at the core tarball of **that same release**, so no registry lookup happens.
+
+### Reference data only
+
+Every release also ships `br-validators-data-<version>.tar.gz` (all embedded datasets + `metadata.json`), `catalog.json` (capture date, record counts and SHA-256 per file) and `SHA256SUMS`. The newest catalog is always at [`releases/latest/download/catalog.json`](https://github.com/open-data-brazil/br-validators/releases/latest/download/catalog.json).
 
 ---
 
@@ -333,7 +336,7 @@ pnpm --filter @br-validators/playground dev   # http://localhost:3000
 ## Monorepo layout
 
 ```
-packages/br-validators/   # @br-validators/core — npm library
+packages/br-validators/   # @br-validators/core — library (GitHub Release tarball)
 apps/cli/                 # @br-validators/cli — terminal
 apps/playground/          # Web UI (Vercel)
 ```
@@ -378,14 +381,17 @@ Regenerate gap lists after ISS/IBGE updates: `pnpm generate:coverage-gaps`
 
 ## Current release
 
-| Package | npm | Version |
-|---------|-----|---------|
-| `@br-validators/core` | [npm](https://www.npmjs.com/package/@br-validators/core) | `1.10.1` |
-| `@br-validators/cli` | [npm](https://www.npmjs.com/package/@br-validators/cli) | `1.10.1` |
-| `@br-validators/zod` | [npm](https://www.npmjs.com/package/@br-validators/zod) | `1.10.1` |
-| `@br-validators/react-hook-form` | [npm](https://www.npmjs.com/package/@br-validators/react-hook-form) | `1.10.1` |
-| `@br-validators/express` | [npm](https://www.npmjs.com/package/@br-validators/express) | `1.10.1` |
-| `@br-validators/vue` | [npm](https://www.npmjs.com/package/@br-validators/vue) | `1.10.1` |
+All six packages share one version and are attached to every [GitHub Release](https://github.com/open-data-brazil/br-validators/releases) — see the [latest release](https://github.com/open-data-brazil/br-validators/releases/latest).
+
+| Package | Release asset |
+|---------|---------------|
+| `@br-validators/core` | `br-validators-core-<version>.tgz` |
+| `@br-validators/cli` | `br-validators-cli-<version>.tgz` |
+| `@br-validators/zod` | `br-validators-zod-<version>.tgz` |
+| `@br-validators/react-hook-form` | `br-validators-react-hook-form-<version>.tgz` |
+| `@br-validators/express` | `br-validators-express-<version>.tgz` |
+| `@br-validators/vue` | `br-validators-vue-<version>.tgz` |
+| Reference data | `br-validators-data-<version>.tar.gz` + `catalog.json` |
 
 **v1.10.1** — Stable roll-up since v1.10.0 (data.47–data.49 never reached npm): ISS municipal upgrades, playground workspaces, CI reliability fixes. See [CHANGELOG.md](CHANGELOG.md#1101---2026-09-25).
 

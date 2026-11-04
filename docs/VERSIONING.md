@@ -1,7 +1,7 @@
 # Versioning policy
 
 > **BR Validators** follows [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) (SemVer).
-> Package name (working): `br-validators` — version applies to npm releases and git tags.
+> Package name (working): `br-validators` — version applies to git tags, `package.json` and GitHub Release assets (no npm registry since 1.10.1).
 
 ---
 
@@ -138,9 +138,9 @@ git push origin v1.0.0
 
 Tag format: **`v` + SemVer** (e.g. `v0.1.0-alpha.1`)
 
-### 4. Publish (npm) — CI only
+### 4. Publish (GitHub Release) — CI only
 
-**All publishes go through GitHub Actions.** Do not run `pnpm publish` locally — `prepublishOnly` blocks it.
+**All releases go through GitHub Actions** and are attached to a GitHub Release — nothing is published to the npm registry (`prepublishOnly` blocks `pnpm publish` everywhere).
 
 Push a version tag on `main`:
 
@@ -149,11 +149,11 @@ git tag -a v1.6.1 -m "Release v1.6.1"
 git push origin v1.6.1
 ```
 
-Requires npm authentication in the Release workflow: **trusted publishing (OIDC)** — one trusted publisher per package on npmjs.com — or, as fallback, the repository secret `NPM_TOKEN` (granular token with read/write on **all** `@br-validators/*` packages, including create, bypass 2FA, max 90 days).
+No registry credentials are needed: the Release workflow packs each package with `npm pack` and uploads the tarballs, the reference-data bundle, `catalog.json` and `SHA256SUMS` with the built-in `GITHUB_TOKEN` (see [BRANCHING.md](BRANCHING.md#release-flow-github-releases--no-npm-registry)).
 
 **Re-run after failure:** Actions → **Release** → **Run workflow** with the tag name.
 
-Published packages (same semver on each tag):
+Released packages (same semver on each tag):
 
 | Package | Path |
 |---------|------|
@@ -168,11 +168,7 @@ See [README](../README.md#install).
 
 ### 5. GitHub Release
 
-Created automatically by the Release workflow when the tag is pushed. Or manually:
-
-```bash
-gh release create v0.11.0-alpha.0 --generate-notes
-```
+Created automatically by the Release workflow when the tag is pushed (or re-run via **Run workflow** with the tag). Never create it by hand — the assets are built by `scripts/build-release-artifacts.ts`.
 
 ---
 
@@ -238,7 +234,7 @@ When the daily data refresh bot (`.github/workflows/data-refresh-bot.yml`) detec
 | Bot drift (daily) | `MAJOR.MINOR.PATCH-data.N` | `1.8.3-data.1`, `1.8.3-data.2` |
 | Manual `force_publish` | Same as bot drift | `reason` input required |
 
-**Why not `1.8.0001`?** npm/SemVer treat `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3` and would break `latest`. The `-data.N` suffix keeps the human base (`1.8.3`) and a numeric daily counter (`1`, `2`, …) identical in **git tags, `package.json`, and npm**.
+**Why not `1.8.0001`?** SemVer treats `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3`. The `-data.N` suffix keeps the human base (`1.8.3`) and a numeric daily counter (`1`, `2`, …) identical in **git tags, `package.json`, and release asset names**. Adapters pin `@br-validators/core` to the exact version of their release, so the pre-release suffix never affects range resolution.
 
 | Automation | Script |
 |------------|--------|

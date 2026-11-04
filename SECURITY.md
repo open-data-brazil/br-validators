@@ -61,7 +61,7 @@ CVE issuance follows [GitHub repository security advisories](https://docs.github
 |----------|--------------|
 | Incorrect check-digit algorithm (false accept/reject) | Bugs in consumer apps using this library |
 | ReDoS or catastrophic backtracking in regex validators | Social engineering |
-| Supply-chain issues in published npm package | Vulnerabilities in devDependencies only (see [Dependency audit](#dependency-audit-ci)) |
+| Supply-chain issues in released package tarballs | Vulnerabilities in devDependencies only (see [Dependency audit](#dependency-audit-ci)) |
 | Documentation that leads to insecure integration | Missing features (use feature requests) |
 
 ---
@@ -109,16 +109,16 @@ References: [pnpm audit](https://pnpm.io/cli/audit) · [npm audit](https://docs.
 
 Maintainers re-run `pnpm audit --prod --audit-level=high` before every release tag (also enforced in Release workflow via `pnpm verify`).
 
-### npm publish integrity
+### Release integrity (GitHub Releases)
 
 | Control | Implementation |
 |---------|----------------|
-| **CI-only publish** | Local `pnpm publish` blocked by `scripts/assert-ci-publish.mjs` |
+| **No registry publish** | `pnpm publish` blocked everywhere by `scripts/assert-ci-publish.mjs`; no npm token exists in the repository |
 | **Frozen lockfile** | `pnpm install --frozen-lockfile` in CI and Release |
 | **Version gate** | Release workflow verifies git tag matches all six `package.json` versions |
-| **OIDC** | Release workflow sets `id-token: write` for npm trusted publishing / provenance |
-| **Registry verify** | Post-publish `npm view @br-validators/*@version` smoke check |
-| **Publishable manifest** | `scripts/prepare-npm-publish.ts` materializes `workspace:` ranges before the npm CLI packs the tarball |
+| **Checksums** | Every asset is listed in `SHA256SUMS`; `catalog.json` carries a SHA-256 per embedded data file |
+| **Self-contained manifests** | `scripts/build-release-artifacts.ts` points `workspace:` dependencies at the sibling tarball of the same release (no registry resolution) |
+| **Least privilege** | Release uses the built-in `GITHUB_TOKEN` with `contents: write` only |
 
 Published runtime packages (`@br-validators/core`, adapters) bundle **no third-party runtime deps** — supply-chain risk is primarily **publish pipeline** integrity, not transitive npm deps in the tarball.
 

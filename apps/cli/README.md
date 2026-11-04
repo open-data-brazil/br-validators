@@ -1,10 +1,9 @@
 # @br-validators/cli
 
-[![npm](https://img.shields.io/npm/v/@br-validators/cli)](https://www.npmjs.com/package/@br-validators/cli)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
-Terminal CLI for all Brazilian document validators in [@br-validators/core](https://www.npmjs.com/package/@br-validators/core) **v1.10.1**.
+Terminal CLI for all Brazilian document validators in [@br-validators/core](../../packages/br-validators) **v1.10.1**.
 
 **Repo:** [github.com/open-data-brazil/br-validators](https://github.com/open-data-brazil/br-validators)
 
@@ -12,14 +11,18 @@ Terminal CLI for all Brazilian document validators in [@br-validators/core](http
 
 ## Install
 
+From [GitHub Releases](https://github.com/open-data-brazil/br-validators/releases) (no npm registry):
+
 ```bash
-npm install -g @br-validators/cli
+VERSION=1.10.1-data.34   # any release tag without the leading "v"
+npm install -g "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz"
+br-validators --help
 ```
 
-Or run without install:
+Or run once without a global install:
 
 ```bash
-npx @br-validators/cli --help
+npx --yes --package "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz" br-validators --help
 ```
 
 ---

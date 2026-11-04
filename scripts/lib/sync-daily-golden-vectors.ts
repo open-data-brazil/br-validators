@@ -65,6 +65,12 @@ function pickLatestByMoeda(
     .sort((left, right) => right.data.localeCompare(left.data))[0];
 }
 
+/** ISO `YYYY-MM-DD` → Bacen Olinda `MM-DD-YYYY`. */
+function toBacenDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-');
+  return `${month}-${day}-${year}`;
+}
+
 function parseIsoCalendarDay(isoDate: string): number | null {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/u.exec(isoDate);
   if (match === null) {
@@ -189,6 +195,13 @@ export async function syncPtaxGoldenVectors(
     return false;
   }
 
+  // The embed is a rolling 90-business-day window: the historical golden row must
+  // follow the window or tests break as soon as the old date is evicted.
+  // Non-empty: usdLatest above proves at least one USD row exists.
+  const usdOldest = ptax
+    .filter((row) => row.moeda === 'USD')
+    .sort((left, right) => left.data.localeCompare(right.data))[0];
+
   const range = vectors.golden.historicoRange;
   const rangeRows = ptax
     .filter(
@@ -213,8 +226,16 @@ export async function syncPtaxGoldenVectors(
         cotacaoCompra: eurLatest.cotacaoCompra,
         cotacaoVenda: eurLatest.cotacaoVenda,
       },
+      usdHistorico: {
+        moeda: usdOldest.moeda,
+        data: usdOldest.data,
+        dataBacen: toBacenDate(usdOldest.data),
+        cotacaoCompra: usdOldest.cotacaoCompra,
+        cotacaoVenda: usdOldest.cotacaoVenda,
+      },
       historicoRange: {
         ...range,
+        desde: range.desde < usdOldest.data ? range.desde : usdOldest.data,
         ate: usdLatest.data,
         expectedRowCount: rangeRows.length,
         firstDate: rangeRows[0]?.data ?? range.firstDate,

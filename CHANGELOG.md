@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Distribution moved to GitHub Releases — npm registry publishing removed.** Every tag `v*` now attaches `npm pack` tarballs of all six packages, `br-validators-data-<version>.tar.gz`, `catalog.json` and `SHA256SUMS` to the GitHub Release (`scripts/build-release-artifacts.ts`). No `NPM_TOKEN`/OTP: the v1.10.1-data.33 release failed with `EOTP` and nothing after it shipped. Adapter tarballs resolve `@br-validators/core` from the same release. npm `1.10.1` is the last registry version. Removed `npm-dist-tag.yml`, `publish-npm-if-missing.sh` and `prepare-npm-publish.ts`.
+- `searchPortos` ranks exact code/name matches first, then name prefixes, then substrings.
+
+### Fixed
+
+- **Daily data refresh red since 2026-10-27:** PTAX tests pinned dates (2026-06-23/24/25) that left the rolling 90-business-day embed. The golden-vector sync now moves `usdHistorico` with the window and the tests derive dates from the data.
+- **Mojibake in `cbo`, `tse-municipios` and `portos`:** ISO-8859-1 sources (MTE CBO CSV, TSE zip) are decoded as Windows-1252 instead of UTF-8 (1687 + 2384 rows fixed). ANTAQ ships `Portos.xlsx` with U+FFFD already in it; `fetch-portos` now restores `municipioNome` from IBGE and repairs free text with a deterministic dictionary (17 proper nouns still flagged). A new test fails if any embedded dataset regains U+FFFD.
+- **IBGE blocked on GitHub runners:** `servicodados.ibge.gov.br` drops connections from GitHub-hosted runners; `fetch-ibge` falls back to IBGE SIDRA (table 6579), which yields byte-identical `estados`/`municipios`. Connect-level failures now stop after 2 attempts instead of 5 × 2 min (≈20 min saved per run when IBGE/CNAE are blocked).
+
 ## [1.10.1-data.33] - 2026-10-26
 
 ### Changed

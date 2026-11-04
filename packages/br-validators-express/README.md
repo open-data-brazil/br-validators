@@ -1,6 +1,5 @@
 # @br-validators/express
 
-[![npm](https://img.shields.io/npm/v/@br-validators/express)](https://www.npmjs.com/package/@br-validators/express)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
@@ -9,7 +8,8 @@ Express and Fastify middleware for Brazilian document validation — delegates t
 ## Install
 
 ```bash
-pnpm add @br-validators/express @br-validators/core express
+VERSION=1.10.1-data.34   # any tag from https://github.com/open-data-brazil/br-validators/releases
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-express-$VERSION.tgz" "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz" express
 ```
 
 **Peer dependencies:** `express` `^4.21.0 || ^5.0.0`, `@br-validators/core`

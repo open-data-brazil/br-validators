@@ -228,6 +228,59 @@ describe('sync-daily-golden-vectors', () => {
     expect(vectors.staleness.freshReferenceDate).toBe('2026-06-29');
   });
 
+  it('moves the PTAX historical golden row along with the rolling window', async () => {
+    const ptaxPath = await writeJson('ptax-window/ptax.json', [
+      { moeda: 'USD', data: '2026-07-01', cotacaoCompra: 5.2, cotacaoVenda: 5.201 },
+      { moeda: 'USD', data: '2026-07-02', cotacaoCompra: 5.21, cotacaoVenda: 5.211 },
+      { moeda: 'EUR', data: '2026-07-02', cotacaoCompra: 5.9, cotacaoVenda: 5.901 },
+    ]);
+    const metadataPath = await writeJson('ptax-window/metadata.json', { capturadoEm: '2026-07-03' });
+    const vectorsPath = await writeJson('ptax-window/ptax.official.json', {
+      golden: {
+        usdUltimoDiaUtil: { moeda: 'USD', data: '2026-06-26', cotacaoCompra: 1, cotacaoVenda: 1 },
+        eurUltimoDiaUtil: { moeda: 'EUR', data: '2026-06-26', cotacaoCompra: 1, cotacaoVenda: 1 },
+        usdHistorico: {
+          moeda: 'USD',
+          data: '2026-06-23',
+          dataBacen: '06-23-2026',
+          cotacaoCompra: 5.1737,
+          cotacaoVenda: 5.1743,
+        },
+        historicoRange: {
+          moeda: 'USD',
+          desde: '2026-06-20',
+          ate: '2026-06-26',
+          expectedRowCount: 5,
+          firstDate: '2026-06-22',
+          lastDate: '2026-06-26',
+        },
+      },
+      staleness: {
+        asOfFresh: '2026-06-27',
+        freshReferenceDate: '2026-06-26',
+        staleReferenceDate: '2026-06-23',
+        capturadoEm: '2026-06-27',
+        staleWarning: 'Embedded data. For real-time use @br-validators/adapters-ptax',
+      },
+    });
+
+    expect(await syncPtaxGoldenVectors(ptaxPath, metadataPath, vectorsPath)).toBe(true);
+
+    const vectors = JSON.parse(await readFile(vectorsPath, 'utf8')) as {
+      golden: {
+        usdHistorico: { data: string; dataBacen: string; cotacaoCompra: number };
+        historicoRange: { firstDate: string; expectedRowCount: number };
+      };
+    };
+    expect(vectors.golden.usdHistorico).toMatchObject({
+      data: '2026-07-01',
+      dataBacen: '07-01-2026',
+      cotacaoCompra: 5.2,
+    });
+    expect(vectors.golden.historicoRange.firstDate).toBe('2026-07-01');
+    expect(vectors.golden.historicoRange.expectedRowCount).toBe(2);
+  });
+
   it('updates ANP week and golden prices from embedded data', async () => {
     const precosPath = await writeJson('anp/precos-medios.json', [
       {
