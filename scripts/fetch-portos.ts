@@ -1,15 +1,14 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { diffRecordsByKey } from './lib/diff-dataset.js';
 import { exitWithError } from './lib/errors.js';
 import { todayIsoDate } from './lib/fetch-utils.js';
 import { buildMetadata } from './lib/metadata-writer.js';
-import { findZipEntryName } from './lib/parse-xlsx-zip.js';
 import { parsePortosXlsx } from './lib/parse-portos-xlsx.js';
 import { repairPortosText, type IbgeMunicipioName } from './lib/repair-portos-text.js';
+import { extractZipEntryBySuffix } from './lib/zip-extract.js';
 import {
   buildFailureOutcome,
   FETCH_MAX_ATTEMPTS,
@@ -67,15 +66,20 @@ async function downloadZip(url: string, destination: string): Promise<void> {
 }
 
 async function extractPortosXlsx(zipPath: string, xlsxPath: string): Promise<void> {
-  const entry = findZipEntryName(zipPath, 'Portos.xlsx');
-  const result = spawnSync('unzip', ['-p', zipPath, entry], {
-    encoding: 'buffer',
-    maxBuffer: 30 * 1024 * 1024,
-  });
-  if (result.status !== 0 || result.stdout.length === 0) {
-    throw new SourceDataError('Failed to extract Portos.xlsx from ANTAQ zip');
+  // The ANTAQ folder name is not UTF-8; system `unzip` on GitHub runners failed to
+  // re-match the listed name, so extract in-process by the ASCII file name.
+  let xlsx: Uint8Array;
+  try {
+    xlsx = extractZipEntryBySuffix(new Uint8Array(await readFile(zipPath)), 'Portos.xlsx');
+  } catch (error) {
+    throw new SourceDataError(
+      `Failed to extract Portos.xlsx from ANTAQ zip (${error instanceof Error ? error.message : String(error)})`,
+    );
   }
-  await writeFile(xlsxPath, result.stdout);
+  if (xlsx.length === 0) {
+    throw new SourceDataError('Failed to extract Portos.xlsx from ANTAQ zip (empty entry)');
+  }
+  await writeFile(xlsxPath, xlsx);
 }
 
 async function main(): Promise<void> {

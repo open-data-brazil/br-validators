@@ -119,3 +119,19 @@ export function extractZipEntry(archive: Uint8Array, entryName: string): Uint8Ar
   }
   return readLocalEntryData(archive, entry);
 }
+
+/**
+ * Extract the first entry whose name ends with `/suffix` (or equals it).
+ * For archives whose folder names are not UTF-8 (ANTAQ uses a legacy code page):
+ * matching on the ASCII file name avoids `unzip` name conversion differences
+ * between distributions.
+ */
+export function extractZipEntryBySuffix(archive: Uint8Array, suffix: string): Uint8Array {
+  const entry = listZipCentralEntries(archive).find(
+    (candidate) => candidate.name === suffix || candidate.name.endsWith(`/${suffix}`),
+  );
+  if (entry === undefined) {
+    throw new Error(`Zip entry not found: */${suffix}`);
+  }
+  return readLocalEntryData(archive, entry);
+}
