@@ -72,6 +72,19 @@
   font-size: var(--text-xs);
   color: var(--text-muted);
   line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+}
+
+.kickerDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--success);
+  margin-right: 6px;
+  box-shadow: 0 0 6px var(--success);
+  flex-shrink: 0;
 }
 
 .playgroundViews {

@@ -42,7 +42,10 @@ export function SidebarLayout({ children }: { children: React.ReactNode }) {
             </Button>
             <div className={styles.headerBrand}>
               <span className={styles.headerTitle}>{messages.brand.header}</span>
-              <span className={styles.headerTagline}>{messages.brand.tagline}</span>
+              <span className={styles.headerTagline}>
+                <span className={styles.kickerDot} aria-hidden="true" />
+                {messages.brand.tagline}
+              </span>
             </div>
           </div>
           <div className={styles.headerRight}>

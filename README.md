@@ -3,8 +3,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF%20Best%20Practices-self--certify-blue)](https://www.bestpractices.dev/en/projects)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
+[![Playground](https://img.shields.io/badge/Playground-doc--raiz--playground.vercel.app-2563eb?style=flat&logo=vercel)](https://doc-raiz-playground.vercel.app/)
 
 **100% open-source** (MIT) monorepo — TypeScript library, terminal CLI, and web playground for formatting and validating Brazilian document identifiers. Algorithms trace to official primary sources (Receita Federal, Bacen, CONTRAN, Correios, SEFAZ).
+
+> 🚀 **Playground interativo:** experimente no navegador em [**doc-raiz-playground.vercel.app**](https://doc-raiz-playground.vercel.app/) — validação 100% client-side sem envio de dados, com gerador de testes, temas claro/escuro e consultas offline.
+
 
 | Surface | Package / URL |
 |---------|---------------|
