@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: '#f7f7f5',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         var storedTheme = localStorage.getItem('theme');
         var theme = storedTheme === 'light' || storedTheme === 'dark'
           ? storedTheme
-          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          : 'light';
         document.documentElement.dataset.theme = theme;
 
         var storedLocale = localStorage.getItem('locale');
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         />
       </head>
       <body>

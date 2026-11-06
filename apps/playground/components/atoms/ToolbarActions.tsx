@@ -14,17 +14,6 @@ export function ToolbarActions() {
 
   return (
     <div className={styles.toolbar}>
-      <a
-        href="https://github.com/open-data-brazil/br-validators"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.githubButton}
-        aria-label="GitHub — open-data-brazil/br-validators"
-        title="GitHub"
-      >
-        <GitHubIcon />
-        <span className={styles.githubText}>GitHub</span>
-      </a>
       <Button
         type="button"
         variant="icon"
@@ -38,7 +27,16 @@ export function ToolbarActions() {
       </Button>
       <LocaleSwitcher />
       <ThemeToggle />
+      <a
+        href="https://github.com/open-data-brazil/br-validators"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.githubButton}
+        aria-label="GitHub — open-data-brazil/br-validators"
+        title="GitHub"
+      >
+        <GitHubIcon />
+      </a>
     </div>
   );
 }
-
