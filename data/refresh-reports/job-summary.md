@@ -1,8 +1,8 @@
 ### Data refresh report
 
-- Run date: 2026-11-05
+- Run date: 2026-11-06
 - Datasets checked: 30
-- Datasets changed: 2
+- Datasets changed: 3
 - Baselines sealed this run: 0
 - Source alerts: 1
 - Critical alerts: 1
@@ -19,9 +19,10 @@ See `docs/DATA-SOURCE-MAINTENANCE.md` for remediation steps.
 
 ### Dataset drift
 
-Totals: +208 −0 ~1
+Totals: +209 −0 ~1
 
 | Dataset | Δ | Fields |
 |---------|---|--------|
+| bancos | +1 −0 ~0 | — |
 | iss-municipal | +0 −0 ~1 | — |
 | esocial | +208 −0 ~0 | — |
