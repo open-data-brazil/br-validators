@@ -68,7 +68,7 @@
 
 .button {
   border: 1px solid transparent;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-family: var(--font-display);
   font-weight: 700;
@@ -218,132 +218,130 @@
 .localeSwitcher {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 2px;
-  border: 1px solid var(--topbar-border);
-  border-radius: var(--radius-pill);
-  background: var(--topbar-pill);
-}
-
-.localeButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 1.85rem;
-  padding: 0;
-  border: none;
-  border-radius: var(--radius-pill);
-  background: transparent;
+  gap: 5px;
+  height: 39px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
   cursor: pointer;
-  opacity: 0.72;
-  transition: opacity 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.localeButton:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.15);
+.localeSwitcher:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-focus);
 }
 
-.localeButtonActive {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+.localeGlobe {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
 }
 
-.flagSvg {
-  display: block;
-  width: 20px;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
-  object-fit: cover;
+.localeChevron {
+  width: 13px;
+  height: 13px;
+  color: var(--text-subtle);
 }
 
 .themeToggle {
+  width: 39px;
+  height: 39px;
+  min-width: 39px;
   border-width: 1px;
-  border-color: var(--topbar-border);
-  background: var(--topbar-pill);
-  color: #ffffff;
+  border-radius: var(--radius-md);
+  border-color: var(--border);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: none;
 }
 
-.themeToggleSunBtn {
-  background: rgba(251, 191, 36, 0.15);
-  border-color: rgba(251, 191, 36, 0.4);
+.themeToggle:hover:not(:disabled) {
+  background: var(--bg-subtle);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
 }
 
-.themeToggleSunBtn:hover:not(:disabled) {
-  background: rgba(251, 191, 36, 0.28);
-  border-color: rgba(251, 191, 36, 0.6);
-}
-
+.themeToggleSunBtn,
 .themeToggleMoonBtn {
-  background: rgba(99, 102, 241, 0.15);
-  border-color: rgba(99, 102, 241, 0.4);
+  background: var(--bg-surface);
+  border-color: var(--border);
 }
 
+.themeToggleSunBtn:hover:not(:disabled),
 .themeToggleMoonBtn:hover:not(:disabled) {
-  background: rgba(99, 102, 241, 0.28);
-  border-color: rgba(99, 102, 241, 0.6);
+  background: var(--bg-subtle);
+  border-color: var(--border-focus);
 }
 
-.themeIconSun {
-  color: #fbbf24;
+.themeIconSun,
+html[data-theme='dark'] .themeIconSun {
+  color: var(--text-primary);
 }
 
-.themeIconMoon {
-  color: #c7d2fe;
+.themeIconMoon,
+html[data-theme='dark'] .themeIconMoon {
+  color: var(--text-primary);
 }
 
 .terminalButton {
-  color: #ffffff;
-  border-color: var(--topbar-border);
-  background: var(--topbar-pill);
+  width: 39px;
+  height: 39px;
+  min-width: 39px;
+  border-radius: var(--radius-md);
+  border-color: var(--border);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: none;
 }
 
 .terminalButton:hover:not(:disabled) {
-  border-color: #34d399;
-  color: #34d399;
-  background: rgba(52, 211, 153, 0.15);
-}
-
-html[data-theme='dark'] .themeIconSun {
-  color: #fbbf24;
-}
-
-html[data-theme='dark'] .themeIconMoon {
-  color: #a5b4fc;
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+  background: var(--bg-subtle);
 }
 
 .githubButton {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 0.4rem 0.85rem;
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  border: 1px solid var(--topbar-border);
-  border-radius: var(--radius-pill);
-  background: var(--topbar-pill);
-  color: #ffffff;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .githubButton:hover {
-  background: var(--topbar-pill-hover);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-1px);
+  background: var(--bg-subtle);
+  border-color: var(--border-focus);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
+  .terminalButton,
+  .localeSwitcher {
+    display: none;
+  }
+
+  .toolbar {
+    gap: 6px;
+  }
+
   .githubText {
     display: none;
   }
 
   .githubButton {
-    padding: 0.45rem;
+    padding: 0;
   }
 }
