@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { usePlaygroundPath } from '@/components/providers/PlaygroundRouterProvider';
 import { useI18n } from '@/components/providers/I18nProvider';
 import { SidebarNavLink } from '@/components/organisms/SidebarNavLink';
+import { DocumentIcon } from '@/components/atoms/icons';
 import { DOCUMENT_ROUTES, PLATFORM_ROUTES, REFERENCE_DATA_ROUTES } from '@/lib/nav';
 import type { DocumentSlug, PlatformSlug, ReferenceDataSlug } from '@/lib/nav';
 import styles from './organisms.module.css';
@@ -16,7 +17,7 @@ function NavSection({
   onNavigate,
   routeKey,
 }: {
-  title: string;
+  title?: string;
   routes: readonly { slug: string }[];
   pathname: string;
   onNavigate?: () => void;
@@ -26,7 +27,7 @@ function NavSection({
 
   return (
     <section className={styles.navSection}>
-      <h2 className={styles.navSectionTitle}>{title}</h2>
+      {title ? <h2 className={styles.navSectionTitle}>{title}</h2> : null}
       <div className={styles.nav}>
         {routes.map((route) => {
           const href = `/${route.slug}`;
@@ -72,9 +73,15 @@ export function Sidebar({ className, onNavigate }: { className?: string; onNavig
 
   return (
     <aside className={`${styles.sidebar} ${className ?? ''}`.trim()}>
+      <div className={styles.sidebarHeader}>
+        <div className={styles.sidebarHeaderBrand}>
+          <DocumentIcon className={styles.sidebarHeaderIcon} />
+          <h2 className={styles.sidebarHeaderTitle}>{messages.nav.documents}</h2>
+        </div>
+      </div>
+
       <div className={styles.navGroups}>
         <NavSection
-          title={messages.nav.documents}
           routes={DOCUMENT_ROUTES}
           pathname={pathname}
           onNavigate={onNavigate}
