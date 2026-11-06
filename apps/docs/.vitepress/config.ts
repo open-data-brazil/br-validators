@@ -13,8 +13,8 @@ export default defineConfig({
       { text: 'API', link: '/api/library-api' },
       { text: 'API Reference', link: '/api-reference/' },
       { text: 'Official sources', link: '/reference/official-sources' },
-      { text: 'Playground', link: 'https://doc-raiz-playground.vercel.app/', target: '_blank' },
-      { text: 'GitHub', link: 'https://github.com/AlexandreZanata/br-validators', target: '_blank' },
+      { text: 'Playground', link: 'https://open-data-brazil.github.io/br-validators/', target: '_blank' },
+      { text: 'GitHub', link: 'https://github.com/open-data-brazil/br-validators', target: '_blank' },
     ],
     sidebar: [
       {
@@ -36,7 +36,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/AlexandreZanata/br-validators' },
+      { icon: 'github', link: 'https://github.com/open-data-brazil/br-validators' },
     ],
     footer: {
       message: 'MIT License · Algorithms trace to official Brazilian government sources.',

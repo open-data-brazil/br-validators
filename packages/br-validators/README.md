@@ -12,7 +12,7 @@ VERSION=1.10.1-data.34   # any tag from https://github.com/open-data-brazil/br-v
 npm install "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz"
 ```
 
-**Try it now → [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app)**  
+**Try it now → [open-data-brazil.github.io/br-validators](https://open-data-brazil.github.io/br-validators/)**  
 **CLI → `npm install -g https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz`**
 
 > Distributed through **GitHub Releases** only (npm `1.10.1` is the last registry version). The unscoped `br-validators` on npm is a different package.
@@ -156,7 +156,7 @@ parseBrCode(payload);
 // { ok: true, pixKey, pixKeyType, merchantName, merchantCity, amount, txid }
 ```
 
-**Playground:** [doc-raiz-playground.vercel.app/pix](https://doc-raiz-playground.vercel.app/pix) renders the QR image from `buildStaticPixBrCode` output. Official sources: [Bacen Manual BR Code](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões PIX](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf).
+**Playground:** [open-data-brazil.github.io/br-validators/pix](https://open-data-brazil.github.io/br-validators/pix/) renders the QR image from `buildStaticPixBrCode` output. Official sources: [Bacen Manual BR Code](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões PIX](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf).
 
 ### Boleto — cobrança + arrecadação
 

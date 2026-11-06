@@ -63,7 +63,15 @@ const subpaths = [
   'data-catalog',
 ];
 
+const isExport = process.env.NEXT_EXPORT === 'true' || Boolean(process.env.NEXT_PUBLIC_BASE_PATH);
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const nextConfig = {
+  ...(isExport ? { output: 'export', trailingSlash: true } : {}),
+  basePath,
+  images: {
+    unoptimized: true,
+  },
   webpack: (config) => {
     const alias =
       config.resolve.alias instanceof Array
