@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![OpenSSF Best Practices](https://img.shields.io/badge/OpenSSF%20Best%20Practices-self--certify-blue)](https://www.bestpractices.dev/en/projects)
 [![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
-[![Playground](https://img.shields.io/badge/Playground-doc--raiz--playground.vercel.app-2563eb?style=flat&logo=vercel)](https://doc-raiz-playground.vercel.app/)
+[![Playground](https://img.shields.io/badge/Playground-open--data--brazil.github.io-2563eb?style=flat&logo=github)](https://open-data-brazil.github.io/br-validators/)
 
 **100% open-source** (MIT) monorepo — TypeScript library, terminal CLI, and web playground for formatting and validating Brazilian document identifiers. Algorithms trace to official primary sources (Receita Federal, Bacen, CONTRAN, Correios, SEFAZ).
 
-> 🚀 **Playground interativo:** experimente no navegador em [**doc-raiz-playground.vercel.app**](https://doc-raiz-playground.vercel.app/) — validação 100% client-side sem envio de dados, com gerador de testes, temas claro/escuro e consultas offline.
+> 🚀 **Playground interativo:** experimente no navegador em [**open-data-brazil.github.io/br-validators**](https://open-data-brazil.github.io/br-validators/) — validação 100% client-side sem envio de dados, com gerador de testes, temas claro/escuro e consultas offline.
 
 
 | Surface | Package / URL |
@@ -19,7 +19,7 @@
 | **Express / Fastify** | [`@br-validators/express`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-express-<version>.tgz` on GitHub Releases |
 | **Vue 3** | [`@br-validators/vue`](https://github.com/open-data-brazil/br-validators/releases) — `br-validators-vue-<version>.tgz` on GitHub Releases |
 | **Documentation** | [docs.br-validators.dev](https://docs.br-validators.dev/) — VitePress deep reference (README = quick start) |
-| **Playground** | [doc-raiz-playground.vercel.app](https://doc-raiz-playground.vercel.app/) — client-side only, no PII sent to server |
+| **Playground** | [open-data-brazil.github.io/br-validators](https://open-data-brazil.github.io/br-validators/) — client-side only, no PII sent to server |
 
 Reference datasets (IBGE, Bacen banks, DDD lookup, national holidays, CNAE, CFOP, CST, LC 116, eSocial categorias, NCM, CBO, natureza jurídica, NBS, CEST, moedas, PTAX cotações, países Bacen, NF-e cUF, IRPF / INSS tables, SELIC meta, ISS municipal top 500 PIB, Incoterms, portos, aeroportos, ANP fuel prices) are embedded offline and refreshed **daily** (00:00 Brasília) — see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md). CST, LC 116, eSocial, and ISS municipal use **manual** maintainer refresh (`pnpm fetch:data:cst`, `pnpm fetch:data:lc116`, `pnpm fetch:data:esocial`, `pnpm fetch:data:iss-municipal`). Critical source failures: [data/refresh-reports/CRITICAL-ALERTS.md](data/refresh-reports/CRITICAL-ALERTS.md).
 
@@ -202,7 +202,7 @@ mask('12345678909', 'cpf');                       // { ok: true, formatted: '123
 
 ### PIX static QR Code (playground)
 
-The **[playground `/pix`](https://doc-raiz-playground.vercel.app/pix)** builds **static PIX BR Code** payloads (Bacen EMV TLV + CRC16) from a validated PIX key:
+The **[playground `/pix`](https://open-data-brazil.github.io/br-validators/pix/)** builds **static PIX BR Code** payloads (Bacen EMV TLV + CRC16) from a validated PIX key:
 
 | Mode | Amount field | Use case |
 |------|--------------|----------|

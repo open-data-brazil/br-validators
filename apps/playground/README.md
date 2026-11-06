@@ -2,7 +2,7 @@
 
 Next.js app for testing validators in the browser (100% client-side).
 
-**Production:** https://doc-raiz-playground.vercel.app/
+**Production:** https://open-data-brazil.github.io/br-validators/
 
 ## Dev
 
@@ -34,10 +34,9 @@ Used by the `/data/explorer` unified search hub (Phase 36b) with TXT export (Pha
 - `run-full-export.ts` — orchestrates full-dataset export from the hub
 - Catalog table links to `/data/explorer?dataset=<id>`; IBGE, fiscal, and bancos explorers reuse `ExportToolbar`
 
-## Deploy (Vercel)
+## Deploy (GitHub Pages)
 
-- Root directory: `apps/playground`
-- Build: `pnpm build` (from monorepo root with workspace deps)
-- Live URL: https://doc-raiz-playground.vercel.app/
+- Hosted on GitHub Pages: static HTML export via GitHub Actions (`.github/workflows/deploy-pages.yml`)
+- Live URL: https://open-data-brazil.github.io/br-validators/
 
 Official source links shown per document type.

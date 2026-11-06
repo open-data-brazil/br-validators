@@ -23,6 +23,7 @@ dist/
 coverage/
 .turbo/
 .next/
+out/
 .vitepress/cache/
 .vitepress/dist/
 apps/docs/api/

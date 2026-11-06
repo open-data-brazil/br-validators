@@ -14,7 +14,7 @@ hero:
       link: /api/library-api
     - theme: alt
       text: Try the playground
-      link: https://doc-raiz-playground.vercel.app/
+      link: https://open-data-brazil.github.io/br-validators/
 
 features:
   - title: Official algorithms
