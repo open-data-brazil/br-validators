@@ -1,7 +1,7 @@
 {
   "name": "@br-validators/cli",
-  "version": "0.11.0-alpha.0",
-  "description": "Terminal CLI for Brazilian document validation — CPF, CNPJ, CEP, IE, PIX, boleto, and more",
+  "version": "1.10.1-data.37",
+  "description": "CLI for @br-validators/core — CPF, CNPJ, NF-e, IE, PIX, boleto + detect/sanitize/generate",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -18,7 +18,16 @@
     "cli",
     "validator",
     "cpf",
-    "cnpj"
+    "cnpj",
+    "nfe",
+    "cnh",
+    "renavam",
+    "pix",
+    "boleto",
+    "inscricao-estadual",
+    "detect",
+    "sanitize",
+    "generate"
   ],
   "publishConfig": {
     "access": "public",
@@ -27,9 +36,16 @@
   "bin": {
     "br-validators": "dist/index.js"
   },
+  "exports": {
+    ".": "./dist/index.js",
+    "./run-captured": {
+      "types": "./dist/run-captured.d.ts",
+      "default": "./dist/run-captured.js"
+    }
+  },
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "node ../../scripts/assert-ci-publish.mjs && pnpm run build",
     "pretest": "pnpm run build",
     "pretest:coverage": "pnpm run build",
     "pretypecheck": "pnpm --filter @br-validators/core build",

@@ -1,0 +1,29 @@
+{
+  "id": "ptax",
+  "nome": "Bacen PTAX Fechamento",
+  "fonte": "Banco Central Olinda PTAX API — Fechamento PTAX",
+  "endpoints": [
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
+  ],
+  "capturadoEm": "2026-11-06",
+  "atualizadoEm": "2026-11-06T10:16:36.255Z",
+  "contagens": {
+    "cotacoes": 860,
+    "moedas": 10,
+    "diasUteis": 86
+  },
+  "alteracoes": {
+    "adicionados": 10,
+    "removidos": 10,
+    "alterados": 0,
+    "comparadoCom": "2026-11-05"
+  },
+  "verificacao": {
+    "agendamento": "diario",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-11-06T10:16:36.255Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#ptax-cotacoes",
+  "janelaDiasUteis": 90
+}

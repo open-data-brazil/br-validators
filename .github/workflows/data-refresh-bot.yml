@@ -1,0 +1,140 @@
+name: Data refresh bot
+
+# Daily 00:00 America/Sao_Paulo (UTC-3) → 03:00 UTC
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Report only — skip fetch'
+        type: boolean
+        default: false
+      force_publish:
+        description: 'After verify, always PATCH bump + tag (even if no drift)'
+        type: boolean
+        default: false
+      reason:
+        description: 'Audit reason (required when force_publish=true)'
+        type: string
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: data-refresh-bot
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      DATA_REFRESH_DIRECT_PUSH: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.DATA_REFRESH_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Validate force_publish reason
+        if: inputs.force_publish == true
+        run: |
+          if [ -z "${{ inputs.reason }}" ]; then
+            echo "reason input is required when force_publish=true"
+            exit 1
+          fi
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Refresh reference datasets
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            pnpm data:refresh:report
+          else
+            pnpm data:refresh
+          fi
+
+      - name: Verify monorepo
+        run: pnpm verify
+
+      - name: Write job summary
+        if: always()
+        run: |
+          if [ -f data/refresh-reports/job-summary.md ]; then
+            cat data/refresh-reports/job-summary.md >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f data/refresh-reports/latest.json ]; then
+            echo '### Data refresh report' >> "$GITHUB_STEP_SUMMARY"
+            cat data/refresh-reports/latest.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Detect dataset drift
+        id: drift
+        run: pnpm exec tsx scripts/ci/eval-patch-release.ts
+
+      - name: Bump PATCH version
+        if: steps.drift.outputs.changed != '0' || inputs.force_publish == true
+        id: bump
+        run: pnpm exec tsx scripts/bump-data-patch.ts --write-changelog --skip-clean-check >> "$GITHUB_OUTPUT"
+
+      - name: Publish PATCH release (data drift)
+        if: steps.drift.outputs.changed != '0' || inputs.force_publish == true
+        id: publish_release
+        env:
+          DATA_REFRESH_REASON: ${{ inputs.reason }}
+        run: |
+          DIRECT=""
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" = "true" ]; then
+            DIRECT="--direct-push"
+          fi
+          node scripts/data-refresh-publish.mjs \
+            --mode release \
+            --version "${{ steps.bump.outputs.VERSION }}" \
+            --tag "${{ steps.bump.outputs.TAG }}" \
+            $DIRECT
+
+      - name: Commit reports only (no drift)
+        if: >-
+          steps.drift.outputs.changed == '0' &&
+          inputs.force_publish != true &&
+          inputs.dry_run != true
+        id: publish_reports
+        run: |
+          DIRECT=""
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" = "true" ]; then
+            DIRECT="--direct-push"
+          fi
+          node scripts/data-refresh-publish.mjs --mode reports $DIRECT
+
+      - name: Publish summary
+        if: always()
+        run: |
+          echo "### Publish result" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.publish_release.outputs.publish_method }}" ]; then
+            echo "- Release: **${{ steps.publish_release.outputs.publish_method }}**" >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "${{ steps.publish_release.outputs.pr_url }}" ]; then
+              echo "- PR: ${{ steps.publish_release.outputs.pr_url }}" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          elif [ -n "${{ steps.publish_reports.outputs.publish_method }}" ]; then
+            echo "- Reports: **${{ steps.publish_reports.outputs.publish_method }}**" >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "${{ steps.publish_reports.outputs.pr_url }}" ]; then
+              echo "- PR: ${{ steps.publish_reports.outputs.pr_url }}" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- No publish step ran (dry run or no changes)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ env.DATA_REFRESH_DIRECT_PUSH }}" != "true" ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "> Set repository secret \`DATA_REFRESH_GITHUB_TOKEN\` (PAT with \`main\` bypass) for fully automated push + tag without PR." >> "$GITHUB_STEP_SUMMARY"
+          fi

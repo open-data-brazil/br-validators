@@ -1,0 +1,3222 @@
+[
+  {
+    "codigo": "001",
+    "ispb": "00000000",
+    "nome": "Banco do Brasil S.A.",
+    "nomeReduzido": "BCO DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "003",
+    "ispb": "04902979",
+    "nome": "BANCO DA AMAZONIA S.A.",
+    "nomeReduzido": "BCO DA AMAZONIA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "004",
+    "ispb": "07237373",
+    "nome": "Banco do Nordeste do Brasil S.A.",
+    "nomeReduzido": "BCO DO NORDESTE DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "007",
+    "ispb": "33657248",
+    "nome": "BANCO NACIONAL DE DESENVOLVIMENTO ECONOMICO E SOCIAL",
+    "nomeReduzido": "BNDES",
+    "participaCompe": false
+  },
+  {
+    "codigo": "009",
+    "ispb": "00394460",
+    "nome": "Secretaria do Tesouro Nacional - STN",
+    "nomeReduzido": "STN",
+    "participaCompe": false
+  },
+  {
+    "codigo": "010",
+    "ispb": "81723108",
+    "nome": "CREDICOAMO CREDITO RURAL COOPERATIVA",
+    "nomeReduzido": "CREDICOAMO",
+    "participaCompe": true
+  },
+  {
+    "codigo": "011",
+    "ispb": "61809182",
+    "nome": "UBS (BRASIL) CORRETORA DE VALORES S.A.",
+    "nomeReduzido": "UBS (BRASIL) CORRETORA DE VALORES S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "012",
+    "ispb": "04866275",
+    "nome": "Banco Inbursa S.A.",
+    "nomeReduzido": "BANCO INBURSA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "014",
+    "ispb": "09274232",
+    "nome": "STATE STREET BRASIL S.A. - BANCO COMERCIAL",
+    "nomeReduzido": "STATE STREET BR S.A. BCO COMERCIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "015",
+    "ispb": "02819125",
+    "nome": "UBS BB CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "UBS BB CCTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "016",
+    "ispb": "04715685",
+    "nome": "COOPERATIVA DE CRÉDITO MÚTUO DOS DESPACHANTES DE TRÂNSITO DE SANTA CATARINA E RIO GRANDE DO SUL - SICOOB CREDITRAN",
+    "nomeReduzido": "CCM DESP TRÂNS SC E RS",
+    "participaCompe": false
+  },
+  {
+    "codigo": "017",
+    "ispb": "42272526",
+    "nome": "BNY Mellon Banco S.A.",
+    "nomeReduzido": "BNY MELLON BCO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "018",
+    "ispb": "57839805",
+    "nome": "Banco Tricury S.A.",
+    "nomeReduzido": "BCO TRICURY S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "021",
+    "ispb": "28127603",
+    "nome": "BANESTES S.A. BANCO DO ESTADO DO ESPIRITO SANTO",
+    "nomeReduzido": "BCO BANESTES S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "023",
+    "ispb": "53720128",
+    "nome": "CONTA SIMPLES SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CONTA SIMPLES SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "024",
+    "ispb": "10866788",
+    "nome": "Banco Bandepe S.A.",
+    "nomeReduzido": "BCO BANDEPE S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "025",
+    "ispb": "03323840",
+    "nome": "Banco Alfa S.A.",
+    "nomeReduzido": "BCO ALFA S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "033",
+    "ispb": "90400888",
+    "nome": "BANCO SANTANDER (BRASIL) S.A.",
+    "nomeReduzido": "BCO SANTANDER (BRASIL) S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "036",
+    "ispb": "06271464",
+    "nome": "Banco Bradesco BBI S.A.",
+    "nomeReduzido": "BCO BBI S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "037",
+    "ispb": "04913711",
+    "nome": "Banco do Estado do Pará S.A.",
+    "nomeReduzido": "BCO DO EST. DO PA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "040",
+    "ispb": "03609817",
+    "nome": "Banco Cargill S.A.",
+    "nomeReduzido": "BCO CARGILL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "041",
+    "ispb": "92702067",
+    "nome": "Banco do Estado do Rio Grande do Sul S.A.",
+    "nomeReduzido": "BCO DO ESTADO DO RS S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "047",
+    "ispb": "13009717",
+    "nome": "Banco do Estado de Sergipe S.A.",
+    "nomeReduzido": "BCO DO EST. DE SE S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "060",
+    "ispb": "04913129",
+    "nome": "CONFIDENCE SOCIEDADE CORRETORA DE CAMBIO S.A.",
+    "nomeReduzido": "CONFIDENCE CC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "063",
+    "ispb": "04184779",
+    "nome": "Banco Bradescard S.A.",
+    "nomeReduzido": "BANCO BRADESCARD",
+    "participaCompe": true
+  },
+  {
+    "codigo": "064",
+    "ispb": "04332281",
+    "nome": "GOLDMAN SACHS DO BRASIL BANCO MULTIPLO S.A.",
+    "nomeReduzido": "GOLDMAN SACHS DO BRASIL BM S.A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "065",
+    "ispb": "48795256",
+    "nome": "Banco AndBank (Brasil) S.A.",
+    "nomeReduzido": "BCO ANDBANK S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "066",
+    "ispb": "02801938",
+    "nome": "BANCO MORGAN STANLEY S.A.",
+    "nomeReduzido": "BCO MORGAN STANLEY S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "069",
+    "ispb": "61033106",
+    "nome": "Banco Crefisa S.A.",
+    "nomeReduzido": "BCO CREFISA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "070",
+    "ispb": "00000208",
+    "nome": "BRB - BANCO DE BRASILIA S.A.",
+    "nomeReduzido": "BRB - BCO DE BRASILIA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "074",
+    "ispb": "03017677",
+    "nome": "Banco J. Safra S.A.",
+    "nomeReduzido": "BCO. J.SAFRA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "075",
+    "ispb": "03532415",
+    "nome": "BANCO ABN AMRO CLEARING S.A.",
+    "nomeReduzido": "BANCO ABN AMRO CLEARING S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "076",
+    "ispb": "07656500",
+    "nome": "Banco KDB do Brasil S.A.",
+    "nomeReduzido": "BCO KDB BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "077",
+    "ispb": "00416968",
+    "nome": "Banco Inter S.A.",
+    "nomeReduzido": "BANCO INTER",
+    "participaCompe": true
+  },
+  {
+    "codigo": "078",
+    "ispb": "34111187",
+    "nome": "Haitong Banco de Investimento do Brasil S.A.",
+    "nomeReduzido": "HAITONG BI DO BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "079",
+    "ispb": "09516419",
+    "nome": "PICPAY BANK - BANCO MÚLTIPLO S.A",
+    "nomeReduzido": "PICPAY BANK - BANCO MÚLTIPLO S.A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "080",
+    "ispb": "73622748",
+    "nome": "BT CORRETORA DE CÂMBIO LTDA.",
+    "nomeReduzido": "BT CC LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "081",
+    "ispb": "10264663",
+    "nome": "BancoSeguro S.A.",
+    "nomeReduzido": "BANCOSEGURO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "082",
+    "ispb": "07679404",
+    "nome": "BANCO TOPÁZIO S.A.",
+    "nomeReduzido": "BANCO TOPÁZIO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "083",
+    "ispb": "10690848",
+    "nome": "Banco da China Brasil S.A.",
+    "nomeReduzido": "BCO DA CHINA BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "084",
+    "ispb": "02398976",
+    "nome": "SISPRIME DO BRASIL - COOPERATIVA DE CRÉDITO",
+    "nomeReduzido": "SISPRIME DO BRASIL - COOP",
+    "participaCompe": true
+  },
+  {
+    "codigo": "085",
+    "ispb": "05463212",
+    "nome": "Cooperativa Central de Crédito - Ailos",
+    "nomeReduzido": "COOPCENTRAL AILOS",
+    "participaCompe": true
+  },
+  {
+    "codigo": "089",
+    "ispb": "62109566",
+    "nome": "CREDISAN COOPERATIVA DE CRÉDITO",
+    "nomeReduzido": "CREDISAN CC",
+    "participaCompe": true
+  },
+  {
+    "codigo": "093",
+    "ispb": "07945233",
+    "nome": "PÓLOCRED   SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LTDA.",
+    "nomeReduzido": "POLOCRED SCMEPP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "094",
+    "ispb": "11758741",
+    "nome": "Banco Finaxis S.A.",
+    "nomeReduzido": "BANCO FINAXIS",
+    "participaCompe": false
+  },
+  {
+    "codigo": "095",
+    "ispb": "11703662",
+    "nome": "BANCO TRAVELEX S.A.",
+    "nomeReduzido": "BANCO TRAVELEX S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "096",
+    "ispb": "00997185",
+    "nome": "Banco B3 S.A.",
+    "nomeReduzido": "BCO B3 S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "097",
+    "ispb": "04632856",
+    "nome": "CREDISIS - CENTRAL DE COOPERATIVAS DE CRÉDITO",
+    "nomeReduzido": "CREDISIS - CENTRAL DE COOPERATIVAS DE CRÉDITO",
+    "participaCompe": true
+  },
+  {
+    "codigo": "099",
+    "ispb": "03046391",
+    "nome": "UNIPRIME CENTRAL NACIONAL - CENTRAL NACIONAL DE COOPERATIVA DE CREDITO",
+    "nomeReduzido": "UNIPRIME COOPCENTRAL LTDA.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "100",
+    "ispb": "00806535",
+    "nome": "Planner Corretora de Valores S.A.",
+    "nomeReduzido": "PLANNER CV S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "101",
+    "ispb": "62287735",
+    "nome": "WARREN RENA DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "WARREN RENA DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "102",
+    "ispb": "02332886",
+    "nome": "XP INVESTIMENTOS CORRETORA DE CÂMBIO,TÍTULOS E VALORES MOBILIÁRIOS S/A",
+    "nomeReduzido": "XP INVESTIMENTOS CCTVM S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "104",
+    "ispb": "00360305",
+    "nome": "CAIXA ECONOMICA FEDERAL",
+    "nomeReduzido": "CAIXA ECONOMICA FEDERAL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "105",
+    "ispb": "07652226",
+    "nome": "Lecca Crédito, Financiamento e Investimento S/A",
+    "nomeReduzido": "LECCA CFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "107",
+    "ispb": "15114366",
+    "nome": "Banco Bocom BBM S.A.",
+    "nomeReduzido": "BCO BOCOM BBM S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "111",
+    "ispb": "36113876",
+    "nome": "OLIVEIRA TRUST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIARIOS S.A.",
+    "nomeReduzido": "OLIVEIRA TRUST DTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "113",
+    "ispb": "61723847",
+    "nome": "NEON CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "NEON CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "119",
+    "ispb": "13720915",
+    "nome": "Banco Western Union do Brasil S.A.",
+    "nomeReduzido": "BCO WESTERN UNION",
+    "participaCompe": false
+  },
+  {
+    "codigo": "120",
+    "ispb": "33603457",
+    "nome": "BANCO RODOBENS S.A.",
+    "nomeReduzido": "BCO RODOBENS S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "121",
+    "ispb": "10664513",
+    "nome": "Banco Agibank S.A.",
+    "nomeReduzido": "BCO AGIBANK S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "122",
+    "ispb": "33147315",
+    "nome": "Banco Bradesco BERJ S.A.",
+    "nomeReduzido": "BCO BRADESCO BERJ S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "124",
+    "ispb": "15357060",
+    "nome": "Banco Woori Bank do Brasil S.A.",
+    "nomeReduzido": "BCO WOORI BANK DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "125",
+    "ispb": "45246410",
+    "nome": "BANCO GENIAL S.A.",
+    "nomeReduzido": "BANCO GENIAL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "126",
+    "ispb": "13220493",
+    "nome": "BR Partners Banco de Investimento S.A.",
+    "nomeReduzido": "BR PARTNERS BI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "127",
+    "ispb": "09512542",
+    "nome": "Codepe Corretora de Valores e Câmbio S.A.",
+    "nomeReduzido": "CODEPE CVC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "128",
+    "ispb": "19307785",
+    "nome": "BRAZA BANK S.A. BANCO DE CÂMBIO",
+    "nomeReduzido": "BRAZA BANK S.A. BCO DE CÂMBIO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "129",
+    "ispb": "18520834",
+    "nome": "UBS BB BANCO DE INVESTIMENTO S.A.",
+    "nomeReduzido": "UBS BB BI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "130",
+    "ispb": "09313766",
+    "nome": "CARUANA S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "CARUANA SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "131",
+    "ispb": "61747085",
+    "nome": "TULLETT PREBON BRASIL CORRETORA DE VALORES E CÂMBIO LTDA",
+    "nomeReduzido": "TULLETT PREBON BRASIL CVC LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "132",
+    "ispb": "17453575",
+    "nome": "ICBC do Brasil Banco Múltiplo S.A.",
+    "nomeReduzido": "ICBC DO BRASIL BM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "133",
+    "ispb": "10398952",
+    "nome": "CONFEDERAÇÃO NACIONAL DAS COOPERATIVAS CENTRAIS DE CRÉDITO E ECONOMIA FAMILIAR E SOLIDÁRIA - CRESOL CONFEDERAÇÃO",
+    "nomeReduzido": "CRESOL CONFEDERAÇÃO",
+    "participaCompe": true
+  },
+  {
+    "codigo": "134",
+    "ispb": "33862244",
+    "nome": "BGC LIQUIDEZ DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "BGC LIQUIDEZ DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "136",
+    "ispb": "00315557",
+    "nome": "COOPERATIVA CENTRAL DE CRÉDITO UNICRED DO BRASIL - UNICRED DO BRASIL",
+    "nomeReduzido": "UNICRED DO BRASIL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "138",
+    "ispb": "10853017",
+    "nome": "GET MONEY SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "GET MONEY CC LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "139",
+    "ispb": "55230916",
+    "nome": "Intesa Sanpaolo Brasil S.A. - Banco Múltiplo",
+    "nomeReduzido": "INTESA SANPAOLO BRASIL S.A. BM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "140",
+    "ispb": "62169875",
+    "nome": "NU INVESTIMENTOS S.A. - CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS",
+    "nomeReduzido": "NU INVESTIMENTOS S.A. - CTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "141",
+    "ispb": "09526594",
+    "nome": "BANCO MASTER DE INVESTIMENTO S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "MASTER BI S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "142",
+    "ispb": "16944141",
+    "nome": "Broker Brasil Corretora de Câmbio Ltda.",
+    "nomeReduzido": "BROKER BRASIL CC LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "143",
+    "ispb": "02992317",
+    "nome": "INTEX BANK BANCO DE CÂMBIO S.A.",
+    "nomeReduzido": "INTEX BANK BCO DE CÂMBIO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "144",
+    "ispb": "13059145",
+    "nome": "EBURY BANCO DE CÂMBIO S.A.",
+    "nomeReduzido": "EBURY BCO DE CÂMBIO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "145",
+    "ispb": "50579044",
+    "nome": "LEVYCAM - CORRETORA DE CAMBIO E VALORES LTDA.",
+    "nomeReduzido": "LEVYCAM CCV LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "146",
+    "ispb": "24074692",
+    "nome": "GUITTA CORRETORA DE CAMBIO LTDA.",
+    "nomeReduzido": "GUITTA CC LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "149",
+    "ispb": "15581638",
+    "nome": "Facta Financeira S.A. - Crédito Financiamento e Investimento",
+    "nomeReduzido": "FACTA S.A. CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "157",
+    "ispb": "09105360",
+    "nome": "ICAP do Brasil Corretora de Títulos e Valores Mobiliários Ltda.",
+    "nomeReduzido": "ICAP DO BRASIL CTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "159",
+    "ispb": "05442029",
+    "nome": "Casa do Crédito S.A. Sociedade de Crédito ao Microempreendedor",
+    "nomeReduzido": "CASA CREDITO S.A. SCM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "173",
+    "ispb": "13486793",
+    "nome": "APEX GROUP DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "APEX GROUP DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "174",
+    "ispb": "43180355",
+    "nome": "PEFISA S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "PEFISA S.A. - C.F.I.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "180",
+    "ispb": "02685483",
+    "nome": "CM CAPITAL MARKETS CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "CM CAPITAL MARKETS CCTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "183",
+    "ispb": "09210106",
+    "nome": "SOCRED S.A. - SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE",
+    "nomeReduzido": "SOCRED SA - SCMEPP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "188",
+    "ispb": "33775974",
+    "nome": "ATIVA INVESTIMENTOS S.A. CORRETORA DE TÍTULOS, CÂMBIO E VALORES",
+    "nomeReduzido": "ATIVA S.A. INVESTIMENTOS CCTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "189",
+    "ispb": "07512441",
+    "nome": "HS FINANCEIRA S/A CREDITO, FINANCIAMENTO E INVESTIMENTOS",
+    "nomeReduzido": "HS FINANCEIRA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "190",
+    "ispb": "03973814",
+    "nome": "SERVICOOP - COOPERATIVA DE CRÉDITO DOS SERVIDORES PÚBLICOS ESTADUAIS E MUNICIPAIS DO RIO GRANDE DO SUL",
+    "nomeReduzido": "SERVICOOP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "191",
+    "ispb": "04257795",
+    "nome": "Nova Futura Corretora de Títulos e Valores Mobiliários Ltda.",
+    "nomeReduzido": "NOVA FUTURA CTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "194",
+    "ispb": "20155248",
+    "nome": "UNIDA DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "UNIDA DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "195",
+    "ispb": "07799277",
+    "nome": "VALOR S/A SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "VALOR S/A SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "196",
+    "ispb": "32648370",
+    "nome": "FAIR SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "FAIR SOCIEDADE CC",
+    "participaCompe": false
+  },
+  {
+    "codigo": "197",
+    "ispb": "16501555",
+    "nome": "STONE INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "STONE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "208",
+    "ispb": "30306294",
+    "nome": "Banco BTG Pactual S.A.",
+    "nomeReduzido": "BANCO BTG PACTUAL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "212",
+    "ispb": "92894922",
+    "nome": "Banco Original S.A.",
+    "nomeReduzido": "BANCO ORIGINAL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "213",
+    "ispb": "54403563",
+    "nome": "Banco Arbi S.A.",
+    "nomeReduzido": "BCO ARBI S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "217",
+    "ispb": "91884981",
+    "nome": "Banco John Deere S.A.",
+    "nomeReduzido": "BANCO JOHN DEERE S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "218",
+    "ispb": "71027866",
+    "nome": "Banco BS2 S.A.",
+    "nomeReduzido": "BCO BS2 S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "222",
+    "ispb": "75647891",
+    "nome": "BANCO CRÉDIT AGRICOLE BRASIL S.A.",
+    "nomeReduzido": "BCO CRÉDIT AGRICOLE BR S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "224",
+    "ispb": "58616418",
+    "nome": "Banco Fibra S.A.",
+    "nomeReduzido": "BCO FIBRA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "233",
+    "ispb": "62421979",
+    "nome": "BANCO BMG SOLUÇÕES FINANCEIRAS S.A.",
+    "nomeReduzido": "BANCO BMG SOLUÇÕES FINANCEIRAS S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "237",
+    "ispb": "60746948",
+    "nome": "Banco Bradesco S.A.",
+    "nomeReduzido": "BCO BRADESCO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "241",
+    "ispb": "31597552",
+    "nome": "BANCO CLASSICO S.A.",
+    "nomeReduzido": "BCO CLASSICO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "243",
+    "ispb": "33923798",
+    "nome": "BANCO MASTER S/A - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "BANCO MASTER - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "246",
+    "ispb": "28195667",
+    "nome": "Banco ABC Brasil S.A.",
+    "nomeReduzido": "BCO ABC BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "249",
+    "ispb": "61182408",
+    "nome": "Banco Investcred Unibanco S.A.",
+    "nomeReduzido": "BANCO INVESTCRED UNIBANCO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "250",
+    "ispb": "50585090",
+    "nome": "BANCO BMG CONSIGNADO S.A.",
+    "nomeReduzido": "BANCO BMG CONSIGNADO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "254",
+    "ispb": "14388334",
+    "nome": "PARANÁ BANCO S.A.",
+    "nomeReduzido": "PARANA BCO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "259",
+    "ispb": "08609934",
+    "nome": "MONEYCORP BANCO DE CÂMBIO S.A.",
+    "nomeReduzido": "MONEYCORP BCO DE CÂMBIO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "260",
+    "ispb": "18236120",
+    "nome": "NU PAGAMENTOS S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "NU PAGAMENTOS - IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "265",
+    "ispb": "33644196",
+    "nome": "Banco Fator S.A.",
+    "nomeReduzido": "BCO FATOR S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "266",
+    "ispb": "33132044",
+    "nome": "BANCO CEDULA S.A.",
+    "nomeReduzido": "BCO CEDULA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "268",
+    "ispb": "14511781",
+    "nome": "BARI COMPANHIA HIPOTECÁRIA",
+    "nomeReduzido": "BARI CIA HIPOTECÁRIA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "269",
+    "ispb": "53518684",
+    "nome": "BANCO HSBC S.A.",
+    "nomeReduzido": "BCO HSBC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "271",
+    "ispb": "27842177",
+    "nome": "BPY CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "BPY CCTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "272",
+    "ispb": "00250699",
+    "nome": "AGK CORRETORA DE CAMBIO S.A.",
+    "nomeReduzido": "AGK CC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "273",
+    "ispb": "08253539",
+    "nome": "COOPERATIVA DE CREDITO SULCREDI AMPLEA",
+    "nomeReduzido": "COOP SULCREDI AMPLEA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "274",
+    "ispb": "11581339",
+    "nome": "BMP SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E A EMPRESA DE PEQUENO PORTE LTDA.",
+    "nomeReduzido": "BMP SCMEPP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "276",
+    "ispb": "11970623",
+    "nome": "BANCO SENFF S.A.",
+    "nomeReduzido": "BCO SENFF S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "280",
+    "ispb": "23862762",
+    "nome": "WILL FINANCEIRA S.A. CRÉDITO, FINANCIAMENTO E INVESTIMENTO - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "WILL FINANCEIRA S.A.CFI - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "281",
+    "ispb": "76461557",
+    "nome": "Cooperativa de Crédito Rural Coopavel",
+    "nomeReduzido": "CCR COOPAVEL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "283",
+    "ispb": "89960090",
+    "nome": "RB INVESTIMENTOS DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LIMITADA",
+    "nomeReduzido": "RB INVESTIMENTOS DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "288",
+    "ispb": "62237649",
+    "nome": "CAROL DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA.",
+    "nomeReduzido": "CAROL DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "289",
+    "ispb": "94968518",
+    "nome": "EFX CORRETORA DE CÂMBIO LTDA.",
+    "nomeReduzido": "EFX CC LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "290",
+    "ispb": "08561701",
+    "nome": "PAGSEGURO INTERNET INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PAGSEGURO INTERNET IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "292",
+    "ispb": "28650236",
+    "nome": "GALAPAGOS CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "GALAPAGOS DTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "293",
+    "ispb": "71590442",
+    "nome": "Lastro RDV Distribuidora de Títulos e Valores Mobiliários Ltda.",
+    "nomeReduzido": "LASTRO RDV DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "296",
+    "ispb": "04062902",
+    "nome": "OZ SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "OZ CÂMBIO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "298",
+    "ispb": "17772370",
+    "nome": "VIPS CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "VIPS CC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "299",
+    "ispb": "04814563",
+    "nome": "BANCO AFINZ S.A. - BANCO MÚLTIPLO",
+    "nomeReduzido": "BCO AFINZ S.A. - BM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "300",
+    "ispb": "33042151",
+    "nome": "Banco de la Nacion Argentina",
+    "nomeReduzido": "BCO LA NACION ARGENTINA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "301",
+    "ispb": "13370835",
+    "nome": "DOCK INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "DOCK IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "305",
+    "ispb": "40353377",
+    "nome": "FOURTRADE CORRETORA DE CÂMBIO LTDA.",
+    "nomeReduzido": "FOURTRADE COR. DE CAMBIO LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "307",
+    "ispb": "03751794",
+    "nome": "Terra Investimentos Distribuidora de Títulos e Valores Mobiliários Ltda.",
+    "nomeReduzido": "TERRA INVESTIMENTOS DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "310",
+    "ispb": "22610500",
+    "nome": "VORTX DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA.",
+    "nomeReduzido": "VORTX DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "312",
+    "ispb": "07693858",
+    "nome": "HSCM - SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LTDA.",
+    "nomeReduzido": "HSCM SCMEPP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "318",
+    "ispb": "61186680",
+    "nome": "Banco BMG S.A.",
+    "nomeReduzido": "BCO BMG S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "319",
+    "ispb": "11495073",
+    "nome": "OM DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "OM DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "320",
+    "ispb": "07450604",
+    "nome": "BANK OF CHINA (BRASIL) BANCO MÚLTIPLO S/A",
+    "nomeReduzido": "BOC BRASIL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "321",
+    "ispb": "18188384",
+    "nome": "CREFAZ SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E A EMPRESA DE PEQUENO PORTE S.A.",
+    "nomeReduzido": "CREFAZ SCMEPP SA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "322",
+    "ispb": "01073966",
+    "nome": "Cooperativa de Crédito Rural de Abelardo Luz - Sulcredi/Crediluz",
+    "nomeReduzido": "CCR DE ABELARDO LUZ",
+    "participaCompe": true
+  },
+  {
+    "codigo": "323",
+    "ispb": "10573521",
+    "nome": "MERCADO PAGO INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "MERCADO PAGO IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "324",
+    "ispb": "21332862",
+    "nome": "CARTOS SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CARTOS SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "326",
+    "ispb": "03311443",
+    "nome": "MEUTUDO S.A - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "MEUTUDO SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "329",
+    "ispb": "32402502",
+    "nome": "QI Sociedade de Crédito Direto S.A.",
+    "nomeReduzido": "QI SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "330",
+    "ispb": "00556603",
+    "nome": "BANCO BARI DE INVESTIMENTOS E FINANCIAMENTOS S.A.",
+    "nomeReduzido": "BANCO BARI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "331",
+    "ispb": "13673855",
+    "nome": "OSLO CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A",
+    "nomeReduzido": "OSLO CAPITAL DTVM SA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "332",
+    "ispb": "13140088",
+    "nome": "ACESSO SOLUÇÕES DE PAGAMENTO S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "ACESSO SOLUÇÕES DE PAGAMENTO S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "334",
+    "ispb": "15124464",
+    "nome": "BANCO BESA S.A.",
+    "nomeReduzido": "BANCO BESA S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "335",
+    "ispb": "27098060",
+    "nome": "Banco Digio S.A.",
+    "nomeReduzido": "BANCO DIGIO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "336",
+    "ispb": "31872495",
+    "nome": "Banco C6 S.A.",
+    "nomeReduzido": "BCO C6 S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "341",
+    "ispb": "60701190",
+    "nome": "ITAÚ UNIBANCO S.A.",
+    "nomeReduzido": "ITAÚ UNIBANCO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "342",
+    "ispb": "32997490",
+    "nome": "Creditas Sociedade de Crédito Direto S.A.",
+    "nomeReduzido": "CREDITAS SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "348",
+    "ispb": "33264668",
+    "nome": "Banco XP S.A.",
+    "nomeReduzido": "BCO XP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "349",
+    "ispb": "27214112",
+    "nome": "AL5 S.A. SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "AL5 S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "350",
+    "ispb": "01330387",
+    "nome": "COOPERATIVA DE CRÉDITO POPULAR DO BRASIL - CREHNOR",
+    "nomeReduzido": "COOPERATIVA DE CRÉDITO POPULAR DO BRASIL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "352",
+    "ispb": "29162769",
+    "nome": "SANTANDER CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "SANTANDER CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "355",
+    "ispb": "34335592",
+    "nome": "ÓTIMO SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "ÓTIMO SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "358",
+    "ispb": "09464032",
+    "nome": "MIDWAY S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "MIDWAY S.A. - SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "359",
+    "ispb": "05351887",
+    "nome": "ZEMA CRÉDITO, FINANCIAMENTO E INVESTIMENTO S/A",
+    "nomeReduzido": "ZEMA CFI S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "360",
+    "ispb": "02276653",
+    "nome": "TRINUS CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "TRINUS CAPITAL DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "362",
+    "ispb": "01027058",
+    "nome": "CIELO S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "CIELO IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "363",
+    "ispb": "62285390",
+    "nome": "QI CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "QI CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "364",
+    "ispb": "09089356",
+    "nome": "EFÍ S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "EFÍ S.A. - IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "365",
+    "ispb": "68757681",
+    "nome": "BINANCE BRASIL CORRETORA DE CÂMBIO E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "BINANCE BRASIL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "366",
+    "ispb": "61533584",
+    "nome": "BANCO SOCIETE GENERALE BRASIL S.A.",
+    "nomeReduzido": "BCO SOCIETE GENERALE BRASIL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "368",
+    "ispb": "08357240",
+    "nome": "Banco CSF S.A.",
+    "nomeReduzido": "BCO CSF S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "370",
+    "ispb": "61088183",
+    "nome": "Banco Mizuho do Brasil S.A.",
+    "nomeReduzido": "BCO MIZUHO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "373",
+    "ispb": "35977097",
+    "nome": "UP.P SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A.",
+    "nomeReduzido": "UP.P SEP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "374",
+    "ispb": "27351731",
+    "nome": "REALIZE SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "REALIZE SCFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "376",
+    "ispb": "33172537",
+    "nome": "BANCO J.P. MORGAN S.A.",
+    "nomeReduzido": "BCO J.P. MORGAN S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "377",
+    "ispb": "17826860",
+    "nome": "BMS SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "BMS SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "378",
+    "ispb": "01852137",
+    "nome": "BANCO BRASILEIRO DE CRÉDITO SOCIEDADE ANÔNIMA",
+    "nomeReduzido": "BCO BRASILEIRO DE CRÉDITO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "379",
+    "ispb": "01658426",
+    "nome": "COOPERFORTE COOPERATIVA DE CRÉDITO E INVESTIMENTOS LTDA",
+    "nomeReduzido": "COOP COOPERFORTE LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "380",
+    "ispb": "22896431",
+    "nome": "PICPAY INSTITUIçãO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PICPAY",
+    "participaCompe": false
+  },
+  {
+    "codigo": "381",
+    "ispb": "60814191",
+    "nome": "BANCO MERCEDES-BENZ DO BRASIL S.A.",
+    "nomeReduzido": "BCO MERCEDES-BENZ S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "382",
+    "ispb": "04307598",
+    "nome": "FIDÚCIA SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LIMITADA.",
+    "nomeReduzido": "FIDUCIA SCMEPP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "383",
+    "ispb": "21018182",
+    "nome": "EBANX INSTITUICAO DE PAGAMENTOS LTDA.",
+    "nomeReduzido": "EBANX IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "384",
+    "ispb": "11165756",
+    "nome": "GLOBAL FINANÇAS SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LTDA.",
+    "nomeReduzido": "GLOBAL SCM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "385",
+    "ispb": "03844699",
+    "nome": "COOPERATIVA DE ECONOMIA E CREDITO MUTUO DOS TRABALHADORES PORTUARIOS DA GRANDE VITORIA - CREDESTIVA.",
+    "nomeReduzido": "CECM DOS TRAB.PORT. DA G.VITOR",
+    "participaCompe": false
+  },
+  {
+    "codigo": "386",
+    "ispb": "30680829",
+    "nome": "NU FINANCEIRA S.A. - Sociedade de Crédito, Financiamento e Investimento",
+    "nomeReduzido": "NU FINANCEIRA S.A. CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "387",
+    "ispb": "03215790",
+    "nome": "Banco Toyota do Brasil S.A.",
+    "nomeReduzido": "BCO TOYOTA DO BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "389",
+    "ispb": "17184037",
+    "nome": "Banco Mercantil do Brasil S.A.",
+    "nomeReduzido": "BCO MERCANTIL DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "390",
+    "ispb": "59274605",
+    "nome": "BANCO GM S.A.",
+    "nomeReduzido": "BCO GM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "391",
+    "ispb": "08240446",
+    "nome": "COOPERATIVA DE CREDITO RURAL DE IBIAM - SULCREDI/IBIAM",
+    "nomeReduzido": "CCR DE IBIAM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "393",
+    "ispb": "59109165",
+    "nome": "Banco Volkswagen S.A.",
+    "nomeReduzido": "BCO VOLKSWAGEN S.A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "394",
+    "ispb": "07207996",
+    "nome": "Banco Bradesco Financiamentos S.A.",
+    "nomeReduzido": "BCO BRADESCO FINANC. S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "395",
+    "ispb": "08673569",
+    "nome": "F.D'GOLD - DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "F D GOLD DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "396",
+    "ispb": "13884775",
+    "nome": "MAGALUPAY INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "MAGALUPAY",
+    "participaCompe": false
+  },
+  {
+    "codigo": "397",
+    "ispb": "34088029",
+    "nome": "LISTO SOCIEDADE DE CREDITO DIRETO S.A.",
+    "nomeReduzido": "LISTO SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "398",
+    "ispb": "31749596",
+    "nome": "IDEAL CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "IDEAL CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "399",
+    "ispb": "01701201",
+    "nome": "Kirton Bank S.A. - Banco Múltiplo",
+    "nomeReduzido": "Kirton Bank",
+    "participaCompe": false
+  },
+  {
+    "codigo": "400",
+    "ispb": "05491616",
+    "nome": "COOPERATIVA DE CRÉDITO, POUPANÇA E SERVIÇOS FINANCEIROS - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "COOP CREDITAG - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "401",
+    "ispb": "15111975",
+    "nome": "IUGU INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "IUGU IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "402",
+    "ispb": "36947229",
+    "nome": "COBUCCIO S/A - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTOS",
+    "nomeReduzido": "COBUCCIO S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "403",
+    "ispb": "37880206",
+    "nome": "CORA SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "CORA SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "404",
+    "ispb": "37241230",
+    "nome": "SUMUP SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "SUMUP SCFI S.A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "406",
+    "ispb": "37715993",
+    "nome": "ACCREDITO - SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "ACCREDITO SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "407",
+    "ispb": "00329598",
+    "nome": "SEFER INVESTIMENTOS DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "SEFER INVESTIMENTOS DTVM LTDA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "408",
+    "ispb": "36586946",
+    "nome": "BONUSPAGO SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "BONUSPAGO SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "410",
+    "ispb": "05684234",
+    "nome": "PLANNER SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "PLANNER SOCIEDADE DE CRÉDITO DIRETO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "411",
+    "ispb": "05192316",
+    "nome": "Via Certa Financiadora S.A. - Crédito, Financiamento e Investimentos",
+    "nomeReduzido": "VIA CERTA FINANCIADORA S.A. - CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "412",
+    "ispb": "15173776",
+    "nome": "SOCIAL BANK BANCO MÚLTIPLO S/A",
+    "nomeReduzido": "SOCIAL BANK S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "413",
+    "ispb": "01858774",
+    "nome": "BANCO BV S.A.",
+    "nomeReduzido": "BCO BV S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "414",
+    "ispb": "37526080",
+    "nome": "LEND SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "LEND SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "415",
+    "ispb": "17157777",
+    "nome": "BANCO NACIONAL S.A.",
+    "nomeReduzido": "BCO NACIONAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "416",
+    "ispb": "19324634",
+    "nome": "LAMARA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "LAMARA SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "418",
+    "ispb": "37414009",
+    "nome": "ZIPDIN SOLUÇÕES DIGITAIS SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "ZIPDIN SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "419",
+    "ispb": "38129006",
+    "nome": "NUMBRS SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "NUMBRS SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "421",
+    "ispb": "39343350",
+    "nome": "LAR COOPERATIVA DE CRÉDITO - LAR CREDI",
+    "nomeReduzido": "CC LAR CREDI",
+    "participaCompe": true
+  },
+  {
+    "codigo": "422",
+    "ispb": "58160789",
+    "nome": "Banco Safra S.A.",
+    "nomeReduzido": "BCO SAFRA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "423",
+    "ispb": "00460065",
+    "nome": "COLUNA S/A DISTRIBUIDORA DE TITULOS E VALORES MOBILIÁRIOS",
+    "nomeReduzido": "COLUNA S.A. DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "425",
+    "ispb": "03881423",
+    "nome": "SOCINAL S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "SOCINAL S.A. CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "426",
+    "ispb": "11285104",
+    "nome": "NEON FINANCEIRA - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A",
+    "nomeReduzido": "NEON FINANCEIRA - SCFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "427",
+    "ispb": "27302181",
+    "nome": "COOPERATIVA DE CRÉDITO DOS SERVIDORES DA UNIVERSIDADE FEDERAL DO ESPIRITO SANTO",
+    "nomeReduzido": "CRED.UFES",
+    "participaCompe": false
+  },
+  {
+    "codigo": "428",
+    "ispb": "39664698",
+    "nome": "CREDSYSTEM SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CREDSYSTEM SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "430",
+    "ispb": "00204963",
+    "nome": "COOPERATIVA DE CREDITO RURAL SEARA - CREDISEARA",
+    "nomeReduzido": "CCR SEARA",
+    "participaCompe": true
+  },
+  {
+    "codigo": "433",
+    "ispb": "44077014",
+    "nome": "BR-CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "BR-CAPITAL DTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "435",
+    "ispb": "38224857",
+    "nome": "DELFINANCE SOCIEDADE DE CREDITO DIRETO S.A.",
+    "nomeReduzido": "DELFINANCE SCD S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "438",
+    "ispb": "67030395",
+    "nome": "TRUSTEE DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "TRUSTEE DTVM LTDA. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "439",
+    "ispb": "16695922",
+    "nome": "ID CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "ID CTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "440",
+    "ispb": "82096447",
+    "nome": "CREDI&GENTE - COOPERATIVA DE CRÉDITO E INVESTIMENTOS",
+    "nomeReduzido": "COOP CREDI&GENTE",
+    "participaCompe": false
+  },
+  {
+    "codigo": "443",
+    "ispb": "39416705",
+    "nome": "OCTA SOCIEDADE DE CRÉDITO DIRETO S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "OCTA SCD S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "444",
+    "ispb": "40654622",
+    "nome": "TRINUS SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "TRINUS SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "445",
+    "ispb": "35551187",
+    "nome": "PLANTAE S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "PLANTAE CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "447",
+    "ispb": "12392983",
+    "nome": "MIRAE ASSET (BRASIL) CORRETORA DE CÂMBIO, TÍTULOS  E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "MIRAE ASSET (BRASIL) CCTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "448",
+    "ispb": "39669186",
+    "nome": "HEMERA DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "HEMERA DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "449",
+    "ispb": "37555231",
+    "nome": "DM SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "DM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "450",
+    "ispb": "13203354",
+    "nome": "FITS INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "FITS IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "451",
+    "ispb": "40475846",
+    "nome": "J17 - SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "J17 - SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "452",
+    "ispb": "39676772",
+    "nome": "CREDIFIT SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CREDIFIT SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "454",
+    "ispb": "41592532",
+    "nome": "MÉRITO DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "MÉRITO DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "456",
+    "ispb": "60498557",
+    "nome": "Banco MUFG Brasil S.A.",
+    "nomeReduzido": "BCO MUFG BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "457",
+    "ispb": "39587424",
+    "nome": "UY3 SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "UY3 SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "458",
+    "ispb": "07253654",
+    "nome": "HEDGE INVESTMENTS DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "HEDGE INVESTMENTS DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "460",
+    "ispb": "42047025",
+    "nome": "UNAVANTI SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "UNAVANTI SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "461",
+    "ispb": "19540550",
+    "nome": "ASAAS GESTÃO FINANCEIRA INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "ASAAS IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "462",
+    "ispb": "39908427",
+    "nome": "STARK SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "STARK SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "463",
+    "ispb": "40434681",
+    "nome": "AZUMI DISTRIBUIDORA DE TíTULOS E VALORES MOBILIáRIOS LTDA.",
+    "nomeReduzido": "AZUMI DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "464",
+    "ispb": "60518222",
+    "nome": "Banco Sumitomo Mitsui Brasileiro S.A.",
+    "nomeReduzido": "BCO SUMITOMO MITSUI BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "465",
+    "ispb": "40083667",
+    "nome": "CAPITAL CONSIG SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CAPITAL CONSIG SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "467",
+    "ispb": "33886862",
+    "nome": "MASTER S/A CORRETORA DE CÂMBIO, TÍTULOS E VALORES MOBILIÁRIOS - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "MASTER S/A CCTVM - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "468",
+    "ispb": "04862600",
+    "nome": "PORTOSEG S.A. - CREDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "PORTOSEG S.A. CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "469",
+    "ispb": "07138049",
+    "nome": "PICPAY INVEST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "PICPAY INVEST",
+    "participaCompe": false
+  },
+  {
+    "codigo": "470",
+    "ispb": "18394228",
+    "nome": "CDC SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CDC SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "473",
+    "ispb": "33466988",
+    "nome": "Banco Caixa Geral - Brasil S.A.",
+    "nomeReduzido": "BCO CAIXA GERAL BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "475",
+    "ispb": "10371492",
+    "nome": "Banco Yamaha Motor do Brasil S.A.",
+    "nomeReduzido": "BCO YAMAHA MOTOR S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "476",
+    "ispb": "45860531",
+    "nome": "IDEA MAKER INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "IDEA MAKER IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "477",
+    "ispb": "33042953",
+    "nome": "Citibank N.A.",
+    "nomeReduzido": "CITIBANK N.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "478",
+    "ispb": "11760553",
+    "nome": "GAZINCRED S.A. SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "GAZINCRED S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "479",
+    "ispb": "60394079",
+    "nome": "Banco ItauBank S.A.",
+    "nomeReduzido": "BCO ITAUBANK S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "481",
+    "ispb": "43599047",
+    "nome": "SUPERLÓGICA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SUPERLÓGICA SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "482",
+    "ispb": "42259084",
+    "nome": "ARTTA SOCIEDADE DE CRÉDITO DIRETO S.A",
+    "nomeReduzido": "ARTTA SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "484",
+    "ispb": "36864992",
+    "nome": "APEX DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "APEX DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "487",
+    "ispb": "62331228",
+    "nome": "DEUTSCHE BANK S.A. - BANCO ALEMAO",
+    "nomeReduzido": "DEUTSCHE BANK S.A.BCO ALEMAO",
+    "participaCompe": true
+  },
+  {
+    "codigo": "488",
+    "ispb": "46518205",
+    "nome": "JPMorgan Chase Bank, National Association",
+    "nomeReduzido": "JPMORGAN CHASE BANK",
+    "participaCompe": false
+  },
+  {
+    "codigo": "495",
+    "ispb": "44189447",
+    "nome": "Banco de La Provincia de Buenos Aires",
+    "nomeReduzido": "BCO LA PROVINCIA B AIRES BCE",
+    "participaCompe": false
+  },
+  {
+    "codigo": "496",
+    "ispb": "45283173",
+    "nome": "BBVA BRASIL BANCO DE INVESTIMENTO S.A.",
+    "nomeReduzido": "BBVA BRASIL BI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "505",
+    "ispb": "32062580",
+    "nome": "BANCO UBS (BRASIL) S.A.",
+    "nomeReduzido": "BCO UBS BRASIL",
+    "participaCompe": true
+  },
+  {
+    "codigo": "506",
+    "ispb": "42066258",
+    "nome": "RJI CORRETORA DE TITULOS E VALORES MOBILIARIOS LTDA",
+    "nomeReduzido": "RJI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "507",
+    "ispb": "37229413",
+    "nome": "SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO EFÍ S.A.",
+    "nomeReduzido": "SCFI EFÍ S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "508",
+    "ispb": "61384004",
+    "nome": "AVENUE SECURITIES BANCO DE INVESTIMENTO S.A.",
+    "nomeReduzido": "AVENUE SECURITIES BI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "509",
+    "ispb": "13935893",
+    "nome": "CELCOIN INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "CELCOIN IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "510",
+    "ispb": "39738065",
+    "nome": "FFCRED SOCIEDADE DE CRÉDITO DIRETO S.A..",
+    "nomeReduzido": "FFCRED SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "511",
+    "ispb": "44683140",
+    "nome": "MAGNUM SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "MAGNUM SCD",
+    "participaCompe": true
+  },
+  {
+    "codigo": "512",
+    "ispb": "36266751",
+    "nome": "FINVEST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "FINVEST DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "513",
+    "ispb": "44728700",
+    "nome": "ATF SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "ATF SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "514",
+    "ispb": "73302408",
+    "nome": "EXIM SOCIEDADE CORRETORA DE CÂMBIO LTDA",
+    "nomeReduzido": "EXIM SCC",
+    "participaCompe": false
+  },
+  {
+    "codigo": "516",
+    "ispb": "36583700",
+    "nome": "PLACARPAY S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "PLACARPAY S.A - SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "517",
+    "ispb": "03816413",
+    "nome": "PAGUEVELOZ INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "PAGUEVELOZ IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "518",
+    "ispb": "37679449",
+    "nome": "MERCADO CRÉDITO SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "MERCADO CRÉDITO SCFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "519",
+    "ispb": "40768766",
+    "nome": "LIONS TRUST DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "LIONS TRUST DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "520",
+    "ispb": "44705774",
+    "nome": "SOMAPAY SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SOMAPAY SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "521",
+    "ispb": "44019481",
+    "nome": "PEAK SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A.",
+    "nomeReduzido": "PEAK SEP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "522",
+    "ispb": "47593544",
+    "nome": "RED SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "RED SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "523",
+    "ispb": "44292580",
+    "nome": "HR DIGITAL - SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "HR DIGITAL SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "524",
+    "ispb": "45854066",
+    "nome": "WNT CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "WNT CAPITAL DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "526",
+    "ispb": "46026562",
+    "nome": "MONETARIE SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "MONETARIE SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "527",
+    "ispb": "44478623",
+    "nome": "ATICCA - SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "ATICCA SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "528",
+    "ispb": "34829992",
+    "nome": "CBSF DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.- EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "CBSF DTVM -EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "529",
+    "ispb": "17079937",
+    "nome": "PINBANK BRASIL INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PINBANK IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "530",
+    "ispb": "47873449",
+    "nome": "SER FINANCE SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SER FINANCE SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "531",
+    "ispb": "34337707",
+    "nome": "BMP SOCIEDADE DE CRÉDITO DIRETO S.A",
+    "nomeReduzido": "BMP SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "532",
+    "ispb": "45745537",
+    "nome": "FUTURO SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "FUTURO SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "533",
+    "ispb": "22575466",
+    "nome": "SRM BANK INSTITUIÇÃO DE PAGAMENTO S/A",
+    "nomeReduzido": "SRM BANK",
+    "participaCompe": false
+  },
+  {
+    "codigo": "534",
+    "ispb": "00714671",
+    "nome": "EWALLY INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "EWALLY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "535",
+    "ispb": "39519944",
+    "nome": "OPEA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "OPEA SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "536",
+    "ispb": "20855875",
+    "nome": "NEON PAGAMENTOS S.A. - INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "NEON PAGAMENTOS S.A. IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "537",
+    "ispb": "45756448",
+    "nome": "SELECT CREDIT SOCIEDADE DE CRÉDITO AO MICROEMPREENDEDOR E À EMPRESA DE PEQUENO PORTE LTDA.",
+    "nomeReduzido": "SELECT CREDIT SCMEPP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "538",
+    "ispb": "20251847",
+    "nome": "SUDACRED SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SUDACRED SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "539",
+    "ispb": "00122327",
+    "nome": "SANTINVEST S.A. - CREDITO, FINANCIAMENTO E INVESTIMENTOS",
+    "nomeReduzido": "SANTINVEST S.A. - CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "540",
+    "ispb": "04849745",
+    "nome": "HBI SOCIEDADE DE CRÉDITO DIRETO S/A.",
+    "nomeReduzido": "HBI SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "541",
+    "ispb": "00954288",
+    "nome": "FUNDO GARANTIDOR DE CREDITOS - FGC",
+    "nomeReduzido": "FDO GARANTIDOR CRÉDITOS",
+    "participaCompe": false
+  },
+  {
+    "codigo": "542",
+    "ispb": "18189547",
+    "nome": "CLOUDWALK INSTITUIÇÃO DE PAGAMENTO E SERVICOS LTDA",
+    "nomeReduzido": "CLOUDWALK IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "543",
+    "ispb": "92825397",
+    "nome": "COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO DOS ELETRICITÁRIOS E DOS TRABALHADORES DAS EMPRESAS DO SETOR DE ENERGIA - COOPCRECE",
+    "nomeReduzido": "COOPCRECE",
+    "participaCompe": false
+  },
+  {
+    "codigo": "544",
+    "ispb": "38593706",
+    "nome": "MULTICRED SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "MULTICRED SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "546",
+    "ispb": "30980539",
+    "nome": "OKTO INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "OKTO IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "547",
+    "ispb": "45331622",
+    "nome": "BNK DIGITAL SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "BNK DIGITAL SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "548",
+    "ispb": "06249129",
+    "nome": "RPW S/A SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "RPW S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "550",
+    "ispb": "32074986",
+    "nome": "BEETELLER INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "BEETELLER IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "551",
+    "ispb": "48967968",
+    "nome": "VERT DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "VERT DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "552",
+    "ispb": "32192325",
+    "nome": "UZZIPAY INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "UZZIPAY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "553",
+    "ispb": "48707451",
+    "nome": "PERCAPITAL SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "PERCAPITAL SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "554",
+    "ispb": "28811341",
+    "nome": "BANCO STONEX S.A.",
+    "nomeReduzido": "BCO STONEX S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "555",
+    "ispb": "02682287",
+    "nome": "PAN FINANCEIRA S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTOS",
+    "nomeReduzido": "PAN FINAN",
+    "participaCompe": false
+  },
+  {
+    "codigo": "556",
+    "ispb": "40333582",
+    "nome": "SAYGO SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "SAYGO CC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "557",
+    "ispb": "30944783",
+    "nome": "PAGPRIME INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "PAGPRIME IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "559",
+    "ispb": "49288113",
+    "nome": "KANASTRA FINANCEIRA S.A, CREDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "KANASTRA CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "560",
+    "ispb": "21995256",
+    "nome": "MAG INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "MAG IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "561",
+    "ispb": "20757199",
+    "nome": "PAY4FUN INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PAY4FUN IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "562",
+    "ispb": "18684408",
+    "nome": "AZIMUT BRASIL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "AZIMUT BRASIL DTVM LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "563",
+    "ispb": "40276692",
+    "nome": "PROTEGE CASH INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PROTEGE CASH",
+    "participaCompe": false
+  },
+  {
+    "codigo": "564",
+    "ispb": "63019146",
+    "nome": "ANKOR CAPITAL - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S/A",
+    "nomeReduzido": "ANKOR CFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "565",
+    "ispb": "74014747",
+    "nome": "ÁGORA CORRETORA DE TITULOS E VALORES MOBILIARIOS S.A.",
+    "nomeReduzido": "ÁGORA CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "566",
+    "ispb": "23114447",
+    "nome": "FLAGSHIP INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "FLAGSHIP IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "567",
+    "ispb": "33040601",
+    "nome": "MERCANTIL FINANCEIRA S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO.",
+    "nomeReduzido": "MERCANTIL FINANCEIRA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "569",
+    "ispb": "12473687",
+    "nome": "CONTA PRONTA INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "CONTA PRONTA IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "571",
+    "ispb": "50489148",
+    "nome": "MONTE BRAVO CORRETORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "MONTE BRAVO CTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "572",
+    "ispb": "51414521",
+    "nome": "ALL IN CRED SOCIEDADE DE CREDITO DIRETO S.A.",
+    "nomeReduzido": "ALL IN CRED SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "573",
+    "ispb": "18282093",
+    "nome": "OXY COMPANHIA HIPOTECÁRIA",
+    "nomeReduzido": "OXY CH",
+    "participaCompe": false
+  },
+  {
+    "codigo": "574",
+    "ispb": "48756121",
+    "nome": "A55 SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "A55 SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "575",
+    "ispb": "48584954",
+    "nome": "DGBK CREDIT S.A. - SOCIEDADE DE CRÉDITO DIRETO.",
+    "nomeReduzido": "DGBK CREDIT S.A. - SOCIEDADE DE CRÉDITO DIRETO.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "576",
+    "ispb": "11351086",
+    "nome": "MERCADO BITCOIN INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "MERCADO BITCOIN IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "577",
+    "ispb": "10663610",
+    "nome": "DESENVOLVE SP - AGÊNCIA DE FOMENTO DO ESTADO DE SÃO PAULO S.A.",
+    "nomeReduzido": "AF DESENVOLVE SP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "579",
+    "ispb": "49555647",
+    "nome": "QUADRA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "QUADRA SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "585",
+    "ispb": "50946592",
+    "nome": "SETHI SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SETHI SCD SA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "586",
+    "ispb": "35810871",
+    "nome": "Z1 INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "Z1 IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "587",
+    "ispb": "37678915",
+    "nome": "FIDD DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "FIDD DTVM LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "588",
+    "ispb": "20308187",
+    "nome": "AVANCARD PROVER INSTITUIÇÃO DE PAGAMENTO LTDA",
+    "nomeReduzido": "AVANCARD PROVER IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "589",
+    "ispb": "51212088",
+    "nome": "G5 SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "G5 SCD SA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "590",
+    "ispb": "40473435",
+    "nome": "REPASSES FINANCEIROS E SOLUCOES TECNOLOGICAS INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "REPASSES FINANCEIROS E SOLUCOES TECNOLOGICAS IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "591",
+    "ispb": "02671743",
+    "nome": "BANVOX DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "BANVOX DTVM - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "592",
+    "ispb": "45548763",
+    "nome": "INSTITUIÇÃO DE PAGAMENTOS MAPS LTDA.",
+    "nomeReduzido": "MAPS IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "593",
+    "ispb": "27084098",
+    "nome": "TRANSFEERA INSTITUIÇÃO DE PAGAMENTO S.A",
+    "nomeReduzido": "TRANSFEERA IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "594",
+    "ispb": "48703388",
+    "nome": "ASA SOCIEDADE DE CRÉDITO FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "ASA SCFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "595",
+    "ispb": "19468242",
+    "nome": "IFOOD PAGO INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "IFOOD PAGO IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "596",
+    "ispb": "39696395",
+    "nome": "CACTVS INSTITUICAO DE PAGAMENTO S.A",
+    "nomeReduzido": "CACTVS IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "597",
+    "ispb": "34747388",
+    "nome": "ISSUER INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "ISSUER IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "598",
+    "ispb": "50626276",
+    "nome": "KONECT SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "KONECT SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "599",
+    "ispb": "36321990",
+    "nome": "AGORACRED S/A SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "AGORACRED S/A SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "600",
+    "ispb": "59118133",
+    "nome": "Banco Luso Brasileiro S.A.",
+    "nomeReduzido": "BCO LUSO BRASILEIRO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "604",
+    "ispb": "31895683",
+    "nome": "Banco Industrial do Brasil S.A.",
+    "nomeReduzido": "BCO INDUSTRIAL DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "610",
+    "ispb": "78626983",
+    "nome": "Banco VR S.A.",
+    "nomeReduzido": "BCO VR S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "611",
+    "ispb": "61820817",
+    "nome": "Banco Paulista S.A.",
+    "nomeReduzido": "BCO PAULISTA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "612",
+    "ispb": "31880826",
+    "nome": "Banco Guanabara S.A.",
+    "nomeReduzido": "BCO GUANABARA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "613",
+    "ispb": "60850229",
+    "nome": "Omni Banco S.A.",
+    "nomeReduzido": "OMNI BANCO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "614",
+    "ispb": "52440987",
+    "nome": "SANTS SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "SANTS SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "615",
+    "ispb": "37470405",
+    "nome": "SMART SOLUTIONS GROUP INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "SMART SOLUTIONS GROUP IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "619",
+    "ispb": "49931906",
+    "nome": "TRIO INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "TRIO IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "620",
+    "ispb": "51342763",
+    "nome": "REVOLUT SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "REVOLUT SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "623",
+    "ispb": "59285411",
+    "nome": "Banco Pan S.A.",
+    "nomeReduzido": "BANCO PAN",
+    "participaCompe": false
+  },
+  {
+    "codigo": "626",
+    "ispb": "61348538",
+    "nome": "BANCO C6 CONSIGNADO S.A.",
+    "nomeReduzido": "BCO C6 CONSIG",
+    "participaCompe": false
+  },
+  {
+    "codigo": "630",
+    "ispb": "58497702",
+    "nome": "BANCO LETSBANK S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "BANCO LETSBANK S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "632",
+    "ispb": "52586293",
+    "nome": "Z-ON SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "Z-ON SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "633",
+    "ispb": "68900810",
+    "nome": "Banco Rendimento S.A.",
+    "nomeReduzido": "BCO RENDIMENTO S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "634",
+    "ispb": "17351180",
+    "nome": "BANCO TRIANGULO S.A.",
+    "nomeReduzido": "BCO TRIANGULO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "636",
+    "ispb": "40112555",
+    "nome": "GIRO - SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "GIRO - SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "637",
+    "ispb": "60889128",
+    "nome": "BANCO SOFISA S.A.",
+    "nomeReduzido": "BCO SOFISA S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "643",
+    "ispb": "62144175",
+    "nome": "Banco Pine S.A.",
+    "nomeReduzido": "BCO PINE S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "644",
+    "ispb": "54647259",
+    "nome": "321 SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "321 SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "646",
+    "ispb": "91669747",
+    "nome": "DM SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A",
+    "nomeReduzido": "DM SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "651",
+    "ispb": "25104230",
+    "nome": "PAGARE INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PAGARE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "653",
+    "ispb": "61024352",
+    "nome": "BANCO PLENO S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "BM PLENO S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "654",
+    "ispb": "92874270",
+    "nome": "BANCO DIGIMAIS S.A.",
+    "nomeReduzido": "BCO DIGIMAIS S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "655",
+    "ispb": "59588111",
+    "nome": "Banco Votorantim S.A.",
+    "nomeReduzido": "BCO VOTORANTIM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "659",
+    "ispb": "35210410",
+    "nome": "ONEKEY PAYMENTS INSTITUICAO DE PAGAMENTO SA",
+    "nomeReduzido": "ONEKEY PAYMENTS IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "660",
+    "ispb": "34471744",
+    "nome": "PAGME INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "PAGME IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "661",
+    "ispb": "55428859",
+    "nome": "FREEX SOCIEDADE CORRETORA DE CÂMBIO S.A.",
+    "nomeReduzido": "FREEX SCC S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "662",
+    "ispb": "32708748",
+    "nome": "WE PAY OUT INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "WE PAY OUT IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "663",
+    "ispb": "44782130",
+    "nome": "ACTUAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A.",
+    "nomeReduzido": "ACTUAL DTVM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "665",
+    "ispb": "20018183",
+    "nome": "STARK BANK S.A. - INSTITUICAO DE PAGAMENTO",
+    "nomeReduzido": "STARK BANK S.A. - IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "668",
+    "ispb": "48632754",
+    "nome": "CELCOIN SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "CELCOIN SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "669",
+    "ispb": "47133056",
+    "nome": "TRANSFERO INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "TRANSFERO IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "670",
+    "ispb": "11491029",
+    "nome": "BSN PAGAMENTOS INSTITUIÇÃO DE PAGAMENTO LTDA",
+    "nomeReduzido": "BSN",
+    "participaCompe": false
+  },
+  {
+    "codigo": "671",
+    "ispb": "26264220",
+    "nome": "ZERO INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "ZERO IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "672",
+    "ispb": "53505601",
+    "nome": "STONE SOCIEDADE DE CREDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "STONE CFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "673",
+    "ispb": "08482873",
+    "nome": "COOPERATIVA DE CRÉDITO RURAL DO AGRESTE ALAGOANO - COOPERAGRE",
+    "nomeReduzido": "CCR DO AGRESTE ALAGOANO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "674",
+    "ispb": "27970567",
+    "nome": "HINOVA PAY INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "HINOVA PAY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "675",
+    "ispb": "30723871",
+    "nome": "CASAS BAHIA PAY INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "CASAS BAHIA PAY IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "676",
+    "ispb": "35479592",
+    "nome": "DUFRIO FINANCEIRA, CRÉDITO, FINANCIAMENTO E INVESTIMENTOS S.A.",
+    "nomeReduzido": "DUFRIO CFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "677",
+    "ispb": "33630661",
+    "nome": "GOWD INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "GOWD IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "678",
+    "ispb": "45716916",
+    "nome": "FIDEM SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "FIDEM SCD S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "679",
+    "ispb": "36690516",
+    "nome": "PAY INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PAY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "680",
+    "ispb": "55823094",
+    "nome": "DELTA GLOBAL SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "DELTA GLOBAL SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "681",
+    "ispb": "50871921",
+    "nome": "MT INSTITUICAO DE PAGAMENTO SA",
+    "nomeReduzido": "MT IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "682",
+    "ispb": "46505612",
+    "nome": "MONERY INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "MONERY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "683",
+    "ispb": "30507541",
+    "nome": "BRASIL CASH INSTITUICAO DE PAGAMENTO S.A",
+    "nomeReduzido": "BRASIL CASH IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "684",
+    "ispb": "56392166",
+    "nome": "HARMOS S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "HARMOS S.A. - SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "685",
+    "ispb": "26615279",
+    "nome": "TYCOON TECHNOLOGY INSTITUICAO DE PAGAMENTO S.A",
+    "nomeReduzido": "TYCOON TECHNOLOGY IIP S.A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "686",
+    "ispb": "12481100",
+    "nome": "BIZ INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "BIZ IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "687",
+    "ispb": "35340796",
+    "nome": "INCO SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A.",
+    "nomeReduzido": "INCO SEP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "688",
+    "ispb": "43978697",
+    "nome": "KIKAI SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "KIKAI SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "690",
+    "ispb": "16814330",
+    "nome": "BK INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "BK IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "692",
+    "ispb": "56198117",
+    "nome": "ZYDI SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "ZYDI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "693",
+    "ispb": "32820711",
+    "nome": "EFEX INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "EFEX IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "694",
+    "ispb": "54811417",
+    "nome": "WOOVI INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "WOOVI IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "695",
+    "ispb": "35523352",
+    "nome": "BEES INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "BEES IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "696",
+    "ispb": "50032584",
+    "nome": "LOAN BRASIL SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "LOAN BRASIL SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "697",
+    "ispb": "45056494",
+    "nome": "JM CORRETORA DE CÂMBIO LTDA.",
+    "nomeReduzido": "JM CORRETORA DE CÂMBIO",
+    "participaCompe": false
+  },
+  {
+    "codigo": "698",
+    "ispb": "58367961",
+    "nome": "BIT SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "BIT SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "699",
+    "ispb": "59396084",
+    "nome": "BFC SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "BFC SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "700",
+    "ispb": "53822116",
+    "nome": "MW INSTITUICAO DE PAGAMENTO LTDA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "MW IP LTDA. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "701",
+    "ispb": "51118615",
+    "nome": "INTEGRAÇÃO DE CRÉDITO E COBRANÇA SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "INTEGRAÇÃO DE CRÉDITO E COBRANÇA SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "703",
+    "ispb": "10440482",
+    "nome": "GETNET ADQUIRÊNCIA E SERVIÇOS PARA MEIOS DE PAGAMENTO S.A. INSTITUIÇÃO DE PAGAMENTO",
+    "nomeReduzido": "GETNET IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "704",
+    "ispb": "44663846",
+    "nome": "FESTOR INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "FESTOR IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "707",
+    "ispb": "62232889",
+    "nome": "Banco Daycoval S.A.",
+    "nomeReduzido": "BCO DAYCOVAL S.A",
+    "participaCompe": true
+  },
+  {
+    "codigo": "708",
+    "ispb": "33588252",
+    "nome": "BANCO INDUSCRED DE INVESTIMENTO S.A.",
+    "nomeReduzido": "BCO INDUSCRED DE INVESTIM. S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "712",
+    "ispb": "78632767",
+    "nome": "OURIBANK S.A. BANCO MÚLTIPLO",
+    "nomeReduzido": "OURIBANK S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "714",
+    "ispb": "00411939",
+    "nome": "FINAMAX S.A. - CREDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "FINAMAX S.A. CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "719",
+    "ispb": "33884941",
+    "nome": "BANCO MASTER MÚLTIPLO S.A. - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "BANCO MASTER MÚLTIPLO - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "741",
+    "ispb": "00517645",
+    "nome": "BANCO RIBEIRAO PRETO S.A.",
+    "nomeReduzido": "BCO RIBEIRAO PRETO S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "743",
+    "ispb": "00795423",
+    "nome": "Banco Semear S.A.",
+    "nomeReduzido": "BANCO SEMEAR",
+    "participaCompe": true
+  },
+  {
+    "codigo": "745",
+    "ispb": "33479023",
+    "nome": "Banco Citibank S.A.",
+    "nomeReduzido": "BCO CITIBANK S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "747",
+    "ispb": "01023570",
+    "nome": "Banco Rabobank International Brasil S.A.",
+    "nomeReduzido": "BCO RABOBANK INTL BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "748",
+    "ispb": "01181521",
+    "nome": "BANCO COOPERATIVO SICREDI S.A.",
+    "nomeReduzido": "BANCO COOPERATIVO SICREDI",
+    "participaCompe": true
+  },
+  {
+    "codigo": "751",
+    "ispb": "29030467",
+    "nome": "Scotiabank Brasil S.A. Banco Múltiplo",
+    "nomeReduzido": "Scotiabank Brasil",
+    "participaCompe": false
+  },
+  {
+    "codigo": "752",
+    "ispb": "01522368",
+    "nome": "Banco BNP Paribas Brasil S.A.",
+    "nomeReduzido": "BCO BNP PARIBAS BRASIL S A",
+    "participaCompe": true
+  },
+  {
+    "codigo": "753",
+    "ispb": "74828799",
+    "nome": "Novo Banco Continental S.A. - Banco Múltiplo",
+    "nomeReduzido": "NOVO BCO CONTINENTAL S.A. - BM",
+    "participaCompe": true
+  },
+  {
+    "codigo": "754",
+    "ispb": "76543115",
+    "nome": "Banco Sistema S.A.",
+    "nomeReduzido": "BANCO SISTEMA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "755",
+    "ispb": "62073200",
+    "nome": "Bank of America Merrill Lynch Banco Múltiplo S.A.",
+    "nomeReduzido": "BOFA MERRILL LYNCH BM S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "756",
+    "ispb": "02038232",
+    "nome": "BANCO COOPERATIVO SICOOB S.A. - BANCO SICOOB",
+    "nomeReduzido": "BANCO SICOOB S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "757",
+    "ispb": "02318507",
+    "nome": "BANCO KEB HANA DO BRASIL S.A.",
+    "nomeReduzido": "BCO KEB HANA DO BRASIL S.A.",
+    "participaCompe": true
+  },
+  {
+    "codigo": "759",
+    "ispb": "42963742",
+    "nome": "BANSUR JM SOCIEDADE DE CRÉDITO DIRETO S/A",
+    "nomeReduzido": "BANSUR JM SCD S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "760",
+    "ispb": "34139916",
+    "nome": "EMCASH SERVIÇOS FINANCEIROS SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A.",
+    "nomeReduzido": "EMCASH SERV FINANC SEP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "761",
+    "ispb": "53842122",
+    "nome": "URBANO S.A. - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "URBANO S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "763",
+    "ispb": "56106523",
+    "nome": "VUE INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "VUE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "764",
+    "ispb": "04306351",
+    "nome": "INDEPENDÊNCIA COOPERATIVA DE CRÉDITO E INVESTIMENTO - INDEPENDÊNCIA COOPERATIVA DE CRÉDITO",
+    "nomeReduzido": "INDEPENDÊNCIA CC",
+    "participaCompe": false
+  },
+  {
+    "codigo": "765",
+    "ispb": "37753531",
+    "nome": "PAGSMILE INSTITUIÇÃO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "PAGSMILE IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "766",
+    "ispb": "52833288",
+    "nome": "LB PAY INSTITUIÇÃO DE PAGAMENTO LTDA",
+    "nomeReduzido": "LB PAY IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "767",
+    "ispb": "62264924",
+    "nome": "QORE DISTRIBUIDORA DE TITULOS E VALORES MOBILIÁRIOS LTDA",
+    "nomeReduzido": "QORE",
+    "participaCompe": false
+  },
+  {
+    "codigo": "768",
+    "ispb": "20443996",
+    "nome": "BECKER FINANCEIRA S.A. - CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "BECKER FINANCEIRA SA - CFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "769",
+    "ispb": "24313102",
+    "nome": "99PAY INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "99PAY IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "770",
+    "ispb": "38320462",
+    "nome": "V3 INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "V3 IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "771",
+    "ispb": "57824223",
+    "nome": "WX INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "WX IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "772",
+    "ispb": "20833992",
+    "nome": "COOPERATIVA DE CRÉDITO MÚTUO DOS EMPREGADOS DO CENTRO UNIVERSITÁRIO NEWTON PAIVA LTDA. - CREDIPAIVA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "CC MECUNP - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "participaCompe": false
+  },
+  {
+    "codigo": "773",
+    "ispb": "53908413",
+    "nome": "KIWIFY INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "KIWIFY IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "774",
+    "ispb": "33959738",
+    "nome": "MOVA SOCIEDADE DE EMPRÉSTIMO ENTRE PESSOAS S.A.",
+    "nomeReduzido": "MOVA SEP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "775",
+    "ispb": "47381104",
+    "nome": "CONTAAZUL INSTITUICAO DE PAGAMENTO LTDA.",
+    "nomeReduzido": "CONTAAZUL IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "778",
+    "ispb": "58674454",
+    "nome": "PB SOCIEDADE DE CREDITO DIRETO S.A.",
+    "nomeReduzido": "PB SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "780",
+    "ispb": "12102128",
+    "nome": "SAFETYPAY BRASIL INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "SAFETYPAY BRASIL IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "781",
+    "ispb": "58006471",
+    "nome": "BASE DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS LTDA.",
+    "nomeReduzido": "BASE DTVM",
+    "participaCompe": false
+  },
+  {
+    "codigo": "783",
+    "ispb": "31680151",
+    "nome": "SWAP INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "SWAP IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "785",
+    "ispb": "53058329",
+    "nome": "LA FINTECA INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "LA FINTECA IP LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "786",
+    "ispb": "52076716",
+    "nome": "AWX BRASIL  INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "AWX BRASIL IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "787",
+    "ispb": "10789035",
+    "nome": "ATTRUS INSTITUIÇÃO DE PAGAMENTO S/A",
+    "nomeReduzido": "ATTRUS IP S/A",
+    "participaCompe": false
+  },
+  {
+    "codigo": "788",
+    "ispb": "35713491",
+    "nome": "PROTOTYPE INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "PROTOTYPE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "789",
+    "ispb": "57654096",
+    "nome": "APUSDIGITAL INSTITUICAO DE PAGAMENTO LTDA",
+    "nomeReduzido": "APUSDIGITAL IP LTDA.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "790",
+    "ispb": "54024532",
+    "nome": "MAX INSTITUIÇÃO DE PAGAMENTO LTDA",
+    "nomeReduzido": "MAX IP",
+    "participaCompe": false
+  },
+  {
+    "codigo": "791",
+    "ispb": "62448932",
+    "nome": "MULTIPLIKE FINANCEIRA S.A. SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO",
+    "nomeReduzido": "MULTIPLIKE FINANCEIRA S.A. SCFI",
+    "participaCompe": false
+  },
+  {
+    "codigo": "792",
+    "ispb": "44921281",
+    "nome": "NIXFIN SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "NIXFIN SCD",
+    "participaCompe": false
+  },
+  {
+    "codigo": "793",
+    "ispb": "61021673",
+    "nome": "MAGALUPAY - SOCIEDADE DE CRÉDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
+    "nomeReduzido": "MAGALUPAY SCFI S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "794",
+    "ispb": "44323831",
+    "nome": "ATUAL SOCIEDADE CORRETORA DE CÂMBIO LTDA",
+    "nomeReduzido": "ATUAL CC LTDA",
+    "participaCompe": false
+  },
+  {
+    "codigo": "795",
+    "ispb": "52067630",
+    "nome": "BANCO TRATON BRASIL S.A.",
+    "nomeReduzido": "BANCO TRATON BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "803",
+    "ispb": "25021356",
+    "nome": "DLOCAL BRASIL INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "DLOCAL BRASIL IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "804",
+    "ispb": "32343119",
+    "nome": "MÊNTORE INSTITUIÇÃO DE PAGAMENTO S.A.",
+    "nomeReduzido": "MÊNTORE IP S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "805",
+    "ispb": "38486817",
+    "nome": "BANCO DE DESENVOLVIMENTO DE MINAS GERAIS S.A.-BDMG",
+    "nomeReduzido": "BCO DES. DE MG S.A.",
+    "participaCompe": false
+  }
+]

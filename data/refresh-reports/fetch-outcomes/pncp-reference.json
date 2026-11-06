@@ -1,0 +1,18 @@
+{
+  "datasetId": "pncp-reference",
+  "status": "ok",
+  "endpoints": [
+    "https://pncp.gov.br/api/pncp/v1/modalidades",
+    "https://pncp.gov.br/api/pncp/v1/amparos-legais",
+    "https://pncp.gov.br/api/pncp/v1/modos-disputas",
+    "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-convocatorios",
+    "https://pncp.gov.br/api/pncp/v1/tipos-contratos",
+    "https://pncp.gov.br/api/pncp/v1/criterios-julgamentos",
+    "https://pncp.gov.br/api/pncp/v1/tipos-instrumentos-cobranca",
+    "https://pncp.gov.br/api/pncp/v1/fontes-orcamentarias"
+  ],
+  "attempts": 5,
+  "checkedAt": "2026-11-06T10:36:14.910Z",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "message": "PNCP reference tables written."
+}

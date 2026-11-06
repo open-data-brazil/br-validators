@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { AppProviders } from '@/components/providers/AppProviders';
 import { SidebarLayout } from '@/components/templates/SidebarLayout';
 import '../styles/globals.css';
 
@@ -8,18 +9,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0b1020',
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const themeScript = `
+  const bootScript = `
     (function () {
       try {
-        var stored = localStorage.getItem('theme');
-        var value = stored === 'light' || stored === 'dark'
-          ? stored
+        var storedTheme = localStorage.getItem('theme');
+        var theme = storedTheme === 'light' || storedTheme === 'dark'
+          ? storedTheme
           : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        document.documentElement.dataset.theme = value;
+        document.documentElement.dataset.theme = theme;
+
+        var storedLocale = localStorage.getItem('locale');
+        var locale = storedLocale === 'en' || storedLocale === 'pt' ? storedLocale : 'pt';
+        document.documentElement.dataset.locale = locale;
+        document.documentElement.lang = locale === 'en' ? 'en' : 'pt-BR';
       } catch (_) {}
     })();
   `;
@@ -27,8 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <SidebarLayout>{children}</SidebarLayout>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <AppProviders>
+          <SidebarLayout>{children}</SidebarLayout>
+        </AppProviders>
       </body>
     </html>
   );

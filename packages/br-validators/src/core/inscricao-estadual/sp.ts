@@ -26,7 +26,7 @@ export function validateIeSp(input: string): InscricaoEstadualValidationResult {
   }
 
   if (/[Pp]/.test(trimmed)) {
-    return failure('UNSUPPORTED_FORMAT', 'SP rural IE format (P…) is not supported in v1');
+    return failure('UNSUPPORTED_FORMAT', 'SP rural IE format (P…) requires validateIeProdutorRural');
   }
 
   if (!SP_MASK_PATTERN.test(trimmed)) {

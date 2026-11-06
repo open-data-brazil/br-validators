@@ -1,0 +1,21 @@
+{
+  "source": "https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF",
+  "minPrefixes": 20000,
+  "maxPrefixes": 50000,
+  "golden": {
+    "saoPauloPrefix": {
+      "prefixo": "01310",
+      "cep": "01310100",
+      "uf": "SP",
+      "codigoIbge": 3550308,
+      "cidadeContains": "Paulo"
+    },
+    "rioPrefix": {
+      "prefixo": "20040",
+      "cep": "20040020",
+      "uf": "RJ",
+      "codigoIbge": 3304557,
+      "cidadeContains": "Rio"
+    }
+  }
+}

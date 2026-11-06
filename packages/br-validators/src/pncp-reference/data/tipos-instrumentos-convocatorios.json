@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nome": "Edital",
+    "descricao": "Instrumento convocatório utilizado no leilão, no diálogo competitivo, no concurso, na concorrência e no pregão.",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Aviso de Contratação Direta",
+    "descricao": "Instrumento convocatório utilizado na Dispensa com Disputa.",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Ato que autoriza a Contratação Direta",
+    "descricao": "Instrumento convocatório utilizado na Dispensa sem Disputa ou Inexigibilidade.",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Edital de Chamamento Público",
+    "descricao": "Instrumento convocatório utilizado para processos auxiliares de manifestação de interesse, de pré-qualificação e de credenciamento.",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Não se Aplica",
+    "descricao": "Não se Aplica",
+    "ativo": false
+  }
+]

@@ -1,0 +1,252 @@
+[
+  {
+    "codigoIbge": 2905701,
+    "nome": "Camaçari",
+    "uf": "BA"
+  },
+  {
+    "codigoIbge": 2303709,
+    "nome": "Caucaia",
+    "uf": "CE"
+  },
+  {
+    "codigoIbge": 2304285,
+    "nome": "Eusébio",
+    "uf": "CE"
+  },
+  {
+    "codigoIbge": 5213103,
+    "nome": "Mineiros",
+    "uf": "GO"
+  },
+  {
+    "codigoIbge": 3131703,
+    "nome": "Itabira",
+    "uf": "MG"
+  },
+  {
+    "codigoIbge": 3136702,
+    "nome": "Juiz de Fora",
+    "uf": "MG"
+  },
+  {
+    "codigoIbge": 1504208,
+    "nome": "Marabá",
+    "uf": "PA"
+  },
+  {
+    "codigoIbge": 1506807,
+    "nome": "Santarém",
+    "uf": "PA"
+  },
+  {
+    "codigoIbge": 4109401,
+    "nome": "Guarapuava",
+    "uf": "PR"
+  },
+  {
+    "codigoIbge": 4118204,
+    "nome": "Paranaguá",
+    "uf": "PR"
+  },
+  {
+    "codigoIbge": 3300100,
+    "nome": "Angra dos Reis",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3301009,
+    "nome": "Campos dos Goytacazes",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3302007,
+    "nome": "Itaguaí",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3302403,
+    "nome": "Macaé",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3302601,
+    "nome": "Mangaratiba",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3304003,
+    "nome": "Piraí",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3304151,
+    "nome": "Quissamã",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3304524,
+    "nome": "Rio das Ostras",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 3305505,
+    "nome": "Saquarema",
+    "uf": "RJ"
+  },
+  {
+    "codigoIbge": 4303004,
+    "nome": "Cachoeira do Sul",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4304606,
+    "nome": "Canoas",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4305108,
+    "nome": "Caxias do Sul",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4308607,
+    "nome": "Garibaldi",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4316907,
+    "nome": "Santa Maria",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4320008,
+    "nome": "Sapucaia do Sul",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4322400,
+    "nome": "Uruguaiana",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4322509,
+    "nome": "Vacaria",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 4323002,
+    "nome": "Viamão",
+    "uf": "RS"
+  },
+  {
+    "codigoIbge": 3505500,
+    "nome": "Barretos",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3510401,
+    "nome": "Capivari",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3513801,
+    "nome": "Diadema",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3518800,
+    "nome": "Guarulhos",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3523909,
+    "nome": "Itu",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3524303,
+    "nome": "Jaboticabal",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3525904,
+    "nome": "Jundiaí",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3529302,
+    "nome": "Matão",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3529401,
+    "nome": "Mauá",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3533908,
+    "nome": "Olímpia",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3536505,
+    "nome": "Paulínia",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3541000,
+    "nome": "Praia Grande",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3543303,
+    "nome": "Ribeirão Pires",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3543907,
+    "nome": "Rio Claro",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3547809,
+    "nome": "Santo André",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3548500,
+    "nome": "Santos",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3548708,
+    "nome": "São Bernardo do Campo",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3548807,
+    "nome": "São Caetano do Sul",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3549904,
+    "nome": "São José dos Campos",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3552205,
+    "nome": "Sorocaba",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3552502,
+    "nome": "Suzano",
+    "uf": "SP"
+  },
+  {
+    "codigoIbge": 3555406,
+    "nome": "Ubatuba",
+    "uf": "SP"
+  }
+]

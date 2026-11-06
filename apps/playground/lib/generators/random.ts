@@ -1,11 +1,24 @@
-export function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+export type PlaygroundRng = () => number;
+
+export function mulberry32(seed: number): PlaygroundRng {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
 
-export function randomDigits(length: number) {
-  return Array.from({ length }, () => String(randomInt(0, 9))).join('');
+export function randomDigits(rng: PlaygroundRng, count: number): string {
+  let value = '';
+  for (let index = 0; index < count; index++) {
+    value += String(Math.floor(rng() * 10));
+  }
+  return value;
 }
 
-export function randomAlpha(length: number) {
-  return Array.from({ length }, () => String.fromCharCode(65 + randomInt(0, 25))).join('');
+export function pickItem<T>(rng: PlaygroundRng, items: readonly T[]): T {
+  const index = Math.floor(rng() * items.length);
+  return items[index] ?? items[0];
 }

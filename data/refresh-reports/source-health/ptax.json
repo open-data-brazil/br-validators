@@ -1,0 +1,15 @@
+{
+  "datasetId": "ptax",
+  "endpoints": [
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/swagger-ui3"
+  ],
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-11-06",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "outcomeStatus": "ok"
+}

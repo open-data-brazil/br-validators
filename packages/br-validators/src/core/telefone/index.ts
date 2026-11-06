@@ -22,6 +22,9 @@ export {
   TELEFONE_GOLDEN_FIXO_MASKED,
   TELEFONE_OFFICIAL_SOURCE_URL,
 } from './constants.js';
+export { getDddInfo } from './ddd-lookup.js';
+export { TELEFONE_DDD_DATA_VERSION } from './ddd-version.js';
+export type { DddInfo, TelefoneDddDataVersion } from './ddd-types.js';
 
 type FailedResult = Extract<TelefoneValidationResult, { ok: false }>;
 

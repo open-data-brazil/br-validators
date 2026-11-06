@@ -1,0 +1,19 @@
+{
+  "source": "https://www.confaz.fazenda.gov.br/legislacao/convenios/2018/CV142_18",
+  "minCodes": 950,
+  "maxCodes": 1050,
+  "golden": {
+    "cervejaGarrafaRetornavel": {
+      "codigo": "0302100",
+      "descricaoContains": "retornável"
+    },
+    "ncmCerveja": {
+      "codigo": "22030000",
+      "cestCodigoContains": "0302100"
+    },
+    "ncmCavalosReprodutores": {
+      "codigo": "01012100",
+      "hasCest": false
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "datasetId": "ibge",
+  "endpoints": [
+    "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+    "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
+    "https://apisidra.ibge.gov.br/values/t/6579/n3/all/v/9324/p/last",
+    "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/last"
+  ],
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-11-06",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "outcomeStatus": "ok"
+}

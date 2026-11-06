@@ -35,8 +35,18 @@ By contributing, you agree your contributions are licensed under MIT.
 
 ### 1. Find or open an issue
 
-- Bug reports: include input, expected vs actual, library version
-- Features: check roadmap first; IE/PIS need official sources
+Use a [GitHub issue template](.github/ISSUE_TEMPLATE/config.yml):
+
+| Template | Labels | When to use |
+|----------|--------|-------------|
+| **Bug report** | `bug` | Wrong validation, formatting, or API behavior |
+| **Data source alert** | `data-source` | Daily bot / `CRITICAL-ALERTS.md` — endpoint moved or failing |
+| **ISS municipal rate contribution** | `good first issue`, `iss-municipal`, `enhancement` | Cite municipal ISS legislation — see [COVERAGE-GAPS.md](docs/COVERAGE-GAPS.md) |
+| **RG DV algorithm upgrade** | `good first issue`, `rg-uf`, `enhancement` | Official SSP/IGP DV walkthrough for a format-only UF |
+| **Feature request** | `enhancement` | New validator or dataset — check [ROADMAP](docs/ROADMAP.md) first |
+
+Bot automation PRs use `data-refresh` and `automated-release` (do not open manually).
+
 - **Security:** see [SECURITY.md](SECURITY.md) — no public issues
 
 ### 2. Fork and branch
@@ -106,6 +116,60 @@ Required checklist for new/changed validators:
 - [ ] Version impact noted per [docs/VERSIONING.md](docs/VERSIONING.md)
 
 **Wrong check digits are security bugs** — treat with same urgency as [SECURITY.md](SECURITY.md).
+
+### RG per-UF contributions
+
+RG has **no federal algorithm** — each state may use a different format and check digit rule. **27/27 UFs shipped**; remaining work is **DV algorithm upgrades** when official SSP/IGP walkthroughs are published.
+
+1. Open an issue using [`.github/ISSUE_TEMPLATE/rg-dv-upgrade.yml`](.github/ISSUE_TEMPLATE/rg-dv-upgrade.yml) (labels: `good first issue`, `rg-uf`)
+2. Cite an official state secretariat document — format-only is acceptable when no DV is published
+3. Add `tests/vectors/rg.<uf>.official.json` with golden valid/invalid pairs
+4. Implement or upgrade `validateRg<Uf>` in `packages/br-validators/src/core/rg/<uf>.ts`
+5. Update [docs/OFFICIAL-SOURCES.md § RG](docs/OFFICIAL-SOURCES.md#rg--reference-index) coverage table
+
+---
+
+## Reference data contributions (IBGE, Bacen, etc.)
+
+Required checklist for new static lookup modules:
+
+- [ ] Official `.gov.br` source in [docs/OFFICIAL-SOURCES.md](docs/OFFICIAL-SOURCES.md)
+- [ ] `metadata.json` with `DatasetMetadata` fields (see [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md))
+- [ ] Register in `data-catalog/registry.ts`
+- [ ] Fetch script in `scripts/fetch-*.ts` — **no runtime network** in `src/`
+- [ ] Golden vectors in `tests/vectors/*.official.json` from official API samples
+
+### Test policy — business logic, not coverage theater
+
+Tests MUST prove **observable behavior** that consumers rely on:
+
+| DO | DON'T |
+|----|-------|
+| Assert golden codes from official sources (e.g. IBGE `3550308` → São Paulo/SP) | Mirror implementation line-by-line just to hit 100% |
+| Cover edge cases that occur in real government data (e.g. municipality with null `microrregiao`) | Assert `toBe(true)` on functions under test without independent expected value |
+| Verify metadata transparency (`capturadoEm`, `endpoints`, row counts) | Mock embedded JSON or skip catalog registration |
+| Fail when official vectors break after data refresh | Disable tests or exclude files from coverage to hide gaps |
+
+100% coverage on `packages/br-validators/src/**` is mandatory — but every test must answer a **business question**: “Does this lookup return what IBGE says?” not “Did my function run?”
+
+### ISS municipal rate contributions
+
+Municipal ISS alíquotas are **per municipality** — INSS/IRPF are national tables and out of scope here.
+
+1. Open issue: [`.github/ISSUE_TEMPLATE/iss-municipal-contribution.yml`](.github/ISSUE_TEMPLATE/iss-municipal-contribution.yml) (labels: `good first issue`, `iss-municipal`)
+2. Check [docs/COVERAGE-GAPS.md](docs/COVERAGE-GAPS.md) — `data/coverage-gaps/iss-municipal-not-embedded.json` or `iss-municipal-estimativa-only.json`
+3. Cite **municipal legislation** or official NFSe portal URL (`leiUrl`) — LC 116 Art. 8 band alone is estimation-only
+4. Add golden row to `tests/vectors/iss-municipal.official.json`
+5. Run `pnpm fetch:data:iss-municipal` (maintainers) or update capital seeds / embed builder
+6. Run `pnpm generate:coverage-gaps` to refresh gap lists
+
+### RG DV algorithm upgrades
+
+All 27 UFs ship format or DV validators. New RG work is **DV upgrades** when official state documentation is found.
+
+1. Open issue: [`.github/ISSUE_TEMPLATE/rg-dv-upgrade.yml`](.github/ISSUE_TEMPLATE/rg-dv-upgrade.yml) (labels: `good first issue`, `rg-uf`)
+2. Follow [docs/community/RG-CONTRIBUTOR-GUIDE.md](docs/community/RG-CONTRIBUTOR-GUIDE.md)
+3. Legacy net-new UF template: [`.github/ISSUE_TEMPLATE/rg-uf-contribution.md`](.github/ISSUE_TEMPLATE/rg-uf-contribution.md) (historical — 27/27 complete)
 
 ---
 

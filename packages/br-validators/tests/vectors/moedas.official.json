@@ -1,0 +1,19 @@
+{
+  "source": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas",
+  "golden": {
+    "brl": {
+      "codigo": "BRL",
+      "nomeContains": "Real"
+    },
+    "usd": {
+      "codigo": "USD",
+      "nomeContains": "Estados Unidos"
+    },
+    "eur": {
+      "codigo": "EUR",
+      "nomeContains": "Euro"
+    }
+  },
+  "minMoedas": 150,
+  "maxMoedas": 200
+}

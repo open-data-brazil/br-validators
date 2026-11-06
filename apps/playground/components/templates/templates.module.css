@@ -1,14 +1,21 @@
 .shell {
   min-height: 100dvh;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 220px 1fr;
 }
 
 .content {
   min-width: 0;
   position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.pageContent {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
 }
 
 .header {
@@ -29,7 +36,11 @@
 }
 
 .mobileSidebar {
-  display: none;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(85vw, 240px);
+  z-index: 30;
+  box-shadow: var(--shadow-md);
 }
 
 .headerLeft,
@@ -37,14 +48,80 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  min-width: 0;
+}
+
+.headerLeft {
+  flex: 1;
+}
+
+.headerBrand {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.headerTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.headerTagline {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+}
+
+.kickerDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--success);
+  margin-right: 6px;
+  box-shadow: 0 0 6px var(--success);
+  flex-shrink: 0;
+}
+
+.playgroundViews {
+  min-height: 100%;
+}
+
+.viewPane {
+  min-width: 0;
+}
+
+.viewPane[hidden] {
+  display: none;
 }
 
 .menuButton {
   display: none;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .backdrop {
-  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 45%);
+  z-index: 20;
 }
 
 @media (max-width: 900px) {
@@ -53,37 +130,22 @@
   }
 
   .header {
-    padding: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .headerTagline {
+    display: none;
   }
 
   .desktopSidebar {
     display: none;
   }
 
-  .mobileSidebar {
-    display: block;
-    position: fixed;
-    inset: 0 auto 0 0;
-    width: min(85vw, 320px);
-    transform: translateX(-100%);
-    transition: transform 0.2s ease;
-    z-index: 30;
-    box-shadow: var(--shadow-md);
-  }
-
-  .mobileSidebarOpen {
-    transform: translateX(0);
-  }
-
-  .backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgb(0 0 0 / 45%);
-    z-index: 20;
-  }
-
   .menuButton {
     display: inline-flex;
+  }
+
+  .headerRight {
+    flex-shrink: 0;
   }
 }

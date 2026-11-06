@@ -1,0 +1,25 @@
+{
+  "id": "ncm",
+  "nome": "NCM — Nomenclatura Comum do Mercosul",
+  "fonte": "Receita Federal / Siscomex nomenclatura JSON",
+  "endpoints": [
+    "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
+  ],
+  "capturadoEm": "2026-11-06",
+  "atualizadoEm": "2026-11-06T10:36:05.993Z",
+  "contagens": {
+    "ncm": 10516
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-11-05"
+  },
+  "verificacao": {
+    "agendamento": "diario",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-11-06T10:36:05.993Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#ncm-mercosur-nomenclature"
+}

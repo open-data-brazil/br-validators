@@ -1,7 +1,8 @@
 {
   "name": "@br-validators/core",
-  "version": "0.11.0-alpha.0",
-  "description": "100% open-source Brazilian document validators — CPF, CNPJ, CEP, IE (27 UFs), PIX, boleto, and more",
+  "version": "1.10.1-data.37",
+  "description": "The Brazilian document validation library for TypeScript — CPF, CNPJ (alphanumeric), NF-e, PIX, boleto, IE (27 UFs), offline IBGE/ANP/NCM/CST/LC116 reference data, and 15+ more. Zero deps, fully typed, never throws.",
+  "homepage": "https://github.com/open-data-brazil/br-validators/tree/main/packages/br-validators#readme",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -9,7 +10,6 @@
     "url": "git+https://github.com/AlexandreZanata/br-validators.git",
     "directory": "packages/br-validators"
   },
-  "homepage": "https://github.com/AlexandreZanata/br-validators/tree/main/packages/br-validators#readme",
   "bugs": {
     "url": "https://github.com/AlexandreZanata/br-validators/issues"
   },
@@ -18,10 +18,57 @@
     "cpf",
     "cnpj",
     "cep",
-    "validator",
-    "inscricao-estadual",
+    "cnh",
+    "renavam",
+    "processo-judicial",
+    "rg",
+    "nfe",
+    "titulo-eleitor",
+    "placa",
+    "pis-pasep",
+    "cnis",
+    "telefone",
     "pix",
+    "brcode",
     "boleto",
+    "cartao-credito",
+    "inscricao-estadual",
+    "validator",
+    "detect",
+    "sanitize",
+    "generate",
+    "mask",
+    "compare",
+    "batch",
+    "diff",
+    "ibge",
+    "bancos",
+    "aeroportos",
+    "tse-municipios",
+    "moedas",
+    "ptax",
+    "paises-bacen",
+    "incoterms",
+    "feriados",
+    "cnaes",
+    "cfop",
+    "natureza-juridica",
+    "cnpj-motivos",
+    "ibpt",
+    "nbs",
+    "cest",
+    "cst",
+    "lc116",
+    "esocial",
+    "simples-nacional",
+    "ean",
+    "ncm",
+    "cbo",
+    "portos",
+    "anp-combustiveis",
+    "pncp-reference",
+    "transparencia-snapshots",
+    "data-catalog",
     "typescript"
   ],
   "publishConfig": {
@@ -51,6 +98,50 @@
       "types": "./dist/telefone.d.ts",
       "import": "./dist/telefone.js"
     },
+    "./cnh": {
+      "types": "./dist/cnh.d.ts",
+      "import": "./dist/cnh.js"
+    },
+    "./renavam": {
+      "types": "./dist/renavam.d.ts",
+      "import": "./dist/renavam.js"
+    },
+    "./titulo-eleitor": {
+      "types": "./dist/titulo-eleitor.d.ts",
+      "import": "./dist/titulo-eleitor.js"
+    },
+    "./nfe-chave": {
+      "types": "./dist/nfe-chave.d.ts",
+      "import": "./dist/nfe-chave.js"
+    },
+    "./nfe-cuf": {
+      "types": "./dist/nfe-cuf.d.ts",
+      "import": "./dist/nfe-cuf.js"
+    },
+    "./irpf": {
+      "types": "./dist/irpf.d.ts",
+      "import": "./dist/irpf.js"
+    },
+    "./inss": {
+      "types": "./dist/inss.d.ts",
+      "import": "./dist/inss.js"
+    },
+    "./selic": {
+      "types": "./dist/selic.d.ts",
+      "import": "./dist/selic.js"
+    },
+    "./iss-municipal": {
+      "types": "./dist/iss-municipal.d.ts",
+      "import": "./dist/iss-municipal.js"
+    },
+    "./processo-judicial": {
+      "types": "./dist/processo-judicial.d.ts",
+      "import": "./dist/processo-judicial.js"
+    },
+    "./rg": {
+      "types": "./dist/rg.d.ts",
+      "import": "./dist/rg.js"
+    },
     "./brcode": {
       "types": "./dist/brcode.d.ts",
       "import": "./dist/brcode.js"
@@ -62,6 +153,10 @@
     "./pis-pasep": {
       "types": "./dist/pis-pasep.d.ts",
       "import": "./dist/pis-pasep.js"
+    },
+    "./cnis": {
+      "types": "./dist/cnis.d.ts",
+      "import": "./dist/cnis.js"
     },
     "./pix": {
       "types": "./dist/pix.d.ts",
@@ -78,6 +173,158 @@
     "./inscricao-estadual": {
       "types": "./dist/inscricao-estadual.d.ts",
       "import": "./dist/inscricao-estadual.js"
+    },
+    "./inscricao-estadual-produtor-rural": {
+      "types": "./dist/inscricao-estadual-produtor-rural.d.ts",
+      "import": "./dist/inscricao-estadual-produtor-rural.js"
+    },
+    "./detect": {
+      "types": "./dist/detect.d.ts",
+      "import": "./dist/detect.js"
+    },
+    "./sanitize": {
+      "types": "./dist/sanitize.d.ts",
+      "import": "./dist/sanitize.js"
+    },
+    "./generate": {
+      "types": "./dist/generate.d.ts",
+      "import": "./dist/generate.js"
+    },
+    "./mask": {
+      "types": "./dist/mask.d.ts",
+      "import": "./dist/mask.js"
+    },
+    "./compare": {
+      "types": "./dist/compare.d.ts",
+      "import": "./dist/compare.js"
+    },
+    "./batch": {
+      "types": "./dist/batch.d.ts",
+      "import": "./dist/batch.js"
+    },
+    "./diff": {
+      "types": "./dist/diff.d.ts",
+      "import": "./dist/diff.js"
+    },
+    "./ibge": {
+      "types": "./dist/ibge.d.ts",
+      "import": "./dist/ibge.js"
+    },
+    "./bancos": {
+      "types": "./dist/bancos.d.ts",
+      "import": "./dist/bancos.js"
+    },
+    "./aeroportos": {
+      "types": "./dist/aeroportos.d.ts",
+      "import": "./dist/aeroportos.js"
+    },
+    "./tse-municipios": {
+      "types": "./dist/tse-municipios.d.ts",
+      "import": "./dist/tse-municipios.js"
+    },
+    "./moedas": {
+      "types": "./dist/moedas.d.ts",
+      "import": "./dist/moedas.js"
+    },
+    "./ptax": {
+      "types": "./dist/ptax.d.ts",
+      "import": "./dist/ptax.js"
+    },
+    "./paises-bacen": {
+      "types": "./dist/paises-bacen.d.ts",
+      "import": "./dist/paises-bacen.js"
+    },
+    "./incoterms": {
+      "types": "./dist/incoterms.d.ts",
+      "import": "./dist/incoterms.js"
+    },
+    "./feriados": {
+      "types": "./dist/feriados.d.ts",
+      "import": "./dist/feriados.js"
+    },
+    "./cnaes": {
+      "types": "./dist/cnaes.d.ts",
+      "import": "./dist/cnaes.js"
+    },
+    "./cfop": {
+      "types": "./dist/cfop.d.ts",
+      "import": "./dist/cfop.js"
+    },
+    "./natureza-juridica": {
+      "types": "./dist/natureza-juridica.d.ts",
+      "import": "./dist/natureza-juridica.js"
+    },
+    "./cnpj-motivos": {
+      "types": "./dist/cnpj-motivos.d.ts",
+      "import": "./dist/cnpj-motivos.js"
+    },
+    "./ibpt": {
+      "types": "./dist/ibpt.d.ts",
+      "import": "./dist/ibpt.js"
+    },
+    "./nbs": {
+      "types": "./dist/nbs.d.ts",
+      "import": "./dist/nbs.js"
+    },
+    "./cest": {
+      "types": "./dist/cest.d.ts",
+      "import": "./dist/cest.js"
+    },
+    "./cst": {
+      "types": "./dist/cst.d.ts",
+      "import": "./dist/cst.js"
+    },
+    "./csosn": {
+      "types": "./dist/csosn.d.ts",
+      "import": "./dist/csosn.js"
+    },
+    "./lc116": {
+      "types": "./dist/lc116.d.ts",
+      "import": "./dist/lc116.js"
+    },
+    "./esocial": {
+      "types": "./dist/esocial.d.ts",
+      "import": "./dist/esocial.js"
+    },
+    "./simples-nacional": {
+      "types": "./dist/simples-nacional.d.ts",
+      "import": "./dist/simples-nacional.js"
+    },
+    "./ean": {
+      "types": "./dist/ean.d.ts",
+      "import": "./dist/ean.js"
+    },
+    "./ncm": {
+      "types": "./dist/ncm.d.ts",
+      "import": "./dist/ncm.js"
+    },
+    "./cbo": {
+      "types": "./dist/cbo.d.ts",
+      "import": "./dist/cbo.js"
+    },
+    "./portos": {
+      "types": "./dist/portos.d.ts",
+      "import": "./dist/portos.js"
+    },
+    "./anp-combustiveis": {
+      "types": "./dist/anp-combustiveis.d.ts",
+      "import": "./dist/anp-combustiveis.js"
+    },
+    "./pncp-reference": {
+      "types": "./dist/pncp-reference.d.ts",
+      "import": "./dist/pncp-reference.js"
+    },
+    "./transparencia-snapshots": {
+      "types": "./dist/transparencia-snapshots.d.ts",
+      "import": "./dist/transparencia-snapshots.js"
+    },
+    "./data-catalog": {
+      "types": "./dist/data-catalog.d.ts",
+      "import": "./dist/data-catalog.js"
+    },
+    "./lookup": {
+      "types": "./dist/lookup.d.ts",
+      "import": "./dist/lookup.js"
     }
   },
   "files": [
@@ -86,7 +333,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "node ../../scripts/assert-ci-publish.mjs && pnpm run build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint src tests --max-warnings 0",

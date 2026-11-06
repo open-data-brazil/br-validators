@@ -1,0 +1,11 @@
+{
+  "source": "https://dadosabertos.rfb.gov.br/CNPJ/dados_abertos_cnpj/",
+  "minCodes": 85,
+  "maxCodes": 95,
+  "golden": {
+    "sociedadeLimitada": {
+      "codigo": "2062",
+      "descricaoContains": "Limitada"
+    }
+  }
+}

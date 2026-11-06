@@ -1,0 +1,11 @@
+{
+  "datasetId": "cbo",
+  "status": "ok",
+  "endpoints": [
+    "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
+  ],
+  "attempts": 5,
+  "checkedAt": "2026-11-06T10:36:07.488Z",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "message": "Official MTE CBO occupations CSV fetch succeeded."
+}

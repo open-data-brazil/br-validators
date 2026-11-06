@@ -9,7 +9,10 @@ export {
   TELEFONE_GOLDEN_FIXO,
   TELEFONE_GOLDEN_FIXO_MASKED,
   TELEFONE_OFFICIAL_SOURCE_URL,
+  getDddInfo,
+  TELEFONE_DDD_DATA_VERSION,
 } from './core/telefone/index.js';
+export type { DddInfo, TelefoneDddDataVersion } from './core/telefone/ddd-types.js';
 export { extractTelefoneDigits, normalizeTelefoneDigits, stripTelefone } from './strip/telefone.js';
 export { formatTelefone } from './format/telefone.js';
 export type {

@@ -1,0 +1,17 @@
+{
+  "datasetId": "ibpt",
+  "status": "ok",
+  "endpoints": [
+    "https://deolhonoimposto.ibpt.org.br/",
+    "https://apidoni.ibpt.org.br/api/v1/produtos",
+    "https://ibpt.valraw.com.br/api/meta.json",
+    "https://ibpt.valraw.com.br/api/ncm/SP.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/RJ.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/MG.json.gz (resolved after meta.json)",
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
+  ],
+  "attempts": 5,
+  "checkedAt": "2026-11-06T10:33:40.121Z",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "message": "IBPT golden NCM×UF subset loaded from repo cache after network sources failed."
+}

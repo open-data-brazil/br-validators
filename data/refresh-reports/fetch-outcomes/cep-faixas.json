@@ -1,0 +1,11 @@
+{
+  "datasetId": "cep-faixas",
+  "status": "ok",
+  "endpoints": [
+    "https://ftp.ibge.gov.br/Cadastro_Nacional_de_Enderecos_para_Fins_Estatisticos/Censo_Demografico_2022/Arquivos_CNEFE/CSV/UF"
+  ],
+  "attempts": 3,
+  "checkedAt": "2026-06-23T16:50:26.708Z",
+  "retainedEmbeddedDataFrom": "2026-06-23",
+  "message": "IBGE CNEFE CEP prefix aggregation succeeded."
+}

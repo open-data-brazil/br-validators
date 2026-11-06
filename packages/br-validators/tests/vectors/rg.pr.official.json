@@ -1,0 +1,11 @@
+{
+  "source": "Instituto de Identificação do Paraná (IIPAR) — format-only, 8 digits",
+  "url": "https://www.iipar.pr.gov.br/",
+  "valid": {
+    "raw": "12345678"
+  },
+  "invalid": {
+    "raw": "1234567",
+    "code": "INVALID_LENGTH"
+  }
+}

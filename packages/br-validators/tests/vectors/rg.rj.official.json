@@ -1,0 +1,13 @@
+{
+  "source": "Ghiorzi — Carteira de Identidade IFP-RJ",
+  "url": "http://ghiorzi.org/DVnew.htm",
+  "valid": {
+    "raw": "27998111",
+    "masked": "2.799.811-1",
+    "note": "Ghiorzi walkthrough base 2799811 → DV 1 (mod 10 alternating)"
+  },
+  "invalid": {
+    "raw": "27998112",
+    "code": "INVALID_CHECK_DIGIT"
+  }
+}

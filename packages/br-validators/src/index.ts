@@ -2,9 +2,17 @@ export * from './cnpj.js';
 export * from './cpf.js';
 export * from './cep.js';
 export * from './telefone.js';
+export * from './cnh.js';
+export * from './renavam.js';
+export * from './titulo-eleitor.js';
+export * from './nfe-chave.js';
+export * from './processo-judicial.js';
+export * from './rg.js';
+export * from './inscricao-estadual-produtor-rural.js';
 export * from './brcode.js';
 export * from './placa.js';
 export * from './pis-pasep.js';
+export * from './cnis.js';
 export {
   computeModulo10FieldDv,
   computeModulo11BarcodeDv,
@@ -39,8 +47,24 @@ export {
   BOLETO_LAYOUTS_PORTAL_URL,
   BOLETO_LINHA_LENGTH,
   BOLETO_OFFICIAL_SOURCE_URL,
+  BOLETO_ARRECADACAO_LINHA_LENGTH,
+  BOLETO_ARRECADACAO_CODIGO_BARRAS_LENGTH,
+  BOLETO_ARRECADACAO_PRODUCT_ID,
+  BOLETO_ARRECADACAO_OFFICIAL_SOURCE_URL,
+  isValidArrecadacao,
+  stripArrecadacao,
+  validateArrecadacao,
+  validateArrecadacaoCodigoBarras,
+  validateArrecadacaoLinha,
+  linhaArrecadacaoToCodigoBarras,
+  computeArrecadacaoModulo10Dv,
+  computeArrecadacaoModulo11Dv,
 } from './boleto.js';
 export type {
+  Arrecadacao,
+  ArrecadacaoInputKind,
+  ArrecadacaoValidationResult,
+  ArrecadacaoValueType,
   BoletoInputKind,
   BoletoSituacao,
   BoletoValidationResult,
@@ -63,6 +87,7 @@ export {
   validatePixEmailKey,
   validatePixPhoneKey,
   validatePixEvpKey,
+  stripPixKey,
   PIX_GOLDEN_CPF,
   PIX_GOLDEN_CNPJ_NUMERIC,
   PIX_GOLDEN_CNPJ_ALPHANUMERIC,
@@ -108,6 +133,26 @@ export {
 } from './cartao-credito.js';
 export type { CardBrand, CartaoCredito, CartaoCreditoValidationResult } from './cartao-credito.js';
 export {
+  applyEanMask,
+  computeGs1Modulo10CheckDigit,
+  computeGs1Modulo10Sum,
+  detectEanFormat,
+  formatEan,
+  isValidEan,
+  isValidGs1Modulo10,
+  passesGs1Modulo10,
+  stripEan,
+  validateEan,
+  EAN_8_LENGTH,
+  EAN_13_LENGTH,
+  EAN_GOLDEN_13,
+  EAN_GOLDEN_13_MASKED,
+  EAN_GOLDEN_8,
+  EAN_GOLDEN_8_MASKED,
+  EAN_OFFICIAL_SOURCE_URL,
+} from './ean.js';
+export type { Ean, EanFormat, EanValidationResult } from './ean.js';
+export {
   formatInscricaoEstadual,
   getIeOfficialSourceUrl,
   isValidInscricaoEstadual,
@@ -126,10 +171,52 @@ export {
   IE_SP_GOLDEN,
   IE_SP_GOLDEN_MASKED,
   IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SP_RURAL_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
   IE_SUPPORTED_UFS,
+  formatIeProdutorRural,
+  getIeProdutorRuralOfficialSourceUrl,
+  isSpRuralIeInput,
+  isValidIeProdutorRural,
+  stripIeSpRural,
+  validateIeProdutorRural,
+  validateIeSpRural,
 } from './inscricao-estadual.js';
+export { detect } from './detect.js';
+export type { DetectOptions, DetectResult, DetectableDocumentType } from './detect.js';
+export { sanitize } from './sanitize.js';
+export type { SanitizeOptions, SanitizeResult, SanitizableDocumentType } from './sanitize.js';
+export { mask, maskRuntime, isMaskableDocumentType, MASKABLE_DOCUMENT_TYPES } from './mask.js';
+export type { MaskableDocumentType, MaskOptions } from './mask.js';
+export { compare, compareRuntime } from './compare.js';
+export type { CompareResult } from './compare.js';
+export { batch, parseBatchCsv } from './batch.js';
 export type {
+  BatchInvalidEntry,
+  BatchResult,
+  BatchSummary,
+  BatchValidEntry,
+  ParseBatchCsvFailure,
+  ParseBatchCsvOptions,
+  ParseBatchCsvResult,
+  ParseBatchCsvSuccess,
+} from './batch.js';
+export { diff } from './diff.js';
+export type { DiffField, DiffResult } from './diff.js';
+export { generate } from './generate.js';
+export type { GenerateOptions, GeneratableDocumentType, GeneratableCardBrand } from './generate.js';
+export {
+  CPF_ALPHA_GENERATE_STUB,
+  assertCpfAlphanumericGenerateAllowed,
+  rejectCpfAlphanumericGenerate,
+  applyArrecadacaoLinhaMask,
+} from './generate.js';
+export { isGeneratableCardBrand, GENERATABLE_CARD_BRANDS } from './generate.js';
+export type {
+  IeProdutorRuralValidationResult,
   InscricaoEstadual,
+  InscricaoEstadualProdutorRural,
   InscricaoEstadualValidationResult,
   UfCode,
   ValidateInscricaoEstadualOptions,

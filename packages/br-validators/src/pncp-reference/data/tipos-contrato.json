@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nome": "Contrato (termo inicial)",
+    "descricao": "Instrumento formal que estabelece o vínculo jurídico inicial entre a Administração Pública e o contratado, definindo direitos, obrigações, prazos e condições de execução.",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Comodato",
+    "descricao": "Empréstimo gratuito de coisas não fungíveis, no qual o cessionário se obriga a restituir o bem ao término do prazo ou da finalidade acordada.",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Arrendamento",
+    "descricao": "Contrato pelo qual se cede o uso e gozo de um bem móvel ou imóvel por tempo determinado mediante retribuição financeira.",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Concessão",
+    "descricao": "Outorga da prestação de serviços públicos ou do uso de bens públicos a particulares ou outras entidades, formalizada sob condições regulamentadas.",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Termo de Adesão",
+    "descricao": "Instrumento utilizado para a formalização do aceite a condições previamente fixadas pela Administração Pública, como na adesão a atas de registro de preços ou programas governamentais.",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Convênio",
+    "descricao": "Acordo firmado entre entes públicos ou entre a Administração e entidades privadas sem fins lucrativos para a realização de interesse comum (Revogado pela Portaria Conjunta MGI/MF/CGU nº 33/2023).",
+    "ativo": false
+  },
+  {
+    "id": 7,
+    "nome": "Empenho",
+    "descricao": "Ato emanado de autoridade competente que cria para o Estado obrigação de pagamento pendente ou não de condição futura, podendo substituir o termo de contrato em hipóteses específicas previstos em lei.",
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "nome": "Outros",
+    "descricao": "Indicação utilizada para instrumentos contratuais ou ajustes formais que não se enquadram nas categorias padronizadas do Portal.",
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "nome": "Termo de Execução Descentralizada (TED)",
+    "descricao": "Instrumento de descentralização de crédito entre órgãos ou entidades integrantes dos Orçamentos Fiscal e da Seguridade Social da União (Revogado pela Portaria Conjunta MGI/MF/CGU nº 33/2023).",
+    "ativo": false
+  },
+  {
+    "id": 10,
+    "nome": "Acordo de Cooperação Técnica (ACT)",
+    "descricao": "Ajuste firmado entre órgãos públicos ou entidades públicas e privadas sem fins lucrativos para a execução de ações de interesse recíproco sem transferência de recursos financeiros (Revogado pela Portaria Conjunta MGI/MF/CGU nº 33/2023).",
+    "ativo": false
+  },
+  {
+    "id": 11,
+    "nome": "Termo de Compromisso",
+    "descricao": "Instrumento formal utilizado para pactuar obrigações entre as partes em transferências voluntárias ou acordos específicos (Revogado pela Portaria Conjunta MGI/MF/CGU nº 33/2023).",
+    "ativo": false
+  },
+  {
+    "id": 12,
+    "nome": "Carta Contrato",
+    "descricao": "Instrumento simplificado de contratação utilizado para formalizar ajustes de menor complexidade ou valor, substituindo o termo de contrato nas hipóteses previstas em lei.",
+    "ativo": true
+  }
+]

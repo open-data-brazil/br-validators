@@ -1,11 +1,15 @@
 # @br-validators/zod
 
-Zod schemas that delegate to [`@br-validators/core`](../br-validators) `validate*` functions — same golden vectors, same error messages.
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
+
+Zod schemas that delegate to [`@br-validators/core`](../br-validators) **v1.10.1** `validate*` functions — same golden vectors, same error messages.
 
 ## Install
 
 ```bash
-pnpm add @br-validators/zod @br-validators/core zod
+VERSION=1.10.1-data.34   # any tag from https://github.com/open-data-brazil/br-validators/releases
+pnpm add "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-zod-$VERSION.tgz" "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-core-$VERSION.tgz" zod
 ```
 
 **Peer dependency:** `zod` `^3.23.0 || ^4.0.0`

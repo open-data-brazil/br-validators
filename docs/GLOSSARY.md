@@ -23,8 +23,10 @@
 ## Formatter
 
 **Definition:** A function that applies the official display mask to a **already valid** canonical value.
-**Not the same as:** Validator — formatting never runs on unvalidated input in the public pipeline.
-**Code name:** `format*`
+**Not the same as:** Validator (mask only) or online lookup (external API); **not** backend serialization (`padStart`, fixed-width padding).
+**Code name:** `format*`, `mask()`
+
+**Consumer rule:** Never call `format*` / `mask()` from `onChange` together with left-padding (`padStart`) — padding is a submit/API concern. See [LIBRARY-API.md — display vs backend normalization](LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization).
 
 ---
 
@@ -32,7 +34,8 @@
 
 **Definition:** Remove punctuation, whitespace, and apply case rules before validation.
 **CPF/CNPJ numeric:** digits only. **CNPJ alphanumeric / placa:** preserve `A-Z0-9`, uppercase.
-**Code name:** `strip*`
+**Not the same as:** Display mask during typing; optional fixed-width padding for legacy backends belongs in a **separate** serialize step at submit, not inside `format*`.
+**Code name:** `strip*`, `sanitize()`
 
 ---
 
@@ -82,6 +85,53 @@
 **Format mask:** `XXX.XXX.XXX-DD`
 **Scope v1:** Numeric only. Alphanumeric CPF deferred until RFB publishes spec.
 **Code name:** `Cpf`
+
+---
+
+## CNH (Registro Nacional)
+
+**Definition:** Carteira Nacional de Habilitação — **Número de Registro** (BINCO). Permanent driver identifier: 9 base digits + 2 check digits (modulo 11 with inter-DV **desconto**).
+**Official system format:** **11 contiguous digits** — no dots or dashes (unlike CPF).
+**Not the same as:** Espelho CNH (9+1 DV per card issue) or formulário RENACH (UF-prefixed state form).
+**Legal reference:** [OFFICIAL-SOURCES.md § CNH](OFFICIAL-SOURCES.md#cnh--reference-index) — [CONTRAN 511/2014](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [AdvPL CNH](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/) · [GeraValida](https://www.geravalida.com.br/validador-cnh) · [GeradorBR](https://geradorbr.com/validador-de-cnh/)
+**Code name:** `Cnh`, format `'numeric'`
+
+---
+
+## RENAVAM
+
+**Definition:** Registro Nacional de Veículos Automotores — permanent 11-digit vehicle registry code (DENATRAN/SENATRAN). 10 base digits + 1 check digit (modulo 11, **peso 9**).
+**Official system format:** **11 contiguous digits** — leading zeros significant.
+**Not the same as:** Placa (7 chars, may change) or chassis/VIN (17 chars).
+**Legal reference:** [OFFICIAL-SOURCES.md § RENAVAM](OFFICIAL-SOURCES.md#renavam--reference-index) — [Portaria DENATRAN 27/2013](https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf) · [AdvPL RENAVAM](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-renavam/) · [GeraValida](https://www.geravalida.com.br/gerador-de-renavam) · [GeradorFácil](https://geradorfacil.com/geradores/renavam)
+**Code name:** `Renavam`, format `'numeric'`
+
+---
+
+## Título de Eleitor
+
+**Definition:** Brazilian voter registration number — 8 sequential digits + 2 TSE UF digits + 2 check digits (modulo 11). SP and MG may use 9 sequential digits (13 total).
+**Display mask:** `XXXX XXXX XXXX` (12-digit) or `XXXXX XXXX XXXX` (13-digit).
+**Not the same as:** CPF or RG.
+**Legal reference:** [OFFICIAL-SOURCES.md § Título de Eleitor](OFFICIAL-SOURCES.md#título-de-eleitor--reference-index) — [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) (Art. 10) · Weights: [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) · [Ghiorzi](http://ghiorzi.org/DVnew.htm#e)
+
+---
+
+## Processo judicial (número único CNJ)
+
+**Definition:** Standardized national judicial case number — 20 digits in mask `NNNNNNN-DD.AAAA.J.TR.OOOO`. Check digits use modulo 97-10 per ISO 7064:2003 (CNJ Anexo VIII).
+**Not the same as:** NF-e chave, protocol numbers, or pre-2009 legacy court numbers without CNJ structure.
+**Legal reference:** [OFFICIAL-SOURCES.md § Processo judicial](OFFICIAL-SOURCES.md#processo-judicial--reference-index) — [Resolução CNJ 65/2008](https://atos.cnj.jus.br/atos/detalhar/119) · Golden: `0000100-34.2008.9.21.0000`
+**Code name:** `ProcessoJudicial`, format `'numeric'`
+
+---
+
+## NF-e / NFC-e chave de acesso
+
+44-digit numeric access key for electronic fiscal documents (NF-e model 55, NFC-e model 65). Concatenates cUF, AAMM, CNPJ, mod, série, nNF, tpEmis, cNF, and modulo-11 check digit (position 44).
+
+**Legal reference:** [OFFICIAL-SOURCES.md § NF-e chave](OFFICIAL-SOURCES.md#nf-e--nfc-e-chave-de-acesso--reference-index) — [Portal NF-e MOC](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · [MOC §2.2.6.2](http://moc.sped.fazenda.pr.gov.br/#2.2.6.2. Cálculo do Dígito Verificador da Chave de Acesso da NF-e) · Golden: `52060433009911002506550120000007800267301615`
+**Code name:** `TituloEleitor`, format `'numeric'`
 
 ---
 
@@ -145,6 +195,13 @@
 **Algorithm index:** [IE-STATE-ALGORITHMS.md](IE-STATE-ALGORITHMS.md) — **all 27 UFs shipped** (`0.10.0-alpha.0`).  
 **Official sources:** [OFFICIAL-SOURCES.md § IE](OFFICIAL-SOURCES.md#inscrição-estadual-ie--all-27-ufs) · per-UF URLs via `getIeOfficialSourceUrl(uf)`.
 
+### IE produtor rural (SP)
+
+**Definition:** São Paulo-only rural producer IE format (`P0MMMSSSSD000`, 13 characters) — separate from industrial 12-digit IE.  
+**Code name:** `InscricaoEstadualProdutorRural`, `validateIeProdutorRural`  
+**Official source:** [SINTEGRA cad_SP.html Bloco II](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html) · golden `P-01100424.3/002`  
+**Note:** Other UFs (MT agro, etc.) use the standard IE algorithm — no separate produtor format.
+
 ---
 
 ## PIS / PASEP / NIS
@@ -205,3 +262,28 @@
 
 **Definition:** Primary document from issuing agency (RFB, Bacen, CONTRAN, Correios) — required before shipping a validator.
 **Index:** [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md)
+
+---
+
+## detect()
+
+**Definition:** Platform API that classifies raw input by trying structural pre-checks and existing `validate*` functions in priority order.
+**Not the same as:** Per-type `detect*` helpers (e.g. `detectPixKeyType`) or online registry lookup.
+**Code name:** `detect`, `DetectResult`
+
+---
+
+## sanitize()
+
+**Definition:** Platform API that applies ETL normalization fixes, records them in `fixes[]`, then validates — never returns a value without passing check digits.
+**Not the same as:** `strip*` (normalization only) or silent auto-correction.
+**Code name:** `sanitize`, `SanitizeResult`
+
+---
+
+## generate()
+
+**Definition:** Platform API that produces **synthetic** valid documents for tests and demos using official DV algorithms and a PRNG (`seed` for reproducibility).
+**Not the same as:** Government ID issuance, golden vectors, or production data.
+**Policy:** BR-GENERATE-001 — synthetic-only; rejects all-same-digit bases where applicable.
+**Code name:** `generate`, `GeneratableDocumentType`

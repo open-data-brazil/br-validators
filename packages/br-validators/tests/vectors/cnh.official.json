@@ -1,0 +1,30 @@
+{
+  "source": "CONTRAN Resolução 511/2014 — Registro Nacional modulo 11 (desconto)",
+  "url": "https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf",
+  "systemFormatUrl": "https://www.gov.br/pt-br/servicos/validar-cnh",
+  "algorithmCrossCheckUrl": "https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/",
+  "implementationCrossCheckUrls": [
+    "https://www.geravalida.com.br/validador-cnh",
+    "https://geradorbr.com/validador-de-cnh/"
+  ],
+  "primary": {
+    "canonical": "62472927637",
+    "officialFormatted": "62472927637",
+    "cpfStyleDecoratedInput": "624.729.276-37",
+    "base": "624729276",
+    "dv1": "3",
+    "dv2": "7"
+  },
+  "secondary": {
+    "canonical": "69044271146",
+    "officialFormatted": "69044271146"
+  },
+  "discountCase": {
+    "canonical": "00000001801",
+    "officialFormatted": "00000001801",
+    "note": "First DV remainder 10 triggers desconto=2"
+  },
+  "invalidCheckDigit": {
+    "canonical": "46190476839"
+  }
+}

@@ -1,9 +1,15 @@
 import {
+  formatIeProdutorRural,
   formatInscricaoEstadual,
   getIeOfficialSourceUrl,
+  getIeProdutorRuralOfficialSourceUrl,
   IE_SUPPORTED_UFS,
+  isSpRuralIeInput,
+  stripIeSpRural,
   stripInscricaoEstadual,
+  validateIeProdutorRural,
   validateInscricaoEstadual,
+  type IeProdutorRuralValidationResult,
   type InscricaoEstadualValidationResult,
   type UfCode,
 } from '@br-validators/core';
@@ -19,6 +25,8 @@ export type IeOptions = {
   uf?: string;
   file?: string;
 };
+
+export type IeValidationResult = InscricaoEstadualValidationResult | IeProdutorRuralValidationResult;
 
 export function resolveInput(value: string | undefined, fileContent?: string): string | null {
   const input = value ?? fileContent?.trim();
@@ -39,9 +47,13 @@ export function resolveUf(uf: string | undefined): UfCode | null {
   return null;
 }
 
+export function isSpRuralRoute(uf: UfCode, input: string): boolean {
+  return uf === 'SP' && isSpRuralIeInput(input);
+}
+
 export function printIeValidation(
-  result: InscricaoEstadualValidationResult,
-  options: { json: boolean; quiet: boolean; source?: string },
+  result: IeValidationResult,
+  options: { json: boolean; quiet: boolean; source?: string; rural?: boolean },
   io: { stdout: string[]; stderr: string[] } = { stdout: [], stderr: [] },
 ): number {
   if (options.json) {
@@ -53,6 +65,7 @@ export function printIeValidation(
               value: result.value,
               uf: result.uf,
               format: result.format,
+              ...(options.rural ? { produtorRural: true } : {}),
               ...(options.source ? { source: options.source } : {}),
             }
           : {
@@ -74,6 +87,9 @@ export function printIeValidation(
 
   if (result.ok) {
     io.stdout.push(`valid: yes (${result.uf})`);
+    if (options.rural) {
+      io.stdout.push('kind: produtor-rural');
+    }
     io.stdout.push(`value: ${result.value}`);
     io.stdout.push(`format: ${result.format}`);
     if (options.source) {
@@ -103,15 +119,28 @@ export function runIeCommand(
     return EXIT.USAGE;
   }
 
-  const source = options.source ? getIeOfficialSourceUrl(uf) : undefined;
+  const rural = isSpRuralRoute(uf, input);
+  const source = options.source
+    ? rural
+      ? getIeProdutorRuralOfficialSourceUrl()
+      : getIeOfficialSourceUrl(uf)
+    : undefined;
 
   switch (action) {
     case 'validate':
-      return printIeValidation(validateInscricaoEstadual(input, { uf }), { json: options.json, quiet: options.quiet, source }, io);
+      return printIeValidation(
+        rural ? validateIeProdutorRural(uf, input) : validateInscricaoEstadual(input, { uf }),
+        { json: options.json, quiet: options.quiet, source, rural },
+        io,
+      );
     case 'format':
-      return printFormat(formatInscricaoEstadual(input, { uf }), { json: options.json, quiet: options.quiet }, io);
+      return printFormat(
+        rural ? formatIeProdutorRural(input) : formatInscricaoEstadual(input, { uf }),
+        { json: options.json, quiet: options.quiet },
+        io,
+      );
     case 'strip':
-      return printStrip(stripInscricaoEstadual(input), { json: options.json }, io);
+      return printStrip(rural ? stripIeSpRural(input) : stripInscricaoEstadual(input), { json: options.json }, io);
     default: {
       const _exhaustive: never = action;
       io.stderr.push(`Unknown action: ${_exhaustive}`);

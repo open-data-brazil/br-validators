@@ -1,0 +1,17 @@
+{
+  "source": "https://pncp.gov.br/api/pncp/v1/modalidades",
+  "golden": {
+    "pregaoEletronico": {
+      "id": 6,
+      "nomeContains": "Pregão - Eletrônico"
+    },
+    "cnpjQuery": {
+      "formatted": "12.ABC.345/01DE-35",
+      "canonical": "12ABC34501DE35",
+      "note": "RFB CNPJ alfanumérico FAQ Q14 — official doc example for adapter queries"
+    }
+  },
+  "minModalidades": 15,
+  "maxModalidades": 25,
+  "minAmparosLegais": 150
+}

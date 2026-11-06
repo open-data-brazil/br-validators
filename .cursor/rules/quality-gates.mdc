@@ -13,7 +13,7 @@ Run from repo root:
 
 ```bash
 pnpm lint              # ESLint — must exit 0, --max-warnings 0
-pnpm typecheck         # TypeScript — all packages
+pnpm typecheck         # TypeScript — all packages + scripts/
 pnpm test:coverage     # br-validators + CLI — library must be 100%
 pnpm build             # all packages compile
 ```
@@ -27,7 +27,7 @@ pnpm build             # all packages compile
 | ESLint errors | **0** |
 | ESLint warnings | **0** (`--max-warnings 0`) |
 | Config | Root `eslint.config.js` (`@eslint/js` recommended + `typescript-eslint` strictTypeChecked) |
-| Scope | `packages/**`, `apps/**` — not `agent-rules/` harness copy |
+| Scope | `packages/**`, `apps/**`, `scripts/**` — not `agent-rules/` harness copy |
 
 Fix lint in the same change — never disable rules to silence without user approval.
 

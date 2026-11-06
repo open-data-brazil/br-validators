@@ -1,0 +1,25 @@
+{
+  "id": "moedas",
+  "nome": "ISO 4217 Currencies + Bacen PTAX",
+  "fonte": "ISO 4217 (embedded) + Banco Central PTAX Moedas",
+  "endpoints": [
+    "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas"
+  ],
+  "capturadoEm": "2026-11-06",
+  "atualizadoEm": "2026-11-06T10:16:29.869Z",
+  "contagens": {
+    "moedas": 154
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-11-05"
+  },
+  "verificacao": {
+    "agendamento": "diario",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-11-06T10:16:29.869Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#moedas"
+}

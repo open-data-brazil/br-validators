@@ -1,0 +1,25 @@
+{
+  "id": "incoterms",
+  "nome": "ICC Incoterms 2020",
+  "fonte": "International Chamber of Commerce — Incoterms 2020 (static reference)",
+  "endpoints": [
+    "https://iccwbo.org/resources-for-business/incoterms-rules/"
+  ],
+  "capturadoEm": "2026-11-06",
+  "atualizadoEm": "2026-11-06T10:16:40.267Z",
+  "contagens": {
+    "incoterms": 11
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-11-05"
+  },
+  "verificacao": {
+    "agendamento": "diario",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-11-06T10:16:40.267Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#incoterms"
+}

@@ -2,6 +2,7 @@ export {
   isValidBrCode,
   parseBrCode,
   validateBrCode,
+  buildStaticPixBrCode,
   computeCrc16Ccitt,
   verifyBrCodeCrc,
   normalizeBrCodePayload,
@@ -17,5 +18,11 @@ export {
   BRCODE_OFFICIAL_SOURCE_URL,
   BRCODE_PIX_INITIATION_MANUAL_URL,
 } from './core/brcode/index.js';
-export type { BrCodeParseResult, BrCodeParsedFields, TlvField, TlvParseResult } from './core/brcode/index.js';
+export type {
+  BrCodeParseResult,
+  BrCodeParsedFields,
+  StaticPixBrCodeInput,
+  TlvField,
+  TlvParseResult,
+} from './core/brcode/index.js';
 export type { BrCodePayload, BrCodeValidationResult, PixKeyType } from './types/validation-result.js';

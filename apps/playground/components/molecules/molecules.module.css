@@ -3,16 +3,29 @@
   gap: var(--space-3);
 }
 
+.fieldCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.labelHint {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 .inputRow {
   display: grid;
   gap: var(--space-3);
 }
 
-@media (min-width: 700px) {
-  .inputRow {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-  }
+.inputActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
 .section {
@@ -26,13 +39,16 @@
 
 .sectionTitle {
   margin: 0;
-  font-size: var(--text-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: minmax(5.5rem, 7rem) 1fr;
   gap: var(--space-4);
   align-items: start;
 }
@@ -45,6 +61,7 @@
 .rowValue {
   color: var(--text-primary);
   word-break: break-all;
+  font-size: var(--text-sm);
 }
 
 .mono {
@@ -52,14 +69,72 @@
 }
 
 .link {
-  color: var(--accent);
+  color: var(--text-primary);
   font-size: var(--text-sm);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-muted);
+  text-underline-offset: 3px;
 }
 
 .link:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
+  text-decoration-color: var(--text-primary);
+}
+
+.exportToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.exportToolbarMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.exportSizeHint {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.exportProgressPanel {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.exportProgressLabel {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.exportProgressTrack {
+  height: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--border);
+  overflow: hidden;
+}
+
+.exportProgressFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.15s ease;
+}
+
+.exportToolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
 .copyRow {
@@ -73,4 +148,150 @@
   margin: 0;
   color: var(--text-muted);
   font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+}
+
+.tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+.tabActive {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+  border-color: var(--accent-muted);
+}
+
+.fixes {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.fixList {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+}
+
+.fixValue {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.fixValue code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+  word-break: break-all;
+}
+
+.fixEmpty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.fixError {
+  margin: 0;
+  color: var(--error);
+  font-size: var(--text-sm);
+}
+
+.copyableField {
+  position: relative;
+  width: 100%;
+}
+
+.copyableFieldMultiline .copyableFieldButton {
+  top: 0.65rem;
+  transform: none;
+}
+
+.copyableFieldControl {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  padding-right: 2.75rem !important;
+}
+
+.copyableFieldMultiline .copyableFieldControl {
+  text-align: left;
+  padding-right: 2.75rem !important;
+}
+
+.copyableFieldButton {
+  position: absolute;
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.copyableFieldButton:hover {
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+.copyableFieldButtonActive {
+  color: var(--success);
+  background: rgb(74 222 128 / 14%);
+}
+
+.copyableFieldButtonActive:hover {
+  color: var(--success);
+  background: rgb(74 222 128 / 20%);
+}
+
+.generateParams {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.generateParamField {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.generateParamField select {
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .inputActions {
+    justify-content: flex-start;
+  }
 }

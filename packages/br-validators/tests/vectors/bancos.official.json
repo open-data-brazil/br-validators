@@ -1,0 +1,22 @@
+{
+  "source": "https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv",
+  "golden": {
+    "bb": {
+      "codigo": "001",
+      "ispb": "00000000",
+      "nomeContains": "Brasil"
+    },
+    "itau": {
+      "codigo": "341",
+      "ispb": "60701190",
+      "nomeContains": "ITAÚ"
+    },
+    "nubank": {
+      "codigo": "260",
+      "ispb": "18236120",
+      "nomeContains": "NU PAGAMENTOS"
+    }
+  },
+  "minInstitutions": 250,
+  "maxInstitutions": 500
+}

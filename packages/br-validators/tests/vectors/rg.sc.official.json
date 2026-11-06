@@ -1,0 +1,12 @@
+{
+  "source": "SSP-SC / CIASC — format-only, 9 digits (legacy numbering)",
+  "url": "https://www.ciasc.sc.gov.br/",
+  "valid": {
+    "raw": "123456789",
+    "masked": "123.456.789"
+  },
+  "invalid": {
+    "raw": "12345678",
+    "code": "INVALID_LENGTH"
+  }
+}

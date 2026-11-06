@@ -1,6 +1,6 @@
 {
   "name": "@br-validators/zod",
-  "version": "0.10.0-alpha.0",
+  "version": "1.10.1-data.37",
   "description": "Zod schemas for Brazilian document validators — delegates to @br-validators/core",
   "license": "MIT",
   "type": "module",
@@ -79,7 +79,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "node ../../scripts/assert-ci-publish.mjs && pnpm run build",
     "pretypecheck": "pnpm --filter @br-validators/core build",
     "pretest": "pnpm --filter @br-validators/core build",
     "pretest:coverage": "pnpm --filter @br-validators/core build",

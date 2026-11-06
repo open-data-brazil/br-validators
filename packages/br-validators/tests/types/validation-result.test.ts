@@ -2,13 +2,17 @@ import { describe, expect, it } from 'vitest';
 import {
   brandBrCodePayload,
   brandCartaoCredito,
+  brandArrecadacao,
   brandCnpj,
   brandCep,
+  brandCnh,
+  brandRenavam,
   brandCpf,
   brandCodigoBarras,
   brandInscricaoEstadual,
   brandLinhaDigitavel,
   brandPisPasep,
+  brandNit,
   brandPixKey,
   brandPlaca,
   brandTelefone,
@@ -25,6 +29,20 @@ describe('brandCpf', () => {
   it('casts string to Cpf brand', () => {
     const value = brandCpf('12345678909');
     expect(value).toBe('12345678909');
+  });
+});
+
+describe('brandCnh', () => {
+  it('casts string to Cnh brand', () => {
+    const value = brandCnh('62472927637');
+    expect(value).toBe('62472927637');
+  });
+});
+
+describe('brandRenavam', () => {
+  it('casts string to Renavam brand', () => {
+    const value = brandRenavam('63977791104');
+    expect(value).toBe('63977791104');
   });
 });
 
@@ -49,6 +67,13 @@ describe('brandPisPasep', () => {
   });
 });
 
+describe('brandNit', () => {
+  it('casts string to Nit brand', () => {
+    const value = brandNit('01234567897');
+    expect(value).toBe('01234567897');
+  });
+});
+
 describe('brandPixKey', () => {
   it('casts string to PixKey brand', () => {
     const value = brandPixKey('pix@bcb.gov.br');
@@ -67,6 +92,13 @@ describe('brandCodigoBarras', () => {
   it('casts string to CodigoBarras brand', () => {
     const value = brandCodigoBarras('03396145000000996689025708991834007174230101');
     expect(value).toBe('03396145000000996689025708991834007174230101');
+  });
+});
+
+describe('brandArrecadacao', () => {
+  it('casts string to Arrecadacao brand', () => {
+    const value = brandArrecadacao('8360000000123456789012345678901234567890123456');
+    expect(value).toBe('8360000000123456789012345678901234567890123456');
   });
 });
 

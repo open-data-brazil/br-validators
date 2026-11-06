@@ -1,0 +1,71 @@
+{
+  "source": "NF-e / NFC-e chave de acesso — ENCAT / SEFAZ MOC §2.2.6",
+  "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D",
+  "mocOnlineUrl": "http://moc.sped.fazenda.pr.gov.br/",
+  "mocDvSectionUrl": "http://moc.sped.fazenda.pr.gov.br/#2.2.6.2. Cálculo do Dígito Verificador da Chave de Acesso da NF-e",
+  "mocPdfUrl": "https://www.confaz.fazenda.gov.br/legislacao/arquivo-manuais/moc7-visao-geral.pdf",
+  "dfePortalUrl": "https://dfe-portal.svrs.rs.gov.br/NFe/Documentos",
+  "nfceQrIllustrativeUrl": "http://moc.sped.fazenda.pr.gov.br/DanfeQrCodeNFCe.html",
+  "normativeNote": "MOC §2.2.6.2 — modulo 11, weights 2..9 right-to-left on 43 digits; remainder 0 or 1 → DV=0",
+  "primary": {
+    "canonical": "52060433009911002506550120000007800267301615",
+    "officialFormatted": "5206 0433 0099 1100 2506 5501 2000 0007 8002 6730 1615",
+    "base43": "5206043300991100250655012000000780026730161",
+    "weightedSum": 644,
+    "remainder": 6,
+    "cDV": "5",
+    "parsed": {
+      "cUF": "52",
+      "aamm": "0604",
+      "cnpj": "33009911002506",
+      "mod": "55",
+      "serie": "012",
+      "nNF": "000000780",
+      "tpEmis": "0",
+      "cNF": "26730161",
+      "cDV": "5"
+    },
+    "uf": "GO",
+    "note": "MOC §2.2.6.2 worked example — sum=644, DV=5"
+  },
+  "secondary": {
+    "canonical": "41180678393592000146558900000006041028190697",
+    "parsed": {
+      "cUF": "41",
+      "aamm": "1806",
+      "cnpj": "78393592000146",
+      "mod": "55",
+      "serie": "890",
+      "nNF": "000000604",
+      "tpEmis": "1",
+      "cNF": "02819069",
+      "cDV": "7"
+    },
+    "uf": "PR",
+    "note": "MOC online valid example"
+  },
+  "nfceQrIllustrative": {
+    "canonical": "28170800156225000131650110000151341562040824",
+    "note": "MOC DANFE NFC-e QR page — illustrative only; DV fails §2.2.6.2 (computed DV=8, stored=4)"
+  },
+  "invalidCharacter": {
+    "input": "2817080015622500013165011000015134156204082X"
+  },
+  "invalidLengthShort": {
+    "canonical": "2817080015622500013165011000015134156204081"
+  },
+  "invalidLengthLong": {
+    "canonical": "281708001562250001316501100001513415620408245"
+  },
+  "invalidCheckDigit": {
+    "canonical": "52060433009911002506550120000007800267301610",
+    "note": "Primary golden with wrong DV (5→0)"
+  },
+  "invalidCuf": {
+    "canonical": "99060433009911002506550120000007800267301615"
+  },
+  "invalidModel": {
+    "canonical": "52060433009911002506990120000007800267301615",
+    "mod": "99"
+  }
+}

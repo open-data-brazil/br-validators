@@ -2,28 +2,92 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const coreDist = path.join(
-  fileURLToPath(new URL('.', import.meta.url)),
-  '../../packages/br-validators/dist',
-);
+const playgroundRoot = fileURLToPath(new URL('.', import.meta.url));
+const coreDist = path.join(playgroundRoot, '../../packages/br-validators/dist');
+const cliRunCaptured = path.join(playgroundRoot, '../../apps/cli/dist/run-captured.js');
+
+const subpaths = [
+  'aeroportos',
+  'anp-combustiveis',
+  'brcode',
+  'boleto',
+  'cartao-credito',
+  'ean',
+  'cep',
+  'cbo',
+  'cest',
+  'cfop',
+  'cnaes',
+  'cnh',
+  'cnpj',
+  'cnpj-motivos',
+  'cpf',
+  'cst',
+  'csosn',
+  'detect',
+  'esocial',
+  'feriados',
+  'generate',
+  'ibge',
+  'ibpt',
+  'incoterms',
+  'inscricao-estadual',
+  'inscricao-estadual-produtor-rural',
+  'inss',
+  'irpf',
+  'iss-municipal',
+  'lc116',
+  'moedas',
+  'natureza-juridica',
+  'nbs',
+  'ncm',
+  'nfe-chave',
+  'nfe-cuf',
+  'paises-bacen',
+  'pis-pasep',
+  'pncp-reference',
+  'portos',
+  'cnis',
+  'pix',
+  'placa',
+  'renavam',
+  'sanitize',
+  'selic',
+  'simples-nacional',
+  'telefone',
+  'titulo-eleitor',
+  'transparencia-snapshots',
+  'tse-municipios',
+  'ptax',
+  'bancos',
+  'data-catalog',
+];
 
 const nextConfig = {
   webpack: (config) => {
-    config.resolve.alias['@br-validators/core'] = path.join(coreDist, 'index.js');
-    config.resolve.alias['@br-validators/core/brcode'] = path.join(coreDist, 'brcode.js');
-    config.resolve.alias['@br-validators/core/cnpj'] = path.join(coreDist, 'cnpj.js');
-    config.resolve.alias['@br-validators/core/cpf'] = path.join(coreDist, 'cpf.js');
-    config.resolve.alias['@br-validators/core/cep'] = path.join(coreDist, 'cep.js');
-    config.resolve.alias['@br-validators/core/telefone'] = path.join(coreDist, 'telefone.js');
-    config.resolve.alias['@br-validators/core/pix'] = path.join(coreDist, 'pix.js');
-    config.resolve.alias['@br-validators/core/boleto'] = path.join(coreDist, 'boleto.js');
-    config.resolve.alias['@br-validators/core/placa'] = path.join(coreDist, 'placa.js');
-    config.resolve.alias['@br-validators/core/pis-pasep'] = path.join(coreDist, 'pis-pasep.js');
-    config.resolve.alias['@br-validators/core/cartao-credito'] = path.join(coreDist, 'cartao-credito.js');
-    config.resolve.alias['@br-validators/core/inscricao-estadual'] = path.join(
-      coreDist,
-      'inscricao-estadual.js',
-    );
+    const alias =
+      config.resolve.alias instanceof Array
+        ? Object.fromEntries(
+            config.resolve.alias.flatMap((entry) => {
+              if (typeof entry === 'object' && entry !== null && 'name' in entry && 'alias' in entry) {
+                return [[entry.name, entry.alias]];
+              }
+              return [];
+            }),
+          )
+        : { ...(config.resolve.alias ?? {}) };
+
+    alias['@br-validators/core$'] = path.join(coreDist, 'index.js');
+    alias['@playground/cli-run-captured'] = cliRunCaptured;
+    alias['node:fs'] = path.join(playgroundRoot, 'lib/cli/stubs/fs.ts');
+    alias.fs = path.join(playgroundRoot, 'lib/cli/stubs/fs.ts');
+    alias['node:module'] = path.join(playgroundRoot, 'lib/cli/stubs/module.ts');
+    alias.module = path.join(playgroundRoot, 'lib/cli/stubs/module.ts');
+    for (const subpath of subpaths) {
+      alias[`@br-validators/core/${subpath}$`] = path.join(coreDist, `${subpath}.js`);
+    }
+
+    config.resolve.alias = alias;
     return config;
   },
 };

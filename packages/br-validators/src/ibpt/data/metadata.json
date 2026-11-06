@@ -1,0 +1,31 @@
+{
+  "id": "ibpt",
+  "nome": "IBPT — Carga tributária aproximada por NCM (Lei 12.741/2012)",
+  "fonte": "IBPT — De Olho no Imposto (tabelas oficiais NCM × UF)",
+  "endpoints": [
+    "https://deolhonoimposto.ibpt.org.br/",
+    "https://apidoni.ibpt.org.br/api/v1/produtos",
+    "https://ibpt.valraw.com.br/api/meta.json",
+    "https://ibpt.valraw.com.br/api/ncm/SP.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/RJ.json.gz (resolved after meta.json)",
+    "https://ibpt.valraw.com.br/api/ncm/MG.json.gz (resolved after meta.json)",
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/ibpt/golden-cargas.json"
+  ],
+  "capturadoEm": "2026-11-06",
+  "atualizadoEm": "2026-11-06T10:33:40.120Z",
+  "contagens": {
+    "cargas": 12
+  },
+  "alteracoes": {
+    "adicionados": 0,
+    "removidos": 0,
+    "alterados": 0,
+    "comparadoCom": "2026-11-05"
+  },
+  "verificacao": {
+    "agendamento": "diario",
+    "workflow": "data-refresh-bot.yml",
+    "ultimaExecucao": "2026-11-06T10:33:40.120Z"
+  },
+  "documentacao": "docs/OFFICIAL-SOURCES.md#ibpt-carga-tributaria-ncm"
+}

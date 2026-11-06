@@ -1,0 +1,14 @@
+{
+  "datasetId": "portos",
+  "endpoints": [
+    "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
+  ],
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-11-06",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "outcomeStatus": "ok"
+}

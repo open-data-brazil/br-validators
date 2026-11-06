@@ -38,6 +38,12 @@
 - **When:** Type is `cnpj` and input may be numeric or alphanumeric
 - **Then:** Detect format, validate appropriate path, apply correct mask
 
+### AF-4: Consumer pads partial input in `onChange` (anti-pattern)
+
+- **When:** App helper calls `padStart(11, '0')` (or similar) before applying punctuation, then wires that helper to `onChange`
+- **Then:** Single keystroke `"0"` becomes `000.000.000-00` — **this is not library behavior**; `@br-validators/core` rejects incomplete input in `format*` / `mask()`
+- **Fix:** Progressive UI mask without padding during typing; use `strip*` / `sanitize()` (and optional `padStart` only if required) at **submit/API** boundary. See [LIBRARY-API.md § Consumer warning](../LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization)
+
 ## Business rules applied
 
 | Rule ID | Description |

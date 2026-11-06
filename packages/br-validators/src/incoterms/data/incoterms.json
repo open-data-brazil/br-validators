@@ -1,0 +1,57 @@
+[
+  {
+    "codigo": "EXW",
+    "nome": "Ex Works",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "FCA",
+    "nome": "Free Carrier",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "CPT",
+    "nome": "Carriage Paid To",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "CIP",
+    "nome": "Carriage and Insurance Paid To",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "DAP",
+    "nome": "Delivered at Place",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "DPU",
+    "nome": "Delivered at Place Unloaded",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "DDP",
+    "nome": "Delivered Duty Paid",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "FAS",
+    "nome": "Free Alongside Ship",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "FOB",
+    "nome": "Free On Board",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "CFR",
+    "nome": "Cost and Freight",
+    "edicao": "2020"
+  },
+  {
+    "codigo": "CIF",
+    "nome": "Cost, Insurance and Freight",
+    "edicao": "2020"
+  }
+]

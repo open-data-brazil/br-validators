@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nome": "Aberto",
+    "descricao": "Modo de disputa em que os licitantes apresentam suas propostas por meio de lances públicos e sucessivos, crescentes ou decrescentes (Lei nº 14.133/2021, art. 56, I).",
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Fechado",
+    "descricao": "Modo de disputa em que as propostas permanecem em sigilo até a data e hora designadas para a abertura e divulgação pública dos lances (Lei nº 14.133/2021, art. 56, II).",
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Aberto-Fechado",
+    "descricao": "Modo de disputa combinado em que há uma fase inicial de lances abertos e sucessivos, seguida de uma etapa final fechada entre as propostas mais bem classificadas (Lei nº 14.133/2021, art. 56, § 1º).",
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "nome": "Dispensa Com Disputa",
+    "descricao": "Procedimento simplificado de contratação direta por dispensa de valor em que há fase pública de apresentação de lances e propostas adicionais (Lei nº 14.133/2021, art. 75, § 3º).",
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "nome": "Não se aplica",
+    "descricao": "Indicação utilizada em hipóteses em que a rito de disputa de lances não é adotado, tais como inovações tecnológicas específicas, inexigibilidade ou contratações diretas sem fase competitiva.",
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "nome": "Fechado-Aberto",
+    "descricao": "Modo de disputa combinado em que a fase inicial de propostas sigilosas é seguida por uma etapa de lances abertos entre os licitantes classificados (Lei nº 14.133/2021, art. 56, § 1º).",
+    "ativo": true
+  }
+]

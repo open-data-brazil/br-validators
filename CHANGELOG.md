@@ -11,23 +11,945 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
-- **F-03 BR Code (F-03):** `parseBrCode`, `validateBrCode` — Bacen EMV TLV + CRC16-CCITT; delegates PIX key to `validatePixKey`
-- Subpath `@br-validators/core/brcode`
-- CLI `br-validators brcode parse|validate`
-- Playground `/brcode`
-- **F-04 `@br-validators/zod`:** Zod schemas (`cpfSchema`, `cnpjSchema`, `cepSchema`, `telefoneSchema`, …) delegating to core `validate*` — Zod 3 + 4 peer range
-- **F-05 `@br-validators/react-hook-form`:** `*Rule()` register options and `*Resolver()` for React Hook Form — same core messages
-- **Telefone (F-01):** `validateTelefone`, `formatTelefone`, `stripTelefone` — 67 Anatel DDDs, `tipo: celular | fixo`, accepts `+55` and masks
-- Subpath `@br-validators/core/telefone`
-- CLI `br-validators telefone validate|format|strip`
-- Playground `/telefone`
+## [1.10.1-data.37] - 2026-11-06
 
 ### Changed
 
-- GitHub repo renamed to [AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
-- npm scope: **`@br-validators/core`** + **`@br-validators/cli`** (org `br-validators` on npm; unscoped `br-validators` is a different project)
+- Reference data refresh (daily bot) — **1.10.1 data #37**: 3 dataset(s) changed (+209 −0 ~1).
+
+## [1.10.1-data.36] - 2026-11-05
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #36**: 2 dataset(s) changed (+208 −0 ~1).
+
+## [1.10.1-data.35] - 2026-11-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #35**: 2 dataset(s) changed (+208 −0 ~1).
+
+### Fixed
+
+- **Data-release CHANGELOG entries**: the bot merges its bullet into the `[Unreleased]` notes (one `### Changed` list per release) instead of stacking a second `### Changed` section, so GitHub Release notes show every change of the version.
+- **Source-failure messages**: hosts that drop connections now report the attempts actually made (2), not the configured 5.
+
+## [1.10.1-data.34] - 2026-11-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #34**: 3 dataset(s) changed (+209 −2 ~3).
+- **Distribution moved to GitHub Releases — npm registry publishing removed.** Every tag `v*` now attaches `npm pack` tarballs of all six packages, `br-validators-data-<version>.tar.gz`, `catalog.json` and `SHA256SUMS` to the GitHub Release (`scripts/build-release-artifacts.ts`). No `NPM_TOKEN`/OTP: the v1.10.1-data.33 release failed with `EOTP` and nothing after it shipped. Adapter tarballs resolve `@br-validators/core` from the same release. npm `1.10.1` is the last registry version. Removed `npm-dist-tag.yml`, `publish-npm-if-missing.sh` and `prepare-npm-publish.ts`.
+- `searchPortos` ranks exact code/name matches first, then name prefixes, then substrings.
+
+### Fixed
+
+- **Daily data refresh red since 2026-10-27:** PTAX tests pinned dates (2026-06-23/24/25) that left the rolling 90-business-day embed. The golden-vector sync now moves `usdHistorico` with the window and the tests derive dates from the data.
+- **Mojibake in `cbo`, `tse-municipios` and `portos`:** ISO-8859-1 sources (MTE CBO CSV, TSE zip) are decoded as Windows-1252 instead of UTF-8 (1687 + 2384 rows fixed). ANTAQ ships `Portos.xlsx` with U+FFFD already in it; `fetch-portos` now restores `municipioNome` from IBGE and repairs free text with a deterministic dictionary (17 proper nouns still flagged). A new test fails if any embedded dataset regains U+FFFD.
+- **IBGE blocked on GitHub runners:** `servicodados.ibge.gov.br` drops connections from GitHub-hosted runners; `fetch-ibge` falls back to IBGE SIDRA (table 6579), which yields byte-identical `estados`/`municipios`. Connect-level failures now stop after 2 attempts instead of 5 × 2 min (≈20 min saved per run when IBGE/CNAE are blocked).
+- **IBGE metadata on the SIDRA fallback** (#50): `metadata.endpoints` now keeps the official `/localidades` URLs and appends the SIDRA URLs actually used — the first post-merge bot run failed two transparency tests because only SIDRA was listed.
+- **ANTAQ zip on GitHub runners** (#50): `Portos.xlsx` is extracted in-process by its ASCII file name (`extractZipEntryBySuffix`). The folder name inside the ANTAQ zip is not UTF-8 and Ubuntu's `unzip` could not re-match it, so `portos` had been retained (not refreshed) on every CI run.
+- **CLI PTAX tests pinned to June** (#51): the CLI suite derives PTAX dates from the embedded window (`apps/cli/tests/ptax-window.ts`) — same rolling-window break as the core tests.
+- **New IBPT tabela** (#51): IBPT moved from `26.1.K` to `26.2.C`; the daily golden-vector sync now moves the tabela id with the data (golden aliquotas stay pinned).
+
+## [1.10.1-data.33] - 2026-10-26
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #33**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.32] - 2026-10-25
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #32**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.31] - 2026-10-24
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #31**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.30] - 2026-10-23
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #30**: 3 dataset(s) changed (+209 −0 ~1).
+
+
+## [1.10.1-data.29] - 2026-10-22
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #29**: 3 dataset(s) changed (+208 −1 ~2).
+
+
+## [1.10.1-data.28] - 2026-10-21
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #28**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.27] - 2026-10-20
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #27**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.26] - 2026-10-20
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #26**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.25] - 2026-10-20
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #25**: 3 dataset(s) changed (+209 −0 ~1).
+
+
+## [1.10.1-data.24] - 2026-10-19
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #24**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.23] - 2026-10-18
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #23**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.22] - 2026-10-17
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #22**: 3 dataset(s) changed (+216 −0 ~1).
+
+
+## [1.10.1-data.21] - 2026-10-16
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #21**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.20] - 2026-10-15
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #20**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.19] - 2026-10-14
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #19**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.18] - 2026-10-13
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #18**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.17] - 2026-10-12
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #17**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.16] - 2026-10-11
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #16**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.15] - 2026-10-10
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #15**: 3 dataset(s) changed (+210 −2 ~1).
+
+
+## [1.10.1-data.14] - 2026-10-09
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #14**: 3 dataset(s) changed (+208 −1 ~1).
+
+
+## [1.10.1-data.13] - 2026-10-08
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #13**: 3 dataset(s) changed (+208 −1 ~2).
+
+
+## [1.10.1-data.12] - 2026-10-07
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #12**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.11] - 2026-10-06
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #11**: 3 dataset(s) changed (+208 −0 ~2).
+
+
+## [1.10.1-data.10] - 2026-10-05
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #10**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.9] - 2026-10-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #9**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.8] - 2026-10-03
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #8**: 3 dataset(s) changed (+210 −2 ~1).
+
+
+## [1.10.1-data.7] - 2026-10-02
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #7**: 3 dataset(s) changed (+208 −1 ~2).
+
+
+## [1.10.1-data.6] - 2026-10-01
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #6**: 3 dataset(s) changed (+209 −0 ~2).
+
+
+## [1.10.1-data.5] - 2026-09-30
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #5**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.4] - 2026-09-29
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #4**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.3] - 2026-09-28
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #3**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.2] - 2026-09-27
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #2**: 2 dataset(s) changed (+208 −0 ~1).
+
+
+## [1.10.1-data.1] - 2026-09-26
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #1**: 3 dataset(s) changed (+210 −2 ~1).
+
+
+## [1.10.1] - 2026-09-25
+
+### Changed
+
+- Stable roll-up since **1.10.0** (data.47–data.49 were tagged but never reached npm due to NPM_TOKEN 404): includes all data drift from data.47–data.49 plus ISS municipal upgrades (473 → 50 estimation-only), playground workspaces, and CI reliability fixes.
+
+## [1.10.0-data.49] - 2026-09-25
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #49**: 3 dataset(s) changed (+208 −0 ~3).
+
+
+## [1.10.0-data.48] - 2026-09-24
+
+### Changed
+
+- Manual release roll-up since **1.10.0-data.46** (data.47 was tagged but never reached npm): data drift from data.47 plus all merged fixes below. No dataset drift in this cut itself.
+- **Security (dev tooling)** — cleared all HIGH devDependency audit findings via lockfile (linkify-it 5.0.2, fast-uri 3.1.6, find-my-way 9.7.0, js-yaml 4.3.2, brace-expansion 1.1.18/2.1.4/5.0.9, vite docs chain 6.4.3); production audit stays clean.
+- **CI reliability** — SELIC golden vectors stay stale-correct across the rolling window; coverage-gap artifacts are now deterministic with a CI freshness gate; export manifest no longer churns timestamps.
+
+### Added
+
+- **Playground document workspaces for `boleto-arrecadacao` and IE produtor rural** — new `/boleto-arrecadacao` and `/ie-produtor-rural` routes (validate/strip/sanitize/generate tabs; format stays disabled for arrecadação since core has no arrecadação formatter), sidebar/nav entries, EN+PT copy, official-sources catalog entries, and CLI command hints. Also fixed a stale `reference-data` test that still expected the Campinas ISS row to be estimation-only.
+
+### Changed
+
+- **ISS municipal partial embed (partial #20)** — **136** estimation-only rows upgraded to verified rates: **134** from the federal gov.br NFS-e registered alíquotas table (all 5,571 municipalities, extraction 2026-09-03; only municipalities with ≥ 100 currently-valid service rows), plus Campinas/SP (Lei 12.392/2005 Art. 27) and Niterói/RJ (Lei 2.597/2008) via directly verified municipal legislation. Estimation-only rows: **473 → 337**; official rows: **27 → 163**. Seeds live in `scripts/lib/iss-municipal-nfse-seeds.ts` and are honored by `buildIssMunicipalEmbed`, so daily refetches preserve the citations. Rows below the evidence threshold (e.g. Olímpia/SP, Quissamã/RJ) stay `estimativa: true`.
+- Barueri/SP upgraded via verified municipal legislation (CTM LC 118/2002 + LC 157/2016 service table, 2%–5%, Secretaria de Finanças Lista de Serviços). Estimation-only rows: **337 → 336**.
+- **ISS municipal partial embed (partial #20, round 2)** — completed the gov.br NFS-e extraction across **all 26 state files** (round 1 had only parsed SP+RJ due to an incomplete unzip — the committed seeds were all valid, coverage was just partial). **285** further rows upgraded (all with ≥ 100 currently-valid service rows; 98 with refined bands, e.g. Ipojuca/PE 5%–5%, Querência/MT 3%–3%). Estimation-only rows: **336 → 51**; official rows: **164 → 449**. Guarulhos/SP verified via Lei 5.986/2003 but its Prefeitura PDF is HTTP-only, violating the https `leiUrl` invariant — left estimation-only.
+- **ISS municipal partial embed (partial #20, round 3)** — 4 NFSe-seeded rows re-cited to their municipal legislation (same verified 2%–5% bands, independently confirmed): Contagem/MG (LC 240/2017 Anexo II-A), Uberlândia/MG (LC 336/2003), Londrina/PR (Lei 7.303/97 Tabela I 2026), Serra/ES (Lei 5.400/2021). Municipal-law citations: **3 → 7**. Attempted but left estimation-only for lack of confirmable min/max bands: Saquarema/RJ, São Bernardo do Campo/SP, Sorocaba/SP, Jundiaí/SP (mirror shows a 1% construction rate — needs deeper verification), Santos/SP, Campos dos Goytacazes/RJ, Camaçari/BA, Betim/MG, Joinville/SC, Caxias do Sul/RS, São Caetano do Sul/SP, Maringá/PR, Mauá/SP, Macaé/RJ, São José dos Pinhais/PR, Santo André/SP.
+- **ISS municipal partial embed (partial #20, round 4)** — no new upgrades: researched Ribeirão Preto/SP, Piracicaba/SP, Blumenau/SC (CTM LC 632/2007 found, max unconfirmed), Paranaguá/PR (CTM LC 06/2000 + LC 110/2009 found, band unconfirmed), Canoas/RS (official table page found, values unconfirmed), Diadema/SP (full mirror table LC 352 but no official legislation URL identified), Itu/SP, Juiz de Fora/MG. The Jundiaí/SP 1% construction-rate finding stands as a data-quality flag (do not normalize to 2% without the official table). Remaining 51 estimation-only rows are all hard cases (PDF/JS-only tables, ambiguous histories, or laws without public tables) — best pursued via community `iss-municipal-contribution` issues with local sources.
+- **ISS municipal partial embed (partial #20, round 5)** — no new upgrades after 12 more research actions (Mauá/SP CTM LC 21/2014 found via official legislaconsulta PDF; Macaé/RJ CTM LC 282/2018; São José dos Pinhais/PR CTM LC 01/2003; Santo André/SP new CTM LC 6/2025; re-examined Caxias do Sul/RS, São Caetano do Sul/SP, Santos/SP, Guarulhos/SP): bands remain unconfirmable from official sources in all cases (see per-city notes above). Verified total stays at **422 upgrades (473 → 51)**. Working tree and all suites untouched — docs-only commit.
+- **ISS municipal partial embed (partial #20, round 6)** — Pato Branco/PR upgraded via verified municipal legislation (LC 118/2025 Anexo Único full table: 2% e.g. 1.01, 5% e.g. 15.02/22.01, via Câmara Municipal SAPL full-text HTML; federal NFSe file corroborates 2.0–5.0 at n=87). Estimation-only rows: **51 → 50**. Jundiaí/SP re-examined via official Anexo I excerpts (LC 460/2008): general 2% floor and 5% entries confirmed, but the 7.02/7.05 1% construction anomaly vs LC 460 §6º exception remains unscoped — stays estimation-only.
+- **ISS municipal partial embed (partial #20, round 7)** — no new upgrades after ~12 more research actions (Sorocaba/SP Lei 4.994/1995 confirmed on Fazenda page; Uberaba/MG band corroborated but city already official via NFSe; Ponta Grossa/PR, Marabá/PA CTM LC 04/2010, Santa Maria/RS CTM LC 002/2001, Itu/SP CTM LC 710/2005, Ribeirão Preto/SP CTM Lei 2.415/70, Piracicaba/SP CTM LC 224/2008, Paranaguá/PR CTM LC 06/2000, Suzano/SP CTM LC 39/1997, Praia Grande/SP DER table shows only 3%): bands remain unconfirmable from official sources in all cases. Verified total stays at **423 upgrades (473 → 50)**. Working tree and all suites untouched — docs-only commit.
+
+## [1.10.0-data.47] - 2026-09-21
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #47**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.46] - 2026-09-20
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #46**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.45] - 2026-09-19
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #45**: 3 dataset(s) changed (+610 −2 ~0).
+
+
+## [1.10.0-data.44] - 2026-09-18
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #44**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.43] - 2026-09-17
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #43**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.42] - 2026-09-16
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #42**: 5 dataset(s) changed (+618 −11 ~35).
+
+
+### Fixed
+
+- Keep SELIC CLI tests aligned with the refreshed official vector instead of asserting a stale rolling rate.
+- Upgrade GitHub Actions dependencies to Node 24-compatible releases before the Node 20 runtime removal.
+- Upgrade production dependency resolutions for Next.js, nanoid, and sharp to patched versions.
+
+## [1.10.0-data.41] - 2026-08-11
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #41**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.40] - 2026-08-05
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #40**: 3 dataset(s) changed (+608 −0 ~1).
+
+
+## [1.10.0-data.39] - 2026-08-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #39**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.38] - 2026-08-03
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #38**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.37] - 2026-08-02
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #37**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.36] - 2026-08-01
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #36**: 4 dataset(s) changed (+610 −2 ~1).
+
+
+## [1.10.0-data.35] - 2026-07-31
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #35**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.34] - 2026-07-30
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #34**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.33] - 2026-07-29
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #33**: 3 dataset(s) changed (+608 −1 ~0).
+
+
+## [1.10.0-data.32] - 2026-07-28
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #32**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.31] - 2026-07-27
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #31**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.30] - 2026-07-26
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #30**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.29] - 2026-07-25
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #29**: 3 dataset(s) changed (+610 −2 ~0).
+
+
+### Security
+
+- Bump `postcss` pnpm override to `^8.5.18` (lockfile resolves patched release) for GHSA-r28c-9q8g-f849 (sourceMappingURL path traversal / `.map` disclosure). Previous `^8.5.12` still allowed vulnerable `8.5.15`.
+- Mirror overrides in `pnpm-workspace.yaml` for CI audit (pnpm 11+ ignores `package.json#pnpm`); keep `package.json#pnpm.overrides` for local pnpm 9 lockfile resolution.
+
+## [1.10.0-data.28] - 2026-07-24
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #28**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+### Security
+
+- Bump playground `next` to `^15.5.21` (lockfile `15.5.21`) for GHSA-m99w-x7hq-7vfj, GHSA-89xv-2m56-2m9x, and GHSA-p9j2-gv94-2wf4 (DoS / SSRF) so prod audit `--audit-level=high` passes.
+
+## [1.10.0-data.27] - 2026-07-23
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #27**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+### Security
+
+- Force `sharp@^0.35.3` via pnpm override (Next 15 still pins `^0.34.3`) to clear GHSA-f88m-g3jw-g9cj / libvips CVEs blocking `pnpm audit --prod --audit-level=high`.
+
+## [1.10.0-data.26] - 2026-07-22
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #26**: 3 dataset(s) changed (+609 −0 ~0).
+
+
+## [1.10.0-data.25] - 2026-07-21
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #25**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.24] - 2026-07-20
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #24**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.23] - 2026-07-19
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #23**: 3 dataset(s) changed (+610 −2 ~0).
+
+
+## [1.10.0-data.22] - 2026-07-18
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #22**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.21] - 2026-07-17
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #21**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.20] - 2026-07-16
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #20**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.19] - 2026-07-15
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #19**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.18] - 2026-07-14
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #18**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.17] - 2026-07-13
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #17**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.16] - 2026-07-12
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #16**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.15] - 2026-07-11
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #15**: 4 dataset(s) changed (+612 −2 ~0).
+
+
+## [1.10.0-data.14] - 2026-07-10
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #14**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.13] - 2026-07-09
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #13**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.12] - 2026-07-08
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #12**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.11] - 2026-07-07
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #11**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.10] - 2026-07-06
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #10**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.9] - 2026-07-05
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #9**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.8] - 2026-07-04
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #8**: 3 dataset(s) changed (+610 −2 ~0).
+
+
+## [1.10.0-data.7] - 2026-07-03
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #7**: 3 dataset(s) changed (+608 −1 ~0).
+
+
+## [1.10.0-data.6] - 2026-07-02
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #6**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.5] - 2026-07-01
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #5**: 3 dataset(s) changed (+608 −0 ~1).
+
+
+## [1.10.0-data.4] - 2026-07-01
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #4**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.3] - 2026-06-30
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #3**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.2] - 2026-06-30
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #2**: 2 dataset(s) changed (+608 −0 ~0).
+
+
+## [1.10.0-data.1] - 2026-06-29
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.0 data #1**: 3 dataset(s) changed (+608 −0 ~1).
+
+
+---
+
+## [1.10.0] - 2026-06-27
+
+### Added
+
+- **Batch CSV column extraction (EXP-35-C)** — `parseBatchCsv()` in `@br-validators/core`; CLI `batch <type> --file data.csv --col cpf` with `--delimiter` and `--skip-header`
+- **PIX sanitize (EXP-35-D)** — `stripPixKey()` + `sanitize('pix')` (16 sanitizable types); CLI `sanitize pix`; playground PIX strip/sanitize tabs
+- **CSOSN embed (EXP-35-E)** — `@br-validators/core/csosn` with `getCsosnPorCodigo`, `getAllCsosn`, `validateCsosn`, `searchCsosn`; CLI `csosn lookup|search|validate`; playground `/data/fiscal` module; `pnpm fetch:data:csosn`
+- **eSocial Tabela 03 rubricas (EXP-35-F)** — extend `@br-validators/core/esocial` with `getEsocialRubricaPorCodigo`, `getAllEsocialRubricas`, `searchEsocialRubricas`; 208 payroll rubric nature codes from official Tabela 03; playground `/data/payroll` module; `pnpm fetch:data:esocial` now embeds categorias + rubricas
+- **PTAX 90-day embed (EXP-35-G)** — expand Bacen PTAX embed from 5 to **90 business days** (~860 rows); `getPtaxHistorico(moeda, { desde, ate })` with per-row `dataReferencia` / `isStale` / `warning`; metadata `janelaDiasUteis: 90`; CLI `ptax historico`
+- **Bundle size docs (EXP-35-H)** — `pnpm measure:bundle-sizes` esbuild gzip report per `@br-validators/core/*` subpath; committed table in `data/bundle-sizes/`; README + install guide; weekly/post-release CI artifact (report-only)
+- **ISS MUNIC/IBGE fallback (EXP-35-I)** — `lookupIssMunicipalPorIbge` cascade (500 embed → `fonte: 'munic-ibge'` → LC 116); **5.071** municipality embed; `pnpm fetch:data:iss-munic-ibge`; CLI/playground cascade lookup; golden **Acrelândia `1200013`**
+- **ISS municipal 500 + UF filter (EXP-34-ISS)** — expand `@br-validators/core/iss-municipal` embed from 100 to **500** municipalities (27 capitals + top IBGE SIDRA PIB 2022); primary fetch via [SIDRA 5938](https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2022); `getIssMunicipalPorUf`, `getIssMunicipalUfsDisponiveis`, `searchIssMunicipal(query, { uf?, limit? })`; CLI `iss-municipal list --uf` and `search --uf`; playground UF filter on `/data/fiscal`; golden vectors for Campinas **`3509502`** and UF-scoped search
+- **Coverage gaps index** — [docs/COVERAGE-GAPS.md](docs/COVERAGE-GAPS.md) + `data/coverage-gaps/*.json` (5.071 municipalities not in ISS embed, 473 estimation-only rows); `pnpm generate:coverage-gaps`; README help-wanted section; issue templates `iss-municipal-contribution`, `rg-dv-upgrade`
+
+### Changed
+
+- **README parity (EXP-35-A)** — root + npm README document PTAX `dataReferencia` / `isStale` / 5-day embed window, `getAll*()` listing pattern, and ISS municipal `fonte` + `warning` examples; CLI README documents `ptax lookup` and `selic` `--verbose` staleness fields
+- **ISS municipal `fonte` field (EXP-35-B)** — `IssMunicipalResult.fonte: 'oficial' | 'estimativa'` derived from capital seeds vs LC 116 band rows; CLI JSON/human output; playground badge; golden vectors updated
+- **`sanitize('pix')` (EXP-35-D)** — closes v1.2.0 deferral; 16 sanitizable document types (was 15; PIX excluded until `stripPixKey`)
+
+---
+
+## [1.9.0] - 2026-06-26
+
+### Changed
+
+- **generate() output options (33e)** — `GenerateOptions.stripped` explicit flag; `stripped: true` wins over `masked: true`; CLI `--stripped`; default behavior unchanged (stripped when unmasked)
+- **Branded types audit (33d)** — `validateCpf`, `validateCnpj`, `validateCep`, and `validatePisPasep` now return `ValidationResult<BrandedT>`; new `Arrecadacao` brand for boleto arrecadação success paths; compile-time + runtime branded return tests; `docs/LIBRARY-API.md` branded type inventory table
+- **Data refresh bot versioning** — daily drift publishes `MAJOR.MINOR.PATCH-data.N` (e.g. `1.8.3-data.1`) instead of incrementing human PATCH (`1.8.4`); npm canonical form (no zero-padding on counter)
+
+### Fixed
+
+- **Data refresh bot version format** — bot tags and `package.json` use npm-canonical `1.8.3-data.1` (not zero-padded `1.8.3-data.0001`) so Release CI registry checks match the published version
+
+### Added
+
+- **E2E subpath import tests (33s)** — `tests/integration/subpath-imports/` mini-consumer resolves all 61 `@br-validators/core` export map entries via native Node `import`; dedicated smokes for `cnpj`, `ncm`, `cst`, `compare`; esbuild tree-shake regression; wired into `pnpm test:integration` and CI
+- **TypeDoc + VitePress API reference (33r)** — `typedoc.json` + `typedoc-plugin-markdown`; `pnpm docs:api` generates `apps/docs/api-reference/` from `@br-validators/core` subpath barrels; VitePress sidebar **API Reference**; CI `docs` job runs `docs:build`; narrative `LIBRARY-API.md` unchanged
+- **Security CVE + audit CI (33q)** — `SECURITY.md` CVE request SLA table, `pnpm audit` CI gate (`--prod` fails on high/critical; devDeps warn-only), npm publish integrity notes, false-positive override process
+- **Migration guide (33p)** — root [MIGRATION.md](MIGRATION.md): v1.x → v2.0 lookup + deprecated `getAll*` inventory with before/after examples; v0.x → v1.0 changelog index; maintainer update policy; linked from README and `docs/README.md`
+- **ISS municipal partial embed (33o)** — `@br-validators/core/iss-municipal` with `getIssMunicipalPorIbge`, `getIssMunicipalPorUfMunicipio`, `searchIssMunicipal`, `getAllIssMunicipal`; 100 cities (27 capitals + top PIB); estimation-only `warning` on every result; CLI `iss-municipal lookup|resolve|search`; playground `/data/fiscal` module; `pnpm fetch:data:iss-municipal` (manual — not daily bot)
+- **SELIC meta SGS 432 (33n)** — `@br-validators/core/selic` with `getSelicMeta`, `getSelicMetaPorData`, `getSelicHistorico`; 90-day rolling embed; staleness API; CLI `selic [--date]`; playground `/data/finance`; `pnpm fetch:data:selic`; daily refresh bot
+- **INSS contribution table (33m)** — `@br-validators/core/inss` with `getInssTabelaContribuicao`, `calcularInssMensal`, `getInssFaixaPorSalario`; 2025 employee brackets (teto R$ 8.157,41); CLI `inss tabela` and `inss calc`; playground `/data/payroll`; `pnpm fetch:data:inss`
+- **IRPF progressive table (33l)** — `@br-validators/core/irpf` with `getIrpfTabelaProgressiva`, `calcularIrpfMensal`, `getIrpfFaixaPorValor`; 2025 monthly brackets; CLI `irpf tabela` and `irpf calc`; playground `/data/payroll`; `pnpm fetch:data:irpf`
+- **NF-e cUF lookup (33k)** — `@br-validators/core/nfe-cuf` with `getCufPorCodigo`, `getCufPorUf`, `getAllCuf`; static 27-row SEFAZ table + IBGE cross-ref; CLI `nfe-cuf lookup`; playground `/data/fiscal` module; `pnpm fetch:data:nfe-cuf`
+- **Fiscal code validators (33j)** — `validateNcm`, `validateCfop`, `validateCst({ tax })` combine format rules with embedded lookup; `FiscalCodeValidationResult`; CLI `ncm|cfop validate` and `cst lookup|search|validate --tax`; playground `/data/fiscal` validate tab + CST module
+- **Lookup result standardization (33i)** — `LookupResult<T>` with `NOT_FOUND` / `INVALID_FORMAT` / `INVALID_INPUT`; `lookup*PorCodigo` on all offline lookup modules; legacy `get*` delegates via `unwrapLookupValue`; new `@br-validators/core/lookup` subpath; CLI reference/bancos/ibge lookup JSON failure shape `{ ok: false, code, message }`; [MIGRATION.md](MIGRATION.md) v2.0 lookup section
+- **Lookup `getAll*` naming (33h)** — canonical `getAll{Entity}()` list getters on every lookup module; legacy plural names deprecated until v2.0; `tests/lookup/getall-aliases.test.ts`
+- **PTAX staleness API (33g)** — `getPtaxCotacao` / `getPtaxUltimoDiaUtil` return `dataReferencia`, `isStale`, and `warning` when embed is more than 1 business day old; CLI `ptax lookup` with `--verbose` staleness output; `PtaxCotacaoResult` type
+- **Platform CLI + playground** — `compare`, `batch`, and `diff` commands and routes (`/compare`, `/batch`, `/diff`) — closes DELIVERY-SURFACES parity gap for Layer 3 APIs
+- **Platform CLI `mask`** — `br-validators mask <type> <value>` delegates to `@br-validators/core/mask` (validate-then-format; `--uf` for IE / RG)
+- **RG contributor infrastructure (33c)** — `getRgPendingUfs()`, `getRgResearchUrl(uf)`, `RG_RESEARCH_URLS`, `CONTRIBUTING-UF.md`; OFFICIAL-SOURCES § RG expanded for 21 pending UFs (6/27 shipped)
+- **RG UF BA** — format-only legacy IIPM validator (10 digits); `rg.ba.official.json`; 7/27 UFs shipped
+- **RG UF AC** — format-only legacy SSP-AC validator (6 digits); `rg.ac.official.json`; 8/27 UFs shipped
+- **RG UF AL** — format-only legacy POLCAL/IIEAL validator (7 digits); `rg.al.official.json`; 9/27 UFs shipped
+- **RG UF AM** — format-only legacy IIACM/SSP-AM validator (9 digits); `rg.am.official.json`; 10/27 UFs shipped
+- **RG UF AP** — format-only legacy PCA/SSP-AP validator (9 digits); `rg.ap.official.json`; 11/27 UFs shipped
+- **RG UF DF** — format-only legacy PCDF validator (7 digits); `rg.df.official.json`; 12/27 UFs shipped
+- **RG UF ES** — format-only legacy PCIES validator (9 digits); `rg.es.official.json`; 13/27 UFs shipped
+- **RG UF GO** — format-only legacy PCGO validator (9 digits); `rg.go.official.json`; 14/27 UFs shipped
+- **RG UFs MA, MS, MT, PA, PB** — format-only legacy validators (9 digits each); `rg.{ma,ms,mt,pa,pb}.official.json`; 19/27 UFs shipped
+- **RG UFs CE, PE, PI, RN, RO, RR, SE, TO** — format-only legacy validators (9 digits each); `rg.{ce,pe,pi,rn,ro,rr,se,to}.official.json`; **27/27 UFs shipped** (phase 33c complete)
+- **RG contributor guide** — [docs/community/RG-CONTRIBUTOR-GUIDE.md](docs/community/RG-CONTRIBUTOR-GUIDE.md): how to open issues, cite official SSP/PCivil sources, report algorithms; documents that most UFs lack consistent official legacy RG/DV data
+
+---
+
+## [1.8.3-data.0001] - 2026-06-26
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.8.3 data #0001**: 0 dataset(s) changed (+0 −0 ~0).
+
+---
+
+## [1.8.3] - 2026-06-26
+
+### Fixed
+
+- **paises-bacen fetch** — legacy NF-e URL redirected to HTML; fetch now discovers **Documentos → Diversos** ODS (NT 2018.003 v1.01), parses zip data descriptors, and falls back to Bacen FTP
+- **Data refresh bot PATCH gate** — npm publish skipped when drift was `~alterados` only (required `totalAdicionados > 0`); now publishes on any real row/field drift
+- **CONFAZ fetch** — 60s HTML timeout for CFOP and CEST (fewer transient CI failures)
+
+### Changed
+
+- **Embedded reference data** — paises-bacen refreshed to **253** countries (NF-e ODS); PTAX rolling window updated
+- **GitHub issue templates** — bug, data-source, and feature request forms + labels
+- **docs** — PTAX OData bare URL documented (HTTP 500 without query parameters)
+
+---
+
+## [1.8.2] - 2026-06-25
+
+### Fixed
+
+- **IBPT fetch** — `resolveLatestIbptTabela` picks `Math.max(anos)` (was resolving 2017 → 404 on valraw)
+- **Data refresh bot** — `anp-combustiveis` re-added to daily fetch; registry centralized in `data-refresh-registry.ts`
+
+### Changed
+
+- **Embedded reference data** — Bacen STR +1 institution; PTAX rolling window through 2026-06-25; IBPT tabela 26.1.K (12 golden cargas)
+
+---
+
+## [1.8.0] - 2026-06-25
+
+### Added
+
+- **`@br-validators/core/cst`** — offline CST lookup for ICMS, IPI, PIS, and COFINS (`getCstIcmsPorCodigo`, `getCstIpiPorCodigo`, `getCstPisPorCodigo`, `getCstCofinsPorCodigo`, `searchCstIcms`); embedded from RFB SPED Fiscal tables; `pnpm fetch:data:cst` (manual refresh)
+- **`@br-validators/core/lc116`** — LC 116/2003 ISS national service list (`getLc116PorCodigo`, `searchLc116`); embedded from Planalto / NFSe republication; `pnpm fetch:data:lc116` (manual refresh)
+- **`@br-validators/core/ptax`** — Bacen PTAX Fechamento exchange rates (`getPtaxCotacao`, `getPtaxUltimoDiaUtil`); 5-business-day rolling embed; pairs with `moedas`; `pnpm fetch:data:ptax` (daily bot)
+- **`@br-validators/core/esocial`** — eSocial Tabela 01 worker categories (`getEsocialCategoriaPorCodigo`, `searchEsocialCategorias`); embedded from official layout tables; `pnpm fetch:data:esocial` (manual refresh)
+- **`@br-validators/core/ean`** — GS1 EAN-8 / EAN-13 product barcodes (`validateEan`, `formatEan`, `stripEan`, `detectEanFormat`); modulo-10 weights 1/3; CLI + playground
+- **`@br-validators/core/simples-nacional`** — LC 123/2006 Simples Nacional annex tables (`getSimplesAnexo`, `getSimplesFaixa`, `computeSimplesAliquotaEfetiva`); Anexos I–V embedded; `pnpm fetch:data:simples-nacional` (manual refresh)
+- **`@br-validators/core/ibge`** — NF-e `cMunFG` helpers (`toCmunFg`, `parseCmunFg`, `computeCmunFgCheckDigit`); IBGE modulo-10 DV + nine official exceptions; golden vector `ibge.cmunfg.official.json`
+- **`@br-validators/core/cnpj-motivos`** — RFB CNPJ motivos de situação cadastral (`getMotivosSituacaoCadastral`, `getMotivoSituacaoCadastralPorCodigo`); embedded from `Motivos.zip`; `pnpm fetch:data:cnpj-motivos` (monthly refresh)
+- **`@br-validators/core/ibpt`** — IBPT approximate NCM tax burden Lei 12.741/2012 (`getIbptCargaPorNcmUf`, `computeIbptCargaTotal`); golden NCM×UF subset; `pnpm fetch:data:ibpt` (semestral refresh)
+- **`@br-validators/core/cnis`** — CNIS / NIT worker ID (`validateNit`, `inferNitIssuer`); RV_03 modulo 11 + `issuer`/`tipo` metadata; library + CLI + playground; golden `cnis.official.json`
+
+---
+
+## [1.7.0] - 2026-06-24
+
+### Added
+
+- **Daily data refresh bot (Phase 30)** — cron 00:00 America/Sao_Paulo; 5 fetch retries × 2 min; field-level drift logs; source health escalation (warning → critical); `CRITICAL-ALERTS.md`; full-auto PATCH publish on drift
+- **`@br-validators/core/anp-combustiveis`** — ANP weekly LPC municipal fuel averages (`getAnpPrecosMedios`, `getAnpPrecosMediosPorIbge`, `getAnpSemanaAtual`); `pnpm fetch:data:anp-combustiveis`; product normalization ported from [TABELA-ANP-COMBUSTIVEIS](https://github.com/AlexandreZanata/TABELA-ANP-COMBUSTIVEIS)
+
+### Fixed
+
+- **Data refresh report** — seal stale first-embed metadata (`comparadoCom: null`) so reports no longer show false `+42321` drift or trigger accidental auto-PATCH; `field-changes/` always written with `no_drift` when unchanged
+
+---
+
+## [1.6.1] - 2026-06-24
+
+### Changed
+
+- **npm publish is CI-only** — `scripts/assert-ci-publish.mjs` blocks local `pnpm publish`; releases via tag push or Release workflow `workflow_dispatch`
+- **Release workflow** — idempotent publish (`scripts/publish-npm-if-missing.sh`), post-publish registry verification for all six packages, `npm-dist-tag` covers express and vue
+- **Docs** — `docs/BRANCHING.md`, `docs/VERSIONING.md`, release agent rules updated for six-package CI flow
+
+---
+
+## [1.6.0] - 2026-06-24
+
+### Added
+
+- **`@br-validators/express`** — `brValidate()` Express middleware and `brValidateFastify()` preHandler; 18 document type ids; structured HTTP 400 `{ ok: false, field, code, message }`; body/query/params locations; optional `uf` for IE/RG
+- **`@br-validators/vue`** — Vue 3 composables `useBrValidator()` plus `useCpf()`, `useCnpj()`, `useCep()`, `useTelefone()`, `usePix()`, `useInscricaoEstadual()`; reactive `error`, `formatted`, `isValid`; delegates to core `validate*` / `format*`
+- **Phase 29 — community & distribution**
+  - VitePress docs site (`apps/docs/`) — auto-sync `docs/LIBRARY-API.md`; deploy target `docs.br-validators.dev`
+  - Dev.to article outline — `docs/marketing/devto-brazilian-data-toolkit.md`
+  - RG good-first-issues index — `docs/community/RG-GOOD-FIRST-ISSUES.md` + issue template config
+  - `.github/FUNDING.yml` — GitHub Sponsors
+  - Playwright E2E smoke for playground — `.github/workflows/e2e.yml`
+  - README: npm downloads badge + OpenSSF best-practices self-certify link
+- **`@br-validators/core/rg`** — `validateRg(raw, { uf })`, `formatRg`, `stripRg`, `getRgUfSupport()` — per-UF identity card (phase 1: SP, RJ, MG, PR, RS, SC; UF required; no `detect()` auto-classify)
+- CLI: `br-validators rg validate|format|strip … --uf SP`
+- Playground: `/rg` with UF selector (6 implemented states)
+- Community: `.github/ISSUE_TEMPLATE/rg-uf-contribution.md` for remaining 21 UFs
+- **`@br-validators/core/processo-judicial`** — `validateProcessoJudicial`, `formatProcessoJudicial`, `stripProcessoJudicial`, `parseProcessoJudicial` (CNJ Resolução 65/2008, modulo 97-10)
+- CLI: `br-validators processo-judicial validate|parse|format|strip`
+- Playground: `/processo-judicial` with segment breakdown UI
+- `detect()` classifier for 20-digit / masked CNJ numbers
+- **Phase 27d — reference data surface parity**
+  - CLI: `ibge lookup|list`, `feriados list --year`, `tse-municipios lookup`, `ddd lookup`, `cep faixa`, `cnae|cfop|ncm|cbo lookup|search`
+  - Playground: `/data/fiscal` tabs for CNAE, CFOP, NCM, CBO; `/data/calendar` national holidays; TSE ↔ IBGE cross-ref on `/data/ibge`
+  - Docs: README reference data tables updated for CLI + Playground columns
+- **Docs:** consumer guideline — display `format*` / `mask()` vs backend `strip*` / padding at submit ([LIBRARY-API.md](docs/LIBRARY-API.md#consumer-warning--display-formatting-vs-backend-normalization))
+
+---
+
+## [1.5.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/natureza-juridica`** — `getNaturezaJuridicaPorCodigo()`; RFB CNPJ legal nature codes
+- **`@br-validators/core/nbs`** — `getNbsPorCodigo()`, `searchNbs()`; NFSe Nacional Anexo B leaf codes
+- **`@br-validators/core/cest`** — `getCestPorCodigo()`, `getCestPorNcm()`, `searchCest()`; CONFAZ ICMS 142/2018 ST codes
+- **`@br-validators/core/moedas`** — `getMoedaPorCodigo()`, `searchMoedas()`; ISO 4217 + Bacen PTAX enrichment
+- **`@br-validators/core/paises-bacen`** — `getPaisPorCodigoBacen()`; NF-e Bacen country table
+- **`@br-validators/core/incoterms`** — `getIncotermPorCodigo()`; ICC Incoterms 2020 static list
+- **`@br-validators/core/portos`** — `getPortoPorCodigo()`, `getPortosPorMunicipio()`, `searchPortos()`; ANTAQ port installations
+- **`@br-validators/core/pncp-reference`** — PNCP domain tables (modalidades, amparos legais, etc.)
+- **`@br-validators/core/transparencia-snapshots`** — Portal da Transparência endpoint registry (query-adapter classification)
+- **Fetch scripts** — `pnpm fetch:data:{natureza-juridica,nbs,cest,portos,pncp-reference,transparencia}`; registered in weekly `data-refresh-bot`
+- **Adapter RFCs** — [docs/ADAPTERS-PNCP-RFC.md](docs/ADAPTERS-PNCP-RFC.md), [docs/ADAPTERS-TRANSPARENCIA-RFC.md](docs/ADAPTERS-TRANSPARENCIA-RFC.md)
+- **`@br-validators/cli`** — `reference-lookup` commands for natureza-juridica, nbs, cest, moedas, paises-bacen, incoterms, portos, aeroportos (`lookup <codigo>`, `--json`, `--verbose`)
+- **Playground** — `/data/fiscal`, `/data/trade`, `/data/logistics` reference explorers (client-side embedded core datasets)
+
+---
+
+## [1.4.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/aeroportos`** — `getAeroportos()`, `getAeroportoPorIata()`, `getAeroportoPorIcao()`, `getAeroportosPorMunicipio()`; ANAC public aerodromos embedded offline; `AEROPORTOS_DATA_VERSION`
+- **`@br-validators/core/tse-municipios`** — `getMapeamentoTseIbge()`, `getMunicipioIbgePorCodigoTse()`, `getCodigosTsePorMunicipio()`; TSE ↔ IBGE municipality cross-walk; `TSE_MUNICIPIOS_DATA_VERSION` (lookup-only — `titulo-eleitor` validation unchanged)
+- **Fetch scripts** — `pnpm fetch:data:aeroportos`, `pnpm fetch:data:tse-municipios`; registered in weekly `data-refresh-bot`
+
+---
+
+## [1.3.1] - 2026-06-23
+
+### Added
+
+- **`@br-validators/cli`** — `bancos lookup <COMPE|ISPB>` and `bancos list [--limit n]` for offline Bacen STR participant lookup (`--json`, `--verbose`)
+- **Playground** — `/data/ibge`, `/data/bancos`, `/data/catalog` reference data routes (client-side only, embedded core datasets)
+
+---
+
+## [1.3.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/feriados`** — `isFeriadoNacional()`, `getFeriadosNacionais(year)`, `getProximoDiaUtil()`, `getPontosFacultativosFederais(year)`; ten federal national holidays (nine Lei 662 fixed + Paixão de Cristo); nine facultative days per Portaria MGI 11.460/2025 (2026); `FERIADOS_DATA_VERSION`
+- **`@br-validators/core/cnaes`** — `getCnaePorCodigo()`, `searchCnaes()`, `CNAES_DATA_VERSION`; IBGE CNAE 2.3 subclasses
+- **`@br-validators/core/cfop`** — `getCfopPorCodigo()`, `searchCfop()`, `CFOP_DATA_VERSION`; CONFAZ CFOP table
+- **`@br-validators/core/ncm`** — `getNcmPorCodigo()`, `searchNcm()`, `NCM_DATA_VERSION`; Siscomex NCM leaf codes
+- **`@br-validators/core/cbo`** — `getCboPorCodigo()`, `searchCbo()`, `CBO_DATA_VERSION`; MTE CBO 2002 occupations
+- **`@br-validators/core/cep`** — `getCepFaixaInfo(prefix)` offline UF/municipality lookup from IBGE CNEFE 2022; `CEP_FAIXA_DATA_VERSION`
+- **Data refresh bot** — source health policy: 3 HTTP retries (2 s apart), retain embedded JSON on failure, `sourceAlerts` in weekly reports, [docs/DATA-SOURCE-MAINTENANCE.md](docs/DATA-SOURCE-MAINTENANCE.md)
+
+---
+
+## [1.1.0] - 2026-06-23
+
+### Added
+
+- **`@br-validators/core/ibge`** — offline IBGE states + municipalities lookup (`getEstados`, `getMunicipios`, `getMunicipioPorCodigo`); `IBGE_DATA_VERSION` transparency metadata
+- **`@br-validators/core/bancos`** — offline Bacen STR participants (`getBancos`, `getBancoPorCodigo`, `getBancoPorIspb`); `BANCOS_DATA_VERSION` metadata
+- **`@br-validators/core/telefone`** — `getDddInfo(ddd)` geographic lookup (Anatel DDD + IBGE municipalities); `TELEFONE_DDD_DATA_VERSION`
+- **`@br-validators/core/data-catalog`** — `getDataCatalog()`, `getDatasetMetadata(id)` aggregating embedded dataset metadata
+- **Data refresh bot** — `scripts/data-refresh-bot.ts`, `pnpm fetch:data`, weekly `.github/workflows/data-refresh-bot.yml`, auto-generated [docs/DATA-FRESHNESS.md](docs/DATA-FRESHNESS.md)
+
+---
+
+## [1.0.0] - 2026-06-23
+
+First stable release. Public API frozen per [docs/VERSIONING.md](docs/VERSIONING.md#api-freeze-100) until v2.0.0.
+
+### Added
+
+- **18 document validators** — CPF, CNPJ (numeric + alphanumeric), CEP, telefone, CNH, RENAVAM, título de eleitor, NF-e chave (44-digit), placa, PIS/PASEP, PIX key, BR Code, boleto cobrança + arrecadação, cartão (Luhn), IE (27 UFs), IE SP produtor rural
+- **Platform APIs:** `detect()`, `sanitize()`, `mask()`, `compare()`, `batch()`, `diff()`, `generate()`
+- **`generate()` — 17 types** (BR-GENERATE-001): `cpf`, `cnpj`, `cep`, `placa`, `pis-pasep`, `renavam`, `cnh`, `telefone`, `cartao-credito`, `inscricao-estadual`, `titulo-eleitor`, `pix` (EVP), `nfe-chave`, `brcode`, `boleto`, `boleto-arrecadacao`, `inscricao-estadual-produtor-rural`
+- **`CPF_ALPHA_GENERATE_STUB`** — `generate('cpf', { format: 'alphanumeric' })` throws `CPF_ALPHA_SPEC_PENDING` until RFB publishes spec
+- **`buildStaticPixBrCode()`** — static PIX BR Code builder (`@br-validators/core/brcode`)
+- **Boleto arrecadação** — `validateArrecadacao` (FEBRABAN Layout v7); wired in `validateBoleto` + `detect()`
+- **F-03 BR Code:** `parseBrCode`, `validateBrCode` — Bacen EMV TLV + CRC16-CCITT
+- **F-04 `@br-validators/zod`:** Zod schemas delegating to core `validate*`
+- **F-05 `@br-validators/react-hook-form`:** `*Rule()` and `*Resolver()` for React Hook Form
+- **Telefone (F-01):** 67 Anatel DDDs, celular/fixo, `+55` support
+- **CNH, RENAVAM, Título de Eleitor, NF-e chave, IE produtor rural** — full library + CLI + playground surfaces
+- CLI: `detect`, `sanitize`, `generate`, `brcode`, `telefone`, `cnh`, `renavam`, `titulo-eleitor`, `nfe-chave`
+- Playground: `/detect`, `/sanitize`, `/generate`, static PIX QR on `/pix`
+- Business rules: BR-DETECT-001, BR-SANITIZE-001, BR-GENERATE-001, BR-MASK-001, BR-COMPARE-001, BR-BATCH-001, BR-DIFF-001
+- Official source index for all validators + `generate()` in [docs/OFFICIAL-SOURCES.md](docs/OFFICIAL-SOURCES.md)
+
+### Changed
+
+- GitHub repo: [AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
+- npm scope: `@br-validators/core`, `@br-validators/cli`, `@br-validators/zod`, `@br-validators/react-hook-form`
+- Root `pnpm build` — sequential build after core to avoid playground `dist/` race (tsup clean vs Next.js typecheck)
+
+### Security
+
+- Pre-release audit: [`.local/security-audit.md`](.local/security-audit.md) — OWASP Top 10:2025, ReDoS review, `pnpm audit` (no high/critical in runtime)
+
+---
+
+## [1.2.0] - 2026-06-22
+
+### Added
+
+- **`detect()`** — priority router delegating to existing validators; 11-digit disambiguation; IE requires `uf`
+- **`sanitize()`** — ETL fixes pipeline + mandatory validation (15 types; PIX excluded until `stripPixKey`)
+- **`generate()`** — synthetic test documents with optional `seed` and `masked`; 9 generatable types
+- CLI commands: `detect`, `sanitize`, `generate`
+- Playground pages: `/detect`, `/sanitize`, `/generate`
+- Business rules: BR-DETECT-001, BR-SANITIZE-001, BR-GENERATE-001
 
 ---
 
@@ -90,7 +1012,7 @@ Boleto Phase 5b — full cobrança: Situação 2, modulo edge vectors, optional 
 - Golden vectors: `boleto.situacao2.official.json`, `boleto.modulo-edge.json`, `boleto.semantic.official.json`
 - Optional flags: `validateDueFactor`, `validateAmount` on `validateBoleto`
 - `validateFatorVencimento`, `validateValorDocumento`, `validateSemanticFields`
-- `detectBoletoInputKind` returns `arrecadacao` for 48-digit `8…` inputs (validation still rejected)
+- `detectBoletoInputKind` returns `arrecadacao` for 48-digit `8…` inputs *(validation added in 0.12.0-alpha.3 — see [Unreleased])*
 - CLI / playground: `situacao` on successful boleto validation
 - BR-BOLETO-011…013, UC-007 AF-4/AF-5
 
@@ -275,6 +1197,10 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 | Version | Date | Notes |
 |---------|------|-------|
+| [1.5.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.5.0) | 2026-06-23 | Federal open-data embeds + CLI/playground reference surfaces |
+| [1.3.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0) | 2026-06-23 | Feriados, fiscal reference (NCM/CFOP/CNAE/CBO), CEP prefix lookup |
+| [1.1.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0) | 2026-06-23 | Offline reference data: IBGE, Bacen banks, DDD lookup, data catalog |
+| [1.0.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0) | 2026-06-23 | First stable release — API freeze |
 | [0.1.0-beta.1](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1) | 2026-06-21 | CEP library + CLI + playground |
 | [0.1.0-beta.0](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.0) | 2026-06-21 | CPF library + CLI + playground |
 | [0.1.0-alpha.1](https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.1) | 2026-06-21 | CNPJ library + CLI + playground |
@@ -282,7 +1208,13 @@ Documentation, governance, and agent harness bootstrap (no npm code yet).
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) for versioning rules.
 
-[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v0.1.0-beta.1...HEAD
+[Unreleased]: https://github.com/AlexandreZanata/br-validators/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.4.0...v1.5.0
+[1.4.0]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.1...v1.4.0
+[1.3.1]: https://github.com/AlexandreZanata/br-validators/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.3.0
+[1.1.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.1.0
+[1.0.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v1.0.0
 [0.1.0-beta.1]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.1
 [0.1.0-beta.0]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-beta.0
 [0.1.0-alpha.1]: https://github.com/AlexandreZanata/br-validators/releases/tag/v0.1.0-alpha.1

@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "nome": "Nota Fiscal Eletrônica (NF-e)",
+    "descricao": "Documento de existência apenas digital, emitido e armazenado eletronicamente, com o intuito de documentar, para fins fiscais, uma operação de circulação de mercadorias ou uma prestação de serviços, ocorrida entre as partes. Sua validade jurídica é garantida pela assinatura digital do remetente (garantia de autoria e de integridade) e a Autorização de uso fornecida pelo Fisco, antes da ocorrência do fato gerador.",
+    "ativo": true
+  }
+]

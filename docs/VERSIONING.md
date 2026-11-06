@@ -1,7 +1,7 @@
 # Versioning policy
 
 > **BR Validators** follows [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) (SemVer).
-> Package name (working): `br-validators` — version applies to npm releases and git tags.
+> Package name (working): `br-validators` — version applies to git tags, `package.json` and GitHub Release assets (no npm registry since 1.10.1).
 
 ---
 
@@ -35,7 +35,31 @@ Planned milestones:
 | `0.1.0-alpha` | CNPJ (dual) + CPF + pipeline |
 | `0.2.0` | Placa + PIX keys |
 | `0.3.0` | Boleto / BR Code (partial) |
-| `1.0.0` | Stable API contract — SemVer guarantees apply fully |
+| `1.0.0` | **Stable API contract** — SemVer guarantees apply fully (see [API freeze](#api-freeze-100)) |
+
+---
+
+## API freeze (1.0.0)
+
+**Effective:** v1.0.0 (2026-06-23)
+
+Until **v2.0.0**, the following are **frozen**:
+
+| Surface | Frozen items |
+|---------|----------------|
+| `@br-validators/core` | All exports in [LIBRARY-API.md](LIBRARY-API.md); `ValidationErrorCode` values; validator result shapes |
+| Subpaths | `cpf`, `cnpj`, `cep`, `telefone`, `cnh`, `renavam`, `titulo-eleitor`, `nfe-chave`, `placa`, `pis-pasep`, `pix`, `brcode`, `boleto`, `cartao-credito`, `inscricao-estadual`, `inscricao-estadual-produtor-rural`, `detect`, `sanitize`, `mask`, `compare`, `batch`, `diff`, `generate` |
+| `@br-validators/cli` | Command names and `--json` / `--uf` flags for shipped types |
+| `@br-validators/zod` | Schema export names |
+| `@br-validators/react-hook-form` | `*Rule()` / `*Resolver()` export names |
+
+**Allowed without MAJOR bump:**
+
+- PATCH: validation bug fixes aligned with official sources (documented in CHANGELOG Security/Fixed)
+- MINOR: new optional exports, new validator modules, new `generate()` types
+- Official spec changes (RFB/Bacen) — follow [Algorithm versioning](#algorithm-versioning-domain-specific)
+
+**Breaking changes** → v2.0.0 only.
 
 ---
 
@@ -90,6 +114,8 @@ Version applies to exports documented in [LIBRARY-API.md](LIBRARY-API.md):
 ### 1. Prepare
 
 - [ ] All changes in [CHANGELOG.md](../CHANGELOG.md) under `[Unreleased]`
+- [ ] **npm READMEs** — `packages/br-validators/README.md` (primary npm page), root `README.md`, and all five adapter/cli `README.md` files show the new version in **Current release** / intro lines (see `.cursor/rules/release-version-publish.mdc`)
+- [ ] New subpaths/features reflected in `packages/br-validators/README.md` document and reference-data tables
 - [ ] Tests pass (CI green)
 - [ ] Official sources cited for algorithm changes
 - [ ] SECURITY review for validation logic changes
@@ -112,35 +138,37 @@ git push origin v1.0.0
 
 Tag format: **`v` + SemVer** (e.g. `v0.1.0-alpha.1`)
 
-### 4. Publish (npm)
+### 4. Publish (GitHub Release) — CI only
 
-**Automated (recommended):** push version tag on `main` — see [BRANCHING.md](BRANCHING.md) and `.github/workflows/release.yml`.
+**All releases go through GitHub Actions** and are attached to a GitHub Release — nothing is published to the npm registry (`prepublishOnly` blocks `pnpm publish` everywhere).
 
-```bash
-git tag -a v0.11.0-alpha.0 -m "Release v0.11.0-alpha.0"
-git push origin v0.11.0-alpha.0
-```
-
-Requires GitHub secret `NPM_TOKEN` (granular publish token for `@br-validators/*`).
-
-**Manual (fallback):**
+Push a version tag on `main`:
 
 ```bash
-npm login
-pnpm verify
-pnpm --filter @br-validators/core publish --access public --tag alpha
-pnpm --filter @br-validators/cli publish --access public --tag alpha
+git tag -a v1.6.1 -m "Release v1.6.1"
+git push origin v1.6.1
 ```
 
-Published packages: `@br-validators/core` (library) and `@br-validators/cli` (terminal). See [README](../README.md#install).
+No registry credentials are needed: the Release workflow packs each package with `npm pack` and uploads the tarballs, the reference-data bundle, `catalog.json` and `SHA256SUMS` with the built-in `GITHUB_TOKEN` (see [BRANCHING.md](BRANCHING.md#release-flow-github-releases--no-npm-registry)).
+
+**Re-run after failure:** Actions → **Release** → **Run workflow** with the tag name.
+
+Released packages (same semver on each tag):
+
+| Package | Path |
+|---------|------|
+| `@br-validators/core` | `packages/br-validators/` |
+| `@br-validators/cli` | `apps/cli/` |
+| `@br-validators/zod` | `packages/br-validators-zod/` |
+| `@br-validators/react-hook-form` | `packages/br-validators-rhf/` |
+| `@br-validators/express` | `packages/br-validators-express/` |
+| `@br-validators/vue` | `packages/br-validators-vue/` |
+
+See [README](../README.md#install).
 
 ### 5. GitHub Release
 
-Created automatically by the Release workflow when the tag is pushed. Or manually:
-
-```bash
-gh release create v0.11.0-alpha.0 --generate-notes
-```
+Created automatically by the Release workflow when the tag is pushed (or re-run via **Run workflow** with the tag). Never create it by hand — the assets are built by `scripts/build-release-artifacts.ts`.
 
 ---
 
@@ -196,6 +224,27 @@ Action: audit stored CNPJs; re-validate with v1.y.z+
 
 ---
 
+## Data-only releases (automated daily bot)
+
+When the daily data refresh bot (`.github/workflows/data-refresh-bot.yml`) detects embedded JSON drift or is triggered with `force_publish`:
+
+| Trigger | Version format | Example |
+|---------|----------------|---------|
+| Human code/data fix release | `MAJOR.MINOR.PATCH` | `1.8.3` |
+| Bot drift (daily) | `MAJOR.MINOR.PATCH-data.N` | `1.8.3-data.1`, `1.8.3-data.2` |
+| Manual `force_publish` | Same as bot drift | `reason` input required |
+
+**Why not `1.8.0001`?** SemVer treats `1.8.0001` as `1.8.1` (leading zeros stripped), which sorts **below** `1.8.3`. The `-data.N` suffix keeps the human base (`1.8.3`) and a numeric daily counter (`1`, `2`, …) identical in **git tags, `package.json`, and release asset names**. Adapters pin `@br-validators/core` to the exact version of their release, so the pre-release suffix never affects range resolution.
+
+| Automation | Script |
+|------------|--------|
+| Drift detected | `scripts/bump-data-patch.ts` → tag `v1.8.3-data.1` → `release.yml` |
+| No drift | Reports commit only — no version bump |
+
+**Not handled by the bot:** MINOR (new dataset module) or MAJOR (API break) — human release per [Release process](#2-version-bump).
+
+---
+
 ## Changelog discipline
 
 Every user-facing change → [CHANGELOG.md](../CHANGELOG.md):
@@ -229,6 +278,7 @@ Breaking Node baseline → **MAJOR**.
 | Document | Link |
 |----------|------|
 | Public API | [LIBRARY-API.md](LIBRARY-API.md) |
+| Migration guide | [MIGRATION.md](../MIGRATION.md) |
 | Changelog | [CHANGELOG.md](../CHANGELOG.md) |
 | Security | [SECURITY.md](../SECURITY.md) |
 | Roadmap | [ROADMAP.md](ROADMAP.md) |

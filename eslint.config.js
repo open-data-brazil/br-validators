@@ -9,6 +9,14 @@ export default tseslint.config(
       '**/.next/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/.vitepress/cache/**',
+      '**/.vitepress/dist/**',
+      'apps/docs/api/**',
+      'apps/docs/api-reference/**',
+      'tests/integration/subpath-imports/.tmp/**',
+      'data/bundle-sizes/.tmp/**',
+      'apps/playground/playwright-report/**',
+      'apps/playground/test-results/**',
       'agent-harness/**',
       'agent-rules/**',
       'apps/playground/next-env.d.ts',
@@ -43,13 +51,39 @@ export default tseslint.config(
     },
   },
   {
-    files: ['eslint.config.js', '**/*.config.mjs'],
+    files: ['eslint.config.js', '**/*.config.mjs', 'scripts/**/*.mjs'],
     extends: [tseslint.configs.disableTypeChecked],
+  },
+  {
+    files: ['scripts/**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: './scripts/tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+        projectService: false,
+      },
+    },
+  },
+  {
+    files: ['tests/integration/subpath-imports/**/*.{ts,mts}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tests/integration/subpath-imports/tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+        projectService: false,
+      },
+    },
   },
   {
     files: ['apps/playground/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-misused-promises': 'off',
+    },
+  },
+  {
+    files: ['apps/playground/e2e/**/*.ts', 'apps/playground/playwright.config.ts'],
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'off',
     },
   },
   {
@@ -59,6 +93,16 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
+    },
+  },
+  {
+    files: [
+      'packages/br-validators/src/**/index.ts',
+      'packages/br-validators/src/*.ts',
+    ],
+    rules: {
+      // Public barrels intentionally re-export deprecated v1 aliases until v2.0.
+      '@typescript-eslint/no-deprecated': 'off',
     },
   },
 );

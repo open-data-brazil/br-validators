@@ -1,0 +1,15 @@
+{
+  "datasetId": "cfop",
+  "endpoints": [
+    "https://www.confaz.fazenda.gov.br/legislacao/ajustes/sinief/cfop_cvsn_70_vigente",
+    "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cfop_cvsn_70_vigente.html"
+  ],
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-11-06",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "outcomeStatus": "ok"
+}

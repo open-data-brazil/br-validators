@@ -10,15 +10,47 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # npm retired legacy audit endpoints (HTTP 410). pnpm 9 still calls them;
+      # scripts/ci/pnpm-audit.ts runs audit via pnpm 11+ (/advisories/bulk).
+      - name: Audit production dependencies (fail on high/critical)
+        run: pnpm exec tsx scripts/ci/pnpm-audit.ts --prod --audit-level=high
+      - name: Audit dev dependencies (warn only)
+        run: |
+          if ! pnpm exec tsx scripts/ci/pnpm-audit.ts --audit-level=high; then
+            echo "::warning title=Dev dependency audit::High or critical vulnerabilities in devDependencies — review and upgrade tooling. Does not block CI."
+          fi
       - run: pnpm --filter @br-validators/core build
+      - run: pnpm --filter @br-validators/cli build
       - run: pnpm lint
+      - name: Check coverage-gap artifacts are fresh
+        run: |
+          pnpm generate:coverage-gaps
+          if ! git diff --exit-code -- data/coverage-gaps docs/COVERAGE-GAPS.md; then
+            echo "::error::Coverage-gap artifacts drifted from a fresh regeneration. Run 'pnpm generate:coverage-gaps' locally and commit the result."
+            exit 1
+          fi
       - run: pnpm typecheck
       - run: pnpm test:coverage
+      - run: pnpm test:integration
       - run: pnpm build
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm docs:api
+      - run: pnpm --filter @br-validators/docs test
+      - run: pnpm docs:build

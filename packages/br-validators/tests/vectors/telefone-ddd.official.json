@@ -1,0 +1,9 @@
+{
+  "source": "https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais",
+  "valid": {
+    "11": { "uf": "SP", "regiao": "Sudeste", "municipioContains": "São Paulo" },
+    "66": { "uf": "MT", "regiao": "Centro-Oeste", "municipioContains": "Rondonópolis" },
+    "92": { "uf": "AM", "regiao": "Norte", "municipioContains": "Manaus" }
+  },
+  "invalid": ["00", "123", "9"]
+}

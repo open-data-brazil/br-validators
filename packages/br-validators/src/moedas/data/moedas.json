@@ -1,0 +1,926 @@
+[
+  {
+    "codigo": "AED",
+    "nome": "Dirham dos Emirados Árabes Unidos",
+    "simbolo": "د.إ",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "AFN",
+    "nome": "Afegane afegão",
+    "simbolo": "؋",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ALL",
+    "nome": "Lek albanês",
+    "simbolo": "L",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "AMD",
+    "nome": "Dram arménio",
+    "simbolo": "֏",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ANG",
+    "nome": "Florim das Antilhas Neerlandesas",
+    "simbolo": "ƒ",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "AOA",
+    "nome": "Kwanza angolano",
+    "simbolo": "Kz",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ARS",
+    "nome": "Peso argentino",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "AUD",
+    "nome": "Dólar australiano",
+    "simbolo": "A$",
+    "tipoBacen": "B"
+  },
+  {
+    "codigo": "AWG",
+    "nome": "Florim arubano",
+    "simbolo": "ƒ",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "AZN",
+    "nome": "Manat azeri",
+    "simbolo": "₼",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BAM",
+    "nome": "Marco convertível da Bósnia-Herzegovina",
+    "simbolo": "KM",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BBD",
+    "nome": "Dólar barbadense",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BDT",
+    "nome": "Taka bengali",
+    "simbolo": "৳",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BGN",
+    "nome": "Lev búlgaro",
+    "simbolo": "лв",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BHD",
+    "nome": "Dinar bareinita",
+    "simbolo": ".د.ب",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BIF",
+    "nome": "Franco burundiano",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BMD",
+    "nome": "Dólar bermudense",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BND",
+    "nome": "Dólar bruneano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BOB",
+    "nome": "Boliviano",
+    "simbolo": "Bs.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BRL",
+    "nome": "Real brasileiro",
+    "simbolo": "R$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BSD",
+    "nome": "Dólar bahamense",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BTN",
+    "nome": "Ngultrum butanês",
+    "simbolo": "Nu.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BWP",
+    "nome": "Pula botsuanesa",
+    "simbolo": "P",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BYN",
+    "nome": "Rublo bielorrusso",
+    "simbolo": "Br",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "BZD",
+    "nome": "Dólar belizense",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CAD",
+    "nome": "Dólar canadense",
+    "simbolo": "C$",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "CDF",
+    "nome": "Franco congolês",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CHF",
+    "nome": "Franco suíço",
+    "simbolo": "Fr",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "CLP",
+    "nome": "Peso chileno",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CNY",
+    "nome": "Yuan renminbi chinês",
+    "simbolo": "¥",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "COP",
+    "nome": "Peso colombiano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CRC",
+    "nome": "Colón costa-riquenho",
+    "simbolo": "₡",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CUP",
+    "nome": "Peso cubano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CVE",
+    "nome": "Escudo cabo-verdiano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "CZK",
+    "nome": "Coroa checa",
+    "simbolo": "Kč",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "DJF",
+    "nome": "Franco djibutiano",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "DKK",
+    "nome": "Coroa dinamarquesa",
+    "simbolo": "kr",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "DOP",
+    "nome": "Peso dominicano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "DZD",
+    "nome": "Dinar argelino",
+    "simbolo": "د.ج",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "EGP",
+    "nome": "Libra egípcia",
+    "simbolo": "E£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ERN",
+    "nome": "Nakfa eritreia",
+    "simbolo": "Nfk",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ETB",
+    "nome": "Birr etíope",
+    "simbolo": "Br",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "EUR",
+    "nome": "Euro",
+    "simbolo": "€",
+    "tipoBacen": "B"
+  },
+  {
+    "codigo": "FJD",
+    "nome": "Dólar fijiano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "FKP",
+    "nome": "Libra das Ilhas Falkland",
+    "simbolo": "£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GBP",
+    "nome": "Libra Esterlina",
+    "simbolo": "£",
+    "tipoBacen": "B"
+  },
+  {
+    "codigo": "GEL",
+    "nome": "Lari georgiano",
+    "simbolo": "₾",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GHS",
+    "nome": "Cedi ganês",
+    "simbolo": "₵",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GIP",
+    "nome": "Libra de Gibraltar",
+    "simbolo": "£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GMD",
+    "nome": "Dalasi gambiano",
+    "simbolo": "D",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GNF",
+    "nome": "Franco guineense",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GTQ",
+    "nome": "Quetzal guatemalteco",
+    "simbolo": "Q",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "GYD",
+    "nome": "Dólar guianense",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "HKD",
+    "nome": "Dólar de Hong Kong",
+    "simbolo": "HK$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "HNL",
+    "nome": "Lempira hondurenha",
+    "simbolo": "L",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "HTG",
+    "nome": "Gourde haitiano",
+    "simbolo": "G",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "HUF",
+    "nome": "Forint húngaro",
+    "simbolo": "Ft",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "IDR",
+    "nome": "Rupia indonésia",
+    "simbolo": "Rp",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ILS",
+    "nome": "Novo shekel israelense",
+    "simbolo": "₪",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "INR",
+    "nome": "Rúpia indiana",
+    "simbolo": "₹",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "IQD",
+    "nome": "Dinar iraquiano",
+    "simbolo": "ع.د",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "IRR",
+    "nome": "Rial iraniano",
+    "simbolo": "﷼",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ISK",
+    "nome": "Coroa islandesa",
+    "simbolo": "kr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "JMD",
+    "nome": "Dólar jamaicano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "JOD",
+    "nome": "Dinar jordano",
+    "simbolo": "د.ا",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "JPY",
+    "nome": "Iene",
+    "simbolo": "¥",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "KES",
+    "nome": "Xelim queniano",
+    "simbolo": "Sh",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KGS",
+    "nome": "Som quirguiz",
+    "simbolo": "с",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KHR",
+    "nome": "Riel cambojano",
+    "simbolo": "៛",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KMF",
+    "nome": "Franco comorense",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KRW",
+    "nome": "Won sul-coreano",
+    "simbolo": "₩",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KWD",
+    "nome": "Dinar kuwaitiano",
+    "simbolo": "د.ك",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KYD",
+    "nome": "Dólar das Ilhas Cayman",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "KZT",
+    "nome": "Tenge cazaque",
+    "simbolo": "₸",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LAK",
+    "nome": "Kip laosiano",
+    "simbolo": "₭",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LBP",
+    "nome": "Libra libanesa",
+    "simbolo": "ل.ل",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LKR",
+    "nome": "Rúpia cingalesa",
+    "simbolo": "Rs",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LRD",
+    "nome": "Dólar liberiano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LSL",
+    "nome": "Loti lesotiano",
+    "simbolo": "L",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "LYD",
+    "nome": "Dinar líbio",
+    "simbolo": "ل.د",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MAD",
+    "nome": "Dirham marroquino",
+    "simbolo": "د.م.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MDL",
+    "nome": "Leu moldavo",
+    "simbolo": "L",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MGA",
+    "nome": "Ariary malgaxe",
+    "simbolo": "Ar",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MKD",
+    "nome": "Denar macedónio",
+    "simbolo": "ден",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MMK",
+    "nome": "Kyat birmanês",
+    "simbolo": "K",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MNT",
+    "nome": "Tugrik mongol",
+    "simbolo": "₮",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MOP",
+    "nome": "Pataca macaense",
+    "simbolo": "P",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MRU",
+    "nome": "Ouguiya mauritana",
+    "simbolo": "UM",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MUR",
+    "nome": "Rúpia mauriciana",
+    "simbolo": "₨",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MVR",
+    "nome": "Rufiyaa maldiva",
+    "simbolo": ".ރ",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MWK",
+    "nome": "Kwacha malauiana",
+    "simbolo": "MK",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MXN",
+    "nome": "Peso mexicano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MYR",
+    "nome": "Ringgit malaio",
+    "simbolo": "RM",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "MZN",
+    "nome": "Metical moçambicano",
+    "simbolo": "MT",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "NAD",
+    "nome": "Dólar namibiano",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "NGN",
+    "nome": "Naira nigeriana",
+    "simbolo": "₦",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "NIO",
+    "nome": "Córdoba nicaraguense",
+    "simbolo": "C$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "NOK",
+    "nome": "Coroa norueguesa",
+    "simbolo": "kr",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "NPR",
+    "nome": "Rúpia nepalesa",
+    "simbolo": "₨",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "NZD",
+    "nome": "Dólar neozelandês",
+    "simbolo": "NZ$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "OMR",
+    "nome": "Rial omanense",
+    "simbolo": "ر.ع.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PAB",
+    "nome": "Balboa panamenho",
+    "simbolo": "B/.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PEN",
+    "nome": "Sol peruano",
+    "simbolo": "S/",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PGK",
+    "nome": "Kina papuásia",
+    "simbolo": "K",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PHP",
+    "nome": "Peso filipino",
+    "simbolo": "₱",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PKR",
+    "nome": "Rúpia paquistanesa",
+    "simbolo": "₨",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PLN",
+    "nome": "Zloty polaco",
+    "simbolo": "zł",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "PYG",
+    "nome": "Guarani paraguaio",
+    "simbolo": "₲",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "QAR",
+    "nome": "Rial catariano",
+    "simbolo": "ر.ق",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "RON",
+    "nome": "Leu romeno",
+    "simbolo": "lei",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "RSD",
+    "nome": "Dinar sérvio",
+    "simbolo": "дин.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "RUB",
+    "nome": "Rublo russo",
+    "simbolo": "₽",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "RWF",
+    "nome": "Franco ruandês",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SAR",
+    "nome": "Rial saudita",
+    "simbolo": "ر.س",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SBD",
+    "nome": "Dólar das Ilhas Salomão",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SCR",
+    "nome": "Rúpia seichelense",
+    "simbolo": "₨",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SDG",
+    "nome": "Libra sudanesa",
+    "simbolo": "ج.س.",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SEK",
+    "nome": "Coroa sueca",
+    "simbolo": "kr",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "SGD",
+    "nome": "Dólar singapurense",
+    "simbolo": "S$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SHP",
+    "nome": "Libra de Santa Helena",
+    "simbolo": "£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SLE",
+    "nome": "Leone de Serra Leoa",
+    "simbolo": "Le",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SOS",
+    "nome": "Xelim somali",
+    "simbolo": "Sh",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SRD",
+    "nome": "Dólar surinamês",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SSP",
+    "nome": "Libra sul-sudanesa",
+    "simbolo": "£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "STN",
+    "nome": "Dobra de São Tomé e Príncipe",
+    "simbolo": "Db",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SVC",
+    "nome": "Colón salvadorenho",
+    "simbolo": "₡",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SYP",
+    "nome": "Libra síria",
+    "simbolo": "£",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "SZL",
+    "nome": "Lilangeni suazi",
+    "simbolo": "L",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "THB",
+    "nome": "Baht tailandês",
+    "simbolo": "฿",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TJS",
+    "nome": "Somoni tajique",
+    "simbolo": "ЅМ",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TMT",
+    "nome": "Manat turcomeno",
+    "simbolo": "m",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TND",
+    "nome": "Dinar tunisino",
+    "simbolo": "د.ت",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TOP",
+    "nome": "Paʻanga tonganesa",
+    "simbolo": "T$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TRY",
+    "nome": "Lira turca",
+    "simbolo": "₺",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TTD",
+    "nome": "Dólar de Trinidad e Tobago",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TWD",
+    "nome": "Novo dólar taiwanês",
+    "simbolo": "NT$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "TZS",
+    "nome": "Xelim tanzaniano",
+    "simbolo": "Sh",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "UAH",
+    "nome": "Hryvnia ucraniana",
+    "simbolo": "₴",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "UGX",
+    "nome": "Xelim ugandense",
+    "simbolo": "Sh",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "USD",
+    "nome": "Dólar dos Estados Unidos",
+    "simbolo": "US$",
+    "tipoBacen": "A"
+  },
+  {
+    "codigo": "UYU",
+    "nome": "Peso uruguayo",
+    "simbolo": "$U",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "UZS",
+    "nome": "Som uzbeque",
+    "simbolo": "so'm",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "VES",
+    "nome": "Bolívar soberano",
+    "simbolo": "Bs.S",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "VND",
+    "nome": "Dong vietnamita",
+    "simbolo": "₫",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "VUV",
+    "nome": "Vatu vanuatuense",
+    "simbolo": "Vt",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "WST",
+    "nome": "Tala samoano",
+    "simbolo": "T",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "XAF",
+    "nome": "Franco CFA BEAC",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "XCD",
+    "nome": "Dólar do Caribe Oriental",
+    "simbolo": "$",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "XOF",
+    "nome": "Franco CFA BCEAO",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "XPF",
+    "nome": "Franco CFP",
+    "simbolo": "Fr",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "YER",
+    "nome": "Rial iemenita",
+    "simbolo": "﷼",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ZAR",
+    "nome": "Rand sul-africano",
+    "simbolo": "R",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ZMW",
+    "nome": "Kwacha zambiano",
+    "simbolo": "ZK",
+    "tipoBacen": null
+  },
+  {
+    "codigo": "ZWL",
+    "nome": "Dólar zimbabuense",
+    "simbolo": "Z$",
+    "tipoBacen": null
+  }
+]

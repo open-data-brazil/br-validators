@@ -1,0 +1,12 @@
+{
+  "datasetId": "telefone-ddd",
+  "status": "ok",
+  "endpoints": [
+    "https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais",
+    "packages/br-validators/src/ibge/data/municipios.json"
+  ],
+  "attempts": 1,
+  "checkedAt": "2026-11-06T10:16:40.792Z",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "message": "Derived from IBGE municipios + Anatel DDD constants — no HTTP fetch required."
+}

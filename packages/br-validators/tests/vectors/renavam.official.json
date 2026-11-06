@@ -1,0 +1,34 @@
+{
+  "source": "Portaria DENATRAN 27/2013 — Código RENAVAM, módulo 11, peso 9",
+  "url": "https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf",
+  "systemFormatUrl": "https://www.gov.br/pt-br/servicos/consultar-dados-de-veiculo-na-base-renavam",
+  "algorithmCrossCheckUrl": "https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-renavam/",
+  "implementationCrossCheckUrls": [
+    "https://www.geravalida.com.br/gerador-de-renavam",
+    "https://geradorfacil.com/geradores/renavam"
+  ],
+  "primary": {
+    "canonical": "63977791104",
+    "officialFormatted": "63977791104",
+    "base": "6397779110",
+    "dv": "4"
+  },
+  "secondary": {
+    "canonical": "72176426415",
+    "officialFormatted": "72176426415",
+    "base": "7217642641",
+    "dv": "5",
+    "dashInput": "7217642641-5"
+  },
+  "leadingZeros": {
+    "canonical": "00207104255",
+    "officialFormatted": "00207104255"
+  },
+  "dvZero": {
+    "canonical": "12345678900",
+    "officialFormatted": "12345678900"
+  },
+  "invalidCheckDigit": {
+    "canonical": "63977791105"
+  }
+}

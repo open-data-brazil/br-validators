@@ -1,0 +1,362 @@
+[
+  {
+    "codigo": "0000",
+    "descricao": "Natureza Jurídica não informada"
+  },
+  {
+    "codigo": "1015",
+    "descricao": "Órgão Público do Poder Executivo Federal"
+  },
+  {
+    "codigo": "1023",
+    "descricao": "Órgão Público do Poder Executivo Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1031",
+    "descricao": "Órgão Público do Poder Executivo Municipal"
+  },
+  {
+    "codigo": "1040",
+    "descricao": "Órgão Público do Poder Legislativo Federal"
+  },
+  {
+    "codigo": "1058",
+    "descricao": "Órgão Público do Poder Legislativo Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1066",
+    "descricao": "Órgão Público do Poder Legislativo Municipal"
+  },
+  {
+    "codigo": "1074",
+    "descricao": "Órgão Público do Poder Judiciário Federal"
+  },
+  {
+    "codigo": "1082",
+    "descricao": "Órgão Público do Poder Judiciário Estadual"
+  },
+  {
+    "codigo": "1104",
+    "descricao": "Autarquia Federal"
+  },
+  {
+    "codigo": "1112",
+    "descricao": "Autarquia Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1120",
+    "descricao": "Autarquia Municipal"
+  },
+  {
+    "codigo": "1139",
+    "descricao": "Fundação Pública de Direito Público Federal"
+  },
+  {
+    "codigo": "1147",
+    "descricao": "Fundação Pública de Direito Público Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1155",
+    "descricao": "Fundação Pública de Direito Público Municipal"
+  },
+  {
+    "codigo": "1163",
+    "descricao": "Órgão Público Autônomo Federal"
+  },
+  {
+    "codigo": "1171",
+    "descricao": "Órgão Público Autônomo Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1180",
+    "descricao": "Órgão Público Autônomo Municipal"
+  },
+  {
+    "codigo": "1198",
+    "descricao": "Comissão Polinacional"
+  },
+  {
+    "codigo": "1210",
+    "descricao": "Consórcio Público de Direito Público (Associação Pública)"
+  },
+  {
+    "codigo": "1228",
+    "descricao": "Consórcio Público de Direito Privado"
+  },
+  {
+    "codigo": "1236",
+    "descricao": "Estado ou Distrito Federal"
+  },
+  {
+    "codigo": "1244",
+    "descricao": "Município"
+  },
+  {
+    "codigo": "1252",
+    "descricao": "Fundação Pública de Direito Privado Federal"
+  },
+  {
+    "codigo": "1260",
+    "descricao": "Fundação Pública de Direito Privado Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1279",
+    "descricao": "Fundação Pública de Direito Privado Municipal"
+  },
+  {
+    "codigo": "1287",
+    "descricao": "Fundo Público da Administração Indireta Federal"
+  },
+  {
+    "codigo": "1295",
+    "descricao": "Fundo Público da Administração Indireta Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1309",
+    "descricao": "Fundo Público da Administração Indireta Municipal"
+  },
+  {
+    "codigo": "1317",
+    "descricao": "Fundo Público da Administração Direta Federal"
+  },
+  {
+    "codigo": "1325",
+    "descricao": "Fundo Público da Administração Direta Estadual ou do Distrito Federal"
+  },
+  {
+    "codigo": "1333",
+    "descricao": "Fundo Público da Administração Direta Municipal"
+  },
+  {
+    "codigo": "1341",
+    "descricao": "União"
+  },
+  {
+    "codigo": "2011",
+    "descricao": "Empresa Pública"
+  },
+  {
+    "codigo": "2038",
+    "descricao": "Sociedade de Economia Mista"
+  },
+  {
+    "codigo": "2046",
+    "descricao": "Sociedade Anônima Aberta"
+  },
+  {
+    "codigo": "2054",
+    "descricao": "Sociedade Anônima Fechada"
+  },
+  {
+    "codigo": "2062",
+    "descricao": "Sociedade Empresária Limitada"
+  },
+  {
+    "codigo": "2070",
+    "descricao": "Sociedade Empresária em Nome Coletivo"
+  },
+  {
+    "codigo": "2089",
+    "descricao": "Sociedade Empresária em Comandita Simples"
+  },
+  {
+    "codigo": "2097",
+    "descricao": "Sociedade Empresária em Comandita por Ações"
+  },
+  {
+    "codigo": "2100",
+    "descricao": "Sociedade Mercantil de Capital e Indústria"
+  },
+  {
+    "codigo": "2127",
+    "descricao": "Sociedade em Conta de Participação"
+  },
+  {
+    "codigo": "2135",
+    "descricao": "Empresário (Individual)"
+  },
+  {
+    "codigo": "2143",
+    "descricao": "Cooperativa"
+  },
+  {
+    "codigo": "2151",
+    "descricao": "Consórcio de Sociedades"
+  },
+  {
+    "codigo": "2160",
+    "descricao": "Grupo de Sociedades"
+  },
+  {
+    "codigo": "2178",
+    "descricao": "Estabelecimento, no Brasil, de Sociedade Estrangeira"
+  },
+  {
+    "codigo": "2194",
+    "descricao": "Estabelecimento, no Brasil, de Empresa Binacional Argentino-Brasileira"
+  },
+  {
+    "codigo": "2216",
+    "descricao": "Empresa Domiciliada no Exterior"
+  },
+  {
+    "codigo": "2224",
+    "descricao": "Clube/Fundo de Investimento"
+  },
+  {
+    "codigo": "2232",
+    "descricao": "Sociedade Simples Pura"
+  },
+  {
+    "codigo": "2240",
+    "descricao": "Sociedade Simples Limitada"
+  },
+  {
+    "codigo": "2259",
+    "descricao": "Sociedade Simples em Nome Coletivo"
+  },
+  {
+    "codigo": "2267",
+    "descricao": "Sociedade Simples em Comandita Simples"
+  },
+  {
+    "codigo": "2275",
+    "descricao": "Empresa Binacional"
+  },
+  {
+    "codigo": "2283",
+    "descricao": "Consórcio de Empregadores"
+  },
+  {
+    "codigo": "2291",
+    "descricao": "Consórcio Simples"
+  },
+  {
+    "codigo": "2305",
+    "descricao": "Empresa Individual de Responsabilidade Limitada (de Natureza Empresária)"
+  },
+  {
+    "codigo": "2313",
+    "descricao": "Empresa Individual de Responsabilidade Limitada (de Natureza Simples)"
+  },
+  {
+    "codigo": "2321",
+    "descricao": "Sociedade Unipessoal de Advocacia"
+  },
+  {
+    "codigo": "2330",
+    "descricao": "Cooperativas de Consumo"
+  },
+  {
+    "codigo": "2348",
+    "descricao": "Empresa Simples de Inovação"
+  },
+  {
+    "codigo": "3034",
+    "descricao": "Serviço Notarial e Registral (Cartório)"
+  },
+  {
+    "codigo": "3069",
+    "descricao": "Fundação Privada"
+  },
+  {
+    "codigo": "3077",
+    "descricao": "Serviço Social Autônomo"
+  },
+  {
+    "codigo": "3085",
+    "descricao": "Condomínio Edilício"
+  },
+  {
+    "codigo": "3107",
+    "descricao": "Comissão de Conciliação Prévia"
+  },
+  {
+    "codigo": "3115",
+    "descricao": "Entidade de Mediação e Arbitragem"
+  },
+  {
+    "codigo": "3131",
+    "descricao": "Entidade Sindical"
+  },
+  {
+    "codigo": "3204",
+    "descricao": "Estabelecimento, no Brasil, de Fundação ou Associação Estrangeiras"
+  },
+  {
+    "codigo": "3212",
+    "descricao": "Fundação ou Associação Domiciliada no Exterior"
+  },
+  {
+    "codigo": "3220",
+    "descricao": "Organização Religiosa"
+  },
+  {
+    "codigo": "3239",
+    "descricao": "Comunidade Indígena"
+  },
+  {
+    "codigo": "3247",
+    "descricao": "Fundo Privado"
+  },
+  {
+    "codigo": "3255",
+    "descricao": "Órgão de Direção Nacional de Partido Político"
+  },
+  {
+    "codigo": "3263",
+    "descricao": "Órgão de Direção Regional de Partido Político"
+  },
+  {
+    "codigo": "3271",
+    "descricao": "Órgão de Direção Local de Partido Político"
+  },
+  {
+    "codigo": "3280",
+    "descricao": "Comitê Financeiro de Partido Político"
+  },
+  {
+    "codigo": "3298",
+    "descricao": "Frente Plebiscitária ou Referendária"
+  },
+  {
+    "codigo": "3301",
+    "descricao": "Organização Social (OS)"
+  },
+  {
+    "codigo": "3328",
+    "descricao": "Plano de Benefícios de Previdência Complementar Fechada"
+  },
+  {
+    "codigo": "3999",
+    "descricao": "Associação Privada"
+  },
+  {
+    "codigo": "4014",
+    "descricao": "Empresa Individual Imobiliária"
+  },
+  {
+    "codigo": "4090",
+    "descricao": "Candidato a Cargo Político Eletivo"
+  },
+  {
+    "codigo": "4120",
+    "descricao": "Produtor Rural (Pessoa Física)"
+  },
+  {
+    "codigo": "5010",
+    "descricao": "Organização Internacional"
+  },
+  {
+    "codigo": "5029",
+    "descricao": "Representação Diplomática Estrangeira"
+  },
+  {
+    "codigo": "5037",
+    "descricao": "Outras Instituições Extraterritoriais"
+  },
+  {
+    "codigo": "8885",
+    "descricao": "Natureza Jurídica não informada"
+  }
+]

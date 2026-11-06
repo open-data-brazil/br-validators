@@ -1,5 +1,5 @@
-import { randomDigits } from './random';
+import { generate } from '@br-validators/core';
 
 export function generateCep() {
-  return randomDigits(8);
+  return generate('cep');
 }

@@ -4,7 +4,7 @@
  * @see docs/VALIDATION-RULES.md BR-CEP-001 — golden vector 01310100
  */
 import { stripCep } from '../../strip/index.js';
-import type { ValidationResult } from '../../types/validation-result.js';
+import type { Cep, ValidationResult } from '../../types/validation-result.js';
 import { brandCep } from '../../types/validation-result.js';
 import { CEP_LENGTH } from './constants.js';
 
@@ -13,7 +13,15 @@ export {
   CEP_GOLDEN_PRIMARY_MASKED,
   CEP_GOLDEN_SECONDARY,
   CEP_OFFICIAL_SOURCE_URL,
+  CEP_FAIXA_CNEFE_BASE_URL,
+  CEP_FAIXA_GOLDEN_PREFIX_RJ,
+  CEP_FAIXA_GOLDEN_PREFIX_SP,
+  CEP_FAIXA_MAX_PREFIXES,
+  CEP_FAIXA_MIN_PREFIXES,
 } from './constants.js';
+export { getCepFaixaInfo, getCepFaixas } from './faixa-lookup.js';
+export { CEP_FAIXA_DATA_VERSION } from './faixa-version.js';
+export type { CepFaixa, CepFaixaDataVersion } from './faixa-types.js';
 
 type FailedResult = Extract<ValidationResult, { ok: false }>;
 
@@ -42,7 +50,7 @@ export function isValidCep(input: string): boolean {
   return validateCep(input).ok;
 }
 
-export function validateCep(input: string): ValidationResult {
+export function validateCep(input: string): ValidationResult<Cep> {
   const stripped = stripCep(input);
   const structural = validateStructure(input, stripped);
   if (structural) {

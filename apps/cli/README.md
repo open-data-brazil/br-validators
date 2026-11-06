@@ -1,64 +1,215 @@
 # @br-validators/cli
 
-Terminal CLI for all Brazilian document validators in [@br-validators/core](https://www.npmjs.com/package/@br-validators/core).
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://github.com/open-data-brazil/br-validators/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/open-data-brazil/br-validators)](https://github.com/open-data-brazil/br-validators/releases)
 
-**Repo:** [github.com/AlexandreZanata/br-validators](https://github.com/AlexandreZanata/br-validators)
+Terminal CLI for all Brazilian document validators in [@br-validators/core](../../packages/br-validators) **v1.10.1**.
+
+**Repo:** [github.com/open-data-brazil/br-validators](https://github.com/open-data-brazil/br-validators)
 
 ---
 
 ## Install
 
+From [GitHub Releases](https://github.com/open-data-brazil/br-validators/releases) (no npm registry):
+
 ```bash
-npm install -g @br-validators/cli
+VERSION=1.10.1-data.34   # any release tag without the leading "v"
+npm install -g "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz"
+br-validators --help
 ```
 
-Or run without install:
+Or run once without a global install:
 
 ```bash
-npx @br-validators/cli --help
+npx --yes --package "https://github.com/open-data-brazil/br-validators/releases/download/v$VERSION/br-validators-cli-$VERSION.tgz" br-validators --help
 ```
 
 ---
 
-## Commands
+## Global commands
 
 ```bash
 br-validators list
 br-validators --version
+br-validators --help
+```
 
+---
+
+## Per-type commands
+
+```bash
 br-validators cnpj validate 12ABC34501DE35 --json --source
 br-validators cpf validate 12345678909
 br-validators cep format 01310100
+br-validators telefone validate 11999999999
+br-validators cnh validate 62472927637
+br-validators renavam validate 63977791104
+br-validators titulo-eleitor validate 004356870906
+br-validators nfe-chave validate 52060433009911002506550120000007800267301615 --json
+br-validators nfe-chave parse 52060433009911002506550120000007800267301615 --json
+br-validators brcode validate '<emv-payload>' --json
 br-validators placa validate ABC1D23
 br-validators pis-pasep validate 10027230888
 br-validators pix validate pix@bcb.gov.br
-br-validators boleto validate <linha-ou-barcode>
+br-validators boleto validate '03399.02579 08991.834006 71742.301014 6 14500000099668'
 br-validators cartao validate 4111111111111111
+br-validators cartao-credito validate 4111111111111111
 br-validators ie validate 110042490114 --uf SP --json
+br-validators ie validate P-01100424.3/002 --uf SP   # SP produtor rural (auto-detect)
 ```
 
-### Actions (all types)
+### Actions (per-type)
 
 | Action | Description |
 |--------|-------------|
 | `validate` | Check format + check digits |
 | `format` | Apply official mask |
 | `strip` | Normalize to canonical digits/chars |
+| `parse` | NF-e chave, BR Code |
+| `convert` | Boleto linha ↔ barcode; placa legacy → Mercosul |
+| `detect` | PIX key type; boleto input kind; cartão brand |
 
-### Flags
+---
+
+## Platform commands
+
+| Command | Description |
+|---------|-------------|
+| `detect [value]` | Classify raw input; `--uf` for IE |
+| `sanitize <type> [value]` | ETL fixes + validate; `--uf` for `inscricao-estadual` |
+| `mask <type> [value]` | Unified display mask; `--uf` for IE / RG |
+| `compare <type> <valueA> <valueB>` | Normalized equality; `--uf` for IE / RG / título |
+| `batch <type>` | Bulk validate (stdin or `--file`, or CSV with `--col`); `--delimiter`, `--skip-header`; `--uf`, `--limit` |
+| `diff <type> <valueA> <valueB>` | Field-level diff; `--uf` for IE / RG / título |
+| `generate <type>` | Synthetic test document; `--seed`, `--masked`, `--format` |
+
+```bash
+br-validators detect '123.456.789-09' --json
+br-validators detect '110042490114' --uf SP --json
+br-validators sanitize cpf ' 123.456.789-09 ' --json
+br-validators sanitize inscricao-estadual '110.042.490.114' --uf SP --json
+br-validators mask cpf 12345678909 --json
+br-validators mask inscricao-estadual 110042490114 --uf SP --json
+br-validators compare cpf '123.456.789-09' 12345678909 --json
+br-validators batch cpf --file values.txt --json
+br-validators batch cpf --file payroll.csv --col cpf --json
+br-validators sanitize pix ' PIX@BCB.GOV.BR ' --json
+br-validators csosn lookup 102 --json
+br-validators diff cpf 12345678909 12345678901 --json
+br-validators generate cpf --seed 42 --masked --json
+br-validators generate cnpj --format alphanumeric --seed 7 --json
+br-validators generate placa --format mercosul --seed 3
+```
+
+---
+
+## Reference data lookup
+
+Offline embedded datasets — delegates to `@br-validators/core/*`.
+
+### Bacen banks
+
+```bash
+br-validators bancos lookup 001 --json
+br-validators bancos lookup 18236120 --verbose
+br-validators bancos list --limit 20 --json
+```
+
+### Fiscal (26c)
+
+```bash
+br-validators natureza-juridica lookup 2062 --json
+br-validators nbs lookup 1.1502.50.00 --verbose
+br-validators cest lookup 0302100 --json
+br-validators cnae lookup 6201501 --json
+br-validators cnae search "web design" --limit 5
+br-validators cfop lookup 1102 --json
+br-validators cfop search compra --limit 5
+br-validators ncm lookup 12011000 --json
+br-validators ncm search soja --limit 5
+br-validators cbo lookup 212405 --json
+br-validators cbo search analista --limit 5
+```
+
+### Fiscal reference (33o–34)
+
+```bash
+br-validators iss-municipal lookup 3550308 --json
+br-validators iss-municipal list --uf SP --limit 10 --json
+br-validators iss-municipal search campinas --uf SP --limit 5 --json
+br-validators iss-municipal resolve SP "São Paulo" --verbose
+```
+
+Partial embed (~500 municipalities). **Estimation / quoting only — not NFSe emission.**
+
+### Geography & calendar (27d)
+
+```bash
+br-validators ibge lookup 3550308 --json
+br-validators ibge list estados --limit 5
+br-validators ibge list municipios --uf SP --limit 10 --json
+br-validators tse-municipios lookup 71072 --verbose
+br-validators feriados list --year 2026 --json
+br-validators cep faixa 01310 --json
+br-validators ddd lookup 11 --verbose
+```
+
+### Trade (26d)
+
+```bash
+br-validators moedas lookup BRL --json
+br-validators paises-bacen lookup 1058 --verbose
+br-validators incoterms lookup FOB --json
+br-validators ptax lookup USD --verbose
+br-validators ptax lookup USD 2026-06-20 --json --verbose
+br-validators ptax historico USD 2026-06-01 2026-06-26 --json --verbose
+```
+
+**PTAX:** offline embed — last **90 business days** (`janelaDiasUteis: 90`; not live Bacen). `--verbose` prints `dataReferencia`, `isStale`, and `warning` when stale. `ptax historico` lists all embedded rows in a date range.
+
+### Finance (SELIC)
+
+```bash
+br-validators selic --verbose
+br-validators selic --date 2026-06-18 --json --verbose
+```
+
+`--verbose` includes `dataReferencia`, `isStale`, and dataset `capturadoEm` (same pattern as PTAX).
+
+### Logistics (26e)
+
+```bash
+br-validators portos lookup BRSSZ --json
+br-validators aeroportos lookup GRU --verbose
+br-validators aeroportos lookup SBGR --json
+```
+
+| Exit code | Meaning |
+|-----------|---------|
+| `0` | Record found |
+| `1` | Not found |
+| `2` | Usage error |
+
+---
+
+## Flags
 
 | Flag | Description |
 |------|-------------|
-| `--json` | JSON output (`ValidationResult`) |
+| `--json` | JSON output |
 | `--quiet` / `-q` | Exit code only (CI) |
+| `--verbose` | PTAX / SELIC: `dataReferencia`, `isStale`, `warning`; other lookups: dataset metadata |
 | `--file` / `-f` | Read value from file |
-| `--source` | Print official source URL |
-| `--uf` | Required for IE (27 UFs) |
+| `--source` | Print official source URL (per-type) |
+| `--uf` | Required for IE / detect / sanitize IE; filter for `ibge list municipios`, `iss-municipal list`, and `iss-municipal search` |
 
 ### CI
 
 ```bash
 br-validators cnpj validate "$CNPJ" --quiet || exit 1
+br-validators detect "$RAW_INPUT" --json --quiet || exit 1
 ```
 
 ---

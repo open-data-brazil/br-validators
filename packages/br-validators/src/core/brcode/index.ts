@@ -20,6 +20,8 @@ export {
   BRCODE_PIX_INITIATION_MANUAL_URL,
 } from './constants.js';
 export { computeCrc16Ccitt, verifyBrCodeCrc } from './crc16.js';
+export { buildStaticPixBrCode } from './build-static.js';
+export type { StaticPixBrCodeInput } from './build-static.js';
 export { normalizeBrCodePayload, parseBrCodePayload } from './parse.js';
 export { findPixMerchantAccount, findTlvField, parseTlvSequence } from './tlv.js';
 export type { TlvField, TlvParseResult } from './tlv.js';

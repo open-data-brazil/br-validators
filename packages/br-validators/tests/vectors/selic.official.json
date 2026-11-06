@@ -1,0 +1,42 @@
+{
+  "source": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json",
+  "datasetUrl": "https://dadosabertos.bcb.gov.br/dataset/432-taxa-de-juros---meta-selic-definida-pelo-copom",
+  "serie": 432,
+  "minRecords": 80,
+  "maxRecords": 95,
+  "golden": {
+    "ultimaMeta": {
+      "data": "2026-11-06",
+      "valor": 13.75
+    },
+    "inicioJanela": {
+      "data": "2026-08-09",
+      "valor": 14
+    },
+    "historicoRange": {
+      "from": {
+        "data": "2026-08-09",
+        "valor": 14
+      },
+      "middle": {
+        "data": "2026-08-10",
+        "valor": 14
+      },
+      "to": {
+        "data": "2026-08-11",
+        "valor": 14
+      }
+    }
+  },
+  "staleness": {
+    "asOfFresh": "2026-11-06",
+    "freshReferenceDate": "2026-11-06",
+    "staleReferenceDate": "2026-08-09",
+    "capturadoEm": "2026-11-06",
+    "staleWarning": "Embedded data. For real-time use @br-validators/adapters-selic"
+  },
+  "negative": {
+    "unknownDate": "1999-01-01",
+    "invalidDate": "bad-date"
+  }
+}

@@ -83,7 +83,7 @@ describe('validateInscricaoEstadual', () => {
 });
 
 describe('rejections', () => {
-  it('rejects SP bad DV and rural format', () => {
+  it('rejects SP bad DV and rural format via validateIeSp', () => {
     expect(validateIeSp(negativeVectors.cases.spBadDv).ok).toBe(false);
     expect(validateIeSp(negativeVectors.cases.spShort).ok).toBe(false);
     const rural = validateIeSp(negativeVectors.cases.spRural);

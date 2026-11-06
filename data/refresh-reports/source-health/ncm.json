@@ -1,0 +1,14 @@
+{
+  "datasetId": "ncm",
+  "endpoints": [
+    "https://portalunico.siscomex.gov.br/classif/api/publico/nomenclatura/download/json?perfil=PUBLICO"
+  ],
+  "consecutiveFailureDays": 0,
+  "firstFailureDate": null,
+  "lastFailureDate": null,
+  "lastSuccessDate": "2026-11-06",
+  "severity": "ok",
+  "message": "Official source responded successfully.",
+  "retainedEmbeddedDataFrom": "2026-11-06",
+  "outcomeStatus": "ok"
+}

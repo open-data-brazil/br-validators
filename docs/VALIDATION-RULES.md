@@ -163,6 +163,176 @@
 
 ---
 
+## CNH (Registro Nacional)
+
+> **Sources:** [OFFICIAL-SOURCES.md § CNH](OFFICIAL-SOURCES.md#cnh--reference-index) — [CONTRAN 511/2014](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/resolucao5112014.pdf) · [CONTRAN 886/2021](https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao8862021.pdf) · [Validar CNH — gov.br](https://www.gov.br/pt-br/servicos/validar-cnh) · Algorithm: [AdvPL CNH](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/) · Cross-check: [GeraValida](https://www.geravalida.com.br/validador-cnh) · [GeradorBR](https://geradorbr.com/validador-de-cnh/)
+
+### BR-CNH-001 — Length
+
+- **GIVEN** stripped input
+- **WHEN** length ≠ 11
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-CNH-002 — Numeric only
+
+- **GIVEN** input after removing mask punctuation (`.`, `-`, spaces)
+- **WHEN** non-digit characters remain
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-CNH-003 — Known invalid sequence
+
+- **GIVEN** 11 identical digits (e.g. `11111111111`)
+- **WHEN** validating
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-CNH-004 — Check digits (modulo 11 + desconto)
+
+- **GIVEN** base 9 digits
+- **WHEN** computing DV1 and DV2 in **parallel** on the same base: DV1 weights `9,8,7,6,5,4,3,2,1`, DV2 weights `1,2,3,4,5,6,7,8,9`
+- **WHEN** DV1: `remainder = sum % 11`; if `remainder > 9` then DV1 = 0 and `desconto = 2`, else DV1 = remainder and `desconto = 0`
+- **WHEN** DV2: `remainder = sum % 11`; if `desconto = 2`: when `remainder − 2 < 0`, set `DV2 = remainder + 9`; else `DV2 = remainder − 2`; if `desconto = 0`: `DV2 = remainder`; if `DV2 > 9` then DV2 = 0
+- **THEN** compare with positions 10–11; mismatch → `INVALID_CHECK_DIGIT`
+- **Algorithm cross-check:** [AdvPL — Validação de CNH](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-cnh/) · [GeraValida](https://www.geravalida.com.br/validador-cnh) · [GeradorBR](https://geradorbr.com/validador-de-cnh/) (CONTRAN 511/2014 defines structure only)
+
+### BR-CNH-005 — Official system format (no decorative mask)
+
+- **GIVEN** valid canonical number
+- **WHEN** formatting for official systems (SENATRAN portal, Detran forms)
+- **THEN** emit **11 contiguous digits** — no dots or dashes (unlike CPF `XXX.XXX.XXX-DD`)
+- **NOTE** CPF-style decoration may be accepted on **input** via strip but is **not** official CNH format
+
+---
+
+## RENAVAM
+
+> **Sources:** [OFFICIAL-SOURCES.md § RENAVAM](OFFICIAL-SOURCES.md#renavam--reference-index) — [Portaria DENATRAN 27/2013](https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2013/portaria0272013.pdf) · [Consultar veículo RENAVAM — gov.br](https://www.gov.br/pt-br/servicos/consultar-dados-de-veiculo-na-base-renavam) · Algorithm: [AdvPL RENAVAM](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-renavam/) · Cross-check: [GeraValida](https://www.geravalida.com.br/gerador-de-renavam) · [GeradorFácil](https://geradorfacil.com/geradores/renavam)
+
+### BR-RENAVAM-001 — Length
+
+- **GIVEN** stripped input
+- **WHEN** length ≠ 11
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-RENAVAM-002 — Numeric only
+
+- **GIVEN** input after removing optional dash before check digit
+- **WHEN** non-digit characters remain
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-RENAVAM-003 — Known invalid sequence
+
+- **GIVEN** 11 identical digits (e.g. `11111111111`)
+- **WHEN** validating
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-RENAVAM-004 — Check digit (modulo 11, peso 9)
+
+- **GIVEN** base 10 digits
+- **WHEN** multiplying each digit (left to right) by weights `3,2,9,8,7,6,5,4,3,2`, summing, then `remainder = sum % 11`
+- **WHEN** `DV = 11 − remainder`; if `DV > 9` then DV = 0
+- **THEN** compare with position 11; mismatch → `INVALID_CHECK_DIGIT`
+- **NOTE** Not the boleto rule `(sum × 10) % 11` — RENAVAM uses direct subtraction from 11
+- **Algorithm cross-check:** [AdvPL — Validação de RENAVAM](https://siga0984.wordpress.com/2019/05/01/algoritmos-validacao-de-renavam/) · [GeraValida](https://www.geravalida.com.br/gerador-de-renavam) · [GeradorFácil](https://geradorfacil.com/geradores/renavam) (Portaria DENATRAN 27/2013 defines structure only)
+
+### BR-RENAVAM-005 — Official system format (no decorative mask)
+
+- **GIVEN** valid canonical number
+- **WHEN** formatting for official systems (CRLV/CRV, SENATRAN portal)
+- **THEN** emit **11 contiguous digits** — no punctuation
+- **NOTE** Optional dash before DV may be accepted on **input** via strip but is **not** official format
+
+---
+
+## Título de Eleitor
+
+> **Sources:** [OFFICIAL-SOURCES.md § Título de Eleitor](OFFICIAL-SOURCES.md#título-de-eleitor--reference-index) — [Resolução TSE 20.132/1998](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) (Art. 10) · [Res. 23.659/2021](https://www.tse.jus.br/legislacao/compilada/res/2021/resolucao-no-23-659-de-26-de-outubro-de-2021) · Weights: [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) · [Ghiorzi](http://ghiorzi.org/DVnew.htm#e)
+
+### BR-TITULO-001 — Length
+
+- **GIVEN** stripped input
+- **WHEN** length is not 12 (standard) or 13 (SP/MG extended sequential)
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-TITULO-002 — Numeric only
+
+- **GIVEN** input after removing mask spaces
+- **WHEN** non-digit characters remain
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-TITULO-003 — Known invalid sequence
+
+- **GIVEN** 12 or 13 identical digits (e.g. `111111111111`)
+- **WHEN** validating
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-TITULO-004 — UF code (TSE electoral table)
+
+- **GIVEN** UF digits at positions 9–10 (12-digit) or 10–11 (13-digit)
+- **WHEN** UF code is outside **01–28** (TSE table, 28 = exterior)
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+- **WHEN** length is 13 and UF is not **01 (SP)** or **02 (MG)**
+- **THEN** reject with `UNSUPPORTED_FORMAT`
+
+### BR-TITULO-005 — Check digits (modulo 11)
+
+- **GIVEN** structure per **Resolução TSE 20.132/1998, Art. 10** — DV1 on sequential; DV2 on UF + DV1; modulo 11
+- **WHEN** implementing weights: DV1 `[2,3,4,5,6,7,8,9]` left→right (9-digit SP/MG: `[9,2,3,4,5,6,7,8,9]`); DV2 `[7,8,9]` on `[UF₁, UF₂, DV1]`
+- **WHEN** `remainder % 11`; if remainder **10** → DV = **0**; if remainder **0** and UF is **01 or 02** → DV = **1**
+- **THEN** compare with last 2 digits; mismatch → `INVALID_CHECK_DIGIT`
+- **Normative:** [Resolução TSE 20.132/1998 — Art. 10](https://www.tse.jus.br/legislacao/compilada/res/1998/resolucao-no-20-132-de-19-de-marco-de-1998) (structure + mod 11 only)
+- **Weights / SP-MG rule:** [Wikipedia PT](https://pt.wikipedia.org/wiki/T%C3%ADtulo_eleitoral#C%C3%A1lculo_do_d%C3%ADgito_verificador) · [Ghiorzi](http://ghiorzi.org/DVnew.htm#e) — not spelled out in resolution text
+
+### BR-TITULO-006 — Display format
+
+- **GIVEN** valid canonical number
+- **WHEN** formatting for display
+- **THEN** emit `XXXX XXXX XXXX` (12-digit) or `XXXXX XXXX XXXX` (13-digit SP/MG)
+
+---
+
+## NF-e / NFC-e chave de acesso
+
+> **Sources:** [OFFICIAL-SOURCES.md § NF-e chave](OFFICIAL-SOURCES.md#nf-e--nfc-e-chave-de-acesso--reference-index) — [Portal NF-e MOC](https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE%3D) · [MOC online §2.2.6](http://moc.sped.fazenda.pr.gov.br/) · [MOC 7.0 PDF §2.2.6.2](https://www.confaz.fazenda.gov.br/legislacao/arquivo-manuais/moc7-visao-geral.pdf)
+
+### BR-NFE-CHAVE-001 — Length
+
+- **GIVEN** input after strip
+- **WHEN** length ≠ 44
+- **THEN** reject with `INVALID_LENGTH`
+
+### BR-NFE-CHAVE-002 — Numeric only
+
+- **GIVEN** input with non-digit characters (after allowing spaces)
+- **WHEN** normalizing
+- **THEN** reject with `INVALID_CHARACTER`
+
+### BR-NFE-CHAVE-003 — cUF (IBGE)
+
+- **GIVEN** positions 1–2 (cUF)
+- **WHEN** code ∉ IBGE UF table (11–17, 21–29, 31–35, 41–43, 50–53)
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-NFE-CHAVE-004 — Modelo (mod)
+
+- **GIVEN** positions 21–22
+- **WHEN** value ∉ {`55`, `65`}
+- **THEN** reject with `KNOWN_INVALID_PATTERN`
+
+### BR-NFE-CHAVE-005 — Check digit (modulo 11)
+
+- **GIVEN** first 43 digits
+- **WHEN** applying weights `2..9` cyclically right-to-left (MOC §2.2.6.2)
+- **THEN** `remainder = sum % 11`; if remainder **0 or 1** → DV = **0**, else DV = **11 − remainder**; mismatch at position 44 → `INVALID_CHECK_DIGIT`
+- **Golden walkthrough:** base `5206043300991100250655012000000780026730161` → sum **644** → remainder **6** → DV **5**
+
+### BR-NFE-CHAVE-006 — Display format
+
+- **GIVEN** valid canonical chave
+- **WHEN** formatting for display
+- **THEN** emit 11 groups of 4 digits separated by spaces
+
+---
+
 ## BR Code
 
 > **Source:** [Bacen Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões para Iniciação do Pix (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf)
@@ -190,6 +360,17 @@
 - **GIVEN** payload with subfield `25` (initiation URL) and no subfield `01`
 - **WHEN** `parseBrCode`
 - **THEN** succeed with `pixInitiationUrl`; `validateBrCode` rejects with `UNSUPPORTED_FORMAT`
+
+### BR-BRC-005 — Static PIX QR builder
+
+- **GIVEN** `StaticPixBrCodeInput` with `pixKey`, `merchantName` (max 25), `merchantCity` (max 15, uppercased)
+- **WHEN** calling `buildStaticPixBrCode`
+- **THEN** emit EMV TLV per BR-BRC-002: tag 00 = `01`, tag 26 (GUI `br.gov.bcb.pix` + key subfield `01`), tags 52/53, tag 58 = `BR`, tags 59/60, tag 62 subfield `05` (txid, default `***`), tag 63 CRC16 per BR-BRC-001
+- **AND** omit tag `54` when `amount` is absent → permanent static QR (payer sets value)
+- **AND** include tag `54` when `amount` is a valid decimal (up to 2 fraction digits); ignore invalid `amount` strings
+- **AND** output must pass `validateBrCode` for static PIX keys
+
+**Official source:** [Bacen Manual BR Code (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/spb_docs/ManualBRCode.pdf) · [Manual de Padrões PIX (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf) · `tests/vectors/brcode.official.json` · `BRCODE_GOLDEN_STATIC_*`
 
 ---
 
@@ -360,11 +541,16 @@
 - **WHEN** validating
 - **THEN** strip non-digits before structural checks
 
-### BR-BOLETO-009 — Arrecadação out of scope
+### BR-BOLETO-009 — Arrecadação (48-digit linha / 44-digit barcode)
 
-- **GIVEN** 48-digit input starting with `8`
-- **WHEN** validating in v1
-- **THEN** reject with `UNSUPPORTED_FORMAT`
+- **GIVEN** 48-digit linha or 44-digit código de barras starting with product id `8`
+- **WHEN** validating via `validateArrecadacao` / `validateBoleto`
+- **THEN** value type at position 3 must be `6`, `7`, `8`, or `9`
+- **AND** for linha: validate modulo 10 (types `6`/`7`) or modulo 11 (types `8`/`9`) field DVs on four 11-digit blocks
+- **AND** validate general DV on assembled 44-digit payload (same modulo as value type)
+- **AND** on failure return `INVALID_CHECK_DIGIT`, `INVALID_LENGTH`, or `UNSUPPORTED_FORMAT` — never throw
+
+**Official source:** [FEBRABAN Layout Arrecadação v7 (PDF)](https://cmsarquivos.febraban.org.br/Arquivos/documentos/PDF/Layout%20-%20C%C3%B3digo%20de%20Barras%20-%20Vers%C3%A3o%207%20-%2001_03_2023_mn.pdf) · `tests/vectors/boleto-arrecadacao.official.json`
 
 ### BR-BOLETO-010 — Barcode DV edge cases
 
@@ -418,6 +604,22 @@
 - **THEN** reject with `INVALID_LENGTH` or `INVALID_CHECK_DIGIT`
 - **Source:** [SEFAZ-SP Sintegra rotina](https://portal.fazenda.sp.gov.br/servicos/icms/Paginas/sintegra-rotina-consistencia.aspx) (2012-01-05); mirror [SINTEGRA cad_SP](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html)
 - **Golden:** `110042490114` — `tests/vectors/ie.sp.official.json`
+
+### BR-IE-SP-RURAL-001 — São Paulo produtor rural (13 characters, prefix P)
+
+- **GIVEN** IE for UF `SP` starting with `P` (Regra II)
+- **WHEN** length ≠ 13 after normalization or DV at position 10 fails modulo-11 on `0MMMSSSS`
+- **THEN** reject with `INVALID_LENGTH`, `INVALID_CHARACTER`, or `INVALID_CHECK_DIGIT`; route via `validateIeProdutorRural`, not `validateIeSp`
+- **Source:** [SINTEGRA cad_SP Bloco II](http://www.sintegra.gov.br/Cad_Estados/cad_SP.html); cadastro [CADESP produtor rural](https://portal.fazenda.sp.gov.br/servicos/cadesp/Paginas/Produtor-Rural-abertura,-baixa-e-outras-alteracoes.aspx)
+- **Golden:** `P011004243002` (masked `P-01100424.3/002`) — `tests/vectors/inscricao-estadual-produtor-rural.official.json`
+- **Weights:** `1,3,4,5,6,7,8,10` on 8 digits `0MMMSSSS`; trailing 3 digits excluded from DV
+
+### BR-IE-SP-RURAL-002 — Non-SP produtor rural
+
+- **GIVEN** `validateIeProdutorRural` with UF ≠ `SP`
+- **WHEN** validating MT/GO/MS/PR/RS agro IE
+- **THEN** reject with `UNSUPPORTED_FORMAT`; use `validateInscricaoEstadual(uf, input)` instead
+- **Source:** [SINTEGRA cad_MT](http://www.sintegra.gov.br/Cad_Estados/cad_MT.html) — agro uses same algorithm as industrial
 
 ### BR-IE-MT-001 — Mato Grosso (9 or 11 digits)
 
@@ -533,6 +735,78 @@ Each row maps to `validateIe{Uf}` and `BR-IE-{UF}-001`. Algorithm detail: [IE-ST
 - **GIVEN** any input
 - **WHEN** calling `isValidLuhn`
 - **THEN** strip → length check → character check → Luhn; return boolean without branded type
+
+---
+
+## Platform APIs
+
+### BR-DETECT-001 — Priority router
+
+- **GIVEN** non-empty raw input
+- **WHEN** calling `detect(raw, options?)`
+- **THEN** run structural pre-checks in fixed priority order; for each candidate call the existing `validate*` (never duplicate DV logic); return first `{ ok: true }` match with `type`, `value`, optional `format` and `meta`
+- **AND** try boleto arrecadação (48-digit `8…`) before cobrança boleto
+- **AND** for 11-digit numeric input try CPF → CNH → PIS (RENAVAM equivalent DV may classify as `pis-pasep`)
+- **AND** IE detection runs only when `options.uf` is set; SP `P` prefix → `validateIeProdutorRural`
+- **AND** if no match, return `{ type: 'unknown', ok: false, code: 'UNSUPPORTED_FORMAT', ... }`
+
+Official sources: per detected type — [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+### BR-SANITIZE-001 — Fixes then validate
+
+- **GIVEN** raw input and explicit `SanitizableDocumentType`
+- **WHEN** calling `sanitize(raw, type, options?)`
+- **THEN** apply type-specific fixes (trim, strip separators, uppercase, telefone national normalization, preserve SP rural `P` prefix)
+- **AND** record each fix in `fixes[]`
+- **AND** run matching `validate*` — return `{ ok: true, value, fixes }` or validation failure
+- **AND** require `options.uf` for `inscricao-estadual`
+- **AND** never bypass check-digit validation (unlike bare `strip*`)
+
+### BR-GENERATE-001 — Synthetic-only generation
+
+- **GIVEN** `GeneratableDocumentType` and optional `{ format, masked, seed, uf, brand, pixKey, merchantName, merchantCity, amount, txid }`
+- **WHEN** calling `generate(type, options?)`
+- **THEN** build random base via PRNG (Mulberry32 when `seed` set); compute check digits using existing official helpers (RFB modulo 11, CONTRAN placa, Anatel DDD, ISO 7812 Luhn, MOC NF-e DV, FEBRABAN boleto modulo 10/11, Bacen BR Code CRC16, SINTEGRA SP rural IE)
+- **AND** reject all-same-digit bases for CPF/CNPJ where applicable
+- **AND** assert output passes `validate*` before return
+- **AND** document as **test fixtures only** — not for production or impersonation
+- **AND** `generate('cpf', { format: 'alphanumeric' })` throws `CPF_ALPHA_SPEC_PENDING` until RFB publishes spec
+
+**Generatable types (17):** `cpf`, `cnpj`, `cep`, `placa`, `pis-pasep`, `renavam`, `cnh`, `telefone`, `cartao-credito`, `inscricao-estadual`, `titulo-eleitor`, `pix` (EVP), `nfe-chave`, `brcode`, `boleto`, `boleto-arrecadacao`, `inscricao-estadual-produtor-rural`.
+
+DV sources per type: [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+### BR-MASK-001 — Unified display mask
+
+- **GIVEN** raw input and explicit `MaskableDocumentType`
+- **WHEN** calling `mask(raw, type, options?)`
+- **THEN** strip → `validate*` → `format*`; return `FormatResult` — never throw
+- **AND** require `options.uf` for `inscricao-estadual`
+
+Official mask rules per type: [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
+
+### BR-COMPARE-001 — Normalized equality
+
+- **GIVEN** two raw strings and `PlatformDocumentType`
+- **WHEN** calling `compare(a, b, type, options?)`
+- **THEN** normalize both via strip + validated canonical when possible; return `{ equal: boolean }`
+- **AND** never throw
+
+### BR-BATCH-001 — Batch validation
+
+- **GIVEN** `readonly string[]` and `PlatformDocumentType`
+- **WHEN** calling `batch(inputs, type, options?)`
+- **THEN** map each row through `validateForPlatform`; partition into `valid` / `invalid` with `summary`
+- **AND** never throw on invalid rows
+
+### BR-DIFF-001 — Field-level diff
+
+- **GIVEN** two raw strings and `PlatformDocumentType`
+- **WHEN** calling `diff(a, b, type, options?)`
+- **THEN** normalize both; split per-type structural fields (CPF base/DV, CNPJ base/DV, NF-e segments, etc.)
+- **AND** return `{ changed, fields: [{ field, a, b }] }` — opaque single-field diff for types without decomposition
+
+Per-type field depth: [LIBRARY-API.md](LIBRARY-API.md#diffa-b-type-options). Official structures: [OFFICIAL-SOURCES.md](OFFICIAL-SOURCES.md).
 
 ---
 

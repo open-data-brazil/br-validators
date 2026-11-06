@@ -1,0 +1,91 @@
+{
+  "source": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm#art8",
+  "pibSource": "https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2022",
+  "targetCount": 500,
+  "capitalCount": 27,
+  "officialCount": 450,
+  "golden": {
+    "saoPaulo": {
+      "codigoIbge": 3550308,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "legislacao.prefeitura.sp.gov.br"
+    },
+    "rioDeJaneiro": {
+      "codigoIbge": 3304557,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "leiUrlContains": "rio.rj.gov.br"
+    },
+    "beloHorizonte": {
+      "codigoIbge": 3106200,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "leiUrlContains": "prefeitura.pbh.gov.br"
+    },
+    "campinas": {
+      "codigoIbge": 3509502,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "campinas.sp.gov.br"
+    },
+    "saoGoncalo": {
+      "codigoIbge": 3304904,
+      "aliquotaMin": 5,
+      "aliquotaMax": 5,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "gov.br/nfse"
+    },
+    "barueri": {
+      "codigoIbge": 3505708,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "barueri.sp.gov.br"
+    },
+    "querencia": {
+      "codigoIbge": 5107065,
+      "aliquotaMin": 3,
+      "aliquotaMax": 3,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "gov.br/nfse"
+    },
+    "patoBranco": {
+      "codigoIbge": 4118501,
+      "aliquotaMin": 2,
+      "aliquotaMax": 5,
+      "estimativa": false,
+      "fonte": "oficial",
+      "leiUrlContains": "sapl.patobranco.pr.leg.br"
+    }
+  },
+  "ufFilter": {
+    "uf": "SP",
+    "query": "campinas",
+    "expectCodigoIbge": 3509502
+  },
+  "ufListFilter": {
+    "sp": "SP",
+    "invalid": "zz"
+  },
+  "searchWithUfNoMatch": {
+    "query": "santos",
+    "uf": "RJ"
+  },
+  "negative": {
+    "notFoundIbge": 9999999,
+    "invalidIbge": "abc",
+    "unknownUfNome": {
+      "uf": "ZZ",
+      "nome": "Nowhere"
+    },
+    "searchNoMatch": "zzzznonexistentmunicipio"
+  }
+}

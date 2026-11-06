@@ -61,6 +61,10 @@ export {
   IE_SP_GOLDEN_MASKED,
   IE_SP_LENGTH,
   IE_SP_OFFICIAL_SOURCE_URL,
+  IE_SP_RURAL_GOLDEN,
+  IE_SP_RURAL_GOLDEN_MASKED,
+  IE_SP_RURAL_LENGTH,
+  IE_SP_RURAL_OFFICIAL_SOURCE_URL,
   IE_SUPPORTED_UFS,
   IE_TO_LEGACY_PREFIXES,
 } from './constants.js';
@@ -91,8 +95,14 @@ export { stripIeRs, validateIeRs } from './rs.js';
 export { stripIeSc, validateIeSc } from './sc.js';
 export { stripIeSe, validateIeSe } from './se.js';
 export { stripIeSp, validateIeSp } from './sp.js';
+export { isSpRuralIeInput, stripIeSpRural, validateIeSpRural } from './sp-rural.js';
+export {
+  getIeProdutorRuralOfficialSourceUrl,
+  isValidIeProdutorRural,
+  validateIeProdutorRural,
+} from './validate-produtor-rural.js';
 export { stripIeTo, validateIeTo } from './to.js';
-export { applyIeDfMask, applyIeSpMask } from './mask.js';
+export { applyIeDfMask, applyIeSpMask, applyIeSpRuralMask } from './mask.js';
 
 export type ValidateInscricaoEstadualOptions = {
   uf: UfCode;

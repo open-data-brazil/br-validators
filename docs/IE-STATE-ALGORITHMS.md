@@ -95,7 +95,7 @@ Last reviewed: June 2026.
 |-------|--------|
 | DF 12 vs 13 digits | Legacy SINTEGRA validators (Convênio 57/95) expected 12 digits; CF/DF today uses **13**. Prefer 13-digit validation. |
 | MT 9 vs 11 digits | CCE/MT Art. 6º defines 9-digit IDs; file-transfer tools still zero-pad to 11. |
-| SP rural IE | `P0MMMSSSSD000` (13 chars) — separate from industrial/commercial 12-digit rule. |
+| SP rural IE | `P0MMMSSSSD000` (13 chars) — separate from industrial/commercial 12-digit rule. **Shipped** via `validateIeProdutorRural` / `validateIeSpRural` (`@br-validators/core/inscricao-estadual-produtor-rural`). |
 | SINTEGRA discontinuation | Algorithm pages may return 403; mirror content in phase `OFFICIAL-REFERENCE.md` + golden vectors. |
 
 ---

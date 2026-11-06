@@ -1,99 +1,114 @@
 name: Release
 
-# Publish to npm when a version tag is pushed on main (after merge + version bump).
-# Requires repository secret: NPM_TOKEN (Automation token with publish on @br-validators).
+# Publish a GitHub Release when a version tag is pushed on main.
+# Distribution is GitHub-only: every workspace package is attached as an `npm pack`
+# tarball plus the embedded reference data (tar.gz + catalog.json + SHA256SUMS).
+# No npm registry, no NPM_TOKEN, no OTP — see docs/BRANCHING.md.
+#
+# Install from a release:
+#   npm install https://github.com/open-data-brazil/br-validators/releases/download/<tag>/br-validators-core-<version>.tgz
 
 on:
   push:
     tags:
       - 'v*'
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Existing git tag to release (e.g. v1.10.1-data.34)'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Existing git tag to release (e.g. v0.11.0-alpha.0)'
+        description: 'Existing git tag to release (e.g. v1.10.1-data.34)'
         required: true
         type: string
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
+    # A PAT-pushed tag and a workflow_call for the same tag must not race.
+    concurrency:
+      group: release-${{ inputs.tag || github.ref_name }}
+      cancel-in-progress: false
     steps:
       - name: Resolve release tag
         id: version
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            TAG="${{ inputs.tag }}"
-          else
-            TAG="${GITHUB_REF_NAME}"
-          fi
+          TAG="${{ inputs.tag || github.ref_name }}"
           VERSION="${TAG#v}"
-          if [[ "$VERSION" == *-alpha* ]]; then NPM_TAG=alpha
-          elif [[ "$VERSION" == *-beta* ]]; then NPM_TAG=beta
-          elif [[ "$VERSION" == *-rc* ]]; then NPM_TAG=rc
-          else NPM_TAG=latest
+          PRERELEASE=false
+          if [[ "$VERSION" == *-alpha* || "$VERSION" == *-beta* || "$VERSION" == *-rc* ]]; then
+            PRERELEASE=true
           fi
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "npm_tag=$NPM_TAG" >> "$GITHUB_OUTPUT"
+          {
+            echo "tag=$TAG"
+            echo "version=$VERSION"
+            echo "prerelease=$PRERELEASE"
+          } >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.tag) || github.ref }}
+          ref: refs/tags/${{ steps.version.outputs.tag }}
 
       - name: Verify tag matches package versions
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          CORE="$(jq -r .version packages/br-validators/package.json)"
-          CLI="$(jq -r .version apps/cli/package.json)"
-          if [ "$VERSION" != "$CORE" ] || [ "$VERSION" != "$CLI" ]; then
-            echo "Tag version $VERSION does not match package.json (core=$CORE, cli=$CLI)"
-            exit 1
-          fi
+          for PKG in packages/br-validators apps/cli packages/br-validators-zod packages/br-validators-rhf packages/br-validators-express packages/br-validators-vue; do
+            ACTUAL="$(jq -r .version "$PKG/package.json")"
+            if [ "$ACTUAL" != "$VERSION" ]; then
+              echo "Tag version $VERSION does not match $PKG/package.json ($ACTUAL)"
+              exit 1
+            fi
+          done
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: pnpm
-          registry-url: https://registry.npmjs.org
 
       - run: pnpm install --frozen-lockfile
 
       - name: Quality gate
         run: pnpm verify
 
-      - name: Publish @br-validators/core
-        run: pnpm --filter @br-validators/core publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish @br-validators/cli
-        run: pnpm --filter @br-validators/cli publish --access public --tag ${{ steps.version.outputs.npm_tag }} --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Point npm latest at release
+      - name: Build release assets (npm pack tarballs + reference data)
         run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          npm dist-tag add "@br-validators/core@${VERSION}" latest
-          npm dist-tag add "@br-validators/cli@${VERSION}" latest
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          pnpm exec tsx scripts/build-release-artifacts.ts \
+            --tag "${{ steps.version.outputs.tag }}" \
+            --out dist/release \
+            --notes dist/release-notes.md
 
-      - name: Create GitHub Release
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           TAG="${{ steps.version.outputs.tag }}"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists — skipping"
+            gh release edit "$TAG" --notes-file dist/release-notes.md
+            gh release upload "$TAG" dist/release/* --clobber
+          elif [ "${{ steps.version.outputs.prerelease }}" = "true" ]; then
+            gh release create "$TAG" dist/release/* --title "$TAG" --notes-file dist/release-notes.md --verify-tag --prerelease
           else
-            gh release create "$TAG" --generate-notes --title "$TAG"
+            gh release create "$TAG" dist/release/* --title "$TAG" --notes-file dist/release-notes.md --verify-tag --latest
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release summary
+        run: |
+          {
+            echo "### Release ${{ steps.version.outputs.tag }}"
+            echo ""
+            echo "Assets: $(find dist/release -maxdepth 1 -type f -printf '%f ' | sort)"
+            echo ""
+            echo '```bash'
+            echo "npm install https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.tag }}/br-validators-core-${{ steps.version.outputs.version }}.tgz"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

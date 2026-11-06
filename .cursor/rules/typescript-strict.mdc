@@ -1,0 +1,66 @@
+---
+description: TypeScript strict typing — @types/node required, no any/unknown
+alwaysApply: true
+---
+
+# TypeScript strict typing
+
+> **Non-negotiable:** correct types everywhere. No escape hatches without user approval.
+
+## Required dev dependency
+
+Root and every Node package (`apps/cli`, `apps/playground`, `scripts/`) MUST declare:
+
+```json
+"@types/node": "^22.15.21"
+```
+
+`scripts/tsconfig.json` MUST include:
+
+```json
+"types": ["node"],
+"lib": ["ES2022"]
+```
+
+Without `@types/node`, `process`, `node:fs`, and `node:path` fail typecheck in IDE and `tsc -p scripts/tsconfig.json`.
+
+## No `any` or `unknown`
+
+| Rule | Requirement |
+|------|-------------|
+| `any` | **Forbidden** — use concrete types, generics, or unions |
+| `unknown` | **Forbidden** — narrow at boundaries with type guards |
+| `JSON.parse` | Parse into `object`, validate with a type guard, then return typed value |
+| Promise `.catch` | Use `exitWithError(reason: Error \| string \| number \| boolean \| object)` — see `scripts/lib/errors.ts` |
+| ESLint | `@typescript-eslint/no-explicit-any`, `no-unsafe-*` — **0 errors** |
+
+### Allowed boundary patterns
+
+```typescript
+// JSON boundary — immediate narrow, no lingering any/unknown
+function parseJsonObject(raw: string): object {
+  const parsed = JSON.parse(raw) as string | number | boolean | object | null;
+  if (typeof parsed !== 'object' || parsed === null) {
+    throw new Error('Expected JSON object');
+  }
+  return parsed;
+}
+
+// Rejection boundary — no unknown annotation
+main().catch(exitWithError);
+```
+
+## Verification
+
+```bash
+pnpm typecheck:scripts   # scripts/**/*.ts
+pnpm lint                # includes scripts with strictTypeChecked
+pnpm verify
+```
+
+## Agent MUST NOT
+
+- Add `@types/node` only in a child package when root `scripts/` also use Node APIs
+- Annotate catch handlers as `unknown`
+- Use `as any` to silence type errors
+- Disable `no-explicit-any` without user approval
