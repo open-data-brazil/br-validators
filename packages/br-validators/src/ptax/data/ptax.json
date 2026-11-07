@@ -860,6 +860,16 @@
     "tipoBoletim": "Fechamento PTAX"
   },
   {
+    "moeda": "AUD",
+    "data": "2026-11-06",
+    "paridadeCompra": 0.6872,
+    "paridadeVenda": 0.6873,
+    "cotacaoCompra": 3.7801,
+    "cotacaoVenda": 3.781,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
     "moeda": "CAD",
     "data": "2026-07-06",
     "paridadeCompra": 1.4214,
@@ -1717,6 +1727,16 @@
     "cotacaoCompra": 3.9022,
     "cotacaoVenda": 3.9032,
     "dataHoraCotacao": "2026-11-05 13:06:37.661774",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
+    "moeda": "CAD",
+    "data": "2026-11-06",
+    "paridadeCompra": 1.4103,
+    "paridadeVenda": 1.4106,
+    "cotacaoCompra": 3.8995,
+    "cotacaoVenda": 3.9008,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
     "tipoBoletim": "Fechamento PTAX"
   },
   {
@@ -2580,6 +2600,16 @@
     "tipoBoletim": "Fechamento PTAX"
   },
   {
+    "moeda": "CHF",
+    "data": "2026-11-06",
+    "paridadeCompra": 0.8202,
+    "paridadeVenda": 0.8204,
+    "cotacaoCompra": 6.7049,
+    "cotacaoVenda": 6.7073,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
     "moeda": "DKK",
     "data": "2026-07-06",
     "paridadeCompra": 6.5415,
@@ -3437,6 +3467,16 @@
     "cotacaoCompra": 0.8202,
     "cotacaoVenda": 0.8205,
     "dataHoraCotacao": "2026-11-05 13:06:37.661774",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
+    "moeda": "DKK",
+    "data": "2026-11-06",
+    "paridadeCompra": 6.7064,
+    "paridadeVenda": 6.7077,
+    "cotacaoCompra": 0.8201,
+    "cotacaoVenda": 0.8203,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
     "tipoBoletim": "Fechamento PTAX"
   },
   {
@@ -4300,6 +4340,16 @@
     "tipoBoletim": "Fechamento PTAX"
   },
   {
+    "moeda": "EUR",
+    "data": "2026-11-06",
+    "paridadeCompra": 1.1144,
+    "paridadeVenda": 1.1146,
+    "cotacaoCompra": 6.13,
+    "cotacaoVenda": 6.1317,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
     "moeda": "GBP",
     "data": "2026-07-06",
     "paridadeCompra": 1.3366,
@@ -5157,6 +5207,16 @@
     "cotacaoCompra": 7.3588,
     "cotacaoVenda": 7.3613,
     "dataHoraCotacao": "2026-11-05 13:06:37.661774",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
+    "moeda": "GBP",
+    "data": "2026-11-06",
+    "paridadeCompra": 1.3356,
+    "paridadeVenda": 1.3364,
+    "cotacaoCompra": 7.3467,
+    "cotacaoVenda": 7.3519,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
     "tipoBoletim": "Fechamento PTAX"
   },
   {
@@ -6020,6 +6080,16 @@
     "tipoBoletim": "Fechamento PTAX"
   },
   {
+    "moeda": "JPY",
+    "data": "2026-11-06",
+    "paridadeCompra": 158.23,
+    "paridadeVenda": 158.27,
+    "cotacaoCompra": 0.03476,
+    "cotacaoVenda": 0.03477,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
     "moeda": "NOK",
     "data": "2026-07-06",
     "paridadeCompra": 9.8183,
@@ -6877,6 +6947,16 @@
     "cotacaoCompra": 0.5869,
     "cotacaoVenda": 0.5877,
     "dataHoraCotacao": "2026-11-05 13:06:37.661774",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
+    "moeda": "NOK",
+    "data": "2026-11-06",
+    "paridadeCompra": 9.4422,
+    "paridadeVenda": 9.4431,
+    "cotacaoCompra": 0.5825,
+    "cotacaoVenda": 0.5826,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
     "tipoBoletim": "Fechamento PTAX"
   },
   {
@@ -7740,6 +7820,16 @@
     "tipoBoletim": "Fechamento PTAX"
   },
   {
+    "moeda": "SEK",
+    "data": "2026-11-06",
+    "paridadeCompra": 9.8807,
+    "paridadeVenda": 9.8833,
+    "cotacaoCompra": 0.5566,
+    "cotacaoVenda": 0.5568,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
     "moeda": "USD",
     "data": "2026-07-06",
     "paridadeCompra": 1,
@@ -8597,6 +8687,16 @@
     "cotacaoCompra": 5.4615,
     "cotacaoVenda": 5.4621,
     "dataHoraCotacao": "2026-11-05 13:06:37.661774",
+    "tipoBoletim": "Fechamento PTAX"
+  },
+  {
+    "moeda": "USD",
+    "data": "2026-11-06",
+    "paridadeCompra": 1,
+    "paridadeVenda": 1,
+    "cotacaoCompra": 5.5007,
+    "cotacaoVenda": 5.5013,
+    "dataHoraCotacao": "2026-11-06 13:06:13.966362",
     "tipoBoletim": "Fechamento PTAX"
   }
 ]
