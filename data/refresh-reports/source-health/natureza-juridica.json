@@ -1,14 +1,12 @@
 {
   "datasetId": "natureza-juridica",
-  "endpoints": [
-    "https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip"
-  ],
-  "consecutiveFailureDays": 0,
-  "firstFailureDate": null,
-  "lastFailureDate": null,
+  "endpoints": [],
+  "consecutiveFailureDays": 1,
+  "firstFailureDate": "2026-11-08",
+  "lastFailureDate": "2026-11-08",
   "lastSuccessDate": "2026-11-07",
-  "severity": "ok",
-  "message": "Official source responded successfully.",
+  "severity": "warning",
+  "message": "Official source responded but data was not parseable (HTTP 504 downloading https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Naturezas.zip). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-07 retained in the API.",
   "retainedEmbeddedDataFrom": "2026-11-07",
-  "outcomeStatus": "ok"
+  "outcomeStatus": "source_empty"
 }
