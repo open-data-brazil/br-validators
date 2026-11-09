@@ -7,8 +7,8 @@
     "https://api.portaldatransparencia.gov.br/v3/api-docs",
     "https://portaldatransparencia.gov.br/"
   ],
-  "capturadoEm": "2026-11-08",
-  "atualizadoEm": "2026-11-08T10:26:00.974Z",
+  "capturadoEm": "2026-11-09",
+  "atualizadoEm": "2026-11-09T11:07:36.307Z",
   "contagens": {
     "endpoints": 8,
     "queryAdapter": 7
@@ -17,12 +17,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-07"
+    "comparadoCom": "2026-11-08"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-08T10:26:00.974Z"
+    "ultimaExecucao": "2026-11-09T11:07:36.307Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#portal-transparencia"
 }
