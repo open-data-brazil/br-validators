@@ -6,7 +6,7 @@
     "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arquivos-lpc/2026/resumo_semanal_lpc_2026-10-04_2026-10-10.xlsx"
   ],
   "attempts": 5,
-  "checkedAt": "2026-11-09T11:07:31.160Z",
-  "retainedEmbeddedDataFrom": "2026-11-09",
+  "checkedAt": "2026-11-10T11:02:18.041Z",
+  "retainedEmbeddedDataFrom": "2026-11-10",
   "message": "Official ANP LPC weekly summary XLSX fetch succeeded."
 }

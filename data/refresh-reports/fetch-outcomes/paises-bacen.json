@@ -7,7 +7,7 @@
     "https://www.bcb.gov.br/ftp/paises.txt"
   ],
   "attempts": 1,
-  "checkedAt": "2026-11-09T10:47:57.810Z",
-  "retainedEmbeddedDataFrom": "2026-11-09",
+  "checkedAt": "2026-11-10T10:42:40.227Z",
+  "retainedEmbeddedDataFrom": "2026-11-10",
   "message": "Official NF-e country table fetch succeeded (http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PfPDd6dW200=&AspxAutoDetectCookieSupport=1)."
 }
