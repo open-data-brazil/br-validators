@@ -1295,13 +1295,6 @@
     "participaCompe": false
   },
   {
-    "codigo": "387",
-    "ispb": "03215790",
-    "nome": "Banco Toyota do Brasil S.A.",
-    "nomeReduzido": "BCO TOYOTA DO BRASIL S.A.",
-    "participaCompe": false
-  },
-  {
     "codigo": "389",
     "ispb": "17184037",
     "nome": "Banco Mercantil do Brasil S.A.",
@@ -3196,6 +3189,13 @@
     "ispb": "52067630",
     "nome": "BANCO TRATON BRASIL S.A.",
     "nomeReduzido": "BANCO TRATON BRASIL S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "798",
+    "ispb": "01648418",
+    "nome": "NSTECH IP INSTITUICAO DE PAGAMENTO S.A.",
+    "nomeReduzido": "NSTECH IP S.A.",
     "participaCompe": false
   },
   {
