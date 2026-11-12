@@ -8,8 +8,8 @@
     "https://apisidra.ibge.gov.br/values/t/6579/n3/all/v/9324/p/last",
     "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/last"
   ],
-  "capturadoEm": "2026-11-11",
-  "atualizadoEm": "2026-11-11T10:10:22.372Z",
+  "capturadoEm": "2026-11-12",
+  "atualizadoEm": "2026-11-12T10:34:19.250Z",
   "contagens": {
     "estados": 27,
     "municipios": 5571
@@ -18,12 +18,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-10"
+    "comparadoCom": "2026-11-11"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-11T10:10:22.372Z"
+    "ultimaExecucao": "2026-11-12T10:34:19.250Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibge-localities"
 }

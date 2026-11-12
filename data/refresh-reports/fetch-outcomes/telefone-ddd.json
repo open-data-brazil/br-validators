@@ -6,7 +6,7 @@
     "packages/br-validators/src/ibge/data/municipios.json"
   ],
   "attempts": 1,
-  "checkedAt": "2026-11-11T10:12:57.663Z",
-  "retainedEmbeddedDataFrom": "2026-11-11",
+  "checkedAt": "2026-11-12T10:34:37.457Z",
+  "retainedEmbeddedDataFrom": "2026-11-12",
   "message": "Derived from IBGE municipios + Anatel DDD constants — no HTTP fetch required."
 }
