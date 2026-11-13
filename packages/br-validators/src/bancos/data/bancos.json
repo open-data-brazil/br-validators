@@ -2655,8 +2655,8 @@
   {
     "codigo": "673",
     "ispb": "08482873",
-    "nome": "COOPERATIVA DE CRÉDITO RURAL DO AGRESTE ALAGOANO - COOPERAGRE",
-    "nomeReduzido": "CCR DO AGRESTE ALAGOANO",
+    "nome": "COOPERATIVA DE CRÉDITO RURAL DO AGRESTE ALAGOANO - COOPERAGRE - EM LIQUIDAÇÃO EXTRAJUDICIAL",
+    "nomeReduzido": "CCR DO AGRESTE ALAGOANO - EM LIQUIDAÇÃO EXTRAJUDICIAL",
     "participaCompe": false
   },
   {
@@ -3056,13 +3056,6 @@
     "ispb": "57824223",
     "nome": "WX INSTITUICAO DE PAGAMENTO LTDA",
     "nomeReduzido": "WX IP LTDA.",
-    "participaCompe": false
-  },
-  {
-    "codigo": "772",
-    "ispb": "20833992",
-    "nome": "COOPERATIVA DE CRÉDITO MÚTUO DOS EMPREGADOS DO CENTRO UNIVERSITÁRIO NEWTON PAIVA LTDA. - CREDIPAIVA - EM LIQUIDAÇÃO EXTRAJUDICIAL",
-    "nomeReduzido": "CC MECUNP - EM LIQUIDAÇÃO EXTRAJUDICIAL",
     "participaCompe": false
   },
   {
