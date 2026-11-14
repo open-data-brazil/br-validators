@@ -6,7 +6,7 @@
     "/home/runner/work/br-validators/br-validators/data/source-mirrors/confaz/cest_cv142_18.html"
   ],
   "attempts": 5,
-  "checkedAt": "2026-11-13T10:47:06.189Z",
-  "retainedEmbeddedDataFrom": "2026-11-13",
+  "checkedAt": "2026-11-14T10:04:29.249Z",
+  "retainedEmbeddedDataFrom": "2026-11-14",
   "message": "CONFAZ CEST table loaded from repo HTML cache after official host blocked from CI."
 }

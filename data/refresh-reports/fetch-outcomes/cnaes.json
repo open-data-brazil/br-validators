@@ -5,7 +5,7 @@
     "https://servicodados.ibge.gov.br/api/v2/cnae/subclasses"
   ],
   "attempts": 2,
-  "checkedAt": "2026-11-13T10:30:03.127Z",
+  "checkedAt": "2026-11-14T09:47:26.516Z",
   "retainedEmbeddedDataFrom": "2026-10-22",
   "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-10-22 retained in the API.",
   "failureKind": "source_blocked",

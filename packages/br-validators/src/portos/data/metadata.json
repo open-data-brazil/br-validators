@@ -5,8 +5,8 @@
   "endpoints": [
     "https://www.gov.br/antaq/pt-br/central-de-conteudos/Instalaesporturias06052025.zip"
   ],
-  "capturadoEm": "2026-11-13",
-  "atualizadoEm": "2026-11-13T10:47:14.157Z",
+  "capturadoEm": "2026-11-14",
+  "atualizadoEm": "2026-11-14T10:04:36.664Z",
   "contagens": {
     "portos": 1094
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-12"
+    "comparadoCom": "2026-11-13"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-13T10:47:14.157Z"
+    "ultimaExecucao": "2026-11-14T10:04:36.664Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#portos"
 }
