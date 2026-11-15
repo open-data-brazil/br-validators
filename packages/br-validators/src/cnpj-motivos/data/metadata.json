@@ -5,8 +5,8 @@
   "endpoints": [
     "https://github.com/jonathands/dados-abertos-receita-cnpj/releases/download/2024.09/Motivos.zip"
   ],
-  "capturadoEm": "2026-11-14",
-  "atualizadoEm": "2026-11-14T10:01:56.057Z",
+  "capturadoEm": "2026-11-15",
+  "atualizadoEm": "2026-11-15T10:35:06.170Z",
   "contagens": {
     "motivos": 61
   },
@@ -14,12 +14,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-13"
+    "comparadoCom": "2026-11-14"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-14T10:01:56.057Z"
+    "ultimaExecucao": "2026-11-15T10:35:06.170Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#cnpj-motivos-situacao-cadastral"
 }
