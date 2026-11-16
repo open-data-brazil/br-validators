@@ -630,13 +630,6 @@
     "participaCompe": false
   },
   {
-    "codigo": "189",
-    "ispb": "07512441",
-    "nome": "HS FINANCEIRA S/A CREDITO, FINANCIAMENTO E INVESTIMENTOS",
-    "nomeReduzido": "HS FINANCEIRA",
-    "participaCompe": false
-  },
-  {
     "codigo": "190",
     "ispb": "03973814",
     "nome": "SERVICOOP - COOPERATIVA DE CRÉDITO DOS SERVIDORES PÚBLICOS ESTADUAIS E MUNICIPAIS DO RIO GRANDE DO SUL",
@@ -3217,6 +3210,13 @@
     "ispb": "38486817",
     "nome": "BANCO DE DESENVOLVIMENTO DE MINAS GERAIS S.A.-BDMG",
     "nomeReduzido": "BCO DES. DE MG S.A.",
+    "participaCompe": false
+  },
+  {
+    "codigo": "807",
+    "ispb": "63822040",
+    "nome": "GUARDIAN SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "GUARDIAN SCD S.A.",
     "participaCompe": false
   }
 ]

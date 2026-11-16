@@ -15,10 +15,10 @@
     },
     "usdHistorico": {
       "moeda": "USD",
-      "data": "2026-07-13",
-      "dataBacen": "07-13-2026",
-      "cotacaoCompra": 5.1177,
-      "cotacaoVenda": 5.1183
+      "data": "2026-07-14",
+      "dataBacen": "07-14-2026",
+      "cotacaoCompra": 5.0736,
+      "cotacaoVenda": 5.0742
     },
     "eurUltimoDiaUtil": {
       "moeda": "EUR",
@@ -30,16 +30,16 @@
       "moeda": "USD",
       "desde": "2026-06-20",
       "ate": "2026-11-13",
-      "expectedRowCount": 87,
-      "firstDate": "2026-07-13",
+      "expectedRowCount": 86,
+      "firstDate": "2026-07-14",
       "lastDate": "2026-11-13"
     }
   },
   "staleness": {
-    "asOfFresh": "2026-11-15",
+    "asOfFresh": "2026-11-16",
     "freshReferenceDate": "2026-11-13",
-    "staleReferenceDate": "2026-07-13",
-    "capturadoEm": "2026-11-15",
+    "staleReferenceDate": "2026-07-14",
+    "capturadoEm": "2026-11-16",
     "staleWarning": "Embedded data. For real-time use @br-validators/adapters-ptax"
   }
 }

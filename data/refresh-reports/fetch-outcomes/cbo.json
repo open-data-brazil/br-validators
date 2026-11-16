@@ -5,7 +5,7 @@
     "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
   ],
   "attempts": 5,
-  "checkedAt": "2026-11-15T10:37:42.517Z",
-  "retainedEmbeddedDataFrom": "2026-11-15",
+  "checkedAt": "2026-11-16T10:50:25.108Z",
+  "retainedEmbeddedDataFrom": "2026-11-16",
   "message": "Official MTE CBO occupations CSV fetch succeeded."
 }
