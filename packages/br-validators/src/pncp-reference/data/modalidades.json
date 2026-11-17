@@ -112,5 +112,11 @@
     "nome": "Pregão – Presencial Internacional",
     "descricao": "Modalidade de licitação utilizada pela Administração Pública para a aquisição de bens e serviços comuns, com a participação de fornecedores nacionais e estrangeiros, realizada de forma presencial, conforme as disposições legais e as regras estabelecidas no edital.",
     "ativo": true
+  },
+  {
+    "id": 20,
+    "nome": "Diálogo Competitivo Internacional",
+    "descricao": "Modalidade de licitação para contratação de obras, serviços e compras em que a Administração Pública realiza diálogos com licitantes previamente selecionados mediante critérios objetivos, com o intuito de desenvolver uma ou mais alternativas capazes de atender às suas necessidades, devendo os licitantes apresentarem proposta final após o encerramento dos diálogos, de âmbito internacional",
+    "ativo": true
   }
 ]

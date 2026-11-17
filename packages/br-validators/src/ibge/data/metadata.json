@@ -4,12 +4,10 @@
   "fonte": "IBGE API v1 /localidades",
   "endpoints": [
     "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
-    "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
-    "https://apisidra.ibge.gov.br/values/t/6579/n3/all/v/9324/p/last",
-    "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/last"
+    "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
   ],
-  "capturadoEm": "2026-11-16",
-  "atualizadoEm": "2026-11-16T10:30:39.803Z",
+  "capturadoEm": "2026-11-17",
+  "atualizadoEm": "2026-11-17T11:24:14.962Z",
   "contagens": {
     "estados": 27,
     "municipios": 5571
@@ -18,12 +16,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-15"
+    "comparadoCom": "2026-11-16"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-16T10:30:39.803Z"
+    "ultimaExecucao": "2026-11-17T11:24:14.962Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#ibge-localities"
 }

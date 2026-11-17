@@ -1144,5 +1144,11 @@
     "nome": "Lei 14.133/2021, Art. 79, IV",
     "descricao": "Comércio eletrônico por meio de credenciamento, destinado à contratação de bens e serviços comuns padronizados.",
     "ativo": true
+  },
+  {
+    "id": 192,
+    "nome": "Lei 14.133/2021, Art. 28, V, e Art. 52",
+    "descricao": "Diálogo competitivo de âmbito internacional. A adoção e o procedimento da modalidade observam o art. 32, e o edital atende às regras aplicáveis às licitações internacionais previstas no art. 52.",
+    "ativo": true
   }
 ]

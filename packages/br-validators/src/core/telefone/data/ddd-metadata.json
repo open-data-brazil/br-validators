@@ -6,8 +6,8 @@
     "https://informacoes.anatel.gov.br/paineis/areas-tarifarias/codigos-nacionais",
     "packages/br-validators/src/ibge/data/municipios.json"
   ],
-  "capturadoEm": "2026-11-16",
-  "atualizadoEm": "2026-11-16T10:30:57.096Z",
+  "capturadoEm": "2026-11-17",
+  "atualizadoEm": "2026-11-17T11:24:34.176Z",
   "contagens": {
     "ddds": 67
   },
@@ -15,12 +15,12 @@
     "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-15"
+    "comparadoCom": "2026-11-16"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-16T10:30:57.096Z"
+    "ultimaExecucao": "2026-11-17T11:24:34.176Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#anatel-ddd-lookup"
 }
