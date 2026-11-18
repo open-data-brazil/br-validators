@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1-data.49] - 2026-11-18
+
+### Changed
+
+- Reference data refresh (daily bot) — **1.10.1 data #49**: 4 dataset(s) changed (+209 −0 ~2).
+
 ## [1.10.1-data.48] - 2026-11-17
 
 ### Changed

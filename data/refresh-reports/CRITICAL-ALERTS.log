@@ -1,1 +1,2 @@
-OK no critical alerts last_check=2026-11-17T11:41:55.466Z
+CRITICAL dataset=portos streak=2 first_failure=2026-11-17 retained=2026-11-16 message="Official source responded but data was not parseable (Failed to extract Portos.xlsx from ANTAQ zip (Zip end-of-central-directory record not found)). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-16 retained in the API."
+UPDATED 2026-11-18T11:14:39.611Z

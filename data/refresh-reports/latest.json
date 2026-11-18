@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-11-17T11:41:55.466Z",
-  "runDate": "2026-11-17",
+  "executadoEm": "2026-11-18T11:14:39.611Z",
+  "runDate": "2026-11-18",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "estados": 27,
@@ -20,16 +20,17 @@
     },
     {
       "id": "bancos",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
+        "adicionados": 1,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
-        "bancos": 460
-      }
+        "bancos": 461
+      },
+      "camposAlterados": []
     },
     {
       "id": "aeroportos",
@@ -38,7 +39,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +53,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +66,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "moedas": 154
@@ -78,7 +79,7 @@
         "adicionados": 10,
         "removidos": 10,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cotacoes": 860,
@@ -93,7 +94,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "observacoes": 90,
@@ -122,7 +123,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +136,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +149,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +177,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-10-22"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +190,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +203,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +216,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +229,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cargas": 12
@@ -241,7 +242,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "nbs": 917
@@ -254,7 +255,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cest": 1018
@@ -319,16 +320,19 @@
     },
     {
       "id": "ncm",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "alterados": 1,
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "ncm": 10516
-      }
+      },
+      "camposAlterados": [
+        "descricao"
+      ]
     },
     {
       "id": "cbo",
@@ -337,7 +341,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "cbo": 2694
@@ -376,7 +380,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "semanas": 1,
@@ -388,12 +392,12 @@
     },
     {
       "id": "pncp-reference",
-      "status": "changed",
+      "status": "unchanged",
       "alteracoes": {
-        "adicionados": 2,
+        "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "modalidades": 20,
@@ -404,8 +408,7 @@
         "criterios-julgamento": 16,
         "tipos-instrumentos-cobranca": 1,
         "fontes-orcamentarias": 6
-      },
-      "camposAlterados": []
+      }
     },
     {
       "id": "transparencia-snapshots",
@@ -414,7 +417,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-16"
+        "comparadoCom": "2026-11-17"
       },
       "contagens": {
         "endpoints": 8,
@@ -425,7 +428,7 @@
   "sourceAlerts": [
     {
       "datasetId": "portos",
-      "severity": "warning",
+      "severity": "critical",
       "status": "source_empty",
       "message": "Official source responded but data was not parseable (Failed to extract Portos.xlsx from ANTAQ zip (Zip end-of-central-directory record not found)). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-16 retained in the API.",
       "endpoints": [
@@ -433,17 +436,17 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-16",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
+      "consecutiveFailureDays": 2
     }
   ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 3,
-    "totalAdicionados": 210,
+    "datasetsAlterados": 4,
+    "totalAdicionados": 209,
     "totalRemovidos": 0,
-    "totalAlterados": 1,
+    "totalAlterados": 2,
     "sourceAlerts": 1,
-    "criticalAlerts": 0,
+    "criticalAlerts": 1,
     "baselinesSelados": 0
   }
 }
