@@ -5,7 +5,7 @@
     "https://www.anac.gov.br/acesso-a-informacao/dados-abertos/areas-de-atuacao/aerodromos/lista-de-aerodromos-publicos/aerodromospublicosv1.csv/@@download/file/aerodromospublicosv1.csv"
   ],
   "attempts": 5,
-  "checkedAt": "2026-11-18T10:57:07.190Z",
-  "retainedEmbeddedDataFrom": "2026-11-18",
+  "checkedAt": "2026-11-19T10:59:24.013Z",
+  "retainedEmbeddedDataFrom": "2026-11-19",
   "message": "Official ANAC public aerodromos CSV fetch succeeded."
 }
