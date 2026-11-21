@@ -1,10 +1,10 @@
 ### Data refresh report
 
-- Run date: 2026-11-20
+- Run date: 2026-11-21
 - Datasets checked: 30
 - Datasets changed: 2
 - Baselines sealed this run: 0
-- Source alerts: 1
+- Source alerts: 5
 - Critical alerts: 1
 
 ### ⚠️ Critical — consultation link deprecated
@@ -13,7 +13,11 @@ See `data/refresh-reports/CRITICAL-ALERTS.md` for maintainer actions.
 
 ### Source health alerts
 
-- **portos** (critical): Official source responded but data was not parseable (Failed to extract Portos.xlsx from ANTAQ zip (Zip end-of-central-directory record not found)). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-16 retained in the API. (embedded data from 2026-11-16 retained)
+- **nbs** (warning): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API. (embedded data from 2026-11-20 retained)
+- **cbo** (warning): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API. (embedded data from 2026-11-20 retained)
+- **portos** (critical): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-16 retained in the API. (embedded data from 2026-11-16 retained)
+- **anp-combustiveis** (warning): Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API. (embedded data from 2026-11-20 retained)
+- **feriados** (warning): Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API. (embedded data from 2026-06-23 retained)
 
 See `docs/DATA-SOURCE-MAINTENANCE.md` for remediation steps.
 
