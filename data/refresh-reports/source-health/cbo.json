@@ -3,11 +3,11 @@
   "endpoints": [
     "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
   ],
-  "consecutiveFailureDays": 1,
+  "consecutiveFailureDays": 2,
   "firstFailureDate": "2026-11-21",
-  "lastFailureDate": "2026-11-21",
+  "lastFailureDate": "2026-11-22",
   "lastSuccessDate": "2026-11-20",
-  "severity": "warning",
+  "severity": "critical",
   "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API.",
   "retainedEmbeddedDataFrom": "2026-11-20",
   "outcomeStatus": "source_blocked"

@@ -1,6 +1,6 @@
 {
-  "executadoEm": "2026-11-21T11:03:48.339Z",
-  "runDate": "2026-11-21",
+  "executadoEm": "2026-11-22T11:08:30.896Z",
+  "runDate": "2026-11-22",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
@@ -11,7 +11,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "estados": 27,
@@ -25,7 +25,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "bancos": 461
@@ -38,7 +38,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +52,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +65,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "moedas": 154
@@ -78,7 +78,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "cotacoes": 860,
@@ -93,7 +93,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "observacoes": 90,
@@ -122,7 +122,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +135,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "incoterms": 11
@@ -148,7 +148,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "ddds": 67
@@ -176,7 +176,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +189,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +202,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +215,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +228,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "cargas": 12
@@ -254,7 +254,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "cest": 1018
@@ -324,7 +324,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "ncm": 10516
@@ -393,7 +393,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "modalidades": 20,
@@ -413,7 +413,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-20"
+        "comparadoCom": "2026-11-21"
       },
       "contagens": {
         "endpoints": 8,
@@ -424,7 +424,7 @@
   "sourceAlerts": [
     {
       "datasetId": "nbs",
-      "severity": "warning",
+      "severity": "critical",
       "status": "source_blocked",
       "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API.",
       "endpoints": [
@@ -432,11 +432,11 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
+      "consecutiveFailureDays": 2
     },
     {
       "datasetId": "cbo",
-      "severity": "warning",
+      "severity": "critical",
       "status": "source_blocked",
       "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API.",
       "endpoints": [
@@ -444,7 +444,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
+      "consecutiveFailureDays": 2
     },
     {
       "datasetId": "portos",
@@ -456,11 +456,11 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-16",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 5
+      "consecutiveFailureDays": 6
     },
     {
       "datasetId": "anp-combustiveis",
-      "severity": "warning",
+      "severity": "critical",
       "status": "source_blocked",
       "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API.",
       "endpoints": [
@@ -468,11 +468,11 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
+      "consecutiveFailureDays": 2
     },
     {
       "datasetId": "feriados",
-      "severity": "warning",
+      "severity": "critical",
       "status": "source_unavailable",
       "message": "Possible link deprecation (Endpoint probe failed for 1 operational URL(s) — source may be deprecated or moved.). No new data after 5 attempts (interval 120000ms) — embedded data from 2026-06-23 retained in the API.",
       "endpoints": [
@@ -480,7 +480,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-06-23",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 1
+      "consecutiveFailureDays": 2
     }
   ],
   "resumo": {
@@ -490,7 +490,7 @@
     "totalRemovidos": 0,
     "totalAlterados": 1,
     "sourceAlerts": 5,
-    "criticalAlerts": 1,
+    "criticalAlerts": 5,
     "baselinesSelados": 0
   }
 }
