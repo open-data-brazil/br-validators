@@ -3225,5 +3225,12 @@
     "nome": "GUARDIAN SOCIEDADE DE CRÉDITO DIRETO S.A.",
     "nomeReduzido": "GUARDIAN SCD S.A.",
     "participaCompe": false
+  },
+  {
+    "codigo": "808",
+    "ispb": "40867163",
+    "nome": "RENDIMENTO SOCIEDADE DE CRÉDITO DIRETO S.A.",
+    "nomeReduzido": "RENDIMENTO SCD",
+    "participaCompe": false
   }
 ]

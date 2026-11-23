@@ -1,35 +1,39 @@
 {
-  "executadoEm": "2026-11-22T11:08:30.896Z",
-  "runDate": "2026-11-22",
+  "executadoEm": "2026-11-23T12:09:24.969Z",
+  "runDate": "2026-11-23",
   "schedule": "diario",
   "agendamento": "diario",
   "datasets": [
     {
       "id": "ibge",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "alterados": 1,
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "estados": 27,
         "municipios": 5571
-      }
+      },
+      "camposAlterados": [
+        "nome"
+      ]
     },
     {
       "id": "bancos",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
-        "adicionados": 0,
+        "adicionados": 1,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
-        "bancos": 461
-      }
+        "bancos": 462
+      },
+      "camposAlterados": []
     },
     {
       "id": "aeroportos",
@@ -38,7 +42,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "aeroportos": 533,
@@ -52,7 +56,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "municipios": 5571
@@ -65,7 +69,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "moedas": 154
@@ -76,14 +80,14 @@
       "status": "unchanged",
       "alteracoes": {
         "adicionados": 0,
-        "removidos": 0,
+        "removidos": 10,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
-        "cotacoes": 860,
+        "cotacoes": 850,
         "moedas": 10,
-        "diasUteis": 86
+        "diasUteis": 85
       }
     },
     {
@@ -93,7 +97,7 @@
         "adicionados": 1,
         "removidos": 1,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "observacoes": 90,
@@ -122,7 +126,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "paises": 253
@@ -135,7 +139,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "incoterms": 11
@@ -143,16 +147,19 @@
     },
     {
       "id": "telefone-ddd",
-      "status": "unchanged",
+      "status": "changed",
       "alteracoes": {
         "adicionados": 0,
         "removidos": 0,
-        "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "alterados": 2,
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "ddds": 67
-      }
+      },
+      "camposAlterados": [
+        "municipios"
+      ]
     },
     {
       "id": "feriados",
@@ -176,7 +183,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "cnaes": 1332
@@ -189,7 +196,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "cfop": 689
@@ -202,7 +209,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "naturezas": 90
@@ -215,7 +222,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "motivos": 61
@@ -228,7 +235,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "cargas": 12
@@ -254,7 +261,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "cest": 1018
@@ -324,7 +331,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "ncm": 10516
@@ -393,7 +400,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "modalidades": 20,
@@ -413,7 +420,7 @@
         "adicionados": 0,
         "removidos": 0,
         "alterados": 0,
-        "comparadoCom": "2026-11-21"
+        "comparadoCom": "2026-11-22"
       },
       "contagens": {
         "endpoints": 8,
@@ -432,7 +439,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 2
+      "consecutiveFailureDays": 3
     },
     {
       "datasetId": "cbo",
@@ -444,7 +451,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 2
+      "consecutiveFailureDays": 3
     },
     {
       "datasetId": "portos",
@@ -456,7 +463,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-16",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 6
+      "consecutiveFailureDays": 7
     },
     {
       "datasetId": "anp-combustiveis",
@@ -468,7 +475,7 @@
       ],
       "retainedEmbeddedDataFrom": "2026-11-20",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 2
+      "consecutiveFailureDays": 3
     },
     {
       "datasetId": "feriados",
@@ -480,15 +487,15 @@
       ],
       "retainedEmbeddedDataFrom": "2026-06-23",
       "documentationAction": "See docs/DATA-SOURCE-MAINTENANCE.md — update OFFICIAL-SOURCES.md, fetch script endpoint(s), and metadata.json, then run `pnpm data:refresh`.",
-      "consecutiveFailureDays": 2
+      "consecutiveFailureDays": 3
     }
   ],
   "resumo": {
     "datasetsVerificados": 30,
-    "datasetsAlterados": 2,
-    "totalAdicionados": 208,
+    "datasetsAlterados": 5,
+    "totalAdicionados": 209,
     "totalRemovidos": 0,
-    "totalAlterados": 1,
+    "totalAlterados": 4,
     "sourceAlerts": 5,
     "criticalAlerts": 5,
     "baselinesSelados": 0
