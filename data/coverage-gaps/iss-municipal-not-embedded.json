@@ -5640,11 +5640,6 @@
     "uf": "MA"
   },
   {
-    "codigoIbge": 2104552,
-    "nome": "Governador Edison Lobão",
-    "uf": "MA"
-  },
-  {
     "codigoIbge": 2104602,
     "nome": "Governador Eugênio Barros",
     "uf": "MA"
@@ -6037,6 +6032,11 @@
   {
     "codigoIbge": 2109551,
     "nome": "Ribamar Fiquene",
+    "uf": "MA"
+  },
+  {
+    "codigoIbge": 2104552,
+    "nome": "Ribeirãozinho do Maranhão",
     "uf": "MA"
   },
   {
