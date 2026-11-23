@@ -4,8 +4,7 @@
  * npm retired legacy `/-/npm/v1/security/audits{,/quick}` (HTTP 410).
  * pnpm 9/10 still call those endpoints. pnpm 11+ uses `/advisories/bulk`.
  *
- * This repo stays on `packageManager: pnpm@9.x` (Node >=18). pnpm 11 requires
- * Node >=22.13, so CI invokes that version for audit only.
+ * The workspace installs with pnpm 9. CI uses pnpm 11 (Node >=22.13) for audit only.
  *
  * Usage: pnpm exec tsx scripts/ci/pnpm-audit.ts [--prod] [--audit-level=high]
  */
