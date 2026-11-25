@@ -5,21 +5,21 @@
   "endpoints": [
     "https://www.bcb.gov.br/content/estabilidadefinanceira/str1/ParticipantesSTR.csv"
   ],
-  "capturadoEm": "2026-11-24",
-  "atualizadoEm": "2026-11-24T13:09:57.577Z",
+  "capturadoEm": "2026-11-25",
+  "atualizadoEm": "2026-11-25T11:58:01.137Z",
   "contagens": {
     "bancos": 463
   },
   "alteracoes": {
-    "adicionados": 1,
+    "adicionados": 0,
     "removidos": 0,
     "alterados": 0,
-    "comparadoCom": "2026-11-23"
+    "comparadoCom": "2026-11-24"
   },
   "verificacao": {
     "agendamento": "diario",
     "workflow": "data-refresh-bot.yml",
-    "ultimaExecucao": "2026-11-24T13:09:57.577Z"
+    "ultimaExecucao": "2026-11-25T11:58:01.137Z"
   },
   "documentacao": "docs/OFFICIAL-SOURCES.md#bacen-banks"
 }

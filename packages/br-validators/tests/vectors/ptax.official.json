@@ -9,37 +9,37 @@
   "golden": {
     "usdUltimoDiaUtil": {
       "moeda": "USD",
-      "data": "2026-11-23",
-      "cotacaoCompra": 5.9702,
-      "cotacaoVenda": 5.9708
+      "data": "2026-11-24",
+      "cotacaoCompra": 5.8567,
+      "cotacaoVenda": 5.8573
     },
     "usdHistorico": {
       "moeda": "USD",
-      "data": "2026-07-22",
-      "dataBacen": "07-22-2026",
-      "cotacaoCompra": 5.0632,
-      "cotacaoVenda": 5.0638
+      "data": "2026-07-23",
+      "dataBacen": "07-23-2026",
+      "cotacaoCompra": 5.0801,
+      "cotacaoVenda": 5.0807
     },
     "eurUltimoDiaUtil": {
       "moeda": "EUR",
-      "data": "2026-11-23",
-      "cotacaoCompra": 6.5057,
-      "cotacaoVenda": 6.5076
+      "data": "2026-11-24",
+      "cotacaoCompra": 6.4248,
+      "cotacaoVenda": 6.426
     },
     "historicoRange": {
       "moeda": "USD",
       "desde": "2026-06-20",
-      "ate": "2026-11-23",
+      "ate": "2026-11-24",
       "expectedRowCount": 85,
-      "firstDate": "2026-07-22",
-      "lastDate": "2026-11-23"
+      "firstDate": "2026-07-23",
+      "lastDate": "2026-11-24"
     }
   },
   "staleness": {
-    "asOfFresh": "2026-11-24",
-    "freshReferenceDate": "2026-11-23",
-    "staleReferenceDate": "2026-07-22",
-    "capturadoEm": "2026-11-24",
+    "asOfFresh": "2026-11-25",
+    "freshReferenceDate": "2026-11-24",
+    "staleReferenceDate": "2026-07-23",
+    "capturadoEm": "2026-11-25",
     "staleWarning": "Embedded data. For real-time use @br-validators/adapters-ptax"
   }
 }

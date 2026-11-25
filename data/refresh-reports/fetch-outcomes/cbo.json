@@ -5,7 +5,7 @@
     "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv"
   ],
   "attempts": 2,
-  "checkedAt": "2026-11-24T13:30:36.816Z",
+  "checkedAt": "2026-11-25T12:18:41.153Z",
   "retainedEmbeddedDataFrom": "2026-11-20",
   "message": "Source blocked or unreachable from CI network — not link deprecation (fetch failed). No new data after 2 attempts (interval 120000ms) — embedded data from 2026-11-20 retained in the API.",
   "failureKind": "source_blocked",
