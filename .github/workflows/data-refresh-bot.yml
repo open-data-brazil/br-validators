@@ -64,6 +64,7 @@ jobs:
             pnpm data:refresh:report
           else
             pnpm data:refresh
+            pnpm generate:coverage-gaps
           fi
 
       - name: Verify monorepo
