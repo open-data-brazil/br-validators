@@ -1,6 +1,6 @@
 ### Data refresh report
 
-- Run date: 2026-11-27
+- Run date: 2026-11-28
 - Datasets checked: 30
 - Datasets changed: 2
 - Baselines sealed this run: 0
